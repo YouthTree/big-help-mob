@@ -1,76 +1,27 @@
-/*
-Sass::SyntaxError: Inconsistent indentation: 2 spaces were used for indentation, but the rest of the document was indented using 1 tab.
-on line 3 of /Users/mattdidcoe/development/bighelpmob/app/stylesheets/bhm.sass
+@font-face {
+  font-family: 'SnigletRegular';
+  src: url('/fonts/Sniglet.eot');
+  src: local('Sniglet Regular'), local('Sniglet'), url('/fonts/Sniglet.ttf') format('truetype'); }
 
-1: @font-face
-2: 	:font-family 'SnigletRegular'
-3:   :src url('/fonts/Sniglet.eot')
-4:   :src local('Sniglet Regular'), local('Sniglet'), url('/fonts/Sniglet.ttf') format('truetype')
-5: 
-6: body
-7:   :background-color #d1eca9
-8:   :color #FFF
+body {
+  background-color: #d1eca9;
+  color: #333;
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  font-size: 14px; }
 
+#container {
+  width: 900px;
+  text-align: left;
+  margin: 0 auto; }
 
-Backtrace:
-/Users/mattdidcoe/development/bighelpmob/app/stylesheets/bhm.sass:3
-/Users/mattdidcoe/development/bighelpmob/app/stylesheets/bhm.sass:3
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/engine.rb:224:in `tabulate'
-/Library/Ruby/Gems/1.8/gems/rack-mount-0.4.5/lib/rack/mount/recognition/code_generation.rb:90:in `each_with_index'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/engine.rb:188:in `each'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/engine.rb:188:in `each_with_index'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/engine.rb:188:in `tabulate'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/engine.rb:175:in `to_tree'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/files.rb:35:in `tree_for'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin.rb:97:in `update_stylesheet'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin.rb:83:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin.rb:78:in `each'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin.rb:78:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin.rb:76:in `each'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin.rb:76:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin.rb:63:in `check_for_updates'
-/Library/Ruby/Gems/1.8/gems/haml-2.2.19/lib/sass/plugin/rails.rb:12:in `__sass_process'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta/lib/active_support/callbacks.rb:423:in `_run_prepare_callbacks'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta/lib/active_support/callbacks.rb:88:in `send'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta/lib/active_support/callbacks.rb:88:in `run_callbacks'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta/lib/action_dispatch/middleware/callbacks.rb:45:in `call'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta/lib/active_support/callbacks.rb:409:in `_run_call_callbacks'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta/lib/active_support/callbacks.rb:88:in `send'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta/lib/active_support/callbacks.rb:88:in `run_callbacks'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta/lib/action_dispatch/middleware/show_exceptions.rb:62:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.beta/lib/rails/rack/logger.rb:13:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.1.0/lib/rack/runtime.rb:17:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `synchronize'
-/Library/Ruby/Gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta/lib/action_dispatch/middleware/static.rb:30:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.0.beta/lib/rails/application.rb:95:in `call'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/rack/request_handler.rb:91:in `process_request'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_request_handler.rb:206:in `main_loop'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/railz/application_spawner.rb:376:in `start_request_handler'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/railz/application_spawner.rb:334:in `handle_spawn_application'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/utils.rb:182:in `safe_fork'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/railz/application_spawner.rb:332:in `handle_spawn_application'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server.rb:351:in `__send__'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server.rb:351:in `main_loop'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server.rb:195:in `start_synchronously'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server.rb:162:in `start'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/railz/application_spawner.rb:213:in `start'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/spawn_manager.rb:261:in `spawn_rails_application'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/spawn_manager.rb:255:in `spawn_rails_application'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/spawn_manager.rb:254:in `spawn_rails_application'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/spawn_manager.rb:153:in `spawn_application'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/spawn_manager.rb:286:in `handle_spawn_application'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server.rb:351:in `__send__'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server.rb:351:in `main_loop'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/lib/phusion_passenger/abstract_server.rb:195:in `start_synchronously'
-/Library/Ruby/Gems/1.8/gems/passenger-2.2.4/bin/passenger-spawn-server:61
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Sass::SyntaxError: Inconsistent indentation: 2 spaces were used for indentation, but the rest of the document was indented using 1 tab.\A on line 3 of /Users/mattdidcoe/development/bighelpmob/app/stylesheets/bhm.sass\A \A 1: @font-face\A 2: 	:font-family 'SnigletRegular'\A 3:   :src url('/fonts/Sniglet.eot')\A 4:   :src local('Sniglet Regular'), local('Sniglet'), url('/fonts/Sniglet.ttf') format('truetype')\A 5: \A 6: body\A 7:   :background-color #d1eca9\A 8:   :color #FFF\A "; }
+h1, h2 {
+  font-family: "SnigletRegular", Helvetica, sans-serif;
+  color: #d92d2f; }
+
+h1 {
+  font-size: 420%; }
+
+h2 {
+  font-size: 280%; }
