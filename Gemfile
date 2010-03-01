@@ -6,6 +6,7 @@ gem "haml"
 gem "mysql"
 
 gem "hominid"
+gem "addresslogic"
 
 gem "formtastic"
 gem "rails3-generators"
