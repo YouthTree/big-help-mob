@@ -5,10 +5,17 @@ gem "rails", "3.0.0.beta"
 gem "haml"
 gem "mysql"
 
+# mailing list
 gem "hominid"
-gem "addresslogic"
 
+# geo-awareness stuff and helpers to present addresses more cleanly
+gem "addresslogic"
+gem "geokit"
+
+# display helpers
 gem "formtastic"
+
+# authentication
 gem "rpx_now"
 
 git "git://github.com/Sutto/rails3-generators.git"
