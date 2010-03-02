@@ -22,7 +22,7 @@ git "git://github.com/Sutto/rails3-generators.git"
 gem "rails3-generators"
 
 group :test do
-  git "git://github.com/thoughtbot/shoulda.git", :branch => "rails3"
+  git "git://github.com/adamhunter/shoulda.git", :branch => "rails3"
   gem "redgreen", :require => []
   gem "shoulda", :require => []
 end
