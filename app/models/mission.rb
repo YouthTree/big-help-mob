@@ -6,6 +6,7 @@ class Mission < ActiveRecord::Base
   # Associations
   
   has_one :address, :as => :addressable
+  belongs_to :organisation
 
   # Model methods
 
