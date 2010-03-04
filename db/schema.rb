@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100302154023) do
+ActiveRecord::Schema.define(:version => 20100304132919) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -29,19 +29,39 @@ ActiveRecord::Schema.define(:version => 20100302154023) do
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
   create_table "missions", :force => true do |t|
-    t.string   "name",                                        :null => false
-    t.text     "description",                                 :null => false
+    t.string   "name",                                            :null => false
+    t.text     "description",                                     :null => false
     t.integer  "user_id"
-    t.integer  "ngo_id"
-    t.date     "date",                                        :null => false
-    t.time     "time",                                        :null => false
-    t.string   "street1",                                     :null => false
+    t.integer  "organisation_id"
+    t.date     "date",                                            :null => false
+    t.time     "time",                                            :null => false
+    t.string   "street1",                                         :null => false
     t.string   "street2"
-    t.string   "city",                                        :null => false
+    t.string   "city",                                            :null => false
     t.string   "state"
     t.string   "zip"
-    t.decimal  "lat",         :precision => 15, :scale => 10
-    t.decimal  "lng",         :precision => 15, :scale => 10
+    t.decimal  "lat",             :precision => 15, :scale => 10
+    t.decimal  "lng",             :precision => 15, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ngos", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "website"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organisations", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "telephone"
+    t.string   "website"
+    t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
