@@ -9,7 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100302125640) do
+ActiveRecord::Schema.define(:version => 20100302154023) do
+
+  create_table "addresses", :force => true do |t|
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postcode"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "lat",              :precision => 15, :scale => 10
+    t.decimal  "lng",              :precision => 15, :scale => 10
+  end
+
+  add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
   create_table "missions", :force => true do |t|
     t.string   "name",                                        :null => false

@@ -5,18 +5,7 @@ class Mission < ActiveRecord::Base
 
   # Associations
   
-  # Geocoding
-  
-  acts_as_mappable
-  apply_addresslogic
-
-  before_save :geocode_address
-
-  def geocode_address
-    return unless address.changed?
-    geo = Geokit::Geocoders::MultiGeocoder.geocode(address.address_parts.join(", "))
-    self.lat, self.lng = geo.lat, geo.lng if geo.success
-  end
+  has_one :address, :as => :addressable
 
   # Model methods
 

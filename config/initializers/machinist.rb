@@ -1,5 +1,6 @@
 # Add other envs here e.g. cucumber
 if Rails.env.test?
+  
   require 'machinist'
   require 'machinist/active_record'
   

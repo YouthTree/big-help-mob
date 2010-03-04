@@ -21,6 +21,8 @@ gem "rpx_now"
 git "git://github.com/Sutto/rails3-generators.git"
 gem "rails3-generators"
 
+gem "forgery"
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :branch => "rails3"
   gem "redgreen", :require => []
