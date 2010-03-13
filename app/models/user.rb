@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
+                  :last_name, :date_of_birth, :phone, :postcode, :allergies
+
   acts_as_authentic do |c|
     c.account_merge_enabled true
     c.account_mapping_mode  :internal
