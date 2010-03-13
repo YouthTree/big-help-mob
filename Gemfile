@@ -25,6 +25,6 @@ gem "forgery"
 
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :branch => "rails3"
-  gem "redgreen", :require => []
-  gem "shoulda", :require => []
+  gem "redgreen", :require => nil
+  gem "shoulda",  :require => nil
 end
