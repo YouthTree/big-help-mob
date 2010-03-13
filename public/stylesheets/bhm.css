@@ -1,28 +1,40 @@
-
+/* Big Help Mob primary stylesheet
+ * Darcy Laycock and Matt Didcoe */
 @font-face {
   font-family: 'SnigletRegular';
   src: url('/fonts/Sniglet.eot');
-  src: local('Sniglet Regular'), local('Sniglet'), url('/fonts/Sniglet.ttf') format('truetype'); }
+  src: local('Sniglet Regular'), local('Sniglet'), url('/fonts/Sniglet.ttf') format('truetype');
+}
 
+/* line 9, ../../app/stylesheets/bhm.sass */
 body {
   background-color: #d1eca9;
   color: #333;
   text-align: center;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
   font-weight: 300;
-  font-size: 14px; }
+  font-size: 14px;
+}
 
+/* line 18, ../../app/stylesheets/bhm.sass */
 #container {
   width: 900px;
   text-align: left;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
+/* line 23, ../../app/stylesheets/bhm.sass */
 h1, h2 {
   font-family: "SnigletRegular", Helvetica, sans-serif;
-  color: #d92d2f; }
+  color: #d92d2f;
+}
 
+/* line 28, ../../app/stylesheets/bhm.sass */
 h1 {
-  font-size: 420%; }
+  font-size: 420%;
+}
 
+/* line 30, ../../app/stylesheets/bhm.sass */
 h2 {
-  font-size: 280%; }
+  font-size: 280%;
+}
