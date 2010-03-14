@@ -22,8 +22,8 @@
         %h1 Big Help Mob
       = flash_messages :alert, :notice
       
-      %section#main_content
-        = yield
+      %section#content-container
+        %section#content= yield
     
       %footer
         = yield :page_bottom

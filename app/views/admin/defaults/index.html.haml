@@ -1,0 +1,20 @@
+%h2.title== Viewing all #{current_resource_name.pluralize}
+
+- column_names = default_collection_columns
+
+= will_paginate collection
+
+%table
+  %thead
+    %tr
+      - column_names.each do |column|
+        %th= column.to_s.titleize
+      %th &nbsp;
+  %tbody
+    - collection.each do |r|
+      %tr{:class => cycle('odd', 'even')}
+        - column_names.each do |column|
+          %td= r.try(column)
+        %td.actions= individual_resource_links r
+        
+= will_paginate collection

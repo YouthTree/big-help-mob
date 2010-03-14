@@ -1,0 +1,6 @@
+%h2.title== Add a new #{current_resource_name}
+
+- semantic_form_for resource, :url => collection_url do |form|
+  = render :partial => 'form', :object => form
+  - form.buttons do
+    = form.commit_button

@@ -1,0 +1,5 @@
+%h2.title== Viewing #{current_resource_name}
+
+- show_for resource do |r|
+  - (resource_class.column_names - [:created_at, :updated_at]).each do |column|
+    = r.attribute column

@@ -10,6 +10,10 @@ Bighelpmob::Application.routes.draw do |map|
       post :add_rxp_auth
     end
   end
+  
+  namespace :admin do
+    resources :users
+  end
 
   root :to => "pages#show"
 end

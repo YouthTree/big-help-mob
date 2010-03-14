@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
+
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies
 

@@ -22,8 +22,11 @@
         %h1 Big Help Mob - Admin Area
       = flash_messages :alert, :notice
       
-      %section#main_content
-        = yield
+      %section#content-container
+        %section#content= yield
+        %section#sidebar
+          - sidebar_content = yield :sidebar
+          = sidebar_content.present? ? sidebar_content : render(:partial => 'admin/shared/sidebar')
     
       %footer
         = yield :page_bottom

@@ -1,0 +1,4 @@
+en:
+  sidebar:
+    confirmation:
+      remove: "Are you sure you wish to remove this {{object_name}}? This can't be reversed."
