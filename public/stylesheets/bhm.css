@@ -1,12 +1,161 @@
 /* Big Help Mob primary stylesheet
  * Darcy Laycock and Matt Didcoe */
+/* line 6, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 17, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+*:focus {
+  outline: 0;
+}
+
+/* line 20, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+
+/* line 23, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+ol, ul {
+  list-style: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+/* line 27, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 30, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 33, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 101, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 36, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
+a img {
+  border: none;
+}
+
+/* line 4, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+body {
+  font: 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+
+/* line 7, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 10, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 17, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+h1 {
+  font-size: 25px;
+}
+
+/* line 20, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+h2 {
+  font-size: 23px;
+}
+
+/* line 23, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+h3 {
+  font-size: 21px;
+}
+
+/* line 26, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+h4 {
+  font-size: 19px;
+}
+
+/* line 29, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+h5 {
+  font-size: 17px;
+}
+
+/* line 32, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+h6 {
+  font-size: 15px;
+}
+
+/* line 35, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+ol {
+  list-style: decimal;
+}
+
+/* line 38, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+ul {
+  list-style: square;
+}
+
+/* line 41, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+li {
+  margin-left: 30px;
+}
+
+/* line 44, ../../.bundle-cache/gems/compass-960-plugin-0.9.11/sass/960/_text.sass */
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset {
+  margin-bottom: 20px;
+}
+
 @font-face {
-  font-family: 'SnigletRegular';
+  font-family: 'Sniglet Regular';
   src: url('/fonts/Sniglet.eot');
   src: local('Sniglet Regular'), local('Sniglet'), url('/fonts/Sniglet.ttf') format('truetype');
 }
 
-/* line 9, ../../app/stylesheets/bhm.sass */
+/* line 17, ../../app/stylesheets/bhm.sass */
 body {
   background-color: #d1eca9;
   color: #333;
@@ -16,25 +165,25 @@ body {
   font-size: 14px;
 }
 
-/* line 18, ../../app/stylesheets/bhm.sass */
+/* line 26, ../../app/stylesheets/bhm.sass */
 #container {
   width: 900px;
   text-align: left;
   margin: 0 auto;
 }
 
-/* line 23, ../../app/stylesheets/bhm.sass */
+/* line 31, ../../app/stylesheets/bhm.sass */
 h1, h2 {
-  font-family: "SnigletRegular", Helvetica, sans-serif;
+  font-family: "Sniglet Regular", Helvetica, sans-serif;
   color: #d92d2f;
 }
 
-/* line 28, ../../app/stylesheets/bhm.sass */
+/* line 36, ../../app/stylesheets/bhm.sass */
 h1 {
   font-size: 420%;
 }
 
-/* line 30, ../../app/stylesheets/bhm.sass */
+/* line 38, ../../app/stylesheets/bhm.sass */
 h2 {
   font-size: 280%;
 }
