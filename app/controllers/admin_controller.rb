@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   
-  # before_filter :require_user
-  # before_filter :require_admin
+  before_filter :require_user
+  before_filter :require_admin
   before_filter :trust_attributes_by_default
   
   protected

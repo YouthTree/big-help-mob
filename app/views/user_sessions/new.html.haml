@@ -1,0 +1,10 @@
+%h2 Sign in
+
+- semantic_form_for @user_session do |form|
+  
+  - form.inputs :name => "Your Account Details" do
+    = form.input :login
+    = form.input :password
+  
+  - form.buttons do
+    = form.commit_button "Sign in"

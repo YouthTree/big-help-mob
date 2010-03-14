@@ -1,1 +1,16 @@
-../defaults/_form.html.haml
+- form.inputs :name => "General Details" do  
+  = form.input :login
+  = form.input :email
+  = form.input :display_name
+  
+- form.inputs :name => "User Details" do
+  = form.input :first_name
+  = form.input :last_name
+  = form.input :date_of_birth
+  = form.input :postcode
+  
+- form.inputs :name => "Password Authentication" do
+  = form.input :password
+  = form.input :password_confirmation
+  
+  

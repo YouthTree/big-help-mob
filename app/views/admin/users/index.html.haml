@@ -1,1 +1,22 @@
-../defaults/index.html.haml
+%h2.title== Viewing all Users
+
+= will_paginate collection
+
+%table
+  %thead
+    %tr
+      %th ID
+      %td Display Name
+      %td Admin?
+      %td Last Used Site
+      %th &nbsp;
+  %tbody
+    - collection.each do |r|
+      %tr{:class => cycle('odd', 'even')}
+        %td= r.id
+        %td= r.display_name
+        %td= r.admin? ? "Yes" : "No"
+        %td= r.last_request_at
+        %td.actions= individual_resource_links r
+        
+= will_paginate collection
