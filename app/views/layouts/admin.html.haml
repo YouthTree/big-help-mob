@@ -1,0 +1,29 @@
+!!! 5
+%html{:lang => "en", :dir => "ltr"}
+  %head
+    %title Big Help Mob - Admin Area
+    
+    / Stylesheets
+    = stylesheet_link_tag 'grid.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'text.css', :media => 'screen, projection'
+    = stylesheet_link_tag "bhm-admin.css"
+    
+    / Javascripts
+    /[if IE]
+      %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"}
+    
+    = csrf_meta_tag
+    = yield :extra_head
+    
+  %body
+    #container
+      %header
+        %h1 Big Help Mob - Admin Area
+      = flash_messages :alert, :notice
+      
+      %section#main_content
+        = yield
+    
+      %footer
+        = yield :page_bottom

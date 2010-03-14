@@ -29,6 +29,11 @@ gem "forgery"
 # Enabled mongrel in development for script/server
 gem "mongrel", :group => "development", :require => nil
 
+# Mainly Admin Area Stuff.
+gem "inherited_resources", ">= 1.1.0"
+gem "responders",          ">= 0.5.4"
+
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :branch => "rails3"
   gem "redgreen", :require => nil
