@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100304132919) do
+ActiveRecord::Schema.define(:version => 20100314190351) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20100304132919) do
     t.string   "login"
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "persisten_token"
+    t.string   "persistence_token"
     t.string   "email"
     t.integer  "login_count"
     t.datetime "last_request_at"

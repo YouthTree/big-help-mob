@@ -1,0 +1,36 @@
+#content
+  table
+    :width 100%
+    :border-left 0.1em solid #999
+    :border-right 0.1em solid #999
+    thead
+      tr th
+        :border-top 0.1em solid #999
+        :border-bottom 0.1em solid #999
+        :font-weight bold
+        :padding 0.5em 0.4em
+        :font-weight bold
+        :color #FFF
+        :background #555
+        +linear-gradient(color_stops(#555, #777), "bottom")
+        +sans-font-stack
+    tbody
+      tr.odd
+        :background #F9F9F9
+      tr.even
+        :background #F0F0F0
+      td
+        :border-bottom 0.1em solid #999
+        :padding 0.4em
+      td.actions
+        :text-align right
+        ul
+          +inline-list
+          li
+            :margin 0 0.5em
+          a
+            +hover-link
+            +link-colors(#2E5499, #993A3F)
+            :font-weight bold
+      span.default-value
+        :color #666

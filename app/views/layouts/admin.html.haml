@@ -18,8 +18,7 @@
     
   %body
     #container
-      %header
-        %h1 Big Help Mob - Admin Area
+      %header= render :partial => 'admin/shared/header'
       = flash_messages :alert, :notice
       
       %section#content-container

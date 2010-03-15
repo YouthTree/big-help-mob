@@ -1,0 +1,19 @@
+=flash-colours(!text_colour, !background_colour = lighten(!text_colour, 50), !border_colour = lighten(!text_colour, 10))
+  :border-color= !border_colour
+  :background-color= !background_colour
+  :color= !text_colour
+
+#flash-messages
+  :margin 0
+  p.flash
+    :margin 0 0 1em
+    :padding 0.5em
+    :font-weight bold
+    :text-align center
+    :border 0.2em solid
+    +flash-colours(#444)
+  
+    &.alert
+      +flash-colours(#1D6024)
+    &.notice
+      +flash-colours(#99242A)

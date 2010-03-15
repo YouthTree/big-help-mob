@@ -19,6 +19,7 @@ gem "validation_reflection"
 # Sass Awesome Sauce
 gem "compass", ">= 0.10.0.rc1"
 gem "compass-960-plugin"
+gem "compass-colors"
 
 # authentication
 gem "rpx_now"

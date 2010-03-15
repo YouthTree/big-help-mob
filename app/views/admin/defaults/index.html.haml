@@ -14,7 +14,7 @@
     - collection.each do |r|
       %tr{:class => cycle('odd', 'even')}
         - column_names.each do |column|
-          %td= r.try(column)
+          %td=vwd r.try(column)
         %td.actions= individual_resource_links r
         
 = will_paginate collection

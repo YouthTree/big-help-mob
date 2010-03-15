@@ -152,10 +152,44 @@ fieldset {
 @font-face {
   font-family: 'Sniglet Regular';
   src: url('/fonts/Sniglet.eot');
-  src: local('Sniglet Regular'), local('Sniglet'), url('/fonts/Sniglet.ttf') format('truetype');
+  src: local('Sniglet Regular'), local('Sniglet'), url(/fonts/Sniglet.ttf) format('truetype');
 }
 
-/* line 17, ../../app/stylesheets/bhm.sass */
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('/fonts/MuseoSans.eot');
+  src: local('Museo Sans'), local('MuseoSans-500'), url(/fonts/MuseoSans.woff) format('woff'), url(/fonts/MuseoSans.ttf) format('truetype');
+}
+
+/* line 6, ../../app/stylesheets/bhm/_flash.sass */
+#flash-messages {
+  margin: 0;
+}
+/* line 8, ../../app/stylesheets/bhm/_flash.sass */
+#flash-messages p.flash {
+  margin: 0 0 1em;
+  padding: 0.5em;
+  font-weight: bold;
+  text-align: center;
+  border: 0.2em solid;
+  border-color: #5e5e5e;
+  background-color: #c3c3c3;
+  color: #444444;
+}
+/* line 16, ../../app/stylesheets/bhm/_flash.sass */
+#flash-messages p.flash.alert {
+  border-color: #298733;
+  background-color: #9be1a2;
+  color: #1d6024;
+}
+/* line 18, ../../app/stylesheets/bhm/_flash.sass */
+#flash-messages p.flash.notice {
+  border-color: #c22e35;
+  background-color: #f2cacc;
+  color: #99242a;
+}
+
+/* line 6, ../../app/stylesheets/bhm.sass */
 body {
   background-color: #d1eca9;
   color: #333;
@@ -165,25 +199,25 @@ body {
   font-size: 14px;
 }
 
-/* line 26, ../../app/stylesheets/bhm.sass */
+/* line 15, ../../app/stylesheets/bhm.sass */
 #container {
   width: 900px;
   text-align: left;
   margin: 0 auto;
 }
 
-/* line 31, ../../app/stylesheets/bhm.sass */
+/* line 20, ../../app/stylesheets/bhm.sass */
 h1, h2 {
   font-family: "Sniglet Regular", Helvetica, sans-serif;
   color: #d92d2f;
 }
 
-/* line 36, ../../app/stylesheets/bhm.sass */
+/* line 25, ../../app/stylesheets/bhm.sass */
 h1 {
   font-size: 420%;
 }
 
-/* line 38, ../../app/stylesheets/bhm.sass */
+/* line 27, ../../app/stylesheets/bhm.sass */
 h2 {
   font-size: 280%;
 }

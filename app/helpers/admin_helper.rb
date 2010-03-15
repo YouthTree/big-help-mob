@@ -1,5 +1,11 @@
 module AdminHelper
   
+  def value_with_default(v, default = "Currently blank.")
+    v.present? ? v : content_tag(:span, default, :class => 'default-value')
+  end
+  
+  alias vwd value_with_default
+  
   def collection_sidebar
     sidebar_menu(parent_sidebar_content + resources_sidebar_content)
   end
@@ -10,8 +16,8 @@ module AdminHelper
     sidebar_menu(inner_menu)
   end
   
-  def menu_link(text, *args, &blk)
-    content_tag(:li, link_to(text, *args, &blk), :class => 'menu-item')
+  def menu_link(*args, &blk)
+    content_tag(:li, link_to(*args, &blk), :class => 'menu-item')
   end
   alias ml menu_link
   
@@ -36,7 +42,7 @@ module AdminHelper
     sidebar_klass_name(parent_class).titleize
   end
   
-  def individual_resource_links(r)
+  def individual_resource_links(r, name = current_resource_name)
     content_tag(:ul, [
       ml("View", resource_url(r)),
       ml("Edit", edit_resource_url(r)),

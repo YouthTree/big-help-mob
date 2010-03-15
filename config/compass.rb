@@ -1,4 +1,5 @@
 require 'ninesixty'
+require 'compass-colors'
 project_type    = :rails
 project_path    = Rails.root if defined?(Rails.root)
 http_path       = "/"
