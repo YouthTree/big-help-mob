@@ -20,6 +20,7 @@ gem "validation_reflection"
 gem "compass", ">= 0.10.0.rc1"
 gem "compass-960-plugin"
 gem "compass-colors"
+gem "fancy-buttons"
 
 # authentication
 gem "rpx_now"

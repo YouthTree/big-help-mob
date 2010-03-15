@@ -1,5 +1,7 @@
 /* Big Help Mob primary stylesheet
  * Darcy Laycock and Matt Didcoe */
+/* incase an inverted custom gradient isn't specified */
+
 /* line 6, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -176,17 +178,235 @@ fieldset {
   background-color: #c3c3c3;
   color: #444444;
 }
-/* line 16, ../../app/stylesheets/bhm/_flash.sass */
+/* line 15, ../../app/stylesheets/bhm/_flash.sass */
 #flash-messages p.flash.alert {
+  border-color: #c22e35;
+  background-color: #f2cacc;
+  color: #99242a;
+}
+/* line 17, ../../app/stylesheets/bhm/_flash.sass */
+#flash-messages p.flash.notice {
   border-color: #298733;
   background-color: #9be1a2;
   color: #1d6024;
 }
-/* line 18, ../../app/stylesheets/bhm/_flash.sass */
-#flash-messages p.flash.notice {
-  border-color: #c22e35;
-  background-color: #f2cacc;
-  color: #99242a;
+
+/* line 1, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic {
+  margin: 0;
+  padding: 0;
+}
+/* line 5, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic ul, form.formtastic ol, form.formtastic li, form.formtastic fieldset, form.formtastic legend, form.formtastic input, form.formtastic textarea, form.formtastic select, form.formtastic p {
+  margin: 0;
+  padding: 0;
+}
+/* line 9, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset {
+  border: 0;
+}
+/* line 12, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic em, form.formtastic strong {
+  font-style: normal;
+  font-weight: normal;
+}
+/* line 16, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic ol, form.formtastic ul {
+  list-style: none;
+}
+/* line 19, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic abbr, form.formtastic acronym {
+  border: 0;
+  font-variant: normal;
+}
+/* line 23, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic input, form.formtastic textarea, form.formtastic select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+/* line 28, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic input, form.formtastic textarea, form.formtastic select {
+  font-size: 100%;
+}
+/* line 31, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic legend {
+  color: #000;
+}
+/* line 34, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic legend.label label {
+  width: 100%;
+}
+/* line 37, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset {
+  display: inline-block;
+}
+/* line 41, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset.buttons {
+  padding-left: 25%;
+}
+/* line 45, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset.buttons li {
+  float: left;
+  padding-right: 0.5em;
+}
+/* line 49, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 57, ../../app/stylesheets/bhm/_formtastic_base.sass */
+html form.formtastic fieldset {
+  display: block;
+}
+
+/* line 61, ../../app/stylesheets/bhm/_formtastic_base.sass */
+* html form.formtastic fieldset {
+  height: 1%;
+}
+
+/* line 65, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li {
+  margin-bottom: 1.5em;
+}
+/* line 68, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 76, ../../app/stylesheets/bhm/_formtastic_base.sass */
+html[xmlns] form.formtastic fieldset ol li {
+  display: block;
+}
+
+/* line 80, ../../app/stylesheets/bhm/_formtastic_base.sass */
+* html form.formtastic fieldset ol li {
+  height: 1%;
+}
+
+/* line 86, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li label {
+  display: block;
+  width: 25%;
+  float: left;
+  padding-top: .2em;
+}
+/* line 92, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li li label {
+  line-height: 100%;
+  padding-top: 0;
+}
+/* line 96, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li li label input {
+  line-height: 100%;
+  vertical-align: middle;
+  margin-top: -0.1em;
+}
+/* line 101, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li fieldset {
+  position: relative;
+}
+/* line 104, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li fieldset legend {
+  position: absolute;
+  width: 25%;
+  padding-top: 0.1em;
+}
+/* line 109, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li fieldset legend span, form.formtastic fieldset ol li fieldset legend.label label {
+  position: absolute;
+}
+/* line 112, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li fieldset ol {
+  float: left;
+  width: 74%;
+  margin: 0;
+  padding: 0 0 0 25%;
+}
+/* line 118, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li fieldset ol li {
+  padding: 0;
+  border: 0;
+}
+/* line 123, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li p.inline-hints {
+  color: #666;
+  margin: 0.5em 0 0 25%;
+}
+/* line 127, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li p.inline-errors {
+  color: #cc0000;
+  margin: 0.5em 0 0 25%;
+}
+/* line 131, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li ul.errors {
+  color: #cc0000;
+  margin: 0.5em 0 0 25%;
+  list-style: square;
+}
+/* line 136, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li ul.errors li {
+  padding: 0;
+  border: none;
+  display: list-item;
+}
+/* line 141, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.string input, form.formtastic fieldset ol li.password input, form.formtastic fieldset ol li.numeric input, form.formtastic fieldset ol li.text textarea {
+  width: 74%;
+}
+/* line 144, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.hidden {
+  display: none;
+}
+/* line 147, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.boolean label {
+  padding-left: 25%;
+  width: auto;
+}
+/* line 151, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.boolean label input {
+  margin: 0 0.5em 0 0.2em;
+}
+/* line 154, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.radio fieldset ol, form.formtastic fieldset ol li.check_boxes fieldset ol {
+  margin-bottom: -0.6em;
+}
+/* line 157, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.radio fieldset ol li, form.formtastic fieldset ol li.check_boxes fieldset ol li {
+  margin: 0.1em 0 0.5em 0;
+}
+/* line 160, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.radio fieldset ol li label, form.formtastic fieldset ol li.check_boxes fieldset ol li label {
+  float: none;
+  width: 100%;
+}
+/* line 164, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.radio fieldset ol li label input, form.formtastic fieldset ol li.check_boxes fieldset ol li label input {
+  margin-right: 0.2em;
+}
+/* line 167, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.date fieldset ol li, form.formtastic fieldset ol li.time fieldset ol li, form.formtastic fieldset ol li.datetime fieldset ol li {
+  float: left;
+  width: auto;
+  margin: 0 .3em 0 0;
+}
+/* line 172, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.date fieldset ol li label, form.formtastic fieldset ol li.time fieldset ol li label, form.formtastic fieldset ol li.datetime fieldset ol li label {
+  display: none;
+}
+/* line 175, ../../app/stylesheets/bhm/_formtastic_base.sass */
+form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic fieldset ol li.time fieldset ol li label input, form.formtastic fieldset ol li.datetime fieldset ol li label input {
+  display: inline;
+  margin: 0;
+  padding: 0;
 }
 
 /* line 6, ../../app/stylesheets/bhm.sass */

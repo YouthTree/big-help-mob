@@ -1,0 +1,178 @@
+form.formtastic
+  margin: 0
+  padding: 0
+
+  ul, ol, li, fieldset, legend, input, textarea, select, p
+    margin: 0
+    padding: 0
+
+  fieldset
+    border: 0
+
+  em, strong
+    font-style: normal
+    font-weight: normal
+
+  ol, ul
+    list-style: none
+
+  abbr, acronym
+    border: 0
+    font-variant: normal
+
+  input, textarea, select
+    font-family: inherit
+    font-size: inherit
+    font-weight: inherit
+
+  input, textarea, select
+    font-size: 100%
+
+  legend
+    color: #000
+    
+  legend.label label
+    :width 100%
+
+  fieldset
+    display: inline-block
+
+    &.inputs
+    &.buttons
+      padding-left: 25%
+
+    ol
+    &.buttons li
+      float: left
+      padding-right: 0.5em
+
+    &:after
+      content: "."
+      display: block
+      height: 0
+      clear: both
+      visibility: hidden
+
+
+html form.formtastic fieldset
+  display: block
+
+
+* html form.formtastic fieldset
+  height: 1%
+
+
+form.formtastic fieldset ol li
+  margin-bottom: 1.5em
+
+  &:after
+    content: "."
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+
+
+html[xmlns] form.formtastic fieldset ol li
+  display: block
+
+
+* html form.formtastic fieldset ol li
+  height: 1%
+
+
+form.formtastic fieldset ol li
+  &.required, &.optional, &.error
+  label
+    display: block
+    width: 25%
+    float: left
+    padding-top: .2em
+
+  li label
+    line-height: 100%
+    padding-top: 0
+
+    input
+      line-height: 100%
+      vertical-align: middle
+      margin-top: -0.1em
+
+  fieldset
+    position: relative
+
+    legend
+      position: absolute
+      width: 25%
+      padding-top: 0.1em
+
+      span, &.label label
+        position: absolute
+
+    ol
+      float: left
+      width: 74%
+      margin: 0
+      padding: 0 0 0 25%
+
+      li
+        padding: 0
+        border: 0
+
+  p
+    &.inline-hints
+      color: #666
+      margin: 0.5em 0 0 25%
+
+    &.inline-errors
+      color: #cc0000
+      margin: 0.5em 0 0 25%
+
+  ul.errors
+    color: #cc0000
+    margin: 0.5em 0 0 25%
+    list-style: square
+
+    li
+      padding: 0
+      border: none
+      display: list-item
+
+  &.string input, &.password input, &.numeric input, &.text textarea
+    width: 74%
+
+  &.hidden
+    display: none
+
+  &.boolean label
+    padding-left: 25%
+    width: auto
+
+    input
+      margin: 0 0.5em 0 0.2em
+
+  &.radio fieldset ol, &.check_boxes fieldset ol
+    margin-bottom: -0.6em
+
+    li
+      margin: 0.1em 0 0.5em 0
+
+      label
+        float: none
+        width: 100%
+
+        input
+          margin-right: 0.2em
+
+  &.date fieldset ol li, &.time fieldset ol li, &.datetime fieldset ol li
+    float: left
+    width: auto
+    margin: 0 .3em 0 0
+
+  &.date fieldset ol li label, &.time fieldset ol li label, &.datetime fieldset ol li label
+    display: none
+
+  &.date fieldset ol li label input, &.time fieldset ol li label input, &.datetime fieldset ol li label input
+    display: inline
+    margin: 0
+    padding: 0

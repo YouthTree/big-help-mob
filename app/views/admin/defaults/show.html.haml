@@ -2,4 +2,4 @@
 
 - show_for resource do |r|
   - (resource_class.column_names - [:created_at, :updated_at]).each do |column|
-    = r.attribute column
+    = r.attribute column.to_sym

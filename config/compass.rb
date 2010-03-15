@@ -1,7 +1,9 @@
 require 'ninesixty'
 require 'compass-colors'
+require 'fancy-buttons'
+
 project_type    = :rails
-project_path    = Rails.root if defined?(Rails.root)
+project_path    = Rails.root.to_s if defined?(Rails.root)
 http_path       = "/"
 css_dir         = "public/stylesheets"
 sass_dir        = "app/stylesheets"

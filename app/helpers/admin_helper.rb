@@ -29,9 +29,8 @@ module AdminHelper
   end
   
   def sidebar_klass_name(klass)
-    klass_name = klass.name.singularize.underscore.humanize
     controller_i18n_path = controller.controller_path.split("/").join(".")
-    I18n.t(controller_i18n_path.to_sym, :scope => :sidebar, :default => klass_name.humanize)
+    tu(controller_i18n_path.to_sym, :scope => 'model_name', :default => klass.model_name.human)
   end
   
   def current_resource_name
@@ -47,7 +46,7 @@ module AdminHelper
       ml("View", resource_url(r)),
       ml("Edit", edit_resource_url(r)),
       ml("Remove", resource_url(r), :method => :delete,
-      :confirm => I18n.t(:'sidebar.confirmation.remove', :object_name => name))
+      :confirm => tu(:remove, :scope => :confirm, :object_name => name))
     ].join)
   end
   
@@ -84,7 +83,7 @@ module AdminHelper
       content << ml("View #{name}", resource_url)
       content << ml("Edit #{name}", edit_resource_url)
       content << ml("Remove #{name}", resource_url, :method => :delete,
-        :confirm => I18n.t(:'sidebar.confirmation.remove', :object_name => name))
+        :confirm => tu(:remove, :scope => :confirm, :object_name => name))
     end
   end
   
