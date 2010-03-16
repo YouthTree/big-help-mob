@@ -566,19 +566,22 @@ section#sidebar ul.sidebar-menu li a {
   background: #DFDFDF;
   background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #dddddd), color-stop(100%, #eeeeee));
   background-image: -moz-linear-gradient(bottom, #dddddd 0%, #eeeeee 100%);
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
 }
 /* line 6, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_unstyled_link.sass */
 section#sidebar ul.sidebar-menu li a:active, section#sidebar ul.sidebar-menu li a:focus {
   outline: none;
 }
-/* line 18, ../../app/stylesheets/bhm/admin/_sidebar.sass */
+/* line 19, ../../app/stylesheets/bhm/admin/_sidebar.sass */
 section#sidebar ul.sidebar-menu li a:hover, section#sidebar ul.sidebar-menu li a:active {
   background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #333333), color-stop(100%, #555555));
   background-image: -moz-linear-gradient(bottom, #333333 0%, #555555 100%);
   color: #FFF;
   border-color: #111;
 }
-/* line 24, ../../app/stylesheets/bhm/admin/_sidebar.sass */
+/* line 25, ../../app/stylesheets/bhm/admin/_sidebar.sass */
 section#sidebar h2 {
   text-align: center;
 }
@@ -695,6 +698,14 @@ section#sidebar h2 {
   margin: 0;
   padding: 5px 10px;
   float: left;
+}
+
+/* line 1, ../../app/stylesheets/bhm/admin/_footer.sass */
+footer {
+  text-align: center;
+  color: #888;
+  font-size: 0.9em;
+  padding: 2.5em 0 0.5em;
 }
 
 /* line 3, ../../app/stylesheets/bhm/admin/_forms.sass */
