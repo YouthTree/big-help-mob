@@ -451,6 +451,26 @@ h2 {
   margin: 0 0 0.5em;
 }
 
+/* line 7, ../../app/stylesheets/bhm/admin/_general.sass */
+.google-chart {
+  border: 0.1em solid #DDD;
+  background: #F9F9F9;
+  text-align: center;
+  border-radius: 1em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+}
+/* line 13, ../../app/stylesheets/bhm/admin/_general.sass */
+.google-chart h3 {
+  font-family: "Helvetica Neue", "Helvetica", "Verdana";
+  font-weight: bold;
+  margin: 0.5em 0 0;
+}
+/* line 18, ../../app/stylesheets/bhm/admin/_general.sass */
+.google-chart img {
+  margin: 0.5em auto 1em;
+}
+
 /* line 1, ../../app/stylesheets/bhm/admin/_header.sass */
 header {
   background: #333;

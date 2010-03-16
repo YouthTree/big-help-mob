@@ -3,7 +3,9 @@
 
 %h2.title Dashboard
 
-#user-signups= image_tag user_stats_url
+#user-signups.google-chart
+  %h3 User Signups By Date
+  = image_tag user_stats_url, :title => "User signups by date"
 
 - content_for :sidebar do
   
