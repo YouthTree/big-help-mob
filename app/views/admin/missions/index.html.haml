@@ -1,4 +1,4 @@
-%h2.title== Viewing all Users
+%h2.title== Viewing all Missions
 
 = will_paginate collection
 
@@ -6,17 +6,17 @@
   %thead
     %tr
       %th ID
-      %th Display Name
-      %th Admin?
-      %th Last Used Site
+      %th Name
+      %th User
+      %th Organization
       %th &nbsp;
   %tbody
     - collection.each do |r|
       %tr{:class => cycle('odd', 'even')}
         %td= r.id
-        %td=vwd r.display_name
-        %td= r.admin? ? "Yes" : "No"
-        %td=l r.last_request_at, :format => :long
+        %td= r.name
+        %td=vwd r.user.try(:to_s)
+        %td= r.organization
         %td.actions= individual_resource_links r
     = empty_row_for_collection 4
         

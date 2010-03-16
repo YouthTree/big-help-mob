@@ -11,19 +11,7 @@ class CreateMissions < ActiveRecord::Migration
       t.integer :ngo_id
       
       # timing of mission
-      t.date :date, :null => false
-      t.time :time, :null => false
-      
-      # address fields
-      t.string :street1, :null => false
-      t.string :street2
-      t.string :city, :null => false
-      t.string :state
-      t.string :zip
-      
-      # latitude and longitude for mapping    
-      t.decimal :lat, :precision => 15, :scale => 10
-      t.decimal :lng, :precision => 15, :scale => 10
+      t.datetime :occurs_at, :null => false
 
       t.timestamps
     end

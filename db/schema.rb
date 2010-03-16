@@ -29,19 +29,11 @@ ActiveRecord::Schema.define(:version => 20100314190351) do
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
   create_table "missions", :force => true do |t|
-    t.string   "name",                                            :null => false
-    t.text     "description",                                     :null => false
+    t.string   "name",            :null => false
+    t.text     "description",     :null => false
     t.integer  "user_id"
     t.integer  "organisation_id"
-    t.date     "date",                                            :null => false
-    t.time     "time",                                            :null => false
-    t.string   "street1",                                         :null => false
-    t.string   "street2"
-    t.string   "city",                                            :null => false
-    t.string   "state"
-    t.string   "zip"
-    t.decimal  "lat",             :precision => 15, :scale => 10
-    t.decimal  "lng",             :precision => 15, :scale => 10
+    t.datetime "occurs_at",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

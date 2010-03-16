@@ -13,6 +13,8 @@ Bighelpmob::Application.routes.draw do |map|
   
   namespace :admin do
     resources :users
+    resources :missions
+    resources :organisations
   end
 
   root :to => "pages#show"

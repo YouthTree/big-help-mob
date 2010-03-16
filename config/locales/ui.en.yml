@@ -2,3 +2,4 @@ en:
   ui:
     confirm:
       remove: "Are you sure you wish to remove this {{object_name}}? This can't be reversed."
+    empty_row: "There are currently no {{plural_object_name}}."

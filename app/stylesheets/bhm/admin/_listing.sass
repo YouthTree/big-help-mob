@@ -15,6 +15,12 @@
         +linear-gradient(color_stops(#555, #777), "bottom")
         +sans-font-stack
     tbody
+      tr.empty
+        :background #EEE
+        :color #333
+        td
+          :padding 1em
+          :text-align center
       tr.odd
         :background #F9F9F9
       tr.even
@@ -34,3 +40,26 @@
             :font-weight bold
       span.default-value
         :color #666
+  
+  dl
+    :font-size 1.2em
+    :width 100%
+    +clearfix
+    :border-bottom 0.1em solid #999
+    dt
+      :font-weight bold
+      :margin 0
+      :padding 5px 10px
+      :clear left
+      :width 24%
+      :float left
+      :border-top 0.1em solid #999
+      :width 150px
+      :text-align right
+    dd
+      :border-top 0.1em solid #999
+      :width 550px
+      :margin 0
+      :padding 5px 10px
+      :float left
+      

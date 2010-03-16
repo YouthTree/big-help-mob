@@ -583,23 +583,33 @@ section#sidebar h2 {
   font-family: "Helvetica Neue", "Helvetica", "Verdana";
 }
 /* line 18, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content table tbody tr.empty {
+  background: #EEE;
+  color: #333;
+}
+/* line 21, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content table tbody tr.empty td {
+  padding: 1em;
+  text-align: center;
+}
+/* line 24, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody tr.odd {
   background: #F9F9F9;
 }
-/* line 20, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 26, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody tr.even {
   background: #F0F0F0;
 }
-/* line 22, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 28, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody td {
   border-bottom: 0.1em solid #999;
   padding: 0.4em;
 }
-/* line 25, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 31, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody td.actions {
   text-align: right;
 }
-/* line 27, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 33, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody td.actions ul {
   list-style-type: none;
   margin: 0px;
@@ -612,11 +622,11 @@ section#sidebar h2 {
   padding: 0px;
   display: inline;
 }
-/* line 29, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 35, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody td.actions ul li {
   margin: 0 0.5em;
 }
-/* line 31, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 37, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody td.actions ul a {
   text-decoration: none;
   color: #2e5499;
@@ -630,9 +640,41 @@ section#sidebar h2 {
 #content table tbody td.actions ul a:hover {
   color: #993a3f;
 }
-/* line 35, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 41, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody span.default-value {
   color: #666;
+}
+/* line 44, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl {
+  font-size: 1.2em;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  border-bottom: 0.1em solid #999;
+}
+/* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#content dl {
+  display: block;
+}
+/* line 49, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl dt {
+  font-weight: bold;
+  margin: 0;
+  padding: 5px 10px;
+  clear: left;
+  width: 24%;
+  float: left;
+  border-top: 0.1em solid #999;
+  width: 150px;
+  text-align: right;
+}
+/* line 59, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl dd {
+  border-top: 0.1em solid #999;
+  width: 550px;
+  margin: 0;
+  padding: 5px 10px;
+  float: left;
 }
 
 /* line 3, ../../app/stylesheets/bhm/admin/_forms.sass */
@@ -657,7 +699,7 @@ form.formtastic > fieldset.inputs > legend {
 /* line 20, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic fieldset.buttons ol li button {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
-  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  background: url('../images/button_bg.png?1268721669') repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;

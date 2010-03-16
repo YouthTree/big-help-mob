@@ -1,1 +1,19 @@
-../defaults/show.html.haml
+%h2.title Viewing User
+
+- show_for @user do |s|
+  
+  = s.attribute :login
+  
+  = s.attribute :display_name
+  
+  = s.attribute :first_name
+  
+  = s.attribute :last_name
+  
+  = s.attribute :date_of_birth
+  
+  = s.attribute :email
+  
+  = s.attribute :phone
+  
+  = s.attribute :postcode

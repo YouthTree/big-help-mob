@@ -3,8 +3,13 @@ class Organisation < ActiveRecord::Base
   has_one :address, :as => :addressable
   has_many :missions
   
+  def to_s
+    name
+  end
+  
+  validates_presence_of :description, :name, :on => :create, :message => "can't be blank"
+  
 end
-
 
 # == Schema Info
 #

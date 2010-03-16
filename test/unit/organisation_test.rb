@@ -7,7 +7,6 @@ class NgoTest < ActiveSupport::TestCase
   end
 end
 
-
 # == Schema Info
 #
 # Table name: organisations

@@ -28,7 +28,6 @@ class Address < ActiveRecord::Base
   
 end
 
-
 # == Schema Info
 #
 # Table name: addresses

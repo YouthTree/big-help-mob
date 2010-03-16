@@ -1,0 +1,11 @@
+- form.inputs :name => "Mission Details" do
+  
+  = form.input :name
+  
+  = form.input :description, :input_html => {:rows => 5}
+  
+  = form.input :occurs_at, :hint => "When is the event?"
+  
+  = form.input :user, :collection => User.for_select
+  
+  = form.input :organisation

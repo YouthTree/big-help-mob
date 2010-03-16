@@ -1,6 +1,6 @@
 module AdminHelper
   
-  def value_with_default(v, default = "Currently blank.")
+  def value_with_default(v, default = "Currently blank")
     v.present? ? v : content_tag(:span, default, :class => 'default-value')
   end
   
@@ -57,6 +57,13 @@ module AdminHelper
     else
       klass.column_names - [:created_at, :updated_at]
     end
+  end
+  
+  def empty_row_for_collection(size = default_collection_columns.size)
+    return if collection.present?
+    name = current_resource_name
+    inner = content_tag :td, tu(:empty_row, :object_name => name.downcase, :plural_object_name => name.pluralize.downcase), :colspan => (size + 1)
+    content_tag :tr, inner, :class => 'empty'
   end
   
   # Generalized Sidebar Content
