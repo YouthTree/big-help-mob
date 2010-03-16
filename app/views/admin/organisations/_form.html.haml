@@ -1,1 +1,11 @@
-../defaults/_form.html.haml
+- form.inputs :name => "Organisation Details" do
+  
+  = form.input :name
+  
+  = form.input :description, :input_html => {:rows => 5}, :hint => "A little about this organization"
+  
+- form.inputs :name => "Contact Details" do
+  
+  = form.input :telephone
+  
+  = form.input :website

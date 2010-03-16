@@ -15,6 +15,7 @@ Bighelpmob::Application.routes.draw do |map|
     resources :users
     resources :missions
     resources :organisations
+    match '', :to => 'admin/dashboard#index', :as => :dashboard
   end
 
   root :to => "pages#show"

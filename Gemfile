@@ -43,6 +43,8 @@ gem "show_for",            ">= 0.2.0"
 
 gem "will_paginate",       ">= 3.0.pre"
 
+gem "ruby-googlechart", :require => "google_chart"
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :branch => "rails3"
   gem "redgreen", :require => nil

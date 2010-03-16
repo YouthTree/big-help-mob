@@ -493,7 +493,7 @@ header {
 /* line 20, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul {
   padding: 0;
-  margin: 0.75em 1.5em 0 0;
+  margin: 0.8em 1.5em 0 0;
 }
 /* line 24, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul li {
@@ -699,7 +699,7 @@ form.formtastic > fieldset.inputs > legend {
 /* line 20, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic fieldset.buttons ol li button {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
-  background: url('../images/button_bg.png?1268721669') repeat-x bottom left;
+  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
@@ -779,4 +779,10 @@ form.formtastic fieldset.buttons ol li button:active {
   border-color: #051608;
   text-shadow: black 0px -1px -1px;
   color: white;
+}
+
+/* line 1, ../../app/stylesheets/bhm/admin/_dashboard.sass */
+#user-signups {
+  width: 100%;
+  margin: 0 auto 1em;
 }

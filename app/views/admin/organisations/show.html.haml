@@ -1,1 +1,17 @@
-../defaults/show.html.haml
+%h2.title== Viewing #{current_resource_name}
+
+- show_for resource do |r|
+
+  = r.attribute :id
+  
+  = r.attribute :name
+  
+  = r.attribute :description
+  
+  = r.attribute :telephone
+  
+  - r.attribute :website do
+    - if resource.website.blank?
+      = t :"show_for.blank"
+    - else
+      = link_to resource.website, resource.website

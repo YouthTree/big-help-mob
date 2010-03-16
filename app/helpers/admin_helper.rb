@@ -1,7 +1,13 @@
 module AdminHelper
   
-  def value_with_default(v, default = "Currently blank")
-    v.present? ? v : content_tag(:span, default, :class => 'default-value')
+  def value_with_default(v, default = "Currently blank", &blk)
+    inner = ""
+    if v.present?
+      inner = blk.present? ? capture(&blk) : v
+    else
+      inner = content_tag(:span, default, :class => 'default-value')
+    end
+    blk.present? ? concat(inner) : inner
   end
   
   alias vwd value_with_default

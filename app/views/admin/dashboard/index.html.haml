@@ -1,0 +1,14 @@
+- content_for :extra_head do
+  = javascript_include_tag "raphael-min.js", "g.raphael-min.js", "bhm/admin/dashboard"
+
+%h2.title Dashboard
+
+#user-signups= image_tag user_stats_url
+
+- content_for :sidebar do
+  
+  %h2 Menu
+  - sidebar_menu do
+    = ml "Users", :admin_users
+    = ml "Missions", :admin_missions
+    = ml "Organisations", :admin_organisations
