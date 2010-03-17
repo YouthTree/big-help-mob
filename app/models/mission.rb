@@ -1,14 +1,20 @@
 class Mission < ActiveRecord::Base
+  extend Address::Addressable
   
   # Validations
-  validates_presence_of :name, :occurs_at, :organisation,
-                        :on => :create, :message => "can't be blank"
+  validates_presence_of :name, :occurs_at, :organisation
 
   # Associations
   
-  has_one    :address, :as => :addressable
+  has_address
+  
+  has_many :mission_pickups
+  has_many :pickups, :through => :mission_pickups
+  
   belongs_to :organisation
   belongs_to :user
+
+  attr_accessible :organisation_id, :user_id, :description, :name
 
   # Model methods
 

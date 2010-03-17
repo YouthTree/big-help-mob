@@ -45,6 +45,9 @@ gem "will_paginate",       ">= 3.0.pre"
 
 gem "ruby-googlechart", :require => "google_chart"
 
+git "git://github.com/Sutto/carmen.git"
+gem "namxam-carmen", :require => ["carmen", "carmen/action_view_helpers"]
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :branch => "rails3"
   gem "redgreen", :require => nil

@@ -9,3 +9,10 @@
   = form.input :user, :collection => User.for_select
   
   = form.input :organisation
+  
+- form.inputs :name => "Mission Address" do
+  = render_address_fields form
+  
+- form.inputs :name => "Available Pickups" do
+  
+  = form.input :pickup_ids, :collection => Pickup.all, :as => :check_boxes

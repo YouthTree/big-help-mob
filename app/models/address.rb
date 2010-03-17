@@ -26,6 +26,24 @@ class Address < ActiveRecord::Base
     address_parts.join(joiner)
   end
   
+  module Addressable
+    
+    def has_address(name = :address)
+      name = name.to_sym
+      has_one name, :as => :addressable, :class_name => "Address"
+      accepts_nested_attributes_for name
+      attr_accessible :"#{name}_attributes"
+    end
+    
+    def has_many_addresses(name = :addresses)
+      name = name.to_s.pluralize.to_sym
+      has_many name, :as => :addressable, :class_name => "Address"
+      accepts_nested_attributes_for name
+      attr_accessible :"#{name}_attributes"
+    end
+    
+  end
+  
 end
 
 # == Schema Info

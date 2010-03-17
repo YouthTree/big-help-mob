@@ -2,4 +2,8 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      address:
+        street1: "Street Line 1"
+        street2: "Street Line 2"

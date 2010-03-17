@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100314190351) do
+ActiveRecord::Schema.define(:version => 20100317170726) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20100314190351) do
 
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
+  create_table "mission_pickups", :force => true do |t|
+    t.integer  "mission_id"
+    t.integer  "pickup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "missions", :force => true do |t|
     t.string   "name",            :null => false
     t.text     "description",     :null => false
@@ -44,6 +51,12 @@ ActiveRecord::Schema.define(:version => 20100314190351) do
     t.string   "telephone"
     t.string   "website"
     t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pickups", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

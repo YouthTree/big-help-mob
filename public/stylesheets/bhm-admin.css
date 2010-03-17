@@ -422,21 +422,26 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
 }
 
 /* line 8, ../../app/stylesheets/bhm/admin/_grid.sass */
-#header-logo, #header-menu {
-  width: 460px;
+#header-logo {
+  width: 180px;
 }
 
-/* line 11, ../../app/stylesheets/bhm/admin/_grid.sass */
+/* line 10, ../../app/stylesheets/bhm/admin/_grid.sass */
+#header-menu {
+  width: 740px;
+}
+
+/* line 13, ../../app/stylesheets/bhm/admin/_grid.sass */
 #content {
   width: 740px;
 }
 
-/* line 14, ../../app/stylesheets/bhm/admin/_grid.sass */
+/* line 16, ../../app/stylesheets/bhm/admin/_grid.sass */
 #sidebar {
   width: 180px;
 }
 
-/* line 17, ../../app/stylesheets/bhm/admin/_grid.sass */
+/* line 19, ../../app/stylesheets/bhm/admin/_grid.sass */
 footer, #flash-messages {
   width: 940px;
 }
@@ -699,6 +704,22 @@ section#sidebar h2 {
   padding: 5px 10px;
   float: left;
 }
+/* line 66, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl dd ul {
+  margin: 0;
+}
+/* line 68, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl dd ul li {
+  list-style: inside;
+  margin: 0;
+  padding: 0;
+}
+/* line 72, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl dd ul li.empty {
+  list-style: none;
+  margin: 0;
+  color: #666;
+}
 
 /* line 1, ../../app/stylesheets/bhm/admin/_footer.sass */
 footer {
@@ -708,26 +729,31 @@ footer {
   padding: 2.5em 0 0.5em;
 }
 
-/* line 3, ../../app/stylesheets/bhm/admin/_forms.sass */
-form.formtastic label {
-  font-weight: bold;
-  color: #444;
-}
-/* line 7, ../../app/stylesheets/bhm/admin/_forms.sass */
-form.formtastic label abbr.required {
-  color: #992025;
-}
-/* line 11, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 4, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic > fieldset.inputs {
   margin: 0 0 1em;
   padding: 1em 0 0;
 }
-/* line 14, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 7, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic > fieldset.inputs > legend {
   font-size: 1.2em;
   font-weight: bold;
 }
-/* line 20, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 11, ../../app/stylesheets/bhm/admin/_forms.sass */
+form.formtastic > fieldset.inputs label {
+  font-weight: bold;
+  color: #444;
+}
+/* line 15, ../../app/stylesheets/bhm/admin/_forms.sass */
+form.formtastic > fieldset.inputs label abbr.required {
+  color: #992025;
+}
+/* line 18, ../../app/stylesheets/bhm/admin/_forms.sass */
+form.formtastic > fieldset.inputs ol li ol li label {
+  font-weight: normal;
+  color: #111;
+}
+/* line 24, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic fieldset.buttons ol li button {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
@@ -816,4 +842,13 @@ form.formtastic fieldset.buttons ol li button:active {
 #user-signups {
   width: 100%;
   margin: 0 auto 1em;
+}
+
+/* line 1, ../../app/stylesheets/bhm/admin/_maps.sass */
+.map-preview {
+  width: 540px;
+  height: 400px;
+  margin: 5px auto;
+  border: 5px solid #DDD;
+  background: #F1F1F1 url('/images/map-placeholder.jpg') center center no-repeat;
 }

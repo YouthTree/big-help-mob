@@ -100,5 +100,14 @@ module AdminHelper
     end
   end
   
+  def render_address_fields(f, name = :address, options = {})
+    o = f.object
+    o.send(:"build_#{name}") if o.send(name).blank?
+    capture do
+      f.fields_for(name) do |af|
+        concat render(:partial => 'admin/shared/address_fields', :locals => {:form => af, :options => options})
+      end
+    end.html_safe
+  end
   
 end

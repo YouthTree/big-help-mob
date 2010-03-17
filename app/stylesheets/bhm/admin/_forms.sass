@@ -1,11 +1,4 @@
 form.formtastic
-
-  label
-    :font-weight bold
-    :color #444
-
-    abbr.required
-      :color #992025
   
   
   > fieldset.inputs
@@ -14,6 +7,17 @@ form.formtastic
     > legend
       :font-size 1.2em
       :font-weight bold
+      
+    label
+      :font-weight bold
+      :color #444
+
+      abbr.required
+        :color #992025
+    
+    ol li ol li label
+      :font-weight normal
+      :color #111
   
   fieldset.buttons
     ol li

@@ -1,0 +1,11 @@
+%h2.title== Viewing #{current_resource_name}
+
+- show_for resource do |r|
+
+  = r.attribute :id
+  = r.attribute :name
+  - r.association :address do
+    
+    = resource.address
+    %br/
+    = draw_map_of resource.address, :class => "map-preview"

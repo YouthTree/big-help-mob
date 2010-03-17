@@ -1,0 +1,20 @@
+%h2.title== Viewing all #{current_resource_name.pluralize}
+= will_paginate collection
+
+%table
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Address
+      %th &nbsp;
+  %tbody
+    - collection.each do |r|
+      %tr{:class => cycle('odd', 'even')}
+        %td= r.id
+        %td= r.name
+        %td= r.address
+        %td.actions= individual_resource_links r
+    = empty_row_for_collection 3
+        
+= will_paginate collection

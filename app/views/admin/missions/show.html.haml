@@ -16,3 +16,21 @@
       = t :"show_for.blank"
     - else
       = link_to resource.user, [:admin, resource.user]
+      
+      
+  - r.association :address do
+    = draw_map_of resource.address, :class => "map-preview"
+    
+  - r.association :pickups do
+    %ul.pickups#pickups-listing
+      - if resource.pickups.empty?
+        %li.empty No pickups defined.
+      - else
+        - resource.pickups.each do |pickup|
+          %li= link_to_pickup pickup
+    - if resource.pickups.present?
+      #pickups-map.map-preview &nbsp;
+      - use_gmaps_js
+      - has_js "bhm/pickups"
+      
+        
