@@ -1,9 +1,38 @@
 BHM.withNS('Pickups', function(ns) {
   
+  var successiveString = function(s) {
+    var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    var result = '';
+    for (var i = 0; i < s.length; i++) {
+      if (alphabet.indexOf(s.charAt(i).toLowerCase()) != -1) {
+        if (stringIsUpperCase(s.charAt(i))) {
+          result += alphabet.charAt(
+            alphabet.toUpperCase().indexOf(s.charAt(i)) + 1).toUpperCase();
+        } else {
+          result += alphabet.charAt(alphabet.indexOf(s.charAt(i)) + 1);
+        }
+      } else {
+        result += s.charAt(i);
+      }
+    }
+    return result;
+  };
+
+  var stringIsUpperCase = function(s) {
+    return s.toUpperCase() == this;
+  };
+  
   var pickups = {};
-  var plotted = false;
+  var markers = {};
   var map;
   var mapBounds;
+  
+  var lastSelected;
+  var selectedCallback;
+  
+  var iconOffset = 1;
+  
+  var imagePathPrefix = "/images/markers/";
   
   ns.containerID  = "pickups-map";
   ns.listingID    = "pickups-listing";
@@ -11,7 +40,8 @@ BHM.withNS('Pickups', function(ns) {
   ns.dataPrefix   = "pickup-";
   ns.defaultMapOptions = {
     zoom: 10,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    draggable: false
   };
   
   ns.defineClass('Pickup', function() {
@@ -47,9 +77,11 @@ BHM.withNS('Pickups', function(ns) {
   });
   
   function addPickupToPlot(pickup) {
-    var m = pickup.toMarker(ns.getMap());
+    givePickupNumber(pickup);
+    var m = pickup.toMarker(ns.getMap(), {icon: normalMarkerImage(pickup)});
     var b = ns.getBounds();
     b.extend(pickup.toLatLng());
+    markers[pickup.id] = m;
     return m;
   }
   
@@ -62,10 +94,29 @@ BHM.withNS('Pickups', function(ns) {
     return e.attr("data-" + ns.dataPrefix + key);
   }
   
+  function givePickupNumber(pu) {
+    if(!pu.iconOffset) pu.iconOffset = iconOffset++;
+    return pu.iconOffset;
+  }
+  
+  function markerImageWithPath(path) {
+    return new google.maps.MarkerImage(path);
+  }
+  
+  function normalMarkerImage(pu) {
+    var path = imagePathPrefix + "normal-" + pu.iconOffset + ".png";
+    return markerImageWithPath(path);
+  }
+  
+  function selectedMarkerImage(pu) {
+    var path = imagePathPrefix + "selected-" + pu.iconOffset + ".png";
+    return markerImageWithPath(path);
+  }
+  
   ns.addPickup = function(id, title, lat, lng) {
     var p = new ns.Pickup(id, title, lat, lng);
     pickups[p.id] = p;
-    if(plotted) addPickupToPlot(p);
+    if(map) addPickupToPlot(p);
     return p;
   };
   
@@ -87,14 +138,50 @@ BHM.withNS('Pickups', function(ns) {
     return pickups[id];
   };
   
+  ns.getPickupMarker = function(id) {
+    var pu = ns.getPickup(id);
+    if(pu) return markers[id];
+  };
+  
   ns.getMap = function() {
     ns.plot();
     return map;
+  };
+  
+  ns.onEvent = function(obj, name, handler) {
+    google.maps.event.addListener(obj, name, handler);
+  };
+  
+  ns.onMapEvent = function(name, handler) {
+    return ns.onEvent(ns.getMap(), name, handler);
+  };
+  
+  ns.onPickupEvent = function(id, name, handler) {
+    var m = ns.getPickupMarker(id);
+    if(m) return ns.onEvent(m, name, handler);
+  }
+  
+  ns.onEachPickupEvent = function(name, handler) {
+    ns.eachPickup(function(pu) {
+      ns.onPickupEvent(pu.id, name, function() {
+        // Append the pickup to the arguments.
+        var args = Array.prototype.slice.apply(arguments);
+        args.unshift(pu);
+        // Reapply in this scope w/ pickup as the first argument.
+        handler.apply(this, args);
+      });
+    });
   }
   
   ns.getContainer = function() {
     return document.getElementById(ns.containerID);
-  }
+  };
+  
+  ns.eachPickup = function(f) {
+    for(var idx in pickups) {
+      if(pickups.hasOwnProperty(idx)) f(pickups[idx]);
+    }
+  };
   
   ns.plot = function(options) {
     if(map) return map;
@@ -104,12 +191,10 @@ BHM.withNS('Pickups', function(ns) {
     var mapOptions = $.extend({}, options, ns.defaultMapOptions);
     map = new google.maps.Map(c, mapOptions);
     // Adding pickups
-    for(var idx in pickups) {
-      if(pickups.hasOwnProperty(idx)) addPickupToPlot(pickups[idx]);
-    }
+    ns.eachPickup(addPickupToPlot);
     ns.centreMap();
     return map;
-  }
+  };
   
   ns.centreMap = function() {
     var m = ns.getMap();
@@ -117,18 +202,39 @@ BHM.withNS('Pickups', function(ns) {
     m.setCenter(b.getCenter());
     m.panToBounds(b);
     m.fitBounds(b);
+  };
+  
+  ns.onPickupSelect = function(cb) {
+    selectedCallback = cb;
+  }
+  
+  ns.selectPickup = function(pu) {
+    if(typeof(pu) == "number") pu = ns.getPickup(pu);
+    var marker = markers[pu.id];
+    marker.setIcon(selectedMarkerImage(pu));
+    if(lastSelected) markers[lastSelected.id].setIcon(normalMarkerImage(lastSelected));
+    lastSelected = pu;
+    if(typeof(selectedCallback) == "function") selectedCallback(pu, marker);
   }
   
   ns.automap = function() {
     var collection = $("#" + ns.listingID + " ." + ns.listingClass);
     if(collection.size() > 0) {
       ns.autoAddPickups(collection);
-      return ns.getMap();
+      var map = ns.getMap();
+      var selectedKey = "data-" + ns.dataPrefix + "selected"
+      var selected = collection.filter("[" + selectedKey + "]");
+      if(selected.size() > 0) {
+        var value = Number(selected.attr(selectedKey));
+        if(value > 0) ns.selectPickup(value);
+      }
+      return map;
     }
   };
   
   $(document).ready(function() {
     ns.automap();
+    if(map) ns.onEachPickupEvent('click', ns.selectPickup);
   });
   
 });

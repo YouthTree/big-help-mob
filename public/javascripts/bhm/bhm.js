@@ -30,9 +30,11 @@ if(!BHM) BHM = {};
     this[name] = klass;
     return klass;
   };
+  
   defaultNSAttrs.withNS      = withNS;
   defaultNSAttrs.defineClass = defineClass;
   // Actually make us a namespace.
   makeNS(ns);
+  
 })(BHM, jQuery);
 

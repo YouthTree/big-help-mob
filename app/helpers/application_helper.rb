@@ -43,4 +43,14 @@ module ApplicationHelper
     content_for(:extra_head, javascript_include_tag(*args))
   end
   
+  def pickup_data_options(pickup, selected = false)
+    opts = {:title => pickup.address.to_s, :class => "pickup-entry"}
+    opts["data-pickup-title"]     = "#{pickup.name} - #{pickup.address}"
+    opts["data-pickup-latitude"]  = pickup.address.lat
+    opts["data-pickup-longitude"] = pickup.address.lng
+    opts["data-pickup-id"]        = pickup.id
+    opts["data-pickup-selected"]  = pickup.id if selected
+    opts
+  end
+  
 end
