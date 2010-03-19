@@ -9,6 +9,7 @@ end
 # Table name: users
 #
 #  id                :integer(4)      not null, primary key
+#  current_role_id   :integer(4)
 #  admin             :boolean(1)
 #  allergies         :text
 #  crypted_password  :string(255)

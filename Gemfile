@@ -48,8 +48,15 @@ gem "ruby-googlechart", :require => "google_chart"
 git "git://github.com/Sutto/carmen.git"
 gem "namxam-carmen", :require => ["carmen", "carmen/action_view_helpers"]
 
+gem "state_machine"
+
+gem "title_estuary"
+
+git "git://github.com/nono/acts_as_list.git", :ref => "rails3"
+gem "acts_as_list"
+
 group :test do
-  git "git://github.com/adamhunter/shoulda.git", :branch => "rails3"
+  git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil
   gem "shoulda",  :require => nil
 end

@@ -11,3 +11,12 @@ class Pickup < ActiveRecord::Base
   has_many :missions, :through => :mission_pickups
   
 end
+
+# == Schema Info
+#
+# Table name: pickups
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime

@@ -5,8 +5,30 @@ if(!BHM) BHM = {};
   
   var defaultNSAttrs = {};
   
-  var makeNS = function(o) {
-    return $.extend(o, defaultNSAttrs);
+  var baseJSPath   = '/javascripts/';
+  ns.baseJSSuffix = ''; 
+  
+  var makeNS = function(o, name, parent) {
+    var obj = $.extend(o, defaultNSAttrs);
+    obj.currentNamespaceKey  = name;
+    obj.parentNamespace      = parent;
+    return obj;
+  };
+  
+  var underscoreString = function(s) {
+    return s.replace(/\./g, '/').replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2').replace(/([a-z\d])([A-Z])/g, '$1_$2').replace(/-/g, '_').toLowerCase();
+  };
+  
+  ns.underscoreString = underscoreString;
+  
+  var toNSName = function() {
+    var parts = [];
+    var current = this;
+    while(current) {
+      parts.unshift(current.currentNamespaceKey);
+      current = current.parentNamespace;
+    }
+    return parts.join('.');
   };
   
   var withNS = function(key, closure) {
@@ -14,11 +36,41 @@ if(!BHM) BHM = {};
     var currentNS = this;
     for(var i = 0; i < parts.length; i++) {
       var name = parts[i];
-      if(!currentNS[name]) currentNS[name] = makeNS({});
+      if(!currentNS[name]) currentNS[name] = makeNS({}, name, currentNS);
       currentNS = currentNS[name];
     }
     if(typeof(closure) == "function") closure(currentNS);
     return currentNS;
+  };
+  
+  var isNSDefined = function(key) {
+    var parts = key.split(".");
+    var currentNS = this;
+    for(var i = 0; i < parts.length; i++) {
+      var name = parts[i];
+     if(!currentNS[name]) return false;
+     currentNS = currentNS[name];
+    }
+    return true;
+  };
+  
+  var require = function(name, path) {
+    if(!this.isNSDefined(name)) {
+      if(!path) path = ns.underscoreString(this.toNSName() + "." + name);
+      var url = baseJSPath + path + ".js" + ns.baseJSSuffix;
+      var script = document.createElement('script');
+      script.type = "text/javascript";
+      script.src  = url;
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(script);
+      return $(script);
+    } else {
+      var e = function(c) { c(); };
+      return {
+        load:  e,
+        ready: e
+      };
+    }
   };
   
   var defineClass = function(name, closure) {
@@ -33,8 +85,12 @@ if(!BHM) BHM = {};
   
   defaultNSAttrs.withNS      = withNS;
   defaultNSAttrs.defineClass = defineClass;
+  defaultNSAttrs.isNSDefined = isNSDefined;
+  defaultNSAttrs.require     = require;
+  defaultNSAttrs.toNSName    = toNSName;
+  
   // Actually make us a namespace.
-  makeNS(ns);
+  makeNS(ns, 'BHM');
   
 })(BHM, jQuery);
 

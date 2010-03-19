@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies
 
+  has_many :mission_participations
+  has_many :missions, :through => :mission_participations
+  has_many :roles,    :through => :mission_participations
+
+  belongs_to :current_role, :class_name => "Role"
+
   acts_as_authentic do |c|
     c.account_merge_enabled true
     c.account_mapping_mode  :internal
@@ -53,6 +59,7 @@ end
 # Table name: users
 #
 #  id                :integer(4)      not null, primary key
+#  current_role_id   :integer(4)
 #  admin             :boolean(1)
 #  allergies         :text
 #  crypted_password  :string(255)

@@ -1,0 +1,9 @@
+%h2.title== Viewing #{current_resource_name}
+
+- show_for resource do |r|
+  = r.attribute :id
+  = r.attribute :title
+  = r.attribute :key
+  
+  - r.attribute :content do
+    .content-preview= resource.content_as_html

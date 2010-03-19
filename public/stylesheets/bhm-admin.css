@@ -837,6 +837,10 @@ form.formtastic fieldset.buttons ol li button:active {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
+/* line 27, ../../app/stylesheets/bhm/admin/_forms.sass */
+form.formtastic span.cke_skin_kama {
+  margin-left: 25%;
+}
 
 /* line 1, ../../app/stylesheets/bhm/admin/_dashboard.sass */
 #user-signups {
@@ -851,4 +855,31 @@ form.formtastic fieldset.buttons ol li button:active {
   margin: 5px auto;
   border: 5px solid #DDD;
   background: #F1F1F1 url('/images/map-placeholder.jpg') center center no-repeat;
+}
+
+/* line 1, ../../app/stylesheets/bhm/admin/_content.sass */
+.content-preview {
+  padding: 1em;
+  border: 0.2em solid #CCC;
+  background: #EEE;
+  font-size: 0.75em;
+}
+
+/* line 7, ../../app/stylesheets/bhm/admin/_content.sass */
+#reorder-questions {
+  display: none;
+  text-align: center;
+}
+/* line 10, ../../app/stylesheets/bhm/admin/_content.sass */
+#reorder-questions ul {
+  margin: 0;
+}
+/* line 12, ../../app/stylesheets/bhm/admin/_content.sass */
+#reorder-questions ul li {
+  list-style: none;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  font-size: 0.8em;
+  color: #222;
+  font-weight: bold;
 }

@@ -1,0 +1,11 @@
+en:
+  page:
+    title:
+      pages:
+        show: "Welcome to Big Help Mob"
+      user_sessions:
+        new: Sign In
+        create: Sign In
+      users:
+        new: Sign Up
+        create: Sign Up

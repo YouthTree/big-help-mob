@@ -1,0 +1,7 @@
+- form.inputs :name => "Metadata" do
+  = form.input :title
+  = form.input :key
+  
+- form.inputs :name => "Content" do
+  - has_ckeditor
+  ~ form.input :content, :wrapper_html => {:class => 'ckeditor'}

@@ -14,6 +14,16 @@ begin
                           :website     => ("http://#{Forgery(:internet).domain_name}/" if rand(2) == 0)}.trust)
   end
   puts ""
+  
+  
+  puts "Making Default Roles."
+  Role.create!({:name => "organizer"}.trust)
+  Role.create!({:name => "captain"}.trust)
+  Role.create!({:name => "sidekick"}.trust)
+  
+  puts "Making default content sections."
+  Content.create!({:name => "home.introduction", :title => "Introduction", :content => ""}.trust)
+  
 ensure
   $stdout.sync = sync
 end

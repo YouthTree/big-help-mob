@@ -1,0 +1,14 @@
+- has_ckeditor
+
+- form.inputs :name => "Question Details" do
+  
+  = form.input :question, :input_html => {:rows => 3}
+  
+  = form.input :answer, :wrapper_html => {:class => 'ckeditor'}
+  
+- form.inputs :name => "Visibility" do
+
+  = form.input :visible
+  
+  = form.input :position
+  

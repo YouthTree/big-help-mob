@@ -1,0 +1,35 @@
+- has_js 'bhm/admin/questions'
+
+%h2.title== Viewing all #{current_resource_name.pluralize}
+
+%table
+  %thead
+    %tr
+      %th ID
+      %th Position
+      %th Question
+      %th Visible
+      %th &nbsp;
+  %tbody
+    - collection.each do |r|
+      %tr{:class => cycle('odd', 'even')}
+        %td= r.id
+        %td= r.position
+        %td= r.question
+        %td= r.visible? ? "Yes" : "No"
+        %td.actions= individual_resource_links r
+    = empty_row_for_collection 4
+    
+
+#reorder-questions{:title => 'Reorder Questions'}
+  - form_tag reorder_admin_questions_path do
+    %ul
+      - collection.each do |r|
+        %li.ui-state-default{"data-question-id" => r.id}
+          = hidden_field_tag "question_ids[]", r.id, :id => nil
+          = r.question
+    = submit_tag "Save Order"
+  
+  
+- content_for :sidebar_menu_end do
+  = ml 'Reorder FAQ Questions', '#', :class => 'reorder-questions-link' 

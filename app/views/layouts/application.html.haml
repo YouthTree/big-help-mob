@@ -1,26 +1,19 @@
 !!! 5
 %html{:lang => "en", :dir => "ltr"}
   %head
-    %title Big Help Mob
-    
-    / Stylesheets
-    = stylesheet_link_tag 'grid.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'text.css', :media => 'screen, projection'
-    = stylesheet_link_tag "bhm"
-    = javascript_include_tag "bhm/bhm"
-    
-    / Javascripts
+    %title== #{page_title} - Big Help Mob
+    = stylesheet_link_tag "bhm", :media => 'screen, projection'
     /[if IE]
       %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"}
-    
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
+    = javascript_include_tag "bhm/bhm"
     = csrf_meta_tag
     = yield :extra_head
-    
   %body
     #container
       %header
-        %h1 Big Help Mob
+        %h1= page_title
+        
       = flash_messages :alert, :notice
       
       %section#content-container

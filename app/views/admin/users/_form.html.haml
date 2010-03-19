@@ -2,6 +2,7 @@
   = form.input :login
   = form.input :email
   = form.input :display_name
+  = form.input :current_role, :collection => Role.for_select
   
 - form.inputs :name => "User Details" do
   = form.input :first_name

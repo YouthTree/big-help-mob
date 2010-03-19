@@ -1,5 +1,3 @@
-/* Big Help Mob primary stylesheet
- * Darcy Laycock and Matt Didcoe */
 /* incase an inverted custom gradient isn't specified */
 
 /* line 6, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
@@ -407,37 +405,4 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
   display: inline;
   margin: 0;
   padding: 0;
-}
-
-/* line 6, ../../app/stylesheets/bhm.sass */
-body {
-  background-color: #d1eca9;
-  color: #333;
-  text-align: center;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-}
-
-/* line 15, ../../app/stylesheets/bhm.sass */
-#container {
-  width: 900px;
-  text-align: left;
-  margin: 0 auto;
-}
-
-/* line 20, ../../app/stylesheets/bhm.sass */
-h1, h2 {
-  font-family: "Sniglet Regular", Helvetica, sans-serif;
-  color: #d92d2f;
-}
-
-/* line 25, ../../app/stylesheets/bhm.sass */
-h1 {
-  font-size: 420%;
-}
-
-/* line 27, ../../app/stylesheets/bhm.sass */
-h2 {
-  font-size: 280%;
 }

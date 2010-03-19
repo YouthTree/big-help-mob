@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100317170726) do
+ActiveRecord::Schema.define(:version => 20100319153022) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -27,6 +27,33 @@ ActiveRecord::Schema.define(:version => 20100317170726) do
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
+
+  create_table "captain_applications", :force => true do |t|
+    t.text     "reason_why"
+    t.text     "offers"
+    t.boolean  "has_first_aid_cert"
+    t.boolean  "accepted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contents", :force => true do |t|
+    t.string   "title"
+    t.string   "key"
+    t.string   "type"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mission_participations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "mission_id"
+    t.string   "state"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mission_pickups", :force => true do |t|
     t.integer  "mission_id"
@@ -56,6 +83,21 @@ ActiveRecord::Schema.define(:version => 20100317170726) do
   end
 
   create_table "pickups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.boolean  "visible",    :default => false, :null => false
+    t.integer  "position"
+    t.text     "question"
+    t.text     "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20100317170726) do
     t.text     "allergies"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "current_role_id"
   end
 
 end

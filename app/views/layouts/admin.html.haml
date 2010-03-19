@@ -6,12 +6,12 @@
     / Stylesheets
     = stylesheet_link_tag 'grid.css', :media => 'screen, projection'
     = stylesheet_link_tag 'text.css', :media => 'screen, projection'
-    = stylesheet_link_tag "bhm-admin.css"
+    = stylesheet_link_tag "bhm-admin.css", "/jquery-ui/smoothness/jquery-ui-1.8rc3.custom.css"
     
     / Javascripts
     /[if IE]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", "rails", "bhm/bhm"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "jquery-ui-1.8rc3.custom.min.js", "rails", "bhm/bhm"
     = csrf_meta_tag
     = yield :extra_head
     

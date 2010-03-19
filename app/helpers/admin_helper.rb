@@ -27,10 +27,13 @@ module AdminHelper
   end
   alias ml menu_link
   
-  def sidebar_menu(content = nil, &blk)
-    content = content.to_s
+  def sidebar_menu(inner_content = nil, &blk)
+    content = []
+    content << content_for(:sidebar_menu_start) if content_for?(:sidebar_menu_start)
+    content << inner_content.to_s if inner_content
     content << capture(&blk) if blk.present?
-    content = content_tag(:ul, content, :class => 'sidebar-menu')
+    content << content_for(:sidebar_menu_end) if content_for?(:sidebar_menu_end)
+    content = content_tag(:ul, content.join(""), :class => 'sidebar-menu')
     blk.present? ? concat(content) : content
   end
   

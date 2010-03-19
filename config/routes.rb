@@ -1,7 +1,4 @@
 Bighelpmob::Application.routes.draw do |map|
-
-  match 'sign-in',  :to => 'user_sessions#new', :as => :signin
-  match 'sign-out', :to => 'user_sessions#destroy', :as => :signout
   resources :user_session, :as => 'user-sessions'
 
   match 'sign-up', :to => 'users#new', :as => :signup
@@ -16,6 +13,12 @@ Bighelpmob::Application.routes.draw do |map|
     resources :missions
     resources :organisations
     resources :pickups
+    resources :contents
+    resources :questions do
+      collection do
+        post :reorder
+      end
+    end
     match '', :to => 'admin/dashboard#index', :as => :dashboard
   end
 
