@@ -161,6 +161,12 @@ fieldset {
   src: local('Museo Sans'), local('MuseoSans-500'), url(/fonts/MuseoSans.woff) format('woff'), url(/fonts/MuseoSans.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Bauhaus Std Light';
+  src: url('/fonts/BauhausStd-Demi.eot');
+  src: local('Bauhaus Std Light'), url(/fonts/BauhausStd-Demi.woff) format('woff'), url(/fonts/BauhausStd-Demi.ttf) format('truetype');
+}
+
 /* line 6, ../../app/stylesheets/bhm/_flash.sass */
 #flash-messages {
   margin: 0;
@@ -405,4 +411,155 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
   display: inline;
   margin: 0;
   padding: 0;
+}
+
+/* line 2, ../../app/stylesheets/bhm/public/_grid.sass */
+#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 5, ../../app/stylesheets/bhm/public/_grid.sass */
+#container footer, #container #content, #container #flash-messages {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* line 8, ../../app/stylesheets/bhm/public/_grid.sass */
+#content, footer, #flash-messages {
+  width: 940px;
+}
+
+/* line 1, ../../app/stylesheets/bhm/public/_header.sass */
+header {
+  display: block;
+  height: 445px;
+  width: 960px;
+  background: url('/images/bhm/header-bg.png') top center no-repeat;
+  position: relative;
+  z-index: 5;
+}
+/* line 8, ../../app/stylesheets/bhm/public/_header.sass */
+header h1 {
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 265px;
+  top: 50px;
+  display: block;
+}
+/* line 16, ../../app/stylesheets/bhm/public/_header.sass */
+header h1 a {
+  width: 615px;
+  height: 255px;
+  background: url(/images/bhm/logo.png);
+  text-indent: -9999em;
+  display: block;
+}
+/* line 23, ../../app/stylesheets/bhm/public/_header.sass */
+header #header-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 600px;
+  height: 75px;
+  background: url(/images/bhm/header-menu-bg.png) top left no-repeat;
+}
+/* line 31, ../../app/stylesheets/bhm/public/_header.sass */
+header #header-menu ul {
+  margin: 1.7em 0 0 1em;
+  padding: 0;
+}
+/* line 34, ../../app/stylesheets/bhm/public/_header.sass */
+header #header-menu ul li {
+  display: inline;
+  margin: 0 0.75em;
+  padding: 0;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+/* line 41, ../../app/stylesheets/bhm/public/_header.sass */
+header #header-menu ul li a {
+  text-decoration: none;
+  color: #49433c;
+  font-family: "Bauhaus Std Light", "Helvetica Neue", "Verdana", "Helvetica", "Arial";
+}
+/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+header #header-menu ul li a:hover {
+  color: #994e2c;
+}
+/* line 46, ../../app/stylesheets/bhm/public/_header.sass */
+header #youthtree-project-logo {
+  display: block;
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+  z-index: 10;
+}
+/* line 52, ../../app/stylesheets/bhm/public/_header.sass */
+header #youthtree-project-logo a {
+  display: block;
+  text-indent: -9999em;
+  width: 110px;
+  height: 140px;
+  background: url(/images/bhm/youthtree-project-logo.png) top left no-repeat;
+}
+/* line 58, ../../app/stylesheets/bhm/public/_header.sass */
+header #youthtree-project-logo a:hover, header #youthtree-project-logo a:active {
+  background-position: -110px 0;
+}
+
+/* line 1, ../../app/stylesheets/bhm/public/_content.sass */
+body {
+  background: #cdccbc;
+}
+
+/* line 3, ../../app/stylesheets/bhm/public/_content.sass */
+#container {
+  overflow: hidden;
+  display: inline-block;
+  margin: 2.5em auto;
+  background: white url('/images/bhm/content-bg.jpg') top center repeat-x;
+  /* Webkit (Safari, Chrome) */
+  -webkit-box-shadow: #333333 0 0 10px;
+  /* Gecko (Firefox, Camino) */
+  -moz-box-shadow: #333333 0 0 10px;
+  /* CSS3 */
+  box-shadow: #333333 0 0 10px;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#333', Direction=0, Strength=10);
+}
+/* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#container {
+  display: block;
+}
+
+/* line 10, ../../app/stylesheets/bhm/public/_content.sass */
+#content {
+  overflow: hidden;
+  display: inline-block;
+  margin-top: -65px;
+}
+/* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#content {
+  display: block;
+}
+/* line 13, ../../app/stylesheets/bhm/public/_content.sass */
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+  font-family: "Bauhaus Std Light", "Helvetica Neue", "Verdana", "Helvetica", "Arial";
+  margin: 0 0 0.5em;
+  text-align: center;
+  color: #333;
+}
+/* line 18, ../../app/stylesheets/bhm/public/_content.sass */
+#content h1 {
+  font-size: 3em;
+  color: black;
+  margin-bottom: 0.5em;
+  text-align: left;
+  padding-left: 230px;
 }

@@ -161,6 +161,12 @@ fieldset {
   src: local('Museo Sans'), local('MuseoSans-500'), url(/fonts/MuseoSans.woff) format('woff'), url(/fonts/MuseoSans.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Bauhaus Std Light';
+  src: url('/fonts/BauhausStd-Demi.eot');
+  src: local('Bauhaus Std Light'), url(/fonts/BauhausStd-Demi.woff) format('woff'), url(/fonts/BauhausStd-Demi.ttf) format('truetype');
+}
+
 /* line 6, ../../app/stylesheets/bhm/_flash.sass */
 #flash-messages {
   margin: 0;
@@ -448,7 +454,7 @@ footer, #flash-messages {
 
 /* line 1, ../../app/stylesheets/bhm/admin/_general.sass */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Museo Sans", "Helvetica Neue", "Helvetica", "Verdana";
+  font-family: "Museo Sans", "Helvetica Neue", "Verdana", "Helvetica", "Arial";
 }
 
 /* line 4, ../../app/stylesheets/bhm/admin/_general.sass */
@@ -467,7 +473,7 @@ h2 {
 }
 /* line 13, ../../app/stylesheets/bhm/admin/_general.sass */
 .google-chart h3 {
-  font-family: "Helvetica Neue", "Helvetica", "Verdana";
+  font-family: , "Helvetica Neue", "Verdana", "Helvetica", "Arial";
   font-weight: bold;
   margin: 0.5em 0 0;
 }
@@ -537,7 +543,7 @@ header {
 /* line 28, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul li a {
   font-size: 1.25em;
-  font-family: "Museo Sans", "Helvetica Neue", "Helvetica", "Verdana";
+  font-family: "Museo Sans", "Helvetica Neue", "Verdana", "Helvetica", "Arial";
   color: white;
   text-decoration: none;
 }
@@ -608,7 +614,7 @@ section#sidebar h2 {
   background: #555;
   background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #555555), color-stop(100%, #777777));
   background-image: -moz-linear-gradient(bottom, #555555 0%, #777777 100%);
-  font-family: "Helvetica Neue", "Helvetica", "Verdana";
+  font-family: , "Helvetica Neue", "Verdana", "Helvetica", "Arial";
 }
 /* line 18, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody tr.empty {

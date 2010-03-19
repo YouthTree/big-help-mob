@@ -11,13 +11,11 @@
     = yield :extra_head
   %body
     #container
-      %header
-        %h1= page_title
-        
+      %header= render :partial => 'shared/header'
+      
       = flash_messages :alert, :notice
       
-      %section#content-container
-        %section#content= yield
+      %article#content= yield
     
       %footer
         = yield :page_bottom

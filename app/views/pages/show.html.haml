@@ -1,6 +1,12 @@
-%h2 What is the Big Help Mob?
+%h1= page_title
   
 = content_section 'home.introduction'
 
 = content_section 'home.fun-facts'
 
+%h2 Frequently Asked Questions about Big Help Mob.
+
+%dl#frequently-asked-questions
+  - @questions.each do |question|
+    %dt= question.question
+    %dd= question.answer_as_html

@@ -1,0 +1,59 @@
+header
+  :display block
+  :height 445px
+  :width 960px
+  :background url('/images/bhm/header-bg.png') top center no-repeat
+  :position relative
+  :z-index 5
+  h1
+    :z-index 5
+    :margin 0
+    :padding 0
+    :position absolute
+    :left 265px
+    :top 50px
+    :display block
+    a
+      :width 615px
+      :height 255px
+      :background url(/images/bhm/logo.png)
+      :text-indent -9999em
+      :display block
+  
+  #header-menu
+    :position absolute
+    :top 0
+    :left 0
+    :z-index 10
+    :width 600px
+    :height 75px
+    :background url(/images/bhm/header-menu-bg.png) top left no-repeat
+    ul
+      :margin 1.7em 0 0 1em
+      :padding 0
+      li
+        :display inline
+        :margin 0 0.75em
+        :padding 0
+        :font-size 1.4em
+        :font-weight bold
+        :text-transform lowercase
+        a
+          :text-decoration none
+          +link-colors(#49433c, #994E2C)
+          +bauhaus-font-stack
+
+  #youthtree-project-logo
+    :display block
+    :position absolute
+    :bottom 50px
+    :right 20px
+    :z-index 10
+    a
+      :display block
+      :text-indent -9999em
+      :width 110px
+      :height 140px
+      :background url(/images/bhm/youthtree-project-logo.png) top left no-repeat
+      &:hover, &:active
+        :background-position -110px 0
