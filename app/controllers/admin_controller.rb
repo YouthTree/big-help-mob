@@ -11,7 +11,7 @@ class AdminController < ApplicationController
   end
   
   def require_admin
-    redirect_to :root, :alert => t('flash.permissions.admin_denied') unless current_user.admin?
+    redirect_to :root, :alert => tf('permissions.admin_denied') unless current_user.admin?
   end
   
 end

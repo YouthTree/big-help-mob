@@ -17,5 +17,6 @@
       
       %article#content= yield
     
-      %footer
-        = yield :page_bottom
+      %footer= render :partial => 'shared/footer'
+      
+      = yield :page_bottom

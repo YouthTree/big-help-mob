@@ -3,7 +3,7 @@ class Address < ActiveRecord::Base
   
   belongs_to :addressable, :polymorphic => true
   
-  validates_presence_of :street1, :city, :state, :postcode, :country
+  validates_presence_of :street1, :city, :state, :country
   
   apply_addresslogic :fields => [:street1, :street2, :city, [:state, :postcode], :country]
   

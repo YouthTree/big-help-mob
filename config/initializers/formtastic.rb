@@ -17,8 +17,8 @@ Formtastic::SemanticFormBuilder.include_blank_for_select_by_default = true
 # '<abbr title="required">*</abbr>'. In other words, if you configure formtastic.required
 # in your locale, it will replace the abbr title properly. But if you don't want to use
 # abbr tag, you can simply give a string as below
-Formtastic::SemanticFormBuilder.required_string = proc { ::Formtastic::I18n.t(:required) }
-Formtastic::SemanticFormBuilder.optional_string = proc { ::Formtastic::I18n.t(:optional) }
+Formtastic::SemanticFormBuilder.required_string = proc { ::Formtastic::I18n.t(:required).html_safe }
+Formtastic::SemanticFormBuilder.optional_string = proc { ::Formtastic::I18n.t(:optional).html_safe }
 
 # Set the way inline errors will be displayed.
 # Defaults to :sentence, valid options are :sentence, :list and :none
@@ -44,7 +44,7 @@ Formtastic::SemanticFormBuilder.optional_string = proc { ::Formtastic::I18n.t(:o
 # Specifies if labels/hints for input fields automatically be looked up using I18n.
 # Default value: false. Overridden for specific fields by setting value to true,
 # i.e. :label => true, or :hint => true (or opposite depending on initialized value)
-# Formtastic::SemanticFormBuilder.i18n_lookups_by_default = false
+Formtastic::SemanticFormBuilder.i18n_lookups_by_default = true
 
 # You can add custom inputs or override parts of Formtastic by subclassing SemanticFormBuilder and
 # specifying that class here.  Defaults to SemanticFormBuilder.

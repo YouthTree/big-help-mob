@@ -15,4 +15,4 @@
   
 - form.inputs :name => "Available Pickups" do
   
-  = form.input :pickup_ids, :collection => Pickup.all, :as => :check_boxes
+  = form.input :pickup_ids, :collection => Pickup.all, :as => :check_boxes, :label => "Pickups from"

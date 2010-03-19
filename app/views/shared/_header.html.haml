@@ -1,9 +1,18 @@
-%header
-  %h1= link_to "Big Help Mob", :root
-  #header-menu
-    %ul
-      = ml "Home", "#"
-      = ml "About", "#"
-      = ml "Event Info", "#"
-      = ml "Signup", "#"
-  #youthtree-project-logo= link_to "A Project of Youth Tree", "http://www.youthtree.org.au/"
+%h1= link_to "Big Help Mob", :root
+%h2= page_title
+%nav#header-menu
+  %ul
+    = ml "Home", :root
+    = ml "About", "#"
+    = ml "Event Info", "#"
+    - if logged_in?
+      = ml "Your Account", user_path(:current)
+      = ml "Sign out", :sign_out
+    - else
+      = ml "Sign up", :new_user
+      = ml "Sign in", :sign_in
+
+#youthtree-project-logo= link_to "A Project of Youth Tree", "http://www.youthtree.org.au/"
+
+- if logged_in? && current_user.admin?
+  = render :partial => 'shared/admin_nav'

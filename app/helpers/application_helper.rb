@@ -65,6 +65,33 @@ module ApplicationHelper
 
   alias cs content_section
   
+  def youtube_video(video_id, opts = {})
+    options = {:height => 360, :width => 480, :color1 => 'AAAAAA', :color2 => '999999'}.merge(opts)
+    video_url = "http://www.youtube-nocookie.com/v/#{video_id}?hl=en_US&fs=1&rel=0&color1=0x#{options[:color1]}&color2=0x#{options[:color2]}"
+    inner = returning([]) do |i|
+      i << tag(:param, :name => "movie", :value => video_url)
+      i << tag(:param, :name => "allowFullScreen", :value => "true")
+      i << tag(:param, :name => "allowscriptaccess", :value => "always")
+      i << tag(:embed, :src => video_url, :height => options[:height], :width => options[:width], :allowfullscreen => "true",
+        :type => "application/x-shockwave-flash", :allowscriptaccess => "always")
+    end
+    content_tag(:object, inner.join, :height => options[:height], :width => options[:width])
+  end
+  
+  def copyright(year, now=Time.now)
+    if now.year == year
+      year.to_s
+    elsif year / 1000 == now.year / 1000 # same century
+      year.to_s + "&ndash;" + now.year.to_s[-2..3]
+    else
+      year.to_s + "&ndash;" + now.year.to_s
+    end
+  end
+  
+  def sponsor_link(name, url)
+    link_to image_tag("sponsors/#{name.underscore.gsub(/[\ \_]+/, "-")}-logo.jpg"), url, :title => name, :class => 'sponsor'
+  end
+  
   protected
   
   def normalized_content_scope(key, scope = nil)

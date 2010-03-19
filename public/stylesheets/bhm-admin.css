@@ -162,9 +162,9 @@ fieldset {
 }
 
 @font-face {
-  font-family: 'Bauhaus Std Light';
+  font-family: 'Bauhaus Std Demi';
   src: url('/fonts/BauhausStd-Demi.eot');
-  src: local('Bauhaus Std Light'), url(/fonts/BauhausStd-Demi.woff) format('woff'), url(/fonts/BauhausStd-Demi.ttf) format('truetype');
+  src: local('Bauhaus Std Demi'), local('BauhausStd-Demi'), url(/fonts/BauhausStd-Demi.woff) format('woff'), url(/fonts/BauhausStd-Demi.ttf) format('truetype');
 }
 
 /* line 6, ../../app/stylesheets/bhm/_flash.sass */
@@ -454,7 +454,7 @@ footer, #flash-messages {
 
 /* line 1, ../../app/stylesheets/bhm/admin/_general.sass */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Museo Sans", "Helvetica Neue", "Verdana", "Helvetica", "Arial";
+  font-family: "Museo Sans", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
 }
 
 /* line 4, ../../app/stylesheets/bhm/admin/_general.sass */
@@ -473,7 +473,7 @@ h2 {
 }
 /* line 13, ../../app/stylesheets/bhm/admin/_general.sass */
 .google-chart h3 {
-  font-family: , "Helvetica Neue", "Verdana", "Helvetica", "Arial";
+  font-family: , "Helvetica Neue", "Helvetica", "Verdana", "Arial";
   font-weight: bold;
   margin: 0.5em 0 0;
 }
@@ -540,10 +540,11 @@ header {
   padding: 0px;
   display: inline;
 }
-/* line 28, ../../app/stylesheets/bhm/admin/_header.sass */
+/* line 27, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul li a {
+  vertical-align: middle;
   font-size: 1.25em;
-  font-family: "Museo Sans", "Helvetica Neue", "Verdana", "Helvetica", "Arial";
+  font-family: "Museo Sans", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
   color: white;
   text-decoration: none;
 }
@@ -554,6 +555,11 @@ header {
 /* line 4, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
 #header-menu ul li a:hover {
   text-decoration: underline;
+}
+/* line 34, ../../app/stylesheets/bhm/admin/_header.sass */
+#header-menu ul li a#view-site-link {
+  font-size: 1em;
+  color: #CCC;
 }
 
 /* line 8, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/lists/_bullets.sass */
@@ -614,7 +620,7 @@ section#sidebar h2 {
   background: #555;
   background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #555555), color-stop(100%, #777777));
   background-image: -moz-linear-gradient(bottom, #555555 0%, #777777 100%);
-  font-family: , "Helvetica Neue", "Verdana", "Helvetica", "Arial";
+  font-family: , "Helvetica Neue", "Helvetica", "Verdana", "Arial";
 }
 /* line 18, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content table tbody tr.empty {

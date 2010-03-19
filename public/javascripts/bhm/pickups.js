@@ -40,8 +40,7 @@ BHM.withNS('Pickups', function(ns) {
   ns.dataPrefix   = "pickup-";
   ns.defaultMapOptions = {
     zoom: 10,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    draggable: false
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   
   ns.defineClass('Pickup', function() {

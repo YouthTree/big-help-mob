@@ -7,3 +7,6 @@ en:
     submit: 'Submit'
     required: ": <abbr class='required' title='This field is required'>(required)</abbr>"
     optional: ":"
+    labels:
+      question:
+        visible: "Show this question on the homepage"

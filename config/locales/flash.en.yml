@@ -1,0 +1,18 @@
+en:
+  flash:
+    actions:
+      create:
+        notice: '{{resource_name}} was successfully created.'
+      update:
+        notice: '{{resource_name}} was successfully updated.'
+      destroy:
+        notice: '{{resource_name}} was successfully destroyed.'
+        alert: '{{resource_name}} could not be destroyed.'
+    permissions:
+      admin_denied: "I'm sorry dave, I can't let you do that"
+    general:
+      signed_in: "Successfully signed back in - welcome back to Big Help Mob."
+      signed_out: "Successfully signed out"
+    profile:
+      incomplete: 'Welcome back! Please complete your registration details to continue'
+      unknown_user: "Woops! Seems you entered the details incorrectly or we just don't know you..."

@@ -1,12 +1,11 @@
-%h1= page_title
-  
+#intro-video= youtube_video 'qhMRqJnndQ8'
+
 = content_section 'home.introduction'
 
-= content_section 'home.fun-facts'
-
-%h2 Frequently Asked Questions about Big Help Mob.
+%h2
+  %a{:name => "faq"} Frequently Asked Questions about Big Help Mob.
 
 %dl#frequently-asked-questions
-  - @questions.each do |question|
-    %dt= question.question
+  - @questions.each_with_index do |question, idx|
+    %dt{:class => ('first' if idx == 0)}= question.question
     %dd= question.answer_as_html

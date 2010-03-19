@@ -1,7 +1,10 @@
 Bighelpmob::Application.routes.draw do |map|
   resources :user_session, :as => 'user-sessions'
-
-  match 'sign-up', :to => 'users#new', :as => :signup
+  
+  get   'sign-in', :to => 'user_sessions#new', :as => :sign_in
+  post  'sign-in', :to => 'user_sessions#create'
+  match 'sign-out', :to => 'user_sessions#destroy', :as => :sign_out
+  
   resources :users do
     member do
       post :add_rxp_auth

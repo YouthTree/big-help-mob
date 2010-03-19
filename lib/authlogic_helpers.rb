@@ -23,7 +23,7 @@ module AuthlogicHelpers
   def require_user
     unless logged_in?
       store_location
-      redirect_to new_user_session_path, :notice => "To visit this page, you must first log in."
+      redirect_to sign_in_path, :notice => "To view this page, you must first log in."
       return false
     end
   end

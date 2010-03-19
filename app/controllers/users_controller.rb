@@ -5,11 +5,8 @@ class UsersController < ApplicationController
 
   before_filter :check_authz, :only => [:edit, :destroy, :update]
 
-  def index
-    @users = User.all
-  end
-
   def show
+    redirect_to :root
   end
 
   def new
