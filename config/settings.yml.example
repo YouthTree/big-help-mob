@@ -1,0 +1,11 @@
+---
+default:
+  rpx:
+    api_key: "your-rpx-now-key"
+    realm: "big-help-mob"
+  hominid:
+    list_mapping:
+      some-list-id: "Some List Name"
+production:
+  hominid:
+    api_key: your-mailchimp-api-key

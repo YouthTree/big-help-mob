@@ -9,3 +9,6 @@ en:
       users:
         new: Sign Up
         create: Sign Up
+        show: "{{user}}'s Profile"
+        edit: "Edit {{user}}'s Profile"
+        update: "Edit {{user}}'s Profile"

@@ -16,4 +16,4 @@
     = form.input :mailing_list_ids, :collection => HominidWrapper.available_lists_for_select, :as => :check_boxes
     
   - form.buttons do
-    = form.commit_button
+    = form.commit_button(@user.new_record? ? {:cancel => {:url => :new_user, :text => "Change Account Type", :id => "auth-selector-link"}} : {})

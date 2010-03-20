@@ -646,50 +646,63 @@ body {
   font-weight: bold;
 }
 /* line 22, ../../app/stylesheets/bhm/public/_content.sass */
+#content a {
+  text-decoration: none;
+  color: #315a99;
+}
+/* line 4, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
+#content a:hover {
+  text-decoration: underline;
+}
+/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+#content a:hover {
+  color: #99342a;
+}
+/* line 25, ../../app/stylesheets/bhm/public/_content.sass */
 #content em {
   font-style: italic;
 }
-/* line 24, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 27, ../../app/stylesheets/bhm/public/_content.sass */
 #content .embedded-content.signup-introduction {
   margin: 0 15% 1em;
 }
-/* line 26, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 29, ../../app/stylesheets/bhm/public/_content.sass */
 #content .embedded-content.signup-introduction p {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 30, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 33, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions {
   margin: 0 1em 1em;
   font-size: 1.2em;
 }
-/* line 33, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 36, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dt {
   font-weight: bold;
   color: #000;
   margin: 1.5em 0 0;
   padding: 0;
 }
-/* line 38, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 41, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dt.first {
   margin-top: 0;
 }
-/* line 40, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 43, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dd {
   color: #333;
   font-size: 1em;
   margin: 0.25em 0;
   padding: 0;
 }
-/* line 45, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 48, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dd p {
   font-size: 1em;
   padding: 0;
   margin: 0 0 0.5em;
 }
 
-/* line 50, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 53, ../../app/stylesheets/bhm/public/_content.sass */
 #intro-video {
   text-align: center;
   margin: 0 0 1em;
@@ -846,7 +859,93 @@ dl#frequently-asked-questions dd p {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 63, ../../app/stylesheets/bhm/public/_forms.sass */
+/* line 62, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link {
+  font-family: "Lucida Grande", Lucida, Arial, sans_serif;
+  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19.2px;
+  padding: 4px 16px;
+  border-width: 1px;
+  background-color: #89050d;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #d1666d), color-stop(10%, #a8333a), color-stop(50%, #621e22), color-stop(50%, #561a1e), color-stop(100%, #7d262c));
+  background-image: -moz-linear-gradient(top, #d1666d 0%, #a8333a 10%, #621e22 50%, #561a1e 50%, #7d262c 100%);
+  border-color: #320f12;
+  text-shadow: #0e0101 0px 1px 1px;
+  color: white;
+}
+/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link:focus {
+  outline: none;
+}
+/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled] {
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+  -khtml-opacity: 0.7;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  filter: alpha(opacity=70);
+}
+/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:focus, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:focus {
+  cursor: default;
+}
+/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link:active {
+  padding: 3px 15px;
+  border-width: 2px;
+}
+/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled] {
+  padding: 4px 16px;
+  border-width: 1px;
+}
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:active, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:hover {
+  background-color: #89050d;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #d1666d), color-stop(10%, #a8333a), color-stop(50%, #621e22), color-stop(50%, #561a1e), color-stop(100%, #7d262c));
+  background-image: -moz-linear-gradient(top, #d1666d 0%, #a8333a 10%, #621e22 50%, #561a1e 50%, #7d262c 100%);
+  border-color: #320f12;
+  text-shadow: #0e0101 0px 1px 1px;
+  color: white;
+}
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link:focus {
+  background-color: #7a040d;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #cd5a62), color-stop(10%, #9c2f37), color-stop(50%, #551a1e), color-stop(50%, #49161a), color-stop(100%, #702228));
+  background-image: -moz-linear-gradient(top, #cd5a62 0%, #9c2f37 10%, #551a1e 50%, #49161a 50%, #702228 100%);
+  border-color: #260b0d;
+  text-shadow: black 0px 1px 1px;
+  color: white;
+}
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol a#auth-selector-link:active {
+  background-color: #6c040b;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #571a1e), color-stop(30%, #5e1c21), color-stop(50%, #4f181b), color-stop(50%, #431417), color-stop(100%, #762429));
+  background-image: -moz-linear-gradient(top, #571a1e 0%, #5e1c21 30%, #4f181b 50%, #431417 50%, #762429 100%);
+  border-color: #1b080a;
+  text-shadow: black 0px -1px -1px;
+  color: white;
+}
+/* line 64, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.buttons ol span.or {
+  padding: 0 0.5em;
+  color: #666;
+}
+/* line 69, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic span.cke_skin_kama {
   margin-left: 25%;
 }
@@ -1031,4 +1130,20 @@ section#flash-messages p.flash.last {
   border-color: #2e543c;
   text-shadow: #0c4221 0px -1px -1px;
   color: white;
+}
+
+/* line 1, ../../app/stylesheets/bhm/public/_profile.sass */
+p.actions {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 0 15% 2em;
+  padding: 0.4em 0.3em 0.3em;
+  border-radius: 0.75em;
+  -moz-border-radius: 0.75em;
+  -webkit-border-radius: 0.75em;
+  background: #ffeed3;
+  border: 1px solid #d38100;
+  color: #533300;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #fff8ed), color-stop(100%, #ffe4b9));
+  background-image: -moz-linear-gradient(top, #fff8ed 0%, #ffe4b9 100%);
 }

@@ -16,4 +16,4 @@
       = form.input :password
   
     - form.buttons do
-      = form.commit_button "Sign in"
+      = form.commit_button "Sign in", :cancel => {:url => :sign_in, :text => "Change Account Type", :id => "auth-selector-link"}

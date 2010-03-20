@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :check_authz, :only => [:edit, :destroy, :update]
 
   def show
-    redirect_to :root
+    
   end
 
   def new
@@ -58,7 +58,8 @@ class UsersController < ApplicationController
 
   def prepare_user
     @user = params[:id] == "current" ? current_user : User.find(params[:id])
-    redirect_to :users, :alert => "I'm sorry, I don't know that user" unless @user.present?
+    return redirect_to :users, :alert => "I'm sorry, I don't know that user" unless @user.present?
+    add_title_variables! :user => @user.to_s
   end
 
 end

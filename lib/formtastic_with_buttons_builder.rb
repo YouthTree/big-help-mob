@@ -29,6 +29,35 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     super(input_name, text, options)
   end
   
+  def commit_button(*args)
+    options = args.extract_options!
+    text = options.delete(:label) || args.shift
+    cancel_options = options.delete(:cancel)
+    if @object
+      key = @object.new_record? ? :create : :update
+      object_name = @object.class.model_name.human
+    else
+      key = :submit
+      object_name = @object_name.to_s.send(@@label_str_method)
+    end
+
+    text = (self.localized_string(key, text, :action, :model => object_name) ||
+            ::Formtastic::I18n.t(key, :model => object_name)) unless text.is_a?(::String)
+
+    button_html = options.delete(:button_html) || {}
+    button_html.merge!(:class => [button_html[:class], key].compact.join(' '))
+    element_class = ['commit', options.delete(:class)].compact.join(' ') # TODO: Add class reflecting on form action.
+    accesskey = (options.delete(:accesskey) || @@default_commit_button_accesskey) unless button_html.has_key?(:accesskey)
+    button_html = button_html.merge(:accesskey => accesskey) if accesskey 
+    inner = self.submit(text, button_html)
+    if cancel_options.present?
+      inner << @template.content_tag(:span, "or", :class => "or")
+      inner << @template.link_to(cancel_options.delete(:text), cancel_options.delete(:url), cancel_options)
+    end
+    template.content_tag(:li, inner, :class => element_class)
+  end
+  
+  
   protected
   
   def create_safe_buffer

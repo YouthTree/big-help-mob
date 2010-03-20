@@ -1,4 +1,4 @@
-BHM.require('Signup').load(function() {
+BHM.require('Authentication').load(function() {
   BHM.withNS('RPXNow', function(ns) {
 
     ns.rpxnowLinkSelector = '.rpxnow';

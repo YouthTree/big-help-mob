@@ -5,22 +5,17 @@ class HominidWrapper
   class << self
     
     def local_id_to_name_mapping(ids)
-      lists = config[:list_mapping]
+      lists = config.list_mapping
       Array(ids).map { |id| lists[id] }
     end
     
-    def config_from_file
-      hominid_conf = YAML.load(Rails.root.join("config", "hominid.yml").read) rescue {}
-      (hominid_conf["default"] || {}).merge(hominid_conf[Rails.env] || {}).symbolize_keys
-    end
-    
     def config
-      @@config ||= config_from_file
+      Settings.hominid
     end
     
     def hominid_instance
       @@__instance ||= begin
-        api_key = config[:api_key]
+        api_key = config.api_key
         Hominid::Base.new(:api_key => api_key) if api_key.present?
       end
     end
@@ -63,7 +58,7 @@ class HominidWrapper
     
     def available_lists
       return [] if hominid_instance.blank?
-      mapping = config[:list_mapping]
+      mapping = config.list_mapping
       mapping_ids = mapping.keys
       hominid_instance.lists.select { |l| mapping_ids.include?(l["id"]) }.map do |l|
         l.merge("display_name" => mapping[l["id"]]).symbolize_keys
