@@ -1,7 +1,8 @@
-=flash-colours(!text_colour, !background_colour = lighten(!text_colour, 50), !border_colour = lighten(!text_colour, 10))
+=flash-colours(!text_colour, !background_colour = lighten(!text_colour, 50), !border_colour = lighten(!text_colour, 20))
   :border-color= !border_colour
   :background-color= !background_colour
   :color= !text_colour
+  +linear-gradient(color_stops(lighten(!background_colour, 10), darken(!background_colour, 10)), "top")
 
 #flash-messages
   :margin 0

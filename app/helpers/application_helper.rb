@@ -6,16 +6,15 @@ module ApplicationHelper
   end
   
   def flash_messages(*names)
+    names = names.select { |k| flash[k].present? }
+    return if names.blank?
     content = []
-    names.each do |key|
+    names.each_with_index do |key, idx|
       value = flash[key]
-      content << content_tag(:p, value, :class => "flash #{key}") if value.present?
+      first, last = (idx == 0), (idx == names.length - 1)
+      content << content_tag(:p, value, :class => "flash #{key} #{"first" if first} #{"last" if last}".strip)
     end
-    if content.empty?
-      ""
-    else
-      content_tag(:section, content.join, :id => "flash-messages").html_safe
-    end
+    content_tag(:section, content.join, :id => "flash-messages").html_safe
   end
   
   def draw_map_of(address, options = {})
@@ -90,6 +89,28 @@ module ApplicationHelper
   
   def sponsor_link(name, url)
     link_to image_tag("sponsors/#{name.underscore.gsub(/[\ \_]+/, "-")}-logo.jpg"), url, :title => name, :class => 'sponsor'
+  end
+  
+  def rpxnow_link(text, url, opts = {})
+    has_rpxnow
+    options = options_with_class_merged(opts, :class => 'rpxnow')
+    rpx_opts = options.delete(:rpx) || {}
+    auth_token_params = [Rack::Utils.escape(request_forgery_protection_token.to_s), Rack::Utils.escape(form_authenticity_token.to_s)] * "="
+    token_url = "#{url}#{url.include?("?") ? "&" : "?"}#{auth_token_params}"
+    rpx_opts[:realm]     ||= RPXNOW_CONFIG.realm
+    rpx_opts[:token_url]   = token_url
+    rpx_opts.each_pair do |k, v|
+      options["data-rpxnow-#{k.to_s.gsub("_", "-")}"] = v
+    end
+    full_url = "http://#{rpx_opts[:realm]}.rpxnow.com/openid/v2/signin?token_url=#{Rack::Utils.escape(token_url)}"
+    link_to text, full_url, options
+  end
+  
+  def has_rpxnow
+    return if defined?(@has_rpxnow) && @has_rpxnow
+    rpxnow_js = "#{request.ssl? ? 'https://' : 'http://static.'}rpxnow.com/js/lib/rpx.js"
+    has_js rpxnow_js, 'bhm/rpx_now'
+    @has_rpxnow = true
   end
   
   protected

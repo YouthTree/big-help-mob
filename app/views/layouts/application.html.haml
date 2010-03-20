@@ -6,14 +6,13 @@
     /[if IE]
       %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
-    = javascript_include_tag "bhm/bhm"
+    = javascript_include_tag "bhm/bhm", "bhm/flash"
     = csrf_meta_tag
     = yield :extra_head
   %body
+    = flash_messages :alert, :notice
     #container
       %header= render :partial => 'shared/header'
-      
-      = flash_messages :alert, :notice
       
       %article#content= yield
     

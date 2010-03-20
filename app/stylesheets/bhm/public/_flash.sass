@@ -1,0 +1,19 @@
+section#flash-messages
+  :display block
+  :margin 0 auto
+  :padding 0
+  :position absolute
+  :top 0
+  :width 100%
+  :z-index 50
+  
+  p.flash
+    :margin 0 auto
+    :width 960px
+    :font-size 1.2em
+    :padding 0.5em 0
+    :border-top none
+    +box-shadow(#777, 0, 0, 0.25em)
+    
+  p.flash.last
+    +border-bottom-radius(0.5em)

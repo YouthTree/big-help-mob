@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
-                  :last_name, :date_of_birth, :phone, :postcode, :allergies
+                  :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_ids
 
   has_many :mission_participations
   has_many :missions, :through => :mission_participations
@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
   belongs_to :current_role, :class_name => "Role"
 
-  after_save :update_mailchimp_subscription
+  after_save   :update_mailchimp_subscription
+  after_create :save_initial_mailing_list_subscripts
 
   acts_as_authentic do |c|
     c.account_merge_enabled true
@@ -42,7 +43,9 @@ class User < ActiveRecord::Base
   end
   
   def mailing_list_ids
-    if email.present?
+    if new_record?
+      @mailing_list_ids ||= []
+    elsif email.present?
       @mailing_list_ids ||= HominidWrapper.subscriptions_for_user(self)
     else
       []
@@ -50,10 +53,14 @@ class User < ActiveRecord::Base
   end
   
   def mailing_list_ids=(ids)
-    return false unless email.present?
-    HominidWrapper.update_user_subscriptions(self, ids) if ids != mailing_list_ids
-    # Force a refresh
-    @mailing_list_ids = nil
+    if new_record?
+      @mailing_list_ids = ids
+    else
+      return false unless email.present?
+      HominidWrapper.update_user_subscriptions(self, ids) if ids != mailing_list_ids
+      # Force a refresh
+      @mailing_list_ids = nil
+    end  
     true
   end
   
@@ -77,7 +84,11 @@ class User < ActiveRecord::Base
   protected
   
   def update_mailchimp_subscription
-    HominidWrapper.update_user_email(self)
+    HominidWrapper.update_user_email(self) if email_changed? && !email.blank? && mailing_list_ids.present?
+  end
+  
+  def save_initial_mailing_list_subscripts
+    HominidWrapper.update_user_subscriptions(self, @mailing_list_ids) if @mailing_list_ids.present?
   end
 
 end

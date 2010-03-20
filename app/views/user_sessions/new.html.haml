@@ -1,8 +1,19 @@
-- semantic_form_for @user_session do |form|
+- on_new_page = controller.action_name == "new" && !params[:traditional]
+
+- if on_new_page
+  - has_js 'bhm/authentication'
+  %dl#authentication-choices
+    %dt I signed up using a...
+    %dd.choice= rpxnow_link tu('authentication.external'), sign_in_url, :id => 'rpxnow-authentication-link'
+    %dd.or or
+    %dd.choice= link_to tu('authentication.internal'), sign_in_path(:traditional => true), :id => 'traditional-authentication-link'
   
-  - form.inputs :name => "Your Account Details" do
-    = form.input :login
-    = form.input :password
+#authentication-with-standard-account{:style => ("display: none;" if on_new_page)}
+  - semantic_form_for @user_session do |form|
   
-  - form.buttons do
-    = form.commit_button "Sign in"
+    - form.inputs :name => "Your Account Details" do
+      = form.input :login
+      = form.input :password
+  
+    - form.buttons do
+      = form.commit_button "Sign in"

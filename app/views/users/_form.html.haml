@@ -12,6 +12,8 @@
     = form.input :last_name
     = form.input :phone, :hint => "We respect your privacy - this number will never be given out or shared."
     
+  - form.inputs :name => "Mailing List Subscriptions" do
+    = form.input :mailing_list_ids, :collection => HominidWrapper.available_lists_for_select, :as => :check_boxes
     
   - form.buttons do
     = form.commit_button

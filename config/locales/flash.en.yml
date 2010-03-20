@@ -16,3 +16,4 @@ en:
     profile:
       incomplete: 'Welcome back! Please complete your registration details to continue'
       unknown_user: "Woops! Seems you entered the details incorrectly or we just don't know you..."
+      welcome: 'Welcome to Big Help Mob!'

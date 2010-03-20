@@ -1,0 +1,14 @@
+= content_section 'signup.introduction'
+
+- on_new_page = controller.action_name == "new" && !params[:traditional]
+
+- if on_new_page
+  - has_js 'bhm/authentication'
+  %dl#authentication-choices
+    %dt Sign up using...
+    %dd.choice= rpxnow_link tu('authentication.external'), sign_in_url, :id => 'rpxnow-authentication-link'
+    %dd.or or
+    %dd.choice= link_to tu('authentication.internal'), new_user_path(:traditional => true), :id => 'traditional-authentication-link'
+  
+#authentication-with-standard-account{:style => ("display: none;" if on_new_page)}
+  = render :partial => 'form'

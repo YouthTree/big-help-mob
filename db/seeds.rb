@@ -23,6 +23,7 @@ begin
   
   puts "Making default content sections."
   Content.create!({:name => "home.introduction", :title => "Introduction", :content => ""}.trust)
+  Content.create!({:name => "signup.introduction", :title => "Introduction", :content => ""}.trust)
   
 ensure
   $stdout.sync = sync

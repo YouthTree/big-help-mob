@@ -1,48 +1,64 @@
-form.formtastic
-  :margin 0 15%
+!form_padding_inner = 20px
+
+#content
+  form.formtastic
+    :margin 0 15% 0
   
-  > fieldset.inputs
-    :margin 1em 0
-    :padding 1.5em 1.5em 0.5em
-    :background #F9F9F9
-    +linear-gradient(color_stops(#EEE, #FFF), "top")
-    +box-shadow(#666, 0, 0, 5px)
-    +border-radius(0.5em)
-    :border 0.1em solid #999
+    > fieldset.inputs
+      :margin 3em 0 4.5em
+      :padding 0
+      :background #F9F9F9
+      :border 1px solid #CCC
+      :position relative
     
-    > legend
-      :font-size 1.2em
-      :font-weight bold
-      :background #333
-      +linear-gradient(color_stops(#222, #555), "bottom")
-      +box-shadow(#666, 0, 0, 5px)
-      +border-radius(0.4em)
-      :border 0.1em solid #999
-      :padding 0.25em 0.5em
-      :color white
+      > legend span
+        :font-size 1.4em
+        :font-weight bold
+        :position absolute
+        :left 0
+        :color #111
+        :margin-top -1.5em
+        +bauhaus-font-stack
+      
+      > ol
+        :margin= !form_padding_inner !form_padding_inner 0
 
-    label
-      :font-weight bold
-      :color #444
+      label
+        :font-weight bold
+        :color #222
+        :font-size 1em
+        :padding-top 0
 
-      abbr.required
-        :color #992025
-
-    ol li ol li label
-      :font-weight normal
-      :color #111
-
-  > fieldset.buttons
-    :margin 2em 0 0
-    :padding 0
-    ol
-      :text-align center
-      li
-        :margin 0
+        abbr.required
+          :color #992025
+    
+      p.inline-hints, p.inline-errors
+        :margin 0.5em 0 0 25%
+        :font-size 1em
         :padding 0
-        :float none
-      button
-        +fancy-button(#333, 16px)
+        :line-height 1.5em
 
-  span.cke_skin_kama
-    :margin-left 25%
+      ol li ol li
+        label
+          :font-weight normal
+          :font-size 0.9em
+          :color #333
+      
+      ol li fieldset legend
+        :padding 0
+        :margin-top -0.3em
+
+    > fieldset.buttons
+      :margin -2em 0 2em
+      :padding 0
+      ol
+        :text-align center
+        li
+          :margin 0
+          :padding 0
+          :float none
+        button
+          +fancy-button(#333, 16px, 0)
+
+    span.cke_skin_kama
+      :margin-left 25%

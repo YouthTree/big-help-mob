@@ -1,0 +1,28 @@
+#authentication-choices
+  :text-align center
+  :font-size 1.2em
+  
+  dt, dd
+    :margin 0
+    :padding 0
+    :line-height 1.8em
+    :font-size 1.25em
+    
+  dt
+    :font-weight bold
+    :color #000
+    +bauhaus-font-stack
+    
+  dd.or
+    :color #666
+    :font-size 1em
+    
+  dd.choice
+    a
+      +fancy-button-structure(14px)
+      :padding 0.5em 1em
+    a#traditional-authentication-link
+      +fancy-button-colors(#477499)
+    a#rpxnow-authentication-link
+      +fancy-button-colors(#54996E)
+    

@@ -167,32 +167,38 @@ fieldset {
   src: local('Bauhaus Std Demi'), local('BauhausStd-Demi'), url(/fonts/BauhausStd-Demi.woff) format('woff'), url(/fonts/BauhausStd-Demi.ttf) format('truetype');
 }
 
-/* line 6, ../../app/stylesheets/bhm/_flash.sass */
+/* line 7, ../../app/stylesheets/bhm/_flash.sass */
 #flash-messages {
   margin: 0;
 }
-/* line 8, ../../app/stylesheets/bhm/_flash.sass */
+/* line 9, ../../app/stylesheets/bhm/_flash.sass */
 #flash-messages p.flash {
   margin: 0 0 1em;
   padding: 0.5em;
   font-weight: bold;
   text-align: center;
   border: 0.2em solid;
-  border-color: #5e5e5e;
+  border-color: #777777;
   background-color: #c3c3c3;
   color: #444444;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #dcdcdc), color-stop(100%, #aaaaaa));
+  background-image: -moz-linear-gradient(top, #dcdcdc 0%, #aaaaaa 100%);
 }
-/* line 15, ../../app/stylesheets/bhm/_flash.sass */
+/* line 16, ../../app/stylesheets/bhm/_flash.sass */
 #flash-messages p.flash.alert {
-  border-color: #c22e35;
+  border-color: #d54e55;
   background-color: #f2cacc;
   color: #99242a;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #fcf3f3), color-stop(100%, #e8a1a5));
+  background-image: -moz-linear-gradient(top, #fcf3f3 0%, #e8a1a5 100%);
 }
-/* line 17, ../../app/stylesheets/bhm/_flash.sass */
+/* line 18, ../../app/stylesheets/bhm/_flash.sass */
 #flash-messages p.flash.notice {
-  border-color: #298733;
+  border-color: #35ae41;
   background-color: #9be1a2;
   color: #1d6024;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #c2edc6), color-stop(100%, #74d57e));
+  background-image: -moz-linear-gradient(top, #c2edc6 0%, #74d57e 100%);
 }
 
 /* line 1, ../../app/stylesheets/bhm/_formtastic_base.sass */
@@ -635,116 +641,275 @@ body {
   font-size: 1.2em;
   line-height: 1.8em;
 }
+/* line 20, ../../app/stylesheets/bhm/public/_content.sass */
+#content strong {
+  font-weight: bold;
+}
+/* line 22, ../../app/stylesheets/bhm/public/_content.sass */
+#content em {
+  font-style: italic;
+}
+/* line 24, ../../app/stylesheets/bhm/public/_content.sass */
+#content .embedded-content.signup-introduction {
+  margin: 0 15% 1em;
+}
+/* line 26, ../../app/stylesheets/bhm/public/_content.sass */
+#content .embedded-content.signup-introduction p {
+  margin-left: 0;
+  margin-right: 0;
+}
 
-/* line 21, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 30, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions {
   margin: 0 1em 1em;
   font-size: 1.2em;
 }
-/* line 24, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 33, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dt {
   font-weight: bold;
   color: #000;
   margin: 1.5em 0 0;
   padding: 0;
 }
-/* line 29, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 38, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dt.first {
   margin-top: 0;
 }
-/* line 31, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 40, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dd {
   color: #333;
   font-size: 1em;
   margin: 0.25em 0;
   padding: 0;
 }
-/* line 36, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 45, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dd p {
   font-size: 1em;
   padding: 0;
   margin: 0 0 0.5em;
 }
 
-/* line 41, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 50, ../../app/stylesheets/bhm/public/_content.sass */
 #intro-video {
   text-align: center;
   margin: 0 0 1em;
 }
 
-/* line 1, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic {
-  margin: 0 15%;
-}
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.inputs {
-  margin: 1em 0;
-  padding: 1.5em 1.5em 0.5em;
+#content form.formtastic {
+  margin: 0 15% 0;
+}
+/* line 7, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.inputs {
+  margin: 3em 0 4.5em;
+  padding: 0;
   background: #F9F9F9;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, white));
-  background-image: -moz-linear-gradient(top, #eeeeee 0%, white 100%);
-  /* Webkit (Safari, Chrome) */
-  -webkit-box-shadow: #666666 0 0 5px;
-  /* Gecko (Firefox, Camino) */
-  -moz-box-shadow: #666666 0 0 5px;
-  /* CSS3 */
-  box-shadow: #666666 0 0 5px;
-  border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  -webkit-border-radius: 0.5em;
-  border: 0.1em solid #999;
+  border: 1px solid #CCC;
+  position: relative;
 }
-/* line 13, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.inputs > legend {
-  font-size: 1.2em;
+/* line 14, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.inputs > legend span {
+  font-size: 1.4em;
   font-weight: bold;
-  background: #333;
-  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #222222), color-stop(100%, #555555));
-  background-image: -moz-linear-gradient(bottom, #222222 0%, #555555 100%);
-  /* Webkit (Safari, Chrome) */
-  -webkit-box-shadow: #666666 0 0 5px;
-  /* Gecko (Firefox, Camino) */
-  -moz-box-shadow: #666666 0 0 5px;
-  /* CSS3 */
-  box-shadow: #666666 0 0 5px;
-  border-radius: 0.4em;
-  -moz-border-radius: 0.4em;
-  -webkit-border-radius: 0.4em;
-  border: 0.1em solid #999;
-  padding: 0.25em 0.5em;
-  color: white;
+  position: absolute;
+  left: 0;
+  color: #111;
+  margin-top: -1.5em;
+  font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
 }
-/* line 24, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.inputs label {
+/* line 23, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.inputs > ol {
+  margin: 20px 20px 0;
+}
+/* line 26, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.inputs label {
   font-weight: bold;
-  color: #444;
+  color: #222;
+  font-size: 1em;
+  padding-top: 0;
 }
-/* line 28, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.inputs label abbr.required {
+/* line 32, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.inputs label abbr.required {
   color: #992025;
 }
-/* line 31, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.inputs ol li ol li label {
-  font-weight: normal;
-  color: #111;
-}
 /* line 35, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.buttons {
-  margin: 2em 0 0;
+#content form.formtastic > fieldset.inputs p.inline-hints, #content form.formtastic > fieldset.inputs p.inline-errors {
+  margin: 0.5em 0 0 25%;
+  font-size: 1em;
+  padding: 0;
+  line-height: 1.5em;
+}
+/* line 42, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.inputs ol li ol li label {
+  font-weight: normal;
+  font-size: 0.9em;
+  color: #333;
+}
+/* line 47, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.inputs ol li fieldset legend {
+  padding: 0;
+  margin-top: -0.3em;
+}
+/* line 51, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.buttons {
+  margin: -2em 0 2em;
   padding: 0;
 }
-/* line 38, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.buttons ol {
+/* line 54, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.buttons ol {
   text-align: center;
 }
-/* line 40, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.buttons ol li {
+/* line 56, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.buttons ol li {
   margin: 0;
   padding: 0;
   float: none;
 }
-/* line 44, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic > fieldset.buttons ol button {
+/* line 60, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic > fieldset.buttons ol button {
+  font-family: "Lucida Grande", Lucida, Arial, sans_serif;
+  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19.2px;
+  padding: 4px 16px;
+  border-width: 1px;
+  background-color: #333333;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #878787), color-stop(10%, #595959), color-stop(50%, #2c2c2c), color-stop(50%, #242424), color-stop(100%, #3e3e3e));
+  background-image: -moz-linear-gradient(top, #878787 0%, #595959 10%, #2c2c2c 50%, #242424 50%, #3e3e3e 100%);
+  border-color: #0d0d0d;
+  text-shadow: black 0px 1px 1px;
+  color: white;
+}
+/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button:focus {
+  outline: none;
+}
+/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button.disabled, #content form.formtastic > fieldset.buttons ol button[disabled] {
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+  -khtml-opacity: 0.7;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  filter: alpha(opacity=70);
+}
+/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button.disabled:hover, #content form.formtastic > fieldset.buttons ol button.disabled:focus, #content form.formtastic > fieldset.buttons ol button[disabled]:hover, #content form.formtastic > fieldset.buttons ol button[disabled]:focus {
+  cursor: default;
+}
+/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button:active {
+  padding: 3px 15px;
+  border-width: 2px;
+}
+/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button.disabled:active, #content form.formtastic > fieldset.buttons ol button[disabled] {
+  padding: 4px 16px;
+  border-width: 1px;
+}
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button.disabled:active, #content form.formtastic > fieldset.buttons ol button.disabled:hover, #content form.formtastic > fieldset.buttons ol button[disabled]:active, #content form.formtastic > fieldset.buttons ol button[disabled]:hover {
+  background-color: #333333;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #878787), color-stop(10%, #595959), color-stop(50%, #2c2c2c), color-stop(50%, #242424), color-stop(100%, #3e3e3e));
+  background-image: -moz-linear-gradient(top, #878787 0%, #595959 10%, #2c2c2c 50%, #242424 50%, #3e3e3e 100%);
+  border-color: #0d0d0d;
+  text-shadow: black 0px 1px 1px;
+  color: white;
+}
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button:hover, #content form.formtastic > fieldset.buttons ol button:focus {
+  background-color: #2b2b2b;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #7f7f7f), color-stop(10%, #515151), color-stop(50%, #242424), color-stop(50%, #1c1c1c), color-stop(100%, #363636));
+  background-image: -moz-linear-gradient(top, #7f7f7f 0%, #515151 10%, #242424 50%, #1c1c1c 50%, #363636 100%);
+  border-color: #050505;
+  text-shadow: black 0px 1px 1px;
+  color: white;
+}
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#content form.formtastic > fieldset.buttons ol button:active {
+  background-color: #242424;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #242424), color-stop(30%, #292929), color-stop(50%, #1f1f1f), color-stop(50%, #181818), color-stop(100%, #393939));
+  background-image: -moz-linear-gradient(top, #242424 0%, #292929 30%, #1f1f1f 50%, #181818 50%, #393939 100%);
+  border-color: black;
+  text-shadow: black 0px -1px -1px;
+  color: white;
+}
+/* line 63, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic span.cke_skin_kama {
+  margin-left: 25%;
+}
+
+/* line 1, ../../app/stylesheets/bhm/public/_flash.sass */
+section#flash-messages {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+}
+/* line 10, ../../app/stylesheets/bhm/public/_flash.sass */
+section#flash-messages p.flash {
+  margin: 0 auto;
+  width: 960px;
+  font-size: 1.2em;
+  padding: 0.5em 0;
+  border-top: none;
+  /* Webkit (Safari, Chrome) */
+  -webkit-box-shadow: #777777 0 0 0.25em;
+  /* Gecko (Firefox, Camino) */
+  -moz-box-shadow: #777777 0 0 0.25em;
+  /* CSS3 */
+  box-shadow: #777777 0 0 0.25em;
+}
+/* line 18, ../../app/stylesheets/bhm/public/_flash.sass */
+section#flash-messages p.flash.last {
+  border-bottom-left-radius: 0.5em;
+  -moz-border-radius-bottomleft: 0.5em;
+  -webkit-border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  -moz-border-radius-bottomright: 0.5em;
+  -webkit-border-bottom-right-radius: 0.5em;
+}
+
+/* line 1, ../../app/stylesheets/bhm/public/_signup.sass */
+#authentication-choices {
+  text-align: center;
+  font-size: 1.2em;
+}
+/* line 5, ../../app/stylesheets/bhm/public/_signup.sass */
+#authentication-choices dt, #authentication-choices dd {
+  margin: 0;
+  padding: 0;
+  line-height: 1.8em;
+  font-size: 1.25em;
+}
+/* line 11, ../../app/stylesheets/bhm/public/_signup.sass */
+#authentication-choices dt {
+  font-weight: bold;
+  color: #000;
+  font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
+}
+/* line 16, ../../app/stylesheets/bhm/public/_signup.sass */
+#authentication-choices dd.or {
+  color: #666;
+  font-size: 1em;
+}
+/* line 21, ../../app/stylesheets/bhm/public/_signup.sass */
+#authentication-choices dd.choice a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
   margin: 0;
@@ -758,28 +923,23 @@ form.formtastic > fieldset.buttons ol button {
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
-  font-size: 16px;
-  line-height: 19.2px;
-  padding: 4px 16px;
+  font-size: 14px;
+  line-height: 16.8px;
+  padding: 2px 11px;
   border-width: 1px;
-  background-color: #333333;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #878787), color-stop(10%, #595959), color-stop(50%, #2c2c2c), color-stop(50%, #242424), color-stop(100%, #3e3e3e));
-  background-image: -moz-linear-gradient(top, #878787 0%, #595959 10%, #2c2c2c 50%, #242424 50%, #3e3e3e 100%);
-  border-color: #0d0d0d;
-  text-shadow: black 0px 1px 1px;
-  color: white;
+  padding: 0.5em 1em;
 }
 /* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button::-moz-focus-inner {
+#authentication-choices dd.choice a::-moz-focus-inner {
   border: none;
   padding: 0;
 }
 /* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button:focus {
+#authentication-choices dd.choice a:focus {
   outline: none;
 }
 /* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button.disabled, form.formtastic > fieldset.buttons ol button[disabled] {
+#authentication-choices dd.choice a.disabled, #authentication-choices dd.choice a[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
   -khtml-opacity: 0.7;
@@ -787,47 +947,88 @@ form.formtastic > fieldset.buttons ol button.disabled, form.formtastic > fieldse
   filter: alpha(opacity=70);
 }
 /* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button.disabled:hover, form.formtastic > fieldset.buttons ol button.disabled:focus, form.formtastic > fieldset.buttons ol button[disabled]:hover, form.formtastic > fieldset.buttons ol button[disabled]:focus {
+#authentication-choices dd.choice a.disabled:hover, #authentication-choices dd.choice a.disabled:focus, #authentication-choices dd.choice a[disabled]:hover, #authentication-choices dd.choice a[disabled]:focus {
   cursor: default;
 }
 /* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button:active {
-  padding: 3px 15px;
+#authentication-choices dd.choice a:active {
+  padding: 1px 10px;
   border-width: 2px;
 }
 /* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button.disabled:active, form.formtastic > fieldset.buttons ol button[disabled] {
-  padding: 4px 16px;
+#authentication-choices dd.choice a.disabled:active, #authentication-choices dd.choice a[disabled] {
+  padding: 2px 11px;
   border-width: 1px;
 }
+/* line 24, ../../app/stylesheets/bhm/public/_signup.sass */
+#authentication-choices dd.choice a#traditional-authentication-link {
+  background-color: #1a78c6;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
+  background-image: -moz-linear-gradient(top, #afc6da 0%, #709abd 10%, #426c8e 50%, #3d6484 50%, #4d7ea7 100%);
+  border-color: #2f4c65;
+  text-shadow: #0b3455 0px 1px 1px;
+  color: white;
+}
 /* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button.disabled:active, form.formtastic > fieldset.buttons ol button.disabled:hover, form.formtastic > fieldset.buttons ol button[disabled]:active, form.formtastic > fieldset.buttons ol button[disabled]:hover {
-  background-color: #333333;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #878787), color-stop(10%, #595959), color-stop(50%, #2c2c2c), color-stop(50%, #242424), color-stop(100%, #3e3e3e));
-  background-image: -moz-linear-gradient(top, #878787 0%, #595959 10%, #2c2c2c 50%, #242424 50%, #3e3e3e 100%);
-  border-color: #0d0d0d;
-  text-shadow: black 0px 1px 1px;
+#authentication-choices dd.choice a#traditional-authentication-link.disabled:active, #authentication-choices dd.choice a#traditional-authentication-link.disabled:hover, #authentication-choices dd.choice a#traditional-authentication-link[disabled]:active, #authentication-choices dd.choice a#traditional-authentication-link[disabled]:hover {
+  background-color: #1a78c6;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
+  background-image: -moz-linear-gradient(top, #afc6da 0%, #709abd 10%, #426c8e 50%, #3d6484 50%, #4d7ea7 100%);
+  border-color: #2f4c65;
+  text-shadow: #0b3455 0px 1px 1px;
   color: white;
 }
 /* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button:hover, form.formtastic > fieldset.buttons ol button:focus {
-  background-color: #2b2b2b;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #7f7f7f), color-stop(10%, #515151), color-stop(50%, #242424), color-stop(50%, #1c1c1c), color-stop(100%, #363636));
-  background-image: -moz-linear-gradient(top, #7f7f7f 0%, #515151 10%, #242424 50%, #1c1c1c 50%, #363636 100%);
-  border-color: #050505;
-  text-shadow: black 0px 1px 1px;
+#authentication-choices dd.choice a#traditional-authentication-link:hover, #authentication-choices dd.choice a#traditional-authentication-link:focus {
+  background-color: #1870b9;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #a4bfd5), color-stop(10%, #6593b8), color-stop(50%, #3d6484), color-stop(50%, #385c7a), color-stop(100%, #48769d));
+  background-image: -moz-linear-gradient(top, #a4bfd5 0%, #6593b8 10%, #3d6484 50%, #385c7a 50%, #48769d 100%);
+  border-color: #2a445b;
+  text-shadow: #092c48 0px 1px 1px;
   color: white;
 }
 /* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-form.formtastic > fieldset.buttons ol button:active {
-  background-color: #242424;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #242424), color-stop(30%, #292929), color-stop(50%, #1f1f1f), color-stop(50%, #181818), color-stop(100%, #393939));
-  background-image: -moz-linear-gradient(top, #242424 0%, #292929 30%, #1f1f1f 50%, #181818 50%, #393939 100%);
-  border-color: black;
-  text-shadow: black 0px -1px -1px;
+#authentication-choices dd.choice a#traditional-authentication-link:active {
+  background-color: #1668ab;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #3d6484), color-stop(30%, #40698b), color-stop(50%, #395f7d), color-stop(50%, #355772), color-stop(100%, #4979a0));
+  background-image: -moz-linear-gradient(top, #3d6484 0%, #40698b 30%, #395f7d 50%, #355772 50%, #4979a0 100%);
+  border-color: #253c50;
+  text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 47, ../../app/stylesheets/bhm/public/_forms.sass */
-form.formtastic span.cke_skin_kama {
-  margin-left: 25%;
+/* line 26, ../../app/stylesheets/bhm/public/_signup.sass */
+#authentication-choices dd.choice a#rpxnow-authentication-link {
+  background-color: #25c862;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
+  background-image: -moz-linear-gradient(top, #bbdac7 0%, #80b996 10%, #4e8f67 50%, #498560 50%, #5ca578 100%);
+  border-color: #39684a;
+  text-shadow: #115c2d 0px 1px 1px;
+  color: white;
+}
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#authentication-choices dd.choice a#rpxnow-authentication-link.disabled:active, #authentication-choices dd.choice a#rpxnow-authentication-link.disabled:hover, #authentication-choices dd.choice a#rpxnow-authentication-link[disabled]:active, #authentication-choices dd.choice a#rpxnow-authentication-link[disabled]:hover {
+  background-color: #25c862;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
+  background-image: -moz-linear-gradient(top, #bbdac7 0%, #80b996 10%, #4e8f67 50%, #498560 50%, #5ca578 100%);
+  border-color: #39684a;
+  text-shadow: #115c2d 0px 1px 1px;
+  color: white;
+}
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#authentication-choices dd.choice a#rpxnow-authentication-link:hover, #authentication-choices dd.choice a#rpxnow-authentication-link:focus {
+  background-color: #23bb5c;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #b2d5bf), color-stop(10%, #77b48e), color-stop(50%, #498560), color-stop(50%, #447b59), color-stop(100%, #569c71));
+  background-image: -moz-linear-gradient(top, #b2d5bf 0%, #77b48e 10%, #498560 50%, #447b59 50%, #569c71 100%);
+  border-color: #345e44;
+  text-shadow: #0f5027 0px 1px 1px;
+  color: white;
+}
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#authentication-choices dd.choice a#rpxnow-authentication-link:active {
+  background-color: #20ae56;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #498560), color-stop(30%, #4c8b65), color-stop(50%, #457e5c), color-stop(50%, #407454), color-stop(100%, #579f73));
+  background-image: -moz-linear-gradient(top, #498560 0%, #4c8b65 30%, #457e5c 50%, #407454 50%, #579f73 100%);
+  border-color: #2e543c;
+  text-shadow: #0c4221 0px -1px -1px;
+  color: white;
 }
