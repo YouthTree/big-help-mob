@@ -14,4 +14,7 @@
   = form.input :password
   = form.input :password_confirmation
   
+- form.inputs :name => "Mailing List Subscriptions" do
+  = form.input :mailing_list_ids, :collection => HominidWrapper.available_lists_for_select, :as => :check_boxes
+  
   

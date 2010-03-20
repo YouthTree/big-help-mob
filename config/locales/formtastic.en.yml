@@ -10,3 +10,5 @@ en:
     labels:
       question:
         visible: "Show this question on the homepage"
+      user:
+        mailing_list_ids: "Mailing Lists"

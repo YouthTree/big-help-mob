@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   belongs_to :current_role, :class_name => "Role"
 
+  after_save :update_mailchimp_subscription
+
   acts_as_authentic do |c|
     c.account_merge_enabled true
     c.account_mapping_mode  :internal
@@ -35,6 +37,26 @@ class User < ActiveRecord::Base
     display_name.present? ? display_name : login
   end
   
+  def mailing_list_names
+    HominidWrapper.local_id_to_name_mapping(mailing_list_ids)
+  end
+  
+  def mailing_list_ids
+    if email.present?
+      @mailing_list_ids ||= HominidWrapper.subscriptions_for_user(self)
+    else
+      []
+    end
+  end
+  
+  def mailing_list_ids=(ids)
+    return false unless email.present?
+    HominidWrapper.update_user_subscriptions(self, ids) if ids != mailing_list_ids
+    # Force a refresh
+    @mailing_list_ids = nil
+    true
+  end
+  
   def self.for_select
     all.map { |u| [u.to_s, u.id] }
   end
@@ -50,6 +72,12 @@ class User < ActiveRecord::Base
       from += 1
     end
     results
+  end
+  
+  protected
+  
+  def update_mailchimp_subscription
+    HominidWrapper.update_user_email(self)
   end
 
 end

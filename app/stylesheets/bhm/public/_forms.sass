@@ -1,0 +1,48 @@
+form.formtastic
+  :margin 0 15%
+  
+  > fieldset.inputs
+    :margin 1em 0
+    :padding 1.5em 1.5em 0.5em
+    :background #F9F9F9
+    +linear-gradient(color_stops(#EEE, #FFF), "top")
+    +box-shadow(#666, 0, 0, 5px)
+    +border-radius(0.5em)
+    :border 0.1em solid #999
+    
+    > legend
+      :font-size 1.2em
+      :font-weight bold
+      :background #333
+      +linear-gradient(color_stops(#222, #555), "bottom")
+      +box-shadow(#666, 0, 0, 5px)
+      +border-radius(0.4em)
+      :border 0.1em solid #999
+      :padding 0.25em 0.5em
+      :color white
+
+    label
+      :font-weight bold
+      :color #444
+
+      abbr.required
+        :color #992025
+
+    ol li ol li label
+      :font-weight normal
+      :color #111
+
+  > fieldset.buttons
+    :margin 2em 0 0
+    :padding 0
+    ol
+      :text-align center
+      li
+        :margin 0
+        :padding 0
+        :float none
+      button
+        +fancy-button(#333, 16px)
+
+  span.cke_skin_kama
+    :margin-left 25%
