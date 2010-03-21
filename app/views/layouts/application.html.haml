@@ -2,10 +2,10 @@
 %html{:lang => "en", :dir => "ltr"}
   %head
     %title== #{page_title} - Big Help Mob
-    = include_stylesheets :base, :media => 'screen, projection'
+    = raw include_stylesheets(:base, :media => 'screen, projection')
     /[if IE]
       %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
-    = include_javascripts :base
+    = raw include_javascripts(:base)
     = csrf_meta_tag
     = yield :extra_head
   %body
