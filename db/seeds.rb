@@ -22,8 +22,8 @@ begin
   Role.create!({:name => "sidekick"}.trust)
   
   puts "Making default content sections."
-  Content.create!({:name => "home.introduction", :title => "Introduction", :content => ""}.trust)
-  Content.create!({:name => "signup.introduction", :title => "Introduction", :content => ""}.trust)
+  Content.create!({:key => "home.introduction", :title => "Introduction", :content => ""}.trust)
+  Content.create!({:key => "signup.introduction", :title => "Introduction", :content => ""}.trust)
   
 ensure
   $stdout.sync = sync
