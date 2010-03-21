@@ -1,7 +1,6 @@
 class CaptainApplication < ActiveRecord::Base
 end
 
-
 # == Schema Info
 #
 # Table name: captain_applications

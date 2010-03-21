@@ -14,7 +14,6 @@ class Content < ActiveRecord::Base
   
 end
 
-
 # == Schema Info
 #
 # Table name: contents

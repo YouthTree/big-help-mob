@@ -7,7 +7,6 @@ class CaptainApplicationTest < ActiveSupport::TestCase
   end
 end
 
-
 # == Schema Info
 #
 # Table name: captain_applications

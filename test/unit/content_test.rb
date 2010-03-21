@@ -7,7 +7,6 @@ class ContentTest < ActiveSupport::TestCase
   end
 end
 
-
 # == Schema Info
 #
 # Table name: contents

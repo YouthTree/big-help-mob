@@ -9,7 +9,7 @@ class MissionParticipation < ActiveRecord::Base
   attr_accessible :mission_id
   
   scope :with_role, includes(:role).where('role_id IS NOT NULL')
-  
+
   state_machine :initial => :created do
     state :created
     state :approved
@@ -25,6 +25,7 @@ class MissionParticipation < ActiveRecord::Base
       transition :approved => :completed
     end
   end
+  
   
 end
 

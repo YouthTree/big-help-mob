@@ -8,6 +8,9 @@
   
   = r.attribute :description
   
+  - r.attribute :state do
+    = resource.state.to_s.humanize
+  
   - r.association :organisation do
     = link_to resource.organisation, [:admin, resource.organisation]
   

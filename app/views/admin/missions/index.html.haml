@@ -7,6 +7,7 @@
     %tr
       %th ID
       %th Name
+      %th State
       %th User
       %th Organization
       %th &nbsp;
@@ -15,9 +16,10 @@
       %tr{:class => cycle('odd', 'even')}
         %td= r.id
         %td= r.name
+        %td= r.state.to_s.humanize
         %td=vwd r.user.try(:to_s)
         %td= link_to r.organisation, [:admin, r.organisation]
         %td.actions= individual_resource_links r
-    = empty_row_for_collection 4
+    = empty_row_for_collection 5
         
 = will_paginate collection

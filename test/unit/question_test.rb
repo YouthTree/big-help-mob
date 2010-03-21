@@ -7,7 +7,6 @@ class QuestionTest < ActiveSupport::TestCase
   end
 end
 
-
 # == Schema Info
 #
 # Table name: questions
@@ -16,6 +15,6 @@ end
 #  answer     :text
 #  position   :integer(4)
 #  question   :text
-#  visible    :boolean(1)
+#  visible    :boolean(1)      not null
 #  created_at :datetime
 #  updated_at :datetime

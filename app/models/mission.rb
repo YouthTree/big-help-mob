@@ -16,7 +16,41 @@ class Mission < ActiveRecord::Base
 
   attr_accessible :organisation_id, :user_id, :description, :name
 
-  # Model methods
+  state_machine :initial => :created do
+    state :created
+    state :published
+    state :approved
+    state :completed
+    state :cancelled
+    
+    event :publish do
+      transition :created => :published
+    end
+    
+    event :approve do
+      transition :published => :approved
+    end
+    
+    event :cancel do
+      transition any => :cancelled
+    end
+    
+    event :complete do
+      transition :approved => :completed
+    end
+  end
+  
+  def state_events_for_select
+    state_events.map { |se| [se.to_s.titleize, se.to_s] }
+  end
+
+  def to_param
+    "#{self.id}-#{self.to_slug}"
+  end
+
+  def to_slug
+    name.parameterize
+  end
 
 end
 
@@ -29,6 +63,7 @@ end
 #  user_id         :integer(4)
 #  description     :text            not null, default("")
 #  name            :string(255)     not null
+#  state           :string(255)
 #  created_at      :datetime
 #  occurs_at       :datetime        not null
 #  updated_at      :datetime

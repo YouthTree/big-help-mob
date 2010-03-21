@@ -10,6 +10,8 @@
   
   = form.input :organisation
   
+  = form.input :state_event, :as => :select, :collection => form.object.state_events_for_select
+  
 - form.inputs :name => "Mission Address" do
   = render_address_fields form
   

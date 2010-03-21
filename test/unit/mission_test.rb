@@ -18,6 +18,7 @@ end
 #  user_id         :integer(4)
 #  description     :text            not null, default("")
 #  name            :string(255)     not null
+#  state           :string(255)
 #  created_at      :datetime
 #  occurs_at       :datetime        not null
 #  updated_at      :datetime
