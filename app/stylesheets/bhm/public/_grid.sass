@@ -7,3 +7,26 @@
 
 #content, footer, #flash-messages
   +grid-width(24)
+  
+=left-column(!width)
+  +grid-width(!width)
+  +alpha
+
+=right-column(!width)
+  +grid-width(!width)
+  +omega
+
+#content
+  .columns-container
+    +clearfix
+    .column
+      +grid-unit-base
+    .column-left-50, #intro-video
+      +left-column(12)
+    .column-right-50, .home-introduction
+      +right-column(12)
+  
+    .embedded-content
+      p
+        :margin-left 0
+        :margin-right 0

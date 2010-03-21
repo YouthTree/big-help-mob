@@ -438,6 +438,38 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
   width: 940px;
 }
 
+/* line 20, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container {
+  overflow: hidden;
+  display: inline-block;
+}
+/* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#content .columns-container {
+  display: block;
+}
+/* line 22, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container .column {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* line 24, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container .column-left-50, #content .columns-container #intro-video {
+  width: 460px;
+  margin-left: 0;
+}
+/* line 26, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container .column-right-50, #content .columns-container .home-introduction {
+  width: 460px;
+  margin-right: 0;
+}
+/* line 30, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container .embedded-content p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* line 1, ../../app/stylesheets/bhm/public/_header.sass */
 header {
   display: block;
@@ -705,7 +737,11 @@ dl#frequently-asked-questions dd p {
 /* line 53, ../../app/stylesheets/bhm/public/_content.sass */
 #intro-video {
   text-align: center;
-  margin: 0 0 1em;
+}
+
+/* line 56, ../../app/stylesheets/bhm/public/_content.sass */
+#homepage-columns {
+  margin-bottom: 2em;
 }
 
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */

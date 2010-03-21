@@ -54,7 +54,7 @@ module ApplicationHelper
   end
   
   def options_with_class_merged(o, n)
-    css_klass = [o[:class], n[:class]].join.strip.squeeze(" ")
+    css_klass = [o[:class], n[:class]].join(" ").strip.squeeze(" ")
     o.merge(n).merge(:class => css_klass)
   end
   
