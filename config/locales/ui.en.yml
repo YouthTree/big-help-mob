@@ -6,3 +6,9 @@ en:
     authentication:
       internal: 'Big Help Mob Account'
       external: 'Facebook, Google, Live, Yahoo or Twitter Account'
+    state_events:
+      mission:
+        prepare: "Show event to users / let people signup"
+        approve: "Approve choices (once event is filled)"
+        cancel: "Cancel event"
+        complete: "Mark event as completed"

@@ -1,6 +1,8 @@
 class Mission < ActiveRecord::Base
   extend Address::Addressable
   
+  scope :next, where(:state => 'published')
+  
   # Validations
   validates_presence_of :name, :occurs_at, :organisation
 
@@ -18,17 +20,17 @@ class Mission < ActiveRecord::Base
 
   state_machine :initial => :created do
     state :created
-    state :published
+    state :preparing
     state :approved
     state :completed
     state :cancelled
     
-    event :publish do
-      transition :created => :published
+    event :prepare do
+      transition :created => :prepared
     end
     
     event :approve do
-      transition :published => :approved
+      transition :prepared => :approved
     end
     
     event :cancel do
@@ -41,7 +43,10 @@ class Mission < ActiveRecord::Base
   end
   
   def state_events_for_select
-    state_events.map { |se| [se.to_s.titleize, se.to_s] }
+    state_events.map do |se|
+      name = ::I18n.t(:"#{self.class.model_name.underscore}.#{se}", :default => se.to_s.humanize, :scope => :"ui.state_events")
+      [name, se.to_s]
+    end
   end
 
   def to_param
