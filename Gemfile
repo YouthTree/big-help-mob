@@ -60,3 +60,5 @@ group :test do
   gem "redgreen", :require => nil
   gem "shoulda",  :require => nil
 end
+
+gem "unicorn", :require => nil, :group => :production
