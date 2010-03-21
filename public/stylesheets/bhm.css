@@ -464,7 +464,19 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
   width: 460px;
   margin-right: 0;
 }
-/* line 30, ../../app/stylesheets/bhm/public/_grid.sass */
+/* line 29, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container #sidekick-selector, #content .columns-container #captain-selector {
+  width: 400px;
+}
+/* line 31, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container #captain-selector {
+  margin-left: 60px;
+}
+/* line 33, ../../app/stylesheets/bhm/public/_grid.sass */
+#content .columns-container #sidekick-selector {
+  margin-right: 60px;
+}
+/* line 37, ../../app/stylesheets/bhm/public/_grid.sass */
 #content .columns-container .embedded-content p {
   margin-left: 0;
   margin-right: 0;
@@ -740,8 +752,27 @@ dl#frequently-asked-questions dd p {
 }
 
 /* line 56, ../../app/stylesheets/bhm/public/_content.sass */
-#homepage-columns {
+#homepage-columns, #join-as-selector {
   margin-bottom: 2em;
+}
+
+/* line 59, ../../app/stylesheets/bhm/public/_content.sass */
+#sidekick-selector, #captain-selector {
+  text-align: center;
+}
+/* line 62, ../../app/stylesheets/bhm/public/_content.sass */
+#sidekick-selector .embedded-content, #captain-selector .embedded-content {
+  text-align: left;
+}
+
+/* line 65, ../../app/stylesheets/bhm/public/_content.sass */
+#captain-selector {
+  text-align: right;
+}
+
+/* line 67, ../../app/stylesheets/bhm/public/_content.sass */
+#sidekick-selector {
+  text-align: left;
 }
 
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */

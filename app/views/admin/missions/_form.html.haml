@@ -2,7 +2,8 @@
   
   = form.input :name
   
-  = form.input :description, :input_html => {:rows => 5}
+  - has_ckeditor
+  = form.input :description, :input_html => {:rows => 5}, :wrapper_html => {:class => 'ckeditor'}
   
   = form.input :occurs_at, :hint => "When is the event?"
   

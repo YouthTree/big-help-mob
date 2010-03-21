@@ -13,4 +13,5 @@ en:
       user:
         mailing_list_ids: "Mailing Lists"
       mission:
+        user: "User"
         state_event: "Transition state to"

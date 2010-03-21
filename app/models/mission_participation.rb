@@ -6,9 +6,12 @@ class MissionParticipation < ActiveRecord::Base
   
   validates_presence_of :user, :mission
   
-  attr_accessible :mission_id
+  attr_accessible :mission_id, :user_attributes
+  
+  accepts_nested_attributes_for :user
   
   scope :with_role, includes(:role).where('role_id IS NOT NULL')
+  scope :for_user, lambda { |u| includes(:user).where(:user_id => u.id) }
 
   state_machine :initial => :created do
     state :created
@@ -26,6 +29,18 @@ class MissionParticipation < ActiveRecord::Base
     end
   end
   
+  def role_name
+    self.role.try(:name)
+  end
+  
+  def role_name=(value)
+    self.role = Role::PUBLIC_ROLES.include?(value) ? Role[value] : nil
+  end
+  
+  def update_with_conditional_save(attributes, perform_save = true)
+    self.attributes = attributes
+    perform_save && save
+  end
   
 end
 

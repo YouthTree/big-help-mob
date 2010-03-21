@@ -62,11 +62,11 @@ namespace :deploy do
   task :local do
     Rake::Task["deploy:local_before"].invoke
     git_command     = "git reset --hard HEAD && git checkout . && git pull"
-    env_command     = 'export PATH="/opt/ruby-ee/current/bin:$PATH"'
+    env_command     = "export PATH=\"/opt/ruby-ee/current/bin:$PATH\" && export RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
     bundler_command = "bundle install .bundle-cache"
     rake_command    = "bundle exec rake deploy:remote"
     rake_command << " MIGRATE_ENV=true" if %w(true 1).include?(ENV['MIGRATE_ENV'].to_s.downcase)
-    rake_command << " RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
+    rake_command << " RAILS_ENV=#{}"
     execute_remote_command! "cd #{deploy_config(:app)} && #{env_command} && #{git_command} && #{bundler_command} && #{rake_command}"
     Rake::Task["deploy:local_after"].invoke
   end

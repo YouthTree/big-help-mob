@@ -882,17 +882,21 @@ form.formtastic span.cke_skin_kama {
   background: #EEE;
   font-size: 0.75em;
 }
-
 /* line 7, ../../app/stylesheets/bhm/admin/_content.sass */
+.content-preview p {
+  margin: 0.5em 0;
+}
+
+/* line 10, ../../app/stylesheets/bhm/admin/_content.sass */
 #reorder-questions {
   display: none;
   text-align: center;
 }
-/* line 10, ../../app/stylesheets/bhm/admin/_content.sass */
+/* line 13, ../../app/stylesheets/bhm/admin/_content.sass */
 #reorder-questions ul {
   margin: 0;
 }
-/* line 12, ../../app/stylesheets/bhm/admin/_content.sass */
+/* line 15, ../../app/stylesheets/bhm/admin/_content.sass */
 #reorder-questions ul li {
   list-style: none;
   margin: 0.5em 0;

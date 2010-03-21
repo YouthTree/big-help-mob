@@ -24,6 +24,8 @@ begin
   puts "Making default content sections."
   Content.create!({:key => "home.introduction", :title => "Introduction", :content => ""}.trust)
   Content.create!({:key => "signup.introduction", :title => "Introduction", :content => ""}.trust)
+  Content.create!({:key => "join-as.captain", :title => "Join As a Captain", :content => ""}.trust)
+  Content.create!({:key => "join-as.sidekick", :title => "Join As a Sidekick", :content => ""}.trust)
   
 ensure
   $stdout.sync = sync

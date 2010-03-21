@@ -1,5 +1,7 @@
 class Role < ActiveRecord::Base
   
+  PUBLIC_ROLE = %w(captain sidekick)
+  
   validates_presence_of :name
   
   attr_accessible :name

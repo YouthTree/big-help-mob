@@ -6,7 +6,8 @@
   
   = r.attribute :name
   
-  = r.attribute :description
+  - r.attribute :description do
+    .content-preview= resource.description_as_html
   
   - r.attribute :state do
     = resource.state.to_s.humanize

@@ -1,7 +1,8 @@
 class Mission < ActiveRecord::Base
   extend Address::Addressable
   
-  scope :next, where(:state => 'published')
+  scope :next,     where(:state => 'preparing').order('occurs_at ASC')
+  scope :viewable, where(:state => ['preparing', 'approved', 'completed'])
   
   # Validations
   validates_presence_of :name, :occurs_at, :organisation
@@ -12,6 +13,9 @@ class Mission < ActiveRecord::Base
   
   has_many :mission_pickups
   has_many :pickups, :through => :mission_pickups
+  
+  has_many :mission_participations
+  has_many :users, :through => :mission_participations
   
   belongs_to :organisation
   belongs_to :user
@@ -26,11 +30,11 @@ class Mission < ActiveRecord::Base
     state :cancelled
     
     event :prepare do
-      transition :created => :prepared
+      transition :created => :preparing
     end
     
     event :approve do
-      transition :prepared => :approved
+      transition :preparing => :approved
     end
     
     event :cancel do
@@ -55,6 +59,27 @@ class Mission < ActiveRecord::Base
 
   def to_slug
     name.parameterize
+  end
+  
+  def participating?(user)
+    users.exists?(:id => user.id)
+  end
+  
+  def participation_for(user, role_name = nil)
+    participation = mission_participations.for_user(user).first
+    if participation
+      if participation.role_name != role_name
+        participation.role_name = role_name
+        participation.save
+      end
+      participation
+    else
+      mission_participations.create({:user => user, :role => Role[role_name]}.trust)
+    end
+  end
+  
+  def description_as_html
+    description.to_s.html_safe
   end
 
 end

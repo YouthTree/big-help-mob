@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-
+  extend Address::Addressable
+  
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
@@ -13,6 +14,8 @@ class User < ActiveRecord::Base
 
   after_save   :update_mailchimp_subscription
   after_create :save_initial_mailing_list_subscripts
+
+  has_address :mailing_address
 
   acts_as_authentic do |c|
     c.account_merge_enabled true

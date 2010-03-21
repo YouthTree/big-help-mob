@@ -12,3 +12,7 @@ en:
         show: "{{user}}'s Profile"
         edit: "Edit {{user}}'s Profile"
         update: "Edit {{user}}'s Profile"
+      missions:
+        join: Join this Mission
+        edit: Edit your Participation Details
+        show: "Mission: {{mission}}"
