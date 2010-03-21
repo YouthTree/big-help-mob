@@ -455,12 +455,12 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
   margin-right: 10px;
 }
 /* line 24, ../../app/stylesheets/bhm/public/_grid.sass */
-#content .columns-container .column-left-50, #content .columns-container #intro-video {
+#content .columns-container .column-left-50, #content .columns-container .home-introduction {
   width: 460px;
   margin-left: 0;
 }
 /* line 26, ../../app/stylesheets/bhm/public/_grid.sass */
-#content .columns-container .column-right-50, #content .columns-container .home-introduction {
+#content .columns-container .column-right-50, #content .columns-container #intro-video {
   width: 460px;
   margin-right: 0;
 }
