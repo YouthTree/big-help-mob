@@ -1,7 +1,7 @@
 - on_new_page = controller.action_name == "new" && !params[:traditional]
 
 - if on_new_page
-  - has_js 'bhm/authentication'
+  - has_jammit_js :authentication_with_rpx_now
   %dl#authentication-choices
     %dt I signed up using a...
     %dd.choice= rpxnow_link tu('authentication.external'), sign_in_url, :id => 'rpxnow-authentication-link'

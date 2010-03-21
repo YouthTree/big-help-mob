@@ -16,13 +16,14 @@ module ContentHelper
   
   def use_gmaps_js(sensor = false)
     unless defined?(@gmaps_used) && @gmaps_used
-      has_js "http://maps.google.com/maps/api/js?sensor=#{sensor}", "gmap"
+      has_js "http://maps.google.com/maps/api/js?sensor=#{sensor}"
+      has_jammit_js :gmap
       @gmaps_used = true
     end
   end
   
   def has_ckeditor
-    has_js '/ckeditor/ckeditor.js', '/ckeditor/adapters/jquery.js', 'bhm/ck_editor.js'
+    has_jammit_js :ckeditor
   end
   
   def content_section(key, options = {})

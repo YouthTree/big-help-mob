@@ -17,7 +17,13 @@ module ApplicationHelper
     content_tag(:section, content.join, :id => "flash-messages").html_safe
   end
   
+  def has_jammit_js(*args)
+    content_for(:extra_head, include_javascripts(*args))
+  end
   
+  def has_jammit_css(*args)
+    content_for(:extra_head, include_stylesheets(*args))
+  end
   
   def has_js(*args)
     content_for(:extra_head, javascript_include_tag(*args))

@@ -55,6 +55,9 @@ gem "title_estuary"
 git "git://github.com/nono/acts_as_list.git", :ref => "rails3"
 gem "acts_as_list"
 
+git "git://github.com/railsjedi/jammit.git"
+gem "jammit", :require => ['jammit', 'jammit/helper']
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil

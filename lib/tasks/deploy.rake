@@ -25,6 +25,7 @@ namespace :deploy do
     execute_local_command! "rm -rf config/database.yml"
     execute_local_command! "ln -s database.yml.real config/database.yml"
     bundle_exec!           "compass -u ."
+    bundle_exec!           "jammit"
     execute_local_command! "rake db:migrate" if ENV['MIGRATE_ENV'] == "true"
   end
   

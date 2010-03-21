@@ -9,4 +9,3 @@ css_dir         = "public/stylesheets"
 sass_dir        = "app/stylesheets"
 environment     = Compass::AppIntegration::Rails.env
 relative_assets = true
-output_style    = Rails.env.production? ? :compressed : :expanded

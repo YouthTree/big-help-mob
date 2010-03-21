@@ -28,7 +28,7 @@ module UsersHelper
   def has_rpxnow
     return if defined?(@has_rpxnow) && @has_rpxnow
     rpxnow_js = "#{request.ssl? ? 'https://' : 'http://static.'}rpxnow.com/js/lib/rpx.js"
-    has_js rpxnow_js, 'bhm/rpx_now'
+    has_js rpxnow_js
     @has_rpxnow = true
   end
   

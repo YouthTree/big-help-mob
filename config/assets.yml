@@ -1,0 +1,35 @@
+embed_assets: on
+javascript_compressor: yui
+
+javascripts:
+  base:
+    - public/javascripts/jquery-1.4.2.js
+    - public/javascripts/rails.js
+    - public/javascripts/bhm/bhm.js
+    - public/javascripts/bhm/flash.js
+  admin:
+    - public/javascripts/jquery-1.4.2.js
+    - public/javascripts/jquery-ui-1.8.js
+    - public/javascripts/rails.js
+    - public/javascripts/bhm/bhm.js
+    - public/javascripts/bhm/flash.js
+  ckeditor:
+    - public/ckeditor/ckeditor.js
+    - public/ckeditor/adapters/jquery.js
+    - public/javascripts/bhm/ck_editor.js
+  gmaps:
+    - public/javascripts/gmap.js
+  authentication_with_rpx_now:
+    - public/javascripts/bhm/authentication.js
+    - public/javascripts/bhm/rpx_now.js
+  pickups:
+    - public/javascripts/bhm/pickups.js
+  admin_questions:
+    - public/javascripts/bhm/admin/questions.js
+
+stylesheets:
+  base:
+    - public/stylesheets/bhm.css
+  admin:
+    - public/stylesheets/bhm-admin.css
+    - public/jquery-ui/smoothness/jquery-ui-1.8.custom.css

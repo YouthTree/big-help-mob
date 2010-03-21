@@ -2,11 +2,10 @@
 %html{:lang => "en", :dir => "ltr"}
   %head
     %title== #{page_title} - Big Help Mob
-    = stylesheet_link_tag "bhm", :media => 'screen, projection'
+    = include_stylesheets :base, :media => 'screen, projection'
     /[if IE]
       %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
-    = javascript_include_tag "bhm/bhm", "bhm/flash"
+    = include_javascripts :base
     = csrf_meta_tag
     = yield :extra_head
   %body
