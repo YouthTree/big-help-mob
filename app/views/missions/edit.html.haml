@@ -1,0 +1,30 @@
+- semantic_form_for @participation, :url => @mission, :method => :put do |form|
+  
+  %p.actions
+    - ar = @participation.alternate_role
+    You've chosen to sign up as a
+    == #{@participation.role_name.titleize},
+    = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
+    == to become a #{ar.titleize}.
+  
+  - form.inputs :name => "Your General Profile" do
+    - form.fields_for :user do |uf|
+      = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?"
+      
+  - form.inputs :name => "Where do you wish to be picked up from?" do
+    %li
+      #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 600, :height => 300
+      - use_gmaps_js
+      - has_jammit_js :pickup_chooser
+      #pickup-address
+        %strong Pickup is from:
+        %span= (@participation.pickup || "Not yet chosen").to_s
+    = form.input :pickup, :collection => @mission.pickups, :as => :pickups
+    
+      
+  - form.inputs :name => "Your Mailing Address" do
+    - form.fields_for :user do |uf|
+      = render_address_fields uf, :mailing_address
+  
+  - form.buttons do
+    = form.commit_button "Update Participation Details"

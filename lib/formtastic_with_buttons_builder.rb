@@ -4,10 +4,6 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     @template.content_tag(:button, value, options.reverse_merge(:id => "#{object_name}_submit"))
   end
   
-  def boolean_input(method, options)
-    super.gsub(":</label>", "</label>").gsub(": <abbr", " <abbr")
-  end
-  
   def label(method, options_or_text=nil, options=nil)
     if options_or_text.is_a?(Hash)
       return "" if options_or_text[:label] == false
@@ -26,8 +22,52 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     # special case for boolean (checkbox) labels, which have a nested input
     text = create_safe_buffer { |b| b << (options.delete(:label_prefix_for_nested_input) || "") } + text
     input_name = options.delete(:input_name) || method
-    super(input_name, text, options)
+    super(input_name, text, options).gsub(/\?\s*\:\<\/label\>/, "?</label>").gsub(/\?\s*\:\s*\<abbr/, "? <abbr")
   end
+  
+  def boolean_input(method, options)
+    super.gsub(":</label>", "</label>").gsub(": <abbr", " <abbr")
+  end
+  
+  def pickups_input(method, options)
+    collection   = options.delete(:collection) || []
+    html_options = strip_formtastic_options(options).merge(options.delete(:input_html) || {})
+
+    input_name = generate_association_input_name(method)
+    value_as_class = options.delete(:value_as_class)
+    input_ids = []
+    selected_option_is_present = [:selected, :checked].any? { |k| options.key?(k) }
+    selected_value = (options.key?(:checked) ? options[:checked] : options[:selected]) if selected_option_is_present
+
+    list_item_content = collection.map do |c|
+      value = c.id
+      input_id = generate_html_id(input_name, value.to_s.gsub(/\s/, '_').gsub(/\W/, '').downcase)
+      input_ids << input_id
+      
+      html_options[:checked] = selected_value == value if selected_option_is_present
+      li_content = template.content_tag(:label,
+        "#{self.radio_button(input_name, value, html_options)} #{c.name}",
+        :for => input_id
+      )
+
+      li_options = value_as_class ? { :class => [method.to_s.singularize, value.to_s.downcase].join('_') } : {}
+      template.content_tag(:li, li_content, li_options.merge(@template.pickup_data_options(c, html_options[:checked])))
+    end
+
+    field_set_and_list_wrapping_for_pickups(method, options.merge(:label_for => input_ids.first), list_item_content)
+  end
+  
+  def field_set_and_list_wrapping_for_pickups(method, options, contents) #:nodoc:
+    contents = contents.join if contents.respond_to?(:join)
+
+    template.content_tag(:fieldset,
+        template.content_tag(:legend,
+            self.label(method, options_for_label(options).merge(:for => options.delete(:label_for))), :class => 'label'
+          ) <<
+        template.content_tag(:ol, contents, :id => "pickups-listing")
+      )
+  end
+  
   
   def commit_button(*args)
     options = args.extract_options!

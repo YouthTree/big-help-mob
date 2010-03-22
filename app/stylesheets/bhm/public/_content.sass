@@ -55,14 +55,26 @@ dl#frequently-asked-questions
   
 #homepage-columns, #join-as-selector
   :margin-bottom 2em
+
+#join-as-selector
   
-#sidekick-selector, #captain-selector
-  :text-align center
+  #sidekick-selector, #captain-selector
+    :text-align center
   
-  .embedded-content
+    .embedded-content
+      :text-align left
+
+  #captain-selector
+    :text-align right
+  #sidekick-selector
     :text-align left
 
-#captain-selector
-  :text-align right
-#sidekick-selector
-  :text-align left
+  .join-as-button
+    :text-align center
+    a
+      +fancy-button-structure(14px)
+      :padding 0.5em 1em
+    a#join-as-captain-button
+      +fancy-button-colors(#477499)
+    a#join-as-sidekick-button
+      +fancy-button-colors(#54996E)

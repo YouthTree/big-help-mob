@@ -68,7 +68,7 @@ class Mission < ActiveRecord::Base
   def participation_for(user, role_name = nil)
     participation = mission_participations.for_user(user).first
     if participation
-      if participation.role_name != role_name
+      if role_name.present? && participation.role_name != role_name
         participation.role_name = role_name
         participation.save
       end

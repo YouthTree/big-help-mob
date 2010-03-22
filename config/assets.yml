@@ -17,13 +17,16 @@ javascripts:
     - public/ckeditor/ckeditor.js
     - public/ckeditor/adapters/jquery.js
     - public/javascripts/bhm/ck_editor.js
-  gmaps:
+  gmap:
     - public/javascripts/gmap.js
   authentication_with_rpx_now:
     - public/javascripts/bhm/authentication.js
     - public/javascripts/bhm/rpx_now.js
   pickups:
     - public/javascripts/bhm/pickups.js
+  pickup_chooser:
+    - public/javascripts/bhm/pickups.js
+    - public/javascripts/bhm/pickup_chooser.js
   admin_questions:
     - public/javascripts/bhm/admin/questions.js
 

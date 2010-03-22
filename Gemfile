@@ -26,7 +26,6 @@ gem "fancy-buttons"
 gem "rpx_now"
 
 # Rails 3 Awesome Sauce
-git "git://github.com/indirect/rails3-generators.git"
 gem "rails3-generators"
 
 gem "forgery"

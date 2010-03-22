@@ -46,6 +46,9 @@ var GMap = (function($) {
     // Create the Map.
     var mapOptions = mapOptionsForElement($e);
     mapOptions.center = point;
+    // Add a class for general styling and empty it out.
+    $e.empty();
+    $e.addClass('dynamic-google-map').removeClass('static-google-map');
     var currentMap = new google.maps.Map(e, mapOptions);
     // Create and add the marker
     var markerOptions = {

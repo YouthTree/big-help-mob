@@ -26,14 +26,14 @@
     = draw_map_of resource.address, :class => "map-preview"
     
   - r.association :pickups do
-    %ul.pickups#pickups-listing
+    %ol.pickups#pickups-listing
       - if resource.pickups.empty?
         %li.empty No pickups defined.
       - else
         - resource.pickups.each do |pickup|
           %li= link_to_pickup pickup
     - if resource.pickups.present?
-      #pickups-map.map-preview &nbsp;
+      #pickups-map.map-preview.static-google-map= static_map_of_addresses resource.pickups.map(&:address)
       - use_gmaps_js
       - has_jammit_js :pickups
       

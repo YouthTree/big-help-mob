@@ -63,14 +63,15 @@
       :padding 5px 10px
       :float left
       
-      ul
+      ol, ul
         :margin 0
         li
-          :list-style inside
+          :list-style-position inside
           :margin 0
           :padding 0
         li.empty
           :list-style none
           :margin 0
           :color #666
-        
+      ol li
+        :list-style-type upper-alpha

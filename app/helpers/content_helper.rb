@@ -1,16 +1,24 @@
 module ContentHelper
   
+  def static_map_of_addresses(addresses, options = {})
+    image_tag(StaticGoogleMap.for_addresses(addresses, options), :alt => "#{pluralize addresses.size, "address"} plotted on a map")
+  end
+  
+  def static_map_of_address(address, options = {})
+    image_tag(StaticGoogleMap.for_address(address, options), :alt => address.to_s)
+  end
+  
   def draw_map_of(address, options = {})
     use_gmaps_js
     lat, lng = address.lat, address.lng
     if lat.present? && lng.present?
-      options[:class] = [options[:class].to_s.split(" "), "gmap"].join(" ").squeeze(" ")
+      options[:class] = [options[:class].to_s.split(" "), "gmap static-google-map"].join(" ").squeeze(" ")
       options["data-latitude"]  = lat
       options["data-longitude"] = lng
       marker_opts = options.delete(:marker) || {}
       marker_opts[:title] ||= address.to_s
       marker_opts.each_pair { |k, v| options["data-marker-#{k.to_s.gsub("_", "-")}"] = v }
-      content_tag(:div, "&nbsp;", options)
+      content_tag(:div, static_map_of_address(address, marker_opts), options)
     end
   end
   

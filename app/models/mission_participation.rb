@@ -3,10 +3,11 @@ class MissionParticipation < ActiveRecord::Base
   belongs_to :user
   belongs_to :mission
   belongs_to :role
+  belongs_to :pickup
   
   validates_presence_of :user, :mission
   
-  attr_accessible :mission_id, :user_attributes
+  attr_accessible :mission_id, :user_attributes, :pickup_id
   
   accepts_nested_attributes_for :user
   
@@ -30,7 +31,7 @@ class MissionParticipation < ActiveRecord::Base
   end
   
   def role_name
-    self.role.try(:name)
+    ActiveSupport::StringInquirer.new(self.role.try(:name).to_s)
   end
   
   def role_name=(value)
@@ -40,6 +41,10 @@ class MissionParticipation < ActiveRecord::Base
   def update_with_conditional_save(attributes, perform_save = true)
     self.attributes = attributes
     perform_save && save
+  end
+  
+  def alternate_role
+    Role::PUBLIC_ROLES[((Role::PUBLIC_ROLES.index(role_name) || 0) + 1) % Role::PUBLIC_ROLES.length]
   end
   
 end

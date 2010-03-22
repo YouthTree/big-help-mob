@@ -53,6 +53,17 @@ module ApplicationHelper
     link_to image_tag("sponsors/#{name.underscore.gsub(/[\ \_]+/, "-")}-logo.jpg"), url, :title => name, :class => 'sponsor'
   end
   
+  
+  def render_address_fields(f, name = :address, options = {})
+    o = f.object
+    o.send(:"build_#{name}") if o.send(name).blank?
+    capture do
+      f.fields_for(name) do |af|
+        concat render(:partial => 'shared/address_fields', :locals => {:form => af, :options => options})
+      end
+    end.html_safe
+  end
+  
   protected
   
   def normalized_content_scope(key, scope = nil)

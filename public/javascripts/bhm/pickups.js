@@ -1,27 +1,5 @@
 BHM.withNS('Pickups', function(ns) {
   
-  var successiveString = function(s) {
-    var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    var result = '';
-    for (var i = 0; i < s.length; i++) {
-      if (alphabet.indexOf(s.charAt(i).toLowerCase()) != -1) {
-        if (stringIsUpperCase(s.charAt(i))) {
-          result += alphabet.charAt(
-            alphabet.toUpperCase().indexOf(s.charAt(i)) + 1).toUpperCase();
-        } else {
-          result += alphabet.charAt(alphabet.indexOf(s.charAt(i)) + 1);
-        }
-      } else {
-        result += s.charAt(i);
-      }
-    }
-    return result;
-  };
-
-  var stringIsUpperCase = function(s) {
-    return s.toUpperCase() == this;
-  };
-  
   var pickups = {};
   var markers = {};
   var map;
@@ -30,9 +8,9 @@ BHM.withNS('Pickups', function(ns) {
   var lastSelected;
   var selectedCallback;
   
-  var iconOffset = 1;
+  var iconOffset = 0;
   
-  var imagePathPrefix = "/images/markers/";
+  var imagePathPrefix = "http://www.google.com/intl/en_ALL/mapfiles/";
   
   ns.containerID  = "pickups-map";
   ns.listingID    = "pickups-listing";
@@ -102,13 +80,19 @@ BHM.withNS('Pickups', function(ns) {
     return new google.maps.MarkerImage(path);
   }
   
+  var startLetter = 65; // Initial letter offset
+  
+  function lookupCharForOffset(offset) {
+    return String.fromCharCode(startLetter + (offset % 26));
+  }
+  
   function normalMarkerImage(pu) {
-    var path = imagePathPrefix + "normal-" + pu.iconOffset + ".png";
+    var path = imagePathPrefix + "marker" + lookupCharForOffset(pu.iconOffset) + ".png";
     return markerImageWithPath(path);
   }
   
   function selectedMarkerImage(pu) {
-    var path = imagePathPrefix + "selected-" + pu.iconOffset + ".png";
+    var path = imagePathPrefix + "marker_green" + lookupCharForOffset(pu.iconOffset) + ".png";
     return markerImageWithPath(path);
   }
   
@@ -188,6 +172,7 @@ BHM.withNS('Pickups', function(ns) {
     var c = ns.getContainer();
     if(!c) return;
     var mapOptions = $.extend({}, options, ns.defaultMapOptions);
+    $(c).addClass('dynamic-google-map').removeClass('static-google-map').empty();
     map = new google.maps.Map(c, mapOptions);
     // Adding pickups
     ns.eachPickup(addPickupToPlot);
@@ -209,10 +194,11 @@ BHM.withNS('Pickups', function(ns) {
   
   ns.selectPickup = function(pu) {
     if(typeof(pu) == "number") pu = ns.getPickup(pu);
+    if(!pu) return;
     var marker = markers[pu.id];
-    marker.setIcon(selectedMarkerImage(pu));
     if(lastSelected) markers[lastSelected.id].setIcon(normalMarkerImage(lastSelected));
     lastSelected = pu;
+    marker.setIcon(selectedMarkerImage(pu));
     if(typeof(selectedCallback) == "function") selectedCallback(pu, marker);
   }
   

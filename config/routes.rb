@@ -26,11 +26,22 @@ Bighelpmob::Application.routes.draw do |map|
   end
   
   # Mission Routes.
-  match 'missions/next',      :to => 'missions#next',  :as => :next_mission
-  match 'missions/:id',       :to => 'missions#show',  :as => :mission
-  match 'missions/:id/join',  :to => 'missions#join',  :as => :join_mission
-  match 'missions/:id/edit-details', :to => 'missions#edit', :as => :edit_mission
-  match 'missions/:id/edit-details/:as', :to => 'missions#edit', :as => :edit_mission_with_role, :initial => true
+  # match 'missions/next',      :to => 'missions#next',  :as => :next_mission
+  # match 'missions/:id',       :to => 'missions#show',  :as => :mission
+  # match 'missions/:id/join',  :to => 'missions#join',  :as => :join_mission
+  # match 'missions/:id/edit-details', :to => 'missions#edit', :as => :edit_mission
+  
+  get 'missions/:id/edit/:as', :to => 'missions#edit', :as => :edit_mission_with_role
+  
+
+  resources :missions do
+    collection do
+      get :next
+    end
+    member do
+      get :join
+    end
+  end
 
   root :to => "pages#show"
 end

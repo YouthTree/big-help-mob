@@ -2,6 +2,7 @@ class MissionsController < ApplicationController
   
   before_filter :prepare_mission, :except => :next
   before_filter :require_user, :except => [:show, :next]
+  before_filter :prepare_participation, :only => [:edit, :update]
   
   def show
   end
@@ -15,8 +16,11 @@ class MissionsController < ApplicationController
   end
   
   def edit
-    @participation = @mission.participation_for(current_user, params[:as])
-    if @participation.update_with_conditional_save(params[:mission_participation], params[:as].blank?)
+  end
+  
+  def update
+    
+    if @participation.update_attributes(params[:mission_participation])
       redirect_to @mission, :notice => tf('participation.joined')
     else
       render :action => "edit"
@@ -37,6 +41,10 @@ class MissionsController < ApplicationController
   def prepare_mission
     @mission = Mission.viewable.find(params[:id])
     add_title_variables! :mission => @mission.name
+  end
+  
+  def prepare_participation
+    @participation = @mission.participation_for(current_user, params[:as])
   end
   
 end
