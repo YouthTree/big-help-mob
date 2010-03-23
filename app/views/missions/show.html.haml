@@ -1,6 +1,10 @@
 - use_gmaps_js
 - has_jammit_js :pickups
 
+
+%h2 About this Mission
+%p#mission-description= @mission.description_as_html
+
 %section#mission-maps.columns-container
   #mission-location-map.column
     %h3 Where is the mission?
@@ -16,9 +20,6 @@
     %ol#pickups-listing
       - @mission.pickups.each do |pickup|
         %li{pickup_data_options(pickup)}= pickup.address.to_s
-
-%h2 About this Mission
-%p#mission-description= @mission.description_as_html
 
 - if logged_in?
   %p.actions
