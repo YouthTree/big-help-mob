@@ -455,12 +455,12 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
   margin-right: 10px;
 }
 /* line 24, ../../app/stylesheets/bhm/public/_grid.sass */
-#content .columns-container .column-left-50, #content .columns-container .home-introduction {
+#content .columns-container .column-left-50, #content .columns-container .home-introduction, #content .columns-container #mission-location-map {
   width: 460px;
   margin-left: 0;
 }
 /* line 26, ../../app/stylesheets/bhm/public/_grid.sass */
-#content .columns-container .column-right-50, #content .columns-container #intro-video {
+#content .columns-container .column-right-50, #content .columns-container #intro-video, #content .columns-container #mission-pickups-map {
   width: 460px;
   margin-right: 0;
 }
@@ -1368,4 +1368,49 @@ p.actions {
 /* line 10, ../../app/stylesheets/bhm/public/_maps.sass */
 #pickup-address {
   display: none;
+}
+
+/* line 1, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#pickup-address {
+  padding: 0.5em 0;
+}
+
+/* line 4, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps {
+  margin: 0 0 3em;
+}
+/* line 7, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-pickups-map .dynamic-google-map, #mission-maps #mission-pickups-map .static-google-map img, #mission-maps #mission-location-map .dynamic-google-map, #mission-maps #mission-location-map .static-google-map img {
+  width: 456px;
+  height: 342px;
+  border: 2px solid #CCC !important;
+}
+/* line 12, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-pickups-map {
+  text-align: center;
+}
+/* line 14, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-pickups-map h4 {
+  margin: 0.5em 0 0;
+  padding: 0;
+}
+/* line 17, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-pickups-map ol {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+}
+/* line 21, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-pickups-map ol li {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+  list-style-type: upper-alpha;
+}
+/* line 27, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-location-map #mission-location-address {
+  font-size: 1.1em;
+  margin: 0.5em 0;
+  text-align: center;
+  color: #000;
 }

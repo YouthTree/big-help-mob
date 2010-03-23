@@ -39,7 +39,7 @@ class MissionsController < ApplicationController
   protected
   
   def prepare_mission
-    @mission = Mission.viewable.find(params[:id])
+    @mission = Mission.viewable.optimize_viewable.find(params[:id])
     add_title_variables! :mission => @mission.name
   end
   

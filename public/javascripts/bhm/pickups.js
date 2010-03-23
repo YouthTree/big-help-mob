@@ -217,9 +217,9 @@ BHM.withNS('Pickups', function(ns) {
     }
   };
   
-  $(document).ready(function() {
+  ns.setup = function() {
     ns.automap();
     if(map) ns.onEachPickupEvent('click', ns.selectPickup);
-  });
+  };
   
 });

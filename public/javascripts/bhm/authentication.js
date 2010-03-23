@@ -31,6 +31,4 @@ BHM.withNS('Authentication', function(ns) {
     ns.bindEvents();
   };
   
-  $(document).ready(ns.setup);
-  
 });

@@ -20,6 +20,4 @@ BHM.withNS('Flash', function(ns) {
     $(ns.parentSelector + ' ' + ns.insideSelector).click(function() { ns.hideFlash(this); });
   }
   
-  $(document).ready(ns.setup);
-  
 });

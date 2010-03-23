@@ -26,6 +26,4 @@ BHM.withNS('CKEditor', function(ns) {
     $(ns.editorSelector).ckeditor(currentEditorOptions());
   };
   
-  $(document).ready(ns.setup);
-  
 });

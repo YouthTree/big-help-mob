@@ -16,4 +16,4 @@ en:
         join: Join this Mission
         edit: Edit your Participation Details
         update: Edit your Participation Details
-        show: "Mission: {{mission}}"
+        show: "{{mission}}"

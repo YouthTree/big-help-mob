@@ -1,5 +1,23 @@
-%h2 About this Mission
+- use_gmaps_js
+- has_jammit_js :pickups
 
+%section#mission-maps.columns-container
+  #mission-location-map.column
+    %h3 Where is the mission?
+    = draw_map_of @mission.address, :map => {:width => 456, :height => 342}
+    %p#mission-location-address
+      %strong This mission takes place at:
+      %br/
+      %span= @mission.address.to_s
+  #mission-pickups-map.column
+    %h3 Where can I get picked up?
+    #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 456, :height => 342
+    %h4 Pickups available from:
+    %ol#pickups-listing
+      - @mission.pickups.each do |pickup|
+        %li{pickup_data_options(pickup)}= pickup.address.to_s
+
+%h2 About this Mission
 %p#mission-description= @mission.description_as_html
 
 - if logged_in?
@@ -10,4 +28,3 @@
     - else
       Want to take part in this mission? You can join it
       == #{link_to "as a captain or sidekick", [:join, @mission]}!
-    

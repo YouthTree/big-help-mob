@@ -4,6 +4,7 @@ if(!BHM) BHM = {};
 (function(ns, $) {
   
   var defaultNSAttrs = {};
+  var onReadyMapping = {};
   
   var baseJSPath   = '/javascripts/';
   ns.baseJSSuffix = ''; 
@@ -39,7 +40,10 @@ if(!BHM) BHM = {};
       if(!currentNS[name]) currentNS[name] = makeNS({}, name, currentNS);
       currentNS = currentNS[name];
     }
+    var hadSetup = (typeof(currentNS.setup) == "function");
     if(typeof(closure) == "function") closure(currentNS);
+    if(!hadSetup && typeof(currentNS.setup) == "function")
+      ns.setupVia(currentNS.setup);
     return currentNS;
   };
   
@@ -73,6 +77,13 @@ if(!BHM) BHM = {};
     }
   };
   
+  var setupVia = function(f) {
+    var scope = this;
+    $(document).ready(function() {
+      if(scope.autosetup && typeof(f) == "function") f.apply(this);
+    });
+  };
+  
   var defineClass = function(name, closure) {
     var klass = function() {
       // Call the constructor.
@@ -88,6 +99,8 @@ if(!BHM) BHM = {};
   defaultNSAttrs.isNSDefined = isNSDefined;
   defaultNSAttrs.require     = require;
   defaultNSAttrs.toNSName    = toNSName;
+  defaultNSAttrs.setupVia    = setupVia;
+  defaultNSAttrs.autosetup   = true;
   
   // Actually make us a namespace.
   makeNS(ns, 'BHM');

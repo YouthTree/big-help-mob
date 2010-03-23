@@ -22,6 +22,8 @@ class Mission < ActiveRecord::Base
 
   attr_accessible :organisation_id, :user_id, :description, :name
 
+  scope :optimize_viewable, includes(:address => nil, :pickups => :address)
+
   state_machine :initial => :created do
     state :created
     state :preparing

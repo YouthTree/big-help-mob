@@ -33,7 +33,5 @@ BHM.require('Authentication').load(function() {
       ns.configureRPXNow();
     };
 
-    $(document).ready(ns.setup);
-
   });
 });

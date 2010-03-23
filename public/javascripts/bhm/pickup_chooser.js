@@ -42,6 +42,5 @@ BHM.require('Pickups').load(function() {
       ns.setupFieldWatchers();
     }
     
-    $(document).ready(ns.setup);    
   });
 });

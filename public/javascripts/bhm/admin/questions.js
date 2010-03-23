@@ -29,6 +29,4 @@ BHM.withNS('Admin.Questions', function(ns) {
     ns.bindReorderButton();
   };
   
-  $(document).ready(ns.setup);
-  
 });
