@@ -23,8 +23,10 @@ javascripts:
     - public/javascripts/bhm/authentication.js
     - public/javascripts/bhm/rpx_now.js
   pickups:
+    - public/javascripts/bhm/maps.js
     - public/javascripts/bhm/pickups.js
   pickup_chooser:
+    - public/javascripts/bhm/maps.js
     - public/javascripts/bhm/pickups.js
     - public/javascripts/bhm/pickup_chooser.js
   admin_questions:

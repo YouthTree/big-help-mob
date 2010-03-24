@@ -1,37 +1,47 @@
+/**
+ * BHM.Pickups
+ * -----------
+ * unobtrusively generates a dynamic google map of pickup points
+ * from html5 w/ data attributes. Designed to make it uber simple
+ * for users to select pickups in a more interactive manner. 
+ */
 BHM.withNS('Pickups', function(ns) {
   
-  var pickups = {};
-  var markers = {};
-  var map;
-  var mapBounds;
+  // Section: Private Variables / Configuration
   
-  var lastSelected;
-  var selectedCallback;
+  var map, mapBounds, lastSelected, lastInfoWindow, selectedCallback;  
+  var pickups         = {},
+      markers         = {},
+      startLetter     = 65,
+      iconOffset      = 0, 
+      imagePathPrefix = "http://www.google.com/intl/en_ALL/mapfiles/";
   
-  var iconOffset = 0;
+  // Section: Public Options / Configuration
   
-  var imagePathPrefix = "http://www.google.com/intl/en_ALL/mapfiles/";
-  
-  ns.containerID  = "pickups-map";
-  ns.listingID    = "pickups-listing";
-  ns.listingClass = "pickup-entry";
-  ns.dataPrefix   = "pickup-";
+  ns.containerID       = "pickups-map";
+  ns.listingID         = "pickups-listing";
+  ns.listingClass      = "pickup-entry";
+  ns.dataPrefix        = "pickup-";
   ns.defaultMapOptions = {
     zoom: 10,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   
+  // Section: Classes
+  
   ns.defineClass('Pickup', function() {
     
-    this.initialize = function(id, title, lat, lng) {
-      this.title = title;
-      this.id    = id;
-      this.lat   = lat;
-      this.lng   = lng;
+    this.initialize = function(id, name, address, lat, lng) {
+      this.name    = name;
+      this.address = address;
+      this.title   = [name, address].join(" - ");
+      this.id      = id;
+      this.lat     = lat;
+      this.lng     = lng;
     };
     
     this.toString = function() {
-      var s = "" + this.title;
+      var s = "" + this.name + " - " + this.address;
       s += " (Pickup ID #" + this.id + ")";
       s += " at (" + this.lat + ", " + this.lng + ")";
       return s;
@@ -40,6 +50,7 @@ BHM.withNS('Pickups', function(ns) {
     this.toMarker = function(map, options) {
       if(!options) options = {};
       var o      = $.extend({}, options);
+      o.title    = this.title;
       o.position = this.toLatLng();
       o.map      = map;
       return new google.maps.Marker(o);
@@ -51,20 +62,35 @@ BHM.withNS('Pickups', function(ns) {
       return this.__latlng;
     }
     
+    this.toInfoWindow = function(map, marker) {
+      var infoWindow = new google.maps.InfoWindow();
+      var inner = $("<div />");
+      inner.append($("<strong />").text(this.name));
+      inner.append("<br />");
+      inner.append($("<span />").addClass('address').text(this.address));
+      inner.append("<br />");
+      inner.append("Pickup listing will go here.");
+      infoWindow.setContent(inner.get(0));
+      infoWindow.open(map, marker);
+      return infoWindow;
+    }
+    
   });
+  
+  // Section: Utility Methods
   
   function addPickupToPlot(pickup) {
     givePickupNumber(pickup);
-    var m = pickup.toMarker(ns.getMap(), {icon: normalMarkerImage(pickup)});
+    var map = ns.getMap();
+    var m = pickup.toMarker(map, {icon: normalMarkerImage(pickup)});
     var b = ns.getBounds();
     b.extend(pickup.toLatLng());
     markers[pickup.id] = m;
+    ns.onEvent(m, 'dblclick', function() {
+      if(lastInfoWindow) lastInfoWindow.close();
+      lastInfoWindow = pickup.toInfoWindow(map, m);
+    });
     return m;
-  }
-  
-  ns.getBounds = function() {
-    if(!mapBounds) mapBounds = new google.maps.LatLngBounds();
-    return mapBounds;
   }
   
   function pickupAttr(e, key) {
@@ -76,73 +102,48 @@ BHM.withNS('Pickups', function(ns) {
     return pu.iconOffset;
   }
   
-  function markerImageWithPath(path) {
+  function markerImageWithPath(pu, path) {
+    path = imagePathPrefix + path + lookupCharForOffset(pu.iconOffset) + ".png";
     return new google.maps.MarkerImage(path);
   }
-  
-  var startLetter = 65; // Initial letter offset
   
   function lookupCharForOffset(offset) {
     return String.fromCharCode(startLetter + (offset % 26));
   }
   
   function normalMarkerImage(pu) {
-    var path = imagePathPrefix + "marker" + lookupCharForOffset(pu.iconOffset) + ".png";
-    return markerImageWithPath(path);
+    return markerImageWithPath(pu, "marker");
   }
   
   function selectedMarkerImage(pu) {
-    var path = imagePathPrefix + "marker_green" + lookupCharForOffset(pu.iconOffset) + ".png";
-    return markerImageWithPath(path);
+    return markerImageWithPath(pu, "marker_green");
   }
   
-  ns.addPickup = function(id, title, lat, lng) {
-    var p = new ns.Pickup(id, title, lat, lng);
+  // Section: Namespace Methods
+  
+  // Subsection: Modifiers
+  
+  ns.addPickup = function(id, name, address, lat, lng) {
+    var p = new ns.Pickup(id, name, address, lat, lng);
     pickups[p.id] = p;
     if(map) addPickupToPlot(p);
     return p;
   };
   
-  ns.autoAddPickups = function(c) {
-    if(!c) c = $("#" + ns.listingID + " ." + ns.listingClass);
-    c.each(function() {
-      var e = $(this);
-      var id = pickupAttr(e, "id");
-      if(id) {
-        var title = pickupAttr(e, "title"),
-            lat   = Number(pickupAttr(e, "latitude")),
-            lng   = Number(pickupAttr(e, "longitude"));
-        ns.addPickup(Number(id), title, lat, lng);
-      };
-    });
-  };
+  // Subsection: Event Methods
   
-  ns.getPickup = function(id) {
-    return pickups[id];
-  };
-  
-  ns.getPickupMarker = function(id) {
-    var pu = ns.getPickup(id);
-    if(pu) return markers[id];
-  };
-  
-  ns.getMap = function() {
-    ns.plot();
-    return map;
-  };
-  
-  ns.onEvent = function(obj, name, handler) {
+  ns.onEvent           = function(obj, name, handler) {
     google.maps.event.addListener(obj, name, handler);
   };
   
-  ns.onMapEvent = function(name, handler) {
+  ns.onMapEvent        = function(name, handler) {
     return ns.onEvent(ns.getMap(), name, handler);
   };
   
-  ns.onPickupEvent = function(id, name, handler) {
+  ns.onPickupEvent     = function(id, name, handler) {
     var m = ns.getPickupMarker(id);
     if(m) return ns.onEvent(m, name, handler);
-  }
+  };
   
   ns.onEachPickupEvent = function(name, handler) {
     ns.eachPickup(function(pu) {
@@ -154,33 +155,55 @@ BHM.withNS('Pickups', function(ns) {
         handler.apply(this, args);
       });
     });
-  }
+  };
   
-  ns.getContainer = function() {
+  ns.onPickupSelect    = function(cb) {
+    selectedCallback = cb;
+  };
+  
+  // Subsection: Accessors
+  
+  ns.getContainer    = function() {
     return document.getElementById(ns.containerID);
   };
   
-  ns.eachPickup = function(f) {
-    for(var idx in pickups) {
-      if(pickups.hasOwnProperty(idx)) f(pickups[idx]);
-    }
-  };
-  
-  ns.plot = function(options) {
-    if(map) return map;
-    if(!options) options = {};
-    var c = ns.getContainer();
-    if(!c) return;
-    var mapOptions = $.extend({}, options, ns.defaultMapOptions);
-    $(c).addClass('dynamic-google-map').removeClass('static-google-map').empty();
-    map = new google.maps.Map(c, mapOptions);
-    // Adding pickups
-    ns.eachPickup(addPickupToPlot);
-    ns.centreMap();
+  ns.getMap          = function() {
+    ns.plot();
     return map;
   };
   
-  ns.centreMap = function() {
+  ns.getBounds       = function() {
+    if(!mapBounds) mapBounds = new google.maps.LatLngBounds();
+    return mapBounds;
+  };
+  
+  ns.getPickup       = function(id) {
+    return pickups[id];
+  };
+  
+  ns.getPickupMarker = function(id) {
+    var pu = ns.getPickup(id);
+    if(pu) return markers[id];
+  };
+  
+  // Subsection: Map Utilities
+  
+  ns.autoAddPickups = function(c) {
+    if(!c) c = $("#" + ns.listingID + " ." + ns.listingClass);
+    c.each(function() {
+      var e = $(this);
+      var id = pickupAttr(e, "id");
+      if(id) {
+        var name  = pickupAttr(e, "name"),
+            addr  = pickupAttr(e, "address"),
+            lat   = Number(pickupAttr(e, "latitude")),
+            lng   = Number(pickupAttr(e, "longitude"));
+        ns.addPickup(Number(id), name, addr, lat, lng);
+      };
+    });
+  };
+  
+  ns.centreMap      = function() {
     var m = ns.getMap();
     var b = ns.getBounds();
     m.setCenter(b.getCenter());
@@ -188,11 +211,7 @@ BHM.withNS('Pickups', function(ns) {
     m.fitBounds(b);
   };
   
-  ns.onPickupSelect = function(cb) {
-    selectedCallback = cb;
-  }
-  
-  ns.selectPickup = function(pu) {
+  ns.selectPickup   = function(pu) {
     if(typeof(pu) == "number") pu = ns.getPickup(pu);
     if(!pu) return;
     var marker = markers[pu.id];
@@ -200,9 +219,9 @@ BHM.withNS('Pickups', function(ns) {
     lastSelected = pu;
     marker.setIcon(selectedMarkerImage(pu));
     if(typeof(selectedCallback) == "function") selectedCallback(pu, marker);
-  }
+  };
   
-  ns.automap = function() {
+  ns.automap        = function() {
     var collection = $("#" + ns.listingID + " ." + ns.listingClass);
     if(collection.size() > 0) {
       ns.autoAddPickups(collection);
@@ -217,7 +236,32 @@ BHM.withNS('Pickups', function(ns) {
     }
   };
   
-  ns.setup = function() {
+  ns.plot           = function(options) {
+    if(map) return map;
+    if(!options) options = {};
+    var c = ns.getContainer();
+    if(!c) return;
+    var mapOptions = $.extend({}, options, ns.defaultMapOptions);
+    $(c).addClass('dynamic-google-map').removeClass('static-google-map').empty();
+    map = new google.maps.Map(c, mapOptions);
+    // Adding pickups
+    ns.eachPickup(addPickupToPlot);
+    ns.centreMap();
+    return map;
+  };
+  
+  ns.plotDirections = function(origin, pickups) {
+  };
+  
+  // Subsection: Misc.  
+  
+  ns.eachPickup = function(f) {
+    for(var idx in pickups) {
+      if(pickups.hasOwnProperty(idx)) f(pickups[idx]);
+    }
+  };
+  
+  ns.setup      = function() {
     ns.automap();
     if(map) ns.onEachPickupEvent('click', ns.selectPickup);
   };
