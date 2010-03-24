@@ -14,9 +14,9 @@ javascripts:
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js
   ckeditor:
+    - public/javascripts/bhm/ck_editor.js
     - public/ckeditor/ckeditor.js
     - public/ckeditor/adapters/jquery.js
-    - public/javascripts/bhm/ck_editor.js
   gmap:
     - public/javascripts/gmap.js
   authentication_with_rpx_now:

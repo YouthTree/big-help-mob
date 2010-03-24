@@ -1,9 +1,12 @@
 BHM.withNS('CKEditor', function(ns) {
   
+  window.CKEDITOR_BASEPATH = '/ckeditor/';
+  
   ns.editorSelector = '.ckeditor textarea';
   ns.editorOptions  = {
-    toolbar: 'bhm',
-    width:   '74%'
+    toolbar:      'bhm',
+    width:        '74%',
+    customConfig: false
   };
   
   ns.toolbar_layout = [
