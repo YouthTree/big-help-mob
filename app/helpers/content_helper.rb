@@ -18,7 +18,7 @@ module ContentHelper
       marker_opts = options.delete(:marker) || {}
       marker_opts[:title] ||= address.to_s
       marker_opts.each_pair { |k, v| options["data-marker-#{k.to_s.gsub("_", "-")}"] = v }
-      content_tag(:div, static_map_of_address(address, marker_opts.merge(options.delete(:map))), options)
+      content_tag(:div, static_map_of_address(address, marker_opts.merge(options.delete(:map) || {})), options)
     end
   end
   

@@ -65,6 +65,10 @@ module ApplicationHelper
     end.html_safe
   end
   
+  def show_for(*args, &blk)
+    concat super
+  end
+  
   protected
   
   def normalized_content_scope(key, scope = nil)

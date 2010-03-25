@@ -4,11 +4,14 @@ class User < ActiveRecord::Base
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
-                  :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_ids
+                  :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_ids,
+                  :captain_application_attributes, :origin
 
   has_many :mission_participations
   has_many :missions, :through => :mission_participations
   has_many :roles,    :through => :mission_participations
+
+  has_one :captain_application
 
   belongs_to :current_role, :class_name => "Role"
 
@@ -22,6 +25,13 @@ class User < ActiveRecord::Base
     c.account_mapping_mode  :internal
     c.validate_email_field  false
   end
+  
+  accepts_nested_attributes_for :captain_application, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }
+  
+  validates_presence_of :captain_application, :if => :should_validate_captain_application_presence?
+  
+  validates_inclusion_of :origin, :in => ::I18n.t(:user_origin_choices),
+    :message => :unknown_origin_choice, :allow_blank => true
 
   def can?(action, object)
     return true if admin?
@@ -82,6 +92,11 @@ class User < ActiveRecord::Base
       from += 1
     end
     results
+  end
+  
+  def should_validate_captain_application_presence?
+    role = Role[:captain]
+    role.present? && mission_participations.exists?(:role_id => role.id)
   end
   
   protected

@@ -7,9 +7,14 @@
     = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
     == to become a #{ar.titleize}.
   
-  - form.inputs :name => "Your General Profile" do
-    - form.fields_for :user do |uf|
+  - form.fields_for :user do |uf|
+    - form.inputs :name => "Your General Profile" do
       = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?"
+      
+    - if @participation.role_name.captain?
+      - uf.object.build_captain_application if uf.object.captain_application.blank?
+      - uf.fields_for :captain_application do |caf|
+        = render :partial => 'captain_application_form', :locals => {:form => caf, :user => uf.object}
       
   - form.inputs :name => "Where do you wish to be picked up from?" do
     %li

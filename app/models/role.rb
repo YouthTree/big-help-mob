@@ -11,7 +11,7 @@ class Role < ActiveRecord::Base
   end
   
   def self.[](name)
-    where(:name => name).first
+    where(:name => name.to_s).first
   end
   
   def self.for_select

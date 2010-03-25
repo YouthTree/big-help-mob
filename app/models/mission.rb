@@ -72,11 +72,11 @@ class Mission < ActiveRecord::Base
     if participation
       if role_name.present? && participation.role_name != role_name
         participation.role_name = role_name
-        participation.save
+        participation.save(false)
       end
       participation
     else
-      mission_participations.create({:user => user, :role => Role[role_name]}.trust)
+      mission_participations.create(:user => user, :role => Role[role_name])
     end
   end
   

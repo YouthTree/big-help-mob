@@ -1,0 +1,11 @@
+- form.inputs :name => "Captain Application" do
+
+  - if user.errors.invalid?(:captain_application)
+    %li
+      %p.inline-errors Please ensure you fill out your captain application.
+  
+  = form.input :reason_why, :input_html => {:rows => 5}
+  
+  = form.input :offers, :input_html => {:rows => 5}
+  
+  = form.input :has_first_aid_cert

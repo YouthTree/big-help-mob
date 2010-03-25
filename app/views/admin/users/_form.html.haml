@@ -1,5 +1,6 @@
 - form.inputs :name => "General Details" do  
   = form.input :login
+  = form.input :admin
   = form.input :email
   = form.input :display_name
   = form.input :current_role, :collection => Role.for_select
@@ -16,5 +17,12 @@
   
 - form.inputs :name => "Mailing List Subscriptions" do
   = form.input :mailing_list_ids, :collection => HominidWrapper.available_lists_for_select, :as => :check_boxes
+  
+- form.fields_for :captain_application do |caf|
+  - caf.inputs :name => "Captain Application" do
+    = caf.input :reason_why, :input_html => {:rows => 5}
+    = caf.input :offers, :input_html => {:rows => 5}
+    = caf.input :has_first_aid_cert
+    = caf.input :accepted
   
   

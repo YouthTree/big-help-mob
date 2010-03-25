@@ -12,6 +12,7 @@ end
 # Table name: captain_applications
 #
 #  id                 :integer(4)      not null, primary key
+#  user_id            :integer(4)
 #  accepted           :boolean(1)
 #  has_first_aid_cert :boolean(1)
 #  offers             :text

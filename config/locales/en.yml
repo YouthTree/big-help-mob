@@ -7,3 +7,21 @@ en:
       address:
         street1: "Street Line 1"
         street2: "Street Line 2"
+      captain_application:
+        reason_why: "Why do they want to be a Captain"
+        offers: "Brings what to the table for BHM"
+        has_first_aid_cert: "Has current First Aid Certificate"
+    errors:
+      messages:
+        too_few_words: "has too few words (has {{actual_count}} but needs a minimum of {{min_count}})"
+        too_many_words: "has too few words (has {{actual_count}} but can have a maximum of {{max_count}})"
+        unknown_origin_choice: "is an invalid choice"
+  user_origin_choices:
+    - "Poster"
+    - "I got stamped"
+    - "Facebook"
+    - "Word of mouth"
+    - "Google search"
+    - "Youth Tree mailing list"
+    - "Other organization"
+    - "Other"

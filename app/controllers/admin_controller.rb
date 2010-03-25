@@ -2,12 +2,12 @@ class AdminController < ApplicationController
   
   before_filter :require_user
   before_filter :require_admin
-  before_filter :trust_attributes_by_default
+  around_filter :disable_attr_accessible
   
   protected
   
-  def trust_attributes_by_default
-    params.trust
+  def disable_attr_accessible
+    AttrAccessibleScoping.disable { yield }
   end
   
   def require_admin

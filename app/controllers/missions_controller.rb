@@ -18,8 +18,7 @@ class MissionsController < ApplicationController
   def edit
   end
   
-  def update
-    
+  def update    
     if @participation.update_attributes(params[:mission_participation])
       redirect_to @mission, :notice => tf('participation.joined')
     else

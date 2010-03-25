@@ -12,6 +12,11 @@ en:
         visible: "Show this question on the homepage"
       user:
         mailing_list_ids: "Mailing Lists"
+        origin: "How did you hear about us?"
       mission:
         user: "User"
         state_event: "Transition state to"
+      captain_application:
+        has_first_aid_cert: "I have a current First Aid Certificate"
+        reason_why: "In 100 words or less why do you want to be a BHM Captain?"
+        offers: "In 100 words or less what can you personally bring to BHM?"

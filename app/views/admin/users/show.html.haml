@@ -21,3 +21,15 @@
   = s.association :current_role
   
   = s.attribute :mailing_list_names
+
+- if @user.captain_application.present?
+  
+  %h3 User's Captain Application
+
+  - show_for @user.captain_application do |s|
+  
+    = s.attribute :reason_why
+
+    = s.attribute :offers
+
+    = s.attribute :has_first_aid_cert
