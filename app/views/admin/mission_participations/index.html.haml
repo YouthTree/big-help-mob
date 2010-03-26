@@ -1,0 +1,27 @@
+%h2.title== Viewing all #{current_resource_name.pluralize}
+
+= will_paginate collection
+
+%table
+  %thead
+    %tr
+      - if parent_class == Mission
+        %th User
+      - else
+        %th Mission
+      %th Role
+      %th Participation State
+      %th &nbsp;
+  %tbody
+    - collection.each do |r|
+      %tr{:class => cycle('odd', 'even')}
+        - if parent_class == Mission
+          %td= link_to r.user, [:admin, r.user]
+        - else
+          %td= link_to r.mission.name, [:admin, r.mission]
+        %td= vwd r.role_name.to_s.humanize
+        %td= r.state.to_s.humanize
+        %td.actions= individual_resource_links r
+    = empty_row_for_collection 3
+        
+= will_paginate collection
