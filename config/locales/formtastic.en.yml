@@ -22,3 +22,7 @@ en:
         offers: "In 100 words or less what can you personally bring to BHM?"
       mission_question:
         raw_metadata: "Choices"
+      mission_participation:
+        mission: "Mission"
+        user: "User"
+        state_event: "Transition state to"

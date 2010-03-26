@@ -16,6 +16,8 @@ en:
         too_few_words: "has too few words (has {{actual_count}} but needs a minimum of {{min_count}})"
         too_many_words: "has too few words (has {{actual_count}} but can have a maximum of {{max_count}})"
         unknown_origin_choice: "is an invalid choice"
+    models:
+      mission_participation: Participation
   user_origin_choices:
     - "Poster"
     - "I got stamped"

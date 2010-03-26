@@ -1,1 +1,13 @@
-../defaults/show.html.haml
+%h2.title== Viewing #{current_resource_name}
+
+- show_for resource do |r|
+  = r.attribute :id
+  
+  - if resource_class == Mission
+    = r.association :user do
+      = link_to resource.mission, [:admin, resource.mission]
+  - else 
+    = r.association :mission do
+      = link_to resource.user, [:admin, resource.user]
+  
+  = r.attribute :role_name

@@ -2,9 +2,11 @@ Bighelpmob::Application.routes.draw do |map|
   
   namespace :admin do
     resources :users do
-      resources :mission_participations, :as => 'missions'
+      resources :mission_participations, :as => 'participations'
     end
-    resources :missions
+    resources :missions do
+      resources :mission_participations, :as => 'participations'
+    end
     resources :organisations
     resources :pickups
     resources :contents

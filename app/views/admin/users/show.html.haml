@@ -22,6 +22,9 @@
   
   = s.attribute :mailing_list_names
 
+  = s.association :participations do
+    = link_to "View All Participations", admin_user_mission_participations_path(resource)
+
 - if @user.captain_application.present?
   
   %h3 User's Captain Application
@@ -33,3 +36,4 @@
     = s.attribute :offers
 
     = s.attribute :has_first_aid_cert
+    

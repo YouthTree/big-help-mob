@@ -15,7 +15,7 @@ class AnswerProxy
   def initialize(participation)
     @participation = participation
     @mission       = participation.mission
-    @questions     = @mission.questions
+    @questions     = @mission.try(:questions) || []
   end
   
   def attributes=(attributes)

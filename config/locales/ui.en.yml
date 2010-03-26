@@ -8,7 +8,11 @@ en:
       external: 'Facebook, Google, Live, Yahoo or Twitter Account'
     state_events:
       mission:
-        prepare: "Show event to users / let people signup"
+        prepare: "Show mission to users / let people signup"
         approve: "Approve choices (once event is filled)"
         cancel: "Cancel event"
         complete: "Mark event as completed"
+      mission_participation:
+        await_approval: "Mark as awaiting approval"
+        approve: "Approve Participation"
+        cancel: "Cancel Participation"

@@ -1,1 +1,7 @@
-../defaults/_form.html.haml
+- form.inputs :name => "General Information" do
+  - if resource_class == Mission
+    = form.input :user
+  - else
+    = form.input :mission
+  = form.input :role, :collection => Role.for_select
+  = form.input :state_event, :collection => resource.state_events.map { |se| [se.to_s.humanize, se]}

@@ -5,6 +5,7 @@
 %table
   %thead
     %tr
+      %th ID
       - if parent_class == Mission
         %th User
       - else
@@ -15,6 +16,7 @@
   %tbody
     - collection.each do |r|
       %tr{:class => cycle('odd', 'even')}
+        %td= r.id
         - if parent_class == Mission
           %td= link_to r.user, [:admin, r.user]
         - else
@@ -22,6 +24,6 @@
         %td= vwd r.role_name.to_s.humanize
         %td= r.state.to_s.humanize
         %td.actions= individual_resource_links r
-    = empty_row_for_collection 3
+    = empty_row_for_collection 4
         
 = will_paginate collection

@@ -20,7 +20,9 @@
       = t :"show_for.blank"
     - else
       = link_to resource.user, [:admin, resource.user]
-      
+  
+  = r.association :participations do
+    = link_to "View All Participations", admin_mission_mission_participations_path(resource)
       
   = r.association :address do
     = draw_map_of resource.address, :class => "map-preview"

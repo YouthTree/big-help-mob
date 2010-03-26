@@ -14,8 +14,8 @@ class Mission < ActiveRecord::Base
   has_many :mission_pickups
   has_many :pickups, :through => :mission_pickups
   
-  has_many :participations, :class_name => "MissionParticipation"
-  has_many :users, :through => :participations
+  has_many :mission_participations
+  has_many :users, :through => :mission_participations
   has_many :questions, :class_name => "MissionQuestion"
   
   belongs_to :organisation
@@ -54,7 +54,7 @@ class Mission < ActiveRecord::Base
   def state_events_for_select
     state_events.map do |se|
       name = ::I18n.t(:"#{self.class.model_name.underscore}.#{se}", :default => se.to_s.humanize, :scope => :"ui.state_events")
-      [name, se.to_s]
+      [name, se]
     end
   end
 
@@ -71,7 +71,7 @@ class Mission < ActiveRecord::Base
   end
   
   def participation_for(user, role_name = nil)
-    participation = participations.for_user(user).first
+    participation = mission_participations.for_user(user).first
     if participation
       if role_name.present? && participation.role_name != role_name
         participation.role_name = role_name
@@ -79,7 +79,7 @@ class Mission < ActiveRecord::Base
       end
       participation
     else
-      participations.new.tap do |p|
+      mission_participations.build.tap do |p|
         p.role_name = role_name
         p.user      = user
         p.save :validate => false

@@ -69,6 +69,13 @@ class MissionParticipation < ActiveRecord::Base
     await_approval(false) if created?
   end
   
+  def state_events_for_select
+    state_events.map do |se|
+      name = ::I18n.t(:"#{self.class.model_name.underscore}.#{se}", :default => se.to_s.humanize, :scope => :"ui.state_events")
+      [name, se]
+    end
+  end
+  
 end
 
 # == Schema Info

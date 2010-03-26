@@ -1,6 +1,6 @@
 class Admin::MissionParticipationsController < Admin::BaseController
   
-  belongs_to :user, :polymorphic => true
+  belongs_to :user, :mission, :polymorphic => true
   
   protected
   
