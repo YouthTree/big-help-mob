@@ -6,26 +6,26 @@
   
   = r.attribute :name
   
-  - r.attribute :description do
+  = r.attribute :description do
     .content-preview= resource.description_as_html
   
-  - r.attribute :state do
+  = r.attribute :state do
     = resource.state.to_s.humanize
   
-  - r.association :organisation do
+  = r.association :organisation do
     = link_to resource.organisation, [:admin, resource.organisation]
   
-  - r.association :user do
+  = r.association :user do
     - if resource.user.blank?
       = t :"show_for.blank"
     - else
       = link_to resource.user, [:admin, resource.user]
       
       
-  - r.association :address do
+  = r.association :address do
     = draw_map_of resource.address, :class => "map-preview"
     
-  - r.association :pickups do
+  = r.association :pickups do
     %ol.pickups#pickups-listing
       - if resource.pickups.empty?
         %li.empty No pickups defined.
@@ -36,5 +36,18 @@
       #pickups-map.map-preview.static-google-map= static_map_of_addresses resource.pickups.map(&:address)
       - use_gmaps_js
       - has_jammit_js :pickups
+    
+    = r.label :questions
+    %dd
+      %ol
+        - if resource.questions.empty?
+          %li.empty There are no extra questions for this mission.
+        - resource.questions.each do |question|
+          %li
+            == #{question.name} (#{question.question_type.humanize}#{question.required? ? ", required" : ""})
+            - if question.multiple_choice?
+              == - <strong>Choices:</strong> #{Array(question.metadata).to_sentence(:two_words_connector => " or ", :last_word_connector => " or ")}
+    
+      
       
         

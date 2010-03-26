@@ -20,3 +20,5 @@ en:
         has_first_aid_cert: "I have a current First Aid Certificate"
         reason_why: "In 100 words or less why do you want to be a BHM Captain?"
         offers: "In 100 words or less what can you personally bring to BHM?"
+      mission_question:
+        raw_metadata: "Choices"

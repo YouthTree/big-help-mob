@@ -31,6 +31,8 @@ javascripts:
     - public/javascripts/bhm/pickup_chooser.js
   admin_questions:
     - public/javascripts/bhm/admin/questions.js
+  question_editor:
+    - public/javascripts/bhm/question_editor.js
 
 stylesheets:
   base:

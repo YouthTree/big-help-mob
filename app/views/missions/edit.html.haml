@@ -6,6 +6,13 @@
     == #{@participation.role_name.titleize},
     = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
     == to become a #{ar.titleize}.
+
+  - if @participation.answers.needed?
+    - form.inputs :name => "General Questions" do
+      - form.fields_for :answers, @participation.answers do |af|
+        - af.object.each_question do |question, name|
+          = af.input name, question.to_formtastic_options
+        
   
   - form.fields_for :user do |uf|
     - form.inputs :name => "Your General Profile" do

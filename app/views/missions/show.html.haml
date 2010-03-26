@@ -24,8 +24,12 @@
 - if logged_in?
   %p.actions
     - if @mission.participating?(current_user)
-      You've signed up to take part in this mission. If you want to
-      == edit your participation details, #{link_to 'click here', [:edit, @mission]}.
+      You've signed up to take part in this mission.
+      - if @mission.participation_for(current_user).created?
+        Unfortunately, you've not yet filled in all your details -
+        == Please #{link_to 'do so now', [:edit, @mission]}.
+      - else
+        == If you want to edit your participation details, #{link_to 'click here', [:edit, @mission]}.
     - else
       Want to take part in this mission? You can join it
       == #{link_to "as a captain or sidekick", [:join, @mission]}!

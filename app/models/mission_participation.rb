@@ -5,9 +5,12 @@ class MissionParticipation < ActiveRecord::Base
   belongs_to :role
   belongs_to :pickup
   
-  validates_presence_of :user, :mission
+  validates_presence_of :user, :mission, :pickup
+  validates_associated  :answers
   
-  attr_accessible :mission_id, :user_attributes, :pickup_id
+  attr_accessible :mission_id, :user_attributes, :pickup_id, :answers
+  
+  after_validation :autoset_awaiting_approval, :on => :update
   
   accepts_nested_attributes_for :user
   
@@ -16,12 +19,19 @@ class MissionParticipation < ActiveRecord::Base
 
   state_machine :initial => :created do
     state :created
+    state :filled_in
     state :approved
     state :completed
     state :cancelled
-    event :approve do
-      transition :created => :approved
+    
+    event :await_approval do
+      transition :created => :awaiting_approval
     end
+    
+    event :approve do
+      transition [:created, :awaiting_approval] => :approved
+    end
+    
     event :cancel do
       transition any => :cancelled
     end
@@ -45,6 +55,18 @@ class MissionParticipation < ActiveRecord::Base
   
   def alternate_role
     Role::PUBLIC_ROLES[((Role::PUBLIC_ROLES.index(role_name) || 0) + 1) % Role::PUBLIC_ROLES.length]
+  end
+  
+  def answers
+    @answers ||= AnswerProxy.new(self)
+  end
+  
+  def answers=(value)
+    answers.attributes = value
+  end
+  
+  def autoset_awaiting_approval
+    await_approval(false) if created?
   end
   
 end

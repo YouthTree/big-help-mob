@@ -5,7 +5,7 @@ BHM.withNS('CKEditor', function(ns) {
   ns.editorSelector = '.ckeditor textarea';
   ns.editorOptions  = {
     toolbar:      'bhm',
-    width:        '74%',
+    width:        '71%',
     customConfig: false
   };
   

@@ -129,6 +129,7 @@ end
 #  last_name         :string(255)
 #  login             :string(255)
 #  login_count       :integer(4)
+#  origin            :string(255)
 #  password_salt     :string(255)
 #  persistence_token :string(255)
 #  phone             :string(255)

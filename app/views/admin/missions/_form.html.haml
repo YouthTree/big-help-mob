@@ -1,3 +1,5 @@
+- has_jammit_js :question_editor
+
 - form.inputs :name => "Mission Details" do
   
   = form.input :name
@@ -19,3 +21,13 @@
 - form.inputs :name => "Available Pickups" do
   
   = form.input :pickup_ids, :collection => Pickup.all, :as => :check_boxes, :label => "Pickups from"
+  
+%h3 Extra Questions for Mission
+%p.actions= link_to 'Add another question', '#', :class => 'add-question-link'
+- form.object.questions.build
+- form.fields_for :questions do |qf|
+  = render :partial => 'question_form', :object => qf
+  
+- content_for :extra_head do
+  :javascript
+    BHM.QuestionEditor.template = #{render_new_question_form(form).to_json};

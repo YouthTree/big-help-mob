@@ -754,31 +754,44 @@ footer {
   padding: 2.5em 0 0.5em;
 }
 
-/* line 4, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 3, ../../app/stylesheets/bhm/admin/_forms.sass */
+form.formtastic a {
+  text-decoration: none;
+  color: #3a5799;
+}
+/* line 4, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
+form.formtastic a:hover {
+  text-decoration: underline;
+}
+/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+form.formtastic a:hover {
+  color: #992227;
+}
+/* line 7, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic > fieldset.inputs {
   margin: 0 0 1em;
   padding: 1em 0 0;
 }
-/* line 7, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 10, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic > fieldset.inputs > legend {
   font-size: 1.2em;
   font-weight: bold;
 }
-/* line 11, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 14, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic > fieldset.inputs label {
   font-weight: bold;
   color: #444;
 }
-/* line 15, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 18, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic > fieldset.inputs label abbr.required {
   color: #992025;
 }
-/* line 18, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 21, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic > fieldset.inputs ol li ol li label {
   font-weight: normal;
   color: #111;
 }
-/* line 24, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 27, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic fieldset.buttons ol li button {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
@@ -862,9 +875,16 @@ form.formtastic fieldset.buttons ol li button:active {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 27, ../../app/stylesheets/bhm/admin/_forms.sass */
+/* line 30, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic span.cke_skin_kama {
   margin-left: 28%;
+}
+/* line 33, ../../app/stylesheets/bhm/admin/_forms.sass */
+form.formtastic p.actions {
+  background: #EEE;
+  border: 0.1em solid #CCC;
+  padding: 0.5em;
+  margin: -1em 0 1em;
 }
 
 /* line 1, ../../app/stylesheets/bhm/admin/_dashboard.sass */

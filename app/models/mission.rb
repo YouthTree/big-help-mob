@@ -14,15 +14,18 @@ class Mission < ActiveRecord::Base
   has_many :mission_pickups
   has_many :pickups, :through => :mission_pickups
   
-  has_many :mission_participations
-  has_many :users, :through => :mission_participations
+  has_many :participations, :class_name => "MissionParticipation"
+  has_many :users, :through => :participations
+  has_many :questions, :class_name => "MissionQuestion"
   
   belongs_to :organisation
   belongs_to :user
 
   attr_accessible :organisation_id, :user_id, :description, :name
+  
+  accepts_nested_attributes_for :questions, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
 
-  scope :optimize_viewable, includes(:address => nil, :pickups => :address)
+  scope :optimize_viewable, includes(:address => nil, :pickups => :address, :questions => nil)
 
   state_machine :initial => :created do
     state :created
@@ -68,7 +71,7 @@ class Mission < ActiveRecord::Base
   end
   
   def participation_for(user, role_name = nil)
-    participation = mission_participations.for_user(user).first
+    participation = participations.for_user(user).first
     if participation
       if role_name.present? && participation.role_name != role_name
         participation.role_name = role_name
@@ -76,7 +79,11 @@ class Mission < ActiveRecord::Base
       end
       participation
     else
-      mission_participations.create(:user => user, :role => Role[role_name])
+      participations.new.tap do |p|
+        p.role_name = role_name
+        p.user      = user
+        p.save :validate => false
+      end
     end
   end
   

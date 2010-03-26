@@ -10,7 +10,7 @@
   
   = r.attribute :telephone
   
-  - r.attribute :website do
+  = r.attribute :website do
     - if resource.website.blank?
       = t :"show_for.blank"
     - else
