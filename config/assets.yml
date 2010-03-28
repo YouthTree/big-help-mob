@@ -5,6 +5,7 @@ javascripts:
   base:
     - public/javascripts/jquery-1.4.2.js
     - public/javascripts/rails.js
+    - public/javascripts/css_browser_selector.js
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js
   admin:
@@ -33,6 +34,9 @@ javascripts:
     - public/javascripts/bhm/admin/questions.js
   question_editor:
     - public/javascripts/bhm/question_editor.js
+  ie6:
+    - public/javascripts/DD_belatedPNG_0.0.8a.js
+    - public/javascripts/bhm/ie6.js
 
 stylesheets:
   base:

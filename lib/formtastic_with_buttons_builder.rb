@@ -1,7 +1,7 @@
 class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
   
   def submit(value = "Save changes", options = {})
-    @template.content_tag(:button, value, options.reverse_merge(:id => "#{object_name}_submit"))
+    @template.content_tag(:button, value, options.reverse_merge(:type => "submit", :id => "#{object_name}_submit"))
   end
   
   def label(method, options_or_text=nil, options=nil)

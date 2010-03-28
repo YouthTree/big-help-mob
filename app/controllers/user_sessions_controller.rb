@@ -17,7 +17,7 @@ class UserSessionsController < ApplicationController
         end
       end
     else
-      redirect_to sign_in_path, :alert => tf('profile.unknown_user')
+      redirect_to sign_in_path(:traditional => true), :alert => tf('profile.unknown_user')
     end
   end
 

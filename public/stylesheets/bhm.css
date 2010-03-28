@@ -662,13 +662,13 @@ body {
   display: inline-block;
   margin: 3em auto;
   background: white url('/images/bhm/content-bg.jpg') top center repeat-x;
+  border: 0.2em solid #A2A195;
   /* Webkit (Safari, Chrome) */
   -webkit-box-shadow: #333333 0 0 10px;
   /* Gecko (Firefox, Camino) */
   -moz-box-shadow: #333333 0 0 10px;
   /* CSS3 */
   box-shadow: #333333 0 0 10px;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#333', Direction=0, Strength=10);
 }
 /* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
 #container {
@@ -798,7 +798,7 @@ dl#frequently-asked-questions dd p {
   line-height: 16.8px;
   padding: 2px 11px;
   border-width: 1px;
-  padding: 0.5em 1em;
+  padding: 7px 10px;
 }
 /* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
 #join-as-selector .join-as-button a::-moz-focus-inner {
@@ -831,7 +831,12 @@ dl#frequently-asked-questions dd p {
   padding: 2px 11px;
   border-width: 1px;
 }
-/* line 77, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 12, ../../app/stylesheets/bhm/_base.sass */
+#join-as-selector .join-as-button a:active {
+  padding: 7px 10px;
+  border-width: 1px;
+}
+/* line 78, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-captain-button {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -867,7 +872,7 @@ dl#frequently-asked-questions dd p {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 79, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 80, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -918,7 +923,7 @@ dl#frequently-asked-questions dd p {
   -webkit-border-radius: 0.5em;
 }
 /* line 13, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs {
+#content form.formtastic fieldset.inputs {
   margin: 3em 0 4.5em;
   padding: 0;
   background: #F9F9F9;
@@ -926,7 +931,7 @@ dl#frequently-asked-questions dd p {
   position: relative;
 }
 /* line 20, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs > legend span {
+#content form.formtastic fieldset.inputs legend span {
   font-size: 1.4em;
   font-weight: bold;
   position: absolute;
@@ -936,55 +941,63 @@ dl#frequently-asked-questions dd p {
   font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
 }
 /* line 29, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs > ol {
+#content form.formtastic fieldset.inputs ol {
   margin: 20px 20px 0;
+  position: relative;
 }
-/* line 32, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs label {
+/* line 33, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.inputs label {
   font-weight: bold;
   color: #222;
   font-size: 1em;
   padding-top: 0;
 }
-/* line 38, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs label abbr.required {
+/* line 39, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.inputs label abbr.required {
   color: #992025;
 }
-/* line 41, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs p.inline-hints, #content form.formtastic > fieldset.inputs p.inline-errors {
+/* line 42, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.inputs p.inline-hints, #content form.formtastic fieldset.inputs p.inline-errors {
   margin: 0.5em 0 0 28%;
   font-size: 1em;
   padding: 0;
   line-height: 1.5em;
 }
 /* line 48, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs ol li ol li label {
+#content form.formtastic fieldset.inputs ol li ol {
+  margin: 0;
+  padding: 0 0 0 28%;
+}
+/* line 51, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.inputs ol li ol li label {
   font-weight: normal;
   font-size: 0.9em;
   color: #333;
 }
-/* line 53, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.inputs ol li fieldset legend {
+/* line 56, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.inputs ol li ol fieldset legend {
+  position: relative;
   padding: 0;
-  margin-top: -0.3em;
+  margin: -0.3em 0 0 0;
 }
-/* line 57, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.buttons {
+/* line 61, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.buttons {
   margin: -2em 0 2em;
   padding: 0;
 }
-/* line 60, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.buttons ol {
+/* line 64, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.buttons ol {
   text-align: center;
 }
-/* line 62, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.buttons ol li {
+/* line 66, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.buttons ol li {
   margin: 0;
   padding: 0;
   float: none;
+  vertical-align: middle;
 }
-/* line 66, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.buttons ol button {
+/* line 71, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.buttons ol button {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
   margin: 0;
@@ -1005,18 +1018,19 @@ dl#frequently-asked-questions dd p {
   border-color: #0d0d0d;
   text-shadow: black 0px 1px 1px;
   color: white;
+  padding: 7px 10px;
 }
 /* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button::-moz-focus-inner {
+#content form.formtastic fieldset.buttons ol button::-moz-focus-inner {
   border: none;
   padding: 0;
 }
 /* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button:focus {
+#content form.formtastic fieldset.buttons ol button:focus {
   outline: none;
 }
 /* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button.disabled, #content form.formtastic > fieldset.buttons ol button[disabled] {
+#content form.formtastic fieldset.buttons ol button.disabled, #content form.formtastic fieldset.buttons ol button[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
   -khtml-opacity: 0.7;
@@ -1024,21 +1038,21 @@ dl#frequently-asked-questions dd p {
   filter: alpha(opacity=70);
 }
 /* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button.disabled:hover, #content form.formtastic > fieldset.buttons ol button.disabled:focus, #content form.formtastic > fieldset.buttons ol button[disabled]:hover, #content form.formtastic > fieldset.buttons ol button[disabled]:focus {
+#content form.formtastic fieldset.buttons ol button.disabled:hover, #content form.formtastic fieldset.buttons ol button.disabled:focus, #content form.formtastic fieldset.buttons ol button[disabled]:hover, #content form.formtastic fieldset.buttons ol button[disabled]:focus {
   cursor: default;
 }
 /* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button:active {
+#content form.formtastic fieldset.buttons ol button:active {
   padding: 3px 15px;
   border-width: 2px;
 }
 /* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button.disabled:active, #content form.formtastic > fieldset.buttons ol button[disabled] {
+#content form.formtastic fieldset.buttons ol button.disabled:active, #content form.formtastic fieldset.buttons ol button[disabled] {
   padding: 4px 16px;
   border-width: 1px;
 }
 /* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button.disabled:active, #content form.formtastic > fieldset.buttons ol button.disabled:hover, #content form.formtastic > fieldset.buttons ol button[disabled]:active, #content form.formtastic > fieldset.buttons ol button[disabled]:hover {
+#content form.formtastic fieldset.buttons ol button.disabled:active, #content form.formtastic fieldset.buttons ol button.disabled:hover, #content form.formtastic fieldset.buttons ol button[disabled]:active, #content form.formtastic fieldset.buttons ol button[disabled]:hover {
   background-color: #333333;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #878787), color-stop(10%, #595959), color-stop(50%, #2c2c2c), color-stop(50%, #242424), color-stop(100%, #3e3e3e));
   background-image: -moz-linear-gradient(top, #878787 0%, #595959 10%, #2c2c2c 50%, #242424 50%, #3e3e3e 100%);
@@ -1047,7 +1061,7 @@ dl#frequently-asked-questions dd p {
   color: white;
 }
 /* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button:hover, #content form.formtastic > fieldset.buttons ol button:focus {
+#content form.formtastic fieldset.buttons ol button:hover, #content form.formtastic fieldset.buttons ol button:focus {
   background-color: #2b2b2b;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #7f7f7f), color-stop(10%, #515151), color-stop(50%, #242424), color-stop(50%, #1c1c1c), color-stop(100%, #363636));
   background-image: -moz-linear-gradient(top, #7f7f7f 0%, #515151 10%, #242424 50%, #1c1c1c 50%, #363636 100%);
@@ -1056,7 +1070,7 @@ dl#frequently-asked-questions dd p {
   color: white;
 }
 /* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol button:active {
+#content form.formtastic fieldset.buttons ol button:active {
   background-color: #242424;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #242424), color-stop(30%, #292929), color-stop(50%, #1f1f1f), color-stop(50%, #181818), color-stop(100%, #393939));
   background-image: -moz-linear-gradient(top, #242424 0%, #292929 30%, #1f1f1f 50%, #181818 50%, #393939 100%);
@@ -1064,8 +1078,13 @@ dl#frequently-asked-questions dd p {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 68, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link {
+/* line 12, ../../app/stylesheets/bhm/_base.sass */
+#content form.formtastic fieldset.buttons ol button:active {
+  padding: 7px 10px;
+  border-width: 1px;
+}
+/* line 74, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.buttons ol a#auth-selector-link {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
   margin: 0;
@@ -1086,18 +1105,19 @@ dl#frequently-asked-questions dd p {
   border-color: #320f12;
   text-shadow: #0e0101 0px 1px 1px;
   color: white;
+  padding: 7px 10px;
 }
 /* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link::-moz-focus-inner {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link::-moz-focus-inner {
   border: none;
   padding: 0;
 }
 /* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link:focus {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link:focus {
   outline: none;
 }
 /* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled] {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
   -khtml-opacity: 0.7;
@@ -1105,21 +1125,21 @@ dl#frequently-asked-questions dd p {
   filter: alpha(opacity=70);
 }
 /* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:focus, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:focus {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:focus, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:focus {
   cursor: default;
 }
 /* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link:active {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link:active {
   padding: 3px 15px;
   border-width: 2px;
 }
 /* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled] {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled] {
   padding: 4px 16px;
   border-width: 1px;
 }
 /* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic > fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:active, #content form.formtastic > fieldset.buttons ol a#auth-selector-link[disabled]:hover {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:active, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:hover {
   background-color: #89050d;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #d1666d), color-stop(10%, #a8333a), color-stop(50%, #621e22), color-stop(50%, #561a1e), color-stop(100%, #7d262c));
   background-image: -moz-linear-gradient(top, #d1666d 0%, #a8333a 10%, #621e22 50%, #561a1e 50%, #7d262c 100%);
@@ -1128,7 +1148,7 @@ dl#frequently-asked-questions dd p {
   color: white;
 }
 /* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link:hover, #content form.formtastic > fieldset.buttons ol a#auth-selector-link:focus {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link:focus {
   background-color: #7a040d;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #cd5a62), color-stop(10%, #9c2f37), color-stop(50%, #551a1e), color-stop(50%, #49161a), color-stop(100%, #702228));
   background-image: -moz-linear-gradient(top, #cd5a62 0%, #9c2f37 10%, #551a1e 50%, #49161a 50%, #702228 100%);
@@ -1137,7 +1157,7 @@ dl#frequently-asked-questions dd p {
   color: white;
 }
 /* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
-#content form.formtastic > fieldset.buttons ol a#auth-selector-link:active {
+#content form.formtastic fieldset.buttons ol a#auth-selector-link:active {
   background-color: #6c040b;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #571a1e), color-stop(30%, #5e1c21), color-stop(50%, #4f181b), color-stop(50%, #431417), color-stop(100%, #762429));
   background-image: -moz-linear-gradient(top, #571a1e 0%, #5e1c21 30%, #4f181b 50%, #431417 50%, #762429 100%);
@@ -1145,12 +1165,17 @@ dl#frequently-asked-questions dd p {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 70, ../../app/stylesheets/bhm/public/_forms.sass */
-#content form.formtastic > fieldset.buttons ol span.or {
+/* line 12, ../../app/stylesheets/bhm/_base.sass */
+#content form.formtastic fieldset.buttons ol a#auth-selector-link:active {
+  padding: 7px 10px;
+  border-width: 1px;
+}
+/* line 77, ../../app/stylesheets/bhm/public/_forms.sass */
+#content form.formtastic fieldset.buttons ol span.or {
   padding: 0 0.5em;
   color: #666;
 }
-/* line 75, ../../app/stylesheets/bhm/public/_forms.sass */
+/* line 82, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic span.cke_skin_kama {
   margin-left: 28%;
 }
@@ -1162,10 +1187,12 @@ section#flash-messages {
   padding: 0;
   position: absolute;
   top: 0;
+  left: 0;
+  text-align: center;
   width: 100%;
   z-index: 50;
 }
-/* line 10, ../../app/stylesheets/bhm/public/_flash.sass */
+/* line 12, ../../app/stylesheets/bhm/public/_flash.sass */
 section#flash-messages p.flash {
   margin: 0 auto;
   width: 960px;
@@ -1179,7 +1206,7 @@ section#flash-messages p.flash {
   /* CSS3 */
   box-shadow: #777777 0 0 0.25em;
 }
-/* line 18, ../../app/stylesheets/bhm/public/_flash.sass */
+/* line 20, ../../app/stylesheets/bhm/public/_flash.sass */
 section#flash-messages p.flash.last {
   border-bottom-left-radius: 0.5em;
   -moz-border-radius-bottomleft: 0.5em;
@@ -1231,7 +1258,7 @@ section#flash-messages p.flash.last {
   line-height: 16.8px;
   padding: 2px 11px;
   border-width: 1px;
-  padding: 0.5em 1em;
+  padding: 7px 10px;
 }
 /* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
 #authentication-choices dd.choice a::-moz-focus-inner {
@@ -1262,6 +1289,11 @@ section#flash-messages p.flash.last {
 /* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
 #authentication-choices dd.choice a.disabled:active, #authentication-choices dd.choice a[disabled] {
   padding: 2px 11px;
+  border-width: 1px;
+}
+/* line 12, ../../app/stylesheets/bhm/_base.sass */
+#authentication-choices dd.choice a:active {
+  padding: 7px 10px;
   border-width: 1px;
 }
 /* line 24, ../../app/stylesheets/bhm/public/_signup.sass */
@@ -1416,4 +1448,26 @@ p.actions {
   margin: 0.5em 0;
   text-align: center;
   color: #000;
+}
+
+/* line 3, ../../app/stylesheets/bhm/public/_browser_fixes.sass */
+html.ie6 #content form.formtastic fieldset.inputs legend span, html.ie7 #content form.formtastic fieldset.inputs legend span {
+  margin-top: -2em;
+}
+/* line 5, ../../app/stylesheets/bhm/public/_browser_fixes.sass */
+html.ie6 #content form.formtastic fieldset.inputs ol li legend, html.ie7 #content form.formtastic fieldset.inputs ol li legend {
+  position: relative;
+}
+/* line 7, ../../app/stylesheets/bhm/public/_browser_fixes.sass */
+html.ie6 #content form.formtastic fieldset.inputs ol li legend span, html.ie7 #content form.formtastic fieldset.inputs ol li legend span {
+  position: relative;
+}
+
+/* line 12, ../../app/stylesheets/bhm/public/_browser_fixes.sass */
+html.ie6 #content form.formtastic fieldset.inputs ol li {
+  padding-right: 0;
+}
+/* line 14, ../../app/stylesheets/bhm/public/_browser_fixes.sass */
+html.ie6 #content form.formtastic fieldset.inputs ol li.string input, html.ie6 #content form.formtastic fieldset.inputs ol li.password input, html.ie6 #content form.formtastic fieldset.inputs ol li.numeric input, html.ie6 #content form.formtastic fieldset.inputs ol li.text textarea {
+  width: 67%;
 }

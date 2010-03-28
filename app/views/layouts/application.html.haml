@@ -6,6 +6,8 @@
     /[if IE]
       %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
     = raw include_javascripts(:base)
+    /[if IE 6]
+      = raw include_javascripts(:ie6)
     = csrf_meta_tag
     = yield :extra_head
   %body

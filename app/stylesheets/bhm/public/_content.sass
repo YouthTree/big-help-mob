@@ -4,8 +4,8 @@ body
   +clearfix
   :margin 3em auto
   :background white url('/images/bhm/content-bg.jpg') top center repeat-x
+  :border 0.2em solid #A2A195
   +box-shadow(#333, 0, 0, 10px)
-  :filter progid:DXImageTransform.Microsoft.Shadow(color='#333', Direction=0, Strength=10)
     
 #content
   h1, h2, h3, h4, h5, h6
@@ -73,7 +73,8 @@ dl#frequently-asked-questions
     :text-align center
     a
       +fancy-button-structure(14px)
-      :padding 0.5em 1em
+      +fix-fb-padding
+      
     a#join-as-captain-button
       +fancy-button-colors(#477499)
     a#join-as-sidekick-button

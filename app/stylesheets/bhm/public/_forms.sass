@@ -10,14 +10,14 @@
       :padding 0.5em
       +border-radius(0.5em)
   
-    > fieldset.inputs
+    fieldset.inputs
       :margin 3em 0 4.5em
       :padding 0
       :background #F9F9F9
       :border 1px solid #CCC
       :position relative
     
-      > legend span
+      legend span
         :font-size 1.4em
         :font-weight bold
         :position absolute
@@ -26,8 +26,9 @@
         :margin-top -1.5em
         +bauhaus-font-stack
       
-      > ol
+      ol
         :margin= !form_padding_inner !form_padding_inner 0
+        :position relative
 
       label
         :font-weight bold
@@ -44,17 +45,20 @@
         :padding 0
         :line-height 1.5em
 
-      ol li ol li
-        label
+      ol li ol
+        :margin 0
+        :padding 0 0 0 28%
+        li label
           :font-weight normal
           :font-size 0.9em
           :color #333
       
-      ol li fieldset legend
-        :padding 0
-        :margin-top -0.3em
+        fieldset legend
+          :position relative
+          :padding 0
+          :margin -0.3em 0 0 0
 
-    > fieldset.buttons
+    fieldset.buttons
       :margin -2em 0 2em
       :padding 0
       ol
@@ -63,10 +67,13 @@
           :margin 0
           :padding 0
           :float none
+          :vertical-align middle
         button
           +fancy-button(#333, 16px, 0)
+          +fix-fb-padding
         a#auth-selector-link
           +fancy-button(#6D2126, 16px, 0)
+          +fix-fb-padding
         span.or
           :padding 0 0.5em
           :color #666
