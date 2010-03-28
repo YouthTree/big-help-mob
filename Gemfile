@@ -37,7 +37,7 @@ gem "mongrel", :group => "development", :require => nil
 gem "inherited_resources", ">= 1.1.0"
 gem "responders",          ">= 0.5.4"
 
-git "git://github.com/Sutto/show_for.git"
+git "git://github.com/plataformatec/show_for.git"
 gem "show_for",            ">= 0.2.0"
 
 gem "will_paginate",       ">= 3.0.pre"
