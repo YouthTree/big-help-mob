@@ -3,8 +3,7 @@ module ErrorPages
   def self.included(parent)
     parent.class_eval do
       extend ClassMethods
-      rescue_to_error_page! ActiveRecord::RecordNotFound,   :not_found
-      rescue_to_error_page! ActionController::RoutingError, :not_found
+      rescue_to_error_page! ActiveRecord::RecordNotFound, :not_found
     end
   end
   
