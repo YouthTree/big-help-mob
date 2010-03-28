@@ -1,5 +1,6 @@
 # Wrapper class for password resets. OF DOOM.
 class PasswordReset
+  extend ActiveModel::Naming
   
   attr_accessor :email, :password, :password_confirmation
   
@@ -27,7 +28,7 @@ class PasswordReset
   end
   
   def update(attributes = {})
-    @real_validation = true
+    @real_validation = true8
     return false if new_record?
     self.attributes = attributes if attributes.present?
     if password.present? && @user.update_attributes(:password => password, :password_confirmation => password_confirmation)

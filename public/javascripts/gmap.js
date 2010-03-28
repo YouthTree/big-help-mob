@@ -8,8 +8,9 @@ var GMap = (function($) {
   map.autoIDPrefix   = "gmap-";
   map.maps           = [];
   map.defaultOptions = {
-    zoom:      15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    zoom:        15,
+    mapTypeId:   google.maps.MapTypeId.ROADMAP
+    scrollwheel: false
   };
   
   function mergeOptionsWithData(element, options, keys, spacer) {

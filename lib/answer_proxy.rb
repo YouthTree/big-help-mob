@@ -1,5 +1,5 @@
 class AnswerProxy
-  extend ActiveModel::Naming
+  extend  ActiveModel::Naming
   include ActiveModel::Validations
   
   VALID_NAME_REGEXP = /^question_\d+\=?$/
@@ -20,6 +20,7 @@ class AnswerProxy
   
   def attributes=(attributes)
     attributes.each_pair do |k, v|
+      puts "Assigning: #{k.inspect} - #{v.inspect}"
       write_attribute(k, v) if k.to_s =~ VALID_NAME_REGEXP
     end
   end
@@ -32,10 +33,10 @@ class AnswerProxy
   
   def answers
     @answers ||= begin
-      value = @participation[:answers]
+      value = @participation.raw_answers
       if !value.is_a?(Hash)
         value = {}
-        @participation[:answers] = value
+        @participation.raw_answers = value
       end
       value
     end
@@ -59,8 +60,9 @@ class AnswerProxy
   
   def method_missing(name, *args, &blk)
     if (question = question_for_name(name)).present?
-      assign = name.to_s[-2, 1] == "="
-      assign ? write_attribute(name, *args) : read_attribute(name)
+      name = name.to_s
+      assign = name[-1, 1] == "="
+      assign ? write_attribute(name[0..-2], *args) : read_attribute(name)
     else
       super
     end
@@ -73,6 +75,7 @@ class AnswerProxy
   def check_answer_status
     each_question do |question, key|
       value = read_attribute(key)
+      Rails.logger.debug "Value: #{value.inspect} for #{key.inspect}"
       if value.blank? && question.required?
         errors.add(key, :blank, :default => "is blank")
       elsif value.present? && question.multiple_choice?
@@ -93,7 +96,6 @@ class AnswerProxy
   end
   
   def normalize_value(question, value)
-    return ActiveRecord::ConnectionAdapters::Column.value_to_boolean(value) if question.boolean?
     value.to_s
   end
   

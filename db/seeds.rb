@@ -27,6 +27,10 @@ begin
     Content.create! :key => "signup.introduction", :title => "Introduction", :content => ""
     Content.create! :key => "join-as.captain", :title => "Join As a Captain", :content => ""
     Content.create! :key => "join-as.sidekick", :title => "Join As a Sidekick", :content => ""
+    
+    Content.create! :key => "pages.about", :title => "About Big Help Mob", :content => ""
+    Content.create! :key => "pages.privacy-policy", :title => "Our Privacy Policy", :content => ""
+    Content.create! :key => "pages.terms-and-conditions", :title => "Terms and Conditions", :content => ""
   end
 ensure
   $stdout.sync = sync

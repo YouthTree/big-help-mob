@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include AuthorizationHelpers
   include TitleEstuary
   include TitleEstuaryExt
+  include ErrorPages
   
   protected
   

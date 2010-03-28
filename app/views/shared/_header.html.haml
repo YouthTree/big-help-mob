@@ -3,7 +3,7 @@
 %nav#header-menu
   %ul
     = ml "Home", :root
-    = ml "About", "#"
+    = ml "About", :about
     = ml "Event Info", :next_missions
     - if logged_in?
       = ml "Your Account", user_path(:current)

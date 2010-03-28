@@ -14,6 +14,8 @@ class MissionParticipation < ActiveRecord::Base
   
   accepts_nested_attributes_for :user
   
+  serialize :raw_answers
+  
   scope :with_role, includes(:role).where('role_id IS NOT NULL')
   scope :for_user, lambda { |u| includes(:user).where(:user_id => u.id) }
 

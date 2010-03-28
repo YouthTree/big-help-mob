@@ -782,7 +782,7 @@ dl#frequently-asked-questions dd p {
 /* line 74, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
-  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  background: url(/images/button_bg.png) repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
@@ -831,7 +831,7 @@ dl#frequently-asked-questions dd p {
   padding: 2px 11px;
   border-width: 1px;
 }
-/* line 12, ../../app/stylesheets/bhm/_base.sass */
+/* line 14, ../../app/stylesheets/bhm/_base.sass */
 #join-as-selector .join-as-button a:active {
   padding: 7px 10px;
   border-width: 1px;
@@ -999,7 +999,7 @@ dl#frequently-asked-questions dd p {
 /* line 71, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic fieldset.buttons ol button {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
-  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  background: url(/images/button_bg.png) repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
@@ -1078,7 +1078,7 @@ dl#frequently-asked-questions dd p {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 12, ../../app/stylesheets/bhm/_base.sass */
+/* line 14, ../../app/stylesheets/bhm/_base.sass */
 #content form.formtastic fieldset.buttons ol button:active {
   padding: 7px 10px;
   border-width: 1px;
@@ -1086,7 +1086,7 @@ dl#frequently-asked-questions dd p {
 /* line 74, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
-  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  background: url(/images/button_bg.png) repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
@@ -1165,7 +1165,7 @@ dl#frequently-asked-questions dd p {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 12, ../../app/stylesheets/bhm/_base.sass */
+/* line 14, ../../app/stylesheets/bhm/_base.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link:active {
   padding: 7px 10px;
   border-width: 1px;
@@ -1242,7 +1242,7 @@ section#flash-messages p.flash.last {
 /* line 21, ../../app/stylesheets/bhm/public/_signup.sass */
 #authentication-choices dd.choice a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
-  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  background: url(/images/button_bg.png) repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
@@ -1291,7 +1291,7 @@ section#flash-messages p.flash.last {
   padding: 2px 11px;
   border-width: 1px;
 }
-/* line 12, ../../app/stylesheets/bhm/_base.sass */
+/* line 14, ../../app/stylesheets/bhm/_base.sass */
 #authentication-choices dd.choice a:active {
   padding: 7px 10px;
   border-width: 1px;
@@ -1470,4 +1470,29 @@ html.ie6 #content form.formtastic fieldset.inputs ol li {
 /* line 14, ../../app/stylesheets/bhm/public/_browser_fixes.sass */
 html.ie6 #content form.formtastic fieldset.inputs ol li.string input, html.ie6 #content form.formtastic fieldset.inputs ol li.password input, html.ie6 #content form.formtastic fieldset.inputs ol li.numeric input, html.ie6 #content form.formtastic fieldset.inputs ol li.text textarea {
   width: 67%;
+}
+
+/* line 1, ../../app/stylesheets/bhm/public/_errors.sass */
+#error-contents {
+  margin: 3em 15%;
+  line-height: 1.8em;
+  padding: 0.5em;
+  font-size: 1.2em;
+  background: white;
+  border: 0.2em solid red;
+  text-align: center;
+  color: #000;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  /* Webkit (Safari, Chrome) */
+  -webkit-box-shadow: #333333 0 0 10px;
+  /* Gecko (Firefox, Camino) */
+  -moz-box-shadow: #333333 0 0 10px;
+  /* CSS3 */
+  box-shadow: #333333 0 0 10px;
+}
+/* line 13, ../../app/stylesheets/bhm/public/_errors.sass */
+#error-contents p {
+  margin: 0.5em;
 }

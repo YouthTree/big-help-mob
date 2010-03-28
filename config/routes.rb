@@ -40,5 +40,9 @@ Bighelpmob::Application.routes.draw do |map|
     member { get :join }
   end
   
-  root :to => "pages#show"
+  %w(about privacy_policy terms_and_conditions).each do |page|
+    get page.dasherize, :to => "pages##{page}", :as => page.to_sym
+  end
+  
+  root :to => "pages#index"
 end

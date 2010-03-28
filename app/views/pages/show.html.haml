@@ -1,10 +1,1 @@
-#homepage-columns.columns-container
-  = content_section 'home.introduction', :class => 'column'
-  #intro-video.column= youtube_video 'qhMRqJnndQ8', :width => 460, :height => 345
-
-%h2 Frequently Asked Questions about Big Help Mob.
-
-%dl#frequently-asked-questions
-  - @questions.each_with_index do |question, idx|
-    %dt{:class => ('first' if idx == 0)}= question.question
-    %dd= question.answer_as_html
+%div{:class => @content.key.gsub(/^key\./, '').gsub(".", "-")}= @content.content_as_html

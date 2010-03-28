@@ -2,7 +2,7 @@ en:
   page:
     title:
       pages:
-        show: "Welcome to Big Help Mob"
+        index: "Welcome to Big Help Mob"
       user_sessions:
         new: Sign In
         create: Sign In
@@ -22,4 +22,6 @@ en:
         edit: "Reset your Password"
         create: "Request a Password Reset"
         update: "Reset your Password"
-        
+  error_pages:
+    title:
+      not_found: "Page Not Found"

@@ -23,8 +23,9 @@ BHM.withNS('Pickups', function(ns) {
   ns.listingClass      = "pickup-entry";
   ns.dataPrefix        = "pickup-";
   ns.defaultMapOptions = {
-    zoom: 10,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    zoom:        10,
+    mapTypeId:   google.maps.MapTypeId.ROADMAP,
+    scrollwheel: false
   };
   
   // Section: Classes

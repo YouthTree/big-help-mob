@@ -781,7 +781,7 @@ form.formtastic > fieldset.inputs ol li ol li label {
 /* line 23, ../../app/stylesheets/bhm/admin/_forms.sass */
 form.formtastic fieldset.buttons ol li button {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
-  background: url('../images/button_bg.png?1263650041') repeat-x bottom left;
+  background: url(/images/button_bg.png) repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
