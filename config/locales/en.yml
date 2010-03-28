@@ -27,3 +27,15 @@ en:
     - "Youth Tree mailing list"
     - "Other organization"
     - "Other"
+  actionmailer:
+    notifications:
+      signup:
+        subject: "Welcome to Big Help Mob, {{user_name}}"
+      joined_mission:
+        subject: ""
+      profile_incomplete:
+        subject: ""
+      notice:
+        subject: ""
+      password_reset:
+        subject: ""

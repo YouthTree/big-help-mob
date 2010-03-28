@@ -22,8 +22,30 @@ class Settings
     @hash[k.to_sym]
   end
   
+  def has?(key)
+    key = key.to_sym
+    @hash.has_key?(key) && @hash[key].present?
+  end
+  
+  def blank?
+    @hash.blank?
+  end
+  
+  def present?
+    !blank?
+  end
+  
   def method_missing(name, *args, &blk)
-    self[name]
+    name = name.to_s
+    key, modifier = name[0..-2], name[-1, 1]
+    case modifier
+    when '?'
+      has?(key)
+    when '='
+      send(:[]=, key, *args)
+    else
+      self[name]
+    end
   end
   
   def respond_to?(name, key = false)
@@ -44,16 +66,8 @@ class Settings
       end
     end
     
-    def [](key)
-      default[key]
-    end
-    
-    def []=(key, value)
-      default[key] = value
-    end
-    
     def method_missing(name, *args, &blk)
-      self[name]
+      default.send(name, *args, &blk)
     end
 
     def respond_to?(name, key = false)

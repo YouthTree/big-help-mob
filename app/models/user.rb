@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   belongs_to :current_role, :class_name => "Role"
 
   after_save   :update_mailchimp_subscription
-  after_create :save_initial_mailing_list_subscripts
 
   has_address :mailing_address
 
@@ -99,14 +98,16 @@ class User < ActiveRecord::Base
     role.present? && mission_participations.exists?(:role_id => role.id)
   end
   
-  protected
-  
   def update_mailchimp_subscription
     HominidWrapper.update_user_email(self) if email_changed? && !email.blank? && mailing_list_ids.present?
   end
   
-  def save_initial_mailing_list_subscripts
+  def save_initial_mailing_list_subscriptions
     HominidWrapper.update_user_subscriptions(self, @mailing_list_ids) if @mailing_list_ids.present?
+  end
+  
+  def notify!(name, *args)
+    Notifications.send(name, self, *args).deliver if email.present?
   end
 
 end
