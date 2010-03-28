@@ -46,7 +46,5 @@ Bighelpmob::Application.routes.draw do |map|
   
   root :to => "pages#index"
   
-  match "/#{Jammit.package_path}/:package.:extension", :to => 'jammit#package', :as => :jammit
-  
   match '*path', :to => 'errors#catch_all'
 end
