@@ -46,5 +46,5 @@ Bighelpmob::Application.routes.draw do |map|
   
   root :to => "pages#index"
   
-  match '*path', :to => 'errors#catch_all'
+  # match '*path', :to => 'errors#catch_all'
 end
