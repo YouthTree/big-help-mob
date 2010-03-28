@@ -12,7 +12,6 @@ class MissionsController < ApplicationController
       flash[:notice] = "You're already participating in this mission"
       redirect_to @mission
     end
-    # Renders a page with the selector
   end
   
   def edit

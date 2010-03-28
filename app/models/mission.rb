@@ -67,11 +67,12 @@ class Mission < ActiveRecord::Base
   end
   
   def participating?(user)
-    users.exists?(:id => user.id)
+    mission_participations.exists?(:user_id => user.id)
   end
   
   def participation_for(user, role_name = nil)
-    participation = mission_participations.for_user(user).first
+    participation = mission_participations.optimize_editable.for_user(user).first
+    participation.mission = self
     if participation
       if role_name.present? && participation.role_name != role_name
         participation.role_name = role_name

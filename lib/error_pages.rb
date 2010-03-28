@@ -18,7 +18,6 @@ module ErrorPages
   module ClassMethods
     
     def rescue_to_error_page!(exception, name, status = name.to_sym)
-      logger.debug "Rescue from: #{exception.inspect} - #{name.inspect}, #{status.inspect}"
       rescue_from(exception) do
         render_error_page name, status
       end

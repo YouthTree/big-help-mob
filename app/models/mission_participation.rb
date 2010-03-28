@@ -16,8 +16,10 @@ class MissionParticipation < ActiveRecord::Base
   
   serialize :raw_answers
   
-  scope :with_role, includes(:role).where('role_id IS NOT NULL')
-  scope :for_user, lambda { |u| includes(:user).where(:user_id => u.id) }
+  scope :with_role, where('role_id IS NOT NULL')
+  scope :for_user,  lambda { |u| where(:user_id => u.id) }
+  
+  scope :optimize_editable, includes(:user => [:mailing_address, :captain_application], :pickup => :address, :role => nil)
 
   state_machine :initial => :created do
     state :created

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100328065152) do
+ActiveRecord::Schema.define(:version => 20100328082205) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -26,7 +26,11 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.decimal  "lng",              :precision => 15, :scale => 10
   end
 
+  add_index "addresses", ["addressable_id", "addressable_type", "lat", "lng"], :name => "idx_addresses_on_addressable_and_location"
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
+  add_index "addresses", ["addressable_type", "lat", "lng"], :name => "index_addresses_on_addressable_type_and_lat_and_lng"
+  add_index "addresses", ["addressable_type"], :name => "index_addresses_on_addressable_type"
+  add_index "addresses", ["lat", "lng"], :name => "index_addresses_on_lat_and_lng"
 
   create_table "captain_applications", :force => true do |t|
     t.text     "reason_why"
@@ -38,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.integer  "user_id"
   end
 
+  add_index "captain_applications", ["user_id"], :name => "index_captain_applications_on_user_id"
+
   create_table "contents", :force => true do |t|
     t.string   "title"
     t.string   "key"
@@ -46,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "contents", ["key"], :name => "index_contents_on_key"
 
   create_table "mission_participations", :force => true do |t|
     t.integer  "user_id"
@@ -58,12 +66,21 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.text     "raw_answers"
   end
 
+  add_index "mission_participations", ["mission_id", "role_id"], :name => "index_mission_participations_on_mission_id_and_role_id"
+  add_index "mission_participations", ["mission_id"], :name => "index_mission_participations_on_mission_id"
+  add_index "mission_participations", ["user_id", "mission_id", "role_id"], :name => "idx_mission_participations_on_all_relations"
+  add_index "mission_participations", ["user_id", "mission_id"], :name => "index_mission_participations_on_user_id_and_mission_id"
+  add_index "mission_participations", ["user_id", "role_id"], :name => "index_mission_participations_on_user_id_and_role_id"
+  add_index "mission_participations", ["user_id"], :name => "index_mission_participations_on_user_id"
+
   create_table "mission_pickups", :force => true do |t|
     t.integer  "mission_id"
     t.integer  "pickup_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "mission_pickups", ["mission_id", "pickup_id"], :name => "index_mission_pickups_on_mission_id_and_pickup_id"
 
   create_table "mission_questions", :force => true do |t|
     t.integer  "mission_id"
@@ -75,6 +92,8 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.datetime "updated_at"
   end
 
+  add_index "mission_questions", ["mission_id"], :name => "index_mission_questions_on_mission_id"
+
   create_table "missions", :force => true do |t|
     t.string   "name",            :null => false
     t.text     "description",     :null => false
@@ -85,6 +104,10 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.datetime "updated_at"
     t.string   "state"
   end
+
+  add_index "missions", ["organisation_id"], :name => "index_missions_on_organisation_id"
+  add_index "missions", ["state"], :name => "index_missions_on_state"
+  add_index "missions", ["user_id"], :name => "index_missions_on_user_id"
 
   create_table "organisations", :force => true do |t|
     t.string   "name"
@@ -111,11 +134,16 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.datetime "updated_at"
   end
 
+  add_index "questions", ["visible", "position"], :name => "index_questions_on_visible_and_position"
+  add_index "questions", ["visible"], :name => "index_questions_on_visible"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "rpx_identifiers", :force => true do |t|
     t.string   "identifier",    :null => false
@@ -155,6 +183,10 @@ ActiveRecord::Schema.define(:version => 20100328065152) do
     t.string   "perishable_token",  :default => "", :null => false
   end
 
+  add_index "users", ["admin"], :name => "index_users_on_admin"
+  add_index "users", ["current_role_id"], :name => "index_users_on_current_role_id"
+  add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end
