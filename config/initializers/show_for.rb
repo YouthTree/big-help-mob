@@ -8,4 +8,5 @@ ShowFor.setup do |config|
   config.collection_tag          = :ul
   config.default_collection_proc = lambda { |value| "<li>#{value}</li>" }
   config.i18n_format             = :default
+  config.label_proc              = lambda { |l| l + ":" }
 end

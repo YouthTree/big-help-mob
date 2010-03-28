@@ -39,16 +39,16 @@
       - use_gmaps_js
       - has_jammit_js :pickups
     
-    = r.label :questions
-    %dd
-      %ol
-        - if resource.questions.empty?
-          %li.empty There are no extra questions for this mission.
-        - resource.questions.each do |question|
-          %li
-            == #{question.name} (#{question.question_type.humanize}#{question.required? ? ", required" : ""})
-            - if question.multiple_choice?
-              == - <strong>Choices:</strong> #{Array(question.metadata).to_sentence(:two_words_connector => " or ", :last_word_connector => " or ")}
+  = r.label :questions
+  %dd
+    %ol
+      - if resource.questions.empty?
+        %li.empty There are no extra questions for this mission.
+      - resource.questions.each do |question|
+        %li
+          == #{question.name} (#{question.question_type.humanize}#{question.required? ? ", required" : ""})
+          - if question.multiple_choice?
+            == - <strong>Choices:</strong> #{Array(question.metadata).to_sentence(:two_words_connector => " or ", :last_word_connector => " or ")}
     
       
       

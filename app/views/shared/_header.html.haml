@@ -1,10 +1,11 @@
 %h1= link_to "Big Help Mob", :root
-%h2= page_title
+- unless hide_title?
+  %h2= page_title
 %nav#header-menu
   %ul
     = ml "Home", :root
     = ml "About", :about
-    = ml "Event Info", :next_missions
+    = ml "Next Mission", :next_missions
     - if logged_in?
       = ml "Your Account", user_path(:current)
       = ml "Sign out", :sign_out

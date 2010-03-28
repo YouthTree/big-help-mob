@@ -9,7 +9,7 @@ var GMap = (function($) {
   map.maps           = [];
   map.defaultOptions = {
     zoom:        15,
-    mapTypeId:   google.maps.MapTypeId.ROADMAP
+    mapTypeId:   google.maps.MapTypeId.ROADMAP,
     scrollwheel: false
   };
   

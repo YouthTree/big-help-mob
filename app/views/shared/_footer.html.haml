@@ -2,5 +2,15 @@
   %span Sponsored by:
   = sponsor_link "Volunteering WA", "http://www.volunteeringwa.org.au/"
   = sponsor_link "Veolia Transport", "http://www.veoliatransport.com.au/"
-%p== This site brought to you by #{link_to "Youth Tree", "http://www.youthtree.org.au/"}, &copy; #{copyright 2010}. All Rights Reserved.
+
+%nav
+  %ul
+    = ml "Home", :root
+    = ml "About", :about
+    = ml "Next Mission", :next_missions
+    = ml "Terms & Conditions", :terms_and_conditions
+    = ml "Privacy Policy", :privacy_policy
+    = ml "Contact Us", '#'
+    
+%p#copyright-statement== This site brought to you by #{link_to "Youth Tree", "http://www.youthtree.org.au/"}, &copy; #{copyright 2010}. All Rights Reserved.
   

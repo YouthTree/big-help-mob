@@ -18,4 +18,19 @@ footer
       :color #333
     .sponsor
       :margin 0.5em
-    
+  
+  nav
+    :text-align center
+    :padding 0.5em 0
+    :border-top 0.1em solid #CCC
+    :border-bottom 0.1em solid #CCC
+    :margin 1em 0
+    :width 100%
+    :display block
+    ul
+      +inline-list
+      li a
+        :margin 0 0.5em
+        :font-weight bold
+        +link-colors(#315496, #993432)
+        +hover-link

@@ -650,6 +650,44 @@ footer #sponsors span {
 footer #sponsors .sponsor {
   margin: 0.5em;
 }
+/* line 22, ../../app/stylesheets/bhm/public/_footer.sass */
+footer nav {
+  text-align: center;
+  padding: 0.5em 0;
+  border-top: 0.1em solid #CCC;
+  border-bottom: 0.1em solid #CCC;
+  margin: 1em 0;
+  width: 100%;
+  display: block;
+}
+/* line 30, ../../app/stylesheets/bhm/public/_footer.sass */
+footer nav ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+/* line 8, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/lists/_inline_list.sass */
+footer nav ul li {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+/* line 32, ../../app/stylesheets/bhm/public/_footer.sass */
+footer nav ul li a {
+  margin: 0 0.5em;
+  font-weight: bold;
+  color: #315496;
+  text-decoration: none;
+}
+/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+footer nav ul li a:hover {
+  color: #993432;
+}
+/* line 4, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
+footer nav ul li a:hover {
+  text-decoration: underline;
+}
 
 /* line 1, ../../app/stylesheets/bhm/public/_content.sass */
 body {

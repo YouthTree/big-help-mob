@@ -2,6 +2,17 @@ class User < ActiveRecord::Base
   extend Address::Addressable
   
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
+  
+  ORIGIN_CHOICES = [
+    "Poster",
+    "I got stamped",
+    "Facebook",
+    "Word of mouth",
+    "Google search",
+    "Youth Tree mailing list",
+    "Other organization",
+    "Other"
+  ]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_ids,
@@ -29,7 +40,7 @@ class User < ActiveRecord::Base
   
   validates_presence_of :captain_application, :if => :should_validate_captain_application_presence?
   
-  validates_inclusion_of :origin, :in => ::I18n.t(:user_origin_choices),
+  validates_inclusion_of :origin, :in => ORIGIN_CHOICES,
     :message => :unknown_origin_choice, :allow_blank => true
 
   def can?(action, object)
