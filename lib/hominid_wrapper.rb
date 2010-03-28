@@ -58,7 +58,7 @@ class HominidWrapper
     
     def available_lists
       return [] if hominid_instance.blank?
-      mapping = config.list_mapping
+      mapping = config.list_mapping.to_hash.stringify_keys
       mapping_ids = mapping.keys
       hominid_instance.lists.select { |l| mapping_ids.include?(l["id"]) }.map do |l|
         l.merge("display_name" => mapping[l["id"]]).symbolize_keys
