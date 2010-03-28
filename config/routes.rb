@@ -20,6 +20,8 @@ Bighelpmob::Application.routes.draw do |map|
   
   resources :user_session, :as => 'user-sessions'
   
+  resources :password_resets, :as => 'password-resets'
+  
   get   'sign-in', :to => 'user_sessions#new', :as => :sign_in
   post  'sign-in', :to => 'user_sessions#create'
   match 'sign-out', :to => 'user_sessions#destroy', :as => :sign_out

@@ -17,3 +17,9 @@ en:
         edit: Edit your Participation Details
         update: Edit your Participation Details
         show: "{{mission}}"
+      password_resets:
+        new: "Request a Password Reset"
+        edit: "Reset your Password"
+        create: "Request a Password Reset"
+        update: "Reset your Password"
+        

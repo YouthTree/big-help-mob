@@ -7,20 +7,24 @@ class Notifications < ActionMailer::Base
     mail         :to        => user.email
   end
 
-  def joined_mission(user)
-    mail :to => "to@example.org"
+  def joined_mission(user, mission_participation)
+    @mission               = mission_participation.mission
+    @mission_participation = mission_participation
+    @user                  = user
+    subject_vars :mission_name => @mission.name
+    mail         :to           => user.email
   end
 
   def mission_signup_incomplete(user)
-    mail :to => "to@example.org"
+    mail :to => user.email
   end
 
   def notice
-    mail :to => "to@example.org"
   end
   
   def password_reset(user)
-    mail :to => "to@example.org"
+    @user = user
+    mail :to => user.email
   end
   
 end

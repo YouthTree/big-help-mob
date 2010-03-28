@@ -1,0 +1,8 @@
+- semantic_form_for @password_reset do |form|
+  
+  - form.inputs :name => "Your New Password" do
+    = form.input :password
+    = form.input :password_confirmation
+  
+  - form.buttons do
+    = form.commit_button "Reset Password"

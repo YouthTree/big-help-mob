@@ -7,7 +7,7 @@ to go. You're now free to sign up to take part in missions.
 Login: <%= @user.login %>
 
 <% end -%>
-<% if @user.password.present? %>
+<% if @user.using_password? %>
 You signed up for your account using a login / password combination.
 
 If you have forgotten your password, you can visit the
@@ -18,4 +18,4 @@ You signup up using an external service (e.g. twitter, facebook) for identificat
 
 <% end %>
 Thanks,
-The Big Help Mob Team.
+The Big Help Mob team.

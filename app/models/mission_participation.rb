@@ -19,7 +19,7 @@ class MissionParticipation < ActiveRecord::Base
 
   state_machine :initial => :created do
     state :created
-    state :filled_in
+    state :await_approval
     state :approved
     state :completed
     state :cancelled
@@ -35,9 +35,15 @@ class MissionParticipation < ActiveRecord::Base
     event :cancel do
       transition any => :cancelled
     end
+    
     event :complete do
       transition :approved => :completed
     end
+    
+    after_transition :created => :awaiting_approval do |mp, transition|
+      mp.user.notify! :joined_mission, mp
+    end
+    
   end
   
   def role_name

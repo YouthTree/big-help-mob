@@ -2,6 +2,9 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  time:
+    formats:
+      simple: "%d %B, %Y at %I:%M %p"
   activerecord:
     attributes:
       address:
@@ -32,10 +35,10 @@ en:
       signup:
         subject: "Welcome to Big Help Mob, {{user_name}}"
       joined_mission:
-        subject: ""
-      profile_incomplete:
+        subject: "You've successfully joined {{mission_name}}"
+      mission_signup_incomplete:
         subject: ""
       notice:
         subject: ""
       password_reset:
-        subject: ""
+        subject: "Someone requested a password reset for your Big Help Mob account"
