@@ -1,12 +1,8 @@
 Hey there <%= @user.to_s %>,
 
-You've successfully signed up to participate in <%= @mission.name %>
-on <%= l @mission.occurs_at, :format => :simple %>. As the event gets closer
-to this date, we'll let you know more information about the event.
+You've successfully signed up to participate in <%= @mission.name %> on <%= l @mission.occurs_at, :format => :simple %>. As it gets closer to this date, we'll let you know more information about the mission.
 
-For records sake, you've signed up to take part as a <%= @mission_participation.role_name %>.
-We'll be in contact shortly to let you know whether or not you've been
-for this mission.
+For records sake, you've signed up to take part as a <%= @mission_participation.role_name %>. We'll be in contact shortly to let you know whether or not you've been approved for this mission.
 
 Thanks,
 The Big Help Mob team.
