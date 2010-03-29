@@ -60,9 +60,23 @@ to the _.gitignore_ so you don't have to worry about having private information 
 You'll need to have a rpx now api key if you wish to do anything involving non-internal authentication
 an a mailchimp api key for things specific to the mailing lists.
 
-### Step Number 4: Starting the application ###
+### Step Number 4: Creating the database and loading an initial dataset ###
+
+Now, you'll need to create a development and test database. Please note that _config/database.yml_
+*is version controlled*, so don't add passwords etc to it. In the future, we may move it to an example
+file like settings but currently it expects a user root with no password.
+
+Please create _bighelpmob\_development_ and _bighelpmob\_test_ databases, then run:
+
+    $ rake db:setup
+    
+To load the schema and seed some initial data.
+
+### Step Number 5: Starting the application ###
 
 Once all of this is done, using the app should be a matter of typing _rails s_ (if you have
 rails 3 in your system gems) or _bundle exec rails s_ otherwise.
 
 Enjoy! you can not visit the site at _http://localhost:3000/_
+
+Note you can also log in with the username _admin_ and password _monkey_ out of the box
