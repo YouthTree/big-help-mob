@@ -5,6 +5,7 @@ class MissionsController < ApplicationController
   before_filter :prepare_participation, :only => [:edit, :update]
   
   def show
+    @mission_questions = Question.for(:mission_page).all
   end
   
   def join    
@@ -12,6 +13,8 @@ class MissionsController < ApplicationController
       flash[:notice] = "You're already participating in this mission"
       redirect_to @mission
     end
+    @captain_questions  = Question.for(:captain_section).all
+    @sidekick_questions = Question.for(:sidekick_section).all
   end
   
   def edit

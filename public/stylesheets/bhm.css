@@ -733,6 +733,12 @@ body, html {
   margin: 3em auto;
   background: white url('/images/bhm/content-bg.jpg') top center repeat-x;
   border: 0.2em solid #571a15;
+  /* Webkit (Safari, Chrome) */
+  -webkit-box-shadow: #333333 0 0 10px;
+  /* Gecko (Firefox, Camino) */
+  -moz-box-shadow: #333333 0 0 10px;
+  /* CSS3 */
+  box-shadow: #333333 0 0 10px;
 }
 /* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
 #container {
@@ -793,30 +799,30 @@ body, html {
 }
 
 /* line 33, ../../app/stylesheets/bhm/public/_content.sass */
-dl#frequently-asked-questions {
+dl.frequently-asked-questions {
   margin: 0 1em 1em;
   font-size: 1.2em;
 }
 /* line 36, ../../app/stylesheets/bhm/public/_content.sass */
-dl#frequently-asked-questions dt {
+dl.frequently-asked-questions dt {
   font-weight: bold;
   color: black;
   margin: 1.5em 0 0;
   padding: 0;
 }
 /* line 41, ../../app/stylesheets/bhm/public/_content.sass */
-dl#frequently-asked-questions dt.first {
+dl.frequently-asked-questions dt.first {
   margin-top: 0;
 }
 /* line 43, ../../app/stylesheets/bhm/public/_content.sass */
-dl#frequently-asked-questions dd {
+dl.frequently-asked-questions dd {
   color: #333333;
   font-size: 1em;
   margin: 0.25em 0;
   padding: 0;
 }
 /* line 48, ../../app/stylesheets/bhm/public/_content.sass */
-dl#frequently-asked-questions dd p {
+dl.frequently-asked-questions dd p {
   font-size: 1em;
   padding: 0;
   margin: 0 0 0.5em;
@@ -840,19 +846,28 @@ dl#frequently-asked-questions dd p {
 #join-as-selector #sidekick-selector .embedded-content, #join-as-selector #captain-selector .embedded-content {
   text-align: left;
 }
-/* line 67, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 68, ../../app/stylesheets/bhm/public/_content.sass */
+#join-as-selector dl.frequently-asked-questions dt, #join-as-selector dl.frequently-asked-questions dd {
+  text-align: left;
+  font-size: 0.9em;
+}
+/* line 71, ../../app/stylesheets/bhm/public/_content.sass */
+#join-as-selector dl.frequently-asked-questions dd p {
+  margin-left: 0;
+}
+/* line 74, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #captain-selector {
   text-align: right;
 }
-/* line 69, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 76, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector {
   text-align: left;
 }
-/* line 72, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 79, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button {
   text-align: center;
 }
-/* line 74, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 81, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -909,7 +924,7 @@ dl#frequently-asked-questions dd p {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 76, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 83, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-captain-button {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -945,7 +960,7 @@ dl#frequently-asked-questions dd p {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 78, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 85, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));

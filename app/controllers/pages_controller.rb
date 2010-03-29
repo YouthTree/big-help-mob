@@ -7,7 +7,6 @@ class PagesController < ApplicationController
   # Site index
   def index
     hide_title!
-    @questions = Question.visible.ordered.all
   end
   
   def_page :about

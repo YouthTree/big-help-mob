@@ -5,7 +5,7 @@ body, html
   :margin 3em auto
   :background white url('/images/bhm/content-bg.jpg') top center repeat-x
   :border= 0.2em "solid" !bhm_colour_container_border
-  bhm-default-shadow
+  +bhm-default-shadow
     
 #content
   h1, h2, h3, h4, h5, h6
@@ -30,7 +30,7 @@ body, html
       :margin-left 0
       :margin-right 0
 
-dl#frequently-asked-questions
+dl.frequently-asked-questions
   :margin 0 1em 1em
   :font-size 1.2em
   dt
@@ -63,6 +63,13 @@ dl#frequently-asked-questions
   
     .embedded-content
       :text-align left
+
+  dl.frequently-asked-questions
+    dt, dd
+      :text-align left
+      :font-size 0.9em
+    dd p
+      :margin-left 0
 
   #captain-selector
     :text-align right

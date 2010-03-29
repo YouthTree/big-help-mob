@@ -9,7 +9,8 @@ en:
     optional: ":"
     labels:
       question:
-        visible: "Show this question on the homepage"
+        question: "Question"
+        visible: "Show this question to users"
       user:
         mailing_list_ids: "Mailing Lists"
         origin: "How did you hear about us?"

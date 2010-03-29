@@ -5,11 +5,17 @@ module MissionsHelper
     image = "bhm/#{role}-logo.jpg"
     text  = "Join up as a #{role.titleize}"
     inner = image_tag(image, :alt => text)
-    content = content_section("join-as.#{role}")
     url = edit_mission_with_role_path(@mission, :as => role)
-    link = link_to(inner, url, :class => "join-as-#{role}", :title => text)
-    button = content_tag(:div, link_to(text, url, :id => "join-as-#{role}-button"), :class => 'join-as-button')
-    link + content + button
+    content = ActiveSupport::SafeBuffer.new
+    content << link_to(inner, url, :class => "join-as-#{role}", :title => text)
+    content << content_section("join-as.#{role}")
+    ivar_key = :"@#{role}_questions"
+    if instance_variable_defined?(ivar_key)
+      questions = instance_variable_get(ivar_key)
+      content << faq(questions, "FAQ about #{role.to_s.titleize.pluralize}")
+    end
+    content << content_tag(:div, link_to(text, url, :id => "join-as-#{role}-button"), :class => 'join-as-button')
+    content
   end
   
 end

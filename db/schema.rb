@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100328082205) do
+ActiveRecord::Schema.define(:version => 20100329133423) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -126,12 +126,15 @@ ActiveRecord::Schema.define(:version => 20100328082205) do
   end
 
   create_table "questions", :force => true do |t|
-    t.boolean  "visible",    :default => false, :null => false
+    t.boolean  "visible",                  :default => false, :null => false
     t.integer  "position"
     t.text     "question"
     t.text     "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "show_on_mission_page",     :default => false
+    t.boolean  "show_on_sidekick_section", :default => false
+    t.boolean  "show_on_captain_section",  :default => false
   end
 
   add_index "questions", ["visible", "position"], :name => "index_questions_on_visible_and_position"

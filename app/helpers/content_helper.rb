@@ -55,4 +55,17 @@ module ContentHelper
     content_tag(:object, inner.join, :height => options[:height], :width => options[:width])
   end
   
+  def faq(questions, title = "Frequently Asked Questions")
+    return if questions.blank?
+    inner = ActiveSupport::SafeBuffer.new
+    faqs  = ActiveSupport::SafeBuffer.new
+    questions.each_with_index do |question, idx|
+      faqs << content_tag(:dt, question.question, :class => (idx == 0 ? "first" : nil))
+      faqs << content_tag(:dd, question.answer_as_html)
+    end
+    inner << content_tag(:h3, title)
+    inner << content_tag(:dl, faqs, :class => "frequently-asked-questions")
+    inner
+  end
+  
 end

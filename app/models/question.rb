@@ -15,6 +15,10 @@ class Question < ActiveRecord::Base
     update_all ["position = FIND_IN_SET(id, '?')", ids], ['id IN (?)', ids]
   end
   
+  def self.for(page_id)
+    visible.ordered.where(:"show_on_#{page_id}" => true)
+  end
+  
   def answer_as_html
     answer.to_s.html_safe
   end
