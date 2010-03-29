@@ -13,8 +13,8 @@
     fieldset.inputs
       :margin 3em 0 4.5em
       :padding 0
-      :background #F9F9F9
-      :border 1px solid #CCC
+      :background= !bhm_colour_fieldset_background
+      :border= 1px "solid" !bhm_colour_fieldset_border
       :position relative
     
       legend span
@@ -22,7 +22,7 @@
         :font-weight bold
         :position absolute
         :left 0
-        :color #111
+        :color= !bhm_colour_fieldset_legend
         :margin-top -1.5em
         +bauhaus-font-stack
       
@@ -32,7 +32,7 @@
 
       label
         :font-weight bold
-        :color #222
+        :color= !bhm_colour_form_label
         :font-size 1em
         :padding-top 0
 
@@ -51,7 +51,7 @@
         li label
           :font-weight normal
           :font-size 0.9em
-          :color #333
+          :color= !bhm_colour_form_label_nested
       
         fieldset legend
           :position relative
@@ -69,10 +69,10 @@
           :float none
           :vertical-align middle
         button
-          +fancy-button(#333, 16px, 0)
+          +fancy-button(!bhm_colour_form_submit, 16px, 0)
           +fix-fb-padding
         a#auth-selector-link
-          +fancy-button(#6D2126, 16px, 0)
+          +fancy-button(!bhm_colour_form_cancel, 16px, 0)
           +fix-fb-padding
         span.or
           :padding 0 0.5em

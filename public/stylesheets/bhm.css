@@ -485,7 +485,7 @@ form.formtastic fieldset ol li.date fieldset ol li label input, form.formtastic 
   margin-right: 0;
 }
 
-/* line 1, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 3, ../../app/stylesheets/bhm/public/_header.sass */
 header {
   display: block;
   height: 445px;
@@ -494,7 +494,7 @@ header {
   position: relative;
   z-index: 5;
 }
-/* line 8, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 10, ../../app/stylesheets/bhm/public/_header.sass */
 header h1 {
   z-index: 5;
   margin: 0;
@@ -504,7 +504,7 @@ header h1 {
   top: 50px;
   display: block;
 }
-/* line 16, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 18, ../../app/stylesheets/bhm/public/_header.sass */
 header h1 a {
   width: 615px;
   height: 255px;
@@ -512,7 +512,7 @@ header h1 a {
   text-indent: -9999em;
   display: block;
 }
-/* line 23, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 25, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#header-menu {
   position: absolute;
   top: 0;
@@ -522,13 +522,13 @@ header nav#header-menu {
   height: 75px;
   background: url(/images/bhm/header-menu-bg.png) top left no-repeat;
 }
-/* line 31, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 33, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#header-menu ul {
   margin: 1.6em 0 1.5em;
   padding: 0;
   text-align: left;
 }
-/* line 35, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 37, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#header-menu ul li {
   display: inline;
   margin: 0 1.25em;
@@ -536,17 +536,25 @@ header nav#header-menu ul li {
   font-size: 1.4em;
   text-transform: lowercase;
 }
-/* line 41, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 43, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#header-menu ul li a {
   text-decoration: none;
   color: #49433c;
   font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
 }
+/* line 12, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+header nav#header-menu ul li a:visited {
+  color: #444345;
+}
 /* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 header nav#header-menu ul li a:hover {
   color: #994e2c;
 }
-/* line 46, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 21, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+header nav#header-menu ul li a:active {
+  color: black;
+}
+/* line 48, ../../app/stylesheets/bhm/public/_header.sass */
 header #youthtree-project-logo {
   display: block;
   position: absolute;
@@ -554,7 +562,7 @@ header #youthtree-project-logo {
   right: 20px;
   z-index: 10;
 }
-/* line 52, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 54, ../../app/stylesheets/bhm/public/_header.sass */
 header #youthtree-project-logo a {
   display: block;
   text-indent: -9999em;
@@ -562,11 +570,11 @@ header #youthtree-project-logo a {
   height: 140px;
   background: url(/images/bhm/youthtree-project-logo.png) top left no-repeat;
 }
-/* line 58, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 60, ../../app/stylesheets/bhm/public/_header.sass */
 header #youthtree-project-logo a:hover, header #youthtree-project-logo a:active {
   background-position: -110px 0;
 }
-/* line 61, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 63, ../../app/stylesheets/bhm/public/_header.sass */
 header h2 {
   margin: 0;
   padding: 0;
@@ -580,7 +588,7 @@ header h2 {
   color: black;
   font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
 }
-/* line 75, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 77, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin {
   position: absolute;
   right: 0;
@@ -593,74 +601,90 @@ header nav#admin {
   border-bottom-left-radius: 0.75em;
   -moz-border-radius-bottomleft: 0.75em;
   -webkit-border-bottom-left-radius: 0.75em;
-  border-left: 0.25em solid #666;
-  border-bottom: 0.25em solid #666;
+  border-left: 0.2em solid #571a15;
+  border-bottom: 0.2em solid #571a15;
 }
-/* line 86, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 88, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin a {
   font-weight: bold;
+  color: #324d99;
   color: inherit;
   text-decoration: inherit;
   cursor: inherit;
-  color: #35527b;
+}
+/* line 12, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+header nav#admin a:visited {
+  color: #324d99;
+}
+/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+header nav#admin a:hover {
+  color: #99352e;
+}
+/* line 21, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+header nav#admin a:active {
+  color: #580a19;
 }
 /* line 6, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_unstyled_link.sass */
 header nav#admin a:active, header nav#admin a:focus {
   outline: none;
 }
-/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-header nav#admin a:hover {
-  color: #992d30;
-}
 
-/* line 1, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 3, ../../app/stylesheets/bhm/public/_footer.sass */
 footer {
   text-align: center;
   margin: 1em 0;
 }
-/* line 4, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 6, ../../app/stylesheets/bhm/public/_footer.sass */
 footer p {
   margin: 0.25em 0;
   padding: 0;
   font-size: 1.1em;
-  color: #444;
+  color: #333333;
 }
-/* line 9, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 11, ../../app/stylesheets/bhm/public/_footer.sass */
 footer p a {
+  color: #324d99;
   text-decoration: none;
-  color: #4c6899;
+}
+/* line 12, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+footer p a:visited {
+  color: #324d99;
+}
+/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+footer p a:hover {
+  color: #99352e;
+}
+/* line 21, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+footer p a:active {
+  color: #580a19;
 }
 /* line 4, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
 footer p a:hover {
   text-decoration: underline;
 }
-/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-footer p a:hover {
-  color: #99323a;
-}
-/* line 13, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 14, ../../app/stylesheets/bhm/public/_footer.sass */
 footer #sponsors span {
   margin: 0 0.5em 0 0;
   vertical-align: top;
   line-height: 45px;
   font-weight: bold;
-  color: #333;
+  color: #333333;
 }
-/* line 19, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 20, ../../app/stylesheets/bhm/public/_footer.sass */
 footer #sponsors .sponsor {
   margin: 0.5em;
 }
-/* line 22, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 23, ../../app/stylesheets/bhm/public/_footer.sass */
 footer nav {
   text-align: center;
   padding: 0.5em 0;
-  border-top: 0.1em solid #CCC;
-  border-bottom: 0.1em solid #CCC;
+  border-top: 0.1em solid #cccccc;
+  border-bottom: 0.1em solid #cccccc;
   margin: 1em 0;
   width: 100%;
   display: block;
 }
-/* line 30, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 31, ../../app/stylesheets/bhm/public/_footer.sass */
 footer nav ul {
   list-style-type: none;
   margin: 0px;
@@ -673,16 +697,24 @@ footer nav ul li {
   padding: 0px;
   display: inline;
 }
-/* line 32, ../../app/stylesheets/bhm/public/_footer.sass */
+/* line 33, ../../app/stylesheets/bhm/public/_footer.sass */
 footer nav ul li a {
-  margin: 0 0.5em;
+  margin: 0 1em;
   font-weight: bold;
-  color: #315496;
+  color: #324d99;
   text-decoration: none;
+}
+/* line 12, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+footer nav ul li a:visited {
+  color: #324d99;
 }
 /* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 footer nav ul li a:hover {
-  color: #993432;
+  color: #99352e;
+}
+/* line 21, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+footer nav ul li a:active {
+  color: #580a19;
 }
 /* line 4, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
 footer nav ul li a:hover {
@@ -690,8 +722,8 @@ footer nav ul li a:hover {
 }
 
 /* line 1, ../../app/stylesheets/bhm/public/_content.sass */
-body {
-  background: #cdccbc;
+body, html {
+  background: #be392d;
 }
 
 /* line 3, ../../app/stylesheets/bhm/public/_content.sass */
@@ -700,13 +732,7 @@ body {
   display: inline-block;
   margin: 3em auto;
   background: white url('/images/bhm/content-bg.jpg') top center repeat-x;
-  border: 0.2em solid #A2A195;
-  /* Webkit (Safari, Chrome) */
-  -webkit-box-shadow: #333333 0 0 10px;
-  /* Gecko (Firefox, Camino) */
-  -moz-box-shadow: #333333 0 0 10px;
-  /* CSS3 */
-  box-shadow: #333333 0 0 10px;
+  border: 0.2em solid #571a15;
 }
 /* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
 #container {
@@ -718,30 +744,39 @@ body {
   font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
   margin: 0 0 0.5em;
   text-align: center;
-  color: #333;
+  font-weight: bold;
+  color: #333333;
 }
-/* line 16, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 17, ../../app/stylesheets/bhm/public/_content.sass */
 #content p {
   margin: 0 1em 1em;
   font-size: 1.2em;
   line-height: 1.8em;
 }
-/* line 20, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 21, ../../app/stylesheets/bhm/public/_content.sass */
 #content strong {
   font-weight: bold;
 }
-/* line 22, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 23, ../../app/stylesheets/bhm/public/_content.sass */
 #content a {
+  color: #324d99;
   text-decoration: none;
-  color: #315a99;
+}
+/* line 12, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+#content a:visited {
+  color: #324d99;
+}
+/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+#content a:hover {
+  color: #99352e;
+}
+/* line 21, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
+#content a:active {
+  color: #580a19;
 }
 /* line 4, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
 #content a:hover {
   text-decoration: underline;
-}
-/* line 18, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-#content a:hover {
-  color: #99342a;
 }
 /* line 25, ../../app/stylesheets/bhm/public/_content.sass */
 #content em {
@@ -765,7 +800,7 @@ dl#frequently-asked-questions {
 /* line 36, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dt {
   font-weight: bold;
-  color: #000;
+  color: black;
   margin: 1.5em 0 0;
   padding: 0;
 }
@@ -775,7 +810,7 @@ dl#frequently-asked-questions dt.first {
 }
 /* line 43, ../../app/stylesheets/bhm/public/_content.sass */
 dl#frequently-asked-questions dd {
-  color: #333;
+  color: #333333;
   font-size: 1em;
   margin: 0.25em 0;
   padding: 0;
@@ -869,12 +904,12 @@ dl#frequently-asked-questions dd p {
   padding: 2px 11px;
   border-width: 1px;
 }
-/* line 14, ../../app/stylesheets/bhm/_base.sass */
+/* line 3, ../../app/stylesheets/bhm/_util.sass */
 #join-as-selector .join-as-button a:active {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 78, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 76, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-captain-button {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -910,7 +945,7 @@ dl#frequently-asked-questions dd p {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 80, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 78, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -964,8 +999,8 @@ dl#frequently-asked-questions dd p {
 #content form.formtastic fieldset.inputs {
   margin: 3em 0 4.5em;
   padding: 0;
-  background: #F9F9F9;
-  border: 1px solid #CCC;
+  background: #f9f9f9;
+  border: 1px solid #cccccc;
   position: relative;
 }
 /* line 20, ../../app/stylesheets/bhm/public/_forms.sass */
@@ -974,7 +1009,7 @@ dl#frequently-asked-questions dd p {
   font-weight: bold;
   position: absolute;
   left: 0;
-  color: #111;
+  color: #111111;
   margin-top: -1.5em;
   font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
 }
@@ -986,7 +1021,7 @@ dl#frequently-asked-questions dd p {
 /* line 33, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic fieldset.inputs label {
   font-weight: bold;
-  color: #222;
+  color: #222222;
   font-size: 1em;
   padding-top: 0;
 }
@@ -1010,7 +1045,7 @@ dl#frequently-asked-questions dd p {
 #content form.formtastic fieldset.inputs ol li ol li label {
   font-weight: normal;
   font-size: 0.9em;
-  color: #333;
+  color: #333333;
 }
 /* line 56, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic fieldset.inputs ol li ol fieldset legend {
@@ -1116,7 +1151,7 @@ dl#frequently-asked-questions dd p {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 14, ../../app/stylesheets/bhm/_base.sass */
+/* line 3, ../../app/stylesheets/bhm/_util.sass */
 #content form.formtastic fieldset.buttons ol button:active {
   padding: 7px 10px;
   border-width: 1px;
@@ -1203,7 +1238,7 @@ dl#frequently-asked-questions dd p {
   text-shadow: black 0px -1px -1px;
   color: white;
 }
-/* line 14, ../../app/stylesheets/bhm/_base.sass */
+/* line 3, ../../app/stylesheets/bhm/_util.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link:active {
   padding: 7px 10px;
   border-width: 1px;
@@ -1329,12 +1364,12 @@ section#flash-messages p.flash.last {
   padding: 2px 11px;
   border-width: 1px;
 }
-/* line 14, ../../app/stylesheets/bhm/_base.sass */
+/* line 3, ../../app/stylesheets/bhm/_util.sass */
 #authentication-choices dd.choice a:active {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 24, ../../app/stylesheets/bhm/public/_signup.sass */
+/* line 23, ../../app/stylesheets/bhm/public/_signup.sass */
 #authentication-choices dd.choice a#traditional-authentication-link {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -1370,7 +1405,7 @@ section#flash-messages p.flash.last {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 26, ../../app/stylesheets/bhm/public/_signup.sass */
+/* line 25, ../../app/stylesheets/bhm/public/_signup.sass */
 #authentication-choices dd.choice a#rpxnow-authentication-link {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -1429,11 +1464,11 @@ p.actions {
 }
 /* line 4, ../../app/stylesheets/bhm/public/_maps.sass */
 #pickups-map.static-google-map img {
-  border: 0.3em solid #CFCFCF;
+  border: 0.3em solid #cfcfcf;
 }
 /* line 6, ../../app/stylesheets/bhm/public/_maps.sass */
 #pickups-map.dynamic-google-map {
-  border: 0.3em solid #CFCFCF;
+  border: 0.3em solid #cfcfcf;
   width: auto;
   height: 300px;
 }
@@ -1517,9 +1552,9 @@ html.ie6 #content form.formtastic fieldset.inputs ol li.string input, html.ie6 #
   padding: 0.5em;
   font-size: 1.2em;
   background: white;
-  border: 0.2em solid red;
+  border: 0.2em solid #99000b;
   text-align: center;
-  color: #000;
+  color: black;
   border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   -webkit-border-radius: 0.5em;

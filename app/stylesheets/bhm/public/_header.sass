@@ -1,3 +1,5 @@
+!bhm_border_admin_link ||= 0.2em "solid" !bhm_colour_admin_link_border
+
 header
   :display block
   :height 445px
@@ -40,7 +42,7 @@ header
         :text-transform lowercase
         a
           :text-decoration none
-          +link-colors(#49433c, #994E2C)
+          +link-colors(!bhm_colour_link_header_normal, !bhm_colour_link_header_hover, !bhm_colour_link_header_active, !bhm_colour_link_header_visited)
           +bauhaus-font-stack
 
   #youthtree-project-logo
@@ -81,9 +83,8 @@ header
     :background white
     +linear-gradient(color_stops(#CCC, #FFF), "top")
     +border-bottom-left-radius(0.75em)
-    :border-left 0.25em solid #666
-    :border-bottom 0.25em solid #666
+    :border-left= !bhm_border_admin_link
+    :border-bottom= !bhm_border_admin_link
     a
       :font-weight bold
-      +unstyled-link
-      +link-colors(#35527B, #992D30)
+      +bhm-link-base(false)

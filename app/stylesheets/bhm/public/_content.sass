@@ -1,18 +1,19 @@
-body
-  :background #cdccbc
+body, html
+  :background= !bhm_colour_page_background
 #container
   +clearfix
   :margin 3em auto
   :background white url('/images/bhm/content-bg.jpg') top center repeat-x
-  :border 0.2em solid #A2A195
-  +box-shadow(#333, 0, 0, 10px)
+  :border= 0.2em "solid" !bhm_colour_container_border
+  bhm-default-shadow
     
 #content
   h1, h2, h3, h4, h5, h6
     +bauhaus-font-stack
     :margin 0 0 0.5em
     :text-align center
-    :color #333
+    :font-weight bold
+    :color= !bhm_colour_header_text
   p
     :margin 0 1em 1em
     :font-size 1.2em
@@ -20,8 +21,7 @@ body
   strong
     :font-weight bold
   a
-    +hover-link
-    +link-colors(#315A99, #99342A)
+    +bhm-link-base
   em
     :font-style italic
   .embedded-content.signup-introduction
@@ -35,13 +35,13 @@ dl#frequently-asked-questions
   :font-size 1.2em
   dt
     :font-weight bold
-    :color #000
+    :color= !bhm_colour_faq_question
     :margin 1.5em 0 0
     :padding 0
   dt.first
     :margin-top 0
   dd
-    :color #333
+    :color= !bhm_colour_faq_answer
     :font-size 1em
     :margin 0.25em 0
     :padding 0
@@ -72,9 +72,7 @@ dl#frequently-asked-questions
   .join-as-button
     :text-align center
     a
-      +fancy-button-structure(14px)
-      +fix-fb-padding
-      
+      +bhm-fixed-fb-structure
     a#join-as-captain-button
       +fancy-button-colors(#477499)
     a#join-as-sidekick-button

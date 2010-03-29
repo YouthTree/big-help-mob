@@ -3,12 +3,12 @@
   :line-height 1.8em
   :padding 0.5em
   :font-size 1.2em
-  :background white
-  :border 0.2em solid red
+  :background= !bhm_colour_error_background
+  :border= 0.2em "solid" !bhm_colour_error_border
   :text-align center
-  :color #000
+  :color= !bhm_colour_error_text
   +border-radius(0.5em)
-  +box-shadow(#333, 0, 0, 10px)
+  +bhm-default-shadow
   
   p
     :margin 0.5em

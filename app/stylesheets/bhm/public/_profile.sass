@@ -4,8 +4,7 @@ p.actions
   :margin 0 15% 2em
   :padding 0.4em 0.3em 0.3em
   +border-radius(0.75em)
-  !background_colour = #FFEED3
-  :background= !background_colour
-  :border= 1px "solid" darken(!background_colour, 50)
-  :color= darken(!background_colour, 75)
-  +linear-gradient(color_stops(lighten(!background_colour, 5), darken(!background_colour, 5)), "top")
+  :background= !bhm_colour_actions_background
+  :border= 1px "solid" darken(!bhm_colour_actions_background, 50)
+  :color= darken(!bhm_colour_actions_background, 75)
+  +linear-gradient(color_stops(lighten(!bhm_colour_actions_background, 5), darken(!bhm_colour_actions_background, 5)), "top")

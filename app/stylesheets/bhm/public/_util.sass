@@ -1,0 +1,17 @@
+=bhm-map-border
+  :border= 0.3em "solid" !bhm_colour_maps_border
+  
+=bhm-link-base(!hover_link = true)
+  +link-colors(!bhm_colour_link_normal, !bhm_colour_link_hover, !bhm_colour_link_active, !bhm_colour_link_visited)
+  @if !hover_link
+    +hover-link
+  @else
+    +unstyled-link
+  
+  
+=bhm-fixed-fb-structure(!size = 14px)
+  +fancy-button-structure(!size)
+  +fix-fb-padding
+  
+=bhm-default-shadow(!size = 10px, !colour = !bhm_colour_default_shadow)
+  +box-shadow(!colour, 0, 0, !size)

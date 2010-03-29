@@ -1,3 +1,5 @@
+!bhm_footer_nav_border ||= 0.1em "solid" !bhm_colour_footer_nav_border
+
 footer
   :text-align center
   :margin 1em 0
@@ -5,32 +7,30 @@ footer
     :margin 0.25em 0
     :padding 0
     :font-size 1.1em
-    :color #444
+    :color= !bhm_colour_footer_text
     a
-      +hover-link
-      +link-colors(#4C6899, #99323A)
+      +bhm-link-base
   #sponsors
     span
       :margin 0 0.5em 0 0
       :vertical-align top
       :line-height 45px
       :font-weight bold
-      :color #333
+      :color= !bhm_colour_footer_text
     .sponsor
       :margin 0.5em
   
   nav
     :text-align center
     :padding 0.5em 0
-    :border-top 0.1em solid #CCC
-    :border-bottom 0.1em solid #CCC
+    :border-top= !bhm_footer_nav_border
+    :border-bottom= !bhm_footer_nav_border
     :margin 1em 0
     :width 100%
     :display block
     ul
       +inline-list
       li a
-        :margin 0 0.5em
+        :margin 0 1em
         :font-weight bold
-        +link-colors(#315496, #993432)
-        +hover-link
+        +bhm-link-base
