@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       if @user_session.new_registration?
-        redirect_to root_path, :alert => tf('profile.welcome')
+        redirect_to edit_user_path(:current), :notice => tf('profile.welcome')
       else
         if @user_session.registration_complete?
           redirect_back_or_default user_path(:current), :notice => tf('general.signed_in')
