@@ -57,6 +57,8 @@ gem "acts_as_list"
 git "git://github.com/railsjedi/jammit.git"
 gem "jammit", :require => ['jammit', 'jammit/helper']
 
+gem "mail_form", :require => nil
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil

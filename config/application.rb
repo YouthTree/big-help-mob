@@ -7,9 +7,7 @@ Bundler.require :default, Rails.env
 
 module Bighelpmob
   class Application < Rails::Application
-    # config.load_paths             += %W( #{config.root}/extras )
     # config.plugins                 = [ :exception_notification, :ssl_requirement, :all ]
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
     # config.time_zone               = 'Central Time (US & Canada)'
     # config.i18n.load_path         += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     # config.i18n.default_locale     = :de
@@ -22,6 +20,8 @@ module Bighelpmob
 
     config.filter_parameters << :password
     config.filter_parameters << :password_confirmation
+    
+    config.load_paths += [config.root.join("app", "drops").to_s, config.root.join("app", "observers").to_s]
     
   end
 end

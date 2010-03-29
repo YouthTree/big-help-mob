@@ -33,3 +33,5 @@ en:
         subject: ""
       password_reset:
         subject: "Someone requested a password reset for your Big Help Mob account"
+    contact_form:
+      subject: "You have received a message from the Big Help Mob website"

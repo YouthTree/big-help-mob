@@ -1,11 +1,31 @@
 ---
 default:
   rpx:
-    api_key: "your-rpx-now-key"
-    realm: "big-help-mob"
+    api_key: your-rpx-now-api-key
+    realm: your-rpx-now-realm
   hominid:
     list_mapping:
-      some-list-id: "Some List Name"
+      list_id: "shown_list_name"
+  session:
+    key: "_bighelpmob_session"
+    secret: "some-long-and-random-string"
 production:
   hominid:
     api_key: your-mailchimp-api-key
+  mailer:
+    from: "noreply@bighelpmob.org"
+    host: "bighelpmob.org"
+    delivery_method: smtp
+    smtp_settings:
+      key1: value
+      key2: value
+development:
+  mailer:
+    from: "bhm-test@bhm.dev"
+    host: "localhost:3000"
+    delivery_method: sendmail
+test:
+  mailer:
+    from: "example@example.com"
+    host: "example.com"
+    delivery_method: test

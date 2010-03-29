@@ -2,7 +2,7 @@ User.blueprint do
   login "MyString"
   crypted_password "MyString"
   password_salt "MyString"
-  persisten_token "MyString"
+  persistence_token "MyString"
   email "MyString"
   login_count 1
   last_request_at "2010-03-02 20:51:34"

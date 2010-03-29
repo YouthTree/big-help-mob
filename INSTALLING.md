@@ -1,0 +1,68 @@
+# Installing the Big Help Mob Application #
+
+Welcome wayward travellers, to the installation guide for the Big Help Mob web app.
+It's a fairly simple process to get started, but it assumes you're working on a machine
+with:
+
+- Ruby 1.8.7 or higher
+- Bundler 0.9 or higher
+- Mysql
+- Git
+
+## Steps ##
+
+### Step Number 1: Clone this repository. ###
+
+To get started, you'll need to check out a copy of this application. This is as simple
+as cd'ing into your parent code directory and doing something similar to:
+
+    $ git clone git://github.com/YouthTree/big-help-mob.git
+
+If you're a collaborator on the repository, you'll instead want to clone from the
+repository with push access:
+
+    $ git clone git@github.com:YouthTree/big-help-mob.git
+
+Then you can just cd into the big help mob directory, e.g.:
+
+    $ cd big-help-mob
+    
+### Step Number 2: Installing Dependencies ###
+
+Since we use bundler for our dependency management, installing all the requirements (which are
+numerous) is simple. Please note that unless you're using something like rvm gemsets, you'll
+likely want to execute commands down the line (like rails s) by prefixing them with "bundle exec".
+
+Typically, you can either use:
+
+    $ bundle install
+    
+To install them to a default _~/.bundle_ directory, but typically (as is supported by the _.gitignore_)
+I (@Sutto) use:
+
+    $ bundle install .bundle-cache
+
+Which will install all dependencies to the .bundle-cache directory under rails root.
+
+For future reference, I've aliased bi to _bundle install .bundle-cache_ and be to _bundle exec_,
+making it simpler / less typing whenever you have to run these commands.
+
+Please note it's a good idea to run bundle install as above whenever you pull in order to
+update dependencies. The first time you run it, it may also take a while (to fetch them and
+to clone the git repositories).
+
+### Step Number 3: Configuring the Application ###
+
+The Big Help Mob app uses a simple settings file (as yaml) in _config/settings.yml_. To get started,
+you can copy _config/settings.yml.example_ to _config/settings.yml_ - it is also automatically added
+to the _.gitignore_ so you don't have to worry about having private information in the settings file.
+
+You'll need to have a rpx now api key if you wish to do anything involving non-internal authentication
+an a mailchimp api key for things specific to the mailing lists.
+
+### Step Number 4: Starting the application ###
+
+Once all of this is done, using the app should be a matter of typing _rails s_ (if you have
+rails 3 in your system gems) or _bundle exec rails s_ otherwise.
+
+Enjoy! you can not visit the site at _http://localhost:3000/_

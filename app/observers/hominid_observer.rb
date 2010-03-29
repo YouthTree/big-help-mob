@@ -1,7 +1,8 @@
-class UserObserver < ActiveRecord::Observer
+class HominidObserver < ActiveRecord::Observer
+  
+  observe :user
   
   def after_create(user)
-    user.notify! :signup
     user.save_initial_mailing_list_subscriptions
   end
   
