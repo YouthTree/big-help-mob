@@ -24,3 +24,5 @@ en:
       reset_sent: "Please check your email for instructions on how to continue"
       reset_complete: "Your password has successfully been reset"
       invalid_url: "The password reset url you provided is invalid / expired."
+    contact:
+      thanks: "Thanks for contacting us - we'll be sure to get back to your shortly!"

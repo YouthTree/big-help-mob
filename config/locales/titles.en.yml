@@ -22,6 +22,9 @@ en:
         edit: "Reset your Password"
         create: "Request a Password Reset"
         update: "Reset your Password"
+      contacts:
+        new: "Contact the Big Help Mob team"
+        create: "Contact the Big Help Mob team"
   error_pages:
     title:
       not_found: "Page Not Found"

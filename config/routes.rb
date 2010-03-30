@@ -34,10 +34,12 @@ Bighelpmob::Application.routes.draw do |map|
   
   get 'missions/:id/edit/:as', :to => 'missions#edit', :as => :edit_mission_with_role
   
-  
   resources :missions do
     member { get :join }
   end
+  
+  get 'contact-us',  :to => 'contacts#new', :as => :contact_us
+  post 'contact-us', :to => 'contacts#create'
   
   %w(about privacy_policy terms_and_conditions).each do |page|
     get page.dasherize, :to => "pages##{page}", :as => page.to_sym

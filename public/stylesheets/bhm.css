@@ -608,8 +608,8 @@ header nav#admin {
   border-bottom-left-radius: 0.75em;
   -moz-border-radius-bottomleft: 0.75em;
   -webkit-border-bottom-left-radius: 0.75em;
-  border-left: 0.2em solid #571a15;
-  border-bottom: 0.2em solid #571a15;
+  border-left: 0.2em solid #aaa48c;
+  border-bottom: 0.2em solid #aaa48c;
 }
 /* line 88, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin a {
@@ -730,7 +730,7 @@ footer nav ul li a:hover {
 
 /* line 1, ../../app/stylesheets/bhm/public/_content.sass */
 body, html {
-  background: #be392d;
+  background: #e0ded5;
 }
 
 /* line 3, ../../app/stylesheets/bhm/public/_content.sass */
@@ -739,7 +739,7 @@ body, html {
   display: inline-block;
   margin: 3em auto;
   background: white url('/images/bhm/content-bg.jpg') top center repeat-x;
-  border: 0.2em solid #571a15;
+  border: 0.2em solid #aaa48c;
   /* Webkit (Safari, Chrome) */
   -webkit-box-shadow: #333333 0 0 10px;
   /* Gecko (Firefox, Camino) */
@@ -1006,6 +1006,11 @@ dl.frequently-asked-questions dd p {
   border-color: #2e543c;
   text-shadow: #0c4221 0px -1px -1px;
   color: white;
+}
+
+/* line 89, ../../app/stylesheets/bhm/public/_content.sass */
+#contact_form_nickname_input {
+  display: none;
 }
 
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */
