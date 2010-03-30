@@ -51,7 +51,12 @@ class AnswerProxy
   end
   
   def read_attribute(name)
-    answers[name.to_s]
+    v = answers[name.to_s]
+    return v if v.present?
+    if (q = question_for_name(name)).present?
+      return q.default_value
+    end
+    nil
   end
   
   def question_for_name(name)
@@ -75,9 +80,11 @@ class AnswerProxy
   def check_answer_status
     each_question do |question, key|
       value = read_attribute(key)
-      Rails.logger.debug "Value: #{value.inspect} for #{key.inspect}"
+      
       if value.blank? && question.required?
         errors.add(key, :blank, :default => "is blank")
+      elsif question.required? && question.boolean? && value =~ /no/i
+        errors.add(key, :voided_participation, :default => "means you are unable to take part")
       elsif value.present? && question.multiple_choice?
         valid_choice = Array(question.metadata).include?(value)
         errors.add(key, :invalid_choice, :default => "is an invalid choice") unless valid_choice

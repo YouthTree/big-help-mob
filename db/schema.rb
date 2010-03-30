@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100330081126) do
+ActiveRecord::Schema.define(:version => 20100330084709) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20100330081126) do
     t.text     "metadata"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "default_value"
   end
 
   add_index "mission_questions", ["mission_id"], :name => "index_mission_questions_on_mission_id"

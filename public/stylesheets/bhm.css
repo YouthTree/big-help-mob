@@ -879,6 +879,10 @@ dl.frequently-asked-questions dd p {
   text-align: center;
 }
 /* line 82, ../../app/stylesheets/bhm/public/_content.sass */
+#join-as-selector .join-as-button.before-faq {
+  margin: 2em 0 3em;
+}
+/* line 84, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -935,7 +939,7 @@ dl.frequently-asked-questions dd p {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 84, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 86, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-captain-button {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -971,7 +975,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 86, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 88, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -1008,7 +1012,7 @@ dl.frequently-asked-questions dd p {
   color: white;
 }
 
-/* line 89, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 91, ../../app/stylesheets/bhm/public/_content.sass */
 #contact_form_nickname_input {
   display: none;
 }

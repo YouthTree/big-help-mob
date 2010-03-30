@@ -64,6 +64,49 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     field_set_and_list_wrapping_for_pickups(method, options.merge(:label_for => input_ids.first), list_item_content)
   end
   
+  def date_or_datetime_input(method, options)
+    position = { :year => 1, :month => 2, :day => 3, :hour => 4, :minute => 5, :second => 6 }
+    i18n_date_order = ::I18n.t(:order, :scope => [:date])
+    i18n_date_order = nil unless i18n_date_order.is_a?(Array)
+    inputs   = options.delete(:order) || i18n_date_order || [:year, :month, :day]
+
+    time_inputs = [:hour, :minute]
+    time_inputs << [:second] if options[:include_seconds]
+
+    list_items_capture = ""
+    hidden_fields_capture = ""
+
+    default_time = options.fetch(:default_time, ::Time.now)
+
+    # Gets the datetime object. It can be a Fixnum, Date or Time, or nil.
+    datetime = options[:selected] || (@object ? @object.send(method) : default_time) || default_time
+    
+    html_options = options.delete(:input_html) || {}
+    input_ids    = []
+
+    (inputs + time_inputs).each do |input|
+      input_ids << input_id = generate_html_id(method, "#{position[input]}i")
+
+      field_name = "#{method}(#{position[input]}i)"
+      if options[:"discard_#{input}"]
+        break if time_inputs.include?(input)
+
+        hidden_value = datetime.respond_to?(input) ? datetime.send(input.to_sym) : datetime
+        hidden_fields_capture << template.hidden_field_tag("#{@object_name}[#{field_name}]", (hidden_value || 1), :id => input_id)
+      else
+        opts = strip_formtastic_options(options).merge(:prefix => @object_name, :field_name => field_name, :default => datetime)
+        item_label_text = ::I18n.t(input.to_s, :default => input.to_s.humanize, :scope => [:datetime, :prompts])
+
+        list_items_capture << template.content_tag(:li,
+          template.content_tag(:label, item_label_text, :for => input_id) <<
+          template.send(:"select_#{input}", datetime, opts, html_options.merge(:id => input_id))
+        )
+      end
+    end
+
+    hidden_fields_capture << field_set_and_list_wrapping_for_method(method, options.merge(:label_for => input_ids.first), list_items_capture)
+  end
+  
   def field_set_and_list_wrapping_for_pickups(method, options, contents) #:nodoc:
     contents = contents.join if contents.respond_to?(:join)
 

@@ -4,7 +4,7 @@ class MissionPickup < ActiveRecord::Base
   
   attr_accessible :pickup_id, :mission_id, :pickup_at
   
-  validates_presence_of :pickup_at
+  validates_presence_of :pickup_at, :pickup, :mission
   
 end
 

@@ -12,6 +12,9 @@ module MissionsHelper
     ivar_key = :"@#{role}_questions"
     if instance_variable_defined?(ivar_key)
       questions = instance_variable_get(ivar_key)
+      if questions.any?
+        content << content_tag(:div, link_to(text, url, :id => "join-as-#{role}-button"), :class => 'join-as-button before-faq')
+      end
       content << faq(questions, "FAQ about #{role.to_s.titleize.pluralize}")
     end
     content << content_tag(:div, link_to(text, url, :id => "join-as-#{role}-button"), :class => 'join-as-button')

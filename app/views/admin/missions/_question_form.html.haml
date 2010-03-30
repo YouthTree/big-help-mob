@@ -1,8 +1,9 @@
 - question_form.inputs :name => "Question Details", :class => 'question-input inputs' do
   %li
     %p.inline-hints= link_to((question_form.object.new_record? ? "Don't add this question" : 'Remove this question'), '#', :class => 'remove-question-link')
-  = question_form.hidden_field :_destroy, :default => 0
+    = question_form.hidden_field :_destroy, :default => 0
   = question_form.input :name
   = question_form.input :required
   = question_form.input :question_type, :as => :select, :collection => MissionQuestion.types_for_select
+  = question_form.input :default_value, :hint => "E.g. Yes or No for booleans."
   = question_form.input :raw_metadata, :hint => "If this is a multiple choice question, put in choices one per line. Otherwise, leave blank.", :wrapper_html => {:class => 'question-metadata'}, :as => :text, :input_html => {:rows => 5}
