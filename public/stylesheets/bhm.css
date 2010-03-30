@@ -755,7 +755,7 @@ body, html {
 /* line 10, ../../app/stylesheets/bhm/public/_content.sass */
 #content {
   padding-top: 3em;
-  padding-bottom: 0;
+  padding-bottom: 1.5em;
 }
 /* line 13, ../../app/stylesheets/bhm/public/_content.sass */
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
@@ -1579,9 +1579,9 @@ p.actions {
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
-  font-size: 18px;
-  line-height: 21.6px;
-  padding: 5px 18px;
+  font-size: 14px;
+  line-height: 16.8px;
+  padding: 2px 11px;
   border-width: 1px;
   padding: 7px 10px;
   background-color: #1d9a2a;
@@ -1615,12 +1615,12 @@ p.actions {
 }
 /* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link:active {
-  padding: 4px 17px;
+  padding: 1px 10px;
   border-width: 2px;
 }
 /* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link.disabled:active, #content p.join-mission-container a.join-mission-link[disabled] {
-  padding: 5px 18px;
+  padding: 2px 11px;
   border-width: 1px;
 }
 /* line 3, ../../app/stylesheets/bhm/_util.sass */
@@ -1669,7 +1669,7 @@ p.actions {
 }
 /* line 43, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-description p.join-mission-container {
-  margin-top: -2em;
+  margin-top: -1.5em;
   margin-bottom: 3em;
 }
 
