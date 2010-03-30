@@ -23,7 +23,8 @@ class Mission < ActiveRecord::Base
 
   attr_accessible :organisation_id, :user_id, :description, :name
   
-  accepts_nested_attributes_for :questions, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
+  accepts_nested_attributes_for :questions,       :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
+  accepts_nested_attributes_for :mission_pickups, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
 
   scope :optimize_viewable, includes(:address => nil, :pickups => :address, :questions => nil)
 

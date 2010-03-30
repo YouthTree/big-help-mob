@@ -1,4 +1,4 @@
-BHM.withNS('QuestionEditor', function(ns) {
+BHM.withNS('Admin.QuestionEditor', function(ns) {
   
   ns.fieldsetSelector   = '.question-input';
   ns.individualSelector = 'select';

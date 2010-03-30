@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100329133423) do
+ActiveRecord::Schema.define(:version => 20100330081126) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -28,9 +28,6 @@ ActiveRecord::Schema.define(:version => 20100329133423) do
 
   add_index "addresses", ["addressable_id", "addressable_type", "lat", "lng"], :name => "idx_addresses_on_addressable_and_location"
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
-  add_index "addresses", ["addressable_type", "lat", "lng"], :name => "index_addresses_on_addressable_type_and_lat_and_lng"
-  add_index "addresses", ["addressable_type"], :name => "index_addresses_on_addressable_type"
-  add_index "addresses", ["lat", "lng"], :name => "index_addresses_on_lat_and_lng"
 
   create_table "captain_applications", :force => true do |t|
     t.text     "reason_why"
@@ -78,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20100329133423) do
     t.integer  "pickup_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "pickup_at"
   end
 
   add_index "mission_pickups", ["mission_id", "pickup_id"], :name => "index_mission_pickups_on_mission_id_and_pickup_id"

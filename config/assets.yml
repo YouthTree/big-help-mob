@@ -33,7 +33,9 @@ javascripts:
   admin_questions:
     - public/javascripts/bhm/admin/questions.js
   question_editor:
-    - public/javascripts/bhm/question_editor.js
+    - public/javascripts/bhm/admin/question_editor.js
+  pickup_editor:
+    - public/javascripts/bhm/admin/pickup_editor.js
   ie6:
     - public/javascripts/DD_belatedPNG_0.0.8a.js
     - public/javascripts/bhm/ie6.js
