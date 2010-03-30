@@ -590,6 +590,7 @@ header h2 {
 }
 /* line 77, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin {
+  text-align: right;
   position: absolute;
   right: 0;
   top: 0;
@@ -604,7 +605,7 @@ header nav#admin {
   border-left: 0.2em solid #571a15;
   border-bottom: 0.2em solid #571a15;
 }
-/* line 88, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 89, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin a {
   font-weight: bold;
   color: #324d99;
@@ -745,7 +746,11 @@ body, html {
   display: block;
 }
 
-/* line 11, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 10, ../../app/stylesheets/bhm/public/_content.sass */
+#content {
+  padding: 3em 0;
+}
+/* line 12, ../../app/stylesheets/bhm/public/_content.sass */
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
   font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial";
   margin: 0 0 0.5em;
@@ -753,17 +758,17 @@ body, html {
   font-weight: bold;
   color: #333333;
 }
-/* line 17, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 18, ../../app/stylesheets/bhm/public/_content.sass */
 #content p {
   margin: 0 1em 1em;
   font-size: 1.2em;
   line-height: 1.8em;
 }
-/* line 21, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 22, ../../app/stylesheets/bhm/public/_content.sass */
 #content strong {
   font-weight: bold;
 }
-/* line 23, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 24, ../../app/stylesheets/bhm/public/_content.sass */
 #content a {
   color: #324d99;
   text-decoration: none;
@@ -784,90 +789,90 @@ body, html {
 #content a:hover {
   text-decoration: underline;
 }
-/* line 25, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 26, ../../app/stylesheets/bhm/public/_content.sass */
 #content em {
   font-style: italic;
 }
-/* line 27, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 28, ../../app/stylesheets/bhm/public/_content.sass */
 #content .embedded-content.signup-introduction {
   margin: 0 15% 1em;
 }
-/* line 29, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 30, ../../app/stylesheets/bhm/public/_content.sass */
 #content .embedded-content.signup-introduction p {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 33, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 34, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions {
   margin: 0 1em 1em;
   font-size: 1.2em;
 }
-/* line 36, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 37, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dt {
   font-weight: bold;
   color: black;
   margin: 1.5em 0 0;
   padding: 0;
 }
-/* line 41, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 42, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dt.first {
   margin-top: 0;
 }
-/* line 43, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 44, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dd {
   color: #333333;
   font-size: 1em;
   margin: 0.25em 0;
   padding: 0;
 }
-/* line 48, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 49, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dd p {
   font-size: 1em;
   padding: 0;
   margin: 0 0 0.5em;
 }
 
-/* line 53, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 54, ../../app/stylesheets/bhm/public/_content.sass */
 #intro-video {
   text-align: center;
 }
 
-/* line 56, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 57, ../../app/stylesheets/bhm/public/_content.sass */
 #homepage-columns, #join-as-selector {
   margin-bottom: 2em;
 }
 
-/* line 61, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 62, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector, #join-as-selector #captain-selector {
   text-align: center;
 }
-/* line 64, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 65, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector .embedded-content, #join-as-selector #captain-selector .embedded-content {
   text-align: left;
 }
-/* line 68, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 69, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector dl.frequently-asked-questions dt, #join-as-selector dl.frequently-asked-questions dd {
   text-align: left;
   font-size: 0.9em;
 }
-/* line 71, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 72, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector dl.frequently-asked-questions dd p {
   margin-left: 0;
 }
-/* line 74, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 75, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #captain-selector {
   text-align: right;
 }
-/* line 76, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 77, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector {
   text-align: left;
 }
-/* line 79, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 80, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button {
   text-align: center;
 }
-/* line 81, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 82, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -924,7 +929,7 @@ dl.frequently-asked-questions dd p {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 83, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 84, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-captain-button {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -960,7 +965,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 85, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 86, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));

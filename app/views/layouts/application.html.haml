@@ -8,6 +8,9 @@
     = raw include_javascripts(:base)
     /[if IE 6]
       = raw include_javascripts(:ie6)
+    - if params[:bgcolor] == "1"
+      = raw include_stylesheets(:bgcolor)
+      = raw include_javascripts(:bgcolor)
     = csrf_meta_tag
     = yield :extra_head
   %body
