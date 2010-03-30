@@ -68,4 +68,12 @@ module ContentHelper
     inner
   end
   
+  def add_this_embed
+    if (username = Settings.add_this.username).present?
+      inner_link = link_to "Share", "http://www.addthis.com/bookmark.php?v=250&amp;username=#{username}", :class => "addthis_default_style"
+      has_js "http://s7.addthis.com/js/250/addthis_widget.js#username=#{username}"
+      content_tag(:div, inner_link, :class => 'addthis_toolbox addthis_default_style"')
+    end
+  end
+  
 end
