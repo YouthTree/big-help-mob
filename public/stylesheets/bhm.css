@@ -590,7 +590,6 @@ header h2 {
 }
 /* line 77, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin {
-  text-align: right;
   position: absolute;
   right: 0;
   top: 0;
@@ -605,7 +604,7 @@ header nav#admin {
   border-left: 0.2em solid #571a15;
   border-bottom: 0.2em solid #571a15;
 }
-/* line 89, ../../app/stylesheets/bhm/public/_header.sass */
+/* line 88, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin a {
   font-weight: bold;
   color: #324d99;
@@ -822,57 +821,56 @@ dl.frequently-asked-questions dt.first {
 /* line 44, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dd {
   color: #333333;
-  font-size: 1em;
   margin: 0.25em 0;
   padding: 0;
 }
-/* line 49, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 48, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dd p {
-  font-size: 1em;
+  font-size: 1em !important;
   padding: 0;
   margin: 0 0 0.5em;
 }
 
-/* line 54, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 53, ../../app/stylesheets/bhm/public/_content.sass */
 #intro-video {
   text-align: center;
 }
 
-/* line 57, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 56, ../../app/stylesheets/bhm/public/_content.sass */
 #homepage-columns, #join-as-selector {
   margin-bottom: 2em;
 }
 
-/* line 62, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 61, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector, #join-as-selector #captain-selector {
   text-align: center;
 }
-/* line 65, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 64, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector .embedded-content, #join-as-selector #captain-selector .embedded-content {
   text-align: left;
 }
-/* line 69, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 68, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector dl.frequently-asked-questions dt, #join-as-selector dl.frequently-asked-questions dd {
   text-align: left;
   font-size: 0.9em;
 }
-/* line 72, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 71, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector dl.frequently-asked-questions dd p {
   margin-left: 0;
 }
-/* line 75, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 74, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #captain-selector {
   text-align: right;
 }
-/* line 77, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 76, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector {
   text-align: left;
 }
-/* line 80, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 79, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button {
   text-align: center;
 }
-/* line 82, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 81, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -929,7 +927,7 @@ dl.frequently-asked-questions dd p {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 84, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 83, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-captain-button {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -965,7 +963,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 86, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 85, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
