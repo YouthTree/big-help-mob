@@ -747,7 +747,7 @@ body, html {
 
 /* line 10, ../../app/stylesheets/bhm/public/_content.sass */
 #content {
-  padding: 3em 0;
+  padding: 3em 0 0;
 }
 /* line 12, ../../app/stylesheets/bhm/public/_content.sass */
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
@@ -828,7 +828,7 @@ dl.frequently-asked-questions dd {
 dl.frequently-asked-questions dd p {
   font-size: 1em !important;
   padding: 0;
-  margin: 0 0 0.5em;
+  margin: 0;
 }
 
 /* line 53, ../../app/stylesheets/bhm/public/_content.sass */
