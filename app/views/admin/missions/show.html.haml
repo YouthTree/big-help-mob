@@ -32,8 +32,11 @@
       - if resource.pickups.empty?
         %li.empty No pickups defined.
       - else
-        - resource.pickups.each do |pickup|
-          %li= link_to_pickup pickup
+        - resource.mission_pickups.each do |mp|
+          %li
+            = link_to_pickup mp.pickup
+            at
+            = l mp.pickup_at, :format => :short
     - if resource.pickups.present?
       #pickups-map.map-preview.static-google-map= static_map_of_addresses resource.pickups.map(&:address)
       - use_gmaps_js

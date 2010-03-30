@@ -92,11 +92,12 @@ end
 #
 # Table name: mission_participations
 #
-#  id         :integer(4)      not null, primary key
-#  mission_id :integer(4)
-#  pickup_id  :integer(4)
-#  role_id    :integer(4)
-#  user_id    :integer(4)
-#  state      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer(4)      not null, primary key
+#  mission_id  :integer(4)
+#  pickup_id   :integer(4)
+#  role_id     :integer(4)
+#  user_id     :integer(4)
+#  raw_answers :text
+#  state       :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime

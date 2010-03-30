@@ -32,19 +32,26 @@ BHM.withNS('Pickups', function(ns) {
   
   ns.defineClass('Pickup', function() {
     
-    this.initialize = function(id, name, address, lat, lng) {
+    this.initialize = function(id, name, address, lat, lng, at) {
       this.name    = name;
       this.address = address;
-      this.title   = [name, address].join(" - ");
+      var title_parts = [name, address];
+      if(at && at.toString().length > 0) title_parts[0] = title_parts[0] + " at " + at;
+      this.title   = title_parts.join(" - ");
       this.id      = id;
       this.lat     = lat;
       this.lng     = lng;
+      this.at      = at;
     };
     
     this.toString = function() {
       var s = "" + this.name + " - " + this.address;
       s += " (Pickup ID #" + this.id + ")";
-      s += " at (" + this.lat + ", " + this.lng + ")";
+      s += "(" + this.lat + ", " + this.lng
+      if(this.at && this.at.toString().length > 0) {
+        s += " at " + this.at;
+      }
+      s += ")";
       return s;
     }
     
@@ -124,8 +131,8 @@ BHM.withNS('Pickups', function(ns) {
   
   // Subsection: Modifiers
   
-  ns.addPickup = function(id, name, address, lat, lng) {
-    var p = new ns.Pickup(id, name, address, lat, lng);
+  ns.addPickup = function(id, name, address, lat, lng, at) {
+    var p = new ns.Pickup(id, name, address, lat, lng, at);
     pickups[p.id] = p;
     if(map) addPickupToPlot(p);
     return p;
@@ -198,8 +205,9 @@ BHM.withNS('Pickups', function(ns) {
         var name  = pickupAttr(e, "name"),
             addr  = pickupAttr(e, "address"),
             lat   = Number(pickupAttr(e, "latitude")),
-            lng   = Number(pickupAttr(e, "longitude"));
-        ns.addPickup(Number(id), name, addr, lat, lng);
+            lng   = Number(pickupAttr(e, "longitude")),
+            at    = pickupAttr(e, "at");
+        ns.addPickup(Number(id), name, addr, lat, lng, at);
       };
     });
   };

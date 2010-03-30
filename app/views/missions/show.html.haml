@@ -24,10 +24,12 @@
     #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 456, :height => 342
     %h4 Pickups available from:
     %ol#pickups-listing
-      - @mission.pickups.each do |pickup|
-        %li{pickup_data_options(pickup)}
-          %strong== #{pickup.name}:
-          = pickup.address.to_s
+      - @mission.mission_pickups.each do |mp|
+        %li{pickup_data_options(mp)}
+          %strong== #{mp.pickup.name}:
+          = mp.pickup.address.to_s
+          at
+          %span.pickup-time= l mp.pickup_at, :format => :pickup_time
 
 - if logged_in?
   %p.actions

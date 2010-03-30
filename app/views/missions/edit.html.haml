@@ -31,7 +31,7 @@
       #pickup-address
         %strong Pickup is from:
         %span= (@participation.pickup || "Not yet chosen").to_s
-    = form.input :pickup, :collection => @mission.pickups, :as => :pickups
+    = form.input :pickup, :collection => @mission.mission_pickups, :as => :pickups
     
       
   - form.inputs :name => "Your Mailing Address" do

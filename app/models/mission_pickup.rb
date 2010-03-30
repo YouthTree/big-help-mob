@@ -16,4 +16,5 @@ end
 #  mission_id :integer(4)
 #  pickup_id  :integer(4)
 #  created_at :datetime
+#  pickup_at  :datetime
 #  updated_at :datetime

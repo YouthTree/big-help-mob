@@ -5,6 +5,7 @@ en:
   time:
     formats:
       simple: "%d %B, %Y at %I:%M %p"
+      pickup_time: "%I:%M %p"
   activerecord:
     attributes:
       address:

@@ -40,13 +40,20 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     selected_value = (options.key?(:checked) ? options[:checked] : options[:selected]) if selected_option_is_present
 
     list_item_content = collection.map do |c|
+      at = nil
+      if c.is_a?(MissionPickup)
+        at = c.pickup_at
+        c = c.pickup
+      end
       value = c.id
       input_id = generate_html_id(input_name, value.to_s.gsub(/\s/, '_').gsub(/\W/, '').downcase)
       input_ids << input_id
       
       html_options[:checked] = selected_value == value if selected_option_is_present
+      inner_label = c.name
+      inner_label << " at #{::I18n.l(at, :format => :pickup_time)}" if at.present?
       li_content = template.content_tag(:label,
-        "#{self.radio_button(input_name, value, html_options)} #{c.name}",
+        "#{self.radio_button(input_name, value, html_options)} #{inner_label}",
         :for => input_id
       )
 

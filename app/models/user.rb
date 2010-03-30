@@ -143,6 +143,7 @@ end
 #  login_count       :integer(4)
 #  origin            :string(255)
 #  password_salt     :string(255)
+#  perishable_token  :string(255)     not null, default("")
 #  persistence_token :string(255)
 #  phone             :string(255)
 #  postcode          :integer(4)

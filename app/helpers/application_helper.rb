@@ -30,7 +30,12 @@ module ApplicationHelper
   end
   
   def pickup_data_options(pickup, selected = false)
-    opts = {:title => pickup.address.to_s, :class => "pickup-entry"}
+    opts = {:class => "pickup-entry"}
+    if pickup.is_a?(MissionPickup)
+      opts["data-pickup-at"] = I18n.l(pickup.pickup_at, :format => :pickup_time)
+      pickup = pickup.pickup
+    end
+    opts["title"] = pickup.address.to_s
     opts["data-pickup-latitude"]  = pickup.address.lat
     opts["data-pickup-longitude"] = pickup.address.lng
     opts["data-pickup-id"]        = pickup.id
