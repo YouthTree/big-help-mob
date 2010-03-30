@@ -1,16 +1,20 @@
 - use_gmaps_js
 - has_jammit_js :pickups
 
-
 %h2 About this Mission
-%p#mission-description= @mission.description_as_html
+= join_mission_link @mission
+#mission-description
+  = @mission.description_as_html
+  = join_mission_link @mission
 
 = faq @mission_questions
+
+= join_mission_link @mission
 
 %section#mission-maps.columns-container
   #mission-location-map.column
     %h3 Where is the mission?
-    = draw_map_of @mission.address, :map => {:width => 456, :height => 342}
+    = draw_map_of @mission.address, :map => {:width => 416, :height => 342}
     %p#mission-location-address
       %strong This mission takes place at:
       %br/
@@ -21,7 +25,9 @@
     %h4 Pickups available from:
     %ol#pickups-listing
       - @mission.pickups.each do |pickup|
-        %li{pickup_data_options(pickup)}= pickup.address.to_s
+        %li{pickup_data_options(pickup)}
+          %strong== #{pickup.name}:
+          = pickup.address.to_s
 
 - if logged_in?
   %p.actions

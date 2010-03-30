@@ -5,7 +5,7 @@
   %ul
     = ml "Home", :root
     = ml "About", :about
-    = ml "Next Mission", :next_missions
+    = ml "Next Mission", mission_path(:next)
     - if logged_in?
       = ml "Your Account", user_path(:current)
       = ml "Sign out", :sign_out

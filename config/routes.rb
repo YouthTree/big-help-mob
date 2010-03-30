@@ -36,7 +36,6 @@ Bighelpmob::Application.routes.draw do |map|
   
   
   resources :missions do
-    collection { get :next }
     member { get :join }
   end
   

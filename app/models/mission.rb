@@ -72,8 +72,8 @@ class Mission < ActiveRecord::Base
   
   def participation_for(user, role_name = nil)
     participation = mission_participations.optimize_editable.for_user(user).first
-    participation.mission = self
     if participation
+      participation.mission = self
       if role_name.present? && participation.role_name != role_name
         participation.role_name = role_name
         participation.save(false)

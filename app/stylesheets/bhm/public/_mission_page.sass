@@ -5,7 +5,7 @@
   :margin 0 0 3em
   #mission-pickups-map, #mission-location-map
     .dynamic-google-map, .static-google-map img
-      :width 456px
+      :width 416px
       :height 342px
       :border 2px solid #CCC !important
     
@@ -29,3 +29,17 @@
       :margin 0.5em 0
       :text-align center
       :color #000
+
+#content
+  p.join-mission-container
+    :padding 0
+    :margin 0 0 2em
+    :text-align center
+    a.join-mission-link
+      +bhm-fixed-fb-structure(18px)
+      +fancy-button-colors(!bhm_colour_join_background)
+      +link-colors(!bhm_colour_link_join_mission, !bhm_colour_link_join_mission, !bhm_colour_link_join_mission, !bhm_colour_link_join_mission)
+      
+  #mission-description p.join-mission-container
+    :margin-top -2em
+    :margin-bottom 3em

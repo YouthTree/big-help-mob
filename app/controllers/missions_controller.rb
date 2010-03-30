@@ -9,7 +9,7 @@ class MissionsController < ApplicationController
   end
   
   def join    
-    if @mission.participating?(current_user)
+    if @mission.participating?(current_user) && !@mission.participation_for(current_user).created?
       flash[:notice] = "You're already participating in this mission"
       redirect_to @mission
     end
@@ -18,6 +18,7 @@ class MissionsController < ApplicationController
   end
   
   def edit
+    return redirect_to([:join, @mission]) if @participation.role.blank?
   end
   
   def update    
@@ -28,24 +29,28 @@ class MissionsController < ApplicationController
     end
   end
   
-  def next
-    @mission = Mission.next.first
-    if @mission.blank?
-      raise ActiveRecord::RecordNotFound
-    else
-      redirect_to @mission
-    end
-  end
-  
   protected
   
   def prepare_mission
+    return redirect_next_mission if params[:id] == "next" && request.get?
     @mission = Mission.viewable.optimize_viewable.find(params[:id])
     add_title_variables! :mission => @mission.name
   end
   
   def prepare_participation
     @participation = @mission.participation_for(current_user, params[:as])
+  end
+  
+  def redirect_next_mission
+    mission = Mission.viewable.next.first
+    raise ActiveRecord::RecordNotFound if mission.blank?
+    url = case params[:action]
+    when "join", "edit"
+      [params[:action].to_sym, mission]
+    else
+      mission
+    end
+    redirect_to url
   end
   
 end

@@ -18,4 +18,10 @@ module MissionsHelper
     content
   end
   
+  def join_mission_link(mission)
+    return if logged_in? && mission.participating?(current_user)
+    inner = link_to('Join this mission', [:join, mission], :class => 'join-mission-link')
+    content_tag(:p, inner, :class => 'join-mission-container')
+  end
+  
 end

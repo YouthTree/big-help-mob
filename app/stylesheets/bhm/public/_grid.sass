@@ -5,8 +5,13 @@
   footer, #content, #flash-messages
     +grid-unit-base
 
-#content, footer, #flash-messages
+footer, #flash-messages
   +grid-width(24)
+
+#content
+  +grid-width(22)
+  +grid-suffix(1)
+  +grid-prefix(1)
   
 =left-column(!width)
   +grid-width(!width)
@@ -22,16 +27,16 @@
     .column
       +grid-unit-base
     .column-left-50, .home-introduction, #mission-location-map
-      +left-column(12)
+      +left-column(11)
     .column-right-50,  #intro-video, #mission-pickups-map
-      +right-column(12)
+      +right-column(11)
   
     #sidekick-selector, #captain-selector
       :width 400px
     #captain-selector
-      :margin-left 60px
+      :margin-left 20px
     #sidekick-selector
-      :margin-right 60px
+      :margin-right 20px
   
     .embedded-content
       p
