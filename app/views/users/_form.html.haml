@@ -1,9 +1,9 @@
 - semantic_form_for @user do |form|
   
   - form.inputs :name => "Your Account Details" do
-    = form.input :login
-    = form.input :email
-    = form.input :password
+    = form.input :login, :hint => "The next time you visit this site, you'll need this to access your account again. Also, if you don't provide a display name, other users will see you on the site like this."
+    = form.input :email, :hint => "We promise we'll only use this for good - You'll get an email when you sign up, a couple when you join missions and at miscellaneous times during the process. Also, if you choose mailing lists below you'll be subscribed to them with this address."
+    = form.input :password, :hint => (@user.new_record? ? "Next time you visit the site, you'll need this password to login." : "This will update your password / let you sign in with a password if you signed up using an external service")
     = form.input :password_confirmation
     
   - form.inputs :name => "Tell us about yourself" do
@@ -11,7 +11,8 @@
     = form.input :display_name, :hint => "This is what will typically be shown to other users on the site."
     = form.input :first_name
     = form.input :last_name
-    = form.input :phone, :hint => "We respect your privacy - this number will never be given out or shared."
+    = form.input :postcode, :hint => "We'll use this strictly for planning and statistics purposes (Every good superhero has a hometown)"
+    = form.input :phone, :hint => "We respect your privacy - this number will never be given out or shared - It'll typically only be used for emergency contact pre-mission."
     - if form.object.new_record?
       = form.input :origin, :as => :select, :collection => User::ORIGIN_CHOICES
     
