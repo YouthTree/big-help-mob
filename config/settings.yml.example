@@ -10,8 +10,9 @@ default:
     key: "_bighelpmob_session"
     secret: "some-long-and-random-string"
 production:
-  hoptoad:
-    api_key: "your-hoptoad-api-key"
+  exception_notifier:
+    recipients:
+      - youremail@example.com
   hominid:
     api_key: your-mailchimp-api-key
   mailer:
