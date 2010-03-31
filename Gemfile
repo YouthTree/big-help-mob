@@ -5,6 +5,7 @@ git "git://github.com/plataformatec/show_for.git"
 git "git://github.com/railsjedi/jammit.git"
 git "git://github.com/Sutto/mail_form.git"
 git "git://github.com/Sutto/carmen.git"
+git "git://github.com/Sutto/exception_notification.git"
 
 
 gem "rails", ">= 3.0.0.beta"
