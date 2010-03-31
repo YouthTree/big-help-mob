@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   # Site index
   def index
     hide_title!
+    raise RuntimeError
   end
   
   def_page :about
