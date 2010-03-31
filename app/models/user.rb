@@ -64,10 +64,11 @@ class User < ActiveRecord::Base
   end
   
   def mailing_list_names
-    HominidWrapper.local_id_to_name_mapping(mailing_list_ids)
+    [] #HominidWrapper.local_id_to_name_mapping(mailing_list_ids)
   end
   
   def mailing_list_ids
+    return []
     if new_record?
       @mailing_list_ids ||= []
     elsif email.present?
@@ -78,6 +79,7 @@ class User < ActiveRecord::Base
   end
   
   def mailing_list_ids=(ids)
+    return
     if new_record?
       @mailing_list_ids = ids
     else
@@ -112,11 +114,11 @@ class User < ActiveRecord::Base
   end
   
   def update_mailchimp_subscription
-    HominidWrapper.update_user_email(self) if email_changed? && !email.blank? && mailing_list_ids.present?
+    true # HominidWrapper.update_user_email(self) if email_changed? && !email.blank? && mailing_list_ids.present?
   end
   
   def save_initial_mailing_list_subscriptions
-    HominidWrapper.update_user_subscriptions(self, @mailing_list_ids) if @mailing_list_ids.present?
+    true  # HominidWrapper.update_user_subscriptions(self, @mailing_list_ids) if @mailing_list_ids.present?
   end
   
   def notify!(name, *args)

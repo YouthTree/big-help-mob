@@ -14,6 +14,7 @@ en:
       user:
         mailing_list_ids: "Mailing Lists"
         origin: "How did you hear about us?"
+        password_confirmation: "Confirm Password"
       mission:
         user: "User"
         state_event: "Transition state to"
