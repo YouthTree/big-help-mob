@@ -8,7 +8,7 @@
 - form.inputs :name => "User Details" do
   = form.input :first_name
   = form.input :last_name
-  = form.input :date_of_birth
+  = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => Time.now.year
   = form.input :postcode
   
 - form.inputs :name => "Password Authentication" do

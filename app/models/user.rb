@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_ids,
-                  :captain_application_attributes, :origin
+                  :captain_application_attributes, :origin, :date_of_birth
 
   has_many :mission_participations, :dependent => :destroy
   has_many :missions, :through => :mission_participations
@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
   end
   
   accepts_nested_attributes_for :captain_application, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }
+  
+  validates_presence_of :email, :date_of_birth
   
   validates_presence_of :captain_application, :if => :should_validate_captain_application_presence?
   

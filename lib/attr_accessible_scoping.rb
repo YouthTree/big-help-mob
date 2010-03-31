@@ -44,7 +44,7 @@ module AttrAccessibleScoping
       unless AttrAccessibleScoping.disabled? || (self.class.accessible_attributes && self.class.accessible_attributes.include?("all"))
         trusted_attributes = Array(self.class.accessible_attributes)
         attributes.each_pair do |k, v|
-          raise UnassignableAttribute, "The attribute #{k} can't be assigned on #{self.class.name}" unless trusted_attributes.include?(k.to_s)
+          raise UnassignableAttribute, "The attribute #{k} can't be assigned on #{self.class.name}" unless trusted_attributes.include?(k.to_s.gsub(/\(\d+\w\)$/, ''))
         end
       end
       attributes

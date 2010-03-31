@@ -96,7 +96,7 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
       else
         opts = strip_formtastic_options(options).merge(:prefix => @object_name, :field_name => field_name, :default => datetime)
         item_label_text = ::I18n.t(input.to_s, :default => input.to_s.humanize, :scope => [:datetime, :prompts])
-
+        
         list_items_capture << template.content_tag(:li,
           template.content_tag(:label, item_label_text, :for => input_id) <<
           template.send(:"select_#{input}", datetime, opts, html_options.merge(:id => input_id))
