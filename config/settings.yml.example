@@ -11,6 +11,8 @@ default:
     key: "_bighelpmob_session"
     secret: "some-long-and-random-string"
 production:
+  google_analytics:
+    identifier: "UA-XXXXXXXX-X"
   exception_notifier:
     recipients:
       - youremail@example.com

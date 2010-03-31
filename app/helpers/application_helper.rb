@@ -82,6 +82,17 @@ module ApplicationHelper
     opts.merge(:protocol => Settings.ssl_protocol)
   end
   
+  def google_analytics
+    if Settings.google_analytics.identifier?
+      inner = javascript_include_tag("#{request.ssl? ? "https://ssl" : "http://www"}.google-analytics.com/ga.js")
+      inner << javascript_tag(google_analytics_snippet_js(Settings.google_analytics.identifier))
+    end
+  end
+  
+  def google_analytics_snippet_js(identifier)
+    "try { var pageTracker = _gat._getTracker(#{identifier.to_json}); pageTracker._trackPageview(); } catch(e) {}"
+  end
+  
   protected
   
   def normalized_content_scope(key, scope = nil)

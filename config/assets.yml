@@ -42,7 +42,6 @@ javascripts:
   bgcolor:
     - public/javascripts/colorpicker.js
     - public/javascripts/bhm/bg_colour_test.js
-
 stylesheets:
   base:
     - public/stylesheets/bhm.css
