@@ -1,5 +1,7 @@
 class PasswordResetsController < ApplicationController
   
+  ssl_required :new,  :create, :edit, :update
+  
   before_filter :prepare_password_reset, :only => [:edit, :update]
   
   def new

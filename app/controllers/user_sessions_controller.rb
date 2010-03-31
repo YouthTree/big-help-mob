@@ -1,5 +1,8 @@
 class UserSessionsController < ApplicationController
 
+  ssl_required :new,  :create
+  ssl_allowed  :destroy
+
   def new
     @user_session = UserSession.new
   end

@@ -74,6 +74,14 @@ class Settings
       true
     end
     
+    def ssl?
+      Settings.force_ssl? || Rails.env.production?
+    end
+    
+    def ssl_protocol
+      ssl? ? "https" : "http"
+    end
+    
   end
   
   protected

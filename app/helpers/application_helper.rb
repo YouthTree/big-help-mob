@@ -74,6 +74,10 @@ module ApplicationHelper
     concat super
   end
   
+  def ssl_opts(opts = {})
+    opts.merge(:protocol => Settings.ssl_protocol)
+  end
+  
   protected
   
   def normalized_content_scope(key, scope = nil)

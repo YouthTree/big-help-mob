@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   include TitleEstuary
   include TitleEstuaryExt
   include ErrorPages
+  include SslRequirement
+  include SslRequirementExt
   
   protected
   

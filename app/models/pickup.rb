@@ -7,7 +7,7 @@ class Pickup < ActiveRecord::Base
   
   validates_presence_of :name, :address
   
-  has_many :mission_pickups
+  has_many :mission_pickups, :dependent => :destroy
   has_many :missions, :through => :mission_pickups
   
 end

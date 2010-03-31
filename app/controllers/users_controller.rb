@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
+  ssl_required :new,  :create, :edit, :update
+  ssl_allowed  :show, :destroy
+
   before_filter :require_user, :only => [:edit, :destroy, :update]
   before_filter :prepare_user, :except => [:new, :create, :index]
-
   before_filter :check_authz, :only => [:edit, :destroy, :update]
 
   def show
-    
   end
 
   def new

@@ -10,8 +10,8 @@
       = ml "Your Account", user_path(:current)
       = ml "Sign out", :sign_out
     - else
-      = ml "Sign up", :new_user
-      = ml "Sign in", :sign_in
+      = ml "Sign up", new_user_url(ssl_opts)
+      = ml "Sign in", sign_in_url(ssl_opts)
 
 #youthtree-project-logo= link_to "A Project of Youth Tree", "http://www.youthtree.org.au/"
 
