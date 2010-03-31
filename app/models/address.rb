@@ -28,16 +28,20 @@ class Address < ActiveRecord::Base
   
   module Addressable
     
-    def has_address(name = :address)
+    def has_address(name = :address, options = {})
       name = name.to_sym
-      has_one name, :as => :addressable, :class_name => "Address"
+      options = {:as => :addressable, :class_name => "Address"}
+      options[:dependent] = options.fetch(:dependent, :destroy)
+      has_one name, options
       accepts_nested_attributes_for name
       attr_accessible :"#{name}_attributes"
     end
     
-    def has_many_addresses(name = :addresses)
+    def has_many_addresses(name = :addresses, options = {})
       name = name.to_s.pluralize.to_sym
-      has_many name, :as => :addressable, :class_name => "Address"
+      options = {:as => :addressable, :class_name => "Address"}
+      options[:dependent] = options.fetch(:dependent, :destroy)
+      has_many name, options
       accepts_nested_attributes_for name
       attr_accessible :"#{name}_attributes"
     end

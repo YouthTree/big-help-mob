@@ -1,9 +1,20 @@
 source 'http://gemcutter.org'
 
-gem "rails", ">= 3.0.0.beta"
+git "git://github.com/nono/acts_as_list.git", :ref => "rails3"
+git "git://github.com/plataformatec/show_for.git"
+git "git://github.com/railsjedi/jammit.git"
+git "git://github.com/Sutto/mail_form.git"
+git "git://github.com/Sutto/carmen.git"
 
+
+gem "rails", ">= 3.0.0.beta"
+gem "rails3-generators"
+
+# Misc
 gem "haml"
 gem "mysql"
+gem "forgery"
+gem "mongrel", :group => "development", :require => nil
 
 # mailing list
 gem "hominid"
@@ -25,40 +36,20 @@ gem "fancy-buttons"
 # authentication
 gem "rpx_now"
 
-# Rails 3 Awesome Sauce
-gem "rails3-generators"
-
-gem "forgery"
-
-# Enabled mongrel in development for script/server
-gem "mongrel", :group => "development", :require => nil
-
 # Mainly Admin Area Stuff.
 gem "inherited_resources", ">= 1.1.0"
 gem "responders",          ">= 0.5.4"
-
-git "git://github.com/plataformatec/show_for.git"
 gem "show_for",            ">= 0.2.0"
 
 gem "will_paginate",       ">= 3.0.pre"
+gem "state_machine"
+gem "title_estuary"
+gem "acts_as_list"
+gem "mail_form"
 
 gem "ruby-googlechart", :require => "google_chart"
-
-git "git://github.com/Sutto/carmen.git"
-gem "namxam-carmen", :require => ["carmen", "carmen/action_view_helpers"]
-
-gem "state_machine"
-
-gem "title_estuary"
-
-git "git://github.com/nono/acts_as_list.git", :ref => "rails3"
-gem "acts_as_list"
-
-git "git://github.com/railsjedi/jammit.git"
-gem "jammit", :require => ['jammit', 'jammit/helper']
-
-git "git://github.com/Sutto/mail_form.git"
-gem "mail_form"
+gem "jammit",           :require => ['jammit', 'jammit/helper']
+gem "namxam-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
 
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"

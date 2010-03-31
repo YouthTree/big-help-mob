@@ -1,7 +1,8 @@
 class Organisation < ActiveRecord::Base
+  include Address::Addressable
   
-  has_one :address, :as => :addressable
-  has_many :missions
+  has_address
+  has_many :missions, :dependent => :destroy
   
   def to_s
     name

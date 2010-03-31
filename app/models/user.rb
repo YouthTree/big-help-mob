@@ -18,11 +18,11 @@ class User < ActiveRecord::Base
                   :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_ids,
                   :captain_application_attributes, :origin
 
-  has_many :mission_participations
+  has_many :mission_participations, :dependent => :destroy
   has_many :missions, :through => :mission_participations
   has_many :roles,    :through => :mission_participations
 
-  has_one :captain_application
+  has_one :captain_application, :dependent => :destroy
 
   belongs_to :current_role, :class_name => "Role"
 
@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
   
   def should_validate_captain_application_presence?
     role = Role[:captain]
-    role.present? && mission_participations.exists?(:role_id => role.id)
+    role.present? && mission_participations.exists?(["role_id = ? AND state != ?", role.id, "created"])
   end
   
   def update_mailchimp_subscription

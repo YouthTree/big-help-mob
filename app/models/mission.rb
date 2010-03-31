@@ -11,10 +11,10 @@ class Mission < ActiveRecord::Base
   
   has_address
   
-  has_many :mission_pickups
+  has_many :mission_pickups, :dependent => :destroy
   has_many :pickups, :through => :mission_pickups
   
-  has_many :mission_participations
+  has_many :mission_participations, :dependent => :destroy
   has_many :users, :through => :mission_participations
   has_many :questions, :class_name => "MissionQuestion"
   
