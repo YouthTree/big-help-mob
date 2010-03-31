@@ -10,6 +10,8 @@ default:
     key: "_bighelpmob_session"
     secret: "some-long-and-random-string"
 production:
+  hoptoad:
+    api_key: "your-hoptoad-api-key"
   hominid:
     api_key: your-mailchimp-api-key
   mailer:
@@ -17,8 +19,13 @@ production:
     host: "bighelpmob.org"
     delivery_method: smtp
     smtp_settings:
-      key1: value
-      key2: value
+      address: smtp.gmail.com
+      port: 587
+      authentication: plain
+      enable_starttls_auto: true
+      domain: bighelpmob.org
+      user_name: user@bighelpmob.org
+      password: yourpassword
 development:
   mailer:
     from: "bhm-test@bhm.dev"

@@ -51,6 +51,8 @@ gem "ruby-googlechart", :require => "google_chart"
 gem "jammit",           :require => ['jammit', 'jammit/helper']
 gem "namxam-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
 
+gem "hoptoad_notifier"
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil
