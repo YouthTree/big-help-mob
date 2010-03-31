@@ -1,5 +1,6 @@
 ---
 default:
+  cookie_verifier_secret: "30-plus-chars-of-random-stuff-awesome-ninja-skills-and-other-stuff"
   rpx:
     api_key: your-rpx-now-api-key
     realm: your-rpx-now-realm
@@ -16,6 +17,7 @@ production:
   hominid:
     api_key: your-mailchimp-api-key
   mailer:
+    contact_email: "team@bighelpmob.org"
     from: "noreply@bighelpmob.org"
     host: "bighelpmob.org"
     delivery_method: smtp
@@ -29,11 +31,13 @@ production:
       password: yourpassword
 development:
   mailer:
+    contact_email: "bhm-test@bhm.dev"
     from: "bhm-test@bhm.dev"
     host: "localhost:3000"
     delivery_method: sendmail
 test:
   mailer:
+    contact_email: "example@example.com"
     from: "example@example.com"
     host: "example.com"
     delivery_method: test

@@ -8,7 +8,7 @@ class ContactForm < MailForm::Base
   def headers
     return :subject => ::I18n.t(:subject, :scope => [:actionmailer, :contact_form]),
            :from    => "#{name} <#{email}>",
-           :to      => Settings.mailer.from
+           :to      => Settings.mailer.contact_email
   end
 
 end
