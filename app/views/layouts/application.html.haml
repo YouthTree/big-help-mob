@@ -4,7 +4,7 @@
     %title== #{page_title} - Big Help Mob
     = raw include_stylesheets(:base, :media => 'screen, projection')
     /[if IE]
-      %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
+      %script{:src => uri2ssl("html5shiv.googlecode.com/svn/trunk/html5.js")}
     = raw include_javascripts(:base)
     /[if IE 6]
       = raw include_javascripts(:ie6)

@@ -1,5 +1,9 @@
 module ApplicationHelper
   
+  def uri2ssl(url)
+    "#{Settings.ssl_protocol}://#{url.to_s.gsub(/^\w+\:\/\//, "")}"
+  end
+  
   def tu(name, options = {})
     scope = [:ui, options.delete(:scope)].compact.join(".").to_sym
     I18n.t(name, options.merge(:scope => scope))
