@@ -35,9 +35,8 @@ BHM.withNS('Pickups', function(ns) {
     this.initialize = function(id, name, address, lat, lng, at) {
       this.name    = name;
       this.address = address;
-      var title_parts = [name, address];
-      if(at && at.toString().length > 0) title_parts[0] = title_parts[0] + " at " + at;
-      this.title   = title_parts.join(" - ");
+      this.at      = at;
+      this.title   = name + " " + address;
       this.id      = id;
       this.lat     = lat;
       this.lng     = lng;
@@ -48,11 +47,13 @@ BHM.withNS('Pickups', function(ns) {
       var s = "" + this.name + " - " + this.address;
       s += " (Pickup ID #" + this.id + ")";
       s += "(" + this.lat + ", " + this.lng
-      if(this.at && this.at.toString().length > 0) {
-        s += " at " + this.at;
-      }
+      if(this.hasPickupAt()) s += " Y " + this.at;
       s += ")";
       return s;
+    }
+    
+    this.hasPickupAt = function() {
+      return this.at && this.at.toString().length > 0;
     }
     
     this.toMarker = function(map, options) {
@@ -76,8 +77,10 @@ BHM.withNS('Pickups', function(ns) {
       inner.append($("<strong />").text(this.name));
       inner.append("<br />");
       inner.append($("<span />").addClass('address').text(this.address));
-      inner.append("<br />");
-      inner.append("Pickup listing will go here.");
+      if(this.hasPickupAt()) {
+        inner.append("<br />");
+        inner.append("Pickup at " + this.at);
+      }
       infoWindow.setContent(inner.get(0));
       infoWindow.open(map, marker);
       return infoWindow;
@@ -94,7 +97,7 @@ BHM.withNS('Pickups', function(ns) {
     var b = ns.getBounds();
     b.extend(pickup.toLatLng());
     markers[pickup.id] = m;
-    ns.onEvent(m, 'dblclick', function() {
+    ns.onEvent(m, 'click', function() {
       if(lastInfoWindow) lastInfoWindow.close();
       lastInfoWindow = pickup.toInfoWindow(map, m);
     });
@@ -220,7 +223,8 @@ BHM.withNS('Pickups', function(ns) {
     m.fitBounds(b);
   };
   
-  ns.selectPickup   = function(pu) {
+  ns.selectPickup   = function(pu, clearWindow) {
+    if(lastInfoWindow && clearWindow === true) lastInfoWindow.close();
     if(typeof(pu) == "number") pu = ns.getPickup(pu);
     if(!pu) return;
     var marker = markers[pu.id];

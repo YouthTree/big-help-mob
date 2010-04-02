@@ -39,6 +39,12 @@
     
       
   - form.inputs :name => "Your Mailing Address" do
+    %li
+      %p.inline-hints.full-width-hints
+        We need a mailing address so we can mail you out your top-secret mission documents
+        in proper postage-stamp and letterbox fashion (the documents will self-destruct within
+        three days of arriving in your letterbox so check it repetitively in the week leading up
+        == to #{@mission.name})
     - form.fields_for :user do |uf|
       = render_address_fields uf, :mailing_address
   

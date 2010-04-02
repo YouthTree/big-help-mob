@@ -1716,6 +1716,10 @@ p.actions {
   text-shadow: #352000 0px -1px -1px;
   color: white;
 }
+/* line 31, ../../app/stylesheets/bhm/public/_profile.sass */
+#content form.formtastic p.inline-hints.full-width-hints {
+  margin-left: 0 !important;
+}
 
 /* line 2, ../../app/stylesheets/bhm/public/_maps.sass */
 #pickups-map.static-google-map {

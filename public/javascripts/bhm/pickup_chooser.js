@@ -25,7 +25,7 @@ BHM.require('Pickups').load(function() {
       e.change(function() {
         var id = ns.getFieldValue(e);
         changingPickup = true;
-        pickups.selectPickup(id);
+        pickups.selectPickup(id, true);
         changingPickup = false;
       });
       // Bind the actual pickup select event..

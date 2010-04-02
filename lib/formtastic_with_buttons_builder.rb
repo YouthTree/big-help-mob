@@ -55,7 +55,7 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
       )
 
       li_options = value_as_class ? { :class => [method.to_s.singularize, value.to_s.downcase].join('_') } : {}
-      template.content_tag(:li, li_content, li_options.merge(@template.pickup_data_options(pickup, html_options[:checked])))
+      template.content_tag(:li, li_content, li_options.merge(@template.pickup_data_options(c, html_options[:checked])))
     end
 
     field_set_and_list_wrapping_for_pickups(method, options.merge(:label_for => input_ids.first), list_item_content)
