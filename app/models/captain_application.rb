@@ -1,4 +1,7 @@
 class CaptainApplication < ActiveRecord::Base
+  extend DynamicBaseDrop::Droppable
+  
+  is_droppable
 
   attr_accessible :has_first_aid_cert, :offers, :reason_why
   

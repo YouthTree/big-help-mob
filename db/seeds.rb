@@ -31,6 +31,10 @@ begin
     Content.create! :key => "pages.about", :title => "About Big Help Mob", :content => ""
     Content.create! :key => "pages.privacy-policy", :title => "Our Privacy Policy", :content => ""
     Content.create! :key => "pages.terms-and-conditions", :title => "Terms and Conditions", :content => ""
+    
+    DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "", :content_type => "html"
+    DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "", :content_type => "html"
+    
   end
 ensure
   $stdout.sync = sync

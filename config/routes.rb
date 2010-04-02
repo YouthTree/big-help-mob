@@ -6,6 +6,7 @@ Bighelpmob::Application.routes.draw do |map|
     end
     resources :missions do
       resources :mission_participations, :as => 'participations'
+      resources :dynamic_templates,      :as => 'dynamic-templates'
     end
     resources :organisations
     resources :pickups

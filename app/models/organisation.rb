@@ -1,7 +1,10 @@
 class Organisation < ActiveRecord::Base
-  include Address::Addressable
+  extend Address::Addressable
+  extend DynamicBaseDrop::Droppable
   
   has_address
+  is_droppable
+  
   has_many :missions, :dependent => :destroy
   
   def to_s

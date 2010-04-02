@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   extend Address::Addressable
+  extend DynamicBaseDrop::Droppable
   
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
   
@@ -29,6 +30,7 @@ class User < ActiveRecord::Base
   after_save   :update_mailchimp_subscription
 
   has_address :mailing_address
+  is_droppable
 
   acts_as_authentic do |c|
     c.account_merge_enabled true

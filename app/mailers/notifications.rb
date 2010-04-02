@@ -27,4 +27,29 @@ class Notifications < ActionMailer::Base
     mail :to => user.email
   end
   
+  def mission_role_approved(user, mission_participation)
+    @user                  = user
+    @mission_participation = mission_participation
+    mail :to => user.email do |r|
+      dynamic_templates! r, mission_participation.mission, :html, "role-approved.#{mission.role_name.to_s.dasherize}",
+                         :user => user, :mission_participation => mission_participation
+    end
+  end
+  
+  protected
+  
+  def dynamic_templates!(r, parent, key, *formats)
+    scope = formats.extract_options!
+    formats.each do |format|
+      format = format.to_s
+      body = DynamicTemplate.get(parent, format, "notifications.#{key}", scope)
+      if body.present?
+        r.send(format) { render :text => body }
+      else
+        r.send(format)
+      end
+    end
+    
+  end
+  
 end

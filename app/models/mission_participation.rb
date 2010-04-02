@@ -1,16 +1,17 @@
 class MissionParticipation < ActiveRecord::Base
+  extend DynamicBaseDrop::Droppable
   
   belongs_to :user
   belongs_to :mission
   belongs_to :role
-  belongs_to :pickup
+  belongs_to :pickup, :class_name => "MissionPickup"
   
   validates_presence_of :user, :mission, :pickup
   validates_associated  :answers
   
   attr_accessible :mission_id, :user_attributes, :pickup_id, :answers
   
-  after_validation :autoset_awaiting_approval, :on => :update
+  after_validation :auto_approve, :on => :update
   
   accepts_nested_attributes_for :user
   
@@ -20,6 +21,8 @@ class MissionParticipation < ActiveRecord::Base
   scope :for_user,  lambda { |u| where(:user_id => u.id) }
   
   scope :optimize_editable, includes(:user => [:mailing_address, :captain_application], :pickup => :address, :role => nil)
+
+  is_droppable
 
   state_machine :initial => :created do
     state :created
@@ -46,6 +49,10 @@ class MissionParticipation < ActiveRecord::Base
     
     after_transition :created => :awaiting_approval do |mp, transition|
       mp.user.notify! :joined_mission, mp
+    end
+    
+    after_transition [:created, :awaiting_approval] => :approved do |mp, transition|
+      mp.user.notify! :mission_role_approved, mp
     end
     
   end
@@ -75,8 +82,8 @@ class MissionParticipation < ActiveRecord::Base
     answers.attributes = value
   end
   
-  def autoset_awaiting_approval
-    await_approval(false) if created?
+  def auto_approve
+    approve(false) if created? || awaiting_approval?
   end
   
   def state_events_for_select

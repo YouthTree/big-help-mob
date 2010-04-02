@@ -56,6 +56,7 @@ end
 #
 #  id            :integer(4)      not null, primary key
 #  mission_id    :integer(4)
+#  default_value :string(255)
 #  metadata      :text
 #  name          :string(255)
 #  question_type :string(255)

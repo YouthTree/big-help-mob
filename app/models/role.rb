@@ -1,10 +1,13 @@
 class Role < ActiveRecord::Base
+  extend DynamicBaseDrop::Droppable
   
   PUBLIC_ROLES = %w(captain sidekick)
   
   validates_presence_of :name
   
   attr_accessible :name
+  
+  is_droppable
   
   def to_s
     name.humanize

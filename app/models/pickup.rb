@@ -1,9 +1,11 @@
 class Pickup < ActiveRecord::Base
+  extend Address::Addressable
+  extend DynamicBaseDrop::Droppable
   
   attr_accessible :name
   
-  extend Address::Addressable
   has_address
+  is_droppable
   
   validates_presence_of :name, :address
   

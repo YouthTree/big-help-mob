@@ -1,6 +1,11 @@
 class MissionPickup < ActiveRecord::Base
+  extend DynamicBaseDrop::Droppable
+  
+  is_droppable
+  
   belongs_to :mission
   belongs_to :pickup
+  has_many   :participations, :class_name => 'MissionParticipation', :foreign_key => :pickup_id
   
   attr_accessible :pickup_id, :mission_id, :pickup_at
   

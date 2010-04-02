@@ -1,5 +1,7 @@
 class Mission < ActiveRecord::Base
   extend Address::Addressable
+  extend DynamicTemplate::Templateable
+  extend DynamicBaseDrop::Droppable
   
   scope :next,     where(:state => 'preparing').order('occurs_at ASC')
   scope :viewable, where(:state => ['preparing', 'approved', 'completed'])
@@ -10,6 +12,8 @@ class Mission < ActiveRecord::Base
   # Associations
   
   has_address
+  has_dynamic_templates
+  is_droppable
   
   has_many :mission_pickups, :dependent => :destroy
   has_many :pickups, :through => :mission_pickups

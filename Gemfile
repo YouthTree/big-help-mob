@@ -24,7 +24,7 @@ gem "addresslogic"
 gem "geokit"
 
 # display helpers
-gem "formtastic"
+gem "formtastic", "= 0.9.7"
 gem "validation_reflection"
 
 # Sass Awesome Sauce
@@ -53,6 +53,8 @@ gem "namxam-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
 
 # gem "hoptoad_notifier"
 gem "exception_notifier", :require => nil
+
+gem "liquid"
 
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"

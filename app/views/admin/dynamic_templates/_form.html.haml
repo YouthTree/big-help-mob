@@ -1,0 +1,8 @@
+- has_jammit_js :ckeditor, :dynamic_template_editor
+
+- form.inputs :name => "General Details" do
+  = form.input :key, :disabled => !form.object.new_record?
+  = form.input :content_type, :as => :select, :collection => DynamicTemplate.content_types_for_select
+
+- form.inputs :name => "Template" do
+  = form.input :content, :as => :text

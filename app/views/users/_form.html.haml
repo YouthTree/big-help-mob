@@ -11,7 +11,7 @@
     = form.input :display_name, :hint => "This is what will typically be shown to other users on the site."
     = form.input :first_name
     = form.input :last_name
-    = form.input :postcode, :hint => "We'll use this strictly for planning and statistics purposes (every good superhero has a hometown)."
+    = form.input :postcode, :hint => "We'll use this strictly for planning and statistics purposes (we may be able to adjust our Bat-mobus route to be closer to your secret hideout)."
     = form.input :phone, :hint => "We respect your privacy - this number will never be given out or shared - It'll typically only be used for emergency contact pre-mission."
     - if form.object.new_record?
       = form.input :origin, :as => :select, :collection => User::ORIGIN_CHOICES

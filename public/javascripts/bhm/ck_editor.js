@@ -25,8 +25,16 @@ BHM.withNS('CKEditor', function(ns) {
     return o;
   }
   
+  ns.makeEditor = function(jq) {
+    jq.ckeditor(currentEditorOptions());
+  };
+  
+  ns.destroyEditor = function(jq) {
+    try { jq.ckeditorGet().destroy(); } catch(e) {};
+  }
+  
   ns.setup = function() {
-    $(ns.editorSelector).ckeditor(currentEditorOptions());
+    ns.makeEditor($(ns.editorSelector));
   };
   
 });

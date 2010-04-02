@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100330084709) do
+ActiveRecord::Schema.define(:version => 20100401111253) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -51,6 +51,22 @@ ActiveRecord::Schema.define(:version => 20100330084709) do
   end
 
   add_index "contents", ["key"], :name => "index_contents_on_key"
+
+  create_table "dynamic_templates", :force => true do |t|
+    t.string   "key"
+    t.string   "template_type"
+    t.string   "content_type"
+    t.text     "parts"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dynamic_templates", ["key", "template_type", "content_type"], :name => "idx_dynamic_templates_on_keys"
+  add_index "dynamic_templates", ["key", "template_type"], :name => "index_dynamic_templates_on_key_and_template_type"
+  add_index "dynamic_templates", ["key"], :name => "index_dynamic_templates_on_key"
+  add_index "dynamic_templates", ["template_type"], :name => "index_dynamic_templates_on_template_type"
 
   create_table "mission_participations", :force => true do |t|
     t.integer  "user_id"
