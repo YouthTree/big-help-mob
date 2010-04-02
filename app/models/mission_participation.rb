@@ -20,13 +20,13 @@ class MissionParticipation < ActiveRecord::Base
   scope :with_role, where('role_id IS NOT NULL')
   scope :for_user,  lambda { |u| where(:user_id => u.id) }
   
-  scope :optimize_editable, includes(:user => [:mailing_address, :captain_application], :pickup => :address, :role => nil)
+  scope :optimize_editable, includes(:user => [:mailing_address, :captain_application], :pickup => {:pickup => :address}, :role => nil)
 
   is_droppable
 
   state_machine :initial => :created do
     state :created
-    state :await_approval
+    state :awaiting_approval
     state :approved
     state :completed
     state :cancelled
@@ -91,6 +91,17 @@ class MissionParticipation < ActiveRecord::Base
       name = ::I18n.t(:"#{self.class.model_name.underscore}.#{se}", :default => se.to_s.humanize, :scope => :"ui.state_events")
       [name, se]
     end
+  end
+  
+  def self.viewable_by(user)
+    scope = self.includes(:mission => :address, :role => nil, :pickup => {:pickup => :address})
+    public_states = %w(approved completed)
+    if user.blank?
+      scope = scope.where('mission_participations.state' => public_states)
+    elsif !user.admin?
+      scope = scope.where("mission_participations.user_id = ? OR mission_participations.state IN (?)", user.id, public_states)
+    end
+    scope
   end
   
 end

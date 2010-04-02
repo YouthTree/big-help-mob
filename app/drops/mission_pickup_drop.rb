@@ -11,7 +11,7 @@ class MissionPickupDrop < DynamicBaseDrop
   end
   
   def time
-    mission_pickup.pickup_at && ::I18n.l(mission_pickup.pickup_at, :format => :pickup_time)
+    mission_pickup.pickup_at && ::I18n.l(mission_pickup.pickup_at, :format => :pickup_time).gsub(/0(\d:\d{2})/, '\1')
   end
   
 end

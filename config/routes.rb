@@ -28,6 +28,9 @@ Bighelpmob::Application.routes.draw do |map|
   match 'sign-out', :to => 'user_sessions#destroy', :as => :sign_out
   
   resources :users do
+    collection do
+      get :welcome
+    end
     member do
       post :add_rxp_auth
     end

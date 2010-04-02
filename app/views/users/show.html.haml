@@ -1,3 +1,29 @@
+- if logged_in? && @user == current_user
+  %p
+    Hey, this is your profile! 
+    = link_to "Click here", edit_user_path(params[:id])
+    to edit your details.
+
+%dl#profile-details
+  %dt Mission History:
+  %dd
+    %ul
+      - if @participations.blank?
+        %li.empty This user hasn't yet taken part / signed up to take part in any missions.
+      - else
+        - @participations.each do |participation|
+          %li{:class => cycle('odd-mission', 'even-mission')}
+            - if participation.completed?
+              Took part in
+            - elsif participation.approved?
+              Signed up to take part in
+            = participation.role_name.humanize
+            for
+            = participation.mission.name
+            on
+            =l participation.mission.occurs_at, :format => :simple
+    
+
 - if can?(:edit, @user)
   %p.actions
     = rpx_identifiers_to_s @user

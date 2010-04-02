@@ -5,7 +5,7 @@
     You've chosen to sign up as a
     == #{@participation.role_name.titleize},
     = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
-    == to become a #{ar.titleize}.
+    == to become a #{ar.titleize} or #{link_to 'click here', @mission} to return to the mission details.
 
   - if @participation.answers.needed?
     - form.inputs :name => "General Questions" do
@@ -30,7 +30,11 @@
       - has_jammit_js :pickup_chooser
       #pickup-address
         %strong Pickup is from:
-        %span= (@participation.pickup || "Not yet chosen").to_s
+        %span
+          - if @participation.pickup.present?
+            = @participation.pickup.pickup.to_s
+          - else
+            Pickup address not yet chosen.
     = form.input :pickup, :collection => @mission.mission_pickups, :as => :pickups
     
       

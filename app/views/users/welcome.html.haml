@@ -1,0 +1,10 @@
+= cs 'welcome'
+
+%h3 Get Started...
+%ul#getting-started
+  %li= link_to 'Find out about or join our next mission', missions_path(:next), :id => 'next-mission-item'
+  %li.or - or -
+  %li= link_to 'View your profile', users_path(:current), :id => 'your-profile-item'
+  %li.or - or -
+  %li= link_to 'Contact the Big Help Mob team', :contact_us, :id => 'contact-us-item'
+    

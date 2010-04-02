@@ -40,17 +40,14 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     selected_value = (options.key?(:checked) ? options[:checked] : options[:selected]) if selected_option_is_present
 
     list_item_content = collection.map do |c|
-      at = nil
-      if c.is_a?(MissionPickup)
-        at = c.pickup_at
-        c = c.pickup
-      end
-      value = c.id
+      at     = c.pickup_at
+      value  = c.id
+      pickup = c.pickup
       input_id = generate_html_id(input_name, value.to_s.gsub(/\s/, '_').gsub(/\W/, '').downcase)
       input_ids << input_id
       
       html_options[:checked] = selected_value == value if selected_option_is_present
-      inner_label = c.name
+      inner_label = pickup.name
       inner_label << " at #{::I18n.l(at, :format => :pickup_time)}" if at.present?
       li_content = template.content_tag(:label,
         "#{self.radio_button(input_name, value, html_options)} #{inner_label}",
@@ -58,7 +55,7 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
       )
 
       li_options = value_as_class ? { :class => [method.to_s.singularize, value.to_s.downcase].join('_') } : {}
-      template.content_tag(:li, li_content, li_options.merge(@template.pickup_data_options(c, html_options[:checked])))
+      template.content_tag(:li, li_content, li_options.merge(@template.pickup_data_options(pickup, html_options[:checked])))
     end
 
     field_set_and_list_wrapping_for_pickups(method, options.merge(:label_for => input_ids.first), list_item_content)
@@ -147,7 +144,11 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     template.content_tag(:li, inner, :class => element_class)
   end
   
-  
+  def error_sentence(errors) #:nodoc:
+    error_text = errors.to_sentence.strip
+    error_text << "." unless %w(? ! . :).include?(error_text[-1..-1])
+    template.content_tag(:p, error_text, :class => 'inline-errors')
+  end
   protected
   
   def create_safe_buffer

@@ -1,10 +1,30 @@
 p.actions
-  :text-align center
-  :font-size 1.5em
   :margin 0 15% 2em
-  :padding 0.4em 0.3em 0.3em
-  +border-radius(0.75em)
-  :background= !bhm_colour_actions_background
-  :border= 1px "solid" darken(!bhm_colour_actions_background, 50)
-  :color= darken(!bhm_colour_actions_background, 75)
-  +linear-gradient(color_stops(lighten(!bhm_colour_actions_background, 5), darken(!bhm_colour_actions_background, 5)), "top")
+  +bhm-action-style(!bhm_colour_actions_background)
+  
+#content
+  #profile-notice
+    :margin 0 5% 4.5em
+    +bhm-action-style(!bhm_colour_profile_notice)
+  
+  #getting-started
+    :margin 2em 0 0
+    +no-bullets
+    li
+      :text-align center
+      :font-size 1.3em
+    li.or
+      :padding 0.5em 0
+      :color= !bhm_colour_list_or
+      :font-size 1em
+      
+    #next-mission-item, #your-profile-item, #contact-us-item
+      +bhm-fixed-fb-structure(16px)
+    #next-mission-item
+      +fancy-button-colors(!bhm_colour_mission_item)
+    #your-profile-item
+      +fancy-button-colors(!bhm_colour_profile_item)
+    #contact-us-item
+      +fancy-button-colors(!bhm_colour_contact_item)
+
+    

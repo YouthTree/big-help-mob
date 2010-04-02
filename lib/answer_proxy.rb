@@ -80,14 +80,13 @@ class AnswerProxy
   def check_answer_status
     each_question do |question, key|
       value = read_attribute(key)
-      
       if value.blank? && question.required?
         errors.add(key, :blank, :default => "is blank")
       elsif question.required? && question.boolean? && value =~ /no/i
-        errors.add(key, :voided_participation, :default => "means you are unable to take part")
+        errors.add(key, :voided_participation)
       elsif value.present? && question.multiple_choice?
         valid_choice = Array(question.metadata).include?(value)
-        errors.add(key, :invalid_choice, :default => "is an invalid choice") unless valid_choice
+        errors.add(key, :invalid_choice) unless valid_choice
       end
     end
   end

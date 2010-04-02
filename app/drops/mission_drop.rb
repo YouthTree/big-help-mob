@@ -14,4 +14,8 @@ class MissionDrop < DynamicBaseDrop
     mission.pickups
   end
   
+  def occurs_at
+    I18n.l(mission.occurs_at, :format => :simple).gsub(/^0/, '').gsub(/0(\d:\d{2})/, '\1')
+  end
+  
 end

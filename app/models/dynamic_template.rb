@@ -49,7 +49,7 @@ class DynamicTemplate < ActiveRecord::Base
   belongs_to :parent, :polymorphic => true
   
   validates_presence_of :key, :content
-  validates_format_of   :key, :with => /^[\w\\.]+$/
+  validates_format_of   :key, :with => /^[\w\-\.]+$/
   validates_inclusion_of :content_type, :in => VALID_CONTENT_TYPES
   
   serialize :parts

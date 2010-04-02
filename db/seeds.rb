@@ -34,6 +34,8 @@ begin
     
     DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "", :content_type => "html"
     DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "", :content_type => "html"
+    DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "", :content_type => "text"
+    DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "", :content_type => "text"
     
   end
 ensure

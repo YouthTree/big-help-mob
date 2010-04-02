@@ -2,6 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  date:
+    order:
+      - :day
+      - :month
+      - :year
   time:
     formats:
       simple: "%d %B, %Y at %I:%M %p"
@@ -17,17 +22,26 @@ en:
         has_first_aid_cert: "Has current First Aid Certificate"
     errors:
       messages:
+        blank: "must be filled in to continue"
+        invalid: "has errors that must be fixed before continuing"
         too_few_words: "has too few words (has {{actual_count}} but needs a minimum of {{min_count}})"
         too_many_words: "has too few words (has {{actual_count}} but can have a maximum of {{max_count}})"
         unknown_origin_choice: "is an invalid choice"
     models:
       mission_participation: Participation
+  answer_model:
+    errors:
+      messages:
+        invalid_choice: "is an invalid choice"
+        voided_participation: "means you are not able to continue - sorry!"
   actionmailer:
     notifications:
       signup:
         subject: "Welcome to Big Help Mob, {{user_name}}"
       joined_mission:
         subject: "You've successfully joined {{mission_name}}"
+      mission_role_approved:
+        subject: "You've successfully signed up for {{mission_name}} as {{role_name}}"
       mission_signup_incomplete:
         subject: ""
       notice:

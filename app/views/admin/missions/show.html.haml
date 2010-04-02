@@ -42,6 +42,12 @@
       - use_gmaps_js
       - has_jammit_js :pickups
     
+  = r.association :dynamic_templates do
+    %ul
+      - resource.dynamic_templates.each do |dt|
+        %li= link_to "#{dt.key} (#{dt.content_type})", [:admin, resource, dt]
+    %p= link_to 'View Template Index', admin_mission_dynamic_templates_path(resource)
+    
   = r.label :questions
   %dd
     %ol

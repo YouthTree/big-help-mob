@@ -3,11 +3,12 @@ class UsersController < ApplicationController
   ssl_required :new,  :create, :edit, :update
   ssl_allowed  :show, :destroy
 
-  before_filter :require_user, :only => [:edit, :destroy, :update]
-  before_filter :prepare_user, :except => [:new, :create, :index]
+  before_filter :require_user, :only => [:edit, :destroy, :update, :welcome]
+  before_filter :prepare_user, :except => [:new, :create, :index, :welcome]
   before_filter :check_authz, :only => [:edit, :destroy, :update]
 
   def show
+    @participations = @user.mission_participations.viewable_by(current_user).all
   end
 
   def new
@@ -17,13 +18,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_path, :notice => "Thanks for joining!"
+      redirect_to :welcome_users, :notice => "Thanks for joining!"
     else
       render :action => 'new'
     end
   end
 
   def edit
+    flash[:profile_notice] = tf('profile.full_incomplete')
     @user.valid?
   end
 
@@ -49,8 +51,10 @@ class UsersController < ApplicationController
     end
   end
 
-  protected
+  def welcome
+  end
 
+  protected
 
   def check_authz
     verb = (params[:action] == "destroy" ? :destroy  : :edit)

@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
                   :captain_application_attributes, :origin, :date_of_birth
 
   has_many :mission_participations, :dependent => :destroy
+  
   has_many :missions, :through => :mission_participations
   has_many :roles,    :through => :mission_participations
 

@@ -1,8 +1,11 @@
 - use_gmaps_js
 - has_jammit_js :pickups
 
+- if logged_in?
+  = render :partial => 'mission_actions'
+
 %h2 About this Mission
-= join_mission_link @mission
+
 #mission-description
   = @mission.description_as_html
   = join_mission_link @mission
@@ -32,14 +35,5 @@
           %span.pickup-time= l mp.pickup_at, :format => :pickup_time
 
 - if logged_in?
-  %p.actions
-    - if @mission.participating?(current_user)
-      You've signed up to take part in this mission.
-      - if @mission.participation_for(current_user).created?
-        Unfortunately, you've not yet filled in all your details -
-        == Please #{link_to 'do so now', [:edit, @mission]}.
-      - else
-        == If you want to edit your participation details, #{link_to 'click here', [:edit, @mission]}.
-    - else
-      Want to take part in this mission? You can join it
-      == #{link_to "as a Captain or Sidekick", [:join, @mission]}!
+  = render :partial => 'mission_actions'
+  

@@ -1,0 +1,12 @@
+%p.actions
+  - if @mission.participating?(current_user)
+    You've signed up to take part in this mission.
+    - if @mission.participation_for(current_user).created?
+      Unfortunately, you still need to 
+      == #{link_to 'answer a few questions', [:edit, @mission]}
+      to be able to attend.
+    - else
+      == If you want to edit your participation details, #{link_to 'click here', [:edit, @mission]}.
+  - else
+    Want to take part in this mission? You can sign up to take part
+    == #{link_to "as a Captain or Sidekick", [:join, @mission]}!

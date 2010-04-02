@@ -1,0 +1,29 @@
+Calling Potential Captain {{user.name}}
+ 
+Big Help Mob HQ congratulates you on accepting this mission. We await your appearance at:
+ 
+...THE TEST
+
+Superhero Training and Deployment Centre aka: 
+  Scitech Discovery Centre, City West Centre, West Perth (go through the main City West entrance and up to the second floor).
+  Scitech is about 200 metres from the City West train station
+  If you are driving, park in the City West Car park. Parking will be free at this time
+
+Bring:
+- A game that 5-12 potential Captains can play together
+- Food (just enough for yourself and we'll share with other potential Superheroes)
+- A flexible mind that expects the unexpected
+
+What to expect:
+- Fun times with up to 39 other potential Captains
+- Nothing even remotely as impossible or scary as test-like as "...THE TEST" implies.
+
+And remember that if you intend to be a Captain at {{mission.name}}, you will need to also be available for:
+- Superhero School
+- {{mission.name}} (all day from {{mission.occurs_at}})
+
+Thank you for using your powers for good.
+
+Over and out. 
+
+Big Help Mob HQ

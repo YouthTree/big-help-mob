@@ -1,4 +1,9 @@
 class MissionsController < ApplicationController
+  MissionOver = Class.new(StandardError)
+  
+  rescue_from MissionOver do
+    redirect_to @mission, :alert => "You can no longer edit your details for this mission - sorry!"
+  end
   
   before_filter :prepare_mission, :except => :next
   before_filter :require_user, :except => [:show, :next]
@@ -18,10 +23,12 @@ class MissionsController < ApplicationController
   end
   
   def edit
+    check_mission_status!
     return redirect_to([:join, @mission]) if @participation.role.blank?
   end
   
-  def update    
+  def update
+    check_mission_status!
     if @participation.update_attributes(params[:mission_participation])
       redirect_to @mission, :notice => tf('participation.joined')
     else
@@ -51,6 +58,10 @@ class MissionsController < ApplicationController
       mission
     end
     redirect_to url
+  end
+  
+  def check_mission_status!
+    raise MissionOver unless %w(created approved awaiting_approval).include?(@participation.state) && %w(preparing approved).include?(@mission.state)
   end
   
 end

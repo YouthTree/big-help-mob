@@ -2,6 +2,12 @@ Welcome to Big Help Mob, <%= @user.to_s %>.
 
 You've now successfully created your account and are ready to go. You're now free to sign up to take part in missions.
 
+To get started, we suggest visiting:
+  
+  <%= welcome_users_url %>
+
+Your Account Details:
+
 <% if @user.login.present? -%>
 Login: <%= @user.login %>
 
@@ -15,5 +21,6 @@ If you have forgotten your password, you can visit the site to reset it to somet
 You signed up using an external service (e.g. twitter, facebook) for identification.
 
 <% end %>
+
 Thanks,
 The Big Help Mob team.

@@ -11,6 +11,10 @@ class MissionPickup < ActiveRecord::Base
   
   validates_presence_of :pickup_at, :pickup, :mission
   
+  def name
+    pickup.name
+  end
+  
 end
 
 # == Schema Info

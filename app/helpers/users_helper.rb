@@ -6,7 +6,7 @@ module UsersHelper
       "You have no stored external accounts."
     else
       name = identifiers.sort_by { |k, v| -v }.map { |k,v| pluralize(v, "#{k} account") }.to_sentence
-      "You have external credentials stored for #{name}."
+      "You have <abbr title='External credentials let you login using an external count (e.g. twitter / faceook)'>external credentials</abbr> stored for #{name}.".html_safe
     end
   end  
   
