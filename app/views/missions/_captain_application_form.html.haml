@@ -2,7 +2,12 @@
 
   - if user.errors.invalid?(:captain_application)
     %li
-      %p.inline-errors Please ensure you fill out your captain application.
+      %p.inline-errors.full-width Please ensure you fill out your captain application.
+      
+  %li
+    %p.inline-hints.full-width
+      Not sure exactly what we're asking about / why we're asking this questions?
+      == We suggest #{link_to 'rereading', [:join, @mission]} the role description.
   
   = form.input :reason_why, :input_html => {:rows => 5}
   

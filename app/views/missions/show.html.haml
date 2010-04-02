@@ -6,6 +6,9 @@
 
 %h2 About this Mission
 
+- unless logged_in?
+  = join_mission_link @mission
+
 #mission-description
   = @mission.description_as_html
   = join_mission_link @mission

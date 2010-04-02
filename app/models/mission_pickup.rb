@@ -7,7 +7,7 @@ class MissionPickup < ActiveRecord::Base
   belongs_to :pickup
   has_many   :participations, :class_name => 'MissionParticipation', :foreign_key => :pickup_id
   
-  attr_accessible :pickup_id, :mission_id, :pickup_at
+  attr_accessible :pickup_id, :mission_id, :pickup_at, :comment
   
   validates_presence_of :pickup_at, :pickup, :mission
   

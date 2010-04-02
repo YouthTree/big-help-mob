@@ -3,6 +3,15 @@ p.actions
   +bhm-action-style(!bhm_colour_actions_background)
   
 #content
+  p.review-role-details
+    :font-size 1.1em
+    :margin -2.5em 0 4em
+    +bhm-action-style(!bhm_colour_role_background)
+    a
+      :font-weight bold
+  
+  
+#content
   #profile-notice
     :margin 0 5% 4.5em
     +bhm-action-style(!bhm_colour_profile_notice)
@@ -28,5 +37,5 @@ p.actions
       +fancy-button-colors(!bhm_colour_contact_item)
 
   
-  form.formtastic p.inline-hints.full-width-hints
+  form.formtastic li p.full-width
     :margin-left 0 !important

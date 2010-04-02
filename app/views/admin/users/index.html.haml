@@ -6,6 +6,7 @@
   %thead
     %tr
       %th ID
+      %th Login
       %th Display Name
       %th Admin?
       %th Default Role
@@ -15,11 +16,12 @@
     - collection.each do |r|
       %tr{:class => cycle('odd', 'even')}
         %td= r.id
+        %td=vwd r.login
         %td=vwd r.display_name
         %td= r.admin? ? "Yes" : "No"
         %td=vwd r.current_role.to_s
         %td=l r.last_request_at, :format => :long
         %td.actions= individual_resource_links r
-    = empty_row_for_collection 5
+    = empty_row_for_collection 6
         
 = will_paginate collection

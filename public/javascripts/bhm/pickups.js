@@ -32,10 +32,11 @@ BHM.withNS('Pickups', function(ns) {
   
   ns.defineClass('Pickup', function() {
     
-    this.initialize = function(id, name, address, lat, lng, at) {
+    this.initialize = function(id, name, address, lat, lng, at, comment) {
       this.name    = name;
       this.address = address;
       this.at      = at;
+      this.comment = comment;
       this.title   = name + " " + address;
       this.id      = id;
       this.lat     = lat;
@@ -54,6 +55,10 @@ BHM.withNS('Pickups', function(ns) {
     
     this.hasPickupAt = function() {
       return this.at && this.at.toString().length > 0;
+    }
+    
+    this.hasComment = function() {
+      return this.comment && this.comment.toString().length > 0;
     }
     
     this.toMarker = function(map, options) {
@@ -79,7 +84,11 @@ BHM.withNS('Pickups', function(ns) {
       inner.append($("<span />").addClass('address').text(this.address));
       if(this.hasPickupAt()) {
         inner.append("<br />");
-        inner.append("Pickup at " + this.at);
+        inner.append($("<span />", {'class': 'pickup-at'}).text("Pickup at " + this.at));
+      }
+      if(this.hasComment()) {
+        inner.append("<br />");
+        inner.append($("<span />", {'class': 'pickup-comment'}).text(this.comment));
       }
       infoWindow.setContent(inner.get(0));
       infoWindow.open(map, marker);
@@ -134,8 +143,8 @@ BHM.withNS('Pickups', function(ns) {
   
   // Subsection: Modifiers
   
-  ns.addPickup = function(id, name, address, lat, lng, at) {
-    var p = new ns.Pickup(id, name, address, lat, lng, at);
+  ns.addPickup = function(id, name, address, lat, lng, at, comment) {
+    var p = new ns.Pickup(id, name, address, lat, lng, at, comment);
     pickups[p.id] = p;
     if(map) addPickupToPlot(p);
     return p;
@@ -205,12 +214,13 @@ BHM.withNS('Pickups', function(ns) {
       var e = $(this);
       var id = pickupAttr(e, "id");
       if(id) {
-        var name  = pickupAttr(e, "name"),
-            addr  = pickupAttr(e, "address"),
-            lat   = Number(pickupAttr(e, "latitude")),
-            lng   = Number(pickupAttr(e, "longitude")),
-            at    = pickupAttr(e, "at");
-        ns.addPickup(Number(id), name, addr, lat, lng, at);
+        var name    = pickupAttr(e, "name"),
+            addr    = pickupAttr(e, "address"),
+            lat     = Number(pickupAttr(e, "latitude")),
+            lng     = Number(pickupAttr(e, "longitude")),
+            at      = pickupAttr(e, "at"),
+            comment = pickupAttr(e, "comment");
+        ns.addPickup(Number(id), name, addr, lat, lng, at, comment);
       };
     });
   };

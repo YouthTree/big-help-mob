@@ -24,7 +24,7 @@ class MissionQuestion < ActiveRecord::Base
     else
       {:as => :text, :input_html => {:rows => 5}}
     end
-    options.merge(:label => name, :required => required?)
+    options.merge(:label => name, :required => required?, :wrapper_html => {:class => "mission-question-#{question_type.dasherize}"})
   end
   
   def raw_metadata=(value)

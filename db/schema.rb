@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100401111253) do
+ActiveRecord::Schema.define(:version => 20100402163731) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20100401111253) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "pickup_at"
+    t.text     "comment"
   end
 
   add_index "mission_pickups", ["mission_id", "pickup_id"], :name => "index_mission_pickups_on_mission_id_and_pickup_id"

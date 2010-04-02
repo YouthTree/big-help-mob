@@ -5,16 +5,17 @@ class MissionsController < ApplicationController
     redirect_to @mission, :alert => "You can no longer edit your details for this mission - sorry!"
   end
   
-  before_filter :prepare_mission, :except => :next
-  before_filter :require_user, :except => [:show, :next]
-  before_filter :prepare_participation, :only => [:edit, :update]
+  before_filter :prepare_mission,        :except => :next
+  before_filter :require_user_with_note, :only   => [:join]
+  before_filter :require_user,           :except => [:show, :next, :join]
+  before_filter :prepare_participation,  :only   => [:edit, :update]
   
   def show
     @mission_questions = Question.for(:mission_page).all
   end
   
   def join    
-    if @mission.participating?(current_user) && !@mission.participation_for(current_user).created?
+    if @mission.participating?(current_user) && !%w(created awaiting_approval).include?(@mission.participation_for(current_user).try(:state))
       flash[:notice] = "You're already participating in this mission"
       redirect_to @mission
     end
@@ -62,6 +63,14 @@ class MissionsController < ApplicationController
   
   def check_mission_status!
     raise MissionOver unless %w(created approved awaiting_approval).include?(@participation.state) && %w(preparing approved).include?(@mission.state)
+  end
+  
+  def require_user_with_note
+    unless logged_in?
+      store_location
+      redirect_to sign_in_path, :notice => "Before you can join this mission, you'll need to sign in or create a Big Help Mob account."
+      return false
+    end
   end
   
 end

@@ -37,7 +37,8 @@ module ApplicationHelper
     opts = {"class" => "pickup-entry"}
     opts["data-pickup-id"] = pickup.id
     if pickup.is_a?(MissionPickup)
-      opts["data-pickup-at"] = I18n.l(pickup.pickup_at, :format => :pickup_time)
+      opts["data-pickup-comment"] = pickup.comment if pickup.comment.present?
+      opts["data-pickup-at"]      = I18n.l(pickup.pickup_at, :format => :pickup_time)
       pickup = pickup.pickup
     end
     opts["title"] = pickup.address.to_s

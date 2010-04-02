@@ -6,6 +6,12 @@
     == #{@participation.role_name.titleize},
     = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
     == to become a #{ar.titleize} or #{link_to 'click here', @mission} to return to the mission details.
+  
+  - if %w(created awaiting_approval).include?(@participation.state)
+    %p.review-role-details
+      == If you can't remember what a #{@participation.role_name.humanize}
+      actually does or never read it properly in the first place (totally excusable, you're a character of action),
+      == get up to speed #{link_to 'here', [:join, @mission]}. We promise it will be a riveting read!
 
   - if @participation.answers.needed?
     - form.inputs :name => "General Questions" do
@@ -16,7 +22,7 @@
   
   - form.fields_for :user do |uf|
     - form.inputs :name => "Your General Profile" do
-      = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?"
+      = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."
       
     - if @participation.role_name.captain?
       - uf.object.build_captain_application if uf.object.captain_application.blank?
@@ -40,7 +46,7 @@
       
   - form.inputs :name => "Your Mailing Address" do
     %li
-      %p.inline-hints.full-width-hints
+      %p.inline-hints.full-width
         We need a mailing address so we can mail you out your top-secret mission documents
         in proper postage-stamp and letterbox fashion (the documents will self-destruct within
         three days of arriving in your letterbox so check it repetitively in the week leading up

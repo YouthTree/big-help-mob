@@ -880,6 +880,12 @@ form.formtastic p.actions {
   margin: 0 auto 1em;
 }
 
+/* line 5, ../../app/stylesheets/bhm/admin/_dashboard.sass */
+#user-signup-stats {
+  width: 680px;
+  height: 200px;
+}
+
 /* line 1, ../../app/stylesheets/bhm/admin/_maps.sass */
 .map-preview {
   width: 540px;

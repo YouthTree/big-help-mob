@@ -608,8 +608,8 @@ header nav#admin {
   border-bottom-left-radius: 0.75em;
   -moz-border-radius-bottomleft: 0.75em;
   -webkit-border-bottom-left-radius: 0.75em;
-  border-left: 0.2em solid #aaa48c;
-  border-bottom: 0.2em solid #aaa48c;
+  border-left: 0.2em solid #36464d;
+  border-bottom: 0.2em solid #36464d;
 }
 /* line 88, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin a {
@@ -744,7 +744,7 @@ footer #social-media-hoohaa a.social-media-link.twitter {
 
 /* line 1, ../../app/stylesheets/bhm/public/_content.sass */
 body, html {
-  background: #e0ded5;
+  background: #b6c5cc;
 }
 
 /* line 3, ../../app/stylesheets/bhm/public/_content.sass */
@@ -753,7 +753,7 @@ body, html {
   display: inline-block;
   margin: 3em auto;
   background: white url('/images/bhm/content-bg.jpg') top center repeat-x;
-  border: 0.2em solid #aaa48c;
+  border: 0.2em solid #36464d;
   /* Webkit (Safari, Chrome) */
   -webkit-box-shadow: #333333 0 0 10px;
   /* Gecko (Firefox, Camino) */
@@ -1517,6 +1517,27 @@ p.actions {
 }
 
 /* line 6, ../../app/stylesheets/bhm/public/_profile.sass */
+#content p.review-role-details {
+  font-size: 1.1em;
+  margin: -2.5em 0 4em;
+  text-align: center;
+  font-size: 1em;
+  padding: 0.4em 0.3em 0.3em;
+  border-radius: 0.75em;
+  -moz-border-radius: 0.75em;
+  -webkit-border-radius: 0.75em;
+  background: #e3ffcd;
+  border: 1px solid #5acd00;
+  color: #224e00;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #f1ffe7), color-stop(100%, #d5ffb3));
+  background-image: -moz-linear-gradient(top, #f1ffe7 0%, #d5ffb3 100%);
+}
+/* line 10, ../../app/stylesheets/bhm/public/_profile.sass */
+#content p.review-role-details a {
+  font-weight: bold;
+}
+
+/* line 15, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #profile-notice {
   margin: 0 5% 4.5em;
   text-align: center;
@@ -1531,7 +1552,7 @@ p.actions {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #f1ffe7), color-stop(100%, #d5ffb3));
   background-image: -moz-linear-gradient(top, #f1ffe7 0%, #d5ffb3 100%);
 }
-/* line 10, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 19, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started {
   margin: 2em 0 0;
 }
@@ -1540,18 +1561,18 @@ p.actions {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 13, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 22, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started li {
   text-align: center;
   font-size: 1.3em;
 }
-/* line 16, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 25, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started li.or {
   padding: 0.5em 0;
   color: #767676;
   font-size: 1em;
 }
-/* line 21, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 30, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #next-mission-item, #content #getting-started #your-profile-item, #content #getting-started #contact-us-item {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -1608,7 +1629,7 @@ p.actions {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 23, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 32, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #next-mission-item {
   background-color: #1d9a2a;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #9ac69e), color-stop(10%, #5fa566), color-stop(50%, #3d6b41), color-stop(50%, #37613b), color-stop(100%, #49824f));
@@ -1644,7 +1665,7 @@ p.actions {
   text-shadow: #041405 0px -1px -1px;
   color: white;
 }
-/* line 25, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 34, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #your-profile-item {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -1680,7 +1701,7 @@ p.actions {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 27, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 36, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #contact-us-item {
   background-color: #d38100;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffcd7d), color-stop(10%, #ffa921), color-stop(50%, #c37700), color-stop(50%, #b46e00), color-stop(100%, #e78d00));
@@ -1716,8 +1737,8 @@ p.actions {
   text-shadow: #352000 0px -1px -1px;
   color: white;
 }
-/* line 31, ../../app/stylesheets/bhm/public/_profile.sass */
-#content form.formtastic p.inline-hints.full-width-hints {
+/* line 40, ../../app/stylesheets/bhm/public/_profile.sass */
+#content form.formtastic li p.full-width {
   margin-left: 0 !important;
 }
 
