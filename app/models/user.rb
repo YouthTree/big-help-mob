@@ -30,8 +30,6 @@ class User < ActiveRecord::Base
 
   before_save :update_postcode_geolocation, :if => :postcode_changed?
 
-  after_save   :update_mailchimp_subscription
-
   has_address :mailing_address
   is_droppable
 
@@ -51,6 +49,8 @@ class User < ActiveRecord::Base
   
   validates_inclusion_of :origin, :in => ORIGIN_CHOICES,
     :message => :unknown_origin_choice, :allow_blank => true
+
+  validates_uniqueness_of :email
 
   scope :with_age, where('date_of_birth IS NOT NULL AN age > 3').select("*,  AS age")
 
@@ -74,34 +74,6 @@ class User < ActiveRecord::Base
 
   alias name to_s
   
-  def mailing_list_names
-    [] #HominidWrapper.local_id_to_name_mapping(mailing_list_ids)
-  end
-  
-  def mailing_list_ids
-    return []
-    if new_record?
-      @mailing_list_ids ||= []
-    elsif email.present?
-      @mailing_list_ids ||= HominidWrapper.subscriptions_for_user(self)
-    else
-      []
-    end
-  end
-  
-  def mailing_list_ids=(ids)
-    return
-    if new_record?
-      @mailing_list_ids = ids
-    else
-      return false unless email.present?
-      HominidWrapper.update_user_subscriptions(self, ids) if ids != mailing_list_ids
-      # Force a refresh
-      @mailing_list_ids = nil
-    end  
-    true
-  end
-  
   def self.for_select
     all.map { |u| [u.to_s, u.id] }
   end
@@ -109,14 +81,6 @@ class User < ActiveRecord::Base
   def should_validate_captain_application_presence?
     role = Role[:captain]
     role.present? && mission_participations.exists?(["role_id = ? AND state != ?", role.id, "created"])
-  end
-  
-  def update_mailchimp_subscription
-    true # HominidWrapper.update_user_email(self) if email_changed? && !email.blank? && mailing_list_ids.present?
-  end
-  
-  def save_initial_mailing_list_subscriptions
-    true  # HominidWrapper.update_user_subscriptions(self, @mailing_list_ids) if @mailing_list_ids.present?
   end
   
   def notify!(name, *args)
@@ -128,6 +92,18 @@ class User < ActiveRecord::Base
       u.send(:update_postcode_geolocation)
       u.save(:validate => false)
     end
+  end
+  
+  def mailing_lists
+    @mailing_lists ||= MailingLists.new(self)
+  end
+  
+  def mailing_list_ids
+    mailing_lists.ids
+  end
+  
+  def mailing_list_ids=(value)
+    mailing_lists.ids = value
   end
   
   protected

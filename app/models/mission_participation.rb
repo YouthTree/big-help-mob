@@ -75,7 +75,7 @@ class MissionParticipation < ActiveRecord::Base
   end
   
   def answers
-    @answers ||= AnswerProxy.new(self)
+    @answers ||= Answers.new(self)
   end
   
   def answers=(value)

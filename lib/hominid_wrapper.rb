@@ -31,31 +31,6 @@ class HominidWrapper
       subscriptions_for_email user.email
     end
     
-    def update_user_email(user)
-      return false if hominid_instance.blank?
-      old_email, new_email = user.email_was, user.email
-      list_ids = subscriptions_for_email(old_email)
-      if list_ids.present?
-        list_ids.each do |list_id|
-          hominid_instance.update_member(list_id, old_email, {:EMAIL => new_email})
-        end
-      end
-      true
-    end
-    
-    def update_user_subscriptions(user, subscription_ids)
-      return false if hominid_instance.blank?
-      user_lists = subscriptions_for_user(user)
-      available_list_ids = available_lists.map { |l| l[:id] }
-      subscribed_to_ids = (available_list_ids & subscription_ids)
-      unsubscribe_from_ids = available_list_ids - subscription_ids
-      unsubscribe_from_ids.each { |list_id| unsubscribe_user!(user, list_id) }
-      subscribed_to_ids.each do |list_id|
-        subscribe_user!(user, list_id) unless user_lists.include?(list_id)
-      end
-      return true
-    end
-    
     def available_lists
       return [] if hominid_instance.blank?
       mapping = config.list_mapping.to_hash.stringify_keys
@@ -83,6 +58,15 @@ class HominidWrapper
       return false if hominid_instance.blank?
       hominid_instance.unsubscribe(list_id, user.email) if user_subscribed?(user, list_id)
       return true
+    end
+    
+    def update_email!(from, to)
+      return false if hominid_instance.blank?
+      list_ids = subscriptions_for_email(from)
+      Array(list_ids).each do |id|
+        hominid_instance.update_member(id, from, :EMAIL => to)
+      end
+      true
     end
     
     def user_subscribed?(user, list_id)

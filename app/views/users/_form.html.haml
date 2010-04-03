@@ -19,9 +19,8 @@
     - if form.object.new_record?
       = form.input :origin, :as => :select, :collection => User::ORIGIN_CHOICES
 
-  - if false
-    - form.inputs :name => "Mailing List Subscriptions" do
-      = form.input :mailing_list_ids, :collection => HominidWrapper.available_lists_for_select, :as => :check_boxes
+  - form.inputs :name => "Mailing List Subscriptions" do
+    = form.input :mailing_list_ids, :collection => MailingLists.for_select, :as => :check_boxes
     
   - form.buttons do
     = form.commit_button(@user.new_record? ? {:cancel => {:url => :new_user, :text => "Change Account Type", :id => "auth-selector-link"}} : {})
