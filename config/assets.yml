@@ -46,6 +46,8 @@ javascripts:
     - public/javascripts/bhm/bg_colour_test.js
   postcode_mapper:
     - public/javascripts/bhm/admin/postcode_mapper.js
+  share_this:
+    - public/javascripts/bhm/share_this.js
 stylesheets:
   base:
     - public/stylesheets/bhm.css

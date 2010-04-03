@@ -1137,6 +1137,20 @@ dl.frequently-asked-questions dd p {
   color: white;
 }
 
+/* line 106, ../../app/stylesheets/bhm/public/_content.sass */
+a.stbar.chicklet {
+  height: 16px;
+  line-height: 16px;
+}
+/* line 110, ../../app/stylesheets/bhm/public/_content.sass */
+a.stbar.chicklet img {
+  border: 0;
+  height: 16px;
+  width: 16px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic {
   margin: 0 5% 0;
@@ -1634,7 +1648,20 @@ p.actions {
   font-weight: bold;
 }
 
-/* line 15, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 14, ../../app/stylesheets/bhm/public/_profile.sass */
+#content p.share-this-container {
+  background: none;
+  border: none;
+  color: #333;
+  margin: -1em 0 2em;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  font-size: 1em;
+  padding: 0.3em;
+  text-align: center;
+}
+
+/* line 26, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #profile-notice {
   margin: 0 5% 4.5em;
   text-align: center;
@@ -1649,7 +1676,7 @@ p.actions {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #f1ffe7), color-stop(100%, #d5ffb3));
   background-image: -moz-linear-gradient(top, #f1ffe7 0%, #d5ffb3 100%);
 }
-/* line 19, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 30, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started {
   margin: 2em 0 0;
 }
@@ -1658,18 +1685,18 @@ p.actions {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 22, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 33, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started li {
   text-align: center;
   font-size: 1.3em;
 }
-/* line 25, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 36, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started li.or {
   padding: 0.5em 0;
   color: #767676;
   font-size: 1em;
 }
-/* line 30, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 41, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #next-mission-item, #content #getting-started #your-profile-item, #content #getting-started #contact-us-item {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -1726,7 +1753,7 @@ p.actions {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 32, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 43, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #next-mission-item {
   background-color: #1d9a2a;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #9ac69e), color-stop(10%, #5fa566), color-stop(50%, #3d6b41), color-stop(50%, #37613b), color-stop(100%, #49824f));
@@ -1762,7 +1789,7 @@ p.actions {
   text-shadow: #041405 0px -1px -1px;
   color: white;
 }
-/* line 34, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 45, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #your-profile-item {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -1798,7 +1825,7 @@ p.actions {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 36, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 47, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #contact-us-item {
   background-color: #d38100;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffcd7d), color-stop(10%, #ffa921), color-stop(50%, #c37700), color-stop(50%, #b46e00), color-stop(100%, #e78d00));
@@ -1834,7 +1861,7 @@ p.actions {
   text-shadow: #352000 0px -1px -1px;
   color: white;
 }
-/* line 40, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 51, ../../app/stylesheets/bhm/public/_profile.sass */
 #content form.formtastic li p.full-width {
   margin-left: 0 !important;
 }

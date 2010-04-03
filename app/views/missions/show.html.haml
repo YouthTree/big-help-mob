@@ -1,5 +1,6 @@
 - use_gmaps_js
 - has_jammit_js :pickups
+- has_share_this_js
 
 - if logged_in?
   = render :partial => 'mission_actions'
@@ -8,6 +9,13 @@
 
 - unless logged_in?
   = join_mission_link @mission
+
+%p.share-this-container
+  %strong Share this mission on
+  == #{share_this_link 'facebook', :for => :facebook},
+  = share_this_link 'twitter', :for => :twitter
+  or
+  == #{share_this_link 'another site'}.
 
 #mission-description
   = @mission.description_as_html

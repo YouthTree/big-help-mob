@@ -68,12 +68,19 @@ module ContentHelper
     inner
   end
   
-  def add_this_embed
-    if (username = Settings.add_this.username).present?
-      inner_link = link_to "Share", "http://www.addthis.com/bookmark.php?v=250&amp;username=#{username}", :class => "addthis_default_style"
-      has_js "http://s7.addthis.com/js/250/addthis_widget.js#username=#{username}"
-      content_tag(:div, inner_link, :class => 'addthis_toolbox addthis_default_style"')
+  def has_share_this_js
+    if Settings.share_this.publisher?
+      has_js "http://w.sharethis.com/button/sharethis.js#publisher=#{Settings.share_this.publisher}&amp;type=website&amp;button=false"
+      has_jammit_js :share_this
     end
+  end
+  
+  def share_this_link(text, options = {})
+    target = options.delete(:for)
+    options.stringify_keys!
+    options["data-share-this-target"] = target.to_s if target
+    options[:class] = [options[:class], 'share-this'].join(" ").squeeze(" ")
+    link_to(text, '#', options)
   end
   
   def social_media_link(name, text, link)
