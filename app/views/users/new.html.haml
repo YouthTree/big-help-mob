@@ -2,6 +2,11 @@
 
 - on_new_page = controller.action_name == "new" && !params[:traditional]
 
+- if flash[:joining_mission]
+  %p#joining-mission-account-required
+    Before you join this mission you'll need a Big Help Mob account. Use the form below to create one, or, If you'vee already created
+    == one before, #{link_to 'Click here', :sign_in} to sign in instead.
+
 - if on_new_page
   - has_jammit_js :authentication_with_rpx_now
   %dl#authentication-choices

@@ -33,6 +33,7 @@ class MissionsController < ApplicationController
     if @participation.update_attributes(params[:mission_participation])
       redirect_to @mission, :notice => tf('participation.joined')
     else
+      @requires_details = true
       render :action => "edit"
     end
   end
@@ -68,7 +69,8 @@ class MissionsController < ApplicationController
   def require_user_with_note
     unless logged_in?
       store_location
-      redirect_to sign_in_path, :notice => "Before you can join this mission, you'll need to sign in or create a Big Help Mob account."
+      flash[:joining_mission] = true
+      redirect_to new_user_path
       return false
     end
   end

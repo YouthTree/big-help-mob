@@ -1597,6 +1597,12 @@ section#flash-messages p.flash.last {
   color: white;
 }
 
+/* line 29, ../../app/stylesheets/bhm/public/_signup.sass */
+#content p#joining-mission-account-required {
+  margin: 0 15% 1.5em;
+  color: #2d6700;
+}
+
 /* line 1, ../../app/stylesheets/bhm/public/_profile.sass */
 p.actions {
   margin: 0 15% 2em;
@@ -1633,8 +1639,25 @@ p.actions {
 #content p.review-role-details a {
   font-weight: bold;
 }
+/* line 12, ../../app/stylesheets/bhm/public/_profile.sass */
+#content p.mission-join-invalid {
+  color: red;
+  margin: -2.5em 0 4em;
+  font-size: 1.1em;
+  text-align: center;
+  font-size: 1em;
+  padding: 0.4em 0.3em 0.3em;
+  border-radius: 0.75em;
+  -moz-border-radius: 0.75em;
+  -webkit-border-radius: 0.75em;
+  background: #ffd8cf;
+  border: 1px solid #cf2700;
+  color: #500f00;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffede9), color-stop(100%, #ffc3b5));
+  background-image: -moz-linear-gradient(top, #ffede9 0%, #ffc3b5 100%);
+}
 
-/* line 14, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 19, ../../app/stylesheets/bhm/public/_profile.sass */
 #content p.share-this-container {
   background: none;
   border: none;
@@ -1647,7 +1670,7 @@ p.actions {
   text-align: center;
 }
 
-/* line 26, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 31, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #profile-notice {
   margin: 0 5% 4.5em;
   text-align: center;
@@ -1662,7 +1685,7 @@ p.actions {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #f1ffe7), color-stop(100%, #d5ffb3));
   background-image: -moz-linear-gradient(top, #f1ffe7 0%, #d5ffb3 100%);
 }
-/* line 30, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 35, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started {
   margin: 2em 0 0;
 }
@@ -1671,18 +1694,18 @@ p.actions {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 33, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 38, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started li {
   text-align: center;
   font-size: 1.3em;
 }
-/* line 36, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 41, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started li.or {
   padding: 0.5em 0;
   color: #767676;
   font-size: 1em;
 }
-/* line 41, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 46, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #next-mission-item, #content #getting-started #your-profile-item, #content #getting-started #contact-us-item {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -1739,7 +1762,7 @@ p.actions {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 43, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 48, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #next-mission-item {
   background-color: #1d9a2a;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #9ac69e), color-stop(10%, #5fa566), color-stop(50%, #3d6b41), color-stop(50%, #37613b), color-stop(100%, #49824f));
@@ -1775,7 +1798,7 @@ p.actions {
   text-shadow: #041405 0px -1px -1px;
   color: white;
 }
-/* line 45, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 50, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #your-profile-item {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -1811,7 +1834,7 @@ p.actions {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 47, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 52, ../../app/stylesheets/bhm/public/_profile.sass */
 #content #getting-started #contact-us-item {
   background-color: #d38100;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffcd7d), color-stop(10%, #ffa921), color-stop(50%, #c37700), color-stop(50%, #b46e00), color-stop(100%, #e78d00));
@@ -1847,7 +1870,7 @@ p.actions {
   text-shadow: #352000 0px -1px -1px;
   color: white;
 }
-/* line 51, ../../app/stylesheets/bhm/public/_profile.sass */
+/* line 56, ../../app/stylesheets/bhm/public/_profile.sass */
 #content form.formtastic li p.full-width {
   margin-left: 0 !important;
 }

@@ -7,11 +7,15 @@
     = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
     == to become a #{ar.titleize} or #{link_to 'click here', @mission} to return to the mission details.
   
-  - if %w(created awaiting_approval).include?(@participation.state)
-    %p.review-role-details
+    - if %w(created awaiting_approval).include?(@participation.state)
       == If you can't remember what a #{@participation.role_name.humanize}
       actually does or never read it properly in the first place (totally excusable, you're a character of action),
       == get up to speed #{link_to 'here', [:join, @mission]}. We promise it will be a riveting read!
+
+  - if @requires_details
+    %p.mission-join-invalid
+      You're almost ready to go - there were just a few problems you need to fix first. Take a look
+      at your answers below and correct those with a red error message beneath them. Thanks!
 
   - if @participation.answers.needed?
     - form.inputs :name => "General Questions" do
