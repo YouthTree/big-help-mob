@@ -11,7 +11,7 @@
     
   - form.inputs :name => "Tell us about yourself" do
     = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => Time.now.year
-    = form.input :display_name, :hint => "This is what will typically be shown to other users on the site."
+    = form.input :display_name, :hint => "This is what will typically be shown to other users on the site. If left blank, other users will be shown your login."
     = form.input :first_name
     = form.input :last_name
     = form.input :postcode, :hint => "We'll use this strictly for planning and statistics purposes (we may be able to adjust our Bat-mobus route to be closer to your secret hideout)."

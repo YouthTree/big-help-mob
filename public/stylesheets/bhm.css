@@ -608,8 +608,8 @@ header nav#admin {
   border-bottom-left-radius: 0.75em;
   -moz-border-radius-bottomleft: 0.75em;
   -webkit-border-bottom-left-radius: 0.75em;
-  border-left: 0.2em solid #36464d;
-  border-bottom: 0.2em solid #36464d;
+  border-left: 0.2em solid black;
+  border-bottom: 0.2em solid black;
 }
 /* line 88, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#admin a {
@@ -744,7 +744,7 @@ footer #social-media-hoohaa a.social-media-link.twitter {
 
 /* line 1, ../../app/stylesheets/bhm/public/_content.sass */
 body, html {
-  background: #b6c5cc;
+  background: #006bb2;
 }
 
 /* line 3, ../../app/stylesheets/bhm/public/_content.sass */
@@ -753,7 +753,7 @@ body, html {
   display: inline-block;
   margin: 3em auto;
   background: white url('/images/bhm/content-bg.jpg') top center repeat-x;
-  border: 0.2em solid #36464d;
+  border: 0.2em solid black;
   /* Webkit (Safari, Chrome) */
   -webkit-box-shadow: #333333 0 0 10px;
   /* Gecko (Firefox, Camino) */
