@@ -38,7 +38,7 @@ gem "rpx_now"
 
 # Mainly Admin Area Stuff.
 gem "inherited_resources", ">= 1.1.0"
-gem "responders",          ">= 0.5.4"
+gem "responders",          "= 0.5.5"
 gem "show_for",            ">= 0.2.0"
 
 gem "will_paginate",       ">= 3.0.pre"
