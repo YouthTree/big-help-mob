@@ -1,8 +1,21 @@
+- use_postcode_mapper
 %h2.title Dashboard
 
-#user-signups.google-chart
+#user-signups.google-chart.statistic
   %h3 User Signups By Date
   = image_tag user_stats_url, :title => "User signups by date", :id => 'user-signup-stats'
+  
+#user-ages.google-chart.statistic
+  %h3 Users per Age
+  = image_tag user_ages_url, :title => "Users per age", :id => 'user-ages-stats'
+  
+#user-locations.google-map.statistic
+  %h3 User Locations
+  #user-locations-map.static-google-map= static_map_of_addresses @user_locations, :width => 680, :height => 400
+  %ol#user-location-list
+    - @user_locations.each do |location|
+      %li{postcode_location_opts(location)}== Postcode #{location.postcode} has #{pluralize location.count, "members"}.
+  
 
 - content_for :sidebar do
   

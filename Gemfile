@@ -56,6 +56,8 @@ gem "exception_notifier", :require => nil
 
 gem "liquid"
 
+gem "fastercsv"
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil

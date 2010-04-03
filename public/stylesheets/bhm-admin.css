@@ -472,7 +472,7 @@ h2 {
 }
 
 /* line 7, ../../app/stylesheets/bhm/admin/_general.sass */
-.google-chart {
+.statistic {
   border: 0.1em solid #DDD;
   background: #F9F9F9;
   text-align: center;
@@ -481,13 +481,13 @@ h2 {
   -webkit-border-radius: 1em;
 }
 /* line 13, ../../app/stylesheets/bhm/admin/_general.sass */
-.google-chart h3 {
+.statistic h3 {
   font-family: , "Helvetica Neue", "Helvetica", "Verdana", "Arial";
   font-weight: bold;
   margin: 0.5em 0 0;
 }
 /* line 18, ../../app/stylesheets/bhm/admin/_general.sass */
-.google-chart img {
+.statistic img {
   margin: 0.5em auto 1em;
 }
 
@@ -875,15 +875,28 @@ form.formtastic p.actions {
 }
 
 /* line 1, ../../app/stylesheets/bhm/admin/_dashboard.sass */
-#user-signups {
+.statistic {
   width: 100%;
   margin: 0 auto 1em;
 }
 
 /* line 5, ../../app/stylesheets/bhm/admin/_dashboard.sass */
-#user-signup-stats {
+.google-chart img {
   width: 680px;
   height: 200px;
+}
+
+/* line 9, ../../app/stylesheets/bhm/admin/_dashboard.sass */
+#user-locations-map {
+  width: 680px;
+  height: 400px;
+  text-align: center;
+  margin: 0 auto 1.5em;
+}
+
+/* line 15, ../../app/stylesheets/bhm/admin/_dashboard.sass */
+#user-location-list {
+  display: none;
 }
 
 /* line 1, ../../app/stylesheets/bhm/admin/_maps.sass */

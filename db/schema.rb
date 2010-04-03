@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100402163731) do
+ActiveRecord::Schema.define(:version => 20100403024159) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -141,6 +141,17 @@ ActiveRecord::Schema.define(:version => 20100402163731) do
     t.datetime "updated_at"
   end
 
+  create_table "postcode_locations", :force => true do |t|
+    t.integer  "postcode"
+    t.string   "name"
+    t.decimal  "lat",        :precision => 15, :scale => 10
+    t.decimal  "lng",        :precision => 15, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postcode_locations", ["postcode"], :name => "index_postcode_locations_on_postcode"
+
   create_table "questions", :force => true do |t|
     t.boolean  "visible",                  :default => false, :null => false
     t.integer  "position"
@@ -199,7 +210,9 @@ ActiveRecord::Schema.define(:version => 20100402163731) do
     t.datetime "updated_at"
     t.integer  "current_role_id"
     t.string   "origin"
-    t.string   "perishable_token",  :default => "", :null => false
+    t.string   "perishable_token",                                  :default => "", :null => false
+    t.decimal  "postcode_lat",      :precision => 15, :scale => 10
+    t.decimal  "postcode_lng",      :precision => 15, :scale => 10
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
 
   belongs_to :current_role, :class_name => "Role"
 
+  before_save :update_postcode_geolocation, :if => :postcode_changed?
+
   after_save   :update_mailchimp_subscription
 
   has_address :mailing_address
@@ -47,6 +49,8 @@ class User < ActiveRecord::Base
   
   validates_inclusion_of :origin, :in => ORIGIN_CHOICES,
     :message => :unknown_origin_choice, :allow_blank => true
+
+  scope :with_age, where('date_of_birth IS NOT NULL AN age > 3').select("*,  AS age")
 
   def can?(action, object)
     return true if admin?
@@ -98,19 +102,6 @@ class User < ActiveRecord::Base
     all.map { |u| [u.to_s, u.id] }
   end
   
-  def self.created_stats_by_day(from = Date.today - 14, to = Date.today)
-    from, to = from.to_date, to.to_date
-    users = select("DATE(users.created_at) AS users_date, count(*) AS count_all").group("users_date")
-    users = users.having("users_date > ? AND users_date < ?", from - 1, to + 1).all
-    users = users.inject({}) { |a, c| a[Date.parse(c.users_date)] = c.count_all.to_i; a }
-    results = ActiveSupport::OrderedHash.new
-    while from <= to
-      results[from] = users[from].to_i
-      from += 1
-    end
-    results
-  end
-  
   def should_validate_captain_application_presence?
     role = Role[:captain]
     role.present? && mission_participations.exists?(["role_id = ? AND state != ?", role.id, "created"])
@@ -126,6 +117,28 @@ class User < ActiveRecord::Base
   
   def notify!(name, *args)
     Notifications.send(name, self, *args).deliver if email.present?
+  end
+  
+  def self.update_all_postcode_locations
+    find_each do |u|
+      u.send(:update_postcode_geolocation)
+      u.save(:validate => false)
+    end
+  end
+  
+  protected
+  
+  def update_postcode_geolocation
+    if postcode.present?
+      result = Geokit::Geocoders::MultiGeocoder.geocode("Postcode #{"%04d" % postcode}, Australia")
+      if result.success?
+        self.postcode_lat, self.postcode_lng = result.lat, result.lng
+      else
+        self.postcode_lat, self.postcode_lng = nil, nil
+      end
+    else
+      self.postcode_lat, self.postcode_lng = nil, nil
+    end
   end
 
 end

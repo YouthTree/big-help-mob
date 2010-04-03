@@ -123,7 +123,6 @@ class DynamicTemplate < ActiveRecord::Base
   
 end
 
-
 # == Schema Info
 #
 # Table name: dynamic_templates
@@ -133,7 +132,7 @@ end
 #  content_type  :string(255)
 #  key           :string(255)
 #  parent_type   :string(255)
-#  raw_parts     :text
+#  parts         :text
 #  template_type :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime

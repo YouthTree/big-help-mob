@@ -14,6 +14,7 @@ end
 #  id         :integer(4)      not null, primary key
 #  mission_id :integer(4)
 #  pickup_id  :integer(4)
+#  comment    :text
 #  created_at :datetime
 #  pickup_at  :datetime
 #  updated_at :datetime
