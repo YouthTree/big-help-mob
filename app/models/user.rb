@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   has_address :mailing_address
   is_droppable
 
+  has_friendly_id :name, :use_slug => true, :reserved_words => ["add_rxp_auth", "current"]
+
   acts_as_authentic do |c|
     c.account_merge_enabled true
     c.account_mapping_mode  :internal
@@ -69,6 +71,8 @@ class User < ActiveRecord::Base
   def to_s
     display_name.present? ? display_name : login
   end
+
+  alias name to_s
   
   def mailing_list_names
     [] #HominidWrapper.local_id_to_name_mapping(mailing_list_ids)
@@ -128,6 +132,10 @@ class User < ActiveRecord::Base
   
   protected
   
+  def normalize_friendly_id(text)
+    text.to_url
+  end
+  
   def update_postcode_geolocation
     if postcode.present?
       result = Geokit::Geocoders::MultiGeocoder.geocode("Postcode #{"%04d" % postcode}, Australia")
@@ -167,6 +175,8 @@ end
 #  persistence_token :string(255)
 #  phone             :string(255)
 #  postcode          :integer(4)
+#  postcode_lat      :decimal(15, 10)
+#  postcode_lng      :decimal(15, 10)
 #  created_at        :datetime
 #  current_login_at  :datetime
 #  last_login_at     :datetime

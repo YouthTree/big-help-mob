@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100403024159) do
+ActiveRecord::Schema.define(:version => 20100403045946) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -119,8 +119,10 @@ ActiveRecord::Schema.define(:version => 20100403024159) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state"
+    t.string   "cached_slug"
   end
 
+  add_index "missions", ["cached_slug"], :name => "index_missions_on_cached_slug"
   add_index "missions", ["organisation_id"], :name => "index_missions_on_organisation_id"
   add_index "missions", ["state"], :name => "index_missions_on_state"
   add_index "missions", ["user_id"], :name => "index_missions_on_user_id"
@@ -185,6 +187,18 @@ ActiveRecord::Schema.define(:version => 20100403024159) do
 
   add_index "rpx_identifiers", ["identifier"], :name => "index_rpx_identifiers_on_identifier", :unique => true
   add_index "rpx_identifiers", ["user_id"], :name => "index_rpx_identifiers_on_user_id"
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "users", :force => true do |t|
     t.string   "login"

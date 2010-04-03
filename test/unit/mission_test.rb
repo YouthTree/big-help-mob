@@ -16,6 +16,7 @@ end
 #  id              :integer(4)      not null, primary key
 #  organisation_id :integer(4)
 #  user_id         :integer(4)
+#  cached_slug     :string(255)
 #  description     :text            not null, default("")
 #  name            :string(255)     not null
 #  state           :string(255)

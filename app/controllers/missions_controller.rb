@@ -14,7 +14,7 @@ class MissionsController < ApplicationController
     @mission_questions = Question.for(:mission_page).all
   end
   
-  def join    
+  def join
     if @mission.participating?(current_user) && !%w(created awaiting_approval).include?(@mission.participation_for(current_user).try(:state))
       flash[:notice] = "You're already participating in this mission"
       redirect_to @mission
@@ -41,7 +41,7 @@ class MissionsController < ApplicationController
   
   def prepare_mission
     return redirect_next_mission if params[:id] == "next" && request.get?
-    @mission = Mission.viewable.optimize_viewable.find(params[:id])
+    @mission = Mission.viewable.optimize_viewable.find_by_cached_slug!(params[:id])
     add_title_variables! :mission => @mission.name
   end
   

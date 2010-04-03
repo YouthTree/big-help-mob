@@ -12,8 +12,8 @@ BHM.withNS('ShareThis', function(ns) {
   
   ns.getEntry = function() {
    return SHARETHIS.addEntry({
-     title: ns.getURL(),
-     url:   ns.getTitle()
+     title: ns.getTitle(),
+     url:   ns.getURL()
    });
   };
   

@@ -3,6 +3,8 @@ class Mission < ActiveRecord::Base
   extend DynamicTemplate::Templateable
   extend DynamicBaseDrop::Droppable
   
+  attr_accessible :organisation_id, :user_id, :description, :name
+  
   scope :next,     where(:state => 'preparing').order('occurs_at ASC')
   scope :viewable, where(:state => ['preparing', 'approved', 'completed'])
   
@@ -15,6 +17,8 @@ class Mission < ActiveRecord::Base
   has_dynamic_templates
   is_droppable
   
+  has_friendly_id :name, :use_slug => true, :reserved_words => ["next"]
+  
   has_many :mission_pickups, :dependent => :destroy
   has_many :pickups, :through => :mission_pickups
   
@@ -24,8 +28,6 @@ class Mission < ActiveRecord::Base
   
   belongs_to :organisation
   belongs_to :user
-
-  attr_accessible :organisation_id, :user_id, :description, :name
   
   accepts_nested_attributes_for :questions,       :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
   accepts_nested_attributes_for :mission_pickups, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
@@ -62,14 +64,6 @@ class Mission < ActiveRecord::Base
       [name, se]
     end
   end
-
-  def to_param
-    "#{self.id}-#{self.to_slug}"
-  end
-
-  def to_slug
-    name.parameterize
-  end
   
   def participating?(user)
     mission_participations.exists?(:user_id => user.id)
@@ -96,6 +90,10 @@ class Mission < ActiveRecord::Base
   def description_as_html
     description.to_s.html_safe
   end
+  
+  def normalize_friendly_id(text)
+    text.to_url
+  end
 
 end
 
@@ -106,6 +104,7 @@ end
 #  id              :integer(4)      not null, primary key
 #  organisation_id :integer(4)
 #  user_id         :integer(4)
+#  cached_slug     :string(255)
 #  description     :text            not null, default("")
 #  name            :string(255)     not null
 #  state           :string(255)

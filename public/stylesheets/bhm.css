@@ -1137,20 +1137,6 @@ dl.frequently-asked-questions dd p {
   color: white;
 }
 
-/* line 106, ../../app/stylesheets/bhm/public/_content.sass */
-a.stbar.chicklet {
-  height: 16px;
-  line-height: 16px;
-}
-/* line 110, ../../app/stylesheets/bhm/public/_content.sass */
-a.stbar.chicklet img {
-  border: 0;
-  height: 16px;
-  width: 16px;
-  margin-right: 3px;
-  vertical-align: middle;
-}
-
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic {
   margin: 0 5% 0;

@@ -28,6 +28,8 @@ end
 #  persistence_token :string(255)
 #  phone             :string(255)
 #  postcode          :integer(4)
+#  postcode_lat      :decimal(15, 10)
+#  postcode_lng      :decimal(15, 10)
 #  created_at        :datetime
 #  current_login_at  :datetime
 #  last_login_at     :datetime
