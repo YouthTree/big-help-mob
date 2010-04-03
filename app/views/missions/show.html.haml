@@ -4,6 +4,10 @@
 
 - if logged_in?
   = render :partial => 'mission_actions'
+  
+- content_for(:extra_head) do
+  %meta{:name => "title", :content => @mission.name}
+  %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
 
 %h2 About this Mission
 
