@@ -1,5 +1,6 @@
 class Notifications < ActionMailer::Base
   include ActionMailerNicerI18nSubjects
+  CORRECTED_ORDER = [:text, :html]
 
   def signup(user)
     @user = user
@@ -32,7 +33,8 @@ class Notifications < ActionMailer::Base
     @mission_participation = mission_participation
     subject_vars :mission_name => mission_participation.mission.name, :role_name => mission_participation.role_name.humanize
     mail :to => user.email do |r|
-      dynamic_templates! r, mission_participation.mission, :html, :text, "role-approved.#{mission_participation.role_name.dasherize}",
+      dynamic_templates! r, mission_participation.mission, :text, :html,
+                         "role-approved.#{mission_participation.role_name.dasherize}",
                          :user => user, :mission_participation => mission_participation,
                          :mission => mission_participation.mission, :role => mission_participation.role,
                          :pickup => mission_participation.pickup
@@ -44,7 +46,7 @@ class Notifications < ActionMailer::Base
   def dynamic_templates!(r, parent, *formats)
     scope = formats.extract_options!
     key = formats.pop
-    formats.each do |format|
+    formats.sort_by { |f| CORRECTED_ORDER.index(f.to_sym) }.each do |format|
       format = format.to_s
       body = DynamicTemplate.get(parent, format, "notifications.#{key}", scope)
       if body.present?

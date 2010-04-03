@@ -4,6 +4,7 @@ class Address < ActiveRecord::Base
   belongs_to :addressable, :polymorphic => true
   
   validates_presence_of :street1, :city, :state, :country
+  validates_presence_of :postcode, :if => :for_user?
   
   apply_addresslogic :fields => [:street1, :street2, :city, [:state, :postcode], :country]
   
@@ -46,6 +47,10 @@ class Address < ActiveRecord::Base
       attr_accessible :"#{name}_attributes"
     end
     
+  end
+  
+  def for_user?
+    addressable.present? && addressable.is_a?(User)
   end
   
 end
