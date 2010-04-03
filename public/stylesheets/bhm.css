@@ -1040,6 +1040,103 @@ dl.frequently-asked-questions dd p {
   display: none;
 }
 
+/* line 98, ../../app/stylesheets/bhm/public/_content.sass */
+#join-mission-intro {
+  text-align: center;
+  margin: -2em 0 5em;
+}
+/* line 101, ../../app/stylesheets/bhm/public/_content.sass */
+#join-mission-intro a {
+  font-family: "Lucida Grande", Lucida, Arial, sans_serif;
+  background: url(/images/button_bg.png) repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-size: 16px;
+  line-height: 19.2px;
+  padding: 4px 16px;
+  border-width: 1px;
+  padding: 7px 10px;
+  background-color: #25c862;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
+  background-image: -moz-linear-gradient(top, #bbdac7 0%, #80b996 10%, #4e8f67 50%, #498560 50%, #5ca578 100%);
+  border-color: #39684a;
+  text-shadow: #115c2d 0px 1px 1px;
+  color: white;
+  color: #FFF !important;
+}
+/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a:focus {
+  outline: none;
+}
+/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a.disabled, #join-mission-intro a[disabled] {
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+  -khtml-opacity: 0.7;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  filter: alpha(opacity=70);
+}
+/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a.disabled:hover, #join-mission-intro a.disabled:focus, #join-mission-intro a[disabled]:hover, #join-mission-intro a[disabled]:focus {
+  cursor: default;
+}
+/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a:active {
+  padding: 3px 15px;
+  border-width: 2px;
+}
+/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a.disabled:active, #join-mission-intro a[disabled] {
+  padding: 4px 16px;
+  border-width: 1px;
+}
+/* line 3, ../../app/stylesheets/bhm/_util.sass */
+#join-mission-intro a:active {
+  padding: 7px 10px;
+  border-width: 1px;
+}
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a.disabled:active, #join-mission-intro a.disabled:hover, #join-mission-intro a[disabled]:active, #join-mission-intro a[disabled]:hover {
+  background-color: #25c862;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
+  background-image: -moz-linear-gradient(top, #bbdac7 0%, #80b996 10%, #4e8f67 50%, #498560 50%, #5ca578 100%);
+  border-color: #39684a;
+  text-shadow: #115c2d 0px 1px 1px;
+  color: white;
+}
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a:hover, #join-mission-intro a:focus {
+  background-color: #23bb5c;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #b2d5bf), color-stop(10%, #77b48e), color-stop(50%, #498560), color-stop(50%, #447b59), color-stop(100%, #569c71));
+  background-image: -moz-linear-gradient(top, #b2d5bf 0%, #77b48e 10%, #498560 50%, #447b59 50%, #569c71 100%);
+  border-color: #345e44;
+  text-shadow: #0f5027 0px 1px 1px;
+  color: white;
+}
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+#join-mission-intro a:active {
+  background-color: #20ae56;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #498560), color-stop(30%, #4c8b65), color-stop(50%, #457e5c), color-stop(50%, #407454), color-stop(100%, #579f73));
+  background-image: -moz-linear-gradient(top, #498560 0%, #4c8b65 30%, #457e5c 50%, #407454 50%, #579f73 100%);
+  border-color: #2e543c;
+  text-shadow: #0c4221 0px -1px -1px;
+  color: white;
+}
+
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic {
   margin: 0 5% 0;

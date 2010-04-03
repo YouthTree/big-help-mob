@@ -1,9 +1,5 @@
 %h2== Want to join '#{@mission.name}'? Choose your rank!
 
 #join-as-selector.columns-container
-
-  #captain-selector.column
-    = join_mission_as_link @mission, :captain
-    
-  #sidekick-selector.column
-    = join_mission_as_link @mission, :sidekick
+  #captain-selector.column=  join_mission_as_link @mission, :captain
+  #sidekick-selector.column= join_mission_as_link @mission, :sidekick
