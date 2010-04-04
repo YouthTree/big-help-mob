@@ -52,6 +52,19 @@ namespace :deploy do
   
   # Actual deploy
   
+  desc "Runs a debug w/ from and to"
+  task :debug do
+    from, to = ENV['FROM'], ENV['TO']
+    if from.blank? || to.blank?
+      puts "Please provide from and to"
+      exit!
+    end
+    env_command  = "export PATH=\"/opt/ruby-ee/current/bin:$PATH\""
+    rake_env     = "RAILS_ENV=#{ENV['RAILS_ENV'] || 'production'} FROM=#{from} TO=#{to}"
+    rake_command = "bundle exec rake debug:between"
+    execute_remote_command! "cd #{deploy_config(:app)} && #{env_command} && #{rake_command} #{rake_env}"
+  end
+  
   desc "Runs a local deploy"
   task :remote do
     # Do all setup etc
