@@ -36,21 +36,17 @@ class User < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true, :reserved_words => ["add_rxp_auth", "current"]
 
   acts_as_authentic do |c|
+    c.validate_email_field  true
     c.account_merge_enabled true
     c.account_mapping_mode  :internal
-    c.validate_email_field  false
   end
   
   accepts_nested_attributes_for :captain_application, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }
   
-  validates_presence_of :email, :date_of_birth
-  
-  validates_presence_of :captain_application, :if => :should_validate_captain_application_presence?
+  validates_presence_of :date_of_birth, :origin
   
   validates_inclusion_of :origin, :in => ORIGIN_CHOICES,
     :message => :unknown_origin_choice, :allow_blank => true
-
-  validates_uniqueness_of :email
 
   scope :with_age, where('date_of_birth IS NOT NULL AN age > 3').select("*,  AS age")
 
@@ -76,11 +72,6 @@ class User < ActiveRecord::Base
   
   def self.for_select
     all.map { |u| [u.to_s, u.id] }
-  end
-  
-  def should_validate_captain_application_presence?
-    role = Role[:captain]
-    role.present? && mission_participations.exists?(["role_id = ? AND state != ?", role.id, "created"])
   end
   
   def notify!(name, *args)

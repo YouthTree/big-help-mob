@@ -6,8 +6,7 @@ class MissionsController < ApplicationController
   end
   
   before_filter :prepare_mission,        :except => :next
-  before_filter :require_user_with_note, :only   => [:join]
-  before_filter :require_user,           :except => [:show, :next, :join]
+  before_filter :require_user_with_note, :only   => [:edit, :update]
   before_filter :prepare_participation,  :only   => [:edit, :update]
   
   def show
@@ -15,10 +14,6 @@ class MissionsController < ApplicationController
   end
   
   def join
-    if @mission.participating?(current_user) && !%w(created awaiting_approval).include?(@mission.participation_for(current_user).try(:state))
-      flash[:notice] = "You're already participating in this mission"
-      redirect_to @mission
-    end
     @captain_questions  = Question.for(:captain_section).all
     @sidekick_questions = Question.for(:sidekick_section).all
   end
@@ -73,6 +68,10 @@ class MissionsController < ApplicationController
       redirect_to new_user_path
       return false
     end
+  end
+  
+  def logged_in_and_signed_up_to_mission?
+    @mission.participating?(current_user) && !%w(created awaiting_approval).include?(@mission.participation_for(current_user).try(:state))
   end
   
 end

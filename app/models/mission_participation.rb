@@ -9,6 +9,8 @@ class MissionParticipation < ActiveRecord::Base
   validates_presence_of :user, :mission, :pickup
   validates_associated  :answers
   
+  validate :ensure_user_has_captain_application
+  
   attr_accessible :mission_id, :user_attributes, :pickup_id, :answers
   
   after_validation :auto_approve, :on => :update
@@ -102,6 +104,13 @@ class MissionParticipation < ActiveRecord::Base
       scope = scope.where("mission_participations.user_id = ? OR mission_participations.state IN (?)", user.id, public_states)
     end
     scope
+  end
+  
+  def ensure_user_has_captain_application
+    if role_name.captain?
+      user.captain_application.valid?
+      user.errors.add(:captain_application, :blank) if user.captain_application.blank?
+    end
   end
   
 end
