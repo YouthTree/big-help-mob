@@ -1143,6 +1143,47 @@ dl.frequently-asked-questions dd p {
   color: white;
 }
 
+/* line 111, ../../app/stylesheets/bhm/public/_content.sass */
+.tipsy {
+  padding: 5px;
+  font-size: 10px;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  background-repeat: no-repeat;
+  background-image: url(/images/tipsy.gif);
+}
+
+/* line 119, ../../app/stylesheets/bhm/public/_content.sass */
+.tipsy-inner {
+  padding: 5px 8px 4px 8px;
+  background-color: black;
+  color: white;
+  max-width: 200px;
+  text-align: center;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+/* line 128, ../../app/stylesheets/bhm/public/_content.sass */
+.tipsy-north {
+  background-position: top center;
+}
+
+/* line 131, ../../app/stylesheets/bhm/public/_content.sass */
+.tipsy-south {
+  background-position: bottom center;
+}
+
+/* line 134, ../../app/stylesheets/bhm/public/_content.sass */
+.tipsy-east {
+  background-position: right center;
+}
+
+/* line 137, ../../app/stylesheets/bhm/public/_content.sass */
+.tipsy-west {
+  background-position: left center;
+}
+
 /* line 4, ../../app/stylesheets/bhm/public/_forms.sass */
 #content form.formtastic {
   margin: 0 5% 0;
@@ -1964,16 +2005,15 @@ p.actions {
   color: black;
   border-bottom: none;
   font-weight: bold;
-  text-decoration: underline;
 }
 
-/* line 41, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 40, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content p.join-mission-container {
   padding: 0;
   margin: 0 0 2em;
   text-align: center;
 }
-/* line 45, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 44, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content p.join-mission-container a.join-mission-link {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -2076,12 +2116,12 @@ p.actions {
 #content p.join-mission-container a.join-mission-link:active {
   color: white;
 }
-/* line 50, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 49, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-description p.join-mission-container {
   margin-top: -1.5em;
   margin-bottom: 3em;
 }
-/* line 54, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 53, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-notice {
   padding: 1em;
   margin: 3em 0;
@@ -2092,11 +2132,11 @@ p.actions {
   color: #2F6B2D;
   border: 0.2em solid #2F6B2D;
 }
-/* line 61, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 60, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-notice p {
   text-align: center;
 }
-/* line 63, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 62, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-notice p.hide-notice {
   margin-bottom: 0;
 }
