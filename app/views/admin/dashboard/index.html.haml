@@ -12,7 +12,9 @@
 #user-ages.google-chart.statistic
   %h3 Users per Age
   = image_tag user_ages_url, :title => "Users per age", :id => 'user-ages-stats'
-  
+#user-origins.google-chart.statistic
+  %h3 Users per Origin
+  = image_tag user_origins_url, :title => "Users per origin", :id => 'user-origins-stats'
 #user-locations.google-map.statistic
   %h3 User Locations
   #user-locations-map.static-google-map= static_map_of_addresses @user_locations, :width => 680, :height => 400

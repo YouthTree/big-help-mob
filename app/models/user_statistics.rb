@@ -32,4 +32,15 @@ class UserStatistics
     end.sort_by { |r| -r.count }
   end
   
+  def self.user_origins
+    counts = User.count :all, :group => "origin"
+    graph_stats = ActiveSupport::OrderedHash.new(0)
+    graph_stats["Unknown Origin"] = counts.delete(nil).to_i
+    User::ORIGIN_CHOICES.each do |origin|
+      graph_stats[origin] = counts.delete(origin).to_i
+    end
+    graph_stats["Other"] += counts.map { |k, v| v }.sum
+    return graph_stats, counts.sort_by { |l, v| -v }
+  end
+  
 end

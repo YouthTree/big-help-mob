@@ -42,6 +42,10 @@ module Admin::DashboardHelper
       @use_postcode_mapper = true
     end
   end
+
+  def user_origins_url
+    PieChart.new(@origin_counts).to_url
+  end
   
   protected
   
