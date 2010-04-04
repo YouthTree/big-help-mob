@@ -15,8 +15,8 @@ en:
         welcome: "Welcome to Big Help Mob"
       missions:
         join: Join this Mission
-        edit: Edit your Participation Details
-        update: Edit your Participation Details
+        edit: Your Participation Details
+        update: Your Participation Details
         show: "{{mission}}"
       password_resets:
         new: "Request a Password Reset"

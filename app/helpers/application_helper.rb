@@ -94,6 +94,14 @@ module ApplicationHelper
     "try { var pageTracker = _gat._getTracker(#{identifier.to_json}); pageTracker._trackPageview(); } catch(e) {}"
   end
   
+  def current_request_uuid
+    request.env['rack.log-marker.uuid']
+  end
+  
+  def uuid_marker_comment
+    "<!-- bhm-request-uuid: #{current_request_uuid} -->".html_safe
+  end
+  
   protected
   
   def normalized_content_scope(key, scope = nil)

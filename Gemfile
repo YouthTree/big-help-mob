@@ -61,6 +61,8 @@ gem "fastercsv"
 gem "friendly_id", "~> 3.0"
 gem "stringex"
 
+gem "uuid"
+
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil

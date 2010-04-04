@@ -23,5 +23,8 @@ module Bighelpmob
     
     config.load_paths += [config.root.join("app", "drops").to_s, config.root.join("app", "observers").to_s]
     
+    require Rails.root.join("lib/request_uuid_marker")
+    config.middleware.insert_after 'Rails::Rack::Logger', RequestUUIDMarker
+    
   end
 end
