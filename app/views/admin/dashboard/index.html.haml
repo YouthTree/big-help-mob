@@ -15,6 +15,14 @@
 #user-origins.google-chart.statistic
   %h3 Users per Origin
   = image_tag user_origins_url, :title => "Users per origin", :id => 'user-origins-stats'
+  - unless @other_origins.blank?
+    %h4 Other Known Origins:
+    %ul#user-origins-list
+      - @other_origins.each do |name, count|
+        %li
+          %span.origin-count= pluralize count, "user"
+          from
+          %span.origin-name= name
 #user-locations.google-map.statistic
   %h3 User Locations
   #user-locations-map.static-google-map= static_map_of_addresses @user_locations, :width => 680, :height => 400

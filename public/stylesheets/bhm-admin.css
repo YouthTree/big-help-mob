@@ -899,6 +899,19 @@ form.formtastic p.actions {
   display: none;
 }
 
+/* line 18, ../../app/stylesheets/bhm/admin/_dashboard.sass */
+#user-origins-list li {
+  line-height: 1.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 24, ../../app/stylesheets/bhm/admin/_dashboard.sass */
+#user-origins h4 {
+  margin: 0.5em 0;
+}
+
 /* line 1, ../../app/stylesheets/bhm/admin/_maps.sass */
 .map-preview {
   width: 540px;
