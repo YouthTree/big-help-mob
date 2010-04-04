@@ -1,9 +1,5 @@
 %h2.title== Editing #{current_resource_name}
 
-%p
-  Looking to edit the dynamic templates for this mission,
-  == #{link_to 'click here', mission_dynamic_templates_path(@mission)}.
-
 - semantic_form_for resource, :url => resource_url, :method => :put do |form|
   = render :partial => 'form', :object => form
   - form.buttons do
