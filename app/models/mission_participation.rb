@@ -22,6 +22,10 @@ class MissionParticipation < ActiveRecord::Base
   
   serialize :raw_answers
   
+  def recently_joined?
+    defined?(@recently_joined) && @recently_joined
+  end
+  
   scope :with_role, where('role_id IS NOT NULL')
   scope :for_user,  lambda { |u| where(:user_id => u.id) }
   
@@ -96,7 +100,10 @@ class MissionParticipation < ActiveRecord::Base
   end
   
   def auto_approve
-    approve(false) if created? || awaiting_approval?
+    if created? || awaiting_approval?
+      approve false
+      @recently_joined = true
+    end
   end
   
   def state_events_for_select

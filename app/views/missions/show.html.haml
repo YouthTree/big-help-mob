@@ -9,6 +9,18 @@
   %meta{:name => "title", :content => @mission.name}
   %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
 
+- if logged_in? && flash[:recently_joined_mission]
+  #mission-notice
+    %h2 Huzzah! You've successfully joined this mission.
+    %p
+      == Congratulations #{current_user} - you've successfully signed up to take
+      == part in '#{@mission.name}' on #{l @mission.occurs_at, :format => :simple}.
+    %p
+      You should have received an email with information about the event and
+      you can likely expect further contact about it in the near future.
+    %p.hide-notice
+      = link_to 'Click here to hide this message', @mission
+
 %h2 About this Mission
 
 - unless logged_in?
@@ -52,3 +64,10 @@
 - if logged_in?
   = render :partial => 'mission_actions'
   
+:javascript
+  $(document).ready(function() {
+    $("#mission-notice .hide-notice a").click(function() {
+      $("#mission-notice").slideUp("slow", function() { $(this).remove(); });
+      return false;
+    });
+  });

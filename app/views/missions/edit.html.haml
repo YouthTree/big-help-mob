@@ -26,8 +26,8 @@
   - if @participation.answers.needed?
     - form.inputs :name => "General Questions" do
       - form.fields_for :answers, @participation.answers do |af|
-        - af.object.each_question do |question, name|
-          = af.input name, question.to_formtastic_options
+        - af.object.each_viewable_question do |question, name|
+          = af.input name, question.to_formtastic_options(@participation.answers)
         
   
   - form.fields_for :user do |uf|

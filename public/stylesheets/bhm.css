@@ -2071,6 +2071,25 @@ p.actions {
   margin-top: -1.5em;
   margin-bottom: 3em;
 }
+/* line 47, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#content #mission-notice {
+  padding: 1em;
+  margin: 3em 0;
+  border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  -webkit-border-radius: 0.25em;
+  background: #E2FFE9;
+  color: #2F6B2D;
+  border: 0.2em solid #2F6B2D;
+}
+/* line 54, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#content #mission-notice p {
+  text-align: center;
+}
+/* line 56, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#content #mission-notice p.hide-notice {
+  margin-bottom: 0;
+}
 
 /* line 3, ../../app/stylesheets/bhm/public/_browser_fixes.sass */
 html.ie6 #content form.formtastic fieldset.inputs legend span, html.ie7 #content form.formtastic fieldset.inputs legend span {

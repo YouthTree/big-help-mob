@@ -26,6 +26,7 @@ class MissionsController < ApplicationController
   def update
     check_mission_status!
     if @participation.update_attributes(params[:mission_participation])
+      flash[:recently_joined_mission] = @participation.recently_joined?
       redirect_to @mission, :notice => tf('participation.joined')
     else
       @requires_details = true

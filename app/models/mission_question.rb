@@ -1,9 +1,14 @@
 class MissionQuestion < ActiveRecord::Base
   
-  QUESTION_TYPES = %w(boolean short_text text multiple_choice)
+  QUESTION_TYPES   = %w(boolean short_text text multiple_choice)
+  VALID_ROLE_NAMES = %w(all captain sidekick)
   
   def self.types_for_select
     QUESTION_TYPES.map { |v| [v.humanize, v] }
+  end
+  
+  def self.roles_for_select
+    [["All Users", "all"], ["Captains", "captain"], ["Sidekicks", "sidekick"]]
   end
   
   belongs_to :mission
@@ -14,7 +19,8 @@ class MissionQuestion < ActiveRecord::Base
   
   serialize :metadata
   
-  def to_formtastic_options
+  def to_formtastic_options(answers = nil)
+    required = required_by_role == "all" || (answers && answers.required?(self))
     options = if multiple_choice?
       {:as => :select, :collection => Array(metadata)}
     elsif boolean?
@@ -24,7 +30,7 @@ class MissionQuestion < ActiveRecord::Base
     else
       {:as => :text, :input_html => {:rows => 5}}
     end
-    options.merge(:label => name, :required => required?, :wrapper_html => {:class => "mission-question-#{question_type.dasherize}"})
+    options.merge(:label => name, :required => required, :wrapper_html => {:class => "mission-question-#{question_type.dasherize}"})
   end
   
   def raw_metadata=(value)
@@ -46,6 +52,14 @@ class MissionQuestion < ActiveRecord::Base
   
   QUESTION_TYPES.each do |type|
     define_method(:"#{type}?") { question_type == type }
+  end
+  
+  def viewable_by?(role)
+    ["all", role.to_s].include? viewable_by_role
+  end
+  
+  def required_by?(role)
+    ["all", role.to_s].include? required_by_role
   end
   
 end

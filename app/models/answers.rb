@@ -30,6 +30,11 @@ class Answers
     end
   end
   
+  def each_viewable_question(&blk)
+    role = @participation.role_name
+    each_question { |q, p| yield q, p if q.viewable_by?(role) }
+  end
+  
   def answers
     @answers ||= begin
       value = @participation.raw_answers
@@ -79,15 +84,20 @@ class Answers
   def check_answer_status
     each_question do |question, key|
       value = read_attribute(key)
-      if value.blank? && question.required?
+      required = required?(question)
+      if value.blank? && required
         errors.add(key, :blank, :default => "is blank")
-      elsif question.required? && question.boolean? && value =~ /no/i
+      elsif required && question.boolean? && value =~ /no/i
         errors.add(key, :voided_participation)
       elsif value.present? && question.multiple_choice?
         valid_choice = Array(question.metadata).include?(value)
         errors.add(key, :invalid_choice) unless valid_choice
       end
     end
+  end
+  
+  def required?(q)
+    q.required_by?(@participation.role_name)
   end
   
   protected

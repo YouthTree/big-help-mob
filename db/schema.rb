@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100404141840) do
+ActiveRecord::Schema.define(:version => 20100404144838) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -100,12 +100,13 @@ ActiveRecord::Schema.define(:version => 20100404141840) do
   create_table "mission_questions", :force => true do |t|
     t.integer  "mission_id"
     t.string   "name"
-    t.boolean  "required"
     t.string   "question_type"
     t.text     "metadata"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "default_value"
+    t.string   "required_by_role"
+    t.string   "viewable_by_role", :default => "all"
   end
 
   add_index "mission_questions", ["mission_id"], :name => "index_mission_questions_on_mission_id"
