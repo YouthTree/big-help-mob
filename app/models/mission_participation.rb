@@ -6,10 +6,11 @@ class MissionParticipation < ActiveRecord::Base
   belongs_to :role
   belongs_to :pickup, :class_name => "MissionPickup"
   
-  validates_presence_of :user, :mission, :pickup
-  validates_associated  :answers
+  validates_presence_of :user, :mission
+  validates_presence_of :pickup, :if => :sidekick?
+  validates_associated  :answers, :user
   
-  validate :ensure_user_has_captain_application
+  before_validation :mark_user_participation
   
   attr_accessible :mission_id, :user_attributes, :pickup_id, :answers
   
@@ -59,6 +60,14 @@ class MissionParticipation < ActiveRecord::Base
     
   end
   
+  def captain?
+    role_name.captain?
+  end
+  
+  def sidekick?
+    role_name.sidekick?
+  end
+  
   def role_name
     ActiveSupport::StringInquirer.new(self.role.try(:name).to_s)
   end
@@ -106,10 +115,10 @@ class MissionParticipation < ActiveRecord::Base
     scope
   end
   
-  def ensure_user_has_captain_application
-    if role_name.captain?
-      user.captain_application.valid?
-      user.errors.add(:captain_application, :blank) if user.captain_application.blank?
+  def mark_user_participation
+    if user.present? && captain?
+      user.build_captain_application if user.captain_application.blank?
+      user.current_participation = self
     end
   end
   

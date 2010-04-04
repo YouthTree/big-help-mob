@@ -26,26 +26,29 @@
   
   - form.fields_for :user do |uf|
     - form.inputs :name => "Your General Profile" do
-      = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."
-      
-    - if @participation.role_name.captain?
+      = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."      
+      - if @participation.captain?
+        = uf.input :phone, :required => true
+
+    - if @participation.captain?
       - uf.object.build_captain_application if uf.object.captain_application.blank?
       - uf.fields_for :captain_application do |caf|
         = render :partial => 'captain_application_form', :locals => {:form => caf, :user => uf.object}
-      
-  - form.inputs :name => "Where do you wish to be picked up from?" do
-    %li
-      #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 600, :height => 300
-      - use_gmaps_js
-      - has_jammit_js :pickup_chooser
-      #pickup-address
-        %strong Pickup is from:
-        %span
-          - if @participation.pickup.present?
-            = @participation.pickup.pickup.to_s
-          - else
-            Pickup address not yet chosen.
-    = form.input :pickup, :collection => @mission.mission_pickups, :as => :pickups
+  
+  - if @participation.sidekick?
+    - form.inputs :name => "Where do you wish to be picked up from?" do
+      %li
+        #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 600, :height => 300
+        - use_gmaps_js
+        - has_jammit_js :pickup_chooser
+        #pickup-address
+          %strong Pickup is from:
+          %span
+            - if @participation.pickup.present?
+              = @participation.pickup.pickup.to_s
+            - else
+              Pickup address not yet chosen.
+      = form.input :pickup, :collection => @mission.mission_pickups, :as => :pickups
     
       
   - form.inputs :name => "Your Mailing Address" do

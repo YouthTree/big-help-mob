@@ -41,7 +41,7 @@ en:
       joined_mission:
         subject: "You've successfully joined {{mission_name}}"
       mission_role_approved:
-        subject: "You've successfully signed up for {{mission_name}} as {{role_name}}"
+        subject: "You've successfully signed up for {{mission_name}} as a {{role_name}}"
       mission_signup_incomplete:
         subject: ""
       notice:

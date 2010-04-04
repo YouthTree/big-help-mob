@@ -48,7 +48,20 @@ class User < ActiveRecord::Base
   validates_inclusion_of :origin, :in => ORIGIN_CHOICES,
     :message => :unknown_origin_choice, :allow_blank => true
 
+  validates_presence_of :phone, :captain_application, :if => :should_validate_captain_fields?
+  validates_associated  :captain_application,         :if => :should_validate_captain_fields?
+
   scope :with_age, where('date_of_birth IS NOT NULL AN age > 3').select("*,  AS age")
+
+  attr_accessor :current_participation
+  
+  def editing_participation?
+    current_participation.present?
+  end
+  
+  def should_validate_captain_fields?
+    editing_participation? && current_participation.captain?
+  end
 
   def can?(action, object)
     return true if admin?
