@@ -1,6 +1,6 @@
 class AddImprovedColumnsToMissionQuestions < ActiveRecord::Migration
   def self.up
-    add_column    :mission_questions, :required_by_role,  :string
+    add_column    :mission_questions, :required_by_role, :string
     add_column    :mission_questions, :viewable_by_role, :string, :default => "all"
     remove_column :mission_questions, :required
   end

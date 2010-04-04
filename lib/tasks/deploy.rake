@@ -1,5 +1,6 @@
 namespace :deploy do
   
+  
   def deploy_config(key)
     (@deploy_config ||= YAML.load_file("config/deploy.yml").symbolize_keys)[key.to_sym]
   end
@@ -19,6 +20,14 @@ namespace :deploy do
     execute_local_command!("bundle exec #{c}")
   end
   
+  def update_500
+    new_page = Net::HTTP.get(URI.parse('http://bighelpmob.org/unknown-error'))
+    new_page.gsub!(/<!-- bhm-request-uuid: \S+ -->/, '')
+    File.open("public/500.html", "w+") { |f| f.write new_page }
+  rescue
+    nil
+  end
+  
   # Hooks as needed
   
   task :remote_before do
@@ -28,6 +37,7 @@ namespace :deploy do
     execute_local_command! "rm -rf public/assets"
     bundle_exec!           "rake jammit:bundle"
     execute_local_command! "rake db:migrate" if ENV['MIGRATE_ENV'] == "true"
+    update_500
   end
   
   task :remote_after do
