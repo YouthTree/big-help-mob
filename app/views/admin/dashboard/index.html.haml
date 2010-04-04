@@ -1,6 +1,10 @@
 - use_postcode_mapper
 %h2.title Dashboard
 
+%p.action
+  Drag link to your bookmark bar to make debugging easier:
+  = link_to 'Show BHM Debug Info', 'javascript: BHM.Debug.showDebugInformation(); return false;'
+
 #user-signups.google-chart.statistic
   %h3 User Signups By Date
   = image_tag user_stats_url, :title => "User signups by date", :id => 'user-signup-stats'
