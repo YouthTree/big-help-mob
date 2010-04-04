@@ -40,10 +40,6 @@ namespace :deploy do
     execute_local_command! "rm -rf public/assets"
     bundle_exec!           "rake jammit:bundle"
     execute_local_command! "rake db:migrate" if ENV['MIGRATE_ENV'] == "true"
-    puts "Getting error pages..."
-    get_error_page! 500, "internal-server-error"
-    get_error_page! 404, "not-found"
-    puts "Error pages updated."
   end
   
   task :remote_after do
@@ -58,6 +54,11 @@ namespace :deploy do
     else
       puts "[LOCAL] Couldn't find a pid."
     end
+    sleep 10
+    puts "Getting error pages..."
+    get_error_page! 500, "internal-server-error"
+    get_error_page! 404, "not-found"
+    puts "Error pages updated."
   end
   
   task :local_before do
