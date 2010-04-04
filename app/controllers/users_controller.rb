@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to :welcome_users, :notice => "Thanks for joining!"
+      redirect_back_or_default welcome_users_path, :notice => "Thanks for signing up!"
     else
       render :action => 'new'
     end
