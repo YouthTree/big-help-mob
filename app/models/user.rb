@@ -44,9 +44,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :captain_application, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }
   
   validates_presence_of :date_of_birth, :origin
-  
-  validates_inclusion_of :origin, :in => ORIGIN_CHOICES,
-    :message => :unknown_origin_choice, :allow_blank => true
 
   validates_presence_of :phone, :captain_application, :if => :should_validate_captain_fields?
   validates_associated  :captain_application,         :if => :should_validate_captain_fields?
