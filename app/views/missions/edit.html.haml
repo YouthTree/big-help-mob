@@ -13,9 +13,15 @@
       == get up to speed #{link_to 'here', [:join, @mission]}. We promise it will be a riveting read!
 
   - if @requires_details
-    %p.mission-join-invalid
-      You're almost ready to go - there were just a few problems you need to fix first. Take a look
-      at your answers below and correct those with a red error message beneath them. Thanks!
+    .mission-join-invalid
+      %p
+        You're almost ready to go - there were just a few problems you need to fix first. Take a look
+        at your answers below and correct those with a red error message beneath them. Thanks!
+      - if @participation.errors[:base].any?
+        %h4 Please note:
+        %ul
+          - @participation.errors.on(:base).each do |error|
+            %li= error
 
   - if @participation.answers.needed?
     - form.inputs :name => "General Questions" do

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100403045946) do
+ActiveRecord::Schema.define(:version => 20100404141840) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -111,15 +111,19 @@ ActiveRecord::Schema.define(:version => 20100403045946) do
   add_index "mission_questions", ["mission_id"], :name => "index_mission_questions_on_mission_id"
 
   create_table "missions", :force => true do |t|
-    t.string   "name",            :null => false
-    t.text     "description",     :null => false
+    t.string   "name",                 :null => false
+    t.text     "description",          :null => false
     t.integer  "user_id"
     t.integer  "organisation_id"
-    t.datetime "occurs_at",       :null => false
+    t.datetime "occurs_at",            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state"
     t.string   "cached_slug"
+    t.integer  "minimum_sidekick_age"
+    t.integer  "maximum_sidekick_age"
+    t.integer  "minimum_captain_age"
+    t.integer  "maximum_captain_age"
   end
 
   add_index "missions", ["cached_slug"], :name => "index_missions_on_cached_slug"

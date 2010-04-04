@@ -20,7 +20,6 @@ class Answers
   
   def attributes=(attributes)
     attributes.each_pair do |k, v|
-      puts "Assigning: #{k.inspect} - #{v.inspect}"
       write_attribute(k, v) if k.to_s =~ VALID_NAME_REGEXP
     end
   end

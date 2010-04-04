@@ -15,6 +15,10 @@
   
   = form.input :state_event, :as => :select, :collection => form.object.state_events_for_select
   
+- form.inputs :name => "Mission Ages" do
+  - [:maximum_captain_age, :minimum_captain_age, :maximum_sidekick_age, :minimum_sidekick_age].each do |age|
+    = form.input age, :as => :select, :collection => (1..100)
+  
 - form.inputs :name => "Mission Address" do
   = render_address_fields form
   

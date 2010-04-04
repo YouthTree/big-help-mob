@@ -11,6 +11,9 @@ class Mission < ActiveRecord::Base
   # Validations
   validates_presence_of :name, :occurs_at, :organisation
 
+  validates_numericality_of :maximum_captain_age, :minimum_captain_age, :maximum_sidekick_age, :minimum_sidekick_age,
+                            :allow_nil => true, :greater_than => 0, :less_than_or_equal_to => 100
+
   # Associations
   
   has_address

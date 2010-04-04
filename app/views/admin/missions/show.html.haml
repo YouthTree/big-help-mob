@@ -20,6 +20,9 @@
       = t :"show_for.blank"
     - else
       = link_to resource.user, [:admin, resource.user]
+      
+  - [:maximum_captain_age, :minimum_captain_age, :maximum_sidekick_age, :minimum_sidekick_age].each do |age|
+    = r.attribute age
   
   = r.association :participations do
     = link_to "View All Participations", admin_mission_mission_participations_path(resource)

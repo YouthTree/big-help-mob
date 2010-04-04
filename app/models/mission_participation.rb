@@ -16,6 +16,8 @@ class MissionParticipation < ActiveRecord::Base
   
   after_validation :auto_approve, :on => :update
   
+  validate :check_age_validation
+  
   accepts_nested_attributes_for :user
   
   serialize :raw_answers
@@ -119,6 +121,21 @@ class MissionParticipation < ActiveRecord::Base
     if user.present? && captain?
       user.build_captain_application if user.captain_application.blank?
       user.current_participation = self
+    end
+  end
+  
+  def check_age_validation
+    role = role_name.to_s.strip
+    return if role.blank? || mission.blank? || user.blank? || !%w(captain sidekick).include?(role)
+    min_age, max_age = mission.send(:"minimum_#{role}_age"), mission.send(:"maximum_#{role}_age")
+    age = user.age
+    prefix = role.to_s.humanize.pluralize
+    if min_age.present? && max_age.present?
+      errors.add_to_base("#{prefix} must be #{min_age}-#{max_age} years old.") unless (min_age..max_age).include?(age)
+    elsif min_age.present?
+      errors.add_to_base("#{prefix} must be older than #{min_age}.") if age < min_age
+    elsif max_age.present?
+      errors.add_to_base("#{prefix} must be younger than #{min_age}.") if age > max_age
     end
   end
   
