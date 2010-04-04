@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   validates_presence_of :phone, :captain_application, :if => :should_validate_captain_fields?
   validates_associated  :captain_application,         :if => :should_validate_captain_fields?
 
-  scope :with_age, where('date_of_birth IS NOT NULL AN age > 3').select("*,  AS age")
+  scope :with_age, where('date_of_birth IS NOT NULL AND age > 0').select("*,  DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(date_of_birth, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(date_of_birth, '00-%m-%d')) AS age")
 
   attr_accessor :current_participation
   
@@ -108,6 +108,13 @@ class User < ActiveRecord::Base
   
   def mailing_list_ids=(value)
     mailing_lists.ids = value
+  end
+  
+  def age(now = Time.now)
+    from, to = date_of_birth.to_date, now.to_date
+    age = to.year - from.year
+    age -= 1 if (to.month < from.month) || (to.month == from.month && to.day < from.day)
+    age
   end
   
   protected

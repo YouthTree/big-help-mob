@@ -525,22 +525,22 @@ header nav#header-menu {
   top: 0;
   left: 0;
   z-index: 10;
-  width: 600px;
+  width: 650px;
   height: 75px;
   background: url(/images/bhm/header-menu-bg.png) top left no-repeat;
 }
 /* line 33, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#header-menu ul {
-  margin: 1.6em 0 1.5em;
+  margin: 1.75em 0 1.5em 0.5em;
   padding: 0;
   text-align: left;
 }
 /* line 37, ../../app/stylesheets/bhm/public/_header.sass */
 header nav#header-menu ul li {
   display: inline;
-  margin: 0 1.25em;
+  margin: 0 0.7em;
   padding: 0;
-  font-size: 1.4em;
+  font-size: 1.3em;
   text-transform: lowercase;
 }
 /* line 43, ../../app/stylesheets/bhm/public/_header.sass */
@@ -832,80 +832,86 @@ body, html {
   margin-left: 0;
   margin-right: 0;
 }
-
 /* line 40, ../../app/stylesheets/bhm/public/_content.sass */
+#content p#general-page-notice {
+  margin: 0 15% 1.5em;
+  text-align: center;
+  color: #2d6700;
+}
+
+/* line 45, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions {
   margin: 0 1em 1em;
   font-size: 1.2em;
 }
-/* line 43, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 48, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dt {
   font-weight: bold;
   color: black;
   margin: 1.5em 0 0;
   padding: 0;
 }
-/* line 48, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 53, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dt.first {
   margin-top: 0;
 }
-/* line 50, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 55, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dd {
   color: #333333;
   margin: 0.25em 0;
   padding: 0;
 }
-/* line 54, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 59, ../../app/stylesheets/bhm/public/_content.sass */
 dl.frequently-asked-questions dd p {
   font-size: 1em !important;
   padding: 0;
   margin: 0;
 }
 
-/* line 59, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 64, ../../app/stylesheets/bhm/public/_content.sass */
 #intro-video {
   text-align: center;
 }
 
-/* line 62, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 67, ../../app/stylesheets/bhm/public/_content.sass */
 #homepage-columns, #join-as-selector {
   margin-bottom: 2em;
 }
 
-/* line 67, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 72, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector, #join-as-selector #captain-selector {
   text-align: center;
 }
-/* line 70, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 75, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector .embedded-content, #join-as-selector #captain-selector .embedded-content {
   text-align: left;
 }
-/* line 74, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 79, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector dl.frequently-asked-questions dt, #join-as-selector dl.frequently-asked-questions dd {
   text-align: left;
   font-size: 0.9em;
 }
-/* line 77, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 82, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector dl.frequently-asked-questions dd p {
   margin-left: 0;
 }
-/* line 80, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 85, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #captain-selector {
   text-align: right;
 }
-/* line 82, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 87, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector #sidekick-selector {
   text-align: left;
 }
-/* line 85, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 90, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button {
   text-align: center;
 }
-/* line 87, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 92, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button.before-faq {
   margin: 2em 0 3em;
 }
-/* line 89, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 94, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -962,7 +968,7 @@ dl.frequently-asked-questions dd p {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 91, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 96, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-captain-button {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -998,7 +1004,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #07233a 0px -1px -1px;
   color: white;
 }
-/* line 93, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 98, ../../app/stylesheets/bhm/public/_content.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -1035,17 +1041,17 @@ dl.frequently-asked-questions dd p {
   color: white;
 }
 
-/* line 96, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 101, ../../app/stylesheets/bhm/public/_content.sass */
 #contact_form_nickname_input {
   display: none;
 }
 
-/* line 98, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 103, ../../app/stylesheets/bhm/public/_content.sass */
 #join-mission-intro {
   text-align: center;
   margin: -2em 0 5em;
 }
-/* line 101, ../../app/stylesheets/bhm/public/_content.sass */
+/* line 106, ../../app/stylesheets/bhm/public/_content.sass */
 #join-mission-intro a {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -1595,12 +1601,6 @@ section#flash-messages p.flash.last {
   border-color: #2e543c;
   text-shadow: #0c4221 0px -1px -1px;
   color: white;
-}
-
-/* line 29, ../../app/stylesheets/bhm/public/_signup.sass */
-#content p#joining-mission-account-required {
-  margin: 0 15% 1.5em;
-  color: #2d6700;
 }
 
 /* line 1, ../../app/stylesheets/bhm/public/_profile.sass */

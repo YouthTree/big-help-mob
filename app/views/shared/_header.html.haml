@@ -6,6 +6,7 @@
     = ml "Home", :root
     = ml "About", :about
     = ml "Next Mission", mission_path(:next)
+    = ml "Captains vs. Sidekicks", join_mission_path(:next)
     - if logged_in?
       = ml "Your Account", user_path(:current)
       = ml "Sign out", :sign_out
