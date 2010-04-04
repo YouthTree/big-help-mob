@@ -20,6 +20,7 @@
     = form.input age, :as => :select, :collection => (1..100)
   
 - form.inputs :name => "Mission Address" do
+  = form.input :address_title
   = render_address_fields form
   
 %h3 Available Pickups

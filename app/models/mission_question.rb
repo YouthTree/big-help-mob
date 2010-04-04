@@ -13,7 +13,7 @@ class MissionQuestion < ActiveRecord::Base
   
   belongs_to :mission
   
-  validates_presence_of  :name
+  validates_presence_of  :name, :viewable_by_role
   validates_inclusion_of :question_type, :in => QUESTION_TYPES, :message => "is not a valid type of question"
   validates_presence_of  :metadata, :if => :multiple_choice?
   

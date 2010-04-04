@@ -6,7 +6,7 @@ class Address < ActiveRecord::Base
   validates_presence_of :street1, :city, :state, :country
   validates_presence_of :postcode, :if => :for_user?
   
-  apply_addresslogic :fields => [:street1, :street2, :city, [:state, :postcode], :country]
+  apply_addresslogic :fields => [:street1, :street2, :city, [:state, :postcode], :country_name]
   
   acts_as_mappable :default_units => :kms
   
@@ -25,6 +25,11 @@ class Address < ActiveRecord::Base
   
   def to_s(joiner = ", ")
     address_parts.join(joiner)
+  end
+  
+  def country_name
+    return if country.blank?
+    Carmen.country_name(country)
   end
   
   module Addressable

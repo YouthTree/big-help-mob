@@ -45,10 +45,10 @@
   #mission-location-map.column
     %h3 Where is the mission?
     = draw_map_of @mission.address, :map => {:width => 416, :height => 342}
-    %p#mission-location-address
-      %strong This mission takes place at:
-      %br/
-      %span= @mission.address.to_s
+    #mission-location-address
+      %h4.mission-subtitle This mission takes place at:
+      %h3.address-title= @mission.address_title
+      %p.address-parts= @mission.address.to_s("<br />").html_safe
   #mission-pickups-map.column
     %h3 Where can I get picked up?
     #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 456, :height => 342
@@ -56,8 +56,7 @@
     %ol#pickups-listing
       - @mission.mission_pickups.each do |mp|
         %li{pickup_data_options(mp)}
-          %strong== #{mp.pickup.name}:
-          = mp.pickup.address.to_s
+          %abbr{:title => mp.pickup.address.to_s, :class => "pickup-title"}= mp.pickup.name
           at
           %span.pickup-time= l mp.pickup_at, :format => :pickup_time
 

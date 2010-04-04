@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100404144838) do
+ActiveRecord::Schema.define(:version => 20100404164907) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20100404144838) do
     t.integer  "maximum_sidekick_age"
     t.integer  "minimum_captain_age"
     t.integer  "maximum_captain_age"
+    t.string   "address_title"
   end
 
   add_index "missions", ["cached_slug"], :name => "index_missions_on_cached_slug"

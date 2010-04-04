@@ -1921,49 +1921,59 @@ p.actions {
 #mission-maps {
   margin: 0 0 3em;
 }
-/* line 7, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 6, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-pickups-map, #mission-maps #mission-location-map {
+  text-align: center;
+}
+/* line 8, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #mission-maps #mission-pickups-map .dynamic-google-map, #mission-maps #mission-pickups-map .static-google-map img, #mission-maps #mission-location-map .dynamic-google-map, #mission-maps #mission-location-map .static-google-map img {
   width: 416px;
   height: 342px;
   border: 2px solid #CCC !important;
 }
 /* line 12, ../../app/stylesheets/bhm/public/_mission_page.sass */
-#mission-maps #mission-pickups-map {
-  text-align: center;
-}
-/* line 14, ../../app/stylesheets/bhm/public/_mission_page.sass */
-#mission-maps #mission-pickups-map h4 {
+#mission-maps #mission-pickups-map h4, #mission-maps #mission-location-map h4 {
   margin: 0.5em 0 0;
   padding: 0;
 }
-/* line 17, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 16, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-location-map h3.address-title {
+  margin-bottom: 0;
+}
+/* line 19, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #mission-maps #mission-pickups-map ol {
   margin: 0;
   padding: 0;
   line-height: 1.5em;
 }
-/* line 21, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 23, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #mission-maps #mission-pickups-map ol li {
   margin: 0;
   padding: 0;
-  list-style-position: inside;
-  list-style-type: upper-alpha;
+  list-style: none;
 }
 /* line 27, ../../app/stylesheets/bhm/public/_mission_page.sass */
-#mission-maps #mission-location-map #mission-location-address {
+#mission-maps #mission-pickups-map #mission-location-address p, #mission-maps #mission-pickups-map #pickups-listing li {
   font-size: 1.1em;
   margin: 0.5em 0;
   text-align: center;
   color: #000;
 }
-
 /* line 34, ../../app/stylesheets/bhm/public/_mission_page.sass */
+#mission-maps #mission-pickups-map #pickups-listing li abbr {
+  color: black;
+  border-bottom: none;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* line 41, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content p.join-mission-container {
   padding: 0;
   margin: 0 0 2em;
   text-align: center;
 }
-/* line 38, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 45, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content p.join-mission-container a.join-mission-link {
   font-family: "Lucida Grande", Lucida, Arial, sans_serif;
   background: url(/images/button_bg.png) repeat-x bottom left;
@@ -2066,12 +2076,12 @@ p.actions {
 #content p.join-mission-container a.join-mission-link:active {
   color: white;
 }
-/* line 43, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 50, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-description p.join-mission-container {
   margin-top: -1.5em;
   margin-bottom: 3em;
 }
-/* line 47, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 54, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-notice {
   padding: 1em;
   margin: 3em 0;
@@ -2082,11 +2092,11 @@ p.actions {
   color: #2F6B2D;
   border: 0.2em solid #2F6B2D;
 }
-/* line 54, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 61, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-notice p {
   text-align: center;
 }
-/* line 56, ../../app/stylesheets/bhm/public/_mission_page.sass */
+/* line 63, ../../app/stylesheets/bhm/public/_mission_page.sass */
 #content #mission-notice p.hide-notice {
   margin-bottom: 0;
 }

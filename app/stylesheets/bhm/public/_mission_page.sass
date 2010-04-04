@@ -4,16 +4,18 @@
 #mission-maps
   :margin 0 0 3em
   #mission-pickups-map, #mission-location-map
+    :text-align center
     .dynamic-google-map, .static-google-map img
       :width 416px
       :height 342px
       :border 2px solid #CCC !important
-    
-  #mission-pickups-map
-    :text-align center
     h4
       :margin 0.5em 0 0
       :padding 0
+  #mission-location-map
+    h3.address-title
+      :margin-bottom 0
+  #mission-pickups-map
     ol
       :margin 0
       :padding 0
@@ -21,14 +23,19 @@
       li
         :margin 0
         :padding 0
-        :list-style-position inside
-        :list-style-type upper-alpha
-  #mission-location-map
-    #mission-location-address
+        :list-style none
+    #mission-location-address p, #pickups-listing li
       :font-size 1.1em
       :margin 0.5em 0
       :text-align center
       :color #000
+      
+    #pickups-listing li
+      abbr
+        :color black
+        :border-bottom none
+        :font-weight bold
+        :text-decoration underline
 
 #content
   p.join-mission-container
