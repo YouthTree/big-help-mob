@@ -8,4 +8,10 @@ class ErrorsController < ApplicationController
     render_error_page :internal_server_error
   end
   
+  protected
+  
+  def on_error_page?
+    true
+  end
+  
 end

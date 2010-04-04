@@ -14,5 +14,11 @@ class ApplicationController < ActionController::Base
   def tf(key)
     I18n.t(key.to_sym, :scope => :flash)
   end
+  
+  helper_method :on_error_page?
+  
+  def on_error_page?
+    false
+  end
 
 end

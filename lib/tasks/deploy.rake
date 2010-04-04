@@ -27,7 +27,7 @@ namespace :deploy do
     new_page.gsub!(/<!-- bhm-request-uuid: \S+ -->/, '')
     File.open("public/#{code}.html", "w+") { |f| f.write new_page }
   rescue => e
-    $stderr.puts "There was an error getting #{code}: #{name} (#{e.class.name}: #{e.message})"
+    puts "There was an error getting #{code}: #{name} (#{e.class.name}: #{e.message})"
     nil
   end
   
@@ -40,8 +40,10 @@ namespace :deploy do
     execute_local_command! "rm -rf public/assets"
     bundle_exec!           "rake jammit:bundle"
     execute_local_command! "rake db:migrate" if ENV['MIGRATE_ENV'] == "true"
+    puts "Getting error pages..."
     get_error_page! 500, "internal-server-error"
     get_error_page! 404, "not-found"
+    puts "Error pages updated."
   end
   
   task :remote_after do

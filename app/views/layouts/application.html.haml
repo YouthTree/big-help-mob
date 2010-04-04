@@ -22,6 +22,8 @@
     
       %footer= render :partial => 'shared/footer'
       = yield :page_bottom
-      = google_analytics
-      
-    = uuid_marker_comment
+      - unless on_error_page?
+        = google_analytics
+  
+    - unless on_error_page?
+      = uuid_marker_comment
