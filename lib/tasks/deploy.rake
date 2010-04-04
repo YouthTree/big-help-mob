@@ -1,3 +1,5 @@
+require 'net/http'
+
 namespace :deploy do
   
   
@@ -20,11 +22,12 @@ namespace :deploy do
     execute_local_command!("bundle exec #{c}")
   end
   
-  def update_500
-    new_page = Net::HTTP.get(URI.parse('http://bighelpmob.org/unknown-error'))
+  def get_error_page!(code, name)
+    new_page = Net::HTTP.get(URI.parse("http://bighelpmob.org/errors/#{name}"))
     new_page.gsub!(/<!-- bhm-request-uuid: \S+ -->/, '')
-    File.open("public/500.html", "w+") { |f| f.write new_page }
-  rescue
+    File.open("public/#{code}.html", "w+") { |f| f.write new_page }
+  rescue => e
+    $stderr.puts "There was an error getting #{code}: #{name} (#{e.class.name}: #{e.message})"
     nil
   end
   
@@ -37,7 +40,8 @@ namespace :deploy do
     execute_local_command! "rm -rf public/assets"
     bundle_exec!           "rake jammit:bundle"
     execute_local_command! "rake db:migrate" if ENV['MIGRATE_ENV'] == "true"
-    update_500
+    get_error_page! 500, "internal-server-error"
+    get_error_page! 404, "not-found"
   end
   
   task :remote_after do

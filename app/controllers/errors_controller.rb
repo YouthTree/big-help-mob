@@ -1,6 +1,6 @@
 class ErrorsController < ApplicationController
   
-  def catch_all
+  def not_found
     render_error_page :not_found
   end
   

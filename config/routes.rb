@@ -51,6 +51,6 @@ Bighelpmob::Application.routes.draw do |map|
   
   root :to => "pages#index"
   
-  get 'unknown-error', :to => 'errors#general_exception'
-  match '*path', :to => 'errors#catch_all'
+  get 'errors/not-found',             :to => 'errors#not_found'
+  get 'errors/internal-server-error', :to => 'errors#general_exception'
 end
