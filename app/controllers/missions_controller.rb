@@ -7,6 +7,7 @@ class MissionsController < ApplicationController
   
   before_filter :prepare_mission,        :except => :next
   before_filter :require_user_with_note, :only   => [:edit, :update]
+  before_filter :require_valid_user,     :only   => [:edit, :update]
   before_filter :prepare_participation,  :only   => [:edit, :update]
   
   def show
@@ -67,6 +68,14 @@ class MissionsController < ApplicationController
       store_location
       flash[:joining_mission] = true
       redirect_to new_user_path
+      return false
+    end
+  end
+  
+  def require_valid_user
+    if logged_in? && !current_user.valid?
+      store_location
+      redirect_to edit_user_path(:current), :alert => "Please complete your profile before continuing"
       return false
     end
   end

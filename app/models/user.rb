@@ -108,6 +108,7 @@ class User < ActiveRecord::Base
   end
   
   def age(now = Time.now)
+    return 0 if date_of_birth.blank?
     from, to = date_of_birth.to_date, now.to_date
     age = to.year - from.year
     age -= 1 if (to.month < from.month) || (to.month == from.month && to.day < from.day)
