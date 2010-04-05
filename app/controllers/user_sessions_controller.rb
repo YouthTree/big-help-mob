@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       if @user_session.new_registration?
-        redirect_to :welcome_users, :notice => tf('profile.welcome')
+        redirect_back_or_default welcome_users_path, :notice => tf('profile.welcome')
       else
         if @user_session.registration_complete?
           redirect_back_or_default user_path(:current), :notice => tf('general.signed_in')
