@@ -97,6 +97,10 @@ class Mission < ActiveRecord::Base
   def normalize_friendly_id(text)
     text.to_url
   end
+  
+  def unstarted?
+    %w(preparing approved).include?(self.state)
+  end
 
 end
 

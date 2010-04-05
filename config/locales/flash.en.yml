@@ -15,6 +15,7 @@ en:
       signed_out: "Successfully signed out"
     profile:
       incomplete: 'Welcome back! Please complete your registration details to continue'
+      invalid: "Please complete your profile before continuing"
       unknown_user: "Woops! Seems you entered the details incorrectly or we just don't know you..."
       welcome: 'Welcome to Big Help Mob!'
       full_incomplete: "Hey there! Welcome back. Before you can continue, you just need to fill in a few details..."
@@ -27,3 +28,13 @@ en:
       invalid_url: "The password reset url you provided is invalid / expired."
     contact:
       thanks: "Thanks for contacting us - we'll be sure to get back to your shortly!"
+    mission:
+      over: "You can no longer edit your details for this mission - sorry!"
+    signup:
+      thanks: "Thanks for signing up!"
+    account:
+      updated: "Successfully updated your account"
+      added_rpx_auth: "Successfully added RPX authentication to this account."
+      destroyed: "Successfully closed account"
+      different_user: "You aren't the specified user"
+      unknown_user: "I'm sorry, I don't know that user"

@@ -2,7 +2,7 @@ class MissionsController < ApplicationController
   MissionOver = Class.new(StandardError)
   
   rescue_from MissionOver do
-    redirect_to @mission, :alert => "You can no longer edit your details for this mission - sorry!"
+    redirect_to @mission, :alert => tf('mission.over')
   end
   
   before_filter :prepare_mission,        :except => :next
@@ -60,7 +60,7 @@ class MissionsController < ApplicationController
   end
   
   def check_mission_status!
-    raise MissionOver unless %w(created approved awaiting_approval).include?(@participation.state) && %w(preparing approved).include?(@mission.state)
+    raise MissionOver unless @participation.still_preparing?(true) && @mission.unstarted?
   end
   
   def require_user_with_note
@@ -75,13 +75,13 @@ class MissionsController < ApplicationController
   def require_valid_user
     if logged_in? && !current_user.valid?
       store_location
-      redirect_to edit_user_path(:current), :alert => "Please complete your profile before continuing"
+      redirect_to edit_user_path(:current), :alert => tf('profile.invalid')
       return false
     end
   end
   
   def logged_in_and_signed_up_to_mission?
-    @mission.participating?(current_user) && !%w(created awaiting_approval).include?(@mission.participation_for(current_user).try(:state))
+    @mission.participating?(current_user) && !@mission.participation_for(current_user).still_preparing?
   end
   
 end

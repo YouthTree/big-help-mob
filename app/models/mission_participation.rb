@@ -146,6 +146,12 @@ class MissionParticipation < ActiveRecord::Base
     end
   end
   
+  def still_preparing?(include_approved = false)
+    states = %w(created awaiting_approval)
+    states << "approved" if include_approved
+    states.include?(self.state)
+  end
+  
 end
 
 # == Schema Info
