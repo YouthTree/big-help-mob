@@ -33,8 +33,7 @@
   - form.fields_for :user do |uf|
     - form.inputs :name => "Your General Profile" do
       = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."      
-      - if @participation.captain?
-        = uf.input :phone, :required => true
+      = uf.input :phone, :required => true, :hint => "We respect your privacy - this number will only be shared with your captain on missions for planning / safety reasons."
 
     - if @participation.captain?
       - uf.object.build_captain_application if uf.object.captain_application.blank?

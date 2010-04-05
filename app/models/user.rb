@@ -45,8 +45,9 @@ class User < ActiveRecord::Base
   
   validates_presence_of :date_of_birth, :origin
 
-  validates_presence_of :phone, :captain_application, :if => :should_validate_captain_fields?
-  validates_associated  :captain_application,         :if => :should_validate_captain_fields?
+  validates_presence_of :phone,               :if => :editing_participation?
+  validates_presence_of :captain_application, :if => :should_validate_captain_fields?
+  validates_associated  :captain_application, :if => :should_validate_captain_fields?
 
   scope :with_age, where('date_of_birth IS NOT NULL AND age > 0').select("*,  DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(date_of_birth, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(date_of_birth, '00-%m-%d')) AS age")
 

@@ -125,8 +125,8 @@ class MissionParticipation < ActiveRecord::Base
   end
   
   def mark_user_participation
-    if user.present? && captain?
-      user.build_captain_application if user.captain_application.blank?
+    if user.present?
+      user.build_captain_application if captain? && user.captain_application.blank?
       user.current_participation = self
     end
   end
