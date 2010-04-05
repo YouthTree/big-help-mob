@@ -1,6 +1,7 @@
 # Wrapper class for password resets. OF DOOM.
 class PasswordReset
-  extend ActiveModel::Naming
+  extend  ActiveModel::Naming
+  include ActiveModel::Conversion
   
   attr_accessor :email, :password, :password_confirmation
   
@@ -28,7 +29,7 @@ class PasswordReset
   end
   
   def update(attributes = {})
-    @real_validation = true8
+    @real_validation = true
     return false if new_record?
     self.attributes = attributes if attributes.present?
     if password.present? && @user.update_attributes(:password => password, :password_confirmation => password_confirmation)
@@ -65,8 +66,12 @@ class PasswordReset
     @new_record
   end
   
-  def to_param
-    @user ? @user.perishable_token : ""
+  def persisted?
+    !new_record?
+  end
+  
+  def id
+    @user.try(:perishable_token)
   end
   
   protected

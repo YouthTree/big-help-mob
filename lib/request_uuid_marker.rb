@@ -1,4 +1,4 @@
-class RequestUUIDMarker < Rails::Subscriber
+class RequestUUIDMarker
   
   cattr_accessor :uuid
   
@@ -20,11 +20,11 @@ class RequestUUIDMarker < Rails::Subscriber
   protected
   
   def before_dispatch(uuid)
-    info "Before request with UUID: #{uuid}"
+    Rails.logger.info "Before request with UUID: #{uuid}"
   end
   
   def after_dispatch(uuid)
-    info "After request with UUID: #{uuid}"
+    Rails.logger.info "After request with UUID: #{uuid}"
   end
   
 end

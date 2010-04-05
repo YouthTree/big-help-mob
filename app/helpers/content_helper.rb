@@ -52,7 +52,7 @@ module ContentHelper
       i << tag(:embed, :src => video_url, :height => options[:height], :width => options[:width], :allowfullscreen => "true",
         :type => "application/x-shockwave-flash", :allowscriptaccess => "always")
     end
-    content_tag(:object, inner.join, :height => options[:height], :width => options[:width])
+    content_tag(:object, inner.join.html_safe, :height => options[:height], :width => options[:width])
   end
   
   def faq(questions, title = "Frequently Asked Questions")

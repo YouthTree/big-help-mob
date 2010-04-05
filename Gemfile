@@ -1,13 +1,12 @@
 source 'http://gemcutter.org'
 
 git "git://github.com/nono/acts_as_list.git", :ref => "rails3"
-git "git://github.com/plataformatec/show_for.git"
 git "git://github.com/railsjedi/jammit.git"
-git "git://github.com/Sutto/mail_form.git"
-git "git://github.com/Sutto/carmen.git"
-git "git://github.com/Sutto/exception_notification.git"
+# git "git://github.com/Sutto/mail_form.git"
+# git "git://github.com/Sutto/exception_notification.git"
+# git "git://github.com/peterpunk/formtastic.git"
 
-gem "rails", "= 3.0.0.beta"
+gem "rails", "= 3.0.0.beta2"
 gem "rails3-generators"
 
 # Misc
@@ -24,7 +23,7 @@ gem "addresslogic"
 gem "geokit"
 
 # display helpers
-gem "formtastic", "= 0.9.7"
+gem "formtastic", "= 0.9.8", :path => "~/Code/rails3-compat/formtastic"
 gem "validation_reflection"
 
 # Sass Awesome Sauce
@@ -37,9 +36,9 @@ gem "fancy-buttons"
 gem "rpx_now"
 
 # Mainly Admin Area Stuff.
-gem "inherited_resources", ">= 1.1.0"
-gem "responders",          "= 0.5.5"
-gem "show_for",            ">= 0.2.0"
+gem "inherited_resources", ">= 1.1.2"
+gem "responders",          ">= 0.6.0"
+gem "show_for",            ">= 0.2.1"
 
 gem "will_paginate",       ">= 3.0.pre"
 gem "state_machine"
@@ -49,9 +48,8 @@ gem "mail_form"
 
 gem "ruby-googlechart", :require => "google_chart"
 gem "jammit",           :require => ['jammit', 'jammit/helper']
-gem "namxam-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
+gem "msales-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
 
-# gem "hoptoad_notifier"
 gem "exception_notifier", :require => nil
 
 gem "liquid"

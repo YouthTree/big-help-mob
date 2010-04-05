@@ -182,7 +182,7 @@ module Authlogic
           klass.define_callbacks *METHODS
           
           # If Rails 3, support the new callback syntax
-          if klass.metaclass.method_defined?(:set_callback)
+          if klass.respond_to?(:set_callback)
             METHODS.each do |method|
               klass.class_eval <<-"end_eval", __FILE__, __LINE__
                 def self.#{method}(*methods, &block)
@@ -314,7 +314,7 @@ module Authlogic
             
             def transition_password(attempted_password)
               self.password = attempted_password
-              save(:validate => false)
+              save(false)
             end
           
             def require_password?

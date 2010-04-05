@@ -18,7 +18,7 @@ module ApplicationHelper
       first, last = (idx == 0), (idx == names.length - 1)
       content << content_tag(:p, value, :class => "flash #{key} #{"first" if first} #{"last" if last}".strip)
     end
-    content_tag(:section, content.join, :id => "flash-messages").html_safe
+    content_tag(:section, content.sum(ActiveSupport::SafeBuffer.new), :id => "flash-messages").html_safe
   end
   
   def has_jammit_js(*args)
