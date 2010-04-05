@@ -21,7 +21,7 @@
       %section#content-container
         %section#content= yield
         %section#sidebar
-          - sidebar_content = yield :sidebar
+          - sidebar_content = content_for(:sidebar)
           = sidebar_content.present? ? sidebar_content : render(:partial => 'admin/shared/sidebar')
     
       %footer

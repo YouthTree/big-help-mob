@@ -53,7 +53,7 @@
               = @participation.pickup.pickup.to_s
             - else
               Pickup address not yet chosen.
-      = form.input :pickup, :collection => @mission.mission_pickups, :as => :pickups
+      = form.input :pickup_id, :collection => @mission.mission_pickups, :as => :pickups
     
       
   = form.inputs :name => "Your Mailing Address" do

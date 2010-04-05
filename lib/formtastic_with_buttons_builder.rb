@@ -48,10 +48,10 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
 
       html_options[:checked] = selected_value == value if selected_option_is_present
 
-      inner_label = content_tag(:span, pickup.name, :class => 'pickup-name')
+      inner_label = template.content_tag(:span, pickup.name, :class => 'pickup-name')
       if at.present?
-        inner_label << content_tag(:span, " at ", :class => 'pickup-time-joiner')
-        inner_label << content_tag(:span, ::I18n.l(at, :format => :pickup_time), :class => 'pickup-time')
+        inner_label << template.content_tag(:span, " at ", :class => 'pickup-time-joiner')
+        inner_label << template.content_tag(:span, ::I18n.l(at, :format => :pickup_time), :class => 'pickup-time')
       end
       li_content = template.content_tag(:label,
         "#{self.radio_button(input_name, value, html_options)} #{inner_label}".html_safe,
@@ -63,7 +63,7 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
       template.content_tag(:li, li_content, li_options)
     end
 
-    field_set_and_list_wrapping_for_method(method, options, list_item_content)
+    field_set_and_list_wrapping_for_pickups(method, options, list_item_content)
   end
   
   

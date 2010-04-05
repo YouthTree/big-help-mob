@@ -68,15 +68,11 @@ module ApplicationHelper
   def render_address_fields(f, name = :address, options = {})
     o = f.object
     o.send(:"build_#{name}") if o.send(name).blank?
-    capture do
+    ActiveSupport::SafeBuffer.new.tap do |html|
       f.fields_for(name) do |af|
-        concat render(:partial => 'shared/address_fields', :locals => {:form => af, :options => options})
+        html << render(:partial => 'shared/address_fields', :locals => {:form => af, :options => options})
       end
-    end.html_safe
-  end
-  
-  def show_for(*args, &blk)
-    concat super
+    end
   end
   
   def ssl_opts(opts = {})

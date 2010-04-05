@@ -7,7 +7,7 @@ module AdminHelper
     else
       inner = content_tag(:span, default, :class => 'default-value')
     end
-    blk.present? ? concat(inner) : inner
+    inner
   end
   
   alias vwd value_with_default
@@ -33,8 +33,8 @@ module AdminHelper
     content << inner_content.to_s if inner_content
     content << capture(&blk) if blk.present?
     content << content_for(:sidebar_menu_end) if content_for?(:sidebar_menu_end)
-    content = content_tag(:ul, content.join(""), :class => 'sidebar-menu')
-    blk.present? ? concat(content) : content
+    content = content_tag(:ul, content.join("").html_safe, :class => 'sidebar-menu')
+    content
   end
   
   def sidebar_klass_name(klass)
@@ -56,7 +56,7 @@ module AdminHelper
       ml("Edit", edit_resource_url(r)),
       ml("Remove", resource_url(r), :method => :delete,
       :confirm => tu(:remove, :scope => :confirm, :object_name => name))
-    ].join)
+    ].join.html_safe)
   end
   
   def default_collection_columns
@@ -78,7 +78,7 @@ module AdminHelper
   # Generalized Sidebar Content
   
   def parent_sidebar_content
-    returning "" do |content|
+    returning ActiveSupport::SafeBuffer.new do |content|
       if respond_to?(:parent?) && parent?
         parent_name = current_parent_name
         content << ml("View #{parent_name}", parent_url)
@@ -88,14 +88,14 @@ module AdminHelper
   end
   
   def resources_sidebar_content(name = current_resource_name)
-    returning "" do |content|
+    returning ActiveSupport::SafeBuffer.new do |content|
       content << ml("All #{name.pluralize}", collection_url)
       content << ml("Add #{name}", new_resource_url)
     end
   end
   
   def resource_sidebar_content(name = current_resource_name)
-    returning "" do |content|
+    returning ActiveSupport::SafeBuffer.new do |content|
       content << ml("View #{name}", resource_url)
       content << ml("Edit #{name}", edit_resource_url)
       content << ml("Remove #{name}", resource_url, :method => :delete,

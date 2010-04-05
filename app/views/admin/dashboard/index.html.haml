@@ -31,8 +31,7 @@
       %li{postcode_location_opts(location)}== Postcode #{location.postcode} has #{pluralize location.count, "members"}.
   
 
-- content_for :sidebar do
-  
+- content_for :sidebar do  
   %h2 Menu
-  - sidebar_menu do
+  = sidebar_menu do
     = render :partial => 'admin/shared/sections'

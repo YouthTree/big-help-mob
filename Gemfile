@@ -3,8 +3,8 @@ source 'http://gemcutter.org'
 git "git://github.com/nono/acts_as_list.git", :ref => "rails3"
 git "git://github.com/railsjedi/jammit.git"
 # git "git://github.com/Sutto/mail_form.git"
-# git "git://github.com/Sutto/exception_notification.git"
-# git "git://github.com/peterpunk/formtastic.git"
+git "git://github.com/Sutto/exception_notification.git"
+git "git://github.com/Sutto/formtastic.git"
 
 gem "rails", "= 3.0.0.beta2"
 gem "rails3-generators"
@@ -23,7 +23,7 @@ gem "addresslogic"
 gem "geokit"
 
 # display helpers
-gem "formtastic", "= 0.9.8", :path => "~/Code/rails3-compat/formtastic"
+gem "formtastic", "= 0.9.8"
 gem "validation_reflection"
 
 # Sass Awesome Sauce
@@ -56,7 +56,7 @@ gem "liquid"
 
 gem "fastercsv"
 
-gem "friendly_id", "~> 3.0"
+gem "friendly_id", ">= 3.0"
 gem "stringex"
 
 gem "uuid"
