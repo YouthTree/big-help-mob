@@ -1,6 +1,6 @@
 %h2.title Viewing User
 
-- show_for @user do |s|
+= show_for @user do |s|
   
   = s.attribute :login
   
@@ -32,7 +32,7 @@
   
   %h3 User's Captain Application
 
-  - show_for @user.captain_application do |s|
+  = show_for @user.captain_application do |s|
   
     = s.attribute :reason_why
 

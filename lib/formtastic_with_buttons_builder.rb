@@ -28,38 +28,44 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
   def boolean_input(method, options)
     super.gsub(":</label>", "</label>").gsub(": <abbr", " <abbr")
   end
+    
+  def pickups_input(method, options)
+    collection   = options.delete(:collection) || []
+    html_options = strip_formtastic_options(options).merge(options.delete(:input_html) || {})
+
+    input_name = generate_association_input_name(method)
+    value_as_class = options.delete(:value_as_class)
+    input_ids = []
+    selected_option_is_present = [:selected, :checked].any? { |k| options.key?(k) }
+    selected_value = (options.key?(:checked) ? options[:checked] : options[:selected]) if selected_option_is_present
+
+    list_item_content = collection.map do |c|
+      at     = c.pickup_at
+      value  = c.id
+      pickup = c.pickup
+      input_id = generate_html_id(input_name, value.to_s.gsub(/\s/, '_').gsub(/\W/, '').downcase)
+      input_ids << input_id
+
+      html_options[:checked] = selected_value == value if selected_option_is_present
+
+      inner_label = content_tag(:span, pickup.name, :class => 'pickup-name')
+      if at.present?
+        inner_label << content_tag(:span, " at ", :class => 'pickup-time-joiner')
+        inner_label << content_tag(:span, ::I18n.l(at, :format => :pickup_time), :class => 'pickup-time')
+      end
+      li_content = template.content_tag(:label,
+        "#{self.radio_button(input_name, value, html_options)} #{inner_label}".html_safe,
+        :for => input_id
+      )
+
+      li_options = value_as_class ? { :class => [method.to_s.singularize, value.to_s.downcase].join('_') } : {}
+      li_options.merge!(@template.pickup_data_options(c, html_options[:checked]))
+      template.content_tag(:li, li_content, li_options)
+    end
+
+    field_set_and_list_wrapping_for_method(method, options, list_item_content)
+  end
   
-  # def pickups_input(method, options)
-  #   collection   = options.delete(:collection) || []
-  #   html_options = strip_formtastic_options(options).merge(options.delete(:input_html) || {})
-  # 
-  #   input_name = generate_association_input_name(method)
-  #   value_as_class = options.delete(:value_as_class)
-  #   input_ids = []
-  #   selected_option_is_present = [:selected, :checked].any? { |k| options.key?(k) }
-  #   selected_value = (options.key?(:checked) ? options[:checked] : options[:selected]) if selected_option_is_present
-  # 
-  #   list_item_content = collection.map do |c|
-  #     at     = c.pickup_at
-  #     value  = c.id
-  #     pickup = c.pickup
-  #     input_id = generate_html_id(input_name, value.to_s.gsub(/\s/, '_').gsub(/\W/, '').downcase)
-  #     input_ids << input_id
-  #     
-  #     html_options[:checked] = selected_value == value if selected_option_is_present
-  #     inner_label = pickup.name
-  #     inner_label << " at #{::I18n.l(at, :format => :pickup_time)}" if at.present?
-  #     li_content = template.content_tag(:label,
-  #       "#{self.radio_button(input_name, value, html_options)} #{inner_label}",
-  #       :for => input_id
-  #     )
-  # 
-  #     li_options = value_as_class ? { :class => [method.to_s.singularize, value.to_s.downcase].join('_') } : {}
-  #     template.content_tag(:li, li_content, li_options.merge(@template.pickup_data_options(c, html_options[:checked])))
-  #   end
-  # 
-  #   field_set_and_list_wrapping_for_pickups(method, options.merge(:label_for => input_ids.first), list_item_content)
-  # end
   
   # The same as normal for methods (e.g. radio buttons etc), but has a correct id for the pickup method.
   def field_set_and_list_wrapping_for_pickups(method, options, contents)

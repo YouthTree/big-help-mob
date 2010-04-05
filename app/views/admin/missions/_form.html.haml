@@ -1,6 +1,6 @@
 - has_jammit_js :question_editor, :pickup_editor
 
-- form.inputs :name => "Mission Details" do
+= form.inputs :name => "Mission Details" do
   
   = form.input :name
   
@@ -15,11 +15,11 @@
   
   = form.input :state_event, :as => :select, :collection => form.object.state_events_for_select
   
-- form.inputs :name => "Mission Ages" do
+= form.inputs :name => "Mission Ages" do
   - [:maximum_captain_age, :minimum_captain_age, :maximum_sidekick_age, :minimum_sidekick_age].each do |age|
     = form.input age, :as => :select, :collection => (1..100)
   
-- form.inputs :name => "Mission Address" do
+= form.inputs :name => "Mission Address" do
   = form.input :address_title
   = render_address_fields form
   

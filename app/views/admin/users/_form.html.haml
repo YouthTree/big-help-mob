@@ -1,25 +1,25 @@
-- form.inputs :name => "General Details" do  
+= form.inputs :name => "General Details" do  
   = form.input :login
   = form.input :admin
   = form.input :email
   = form.input :display_name
   = form.input :current_role, :collection => Role.for_select
   
-- form.inputs :name => "User Details" do
+= form.inputs :name => "User Details" do
   = form.input :first_name
   = form.input :last_name
   = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => Time.now.year
   = form.input :postcode
   
-- form.inputs :name => "Password Authentication" do
+= form.inputs :name => "Password Authentication" do
   = form.input :password
   = form.input :password_confirmation
   
-- form.inputs :name => "Mailing List Subscriptions" do
+= form.inputs :name => "Mailing List Subscriptions" do
   = form.input :mailing_list_ids, :collection => HominidWrapper.available_lists_for_select, :as => :check_boxes
   
 - form.fields_for :captain_application do |caf|
-  - caf.inputs :name => "Captain Application" do
+  = caf.inputs :name => "Captain Application" do
     = caf.input :reason_why, :input_html => {:rows => 5}
     = caf.input :offers, :input_html => {:rows => 5}
     = caf.input :has_first_aid_cert

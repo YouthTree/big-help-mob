@@ -1,4 +1,4 @@
-- pickup_form.inputs :name => "Pickup Details", :class => 'pickup-input inputs' do
+= pickup_form.inputs :name => "Pickup Details", :class => 'pickup-input inputs' do
   %li
     %p.inline-hints= link_to((pickup_form.object.new_record? ? "Don't add this pickup" : 'Remove this pickup'), '#', :class => 'remove-pickup-link')
     = pickup_form.hidden_field :_destroy, :default => 0
