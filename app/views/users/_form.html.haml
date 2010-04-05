@@ -17,7 +17,7 @@
     = form.input :first_name
     = form.input :last_name
     = form.input :postcode, :hint => "We'll use this strictly for planning and statistics purposes (we may be able to adjust our Bat-mobus route to be closer to your secret hideout)."
-    = form.input :phone, :hint => "We respect your privacy - this number will only be shared with your captain on missions for planning / safety reasons."
+    = form.input :phone, :hint => "We respect your privacy - this number will only be shared with the Big Help Mob team on missions for planning / safety reasons."
     
     - if form.object.origin.blank? || form.object.origin_changed?
       = form.input :origin, :as => input_type_for_origin(form.object.origin), :collection => User::ORIGIN_CHOICES
