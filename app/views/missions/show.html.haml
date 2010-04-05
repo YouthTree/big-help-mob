@@ -8,7 +8,6 @@
   
 - content_for(:extra_head) do
   %meta{:name => "title", :content => @mission.name}
-  %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
 
 - if logged_in? && flash[:recently_joined_mission]
   #mission-notice
