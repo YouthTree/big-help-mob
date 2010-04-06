@@ -2,6 +2,7 @@ source 'http://gemcutter.org'
 
 git "git://github.com/rlivsey/will_paginate.git", :ref => "rails3"
 git "git://github.com/nono/acts_as_list.git",     :ref => "rails3"
+
 # General WIP Fixes.
 git "git://github.com/Sutto/exception_notification.git"
 git "git://github.com/Sutto/validation_reflection.git"
@@ -60,7 +61,7 @@ gem "liquid"
 
 gem "fastercsv"
 
-gem "friendly_id", ">= 3.0", :path => "~/Code/rails3-compat/friendly_id"
+gem "friendly_id", ">= 3.0"
 gem "stringex"
 
 gem "uuid"
