@@ -1,10 +1,14 @@
 source 'http://gemcutter.org'
 
-git "git://github.com/nono/acts_as_list.git", :ref => "rails3"
-git "git://github.com/railsjedi/jammit.git"
-# git "git://github.com/Sutto/mail_form.git"
+git "git://github.com/rlivsey/will_paginate.git", :ref => "rails3"
+git "git://github.com/nono/acts_as_list.git",     :ref => "rails3"
+# General WIP Fixes.
 git "git://github.com/Sutto/exception_notification.git"
-git "git://github.com/Sutto/formtastic.git"
+git "git://github.com/Sutto/validation_reflection.git"
+git "git://github.com/peterpunk/formtastic.git"
+git "git://github.com/Sutto/friendly_id.git"
+git "git://github.com/Sutto/forgery.git"
+git "git://github.com/Sutto/jammit.git"
 
 gem "rails", "= 3.0.0.beta2"
 gem "rails3-generators"
@@ -45,9 +49,9 @@ gem "state_machine"
 gem "title_estuary"
 gem "acts_as_list"
 gem "mail_form"
+gem "jammit"
 
 gem "ruby-googlechart", :require => "google_chart"
-gem "jammit",           :require => ['jammit', 'jammit/helper']
 gem "msales-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
 
 gem "exception_notifier", :require => nil
@@ -56,7 +60,7 @@ gem "liquid"
 
 gem "fastercsv"
 
-gem "friendly_id", ">= 3.0"
+gem "friendly_id", ">= 3.0", :path => "~/Code/rails3-compat/friendly_id"
 gem "stringex"
 
 gem "uuid"

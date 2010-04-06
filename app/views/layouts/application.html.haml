@@ -2,15 +2,15 @@
 %html{:lang => "en", :dir => "ltr"}
   %head
     %title== #{page_title} - Big Help Mob
-    = raw include_stylesheets(:base, :media => 'screen, projection')
+    = include_stylesheets(:base, :media => 'screen, projection')
     /[if IE]
       %script{:src => uri2ssl("html5shiv.googlecode.com/svn/trunk/html5.js")}
-    = raw include_javascripts(:base)
+    = include_javascripts(:base)
     /[if IE 6]
-      = raw include_javascripts(:ie6)
+      = include_javascripts(:ie6)
     - if params[:bgcolor] == "1"
-      = raw include_stylesheets(:bgcolor)
-      = raw include_javascripts(:bgcolor)
+      = include_stylesheets(:bgcolor)
+      = include_javascripts(:bgcolor)
     = csrf_meta_tag
     %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
     = yield :extra_head
@@ -23,8 +23,7 @@
     
       %footer= render :partial => 'shared/footer'
       = yield :page_bottom
-      - unless on_error_page?
-        = google_analytics
   
     - unless on_error_page?
+      = google_analytics
       = uuid_marker_comment

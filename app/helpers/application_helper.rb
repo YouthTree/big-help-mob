@@ -22,11 +22,11 @@ module ApplicationHelper
   end
   
   def has_jammit_js(*args)
-    content_for(:extra_head, raw(include_javascripts(*args)))
+    content_for(:extra_head, include_javascripts(*args))
   end
   
   def has_jammit_css(*args)
-    content_for(:extra_head, raw(include_stylesheets(*args)))
+    content_for(:extra_head, include_stylesheets(*args))
   end
   
   def has_js(*args)
@@ -95,7 +95,7 @@ module ApplicationHelper
   end
   
   def uuid_marker_comment
-    "<!-- bhm-request-uuid: #{current_request_uuid} -->".html_safe
+    "<!-- bhm-request-uuid: #{current_request_uuid} -->".html_safe if current_request_uuid.present?
   end
   
   protected
