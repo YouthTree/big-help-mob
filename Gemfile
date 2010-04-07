@@ -18,7 +18,6 @@ gem "rails3-generators"
 gem "haml"
 gem "mysql"
 gem "forgery"
-gem "mongrel", :group => "development", :require => nil
 
 # mailing list
 gem "hominid"
@@ -65,6 +64,12 @@ gem "friendly_id", ">= 3.0"
 gem "stringex"
 
 gem "uuid"
+
+group :development do
+  gem "mongrel",   :require => nil
+  gem "yard",      :require => nil
+  gem "bluecloth", :require => nil
+end
 
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"

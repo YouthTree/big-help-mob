@@ -5,3 +5,4 @@ tmp/**/*
 config/settings.yml
 .bundle-cache
 doc/app
+.yardoc
