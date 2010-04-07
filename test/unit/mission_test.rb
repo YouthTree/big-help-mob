@@ -5,7 +5,7 @@ class MissionTest < ActiveSupport::TestCase
   should_belong_to :organisation
   should_have_one  :address
   
-  should_validate_presence_of :name
+  should_validate_presence_of :name, :message => 'must be filled in to continue'
   
 end
 

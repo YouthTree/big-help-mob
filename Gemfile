@@ -9,7 +9,7 @@ git "git://github.com/Sutto/validation_reflection.git"
 git "git://github.com/peterpunk/formtastic.git"
 git "git://github.com/Sutto/friendly_id.git"
 git "git://github.com/Sutto/forgery.git"
-git "git://github.com/Sutto/jammit.git"
+git "git://github.com/railsjedi/jammit.git"
 
 gem "rails", "= 3.0.0.beta2"
 gem "rails3-generators"
