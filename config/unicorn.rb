@@ -2,7 +2,9 @@ require 'pathname'
 # cd /var/apps/bighelpmob && unicorn_rails -c /var/apps/bighelpmob/config/unicorn.rb -E production -D
  
 rails_env  = ENV['RAILS_ENV'] || 'production'
-rails_root = Pathname(__FILE__).dirname.dirname
+rails_root = Pathname(__FILE__).expand_path.dirname.dirname
+
+puts "Rails Root: #{rails_root.inspect}"
  
 working_directory rails_root.to_s
 worker_processes  3 # Or however many
