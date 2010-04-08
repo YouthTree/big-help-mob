@@ -10,7 +10,9 @@ class MailingLists
   end
   
   def initialize(user)
+    logger.info "Changes (initialize, A): #{defined?(@changes)} - #{@changes.inspect}"
     super()
+    logger.info "Changes (initialize, B): #{defined?(@changes)} - #{@changes.inspect}"
     @user = user
   end
   
@@ -31,17 +33,24 @@ class MailingLists
   end
   
   def ids=(value)
+    logger.info "Changes (ids=, A): #{defined?(@changes)} - #{@changes.inspect}"
     normalized_values = normalize_ids(value)
     return if normalized_values == ids
+    logger.info "Changes (ids=, B): #{defined?(@changes)} - #{@changes.inspect}"
     # Otherwise, set the attributes 
     ids_will_change!
+    logger.info "Changes (ids=, C): #{defined?(@changes)} - #{@changes.inspect}"
     @names = nil
     @ids   = normalized_values
+    logger.info "Changes (ids=, D): #{defined?(@changes)} - #{@changes.inspect}"
   end
   
   def save
+    logger.info "Changes (save, A): #{defined?(@changes)} - #{@changes.inspect}"
     if valid?
+      logger.info "Changes (save, B): #{defined?(@changes)} - #{@changes.inspect}"
       @previously_changed = changes
+      logger.info "Changes (save, C): #{defined?(@changes)} - #{@changes.inspect}"
       update_email_address!  if @user.email_changed?
       persist_subscriptions! if ids_changed?
       @changed_attributes = nil
@@ -71,6 +80,10 @@ class MailingLists
   end
   
   protected
+  
+  def logger
+    Rails.logger
+  end
   
   def default_subscriptions
     []

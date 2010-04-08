@@ -11,7 +11,7 @@ module RpxNowHelper
       ActiveSupport::SafeBuffer.new.tap do |buffer|
         buffer << "You have "
         buffer << content_tag(:abbr, "external credentials", :title => tu('authentication.external_explanation'))
-        buffer << "stored for #{name}."
+        buffer << " stored for #{name}."
       end
     end
   end  
