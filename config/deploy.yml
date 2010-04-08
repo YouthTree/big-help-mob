@@ -1,4 +1,4 @@
 ---
 host: sutto.net
 user: bighelpmob
-app: /var/apps/bighelpmob
+app: /var/apps/bighelpmob-staging
