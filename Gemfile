@@ -65,6 +65,10 @@ gem "stringex"
 
 gem "uuid"
 
+group :production do
+  gem "unicorn", :require => nil
+end
+
 group :development do
   gem "mongrel",   :require => nil
   gem "yard",      :require => nil
