@@ -44,7 +44,7 @@ module EmbedHelper
     ga = options.delete(:ga)
     options.merge! options_to_ga_data(ga) if ga.present?
     args << options
-    link_to(*args, &blk)
+    super(*args, &blk)
   end
   
   def options_to_ga_data(opts = {})
