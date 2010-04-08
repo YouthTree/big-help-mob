@@ -10,9 +10,10 @@ class MailingLists
   end
   
   def initialize(user)
-    logger.info "Changes (initialize, A): #{defined?(@changes)} - #{@changes.inspect}"
+    logger.info "#{self.class.ancestors.inspect} - #{ActiveModel::VERSION::STRING}"
+    logger.info "Changes (initialize, A): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
     super()
-    logger.info "Changes (initialize, B): #{defined?(@changes)} - #{@changes.inspect}"
+    logger.info "Changes (initialize, B): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
     @user = user
   end
   
@@ -33,24 +34,24 @@ class MailingLists
   end
   
   def ids=(value)
-    logger.info "Changes (ids=, A): #{defined?(@changes)} - #{@changes.inspect}"
+    logger.info "Changes (ids=, A): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
     normalized_values = normalize_ids(value)
     return if normalized_values == ids
-    logger.info "Changes (ids=, B): #{defined?(@changes)} - #{@changes.inspect}"
+    logger.info "Changes (ids=, B): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
     # Otherwise, set the attributes 
     ids_will_change!
-    logger.info "Changes (ids=, C): #{defined?(@changes)} - #{@changes.inspect}"
+    logger.info "Changes (ids=, C): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
     @names = nil
     @ids   = normalized_values
-    logger.info "Changes (ids=, D): #{defined?(@changes)} - #{@changes.inspect}"
+    logger.info "Changes (ids=, D): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
   end
   
   def save
-    logger.info "Changes (save, A): #{defined?(@changes)} - #{@changes.inspect}"
+    logger.info "Changes (save, A): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
     if valid?
-      logger.info "Changes (save, B): #{defined?(@changes)} - #{@changes.inspect}"
+      logger.info "Changes (save, B): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
       @previously_changed = changes
-      logger.info "Changes (save, C): #{defined?(@changes)} - #{@changes.inspect}"
+      logger.info "Changes (save, C): #{defined?(@changed_attributes).inspect} - #{@changed_attributes.inspect}"
       update_email_address!  if @user.email_changed?
       persist_subscriptions! if ids_changed?
       @changed_attributes = nil
