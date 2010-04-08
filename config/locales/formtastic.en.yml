@@ -20,8 +20,8 @@ en:
         state_event: "Transition state to"
       captain_application:
         has_first_aid_cert: "I have a current First Aid Certificate"
-        reason_why: "In 100 words or less, why do you want to be a Big Help Mob Captain?"
-        offers: "In 100 words or less, what superpowers (as is real skills, attributes, passions etc) can you bring to Big Help Mob?"
+        reason_why: "Tell us a little about yourself. Why did Big Help Mob appeal to you?"
+        offers: "Can you tell us about your own superpowers (what you're into / good at etc)?"
       mission_question:
         raw_metadata: "Choices"
         viewable_by_role: "Viewable by"

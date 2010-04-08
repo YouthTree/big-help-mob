@@ -10,7 +10,7 @@ class CaptainApplication < ActiveRecord::Base
   validates_presence_of :user, :offers, :reason_why
   validates_inclusion_of :accepted, :has_first_aid_cert, :in => [true, false, nil]
   
-  validates_with WordCountValidator, :attributes => [:offers, :reason_why]
+  # validates_with WordCountValidator, :attributes => [:offers, :reason_why]
   
 end
 

@@ -67,4 +67,7 @@
       = render_address_fields uf, :mailing_address
   
   = form.buttons do
-    = form.commit_button "Update Participation Details"
+    - if form.object.still_preparing?
+      = form.commit_button "Join this mission"
+    - else
+      = form.commit_button "Update my details"

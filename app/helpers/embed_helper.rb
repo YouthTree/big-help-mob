@@ -37,7 +37,26 @@ module EmbedHelper
   
   def google_analytics_snippet_js(identifier)
     "try { var pageTracker = _gat._getTracker(#{identifier.to_json}); pageTracker._trackPageview(); } catch(e) {}"
-    
+  end
+  
+  def link_to(*args, &blk)
+    options = args.extract_options!
+    ga = options.delete(:ga)
+    options.merge! options_to_ga_data(ga) if ga.present?
+    args << options
+    link_to(*args, &blk)
+  end
+  
+  def options_to_ga_data(opts = {})
+    Hash.new.tap do |options|
+      opts.each_pair do |key, value|
+        options[:"data-analytics-#{key.to_s.gsub("_", "-")}"] = value
+      end
+    end
+  end
+  
+  def ga_link_to(text, url, ga = {})
+    link_to text, url, :ga => ga
   end
   
 end

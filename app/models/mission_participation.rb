@@ -99,8 +99,9 @@ class MissionParticipation < ActiveRecord::Base
     answers.attributes = value
   end
   
+  # Don't approve before the first save.
   def auto_approve
-    if created? || awaiting_approval?
+    if !new_record? && (created? || awaiting_approval?)
       approve false
       @recently_joined = true
     end

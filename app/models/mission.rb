@@ -35,8 +35,8 @@ class Mission < ActiveRecord::Base
   accepts_nested_attributes_for :questions,       :reject_if => proc { |a| a.values.all? { |v| v.blank? || %w(all 0).include?(v.to_s) } }, :allow_destroy => true
   accepts_nested_attributes_for :mission_pickups, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
 
-  scope :optimize_viewable, includes(:address => nil, :pickups => :address, :questions => nil)
-
+  scope :optimize_viewable, includes(:address => nil, :mission_pickups => {:pickup => :address}, :questions => nil)
+  
   state_machine :initial => :created do
     state :created
     state :preparing

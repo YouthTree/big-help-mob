@@ -9,8 +9,8 @@
       Not sure exactly what we're asking about / why we're asking this questions?
       == We suggest #{link_to 'rereading', [:join, @mission]} the role description.
   
-  = form.input :reason_why, :input_html => {:rows => 5}
+  = form.input :reason_why, :input_html => {:rows => 5}, :hint => "You don't have to write an essay."
   
-  = form.input :offers, :input_html => {:rows => 5}
+  = form.input :offers, :input_html => {:rows => 5}, :hint => "We appreciate that you have other missions in your life. You can write as much or as little as you want."
   
   = form.input :has_first_aid_cert, :hint => "If you have one, bring it to \"...THE TEST\". If you don't, don't panic - It's not a requirement."

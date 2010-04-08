@@ -51,7 +51,7 @@
       %p.address-parts= @mission.address.to_s("<br />").html_safe
   #mission-pickups-map.column
     %h3 Where can I get picked up?
-    #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 456, :height => 342
+    #pickups-map.static-google-map= static_map_of_addresses @mission.mission_pickups.map { |mp| mp.pickup.address }, :width => 456, :height => 342
     %h4 Pickups available from:
     %ol#pickups-listing
       - @mission.mission_pickups.each do |mp|
@@ -59,7 +59,6 @@
           %abbr{:title => mp.pickup.address.to_s, :class => "pickup-title"}= mp.pickup.name
           at
           %span.pickup-time= l mp.pickup_at, :format => :pickup_time
-
 - if logged_in?
   = render :partial => 'mission_actions'
   

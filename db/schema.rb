@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100404164907) do
+ActiveRecord::Schema.define(:version => 20100408185451) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -233,9 +233,11 @@ ActiveRecord::Schema.define(:version => 20100404164907) do
     t.string   "perishable_token",                                  :default => "", :null => false
     t.decimal  "postcode_lat",      :precision => 15, :scale => 10
     t.decimal  "postcode_lng",      :precision => 15, :scale => 10
+    t.string   "cached_slug"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
+  add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug"
   add_index "users", ["current_role_id"], :name => "index_users_on_current_role_id"
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
