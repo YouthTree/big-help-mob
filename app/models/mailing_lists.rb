@@ -1,14 +1,17 @@
 class MailingLists
   extend  ActiveModel::Naming
   include ActiveModel::Validations
+  include ActiveModel::Dirty
+  
+  define_attribute_methods [:ids]
   
   def self.i18n_scope
     :mailing_lists
   end
   
   def initialize(user)
+    super()
     @user = user
-    @old_ids = nil
   end
   
   def names
@@ -22,7 +25,7 @@ class MailingLists
       elsif @user.new_record?
         default_subscriptions
       else
-        @old_ids = read_stored_ids
+        read_stored_ids
       end
     end
   end
@@ -30,17 +33,18 @@ class MailingLists
   def ids=(value)
     normalized_values = normalize_ids(value)
     return if normalized_values == ids
-    @names   = nil
-    @old_ids = ids
-    @ids     = normalized_values
+    # Otherwise, set the attributes 
+    ids_will_change!
+    @names = nil
+    @ids   = normalized_values
   end
   
   def save
     if valid?
+      @previously_changed = changes
       update_email_address!  if @user.email_changed?
-      persist_subscriptions! if @ids != @old_ids
-      @old_ids = nil
-      @ids     = nil
+      persist_subscriptions! if ids_changed?
+      @changed_attributes = nil
       true
     end
   end
