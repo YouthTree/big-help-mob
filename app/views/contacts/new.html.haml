@@ -1,13 +1,13 @@
-- semantic_form_for @contact, :url => contact_us_path do |f|
+= semantic_form_for @contact, :url => contact_us_path do |f|
 
-  - f.inputs :name => "Your Contact Details" do
+  = f.inputs :name => "Your Contact Details" do
     = f.input :name
     = f.input :nickname
     = f.input :email
   
-  - f.inputs :name => "Your Message" do
+  = f.inputs :name => "Your Message" do
     = f.input :message, :input_html => {:rows => 8}, :as => :text
     
-  - f.buttons do
+  = f.buttons do
     = f.commit_button "Contact Us"
   

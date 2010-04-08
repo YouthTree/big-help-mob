@@ -1,1 +1,1 @@
-ActionController::Base.cookie_verifier_secret = Settings.cookie_verifier_secret
+Rails.application.config.cookie_secret = Settings.cookie_verifier_secret

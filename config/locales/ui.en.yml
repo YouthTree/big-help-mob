@@ -6,6 +6,8 @@ en:
     authentication:
       internal: 'Big Help Mob Account'
       external: 'Facebook, Google, Live, Yahoo or Twitter Account'
+      no_external: "You have no stored external accounts."
+      external_explanation: "External credentials let you login using an external count (e.g. twitter / facebook)"
     state_events:
       mission:
         prepare: "Show mission to users / let people signup"

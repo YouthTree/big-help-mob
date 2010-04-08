@@ -13,11 +13,11 @@
     %dd.choice= link_to tu('authentication.internal'), sign_in_path(:traditional => true), :id => 'traditional-authentication-link'
   
 #authentication-with-standard-account{:style => ("display: none;" if on_new_page)}
-  - semantic_form_for @user_session do |form|
+  = semantic_form_for @user_session, :url => :sign_in do |form|
   
-    - form.inputs :name => "Your Account Details" do
+    = form.inputs :name => "Your Account Details" do
       = form.input :login
-      = form.input :password, :hint => "Forgotten your password? #{link_to 'Click here', :new_password_reset} to reset it."
+      = form.input :password, :hint => "Forgotten your password? #{link_to 'Click here', :new_password_reset} to reset it.".html_safe
   
-    - form.buttons do
-      = form.commit_button "Sign in", :cancel => {:url => :sign_in, :text => "Change Account Type", :id => "auth-selector-link"}
+    = form.buttons do
+      = form.commit_button_with_cancel "Sign in", :cancel => {:url => :sign_in, :text => "Change Account Type", :id => "auth-selector-link"}

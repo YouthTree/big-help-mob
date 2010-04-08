@@ -58,6 +58,12 @@ module Authlogic
         def to_model
           self
         end
+        
+        # For rails >= 3.0.0-beta2
+        def to_key
+          new_session? ? nil : [id]
+        end
+
       end
     end
   end

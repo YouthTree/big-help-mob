@@ -1,7 +1,7 @@
-- semantic_form_for @password_reset do |form|
+= semantic_form_for @password_reset do |form|
   
-  - form.inputs :name => "Account Details" do
+  = form.inputs :name => "Account Details" do
     = form.input :email
   
-  - form.buttons do
+  = form.buttons do
     = form.commit_button "Request a Password Reset"

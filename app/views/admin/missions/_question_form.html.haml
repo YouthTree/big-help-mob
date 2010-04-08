@@ -1,4 +1,4 @@
-- question_form.inputs :name => "Question Details", :class => 'question-input inputs' do
+= question_form.inputs :name => "Question Details", :class => 'question-input inputs' do
   %li
     %p.inline-hints= link_to((question_form.object.new_record? ? "Don't add this question" : 'Remove this question'), '#', :class => 'remove-question-link')
     = question_form.hidden_field :_destroy, :default => 0

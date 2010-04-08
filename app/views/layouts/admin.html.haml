@@ -4,12 +4,12 @@
     %title Big Help Mob - Admin Area
     
     / Stylesheets
-    = raw include_stylesheets(:admin, :media => 'screen, projection')
+    = include_stylesheets(:admin, :media => 'screen, projection')
     
     / Javascripts
     /[if IE]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    = raw include_javascripts(:admin)
+    = include_javascripts(:admin)
     = csrf_meta_tag
     = yield :extra_head
     
@@ -21,7 +21,7 @@
       %section#content-container
         %section#content= yield
         %section#sidebar
-          - sidebar_content = yield :sidebar
+          - sidebar_content = content_for(:sidebar)
           = sidebar_content.present? ? sidebar_content : render(:partial => 'admin/shared/sidebar')
     
       %footer

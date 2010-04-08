@@ -1,3 +1,1 @@
-Slug.class_eval do
-  attr_accessible :all
-end
+Slug.attr_accessible :all

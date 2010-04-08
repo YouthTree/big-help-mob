@@ -10,5 +10,9 @@ class ContactForm < MailForm::Base
            :from    => "#{name} <#{email}>",
            :to      => Settings.mailer.contact_email
   end
+  
+  def persisted?
+    false
+  end
 
 end

@@ -1,4 +1,4 @@
-class HominidObserver < ActiveRecord::Observer
+class MailingListObserver < ActiveRecord::Observer
   
   observe :user
   

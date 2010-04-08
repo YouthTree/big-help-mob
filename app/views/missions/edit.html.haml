@@ -1,4 +1,4 @@
-- semantic_form_for @participation, :url => @mission, :method => :put do |form|
+= semantic_form_for @participation, :url => @mission, :method => :put do |form|
   
   %p.actions
     - ar = @participation.alternate_role
@@ -24,14 +24,14 @@
             %li= error
 
   - if @participation.answers.needed?
-    - form.inputs :name => "General Questions" do
+    = form.inputs :name => "General Questions" do
       - form.fields_for :answers, @participation.answers do |af|
         - af.object.each_viewable_question do |question, name|
           = af.input name, question.to_formtastic_options(@participation.answers)
         
   
   - form.fields_for :user do |uf|
-    - form.inputs :name => "Your General Profile" do
+    = form.inputs :name => "Your General Profile" do
       = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."      
       = uf.input :phone, :required => true, :hint => "We respect your privacy - this number will only be shared with the Big Help Mob team on missions for planning / safety reasons."
 
@@ -41,7 +41,7 @@
         = render :partial => 'captain_application_form', :locals => {:form => caf, :user => uf.object}
   
   - if @participation.sidekick?
-    - form.inputs :name => "Where do you wish to be picked up from?" do
+    = form.inputs :name => "Where do you wish to be picked up from?" do
       %li
         #pickups-map.static-google-map= static_map_of_addresses @mission.pickups.map(&:address), :width => 600, :height => 300
         - use_gmaps_js
@@ -53,10 +53,10 @@
               = @participation.pickup.pickup.to_s
             - else
               Pickup address not yet chosen.
-      = form.input :pickup, :collection => @mission.mission_pickups, :as => :pickups
+      = form.input :pickup_id, :collection => @mission.mission_pickups, :as => :pickups
     
       
-  - form.inputs :name => "Your Mailing Address" do
+  = form.inputs :name => "Your Mailing Address" do
     %li
       %p.inline-hints.full-width
         We need a mailing address so we can mail you out your top-secret mission documents
@@ -66,5 +66,5 @@
     - form.fields_for :user do |uf|
       = render_address_fields uf, :mailing_address
   
-  - form.buttons do
+  = form.buttons do
     = form.commit_button "Update Participation Details"

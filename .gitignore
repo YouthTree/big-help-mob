@@ -4,3 +4,6 @@ log/*.log
 tmp/**/*
 config/settings.yml
 .bundle-cache
+doc/app
+.yardoc
+.sass-cache

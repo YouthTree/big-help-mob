@@ -10,6 +10,7 @@ class MailingLists
   end
   
   def initialize(user)
+    super()
     @user = user
   end
   

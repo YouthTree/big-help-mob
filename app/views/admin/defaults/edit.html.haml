@@ -1,6 +1,6 @@
 %h2.title== Editing #{current_resource_name}
 
-- semantic_form_for resource, :url => resource_url, :method => :put do |form|
+= semantic_form_for resource, :url => resource_url, :method => :put do |form|
   = render :partial => 'form', :object => form
-  - form.buttons do
+  = form.buttons do
     = form.commit_button
