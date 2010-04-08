@@ -2,9 +2,27 @@ require 'net/http'
 
 namespace :deploy do
   
-  
-  def deploy_config(key)
+  def deploy_config(key = :nothing)
     (@deploy_config ||= YAML.load_file("config/deploy.yml").symbolize_keys)[key.to_sym]
+  end
+  
+  def deploy_path
+    deploy_config(:app).to_s
+  end
+  
+  def disable_staging!
+    deploy_config
+    @deploy_config[:app] = deploy_path.gsub(/\-staging/, '')
+  end
+  
+  def enable_staging!
+    deploy_config
+    # Remove and readd the suffix.
+    @deploy_config[:app] = "#{deploy_path.gsub(/\-staging/, '')}-staging"
+  end
+  
+  def staging?
+    deploy_path =~ /\-staging/
   end
   
   def execute_remote_command!(c)
@@ -23,7 +41,7 @@ namespace :deploy do
   end
   
   def get_error_page!(code, name)
-    new_page = Net::HTTP.get(URI.parse("http://bighelpmob.org/errors/#{name}"))
+    new_page = Net::HTTP.get(URI.parse("http://#{staging? ? "staging." : ""}bighelpmob.org/errors/#{name}"))
     new_page.gsub!(/<!-- bhm-request-uuid: \S+ -->/, '')
     File.open("public/#{code}.html", "w+") { |f| f.write new_page }
   rescue => e
@@ -81,6 +99,16 @@ namespace :deploy do
     execute_remote_command! "cd #{deploy_config(:app)} && #{env_command} && #{rake_command} #{rake_env}"
   end
   
+  task :staging do
+    puts "Changing to use staging"
+    enable_staging!
+  end
+  
+  task :production do
+    puts "Changing to use production"
+    disable_staging!
+  end
+  
   desc "Runs a local deploy"
   task :remote do
     # Do all setup etc
@@ -92,6 +120,7 @@ namespace :deploy do
   desc "Runs a remote deploy"
   task :local do
     Rake::Task["deploy:local_before"].invoke
+    puts "Deploying app to #{staging? ? "staging" : "production"}"
     git_command     = "git reset --hard HEAD && git checkout . && git pull"
     env_command     = "export PATH=\"/opt/ruby-ee/current/bin:$PATH\""
     bundler_command = "bundle install .bundle-cache"
@@ -111,4 +140,6 @@ namespace :deploy do
   
 end
 
-task :deploy => "deploy:local"
+task :deploy     => "deploy:local"
+task :staging    => "deploy:staging"
+task :production => "deploy:production"

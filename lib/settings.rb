@@ -75,7 +75,7 @@ class Settings
     end
     
     def ssl?
-      Settings.force_ssl? || Rails.env.production?
+      !Settings.disable_ssl? && (Settings.force_ssl? || Rails.env.production?)
     end
     
     def ssl_protocol
