@@ -4,6 +4,10 @@ module ApplicationHelper
     "#{Settings.ssl_protocol}://#{url.to_s.gsub(/^\w+\:\/\//, "")}"
   end
   
+  def ssl_opts(opts = {})
+    opts.merge(:protocol => Settings.ssl_protocol)
+  end
+  
   def tu(name, options = {})
     scope = [:ui, options.delete(:scope)].compact.join(".").to_sym
     I18n.t(name, options.merge(:scope => scope))
@@ -19,18 +23,6 @@ module ApplicationHelper
       content << content_tag(:p, value, :class => "flash #{key} #{"first" if first} #{"last" if last}".strip)
     end
     content_tag(:section, content.sum(ActiveSupport::SafeBuffer.new), :id => "flash-messages").html_safe
-  end
-  
-  def has_jammit_js(*args)
-    content_for(:extra_head, include_javascripts(*args))
-  end
-  
-  def has_jammit_css(*args)
-    content_for(:extra_head, include_stylesheets(*args))
-  end
-  
-  def has_js(*args)
-    content_for(:extra_head, javascript_include_tag(*args))
   end
   
   def pickup_data_options(pickup, selected = false)
@@ -64,7 +56,6 @@ module ApplicationHelper
     link_to image_tag("sponsors/#{name.underscore.gsub(/[\ \_]+/, "-")}-logo.jpg"), url, :title => name, :class => 'sponsor'
   end
   
-  
   def render_address_fields(f, name = :address, options = {})
     o = f.object
     o.send(:"build_#{name}") if o.send(name).blank?
@@ -73,29 +64,6 @@ module ApplicationHelper
         html << render(:partial => 'shared/address_fields', :locals => {:form => af, :options => options})
       end
     end
-  end
-  
-  def ssl_opts(opts = {})
-    opts.merge(:protocol => Settings.ssl_protocol)
-  end
-  
-  def google_analytics
-    if Settings.google_analytics.identifier?
-      inner = javascript_include_tag("#{request.ssl? ? "https://ssl" : "http://www"}.google-analytics.com/ga.js")
-      inner << javascript_tag(google_analytics_snippet_js(Settings.google_analytics.identifier))
-    end
-  end
-  
-  def google_analytics_snippet_js(identifier)
-    "try { var pageTracker = _gat._getTracker(#{identifier.to_json}); pageTracker._trackPageview(); } catch(e) {}"
-  end
-  
-  def current_request_uuid
-    request.env['rack.log-marker.uuid']
-  end
-  
-  def uuid_marker_comment
-    "<!-- bhm-request-uuid: #{current_request_uuid} -->".html_safe if current_request_uuid.present?
   end
   
   protected
