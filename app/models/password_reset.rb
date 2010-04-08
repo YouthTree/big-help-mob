@@ -28,7 +28,7 @@ class PasswordReset
   end
   
   def update(attributes = {})
-    @real_validation = true8
+    @real_validation = true
     return false if new_record?
     self.attributes = attributes if attributes.present?
     if password.present? && @user.update_attributes(:password => password, :password_confirmation => password_confirmation)
