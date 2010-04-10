@@ -41,6 +41,7 @@ namespace :deploy do
   end
   
   def get_error_page!(code, name)
+    puts "URL: #{"http://#{staging? ? "staging." : ""}bighelpmob.org/errors/#{name}"}"
     new_page = Net::HTTP.get(URI.parse("http://#{staging? ? "staging." : ""}bighelpmob.org/errors/#{name}"))
     new_page.gsub!(/<!-- bhm-request-uuid: \S+ -->/, '')
     File.open("public/#{code}.html", "w+") { |f| f.write new_page }
