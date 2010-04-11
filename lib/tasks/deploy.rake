@@ -80,8 +80,8 @@ namespace :deploy do
       puts "Can't import for anything other than mysql"
       exit!
     end
-    Rake::Task["local_dump"].invoke
-    execute_local_command! "mysql #{cdc.database} -u#{cdc.username} -p#{cdc.password} < tmp.sql"
+    Rake::Task["deploy:local_dump"].invoke
+    execute_local_command! "mysql #{cdc.database} -u#{cdc.username} -p#{cdc.password} < tmp/bhm.sql"
     execute_local_command! "rm -rf tmp/bhm.sql"
     # Update emails
     count = 0

@@ -7,3 +7,5 @@ config/settings.yml
 doc/app
 .yardoc
 .sass-cache
+tmp/restart.txt
+tmp/*.sql
