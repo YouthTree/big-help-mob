@@ -711,13 +711,12 @@ section#sidebar h2 {
   margin: 0;
   padding: 5px 10px;
   clear: left;
-  width: 24%;
   float: left;
   border-top: 0.1em solid #999;
   width: 150px;
   text-align: right;
 }
-/* line 59, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 58, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content dl dd {
   border-top: 0.1em solid #999;
   width: 550px;
@@ -725,25 +724,35 @@ section#sidebar h2 {
   padding: 5px 10px;
   float: left;
 }
-/* line 66, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 65, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content dl dd ol, #content dl dd ul {
   margin: 0;
 }
-/* line 68, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 67, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content dl dd ol li, #content dl dd ul li {
   list-style-position: inside;
   margin: 0;
   padding: 0;
 }
-/* line 72, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 71, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content dl dd ol li.empty, #content dl dd ul li.empty {
   list-style: none;
   margin: 0;
   color: #666;
 }
-/* line 76, ../../app/stylesheets/bhm/admin/_listing.sass */
+/* line 75, ../../app/stylesheets/bhm/admin/_listing.sass */
 #content dl dd ol li {
   list-style-type: upper-alpha;
+}
+/* line 77, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl dt.question {
+  width: 300px;
+  font-size: 0.9em;
+}
+/* line 80, ../../app/stylesheets/bhm/admin/_listing.sass */
+#content dl dd.answer {
+  width: 400px;
+  font-size: 0.9em;
 }
 
 /* line 1, ../../app/stylesheets/bhm/admin/_footer.sass */
@@ -1009,7 +1018,7 @@ a:hover {
 /* line 21, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard .collection-columns .collection {
   float: left;
-  width: 360px;
+  width: 335px;
 }
 /* line 24, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard .collection-columns .collection h4 {
@@ -1022,4 +1031,44 @@ a:hover {
 /* line 28, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard .collection-columns .collection.right {
   margin-left: 10px;
+}
+/* line 30, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard table {
+  margin-bottom: 0;
+}
+/* line 32, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard table thead th, #mission-dashboard table thead td, #mission-dashboard table tbody th, #mission-dashboard table tbody td {
+  font-size: 0.9em !important;
+}
+/* line 34, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard table thead td.actions ul li, #mission-dashboard table tbody td.actions ul li {
+  font-size: 0.75em !important;
+  margin: 0 0.2em !important;
+}
+/* line 39, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #sidekick-pickups {
+  margin: -0.5em 0;
+}
+/* line 41, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #sidekick-pickups li {
+  list-style: none;
+  margin: 0.5em 0.5em;
+}
+/* line 44, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #sidekick-pickups li h4 {
+  margin: 0.5em 0 0;
+}
+/* line 46, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #sidekick-pickups li p.empty {
+  color: #777;
+}
+/* line 48, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #sidekick-pickups li ul {
+  margin: 0.5em 0 1em 0.5em;
+}
+/* line 50, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #sidekick-pickups li ul li {
+  line-height: 1.8em;
+  list-style: disc inside none;
+  margin: 0 0 0;
 }

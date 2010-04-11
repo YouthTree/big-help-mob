@@ -11,3 +11,23 @@
       = link_to resource.user, [:admin, resource.user]
   
   = r.attribute :role_name
+
+
+%h3 Survey Answers
+
+%dl
+  - resource.answers.each_question do |question, key|
+    %dt.question= question.name
+    %dd.answer=   resource.answers.read_attribute(key)
+    
+- if resource.captain? && resource.user.captain_application.present?
+  
+  %h3 User's Captain Application
+
+  = show_for resource.user.captain_application do |s|
+  
+    = s.attribute :reason_why
+
+    = s.attribute :offers
+
+    = s.attribute :has_first_aid_cert

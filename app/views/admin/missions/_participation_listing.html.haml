@@ -17,5 +17,9 @@
           %td= vwd r.role_name.to_s.humanize
         - if show_state
           %td= r.state.to_s.humanize
-        %td.actions= individual_resource_links r
+        %td.actions
+          %ul
+            = ml("View", [:admin, r.mission, r])
+            = ml("Edit", [:edit_admin, r.mission, r])
+            = ml("Remove", [:admin, r.mission, r], :method => :delete, :confirm => tu(:remove, :scope => :confirm, :object_name => "Participation"))
     = empty_row_for_collection column_count

@@ -1,3 +1,4 @@
+- has_jammit_js :mission_dashboard
 %h2.title Mission Dashboard
 
 #mission-dashboard
@@ -20,19 +21,37 @@
       %span.count= @statistics.count
       %span.description Total Participations
 
-  #approved-participations.collection-columns
-    %h3 Approved Participations
-
-    .collection.left
-      %h4 Captains
-      = participations_listing @statistics.approved_captains, :show_role => false, :show_state => false
-
-    .collection.right
-      %h4 Sidekicks
-      = participations_listing @statistics.approved_sidekicks, :show_role => false, :show_state => false
-
-  .collection
-    %h3 Pending Participations
-    = participations_listing @statistics.pending_participations
-    
   
+  #general-participations
+    %ul
+      = ml "Approved Participations", "#approved-participations"
+      = ml "Pending Participations",  "#pending-participations"
+      = ml "Sidekick Pickups",        "#sidekick-pickups"
+    
+    #approved-participations.collection-columns
+      .collection.left
+        %h4 Captains
+        = participations_listing @statistics.approved_captains, :show_role => false, :show_state => false
+
+      .collection.right
+        %h4 Sidekicks
+        = participations_listing @statistics.approved_sidekicks, :show_role => false, :show_state => false
+
+    #pending-participations.collection
+      = participations_listing @statistics.pending_participations
+      
+    #sidekick-pickups
+      #pickups-map
+      %ul#pickups
+        - @statistics.pickups.each_pair do |mp, participations|
+          %li
+            %h4
+              %span.pickup-name= mp.pickup.name
+              at
+              %span.pickup-at=l mp.pickup_at, :format => :pickup_time
+            - if participations.empty?
+              %p.empty This pickup currently has no sidekicks registered.
+            - else
+              %ul.participations
+                - participations.each do |participation|
+                  %li= link_to participation.user.to_s, [:admin, @mission, participation]

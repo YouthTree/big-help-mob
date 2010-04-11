@@ -44,4 +44,14 @@ class MissionStatistics
     ps.size
   end
   
+  def pickups
+    pickups = ActiveSupport::OrderedHash.new
+    grouped_sidekicks = approved_sidekicks.group_by { |p| p.pickup_id }
+    unordered = @mission.mission_pickups.all(:include => {:pickup => :address})
+    unordered.sort_by { |mp| mp.pickup_at }.each do |pickup|
+      pickups[pickup] = grouped_sidekicks[pickup.id] || []
+    end
+    pickups
+  end
+  
 end

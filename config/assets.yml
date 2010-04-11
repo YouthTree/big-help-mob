@@ -52,6 +52,9 @@ javascripts:
     - public/javascripts/bhm/admin/postcode_mapper.js
   share_this:
     - public/javascripts/bhm/share_this.js
+  mission_dashboard:
+    - public/javascripts/vendor/markerclusterer.js
+    - public/javascripts/bhm/admin/mission_dashboard.js
 stylesheets:
   base:
     - public/stylesheets/bhm.css
