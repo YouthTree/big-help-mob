@@ -8,8 +8,6 @@ class Address < ActiveRecord::Base
   
   apply_addresslogic :fields => [:street1, :street2, :city, [:state, :postcode], :country_name]
   
-  acts_as_mappable :default_units => :kms
-  
   before_save :geocode
 
   def geocode

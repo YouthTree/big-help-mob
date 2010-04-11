@@ -1,21 +1,13 @@
 User.blueprint do
-  login "MyString"
-  crypted_password "MyString"
-  password_salt "MyString"
-  persistence_token "MyString"
-  email "MyString"
-  login_count 1
-  last_request_at "2010-03-02 20:51:34"
-  last_login_at "2010-03-02 20:51:34"
-  current_login_at "2010-03-02 20:51:34"
-  last_login_ip "MyString"
-  current_login_ip "MyString"
-  display_name "MyString"
-  admin false
-  first_name "MyString"
-  last_name "MyString"
-  date_of_birth "2010-03-02"
-  phone "MyString"
-  postcode 1
-  allergies "MyText"
+  login                 { Forgery(:internet).user_name }
+  email                 { Forgery(:internet).email_address }
+  first_name            { Forgery(:name).last_name }
+  last_name             { Forgery(:name).first_name }
+  display_name          { "#{first_name} #{last_name}".strip }
+  date_of_birth         { 15.years.ago.to_date - rand(10 * 365)}
+  phone                 { ["####-###-###", "##-####-####", "##########", "#### ####"].rand.to_numbers }
+  postcode              { rand(1000) + 6000 }
+  password              { Forgery(:lorem_ipsum).words(2 + rand(4), :random => true) }
+  password_confirmation { password }
+  admin         false
 end

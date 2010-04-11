@@ -8,7 +8,6 @@ git "git://github.com/Sutto/exception_notification.git"
 git "git://github.com/Sutto/validation_reflection.git"
 git "git://github.com/peterpunk/formtastic.git"
 git "git://github.com/Sutto/friendly_id.git"
-git "git://github.com/Sutto/forgery.git"
 git "git://github.com/railsjedi/jammit.git"
 
 gem "rails", "= 3.0.0.beta2"
@@ -17,7 +16,7 @@ gem "rails3-generators"
 # Misc
 gem "haml"
 gem "mysql"
-gem "forgery"
+gem "forgery", ">= 0.3.4"
 
 # mailing list
 gem "hominid"
@@ -78,5 +77,5 @@ end
 group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil
-  gem "shoulda",  :require => nil
+  gem "shoulda",  ">= 3.0.pre", :require => nil
 end
