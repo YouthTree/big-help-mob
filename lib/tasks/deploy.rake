@@ -2,6 +2,10 @@ require 'net/http'
 
 namespace :deploy do
   
+  def current_db_config
+    OpenStruct.new(ActiveRecord::Base.configurations[Rails.env])
+  end
+  
   def deploy_config(key = :nothing)
     (@deploy_config ||= YAML.load_file("config/deploy.yml").symbolize_keys)[key.to_sym]
   end
@@ -50,6 +54,39 @@ namespace :deploy do
   end
   
   # Hooks as needed
+  
+  task :remote_dump => :environment do
+    cdc = current_db_config
+    if cdc.adapter != "mysql"
+      puts "Can't dump for anything other than mysql"
+      exit!
+    end
+    execute_local_command! "mysqldump #{cdc.database} -u#{cdc.username} -p#{cdc.password} > ~/bhm.sql"
+  end
+  
+  task :local_dump do
+    env_command  = "export PATH=\"/opt/ruby-ee/current/bin:$PATH\" RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
+    rake_command = "bundle exec rake deploy:remote_dump"
+    execute_local_command!  "mkdir -p tmp"
+    execute_remote_command! "cd #{deploy_config(:app)} && #{env_command} && #{rake_command}"
+    execute_local_command!  "rm -rf tmp/bhm.sql"
+    execute_local_command!  "scp #{deploy_config(:user)}@#{deploy_config(:host)}:~/bhm.sql tmp/bhm.sql"
+  end
+  
+  desc "Clones the remote DB locally"
+  task :import => :environment do
+    cdc = current_db_config
+    if cdc.adapter != "mysql"
+      puts "Can't import for anything other than mysql"
+      exit!
+    end
+    Rake::Task["local_dump"].invoke
+    execute_local_command! "mysql #{cdc.database} -u#{cdc.username} -p#{cdc.password} < tmp.sql"
+    execute_local_command! "rm -rf tmp/bhm.sql"
+    # Update emails
+    count = 0
+    User.find_each { |user| user.update_attribute :email, "example-#{count += 1}@example.com" }
+  end
   
   task :remote_before do
     execute_local_command! "rm -rf config/database.yml"
