@@ -965,3 +965,61 @@ a:hover {
   color: #222;
   font-weight: bold;
 }
+
+/* line 3, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #mission-statistics {
+  overflow: hidden;
+  display: inline-block;
+  padding: 0.5em 0 2em;
+}
+/* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#mission-dashboard #mission-statistics {
+  display: block;
+}
+/* line 6, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #mission-statistics .mission-statistic {
+  text-align: center;
+  float: left;
+  width: 185px;
+}
+/* line 10, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #mission-statistics .mission-statistic span.count, #mission-dashboard #mission-statistics .mission-statistic span.description {
+  display: block;
+}
+/* line 12, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #mission-statistics .mission-statistic span.count {
+  font-weight: bold;
+  color: black;
+  font-size: 3em;
+}
+/* line 16, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #mission-statistics .mission-statistic span.description {
+  color: #555;
+  font-size: 1.25em;
+}
+/* line 19, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard .collection-columns {
+  overflow: hidden;
+  display: inline-block;
+}
+/* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#mission-dashboard .collection-columns {
+  display: block;
+}
+/* line 21, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard .collection-columns .collection {
+  float: left;
+  width: 360px;
+}
+/* line 24, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard .collection-columns .collection h4 {
+  margin-bottom: 0;
+}
+/* line 26, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard .collection-columns .collection.left {
+  margin-right: 10px;
+}
+/* line 28, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard .collection-columns .collection.right {
+  margin-left: 10px;
+}

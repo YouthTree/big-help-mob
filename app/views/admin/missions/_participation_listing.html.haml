@@ -1,0 +1,21 @@
+%table
+  %thead
+    %tr
+      - if show_name
+        %th User
+      - if show_role
+        %th Role
+      - if show_state
+        %th Participation State
+      %th &nbsp;
+  %tbody
+    - participations.each do |r|
+      %tr{:class => cycle('odd', 'even')}
+        - if show_name
+          %td= link_to r.user, [:admin, r.user]
+        - if show_role
+          %td= vwd r.role_name.to_s.humanize
+        - if show_state
+          %td= r.state.to_s.humanize
+        %td.actions= individual_resource_links r
+    = empty_row_for_collection column_count

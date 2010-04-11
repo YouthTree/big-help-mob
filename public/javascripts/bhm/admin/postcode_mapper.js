@@ -19,7 +19,7 @@ BHM.withNS('Admin.PostcodeMapper', function(ns) {
       this.lat      = lat;
       this.lng      = lng;
       this.count    = count;
-      this.title    = "Postcode " + postcode +  " has " + this.count + " member(s).";
+      this.title    = "Postcodes: " + postcode;
     };
     
     this.toLatLng = function() {
@@ -63,10 +63,13 @@ BHM.withNS('Admin.PostcodeMapper', function(ns) {
     var currentMap = this.getMap();
     if(!this.bounds) this.bounds = new google.maps.LatLngBounds();
     var b = this.bounds;
+    var markers = [];
     $.each(postcodes, function() {
-      this.toMarker(currentMap)
+      for(var i = 0; i < this.count; i++)
+        markers.push(this.toMarker(currentMap));
       b.extend(this.toLatLng());
     });
+    var cluster = new MarkerClusterer(currentMap, markers);
     currentMap.setCenter(b.getCenter());
     currentMap.panToBounds(b);
     currentMap.fitBounds(b);
