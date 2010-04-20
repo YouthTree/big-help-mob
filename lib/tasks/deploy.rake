@@ -3,7 +3,7 @@ require 'net/http'
 namespace :deploy do
   
   def env_for_remote_command
-    "export PATH=\"/opt/ruby-ee/current/bin:$PATH\" RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
+    "cd #{deploy_config(:app)} && export PATH=\"/opt/ruby-ee/current/bin:$PATH\" RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
   end
   
   def current_db_config
@@ -60,7 +60,7 @@ namespace :deploy do
   # Hooks as needed
   
   task :sitemap do
-    execute_local_command! "#{env_for_remote_command} && bundle exec rake sitemap:refresh"
+    execute_remote_command! "#{env_for_remote_command} && bundle exec rake sitemap:refresh"
   end
   
   task :remote_dump => :environment do
@@ -75,7 +75,7 @@ namespace :deploy do
   task :local_dump do
     rake_command = "bundle exec rake deploy:remote_dump"
     execute_local_command!  "mkdir -p tmp"
-    execute_remote_command! "cd #{deploy_config(:app)} && #{env_for_remote_command} && #{rake_command}"
+    execute_remote_command! "#{env_for_remote_command} && #{rake_command}"
     execute_local_command!  "rm -rf tmp/bhm.sql"
     execute_local_command!  "scp #{deploy_config(:user)}@#{deploy_config(:host)}:~/bhm.sql tmp/bhm.sql"
   end
@@ -137,10 +137,9 @@ namespace :deploy do
       puts "Please provide from and to"
       exit!
     end
-    env_command  = "export PATH=\"/opt/ruby-ee/current/bin:$PATH\""
     rake_env     = "RAILS_ENV=#{ENV['RAILS_ENV'] || 'production'} FROM=#{from} TO=#{to}"
     rake_command = "bundle exec rake debug:between"
-    execute_remote_command! "cd #{deploy_config(:app)} && #{env_command} && #{rake_command} #{rake_env}"
+    execute_remote_command! "#{env_for_remote_command} && #{rake_command} #{rake_env}"
   end
   
   task :staging do
@@ -170,7 +169,7 @@ namespace :deploy do
     rake_command    = "bundle exec rake deploy:remote"
     rake_command << " MIGRATE_ENV=true" if %w(true 1).include?(ENV['MIGRATE_ENV'].to_s.downcase)
     rake_command << " RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
-    execute_remote_command! "cd #{deploy_config(:app)} && #{env_for_remote_command} && #{git_command} && #{bundler_command} && #{rake_command}"
+    execute_remote_command! "#{env_for_remote_command} && #{git_command} && #{bundler_command} && #{rake_command}"
     Rake::Task["deploy:local_after"].invoke
   end
   
