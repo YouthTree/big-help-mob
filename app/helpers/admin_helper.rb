@@ -50,13 +50,19 @@ module AdminHelper
     sidebar_klass_name(parent_class).titleize
   end
   
-  def individual_resource_links(r, name = current_resource_name)
-    content_tag(:ul, [
+  def individual_resource_links(r, name = current_resource_name, opts = {}, &blk)
+    items = [
       ml("View", resource_url(r)),
       ml("Edit", edit_resource_url(r)),
       ml("Remove", resource_url(r), :method => :delete,
       :confirm => tu(:remove, :scope => :confirm, :object_name => name))
-    ].join.html_safe)
+    ]
+    if blk.present?
+      position = opts.fetch(:at, :before)
+      value = capture(&blk)
+      position == :before ? items.unshift(value) : items.push(value)
+    end
+    content_tag(:ul, items.join.html_safe)
   end
   
   def default_collection_columns

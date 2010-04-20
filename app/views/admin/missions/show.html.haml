@@ -4,6 +4,9 @@
 
   = r.attribute :id
   
+  = r.attribute :dashboard do
+    = link_to 'Click here to view', [:dashboard_admin, @mission]
+  
   = r.attribute :name
   
   = r.attribute :description do

@@ -19,7 +19,9 @@
         %td= r.state.to_s.humanize
         %td=vwd r.user.try(:to_s)
         %td= link_to r.organisation, [:admin, r.organisation]
-        %td.actions= individual_resource_links r
+        %td.actions
+          = individual_resource_links r do
+            = ml "Dashboard", [:dashboard_admin, r]
     = empty_row_for_collection 5
         
 = will_paginate collection

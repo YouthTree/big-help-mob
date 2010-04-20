@@ -53,7 +53,7 @@ class Address < ActiveRecord::Base
   end
   
   def for_user?
-    [addressable_id, addressable_type].all?(&:present?) && addressable_type == "User"
+    addressable.present? && addressable.is_a?(User)
   end
   
 end
