@@ -6,12 +6,11 @@ git "git://github.com/nono/acts_as_list.git",     :ref => "rails3"
 # General WIP Fixes.
 git "git://github.com/Sutto/exception_notification.git"
 git "git://github.com/Sutto/validation_reflection.git"
-git "git://github.com/peterpunk/formtastic.git"
+git "git://github.com/justinfrench/formtastic.git", :ref => "rails3"
 git "git://github.com/Sutto/friendly_id.git"
 git "git://github.com/railsjedi/jammit.git"
 
 gem "rails", "= 3.0.0.beta2"
-gem "rails3-generators"
 
 # Misc
 gem "haml"
@@ -64,6 +63,8 @@ gem "stringex"
 
 gem "uuid"
 
+gem "sitemap_generator"
+
 group :production do
   gem "unicorn", :require => nil
 end
@@ -72,6 +73,7 @@ group :development do
   gem "mongrel",   :require => nil
   gem "yard",      :require => nil
   gem "bluecloth", :require => nil
+  gem "rails3-generators"
 end
 
 group :test do

@@ -1,45 +1,44 @@
-!bhm_footer_nav_border ||= 0.1em "solid" !bhm_colour_footer_nav_border
+$bhm-footer-nav-border: 0.1em solid $bhm-colour-footer-nav-border !default
 
 footer
-  :text-align center
-  :margin 1em 0
+  text-align: center
+  margin: 1em 0
   p
-    :margin 0.25em 0
-    :padding 0
-    :font-size 1.1em
-    :color= !bhm_colour_footer_text
+    margin: 0.25em 0
+    padding: 0
+    font-size: 1.1em
+    color: $bhm-colour-footer-text
     a
       +bhm-link-base
   #sponsors
     span
-      :margin 0 0.5em 0 0
-      :vertical-align top
-      :line-height 45px
-      :font-weight bold
-      :color= !bhm_colour_footer_text
+      margin: 0 0.5em 0 0
+      vertical-align: top
+      line-height: 45px
+      font-weight: bold
+      color: $bhm-colour-footer-text
     .sponsor
-      :margin 0.5em
-  
+      margin: 0.5em
   nav
-    :text-align center
-    :padding 0.5em 0
-    :border-top= !bhm_footer_nav_border
-    :border-bottom= !bhm_footer_nav_border
-    :margin 1em 0
-    :width 100%
-    :display block
+    text-align: center
+    padding: 0.5em 0
+    border-top: $bhm-footer-nav-border
+    border-bottom: $bhm-footer-nav-border
+    margin: 1em 0
+    width: 100%
+    display: block
     ul
       +inline-list
       li a
-        :margin 0 1em
-        :font-weight bold
+        margin: 0 1em
+        font-weight: bold
         +bhm-link-base
   #social-media-hoohaa
     a.social-media-link
-      :padding 4px 0 4px 20px
-      :margin 0 0.25em
-      :background center left no-repeat
+      padding: 4px 0 4px 20px
+      margin: 0 0.25em
+      background: center left no-repeat
       &.facebook
-        :background-image url(/images/icons/facebook.png)
+        background-image: url(/images/icons/facebook.png)
       &.twitter
-        :background-image url(/images/icons/twitter.png)
+        background-image: url(/images/icons/twitter.png)

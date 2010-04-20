@@ -1,54 +1,88 @@
 // Background Colours
-!bhm_colour_page_background     ||= #006BB2
-!bhm_colour_error_background    ||= #FFF
-!bhm_colour_fieldset_background ||= #F9F9F9
-!bhm_colour_actions_background  ||= #FFEED3
-!bhm_colour_join_background     ||= #427547
-!bhm_colour_role_background     ||= #E3FFCD
+$bhm-colour-page-background: #006bb2 !default
+
+$bhm-colour-error-background: white !default
+
+$bhm-colour-fieldset-background: #f9f9f9 !default
+
+$bhm-colour-actions-background: #ffeed3 !default
+
+$bhm-colour-join-background: #427547 !default
+
+$bhm-colour-role-background: #e3ffcd !default
 
 // Border Colours
-!bhm_colour_maps_border         ||= #CFCFCF
-!bhm_colour_container_border    ||= darken(!bhm_colour_page_background, 50)
-!bhm_colour_error_border        ||= #99000B
-!bhm_colour_footer_nav_border   ||= #CCC
-!bhm_colour_fieldset_border     ||= #CCC
-!bhm_colour_admin_link_border   ||= !bhm_colour_container_border
+$bhm-colour-maps-border: #cfcfcf !default
+
+$bhm-colour-container-border: darken($bhm-colour-page-background, 50) !default
+
+$bhm-colour-error-border: #99000b !default
+
+$bhm-colour-footer-nav-border: #cccccc !default
+
+$bhm-colour-fieldset-border: #cccccc !default
+
+$bhm-colour-admin-link-border: $bhm-colour-container-border !default
 
 // Link Colours
-!bhm_colour_link_normal         ||= #324D99
-!bhm_colour_link_hover          ||= #99352E
-!bhm_colour_link_active         ||= #580A19
-!bhm_colour_link_visited        ||= #324D99
-!bhm_colour_link_header_normal  ||= #49433c
-!bhm_colour_link_header_hover   ||= #994E2C
-!bhm_colour_link_header_active  ||= #000
-!bhm_colour_link_header_visited ||= #444345
-!bhm_colour_link_normal_auth    ||= #477499
-!bhm_colour_link_rpx_auth       ||= #54996E
-!bhm_colour_link_join_mission   ||= #FFF
+$bhm-colour-link-normal: #324d99 !default
+
+$bhm-colour-link-hover: #99352e !default
+
+$bhm-colour-link-active: #580a19 !default
+
+$bhm-colour-link-visited: #324d99 !default
+
+$bhm-colour-link-header-normal: #49433c !default
+
+$bhm-colour-link-header-hover: #994e2c !default
+
+$bhm-colour-link-header-active: black !default
+
+$bhm-colour-link-header-visited: #444345 !default
+
+$bhm-colour-link-normal-auth: #477499 !default
+
+$bhm-colour-link-rpx-auth: #54996e !default
+
+$bhm-colour-link-join-mission: white !default
 
 // FAQ Colours
-!bhm_colour_faq_question        ||= #000
-!bhm_colour_faq_answer          ||= #333
+$bhm-colour-faq-question: black !default
+
+$bhm-colour-faq-answer: #333333 !default
 
 // General Content Colours
-!bhm_colour_header_text         ||= #333
-!bhm_colour_error_text          ||= #000
-!bhm_colour_footer_text         ||= #333
-!bhm_colour_fieldset_legend     ||= #111
-!bhm_colour_form_label          ||= #222
-!bhm_colour_form_label_nested   ||= #333
-!bhm_colour_profile_notice      ||= #E3FFCD
+$bhm-colour-header-text: #333333 !default
+
+$bhm-colour-error-text: black !default
+
+$bhm-colour-footer-text: #333333 !default
+
+$bhm-colour-fieldset-legend: #111111 !default
+
+$bhm-colour-form-label: #222222 !default
+
+$bhm-colour-form-label-nested: #333333 !default
+
+$bhm-colour-profile-notice: #e3ffcd !default
 
 // Misc
-!bhm_colour_default_shadow      ||= #333
-!bhm_colour_flash_shadow        ||= #777
-!bhm_colour_form_submit         ||= #333
-!bhm_colour_form_cancel         ||= #6D2126
-!bhm_colour_list_or             ||= #767676
-!bhm_colour_join_invalid        ||= #FFD8CF
+$bhm-colour-default-shadow: #333333 !default
+
+$bhm-colour-flash-shadow: #777777 !default
+
+$bhm-colour-form-submit: #333333 !default
+
+$bhm-colour-form-cancel: #6d2126 !default
+
+$bhm-colour-list-or: #767676 !default
+
+$bhm-colour-join-invalid: #ffd8cf !default
 
 // Items on the welcome page
-!bhm_colour_mission_item        ||= !bhm_colour_join_background 
-!bhm_colour_profile_item        ||= !bhm_colour_link_normal_auth
-!bhm_colour_contact_item        ||= darken(!bhm_colour_actions_background, 50)
+$bhm-colour-mission-item: $bhm-colour-join-background !default
+
+$bhm-colour-profile-item: $bhm-colour-link-normal-auth !default
+
+$bhm-colour-contact-item: darken($bhm-colour-actions-background, 50) !default

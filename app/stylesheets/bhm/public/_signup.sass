@@ -1,26 +1,22 @@
 #authentication-choices
-  :text-align center
-  :font-size 1.2em
-  
+  text-align: center
+  font-size: 1.2em
   dt, dd
-    :margin 0
-    :padding 0
-    :line-height 1.8em
-    :font-size 1.25em
-    
+    margin: 0
+    padding: 0
+    line-height: 1.8em
+    font-size: 1.25em
   dt
-    :font-weight bold
-    :color #000
+    font-weight: bold
+    color: black
     +bauhaus-font-stack
-    
   dd.or
-    :color #666
-    :font-size 1em
-    
+    color: #666666
+    font-size: 1em
   dd.choice
     a
       +bhm-fixed-fb-structure
     a#traditional-authentication-link
-      +fancy-button-colors(!bhm_colour_link_normal_auth)
+      +fancy-button-colors($bhm-colour-link-normal-auth)
     a#rpxnow-authentication-link
-      +fancy-button-colors(!bhm_colour_link_rpx_auth)
+      +fancy-button-colors($bhm-colour-link-rpx-auth)

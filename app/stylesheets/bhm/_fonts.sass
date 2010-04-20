@@ -1,14 +1,16 @@
 @import compass/css3/font_face
 
-+font-face("Sniglet Regular", font_files("/fonts/Sniglet.ttf", "truetype"), "/fonts/Sniglet.eot", "Sniglet")
-+font-face("Museo Sans", font_files("/fonts/MuseoSans.woff", "woff", "/fonts/MuseoSans.ttf", "truetype"), "/fonts/MuseoSans.eot", "MuseoSans-500")
-+font-face("Bauhaus Std Demi", font_files("/fonts/BauhausStd-Demi.woff", "woff", "/fonts/BauhausStd-Demi.ttf", "truetype"), "/fonts/BauhausStd-Demi.eot", "BauhausStd-Demi")
++font-face(unquote("Sniglet Regular"), font-files(unquote("/fonts/Sniglet.ttf"), truetype), unquote("/fonts/Sniglet.eot"), Sniglet)
+
++font-face(unquote("Museo Sans"), font-files(unquote("/fonts/MuseoSans.woff"), woff, unquote("/fonts/MuseoSans.ttf"), truetype), unquote("/fonts/MuseoSans.eot"), MuseoSans-500)
+
++font-face(unquote("Bauhaus Std Demi"), font-files(unquote("/fonts/BauhausStd-Demi.woff"), woff, unquote("/fonts/BauhausStd-Demi.ttf"), truetype), unquote("/fonts/BauhausStd-Demi.eot"), BauhausStd-Demi)
 
 =museo-sans-font-stack
-  :font-family "Museo Sans", "Helvetica Neue", "Helvetica", "Verdana", "Arial"
-  
+  font-family: "Museo Sans", "Helvetica Neue", "Helvetica", "Verdana", "Arial"
+
 =sans-font-stack
-  :font-family "Helvetica Neue", "Helvetica", "Verdana", "Arial"
-  
+  font-family: "Helvetica Neue", "Helvetica", "Verdana", "Arial"
+
 =bauhaus-font-stack
-  :font-family "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial"
+  font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial"

@@ -3,10 +3,12 @@
 @import 960/grid
 @import 960/text
 
-!fb_image_path = "url(/images/button_bg.png)"
+$fb-image-path: unquote("url(/images/button_bg.png)")
+
 @import fancy_buttons
 
 +global-reset
+
 +text
 
 @import ./util

@@ -1,27 +1,26 @@
 =bhm-map-border
-  :border= 0.3em "solid" !bhm_colour_maps_border
-  
-=bhm-link-base(!hover_link = true)
-  +link-colors(!bhm_colour_link_normal, !bhm_colour_link_hover, !bhm_colour_link_active, !bhm_colour_link_visited)
-  @if !hover_link
+  border: 0.3em solid $bhm-colour-maps-border
+
+=bhm-link-base($hover-link: true)
+  +link-colors($bhm-colour-link-normal, $bhm-colour-link-hover, $bhm-colour-link-active, $bhm-colour-link-visited)
+  @if $hover-link
     +hover-link
   @else
     +unstyled-link
-  
-  
-=bhm-fixed-fb-structure(!size = 14px)
-  +fancy-button-structure(!size)
+
+=bhm-fixed-fb-structure($size: 14px)
+  +fancy-button-structure($size)
   +fix-fb-padding
-  
-=bhm-default-shadow(!size = 10px, !colour = !bhm_colour_default_shadow)
-  +box-shadow(!colour, 0, 0, !size)
-  
-=bhm-action-style(!background_color)
-  :text-align center
-  :font-size 1em
-  :padding 0.4em 0.3em 0.3em
+
+=bhm-default-shadow($size: 10px, $colour: $bhm-colour-default-shadow)
+  +box-shadow($colour, 0, 0, $size)
+
+=bhm-action-style($background-color)
+  text-align: center
+  font-size: 1em
+  padding: 0.4em 0.3em 0.3em
   +border-radius(0.75em)
-  :background= !background_color
-  :border= 1px "solid" darken(!background_color, 50)
-  :color= darken(!background_color, 75)
-  +linear-gradient(color_stops(lighten(!background_color, 5), darken(!background_color, 5)), "top")
+  background: $background-color
+  border: 1px solid darken($background-color, 50)
+  color: darken($background-color, 75)
+  +linear-gradient(color-stops(lighten($background-color, 5), darken($background-color, 5)), top)

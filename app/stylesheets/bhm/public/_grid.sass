@@ -1,7 +1,7 @@
-!ninesixty_columns = 24
+$ninesixty-columns: 24
+
 #container
   +grid-container
-
   footer, #content, #flash-messages
     +grid-unit-base
 
@@ -12,13 +12,13 @@ footer, #flash-messages
   +grid-width(22)
   +grid-suffix(1)
   +grid-prefix(1)
-  
-=left-column(!width)
-  +grid-width(!width)
+
+=left-column($width)
+  +grid-width($width)
   +alpha
 
-=right-column(!width)
-  +grid-width(!width)
+=right-column($width)
+  +grid-width($width)
   +omega
 
 #content
@@ -30,15 +30,13 @@ footer, #flash-messages
       +left-column(11)
     .column-right-50,  #intro-video, #mission-pickups-map
       +right-column(11)
-  
     #sidekick-selector, #captain-selector
-      :width 400px
+      width: 400px
     #captain-selector
-      :margin-left 20px
+      margin-left: 20px
     #sidekick-selector
-      :margin-right 20px
-  
+      margin-right: 20px
     .embedded-content
       p
-        :margin-left 0
-        :margin-right 0
+        margin-left: 0
+        margin-right: 0

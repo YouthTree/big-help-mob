@@ -1,90 +1,85 @@
-!bhm_border_admin_link ||= 0.2em "solid" !bhm_colour_admin_link_border
+$bhm-border-admin-link: 0.2em solid $bhm-colour-admin-link-border !default
 
 header
-  :display block
-  :height 445px
-  :width 960px
-  :background url('/images/bhm/header-bg.png') top center no-repeat
-  :position relative
-  :z-index 5
+  display: block
+  height: 445px
+  width: 960px
+  background: url('/images/bhm/header-bg.png') top center no-repeat
+  position: relative
+  z-index: 5
   h1
-    :z-index 5
-    :margin 0
-    :padding 0
-    :position absolute
-    :left 265px
-    :top 50px
-    :display block
+    z-index: 5
+    margin: 0
+    padding: 0
+    position: absolute
+    left: 265px
+    top: 50px
+    display: block
     a
-      :width 615px
-      :height 255px
-      :background url(/images/bhm/logo.png)
-      :text-indent -9999em
-      :display block
-  
+      width: 615px
+      height: 255px
+      background: url(/images/bhm/logo.png)
+      text-indent: -9999em
+      display: block
   nav#header-menu
-    :position absolute
-    :top 0
-    :left 0
-    :z-index 10
-    :width 650px
-    :height 75px
-    :background url(/images/bhm/header-menu-bg.png) top left no-repeat
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 10
+    width: 650px
+    height: 75px
+    background: url(/images/bhm/header-menu-bg.png) top left no-repeat
     ul
-      :margin 1.75em 0 1.5em 0.5em
-      :padding 0
-      :text-align left
+      margin: 1.75em 0 1.5em 0.5em
+      padding: 0
+      text-align: left
       li
-        :display inline
-        :margin 0 0.7em
-        :padding 0
-        :font-size 1.3em
-        :text-transform lowercase
+        display: inline
+        margin: 0 0.7em
+        padding: 0
+        font-size: 1.3em
+        text-transform: lowercase
         a
-          :text-decoration none
-          +link-colors(!bhm_colour_link_header_normal, !bhm_colour_link_header_hover, !bhm_colour_link_header_active, !bhm_colour_link_header_visited)
+          text-decoration: none
+          +link-colors($bhm-colour-link-header-normal, $bhm-colour-link-header-hover, $bhm-colour-link-header-active, $bhm-colour-link-header-visited)
           +bauhaus-font-stack
-
   #youthtree-project-logo
-    :display block
-    :position absolute
-    :bottom 50px
-    :right 20px
-    :z-index 10
+    display: block
+    position: absolute
+    bottom: 50px
+    right: 20px
+    z-index: 10
     a
-      :display block
-      :text-indent -9999em
-      :width 110px
-      :height 140px
-      :background url(/images/bhm/youthtree-project-logo.png) top left no-repeat
+      display: block
+      text-indent: -9999em
+      width: 110px
+      height: 140px
+      background: url(/images/bhm/youthtree-project-logo.png) top left no-repeat
       &:hover, &:active
-        :background-position -110px 0
-        
+        background-position: -110px 0
   h2
-    :margin 0
-    :padding 0
-    :display block
-    :width 480px
-    :text-align center
-    :position absolute
-    :bottom 10px
-    :left 230px
-    :font-size 2.75em
-    :color black
-    
+    margin: 0
+    padding: 0
+    display: block
+    width: 480px
+    text-align: center
+    position: absolute
+    bottom: 10px
+    left: 230px
+    font-size: 2.75em
+    color: black
     +bauhaus-font-stack
-    
   nav#admin
-    :position absolute
-    :right 0
-    :top 0
-    :padding 0.5em 0.75em
-    :margin 0
-    :background white
-    +linear-gradient(color_stops(#CCC, #FFF), "top")
+    position: absolute
+    right: 0
+    top: 0
+    padding: 0.5em 0.75em
+    margin: 0
+    background: white
+    +linear-gradient(color-stops(#cccccc, white), top)
     +border-bottom-left-radius(0.75em)
-    :border-left= !bhm_border_admin_link
-    :border-bottom= !bhm_border_admin_link
+    border-left: $bhm-border-admin-link
+    border-bottom: $bhm-border-admin-link
     a
-      :font-weight bold
+      font-weight: bold
       +bhm-link-base(false)

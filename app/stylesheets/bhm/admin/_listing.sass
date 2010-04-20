@@ -1,82 +1,80 @@
 #content
   table
-    :width 100%
-    :border-left 0.1em solid #999
-    :border-right 0.1em solid #999
+    width: 100%
+    border-left: 0.1em solid #999999
+    border-right: 0.1em solid #999999
     thead
       tr th
-        :border-top 0.1em solid #999
-        :border-bottom 0.1em solid #999
-        :font-weight bold
-        :padding 0.5em 0.4em
-        :font-weight bold
-        :color #FFF
-        :background #555
-        +linear-gradient(color_stops(#555, #777), "bottom")
+        border-top: 0.1em solid #999999
+        border-bottom: 0.1em solid #999999
+        font-weight: bold
+        padding: 0.5em 0.4em
+        font-weight: bold
+        color: white
+        background: #555555
+        +linear-gradient(color-stops(#555555, #777777), bottom)
         +sans-font-stack
     tbody
       tr.empty
-        :background #EEE
-        :color #333
+        background: #eeeeee
+        color: #333333
         td
-          :padding 1em
-          :text-align center
+          padding: 1em
+          text-align: center
       tr.odd
-        :background #F9F9F9
+        background: #f9f9f9
       tr.even
-        :background #F0F0F0
+        background: #f0f0f0
       td
-        :border-bottom 0.1em solid #999
-        :padding 0.4em
+        border-bottom: 0.1em solid #999999
+        padding: 0.4em
       td.actions
-        :text-align right
+        text-align: right
         ul
           +inline-list
           li
-            :margin 0 0.5em
+            margin: 0 0.5em
           a
             +hover-link
-            +link-colors(#2E5499, #993A3F)
-            :font-weight bold
+            +link-colors(#2e5499, #993a3f)
+            font-weight: bold
       span.default-value
-        :color #666
-  
+        color: #666666
   dl
-    :font-size 1.2em
-    :width 100%
+    font-size: 1.2em
+    width: 100%
     +clearfix
-    :border-bottom 0.1em solid #999
+    border-bottom: 0.1em solid #999999
     dt
-      :font-weight bold
-      :margin 0
-      :padding 5px 10px
-      :clear left
-      :float left
-      :border-top 0.1em solid #999
-      :width 150px
-      :text-align right
+      font-weight: bold
+      margin: 0
+      padding: 5px 10px
+      clear: left
+      float: left
+      border-top: 0.1em solid #999999
+      width: 150px
+      text-align: right
     dd
-      :border-top 0.1em solid #999
-      :width 550px
-      :margin 0
-      :padding 5px 10px
-      :float left
-      
+      border-top: 0.1em solid #999999
+      width: 550px
+      margin: 0
+      padding: 5px 10px
+      float: left
       ol, ul
-        :margin 0
+        margin: 0
         li
-          :list-style-position inside
-          :margin 0
-          :padding 0
+          list-style-position: inside
+          margin: 0
+          padding: 0
         li.empty
-          :list-style none
-          :margin 0
-          :color #666
+          list-style: none
+          margin: 0
+          color: #666666
       ol li
-        :list-style-type upper-alpha
+        list-style-type: upper-alpha
     dt.question
-      :width 300px
-      :font-size 0.9em
+      width: 300px
+      font-size: 0.9em
     dd.answer
-      :width 400px
-      :font-size 0.9em
+      width: 400px
+      font-size: 0.9em

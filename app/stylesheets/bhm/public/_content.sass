@@ -1,118 +1,114 @@
 body, html
-  :background= !bhm_colour_page_background
+  background: $bhm-colour-page-background
+
 #container
   +clearfix
-  :margin 3em auto
-  :background white url('/images/bhm/content-bg.jpg') top center repeat-x
-  :border= 0.2em "solid" !bhm_colour_container_border
+  margin: 3em auto
+  background: white url('/images/bhm/content-bg.jpg') top center repeat-x
+  border: 0.2em solid $bhm-colour-container-border
   +bhm-default-shadow
-    
+
 #content
-  :padding-top 3em
-  :padding-bottom 1.5em
+  padding-top: 3em
+  padding-bottom: 1.5em
   h1, h2, h3, h4, h5, h6
     +bauhaus-font-stack
-    :margin 0 0 0.5em
-    :text-align center
-    :font-weight bold
-    :color= !bhm_colour_header_text
+    margin: 0 0 0.5em
+    text-align: center
+    font-weight: bold
+    color: $bhm-colour-header-text
   p
-    :margin 0 1em 1em
-    :font-size 1.2em
-    :line-height 1.8em
+    margin: 0 1em 1em
+    font-size: 1.2em
+    line-height: 1.8em
   p.actions
-    :font-size 1em
+    font-size: 1em
   strong
-    :font-weight bold
+    font-weight: bold
   a
     +bhm-link-base
   em
-    :font-style italic
+    font-style: italic
   abbr
-    :border-bottom 0.1em dashed
-    :cursor help
+    border-bottom: 0.1em dashed
+    cursor: help
   .embedded-content.signup-introduction
-    :margin 0 15% 1em
+    margin: 0 15% 1em
     p
-      :margin-left 0
-      :margin-right 0
-
+      margin-left: 0
+      margin-right: 0
   p#general-page-notice
-    :margin 0 15% 1.5em
-    :text-align center
-    :color= darken(!bhm_colour_profile_notice, 70)
+    margin: 0 15% 1.5em
+    text-align: center
+    color: darken($bhm-colour-profile-notice, 70)
 
 dl.frequently-asked-questions
-  :margin 0 1em 1em
-  :font-size 1.2em
+  margin: 0 1em 1em
+  font-size: 1.2em
   dt
-    :font-weight bold
-    :color= !bhm_colour_faq_question
-    :margin 1.5em 0 0
-    :padding 0
+    font-weight: bold
+    color: $bhm-colour-faq-question
+    margin: 1.5em 0 0
+    padding: 0
   dt.first
-    :margin-top 0
+    margin-top: 0
   dd
-    :color= !bhm_colour_faq_answer
-    :margin 0.25em 0
-    :padding 0
+    color: $bhm-colour-faq-answer
+    margin: 0.25em 0
+    padding: 0
     p
-      :font-size 1em !important
-      :padding 0
-      :margin 0
+      font-size: 1em !important
+      padding: 0
+      margin: 0
 
 #intro-video
-  :text-align center
-  
+  text-align: center
+
 #homepage-columns, #join-as-selector
-  :margin-bottom 2em
+  margin-bottom: 2em
 
 #join-as-selector
-  
   #sidekick-selector, #captain-selector
-    :text-align center
-  
+    text-align: center
     .embedded-content
-      :text-align left
-
+      text-align: left
   dl.frequently-asked-questions
     dt, dd
-      :text-align left
-      :font-size 0.9em
+      text-align: left
+      font-size: 0.9em
     dd p
-      :margin-left 0
-
+      margin-left: 0
   #captain-selector
-    :text-align right
+    text-align: right
   #sidekick-selector
-    :text-align left
-
+    text-align: left
   .join-as-button
-    :text-align center
+    text-align: center
     &.before-faq
-      :margin 2em 0 3em
+      margin: 2em 0 3em
     a
       +bhm-fixed-fb-structure
     a#join-as-captain-button
       +fancy-button-colors(#477499)
     a#join-as-sidekick-button
-      +fancy-button-colors(#54996E)
-      
+      +fancy-button-colors(#54996e)
+
 #contact_form_nickname_input
-  :display none
+  display: none
+
 #join-mission-intro
-  :text-align center
-  :margin -2em 0 5em
+  text-align: center
+  margin: -2em 0 5em
   a
     +bhm-fixed-fb-structure(16px)
-    +fancy-button-colors(#54996E)
-    :color #FFF !important
+    +fancy-button-colors(#54996e)
+    color: white !important
 
 .tipsy
   padding: 5px
   font-size: 10px
   opacity: 0.8
-  filter: alpha(opacity=80)
+  filter: alpha(opacity = 80)
   background-repeat: no-repeat
   background-image: url(/images/tipsy.gif)
 

@@ -1,68 +1,64 @@
 p.actions
-  :margin 0 15% 2em
-  +bhm-action-style(!bhm_colour_actions_background)
-  
+  margin: 0 15% 2em
+  +bhm-action-style($bhm-colour-actions-background)
+
 #content
   p.review-role-details
-    :font-size 1.1em
-    :margin -2.5em 0 4em
-    +bhm-action-style(!bhm_colour_role_background)
+    font-size: 1.1em
+    margin: -2.5em 0 4em
+    +bhm-action-style($bhm-colour-role-background)
     a
-      :font-weight bold
+      font-weight: bold
   .mission-join-invalid
-    :color red
-    :margin -2.5em 0 4em
-    :font-size 1.1em
-    +bhm-action-style(!bhm_colour_join_invalid)
-    :padding 0.25em 0.5em
+    color: red
+    margin: -2.5em 0 4em
+    font-size: 1.1em
+    +bhm-action-style($bhm-colour-join-invalid)
+    padding: 0.25em 0.5em
     p
-      :font-size 1em
-      :margin 0.25em 0
-      :padding 0
+      font-size: 1em
+      margin: 0.25em 0
+      padding: 0
     ul
-      :margin 0.25em 0
+      margin: 0.25em 0
     h4
-      :margin 0.25em 0
-      :font-size 1.2em
-      :color darken(!bhm_colour_join_invalid, 50)
+      margin: 0.25em 0
+      font-size: 1.2em
+      color: darken($bhm-colour-join-invalid, 50)
 
 #content
   p.share-this-container
-    :background none
-    :border none
-    :color #333
-    :margin -1em 0 2em
-    :border-top 1px solid #CCC
-    :border-bottom 1px solid #CCC
-    :font-size 1em
-    :padding 0.3em
-    :text-align center
-    
+    background: none
+    border: none
+    color: #333333
+    margin: -1em 0 2em
+    border-top: 1px solid #cccccc
+    border-bottom: 1px solid #cccccc
+    font-size: 1em
+    padding: 0.3em
+    text-align: center
+
 #content
   #profile-notice
-    :margin 0 5% 4.5em
-    +bhm-action-style(!bhm_colour_profile_notice)
-  
+    margin: 0 5% 4.5em
+    +bhm-action-style($bhm-colour-profile-notice)
   #getting-started
-    :margin 2em 0 0
+    margin: 2em 0 0
     +no-bullets
     li
-      :text-align center
-      :font-size 1.3em
+      text-align: center
+      font-size: 1.3em
     li.or
-      :padding 0.5em 0
-      :color= !bhm_colour_list_or
-      :font-size 1em
-      
+      padding: 0.5em 0
+      color: $bhm-colour-list-or
+      font-size: 1em
     #next-mission-item, #your-profile-item, #contact-us-item
       +bhm-fixed-fb-structure(16px)
     #next-mission-item
-      +fancy-button-colors(!bhm_colour_mission_item)
+      +fancy-button-colors($bhm-colour-mission-item)
     #your-profile-item
-      +fancy-button-colors(!bhm_colour_profile_item)
+      +fancy-button-colors($bhm-colour-profile-item)
     #contact-us-item
-      +fancy-button-colors(!bhm_colour_contact_item)
-
-  
+      +fancy-button-colors($bhm-colour-contact-item)
   form.formtastic li p.full-width
-    :margin-left 0 !important
+    margin-left: 0 !important

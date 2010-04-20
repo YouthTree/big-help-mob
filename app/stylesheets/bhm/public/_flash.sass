@@ -1,21 +1,19 @@
 section#flash-messages
-  :display block
-  :margin 0 auto
-  :padding 0
-  :position absolute
-  :top 0
-  :left 0
-  :text-align center
-  :width 100%
-  :z-index 50
-  
+  display: block
+  margin: 0 auto
+  padding: 0
+  position: absolute
+  top: 0
+  left: 0
+  text-align: center
+  width: 100%
+  z-index: 50
   p.flash
-    :margin 0 auto
-    :width 960px
-    :font-size 1.2em
-    :padding 0.5em 0
-    :border-top none
-    +bhm-default-shadow(0.25em, !bhm_colour_flash_shadow)
-    
+    margin: 0 auto
+    width: 960px
+    font-size: 1.2em
+    padding: 0.5em 0
+    border-top: none
+    +bhm-default-shadow(0.25em, $bhm-colour-flash-shadow)
   p.flash.last
     +border-bottom-radius(0.5em)

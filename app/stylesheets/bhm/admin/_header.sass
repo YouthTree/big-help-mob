@@ -1,37 +1,33 @@
 header
-  :background #333
-  :margin 0 0 1.5em 0
+  background: #333333
+  margin: 0 0 1.5em 0
   +border-bottom-radius(0.5em)
-  +box-shadow(#777, 0, 0, 0.25em)
-  +linear-gradient(color_stops(#333, #555), "bottom")
+  +box-shadow(#777777, 0, 0, 0.25em)
+  +linear-gradient(color-stops(#333333, #555555), bottom)
   +clearfix
-  
 
 #header-logo
   h1
-    :font-weight bold
-    :color white
-    :font-size 1.4em
-    :margin 0.5em 0
+    font-weight: bold
+    color: white
+    font-size: 1.4em
+    margin: 0.5em 0
 
 #header-menu
-  :text-align right
-  
+  text-align: right
+
 #header-menu ul
-  :padding 0
-  :margin 0.8em 1.5em 0 0
-  
+  padding: 0
+  margin: 0.8em 1.5em 0 0
   li
     +inline-list
-    :margin 0 0 0 1.5em
+    margin: 0 0 0 1.5em
     a
-      :vertical-align middle
-      :font-size 1.25em
+      vertical-align: middle
+      font-size: 1.25em
       +museo-sans-font-stack
-      +link-colors(#FFF, #EE6673)
+      +link-colors(white, #ee6673)
       +hover-link
-    
     a#view-site-link
-      :font-size 1em
-      :color #CCC
-      
+      font-size: 1em
+      color: #cccccc

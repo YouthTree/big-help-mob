@@ -1,26 +1,22 @@
 section#sidebar
-
   ul.sidebar-menu
     +no-bullets
-    
     li a
       +unstyled-link
-      :font-size 1em
-      :font-weight bold
-      :display block
-      :padding 0.3em 0.5em
-      :margin 0 0 0.5em
-      :border 0.2em solid #CCC
-      :text-align center
-      :color #222
-      :background #DFDFDF
-      +linear-gradient(color_stops(#DDD, #EEE), "bottom")
+      font-size: 1em
+      font-weight: bold
+      display: block
+      padding: 0.3em 0.5em
+      margin: 0 0 0.5em
+      border: 0.2em solid #cccccc
+      text-align: center
+      color: #222222
+      background: #dfdfdf
+      +linear-gradient(color-stops(#dddddd, #eeeeee), bottom)
       +border-radius(0.5em)
       &:hover, &:active
-        +linear-gradient(color_stops(#333, #555), "bottom")
-        :color #FFF
-        :border-color #111
-      
-      
+        +linear-gradient(color-stops(#333333, #555555), bottom)
+        color: white
+        border-color: #111111
   h2
-    :text-align center
+    text-align: center

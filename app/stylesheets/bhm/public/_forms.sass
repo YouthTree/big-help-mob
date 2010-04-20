@@ -1,83 +1,71 @@
-!form_padding_inner = 20px
+$form-padding-inner: 20px
 
 #content
   form.formtastic
-    :margin 0 5% 0
-    
+    margin: 0 5% 0
     p.actions
-      :margin 0 0 4em
-      :font-size 1em
-      :padding 0.5em
+      margin: 0 0 4em
+      font-size: 1em
+      padding: 0.5em
       +border-radius(0.5em)
-  
     fieldset.inputs
-      :margin 3em 0 4.5em
-      :padding 0
-      :background= !bhm_colour_fieldset_background
-      :border= 1px "solid" !bhm_colour_fieldset_border
-      :position relative
-    
+      margin: 3em 0 4.5em
+      padding: 0
+      background: $bhm-colour-fieldset-background
+      border: 1px solid $bhm-colour-fieldset-border
+      position: relative
       legend span
-        :font-size 1.4em
-        :font-weight bold
-        :position absolute
-        :left 0
-        :color= !bhm_colour_fieldset_legend
-        :margin-top -1.5em
+        font-size: 1.4em
+        font-weight: bold
+        position: absolute
+        left: 0
+        color: $bhm-colour-fieldset-legend
+        margin-top: -1.5em
         +bauhaus-font-stack
-      
       ol
-        :margin= !form_padding_inner !form_padding_inner 0
-        :position relative
-
+        margin: $form-padding-inner $form-padding-inner 0
+        position: relative
       label
-        :font-weight bold
-        :color= !bhm_colour_form_label
-        :font-size 1em
-        :padding-top 0
-
+        font-weight: bold
+        color: $bhm-colour-form-label
+        font-size: 1em
+        padding-top: 0
         abbr.required
-          :color #992025
-    
+          color: #992025
       p.inline-hints, p.inline-errors
-        :margin 0.5em 0 0 28%
-        :font-size 1em
-        :padding 0
-        :line-height 1.5em
-
+        margin: 0.5em 0 0 28%
+        font-size: 1em
+        padding: 0
+        line-height: 1.5em
       ol li ol
-        :margin 0
-        :padding 0 0 0 28%
+        margin: 0
+        padding: 0 0 0 28%
         li label
-          :font-weight normal
-          :font-size 0.9em
-          :color= !bhm_colour_form_label_nested
-      
+          font-weight: normal
+          font-size: 0.9em
+          color: $bhm-colour-form-label-nested
         fieldset legend
-          :position relative
-          :padding 0
-          :margin -0.3em 0 0 0
-
+          position: relative
+          padding: 0
+          margin: -0.3em 0 0 0
     fieldset.buttons
-      :margin -2em 0 2em
-      :padding 0
+      margin: -2em 0 2em
+      padding: 0
       ol
-        :text-align center
+        text-align: center
         li
-          :margin 0
-          :padding 0
-          :float none
-          :vertical-align middle
+          margin: 0
+          padding: 0
+          float: none
+          vertical-align: middle
         button
-          +fancy-button(!bhm_colour_form_submit, 16px, 0)
+          +fancy-button($bhm-colour-form-submit, 16px, 0)
           +fix-fb-padding
         a#auth-selector-link
-          +fancy-button(!bhm_colour_form_cancel, 16px, 0)
+          +fancy-button($bhm-colour-form-cancel, 16px, 0)
           +fix-fb-padding
         span.or
-          :padding 0 0.5em
-          :color #666
-          
-
+          padding: 0 0.5em
+          color: #666666
     span.cke_skin_kama
-      :margin-left 28%
+      margin-left: 28%

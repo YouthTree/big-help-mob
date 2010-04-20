@@ -1,5 +1,5 @@
-=fix-fb-padding(!x_padding = 7px, !y_padding = 10px)
-  :padding= !x_padding !y_padding
+=fix-fb-padding($x-padding: 7px, $y-padding: 10px)
+  padding: $x-padding $y-padding
   &:active
-    :padding= !x_padding !y_padding
-    :border-width= !fb_border_width
+    padding: $x-padding $y-padding
+    border-width: $fb-border-width

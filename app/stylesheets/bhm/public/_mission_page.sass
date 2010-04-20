@@ -1,63 +1,60 @@
 #pickup-address
-  :padding 0.5em 0
+  padding: 0.5em 0
 
 #mission-maps
-  :margin 0 0 3em
+  margin: 0 0 3em
   #mission-pickups-map, #mission-location-map
-    :text-align center
+    text-align: center
     .dynamic-google-map, .static-google-map img
-      :width 416px
-      :height 342px
-      :border 2px solid #CCC !important
+      width: 416px
+      height: 342px
+      border: 2px solid #cccccc !important
     h4
-      :margin 0.5em 0 0
-      :padding 0
+      margin: 0.5em 0 0
+      padding: 0
   #mission-location-map
     h3.address-title
-      :margin-bottom 0
+      margin-bottom: 0
   #mission-pickups-map
     ol
-      :margin 0
-      :padding 0
-      :line-height 1.5em
+      margin: 0
+      padding: 0
+      line-height: 1.5em
       li
-        :margin 0
-        :padding 0
-        :list-style none
+        margin: 0
+        padding: 0
+        list-style: none
     #mission-location-address p, #pickups-listing li
-      :font-size 1.1em
-      :margin 0.5em 0
-      :text-align center
-      :color #000
-      
+      font-size: 1.1em
+      margin: 0.5em 0
+      text-align: center
+      color: black
     #pickups-listing li
       abbr
-        :color black
-        :border-bottom none
-        :font-weight bold
+        color: black
+        border-bottom: none
+        font-weight: bold
 
 #content
   p.join-mission-container
-    :padding 0
-    :margin 0 0 2em
-    :text-align center
+    padding: 0
+    margin: 0 0 2em
+    text-align: center
     a.join-mission-link
       +bhm-fixed-fb-structure
-      +fancy-button-colors(!bhm_colour_join_background)
-      +link-colors(!bhm_colour_link_join_mission, !bhm_colour_link_join_mission, !bhm_colour_link_join_mission, !bhm_colour_link_join_mission)
-      
+      +fancy-button-colors($bhm-colour-join-background)
+      +link-colors($bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission)
   #mission-description p.join-mission-container
-    :margin-top -1.5em
-    :margin-bottom 3em
-    
+    margin-top: -1.5em
+    margin-bottom: 3em
   #mission-notice
-    :padding 1em
-    :margin 3em 0
+    padding: 1em
+    margin: 3em 0
     +border-radius(0.25em)
-    :background #E2FFE9
-    :color #2F6B2D
-    :border 0.2em solid #2F6B2D
+    background: #e2ffe9
+    color: #2f6b2d
+    border: 0.2em solid #2f6b2d
     p
-      :text-align center
+      text-align: center
     p.hide-notice
-      :margin-bottom 0
+      margin-bottom: 0

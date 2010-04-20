@@ -1,20 +1,19 @@
-=flash-colours(!text_colour, !background_colour = lighten(!text_colour, 50), !border_colour = lighten(!text_colour, 20))
-  :border-color= !border_colour
-  :background-color= !background_colour
-  :color= !text_colour
-  +linear-gradient(color_stops(lighten(!background_colour, 10), darken(!background_colour, 10)), "top")
+=flash-colours($text-colour, $background-colour: lighten($text-colour, 50), $border-colour: lighten($text-colour, 20))
+  border-color: $border-colour
+  background-color: $background-colour
+  color: $text-colour
+  +linear-gradient(color-stops(lighten($background-colour, 10), darken($background-colour, 10)), top)
 
 #flash-messages
-  :margin 0
+  margin: 0
   p.flash
-    :margin 0 0 1em
-    :padding 0.5em
-    :font-weight bold
-    :text-align center
-    :border 0.2em solid
-    +flash-colours(#444)
+    margin: 0 0 1em
+    padding: 0.5em
+    font-weight: bold
+    text-align: center
+    border: 0.2em solid
+    +flash-colours(#444444)
     &.alert
-      +flash-colours(#99242A)
+      +flash-colours(#99242a)
     &.notice
-      +flash-colours(#1D6024)
-      
+      +flash-colours(#1d6024)
