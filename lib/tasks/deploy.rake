@@ -2,6 +2,10 @@ require 'net/http'
 
 namespace :deploy do
   
+  def env_for_remote_command
+    "export PATH=\"/opt/ruby-ee/current/bin:$PATH\" RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
+  end
+  
   def current_db_config
     OpenStruct.new(ActiveRecord::Base.configurations[Rails.env])
   end
@@ -55,6 +59,10 @@ namespace :deploy do
   
   # Hooks as needed
   
+  task :local_sitemap do
+    execute_local_command! "#{env_for_remote_command} && bundle exec rake sitemap:install"
+  end
+  
   task :remote_dump => :environment do
     cdc = current_db_config
     if cdc.adapter != "mysql"
@@ -65,10 +73,9 @@ namespace :deploy do
   end
   
   task :local_dump do
-    env_command  = "export PATH=\"/opt/ruby-ee/current/bin:$PATH\" RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
     rake_command = "bundle exec rake deploy:remote_dump"
     execute_local_command!  "mkdir -p tmp"
-    execute_remote_command! "cd #{deploy_config(:app)} && #{env_command} && #{rake_command}"
+    execute_remote_command! "cd #{deploy_config(:app)} && #{env_for_remote_command} && #{rake_command}"
     execute_local_command!  "rm -rf tmp/bhm.sql"
     execute_local_command!  "scp #{deploy_config(:user)}@#{deploy_config(:host)}:~/bhm.sql tmp/bhm.sql"
   end
@@ -159,12 +166,11 @@ namespace :deploy do
     Rake::Task["deploy:local_before"].invoke
     puts "Deploying app to #{staging? ? "staging" : "production"}"
     git_command     = "git reset --hard HEAD && git checkout . && git pull"
-    env_command     = "export PATH=\"/opt/ruby-ee/current/bin:$PATH\""
     bundler_command = "bundle install .bundle-cache"
     rake_command    = "bundle exec rake deploy:remote"
     rake_command << " MIGRATE_ENV=true" if %w(true 1).include?(ENV['MIGRATE_ENV'].to_s.downcase)
     rake_command << " RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
-    execute_remote_command! "cd #{deploy_config(:app)} && #{env_command} && #{git_command} && #{bundler_command} && #{rake_command}"
+    execute_remote_command! "cd #{deploy_config(:app)} && #{env_for_remote_command} && #{git_command} && #{bundler_command} && #{rake_command}"
     Rake::Task["deploy:local_after"].invoke
   end
   
