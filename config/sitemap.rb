@@ -1,42 +1,21 @@
-# Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.example.com"
+SitemapGenerator::Sitemap.default_host = "http://bighelpmob.org/"
 
 SitemapGenerator::Sitemap.add_links do |sitemap|
-  # Put links creation logic here.
-  #
-  # The root path '/' and sitemap index file are added automatically.
-  # Links are added to the Sitemap in the order they are specified.
-  #
-  # Usage: sitemap.add path, options
-  #        (default options are used if you don't specify)
-  #
-  # Defaults: :priority => 0.5, :changefreq => 'weekly', 
-  #           :lastmod => Time.now, :host => default_host
-
   
-  # Examples:
+  sitemap.add mission_path(:next), :priority => 1, :changefreq => Mission.next.first.try(:created_at)
   
-  # add '/articles'
-  # sitemap.add articles_path, :priority => 0.7, :changefreq => 'daily'
-  # 
-  #   # add all individual articles
-  #   Article.find(:all).each do |a|
-  #     sitemap.add article_path(a), :lastmod => a.updated_at
-  #   end
-  # 
-  #   # add merchant path
-  #   sitemap.add '/purchase', :priority => 0.7, :host => "https://www.example.com"
+  %w(about privacy_policy terms_and_conditions).each do |page|
+    sitemap.add url_for(page.to_sym), :priority => 0.75, :changefreq => 'weekly'
+  end
+  
+  sitemap.add contact_us_path, :priority => 0.75, :changefreq => 'weekly'
+  
+  Mission.viewable.find_each do |mission|
+    sitemap.add mission_path(mission),      :priority => 0.75, :changefreq => 'weekly', :lastmod => mission.updated_at
+    sitemap.add join_mission_path(mission), :priority => 0.75, :changefreq => 'weekly', :lastmod => mission.updated_at
+  end
+  
+  sitemap.add sign_in_path,            :priority => 0.5, :changefreq => 'monthly'
+  sitemap.add new_password_reset_path, :priority => 0.3, :changefreq => 'monthly'
   
 end
-
-# Including Sitemaps from Rails Engines.
-#
-# These Sitemaps should be almost identical to a regular Sitemap file except 
-# they needn't define their own SitemapGenerator::Sitemap.default_host since
-# they will undoubtedly share the host name of the application they belong to.
-#
-# As an example, say we have a Rails Engine in vendor/plugins/cadability_client
-# We can include its Sitemap here as follows:
-# 
-# file = File.join(Rails.root, 'vendor/plugins/cadability_client/config/sitemap.rb')
-# eval(open(file).read, binding, file)
