@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   extend RejectIfHelper
+  extend ExtraSluggy
   extend Address::Addressable
   extend DynamicBaseDrop::Droppable
   
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
   has_address :mailing_address
   is_droppable
 
-  has_friendly_id :name, :use_slug => true, :reserved_words => ["add_rxp_auth", "current"]
+  is_sluggy :name
 
   acts_as_authentic do |c|
     c.validate_email_field  true

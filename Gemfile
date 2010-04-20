@@ -7,7 +7,6 @@ git "git://github.com/nono/acts_as_list.git",     :ref => "rails3"
 git "git://github.com/Sutto/exception_notification.git"
 git "git://github.com/Sutto/validation_reflection.git"
 git "git://github.com/justinfrench/formtastic.git", :ref => "rails3"
-git "git://github.com/Sutto/friendly_id.git"
 git "git://github.com/railsjedi/jammit.git"
 
 gem "rails", "= 3.0.0.beta2"
@@ -58,7 +57,6 @@ gem "liquid"
 
 gem "fastercsv"
 
-gem "friendly_id", "= 3.0.1"
 gem "stringex"
 
 gem "uuid"

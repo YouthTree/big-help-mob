@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   end
 
   def prepare_user
-    @user = params[:id] == "current" ? current_user : User.find(params[:id])
+    @user = params[:id] == "current" ? current_user : User.find_sluggy(params[:id])
     return redirect_to :users, :alert => tf('account.unknown_user') unless @user.present?
     add_title_variables! :user => @user.to_s
   end

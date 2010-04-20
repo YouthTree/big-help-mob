@@ -39,7 +39,7 @@ class MissionsController < ApplicationController
   
   def prepare_mission
     return redirect_next_mission if params[:id] == "next" && request.get?
-    @mission = Mission.viewable.optimize_viewable.from_slug(params[:id])
+    @mission = Mission.viewable.optimize_viewable.find_sluggy(params[:id])
     add_title_variables! :mission => @mission.name
   end
   
