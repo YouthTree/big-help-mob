@@ -1,6 +1,15 @@
 var BHM;
 if(!BHM) BHM = {};
 
+if(typeof window.console == 'undefined') {
+  // Stub out the console.
+  window.console = {
+    log:   function(){},
+    info:  function(){},
+    debug: function(){}
+  };
+}
+
 (function(ns, $) {
   
   var defaultNSAttrs = {};
