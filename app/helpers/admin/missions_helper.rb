@@ -17,4 +17,11 @@ module Admin::MissionsHelper
     render :partial => 'participation_listing', :locals => options
   end
   
+  def report_field_checkbox(name, text)
+    field_id = "report_#{name}"
+    content = check_box_tag("report[#{name}]", '1', ParticipationReporter.default_for(name), :id => field_id)
+    content << content_tag(:span, text, :class => 'report-field-label')
+    content_tag(:label, content, :for => field_id)
+  end
+
 end

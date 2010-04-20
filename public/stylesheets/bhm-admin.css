@@ -1076,3 +1076,36 @@ a:hover {
   list-style: disc inside none;
   margin: 0 0 0;
 }
+/* line 56, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report #generate-report {
+  font-size: 1.2em;
+  text-align: center;
+  color: #333;
+}
+/* line 60, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report .inner-report-generator {
+  margin: 0 0 2em;
+  display: none;
+}
+/* line 63, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report .inner-report-generator h3 {
+  margin: 0 0;
+}
+/* line 65, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report .inner-report-generator ul {
+  margin: 0.25em 0 0.5em;
+  padding: 0;
+}
+/* line 68, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report .inner-report-generator ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #333;
+  font-weight: bold;
+  line-height: 2em;
+}
+/* line 75, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report .inner-report-generator ul li input {
+  margin-right: 0.5em;
+}

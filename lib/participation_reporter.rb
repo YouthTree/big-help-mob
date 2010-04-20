@@ -11,6 +11,10 @@ class ParticipationReporter
   
   attr_reader :mission, :collection
   
+  def self.default_for(key)
+    !!DEFAULTS[key.to_sym]
+  end
+
   def initialize(mission, controller, options = {})
     @mission    = mission
     @collection = mission.mission_participations.all(:include => {:role => nil, :user => nil, :pickup => {:pickup => :address}})

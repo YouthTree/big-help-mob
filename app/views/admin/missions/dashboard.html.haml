@@ -21,6 +21,21 @@
       %span.count= @statistics.count
       %span.description Total Participations
 
+
+
+  #generate-mission-report
+    %p#generate-report== #{link_to 'Click here', '#', :id => 'generate-report-button'} to generate a report of participations.
+    .inner-report-generator
+      %h3 Generate Report
+      - form_tag report_admin_mission_path(@mission, :format => 'pdf'), :method => :get do
+        %ul
+          %li= report_field_checkbox :mailing_address,     "Show Mailing Address"
+          %li= report_field_checkbox :phone,               "Show Phone Number"
+          %li= report_field_checkbox :role,                "Show Role Name (Captain / Sidekick)"
+          %li= report_field_checkbox :state,               "Show Participation State"
+          %li= report_field_checkbox :answers,             "Show Answers to Mission-specific questions"
+          %li= report_field_checkbox :captain_application, "Show Captain Application"
+        .buttons= submit_tag "Generate Report", :name => nil
   
   #general-participations
     %ul
