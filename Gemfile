@@ -59,7 +59,7 @@ gem "liquid"
 
 gem "fastercsv"
 
-gem "friendly_id", ">= 3.0"
+gem "friendly_id", "= 3.0.1"
 gem "stringex"
 
 gem "uuid"

@@ -1,4 +1,6 @@
 class Mission < ActiveRecord::Base
+  extend RejectIfHelper
+  
   extend Address::Addressable
   extend DynamicTemplate::Templateable
   extend DynamicBaseDrop::Droppable
@@ -32,8 +34,8 @@ class Mission < ActiveRecord::Base
   belongs_to :organisation
   belongs_to :user
   
-  accepts_nested_attributes_for :questions,       :reject_if => proc { |a| a.values.all? { |v| v.blank? || %w(all 0).include?(v.to_s) } }, :allow_destroy => true
-  accepts_nested_attributes_for :mission_pickups, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }, :allow_destroy => true
+  accepts_nested_attributes_for :questions,       :reject_if => reject_if_proc(%w(all 0)), :allow_destroy => true
+  accepts_nested_attributes_for :mission_pickups, :reject_if => reject_if_proc, :allow_destroy => true
 
   scope :optimize_viewable, includes(:address => nil, :mission_pickups => {:pickup => :address}, :questions => nil)
   

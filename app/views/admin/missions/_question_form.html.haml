@@ -1,7 +1,7 @@
 = question_form.inputs :name => "Question Details", :class => 'question-input inputs' do
   %li
     %p.inline-hints= link_to((question_form.object.new_record? ? "Don't add this question" : 'Remove this question'), '#', :class => 'remove-question-link')
-    = question_form.hidden_field :_destroy, :default => 0
+    = question_form.hidden_field :_destroy, :value => destroy_value(question_form)
   = question_form.input :name
   = question_form.input :required_by_role, :collection => MissionQuestion.roles_for_select
   = question_form.input :viewable_by_role, :collection => MissionQuestion.roles_for_select

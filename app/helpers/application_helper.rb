@@ -1,5 +1,9 @@
 module ApplicationHelper
   
+  def destroy_value(form)
+    form.object._destroy ? 1 : 0
+  end
+  
   def uri2ssl(url)
     "#{Settings.ssl_protocol}://#{url.to_s.gsub(/^\w+\:\/\//, "")}"
   end

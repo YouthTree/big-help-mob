@@ -26,7 +26,7 @@
 %h3 Available Pickups
 %p.actions= link_to 'Add another pickup', '#', :class => 'add-pickup-link'
 - form.object.mission_pickups.build
-- form.fields_for :mission_pickups do |mpf|
+= form.fields_for :mission_pickups do |mpf|
   = render :partial => 'pickup_form', :object => mpf
   
   
@@ -34,7 +34,7 @@
 %h3 Extra Questions for Mission
 %p.actions= link_to 'Add another question', '#', :class => 'add-question-link'
 - form.object.questions.build
-- form.fields_for :questions do |qf|
+= form.fields_for :questions do |qf|
   = render :partial => 'question_form', :object => qf
   
 - content_for :extra_head do

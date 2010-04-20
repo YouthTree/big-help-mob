@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  extend RejectIfHelper
   extend Address::Addressable
   extend DynamicBaseDrop::Droppable
   
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
     c.account_mapping_mode  :internal
   end
   
-  accepts_nested_attributes_for :captain_application, :reject_if => proc { |a| a.values.all? { |v| v.blank? || v.to_s == "0" } }
+  accepts_nested_attributes_for :captain_application, :reject_if => reject_if_proc
   
   validates_presence_of :date_of_birth, :origin
 
