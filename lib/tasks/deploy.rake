@@ -59,8 +59,8 @@ namespace :deploy do
   
   # Hooks as needed
   
-  task :local_sitemap do
-    execute_local_command! "#{env_for_remote_command} && bundle exec rake sitemap:install"
+  task :sitemap do
+    execute_local_command! "#{env_for_remote_command} && bundle exec rake sitemap:refresh"
   end
   
   task :remote_dump => :environment do
