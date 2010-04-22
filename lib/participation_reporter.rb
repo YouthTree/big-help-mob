@@ -47,7 +47,7 @@ class ParticipationReporter
   def generate_header
     [].tap do |header|
       [:name, :dob].each { |f| header << tl(f) }
-      [:mailing_address, :phone, :role, :state].each do |key|
+      [:mailing_address, :phone, :role_name, :state].each do |key|
         append_header_entry header, key
       end
       mission.questions.each { |q| header << tl(:answer, :name => q.name)  } if show?(:answers)
@@ -67,7 +67,7 @@ class ParticipationReporter
       row << user.date_of_birth.present? ? I18n.l(user.date_of_birth) : "Unknown"
       append_row_entry row, user, :mailing_address
       append_row_entry row, user, :phone
-      append_row_entry row, participation, :role, :role_name
+      append_row_entry row, participation, :role_name
       append_row_entry row, participation, :state, :human_state_name
       participation.answers.each_answer { |v| row << v } if show?(:answers)
       if show?(:captain_application)

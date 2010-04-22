@@ -24,7 +24,7 @@ en:
         dob: "Date of Birth"
         mailing_address: "Mailing Address"
         phone: "Phone Number"
-        role: "Role Name"
+        role_name: "Role Name"
         state: "State"
         answer: "Answer: {{name}}"
         captain_application:
