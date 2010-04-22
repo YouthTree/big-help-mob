@@ -9,11 +9,11 @@ class ParticipationReporter
   STATE_CHOICES = MissionParticipation.state_machine.states.map { |s| [s.name.to_s.humanize, s.value] }
   
   DEFAULTS = {
-    :title   => true,
-    :role    => true,
-    :state   => true,
-    :headers => true,
-    :states  => STATE_CHOICES.map(&:last)
+    :title     => true,
+    :role_name => true,
+    :state     => true,
+    :headers   => true,
+    :states    => STATE_CHOICES.map(&:last)
   }
   
   attr_reader :mission, :collection
