@@ -1,25 +1,31 @@
 class ParticipationReporter
   
-  DEFAULTS = {
-    :title => true,
-    :role  => true,
-    :state => true
-  }
+  ROLE_CHOICES = [
+    ["All Participations", ""],
+    ["Captains only",      "captain"],
+    ["Sidekicks only",     "sidekick"]
+  ]
   
-  cattr_accessor :bin_path
-  @@bin_path ||= "/usr/local/bin/prince"
+  STATE_CHOICES = MissionParticipation.state_machine.states.map { |s| [s.name.to_s.humanize, s.value] }
+  
+  DEFAULTS = {
+    :title   => true,
+    :role    => true,
+    :state   => true,
+    :headers => true,
+    :states  => STATE_CHOICES.map(&:last)
+  }
   
   attr_reader :mission, :collection
   
   def self.default_for(key)
-    !!DEFAULTS[key.to_sym]
+    DEFAULTS[key.to_sym]
   end
 
-  def initialize(mission, controller, options = {})
-    @mission    = mission
-    @collection = mission.mission_participations.all(:include => {:role => nil, :user => nil, :pickup => {:pickup => :address}})
-    @controller = controller
+  def initialize(mission, options = {})
     @options    = (options.is_a?(Hash) ? options : {}).symbolize_keys
+    @mission    = mission
+    @collection = scope_participations(mission).all(:include => {:role => nil, :user => nil, :pickup => {:pickup => :address}})
   end
   
   def show?(key)
@@ -31,52 +37,70 @@ class ParticipationReporter
     end
   end
   
-  def render
-    template = @controller.render_to_string({
-      :template => "pdfs/participation_report",
-      :layout   => "report",
-      :locals   => {
-        :reporter   => self,
-        :collection => @collection
-      },
-    })
-    html2prince clean_html(template), render_options
+  def to_csv
+    FasterCSV.generate do |csv|
+      csv << generate_header if show?(:headers)
+      @collection.each { |r| csv << generate_row(r) }
+    end
   end
   
-  def render_options
-    {}
+  def generate_header
+    [].tap do |header|
+      [:name, :dob].each { |f| header << tl(f) }
+      [:mailing_address, :phone, :role, :state].each do |key|
+        append_header_entry header, key
+      end
+      mission.questions.each { |q| header << tl(:answer, :name => q.name)  } if show?(:answers)
+      if show?(:captain_application)
+        [:reason_why, :offers, :has_first_aid_cert].each do |field|
+          header << tl("captain_application.#{field}")
+        end
+      end
+    end
+  end
+  
+  def generate_row(participation)
+    user = participation.user
+    captain_application = user.captain_application
+    [].tap do |row|
+      row << user.name
+      row << user.date_of_birth.present? ? I18n.l(user.date_of_birth) : "Unknown"
+      append_row_entry row, user, :mailing_address
+      append_row_entry row, user, :phone
+      append_row_entry row, participation, :role, :role_name
+      append_row_entry row, participation, :state, :human_state_name
+      participation.answers.each_answer { |v| row << v } if show?(:answers)
+      if show?(:captain_application)
+        if participation.captain?
+          [:reason_why, :offers, :has_first_aid_cert].each do |field|
+            row << captain_application.try(field).to_s
+          end
+        else
+          row += ["", "", ""]
+        end
+      end
+    end
   end
   
   protected
   
-  def html2prince(html, options = {})
-    command = [@@bin_path.dup]
-    command << "--input=html --server --log='#{Rails.root.join("log", "prince.log")}'"
-    Array(options[:stylesheets]).each do |stylesheet|
-      command << "-s '#{stylesheet_path stylesheet}'"
-    end
-    command << "--silent - -o -"
-    Rails.logger.debug "Prince Command: #{command.join(" ").inspect}"
-    pdf = IO.popen(command.join(" "), "w+")
-    pdf.puts(html)
-    pdf.close_write
-    result = pdf.gets(nil)
-    pdf.close_read
-    result
+  def scope_participations(mission)
+    scope = mission.mission_participations
+    scope = scope.only_role(@options[:role])     if @options[:role].present?
+    scope = scope.with_states(@options[:states]) if @options[:states].present?
+    scope
   end
   
-  # Using code from Princely.
-  def clean_html(html_string)
-    html_string = html_string.dup
-    html_string.gsub!( /src=["']+([^:]+?)["']/i ) { |m| "src=\"#{Rails.root}/public/" + $1 + '"' } # re-route absolute paths
-    html_string.gsub!( /src=["'](\S+\?\d*)["']/i ) { |m| 'src="' + $1.split('?').first + '"' }
-    html_string
+  def tl(name, opts = {})
+    ::I18n.t(name.to_sym, opts.merge(:scope => 'ui.participation_reporter.labels'))
   end
   
-  # Using code from Princely
-  def stylesheet_path(stylesheet)
-    stylesheet = stylesheet.to_s.gsub(".css","") + ".css"
-    Rails.root.join("public", "stylesheets", stylesheet)
+  def append_header_entry(collection, key)
+    collection << tl(key) if show?(key)
+  end
+  
+  def append_row_entry(row, source, key, m = key)
+    row << source.send(m).to_s if show?(key)
   end
   
 end

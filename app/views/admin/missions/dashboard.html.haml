@@ -27,14 +27,21 @@
     %p#generate-report== #{link_to 'Click here', '#', :id => 'generate-report-button'} to generate a report of participations.
     .inner-report-generator
       %h3 Generate Report
-      - form_tag report_admin_mission_path(@mission, :format => 'pdf'), :method => :get do
+      - form_tag report_admin_mission_path(@mission, :format => 'csv'), :method => :get do
         %ul
+          %li
+            %h4 Fields to show:
+          %li= report_field_checkbox :headers,             "Show CSV Headers"
           %li= report_field_checkbox :mailing_address,     "Show Mailing Address"
           %li= report_field_checkbox :phone,               "Show Phone Number"
           %li= report_field_checkbox :role,                "Show Role Name (Captain / Sidekick)"
           %li= report_field_checkbox :state,               "Show Participation State"
           %li= report_field_checkbox :answers,             "Show Answers to Mission-specific questions"
           %li= report_field_checkbox :captain_application, "Show Captain Application"
+          %li
+            %h4 Filter results:
+          %li= report_field_select   :role,                "Show participations for", ParticipationReporter::ROLE_CHOICES
+          %li= report_field_select   :states,              "Show those that are",     ParticipationReporter::STATE_CHOICES, :multiple => true
         .buttons= submit_tag "Generate Report", :name => nil
   
   #general-participations

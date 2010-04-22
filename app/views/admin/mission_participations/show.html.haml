@@ -16,7 +16,7 @@
 %h3 Survey Answers
 
 %dl
-  - resource.answers.each_question do |question, key|
+  - resource.answers.each_viewable_question do |question, key|
     %dt.question= question.name
     %dd.answer=   resource.answers.read_attribute(key)
     

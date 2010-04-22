@@ -7,9 +7,9 @@ class Admin::MissionsController < Admin::BaseController
   
   def report
     @mission = resource
-    @report = ParticipationReporter.new(resource, self, (params[:report] || {}))
+    @report = ParticipationReporter.new(resource, (params[:report] || {}))
     respond_to do |format|
-      format.pdf { send_data @report.render.to_s, :type => :pdf, :disposition => 'inline' }
+      format.csv { send_data @report.to_csv, :type => :csv, :disposition => 'inline' }
     end
   end
   

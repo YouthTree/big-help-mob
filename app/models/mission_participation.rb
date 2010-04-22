@@ -125,6 +125,16 @@ class MissionParticipation < ActiveRecord::Base
     scope
   end
   
+  def self.only_role(name)
+    return unscoped if name.blank? || (role = Role[name]).blank?
+    with_role.where(:role_id => role.id)
+  end
+  
+  def self.with_states(states)
+    states = Array(states).reject(&:blank?)
+    states.blank? ? unscoped : where(:state => states)
+  end
+  
   def mark_user_participation
     if user.present?
       user.build_captain_application if captain? && user.captain_application.blank?
@@ -151,6 +161,10 @@ class MissionParticipation < ActiveRecord::Base
     states = %w(created awaiting_approval)
     states << "approved" if include_approved
     states.include?(self.state)
+  end
+  
+  def human_state_name
+    state.to_s.humanize
   end
   
 end

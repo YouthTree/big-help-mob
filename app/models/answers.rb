@@ -35,6 +35,10 @@ class Answers
     each_question { |q, p| yield q, p if q.viewable_by?(role) }
   end
   
+  def each_answer(&blk)
+    each_question { |q, p| yield read_attribute(p) }
+  end
+  
   def answers
     @answers ||= begin
       value = @participation.raw_answers

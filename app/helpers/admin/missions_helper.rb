@@ -23,5 +23,16 @@ module Admin::MissionsHelper
     content << content_tag(:span, text, :class => 'report-field-label')
     content_tag(:label, content, :for => field_id)
   end
+  
+  def report_field_select(name, text, choices, options = {})
+    field_id = "report_#{name}"
+    field_name = "report[#{name}]"
+    field_name << "[]" if options[:multiple]
+    content  = content_tag(:label, text, :for => field_id, :class => 'left-label')
+    content << " "
+    default  = Array(ParticipationReporter.default_for(name))
+    content << select_tag(field_name, options_for_select(choices, default), options.merge(:id => field_id))
+    content
+  end
 
 end
