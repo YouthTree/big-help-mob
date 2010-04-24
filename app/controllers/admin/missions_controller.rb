@@ -1,5 +1,5 @@
 class Admin::MissionsController < Admin::BaseController
-  include ExtraSluggy::ControllerExt
+  include PseudocephalopodControllerExt
   
   def dashboard
     @statistics = MissionStatistics.new(resource)

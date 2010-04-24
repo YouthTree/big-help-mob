@@ -1,6 +1,6 @@
 class Admin::MissionParticipationsController < Admin::BaseController
   
-  belongs_to :user, :mission, :polymorphic => true, :finder => :find_sluggy
+  belongs_to :user, :mission, :polymorphic => true, :finder => :find_using_slug!
   
   protected
   

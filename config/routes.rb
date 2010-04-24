@@ -2,11 +2,11 @@ Bighelpmob::Application.routes.draw do |map|
   
   namespace :admin do
     resources :users do
-      resources :mission_participations, :as => 'participations'
+      resources :mission_participations, :path => 'participations'
     end
     resources :missions do
-      resources :mission_participations, :as => 'participations'
-      resources :dynamic_templates,      :as => 'dynamic-templates'
+      resources :mission_participations, :path => 'participations'
+      resources :dynamic_templates,      :path => 'dynamic-templates'
       member do
         get :dashboard
         get :report
@@ -23,9 +23,9 @@ Bighelpmob::Application.routes.draw do |map|
     match '', :to => 'admin/dashboard#index', :as => :dashboard
   end
   
-  resources :user_session, :as => 'user-sessions'
+  resources :user_session, :path => 'user-sessions'
   
-  resources :password_resets, :as => 'password-resets'
+  resources :password_resets, :path => 'password-resets'
   
   get   'sign-in', :to => 'user_sessions#new', :as => :sign_in
   post  'sign-in', :to => 'user_sessions#create'

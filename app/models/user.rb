@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   extend RejectIfHelper
-  extend ExtraSluggy
   extend Address::Addressable
   extend DynamicBaseDrop::Droppable
   
@@ -35,7 +34,7 @@ class User < ActiveRecord::Base
   has_address :mailing_address
   is_droppable
 
-  is_sluggy :name
+  is_sluggable :name
 
   acts_as_authentic do |c|
     c.validate_email_field  true
@@ -82,6 +81,20 @@ class User < ActiveRecord::Base
   end
 
   alias name to_s
+  
+  def name_changed?
+    display_name_changed? || login_changed?
+  end
+  
+  def name_was
+    if display_name_changed?
+      display_name_was
+    elsif display_name.blank? && login_changed?
+      login_was
+    else
+      name
+    end
+  end
   
   def self.for_select
     all.map { |u| [u.to_s, u.id] }

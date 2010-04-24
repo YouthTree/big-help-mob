@@ -1,4 +1,3 @@
 class Admin::UsersController < Admin::BaseController
-  include ExtraSluggy::ControllerExt
-  
+  include PseudocephalopodControllerExt
 end

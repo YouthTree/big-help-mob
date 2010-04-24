@@ -9,7 +9,7 @@ git "git://github.com/Sutto/validation_reflection.git"
 git "git://github.com/justinfrench/formtastic.git", :ref => "rails3"
 git "git://github.com/railsjedi/jammit.git"
 
-gem "rails", "= 3.0.0.beta2"
+gem "rails", "= 3.0.0.beta3"
 
 # Misc
 gem "haml"
@@ -54,14 +54,12 @@ gem "msales-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
 gem "exception_notifier", :require => nil
 
 gem "liquid"
-
 gem "fastercsv"
-
 gem "stringex"
-
 gem "uuid"
-
 gem "sitemap_generator"
+
+gem "pseudocephalopod"
 
 group :production do
   gem "unicorn", :require => nil

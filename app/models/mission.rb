@@ -1,6 +1,5 @@
 class Mission < ActiveRecord::Base
   extend RejectIfHelper
-  extend ExtraSluggy
   extend Address::Addressable
   extend DynamicTemplate::Templateable
   extend DynamicBaseDrop::Droppable
@@ -22,7 +21,7 @@ class Mission < ActiveRecord::Base
   has_dynamic_templates
   is_droppable
   
-  is_sluggy :name
+  is_sluggable :name
   
   has_many :mission_pickups, :dependent => :destroy
   has_many :pickups, :through => :mission_pickups
