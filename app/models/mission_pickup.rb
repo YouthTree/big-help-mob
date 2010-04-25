@@ -15,6 +15,10 @@ class MissionPickup < ActiveRecord::Base
     pickup.name
   end
   
+  def address_as_string
+    pickup.try(:address).to_s
+  end
+  
 end
 
 # == Schema Info
