@@ -55,7 +55,7 @@ class ParticipationReporter
   def generate_header
     [].tap do |header|
       [:name, :dob].each { |f| header << tl(f) }
-      [:email, :first_name, :last_name, :pickup, :mailing_address, :phone, :allergies, :role_name, :state].each do |key|
+      [:email, :first_name, :last_name, :pickup, :mailing_address, :phone, :allergies, :role_name, :state, :user_comment, :participation_comment].each do |key|
         append_header_entry header, key
       end
       mission.questions.each { |q| header << tl(:answer, :name => q.name)  } if show?(:answers)
@@ -82,6 +82,8 @@ class ParticipationReporter
       append_row_entry row, user, :allergies
       append_row_entry row, participation, :role_name
       append_row_entry row, participation, :state, :human_state_name
+      append_row_entry row, user, :user_comment, :comment
+      append_row_entry row, participation, :participation_comment, :comment
       participation.answers.each_answer { |v| row << v } if show?(:answers)
       if show?(:captain_application)
         if participation.captain?
