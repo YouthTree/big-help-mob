@@ -522,19 +522,20 @@ header {
   color: white;
   font-size: 1.4em;
   margin: 0.5em 0;
+  text-shadow: 0 0 2px black;
 }
 
-/* line 16, ../../app/stylesheets/bhm/admin/_header.sass */
+/* line 17, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu {
   text-align: right;
 }
 
-/* line 19, ../../app/stylesheets/bhm/admin/_header.sass */
+/* line 20, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul {
   padding: 0;
   margin: 0.8em 1.5em 0 0;
 }
-/* line 22, ../../app/stylesheets/bhm/admin/_header.sass */
+/* line 23, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul li {
   list-style-type: none;
   margin: 0px;
@@ -548,7 +549,7 @@ header {
   padding: 0px;
   display: inline;
 }
-/* line 25, ../../app/stylesheets/bhm/admin/_header.sass */
+/* line 26, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul li a {
   vertical-align: middle;
   font-size: 1.25em;
@@ -564,7 +565,7 @@ header {
 #header-menu ul li a:hover {
   text-decoration: underline;
 }
-/* line 31, ../../app/stylesheets/bhm/admin/_header.sass */
+/* line 32, ../../app/stylesheets/bhm/admin/_header.sass */
 #header-menu ul li a#view-site-link {
   font-size: 1em;
   color: #cccccc;
