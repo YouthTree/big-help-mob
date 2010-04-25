@@ -931,16 +931,16 @@ dl.frequently-asked-questions dd p {
   border-width: 1px;
   padding: 7px 10px;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a.disabled, #join-as-selector .join-as-button a[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -948,16 +948,16 @@ dl.frequently-asked-questions dd p {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a.disabled:hover, #join-as-selector .join-as-button a.disabled:focus, #join-as-selector .join-as-button a[disabled]:hover, #join-as-selector .join-as-button a[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a:active {
   padding: 1px 10px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a.disabled:active, #join-as-selector .join-as-button a[disabled] {
   padding: 2px 11px;
   border-width: 1px;
@@ -976,7 +976,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #0b3455 0px 1px 1px;
   color: white;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a#join-as-captain-button.disabled:active, #join-as-selector .join-as-button a#join-as-captain-button.disabled:hover, #join-as-selector .join-as-button a#join-as-captain-button[disabled]:active, #join-as-selector .join-as-button a#join-as-captain-button[disabled]:hover {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -985,7 +985,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #0b3455 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a#join-as-captain-button:hover, #join-as-selector .join-as-button a#join-as-captain-button:focus {
   background-color: #1870b9;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #a4bfd5), color-stop(10%, #6593b8), color-stop(50%, #3d6484), color-stop(50%, #385c7a), color-stop(100%, #48769d));
@@ -994,7 +994,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #092c48 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a#join-as-captain-button:active {
   background-color: #1668ab;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #3d6484), color-stop(30%, #40698b), color-stop(50%, #395f7d), color-stop(50%, #355772), color-stop(100%, #4979a0));
@@ -1012,7 +1012,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #115c2d 0px 1px 1px;
   color: white;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button.disabled:active, #join-as-selector .join-as-button a#join-as-sidekick-button.disabled:hover, #join-as-selector .join-as-button a#join-as-sidekick-button[disabled]:active, #join-as-selector .join-as-button a#join-as-sidekick-button[disabled]:hover {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -1021,7 +1021,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #115c2d 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button:hover, #join-as-selector .join-as-button a#join-as-sidekick-button:focus {
   background-color: #23bb5c;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #b2d5bf), color-stop(10%, #77b48e), color-stop(50%, #498560), color-stop(50%, #447b59), color-stop(100%, #569c71));
@@ -1030,7 +1030,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #0f5027 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-as-selector .join-as-button a#join-as-sidekick-button:active {
   background-color: #20ae56;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #498560), color-stop(30%, #4c8b65), color-stop(50%, #457e5c), color-stop(50%, #407454), color-stop(100%, #579f73));
@@ -1078,16 +1078,16 @@ dl.frequently-asked-questions dd p {
   color: white;
   color: white !important;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a.disabled, #join-mission-intro a[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -1095,16 +1095,16 @@ dl.frequently-asked-questions dd p {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a.disabled:hover, #join-mission-intro a.disabled:focus, #join-mission-intro a[disabled]:hover, #join-mission-intro a[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a:active {
   padding: 3px 15px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a.disabled:active, #join-mission-intro a[disabled] {
   padding: 4px 16px;
   border-width: 1px;
@@ -1114,7 +1114,7 @@ dl.frequently-asked-questions dd p {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a.disabled:active, #join-mission-intro a.disabled:hover, #join-mission-intro a[disabled]:active, #join-mission-intro a[disabled]:hover {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -1123,7 +1123,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #115c2d 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a:hover, #join-mission-intro a:focus {
   background-color: #23bb5c;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #b2d5bf), color-stop(10%, #77b48e), color-stop(50%, #498560), color-stop(50%, #447b59), color-stop(100%, #569c71));
@@ -1132,7 +1132,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #0f5027 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #join-mission-intro a:active {
   background-color: #20ae56;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #498560), color-stop(30%, #4c8b65), color-stop(50%, #457e5c), color-stop(50%, #407454), color-stop(100%, #579f73));
@@ -1294,16 +1294,16 @@ dl.frequently-asked-questions dd p {
   color: white;
   padding: 7px 10px;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button.disabled, #content form.formtastic fieldset.buttons ol button[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -1311,21 +1311,21 @@ dl.frequently-asked-questions dd p {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button.disabled:hover, #content form.formtastic fieldset.buttons ol button.disabled:focus, #content form.formtastic fieldset.buttons ol button[disabled]:hover, #content form.formtastic fieldset.buttons ol button[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button:active {
   padding: 3px 15px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button.disabled:active, #content form.formtastic fieldset.buttons ol button[disabled] {
   padding: 4px 16px;
   border-width: 1px;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button.disabled:active, #content form.formtastic fieldset.buttons ol button.disabled:hover, #content form.formtastic fieldset.buttons ol button[disabled]:active, #content form.formtastic fieldset.buttons ol button[disabled]:hover {
   background-color: #333333;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #878787), color-stop(10%, #595959), color-stop(50%, #2c2c2c), color-stop(50%, #242424), color-stop(100%, #3e3e3e));
@@ -1334,7 +1334,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: black 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button:hover, #content form.formtastic fieldset.buttons ol button:focus {
   background-color: #2b2b2b;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #7f7f7f), color-stop(10%, #515151), color-stop(50%, #242424), color-stop(50%, #1c1c1c), color-stop(100%, #363636));
@@ -1343,7 +1343,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: black 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol button:active {
   background-color: #242424;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #242424), color-stop(30%, #292929), color-stop(50%, #1f1f1f), color-stop(50%, #181818), color-stop(100%, #393939));
@@ -1381,16 +1381,16 @@ dl.frequently-asked-questions dd p {
   color: white;
   padding: 7px 10px;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -1398,21 +1398,21 @@ dl.frequently-asked-questions dd p {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:focus, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link:active {
   padding: 3px 15px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled] {
   padding: 4px 16px;
   border-width: 1px;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:active, #content form.formtastic fieldset.buttons ol a#auth-selector-link.disabled:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:active, #content form.formtastic fieldset.buttons ol a#auth-selector-link[disabled]:hover {
   background-color: #89050d;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #d1666d), color-stop(10%, #a8333a), color-stop(50%, #621e22), color-stop(50%, #561a1e), color-stop(100%, #7d262c));
@@ -1421,7 +1421,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: #0e0101 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link:hover, #content form.formtastic fieldset.buttons ol a#auth-selector-link:focus {
   background-color: #7a040d;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #cd5a62), color-stop(10%, #9c2f37), color-stop(50%, #551a1e), color-stop(50%, #49161a), color-stop(100%, #702228));
@@ -1430,7 +1430,7 @@ dl.frequently-asked-questions dd p {
   text-shadow: black 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content form.formtastic fieldset.buttons ol a#auth-selector-link:active {
   background-color: #6c040b;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #571a1e), color-stop(30%, #5e1c21), color-stop(50%, #4f181b), color-stop(50%, #431417), color-stop(100%, #762429));
@@ -1534,16 +1534,16 @@ section#flash-messages p.flash.last {
   border-width: 1px;
   padding: 7px 10px;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a.disabled, #authentication-choices dd.choice a[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -1551,16 +1551,16 @@ section#flash-messages p.flash.last {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a.disabled:hover, #authentication-choices dd.choice a.disabled:focus, #authentication-choices dd.choice a[disabled]:hover, #authentication-choices dd.choice a[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a:active {
   padding: 1px 10px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a.disabled:active, #authentication-choices dd.choice a[disabled] {
   padding: 2px 11px;
   border-width: 1px;
@@ -1579,7 +1579,7 @@ section#flash-messages p.flash.last {
   text-shadow: #0b3455 0px 1px 1px;
   color: white;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a#traditional-authentication-link.disabled:active, #authentication-choices dd.choice a#traditional-authentication-link.disabled:hover, #authentication-choices dd.choice a#traditional-authentication-link[disabled]:active, #authentication-choices dd.choice a#traditional-authentication-link[disabled]:hover {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -1588,7 +1588,7 @@ section#flash-messages p.flash.last {
   text-shadow: #0b3455 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a#traditional-authentication-link:hover, #authentication-choices dd.choice a#traditional-authentication-link:focus {
   background-color: #1870b9;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #a4bfd5), color-stop(10%, #6593b8), color-stop(50%, #3d6484), color-stop(50%, #385c7a), color-stop(100%, #48769d));
@@ -1597,7 +1597,7 @@ section#flash-messages p.flash.last {
   text-shadow: #092c48 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a#traditional-authentication-link:active {
   background-color: #1668ab;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #3d6484), color-stop(30%, #40698b), color-stop(50%, #395f7d), color-stop(50%, #355772), color-stop(100%, #4979a0));
@@ -1615,7 +1615,7 @@ section#flash-messages p.flash.last {
   text-shadow: #115c2d 0px 1px 1px;
   color: white;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a#rpxnow-authentication-link.disabled:active, #authentication-choices dd.choice a#rpxnow-authentication-link.disabled:hover, #authentication-choices dd.choice a#rpxnow-authentication-link[disabled]:active, #authentication-choices dd.choice a#rpxnow-authentication-link[disabled]:hover {
   background-color: #25c862;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbdac7), color-stop(10%, #80b996), color-stop(50%, #4e8f67), color-stop(50%, #498560), color-stop(100%, #5ca578));
@@ -1624,7 +1624,7 @@ section#flash-messages p.flash.last {
   text-shadow: #115c2d 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a#rpxnow-authentication-link:hover, #authentication-choices dd.choice a#rpxnow-authentication-link:focus {
   background-color: #23bb5c;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #b2d5bf), color-stop(10%, #77b48e), color-stop(50%, #498560), color-stop(50%, #447b59), color-stop(100%, #569c71));
@@ -1633,7 +1633,7 @@ section#flash-messages p.flash.last {
   text-shadow: #0f5027 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #authentication-choices dd.choice a#rpxnow-authentication-link:active {
   background-color: #20ae56;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #498560), color-stop(30%, #4c8b65), color-stop(50%, #457e5c), color-stop(50%, #407454), color-stop(100%, #579f73));
@@ -1785,16 +1785,16 @@ p.actions {
   border-width: 1px;
   padding: 7px 10px;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item::-moz-focus-inner, #content #getting-started #your-profile-item::-moz-focus-inner, #content #getting-started #contact-us-item::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item:focus, #content #getting-started #your-profile-item:focus, #content #getting-started #contact-us-item:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item.disabled, #content #getting-started #next-mission-item[disabled], #content #getting-started #your-profile-item.disabled, #content #getting-started #your-profile-item[disabled], #content #getting-started #contact-us-item.disabled, #content #getting-started #contact-us-item[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -1802,16 +1802,16 @@ p.actions {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item.disabled:hover, #content #getting-started #next-mission-item.disabled:focus, #content #getting-started #next-mission-item[disabled]:hover, #content #getting-started #next-mission-item[disabled]:focus, #content #getting-started #your-profile-item.disabled:hover, #content #getting-started #your-profile-item.disabled:focus, #content #getting-started #your-profile-item[disabled]:hover, #content #getting-started #your-profile-item[disabled]:focus, #content #getting-started #contact-us-item.disabled:hover, #content #getting-started #contact-us-item.disabled:focus, #content #getting-started #contact-us-item[disabled]:hover, #content #getting-started #contact-us-item[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item:active, #content #getting-started #your-profile-item:active, #content #getting-started #contact-us-item:active {
   padding: 3px 15px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item.disabled:active, #content #getting-started #next-mission-item[disabled], #content #getting-started #your-profile-item.disabled:active, #content #getting-started #your-profile-item[disabled], #content #getting-started #contact-us-item.disabled:active, #content #getting-started #contact-us-item[disabled] {
   padding: 4px 16px;
   border-width: 1px;
@@ -1830,7 +1830,7 @@ p.actions {
   text-shadow: #092f0d 0px 1px 1px;
   color: white;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item.disabled:active, #content #getting-started #next-mission-item.disabled:hover, #content #getting-started #next-mission-item[disabled]:active, #content #getting-started #next-mission-item[disabled]:hover {
   background-color: #1d9a2a;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #9ac69e), color-stop(10%, #5fa566), color-stop(50%, #3d6b41), color-stop(50%, #37613b), color-stop(100%, #49824f));
@@ -1839,7 +1839,7 @@ p.actions {
   text-shadow: #092f0d 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item:hover, #content #getting-started #next-mission-item:focus {
   background-color: #1b8c27;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #8fc094), color-stop(10%, #579c5f), color-stop(50%, #37613b), color-stop(50%, #315735), color-stop(100%, #437849));
@@ -1848,7 +1848,7 @@ p.actions {
   text-shadow: #062109 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #next-mission-item:active {
   background-color: #197f22;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #37603b), color-stop(30%, #3b673f), color-stop(50%, #335a37), color-stop(50%, #2e5031), color-stop(100%, #467a4b));
@@ -1866,7 +1866,7 @@ p.actions {
   text-shadow: #0b3455 0px 1px 1px;
   color: white;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #your-profile-item.disabled:active, #content #getting-started #your-profile-item.disabled:hover, #content #getting-started #your-profile-item[disabled]:active, #content #getting-started #your-profile-item[disabled]:hover {
   background-color: #1a78c6;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #afc6da), color-stop(10%, #709abd), color-stop(50%, #426c8e), color-stop(50%, #3d6484), color-stop(100%, #4d7ea7));
@@ -1875,7 +1875,7 @@ p.actions {
   text-shadow: #0b3455 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #your-profile-item:hover, #content #getting-started #your-profile-item:focus {
   background-color: #1870b9;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #a4bfd5), color-stop(10%, #6593b8), color-stop(50%, #3d6484), color-stop(50%, #385c7a), color-stop(100%, #48769d));
@@ -1884,7 +1884,7 @@ p.actions {
   text-shadow: #092c48 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #your-profile-item:active {
   background-color: #1668ab;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #3d6484), color-stop(30%, #40698b), color-stop(50%, #395f7d), color-stop(50%, #355772), color-stop(100%, #4979a0));
@@ -1902,7 +1902,7 @@ p.actions {
   text-shadow: #533300 0px 1px 1px;
   color: white;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #contact-us-item.disabled:active, #content #getting-started #contact-us-item.disabled:hover, #content #getting-started #contact-us-item[disabled]:active, #content #getting-started #contact-us-item[disabled]:hover {
   background-color: #d38100;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffcd7d), color-stop(10%, #ffa921), color-stop(50%, #c37700), color-stop(50%, #b46e00), color-stop(100%, #e78d00));
@@ -1911,7 +1911,7 @@ p.actions {
   text-shadow: #533300 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #contact-us-item:hover, #content #getting-started #contact-us-item:focus {
   background-color: #c47800;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffc76e), color-stop(10%, #ffa312), color-stop(50%, #b46e00), color-stop(50%, #a56500), color-stop(100%, #d88400));
@@ -1920,7 +1920,7 @@ p.actions {
   text-shadow: #452a00 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content #getting-started #contact-us-item:active {
   background-color: #b46e00;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #b46e00), color-stop(30%, #be7400), color-stop(50%, #a96700), color-stop(50%, #9a5e00), color-stop(100%, #dc8700));
@@ -2042,16 +2042,16 @@ p.actions {
   color: white;
   color: white;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link.disabled, #content p.join-mission-container a.join-mission-link[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -2059,16 +2059,16 @@ p.actions {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link.disabled:hover, #content p.join-mission-container a.join-mission-link.disabled:focus, #content p.join-mission-container a.join-mission-link[disabled]:hover, #content p.join-mission-container a.join-mission-link[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link:active {
   padding: 1px 10px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link.disabled:active, #content p.join-mission-container a.join-mission-link[disabled] {
   padding: 2px 11px;
   border-width: 1px;
@@ -2078,7 +2078,7 @@ p.actions {
   padding: 7px 10px;
   border-width: 1px;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link.disabled:active, #content p.join-mission-container a.join-mission-link.disabled:hover, #content p.join-mission-container a.join-mission-link[disabled]:active, #content p.join-mission-container a.join-mission-link[disabled]:hover {
   background-color: #1d9a2a;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #9ac69e), color-stop(10%, #5fa566), color-stop(50%, #3d6b41), color-stop(50%, #37613b), color-stop(100%, #49824f));
@@ -2087,7 +2087,7 @@ p.actions {
   text-shadow: #092f0d 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link:hover, #content p.join-mission-container a.join-mission-link:focus {
   background-color: #1b8c27;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #8fc094), color-stop(10%, #579c5f), color-stop(50%, #37613b), color-stop(50%, #315735), color-stop(100%, #437849));
@@ -2096,7 +2096,7 @@ p.actions {
   text-shadow: #062109 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 #content p.join-mission-container a.join-mission-link:active {
   background-color: #197f22;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #37603b), color-stop(30%, #3b673f), color-stop(50%, #335a37), color-stop(50%, #2e5031), color-stop(100%, #467a4b));

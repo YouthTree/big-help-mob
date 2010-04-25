@@ -817,16 +817,16 @@ form.formtastic fieldset.buttons ol li button {
   text-shadow: #000801 0px 1px 1px;
   color: white;
 }
-/* line 162, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 161, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 165, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 164, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button:focus {
   outline: none;
 }
-/* line 167, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 166, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button.disabled, form.formtastic fieldset.buttons ol li button[disabled] {
   opacity: 0.7;
   -moz-opacity: 0.7;
@@ -834,21 +834,21 @@ form.formtastic fieldset.buttons ol li button.disabled, form.formtastic fieldset
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: alpha(opacity=70);
 }
-/* line 172, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 171, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button.disabled:hover, form.formtastic fieldset.buttons ol li button.disabled:focus, form.formtastic fieldset.buttons ol li button[disabled]:hover, form.formtastic fieldset.buttons ol li button[disabled]:focus {
   cursor: default;
 }
-/* line 143, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 142, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button:active {
   padding: 3px 15px;
   border-width: 2px;
 }
-/* line 146, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 145, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button.disabled:active, form.formtastic fieldset.buttons ol li button[disabled] {
   padding: 4px 16px;
   border-width: 1px;
 }
-/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 24, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button.disabled:active, form.formtastic fieldset.buttons ol li button.disabled:hover, form.formtastic fieldset.buttons ol li button[disabled]:active, form.formtastic fieldset.buttons ol li button[disabled]:hover {
   background-color: #008716;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #56d96c), color-stop(10%, #27ac3d), color-stop(50%, #166222), color-stop(50%, #13551e), color-stop(100%, #1c7f2d));
@@ -857,7 +857,7 @@ form.formtastic fieldset.buttons ol li button.disabled:active, form.formtastic f
   text-shadow: #000801 0px 1px 1px;
   color: white;
 }
-/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 26, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button:hover, form.formtastic fieldset.buttons ol li button:focus {
   background-color: #007815;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #4ad661), color-stop(10%, #24a039), color-stop(50%, #13561e), color-stop(50%, #10491a), color-stop(100%, #197329));
@@ -866,7 +866,7 @@ form.formtastic fieldset.buttons ol li button:hover, form.formtastic fieldset.bu
   text-shadow: black 0px 1px 1px;
   color: white;
 }
-/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.4.1/lib/sass/_fancy_buttons.sass */
+/* line 31, ../../.bundle-cache/gems/fancy-buttons-0.5.1/lib/stylesheets/_fancy_buttons.sass */
 form.formtastic fieldset.buttons ol li button:active {
   background-color: #006811;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #12551e), color-stop(30%, #145e21), color-stop(50%, #114d1b), color-stop(50%, #0e4016), color-stop(100%, #1a772a));

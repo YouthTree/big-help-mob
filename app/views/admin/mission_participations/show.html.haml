@@ -13,9 +13,9 @@
   = r.attribute :role_name
   
   = r.association :pickup do
-  
-    - if r.pickup.present? && r.pickup.pickup.present?
-      %p== User wishes to be picked up from #{r.pickup.name} (#{r.pickup.address_as_string}) at #{I18n.l(r.pickup.pickup_at, :format => :pickup_time)}.
+    - pickup = resource.pickup
+    - if pickup.present?
+      %p== User wishes to be picked up from #{pickup.pickup.name} (#{pickup.address_as_string}) at #{I18n.l(pickup.pickup_at, :format => :pickup_time)}.
     - else
       %p Pickup unknown.
 
