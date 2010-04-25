@@ -12,6 +12,19 @@
   
   = r.attribute :role_name
 
+%h3 User Information
+
+= show_for resource.user do |r|
+
+  = r.attribute :first_name
+
+  = r.attribute :last_name
+
+  = r.attribute :phone
+
+  = r.attribute :email
+  
+  = r.attribute :allergies
 
 %h3 Survey Answers
 
