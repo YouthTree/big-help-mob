@@ -64,7 +64,7 @@ class ParticipationReporter
     captain_application = user.captain_application
     [].tap do |row|
       row << user.name
-      row << user.date_of_birth.present? ? I18n.l(user.date_of_birth) : "Unknown"
+      row << (user.date_of_birth.present? ? I18n.l(user.date_of_birth) : "Unknown")
       append_row_entry row, user, :mailing_address
       append_row_entry row, user, :phone
       append_row_entry row, participation, :role_name
