@@ -31,6 +31,7 @@ en:
         last_name: "Last Name"
         allergies: "Allergies"
         email: "Email Address"
+        pickup: "Pickup Choice"
         captain_application:
           offers: "Captain Application: What do they offer to BHM"
           reason_why: "Captain Application: About them / Why it appealed to them"

@@ -57,7 +57,7 @@
     .inner-report-generator
       margin: 0 0 2em
       display: none
-      h3
+      h3, h4
         margin: 0 0
       ul
         margin: 0.25em 0 0.5em
@@ -71,6 +71,20 @@
           line-height: 2em
           input
             margin-right: 0.5em
+    #inner-report-wrapper
+      +clearfix
+      .column
+        width: 350px
+        margin: 1em 10px
+        float: left
+      #filter-mission-report li
+        label
+          display: block
+        select
+          width: 100%
+    #submit-report-container
+      text-align: center
+      clear: both
 
 #filter-postcode-map-form
   padding: 0 0 1em

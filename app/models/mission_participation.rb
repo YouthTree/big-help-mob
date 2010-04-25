@@ -135,6 +135,11 @@ class MissionParticipation < ActiveRecord::Base
     states.blank? ? unscoped : where(:state => states)
   end
   
+  def self.from_pickups(pickup_ids)
+    ids = Array(pickup_ids).reject(&:blank?)
+    ids.blank? ? unscoped : where('pickup_id IN (?)', ids)
+  end
+  
   def mark_user_participation
     if user.present?
       user.build_captain_application if captain? && user.captain_application.blank?
@@ -165,6 +170,14 @@ class MissionParticipation < ActiveRecord::Base
   
   def human_state_name
     state.to_s.humanize
+  end
+  
+  def humanized_pickup
+    if role_name.sidekick?
+      pickup.present? ? pickup.name : "Not yet set"
+    else
+      "Not applicable"
+    end
   end
   
 end

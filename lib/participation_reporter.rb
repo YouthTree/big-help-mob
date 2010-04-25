@@ -16,10 +16,15 @@ class ParticipationReporter
     :first_name => true,
     :last_name  => true,
     :email      => true,
+    :pickup     => true,
     :states     => STATE_CHOICES.map(&:last)
   }
   
   attr_reader :mission, :collection
+  
+  def self.pickups_for(mission)
+    mission.mission_pickups.map { |p| [p.name, p.id] }
+  end
   
   def self.default_for(key)
     DEFAULTS[key.to_sym]
@@ -50,7 +55,7 @@ class ParticipationReporter
   def generate_header
     [].tap do |header|
       [:name, :dob].each { |f| header << tl(f) }
-      [:email, :first_name, :last_name, :mailing_address, :phone, :allergies, :role_name, :state].each do |key|
+      [:email, :first_name, :last_name, :pickup, :mailing_address, :phone, :allergies, :role_name, :state].each do |key|
         append_header_entry header, key
       end
       mission.questions.each { |q| header << tl(:answer, :name => q.name)  } if show?(:answers)
@@ -71,6 +76,7 @@ class ParticipationReporter
       append_row_entry row, user, :email
       append_row_entry row, user, :first_name
       append_row_entry row, user, :last_name
+      append_row_entry row, participation, :pickup, :humanized_pickup
       append_row_entry row, user, :mailing_address
       append_row_entry row, user, :phone
       append_row_entry row, user, :allergies
@@ -93,8 +99,9 @@ class ParticipationReporter
   
   def scope_participations(mission)
     scope = mission.mission_participations
-    scope = scope.only_role(@options[:role])     if @options[:role].present?
-    scope = scope.with_states(@options[:states]) if @options[:states].present?
+    scope = scope.only_role(@options[:role])      if @options[:role].present?
+    scope = scope.with_states(@options[:states])  if @options[:states].present?
+    scope = scope.from_pickups(@options[:pickups]) if @options[:pickups].present?
     scope
   end
   

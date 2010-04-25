@@ -3,6 +3,7 @@ BHM.withNS('Admin.MissionDashboard', function(ns) {
   ns.tabsSelector       = '#general-participations';
   ns.showReportSelector = '#generate-report';
   ns.reportSelector     = '#generate-mission-report .inner-report-generator'
+  ns.hideReportSelector = '#hide-report-generator-button'
   
   ns.setupTabs = function() {
     $(ns.tabsSelector).tabs();
@@ -10,10 +11,13 @@ BHM.withNS('Admin.MissionDashboard', function(ns) {
   
   ns.setupReportGenerator = function() {
     $(ns.showReportSelector + ' a').click(function() {
-      $(ns.showReportSelector).slideUp(function() {
-        $(this).remove();
-      })
+      $(ns.showReportSelector).slideUp();
       $(ns.reportSelector).slideDown();
+      return false;
+    });
+    $(ns.hideReportSelector).click(function() {
+      $(ns.reportSelector).slideUp();
+      $(ns.showReportSelector).slideDown();
       return false;
     });
   };

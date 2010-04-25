@@ -1089,7 +1089,7 @@ a:hover {
   display: none;
 }
 /* line 60, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
-#mission-dashboard #generate-mission-report .inner-report-generator h3 {
+#mission-dashboard #generate-mission-report .inner-report-generator h3, #mission-dashboard #generate-mission-report .inner-report-generator h4 {
   margin: 0 0;
 }
 /* line 62, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
@@ -1110,8 +1110,36 @@ a:hover {
 #mission-dashboard #generate-mission-report .inner-report-generator ul li input {
   margin-right: 0.5em;
 }
+/* line 74, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report #inner-report-wrapper {
+  overflow: hidden;
+  display: inline-block;
+}
+/* line 5, ../../.bundle-cache/gems/compass-0.10.0.rc3/frameworks/compass/stylesheets/compass/utilities/general/_hacks.scss */
+#mission-dashboard #generate-mission-report #inner-report-wrapper {
+  display: block;
+}
+/* line 76, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report #inner-report-wrapper .column {
+  width: 350px;
+  margin: 1em 10px;
+  float: left;
+}
+/* line 81, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report #inner-report-wrapper #filter-mission-report li label {
+  display: block;
+}
+/* line 83, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report #inner-report-wrapper #filter-mission-report li select {
+  width: 100%;
+}
+/* line 85, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#mission-dashboard #generate-mission-report #submit-report-container {
+  text-align: center;
+  clear: both;
+}
 
-/* line 75, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 89, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #filter-postcode-map-form {
   padding: 0 0 1em;
   color: #444444;
