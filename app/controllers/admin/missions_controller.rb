@@ -2,6 +2,7 @@ class Admin::MissionsController < Admin::BaseController
   include PseudocephalopodControllerExt
   
   def dashboard
+    params[:state_filter] ||= "approved"
     @statistics     = MissionStatistics.new(resource)
     @user_locations = @statistics.to_user_locations(params[:state_filter], params[:role_filter])
   end
