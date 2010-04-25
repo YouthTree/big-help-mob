@@ -2,7 +2,8 @@ class Admin::MissionsController < Admin::BaseController
   include PseudocephalopodControllerExt
   
   def dashboard
-    @statistics = MissionStatistics.new(resource)
+    @statistics     = MissionStatistics.new(resource)
+    @user_locations = @statistics.to_user_locations(params[:state_filter], params[:role_filter])
   end
   
   def report

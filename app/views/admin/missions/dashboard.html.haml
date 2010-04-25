@@ -1,4 +1,5 @@
 - has_jammit_js :mission_dashboard
+- use_postcode_mapper
 %h2.title Mission Dashboard
 
 #mission-dashboard
@@ -21,32 +22,8 @@
       %span.count= @statistics.count
       %span.description Total Participations
 
-
-
-  #generate-mission-report
-    %p#generate-report== #{link_to 'Click here', '#', :id => 'generate-report-button'} to generate a report of participations.
-    .inner-report-generator
-      %h3 Generate Report
-      - form_tag report_admin_mission_path(@mission, :format => 'csv'), :method => :get do
-        %ul
-          %li
-            %h4 Fields to show:
-          %li= report_field_checkbox :headers,             "Show CSV Headers"
-          %li= report_field_checkbox :email,               "Show Users Email Address"
-          %li= report_field_checkbox :first_name,          "Show First Name"
-          %li= report_field_checkbox :last_name,           "Show Last Name"
-          %li= report_field_checkbox :mailing_address,     "Show Mailing Address"
-          %li= report_field_checkbox :phone,               "Show Phone Number"
-          %li= report_field_checkbox :allergies,           "Show Allergies"
-          %li= report_field_checkbox :role_name,           "Show Role Name (Captain / Sidekick)"
-          %li= report_field_checkbox :state,               "Show Participation State"
-          %li= report_field_checkbox :answers,             "Show Answers to Mission-specific questions"
-          %li= report_field_checkbox :captain_application, "Show Captain Application"
-          %li
-            %h4 Filter results:
-          %li= report_field_select   :role,                "Show participations for", ParticipationReporter::ROLE_CHOICES
-          %li= report_field_select   :states,              "Show those that are",     ParticipationReporter::STATE_CHOICES, :multiple => true
-        .buttons= submit_tag "Generate Report", :name => nil
+  = render :partial => 'postcode_map'
+  = render :partial => 'report_form'
   
   #general-participations
     %ul

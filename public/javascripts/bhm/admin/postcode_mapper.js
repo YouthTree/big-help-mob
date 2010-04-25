@@ -34,7 +34,6 @@ BHM.withNS('Admin.PostcodeMapper', function(ns) {
       o.title    = this.title;
       o.position = this.toLatLng();
       o.map      = map;
-      console.log(o);
       return new google.maps.Marker(o);
     };
     

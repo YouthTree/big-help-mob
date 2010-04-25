@@ -1110,3 +1110,9 @@ a:hover {
 #mission-dashboard #generate-mission-report .inner-report-generator ul li input {
   margin-right: 0.5em;
 }
+
+/* line 75, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+#filter-postcode-map-form {
+  padding: 0 0 1em;
+  color: #444444;
+}
