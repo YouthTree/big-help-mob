@@ -59,7 +59,7 @@ gem "stringex"
 gem "uuid"
 gem "sitemap_generator"
 
-gem "pseudocephalopod"
+gem "pseudocephalopod", ">= 0.2.1"
 
 group :production do
   gem "unicorn", :require => nil
@@ -76,4 +76,8 @@ group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil
   gem "shoulda",  ">= 3.0.pre", :require => nil
+  
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
 end

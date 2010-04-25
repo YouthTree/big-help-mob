@@ -20,7 +20,8 @@ Bighelpmob::Application.routes.draw do |map|
         post :reorder
       end
     end
-    match '', :to => 'admin/dashboard#index', :as => :dashboard
+    
+    match '', :to => 'dashboard#index', :as => :dashboard
   end
   
   resources :user_session, :path => 'user-sessions'

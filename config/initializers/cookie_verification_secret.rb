@@ -1,1 +1,1 @@
-Rails.application.config.cookie_secret = Settings.cookie_verifier_secret
+Rails.application.config.secret_token = Settings.cookie_verifier_secret
