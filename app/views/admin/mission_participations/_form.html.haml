@@ -5,3 +5,4 @@
     = form.input :mission
   = form.input :role, :collection => Role.for_select
   = form.input :state_event, :collection => resource.state_events.map { |se| [se.to_s.humanize, se]}
+  = form.input :comment, :hint => "This is a private, admin-only comment about this participation", :input_html => {:rows => 5}

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100425192108) do
+ActiveRecord::Schema.define(:version => 20100425220638) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20100425192108) do
     t.datetime "updated_at"
     t.integer  "pickup_id"
     t.text     "raw_answers"
+    t.text     "comment"
   end
 
   add_index "mission_participations", ["mission_id", "role_id"], :name => "index_mission_participations_on_mission_id_and_role_id"
@@ -234,6 +235,7 @@ ActiveRecord::Schema.define(:version => 20100425192108) do
     t.decimal  "postcode_lat",      :precision => 15, :scale => 10
     t.decimal  "postcode_lng",      :precision => 15, :scale => 10
     t.string   "cached_slug"
+    t.text     "comment"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

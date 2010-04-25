@@ -4,6 +4,7 @@
   = form.input :email
   = form.input :display_name
   = form.input :current_role_id, :collection => Role.for_select
+  = form.input :comment, :hint => "This is a private, admin-only comment about this user", :input_html => {:rows => 5}
   
 = form.inputs :name => "User Details" do
   = form.input :first_name

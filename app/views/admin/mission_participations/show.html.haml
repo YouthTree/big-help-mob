@@ -10,6 +10,9 @@
     = r.association :mission do
       = link_to resource.user, [:admin, resource.user]
   
+  = r.attribute :comment do
+    = comment_as_html resource
+  
   = r.attribute :role_name
   
   = r.association :pickup do
@@ -32,6 +35,9 @@
   = r.attribute :email
   
   = r.attribute :allergies
+  
+  = r.attribute :comment do
+    = comment_as_html resource.user
 
 %h3 Survey Answers
 

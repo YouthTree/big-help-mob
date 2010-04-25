@@ -490,6 +490,28 @@ h2 {
   margin: 0.5em auto 1em;
 }
 
+/* line 19, ../../app/stylesheets/bhm/admin/_general.sass */
+.pagination {
+  text-align: center;
+  margin: 1em 0;
+  color: #333333;
+}
+/* line 24, ../../app/stylesheets/bhm/admin/_general.sass */
+.pagination span, .pagination a, .pagination em {
+  font-weight: bold;
+  background: #eeeeee;
+  padding: 0.3em 0.5em;
+  margin: 0 0.5em;
+}
+/* line 30, ../../app/stylesheets/bhm/admin/_general.sass */
+.pagination em {
+  color: black;
+}
+/* line 32, ../../app/stylesheets/bhm/admin/_general.sass */
+.pagination span {
+  color: #aaaaaa;
+}
+
 /* line 1, ../../app/stylesheets/bhm/admin/_header.sass */
 header {
   background: #333333;

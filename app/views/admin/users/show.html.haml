@@ -22,6 +22,9 @@
   
   = s.association :current_role
   
+  = s.association :comment do
+    = comment_as_html @user
+  
   = s.attribute :mailing_list_names do
     %ul
       - @user.mailing_lists.names.each do |list_name|
