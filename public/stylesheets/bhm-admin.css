@@ -1112,14 +1112,15 @@ a:hover {
 }
 /* line 60, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report .inner-report-generator h3, #mission-dashboard #generate-mission-report .inner-report-generator h4 {
+  text-align: center;
   margin: 0 0;
 }
-/* line 62, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 63, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report .inner-report-generator ul {
   margin: 0.25em 0 0.5em;
   padding: 0;
 }
-/* line 65, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 66, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report .inner-report-generator ul li {
   margin: 0;
   padding: 0;
@@ -1128,11 +1129,11 @@ a:hover {
   font-weight: bold;
   line-height: 2em;
 }
-/* line 72, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 73, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report .inner-report-generator ul li input {
   margin-right: 0.5em;
 }
-/* line 74, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 75, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report #inner-report-wrapper {
   overflow: hidden;
   display: inline-block;
@@ -1141,27 +1142,27 @@ a:hover {
 #mission-dashboard #generate-mission-report #inner-report-wrapper {
   display: block;
 }
-/* line 76, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 77, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report #inner-report-wrapper .column {
   width: 350px;
   margin: 1em 10px;
   float: left;
 }
-/* line 81, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 82, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report #inner-report-wrapper #filter-mission-report li label {
   display: block;
 }
-/* line 83, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 84, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report #inner-report-wrapper #filter-mission-report li select {
   width: 100%;
 }
-/* line 85, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 86, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #mission-dashboard #generate-mission-report #submit-report-container {
   text-align: center;
   clear: both;
 }
 
-/* line 89, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
+/* line 90, ../../app/stylesheets/bhm/admin/_mission_dashboard.sass */
 #filter-postcode-map-form {
   padding: 0 0 1em;
   color: #444444;
