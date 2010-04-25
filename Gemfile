@@ -1,6 +1,7 @@
 source 'http://gemcutter.org'
 
-git "git://github.com/rlivsey/will_paginate.git", :ref => "rails3"
+# TODO: Uncomment when submodules stuff is fixed.
+# git "git://github.com/rlivsey/will_paginate.git", :ref => "rails3"
 git "git://github.com/nono/acts_as_list.git",     :ref => "rails3"
 
 # General WIP Fixes.

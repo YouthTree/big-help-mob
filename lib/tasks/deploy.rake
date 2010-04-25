@@ -88,7 +88,8 @@ namespace :deploy do
       exit!
     end
     Rake::Task["deploy:local_dump"].invoke
-    execute_local_command! "mysql #{cdc.database} -u#{cdc.username} -p#{cdc.password} < tmp/bhm.sql"
+    password_options = cdc.password.blank? ? "" : " -p#{cdc.password}"
+    execute_local_command! "mysql #{cdc.database} -u#{cdc.username}#{password_options} < tmp/bhm.sql"
     execute_local_command! "rm -rf tmp/bhm.sql"
     # Update emails
     count = 0
@@ -104,22 +105,14 @@ namespace :deploy do
   end
   
   task :remote_after do
+    puts "[LOCAL] Attempting to start passenger..."
     execute_local_command! "mkdir -p tmp"
-    if File.exist?("tmp/pids/unicorn.pid")
-      begin
-        pid = File.read("tmp/pids/unicorn.pid").to_i
-        Process.kill(:USR2, pid)
-      rescue Errno::ENOENT, Errno::ESRCH
-      end
-      puts "[LOCAL] Found pid, attempted to restart."
-    else
-      puts "[LOCAL] Couldn't find a pid."
-    end
+    execute_local_command! "touch tmp/restart.txt"
     sleep 10
-    puts "Getting error pages..."
+    puts "[LOCAL] Getting error pages..."
     get_error_page! 500, "internal-server-error"
     get_error_page! 404, "not-found"
-    puts "Error pages updated."
+    puts "[LOCAL] Error pages updated."
   end
   
   task :local_before do
@@ -165,7 +158,7 @@ namespace :deploy do
     Rake::Task["deploy:local_before"].invoke
     puts "Deploying app to #{staging? ? "staging" : "production"}"
     git_command     = "git reset --hard HEAD && git checkout . && git pull"
-    bundler_command = "bundle install .bundle-cache"
+    bundler_command = "bundle install .bundle-cache --disable-shared-gems"
     rake_command    = "bundle exec rake deploy:remote"
     rake_command << " MIGRATE_ENV=true" if %w(true 1).include?(ENV['MIGRATE_ENV'].to_s.downcase)
     rake_command << " RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
