@@ -15,7 +15,7 @@ class ParticipationReporter
     :headers    => true,
     :first_name => true,
     :last_name  => true,
-    :email      => true
+    :email      => true,
     :states     => STATE_CHOICES.map(&:last)
   }
   
