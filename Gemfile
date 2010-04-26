@@ -1,4 +1,4 @@
-source 'http://gemcutter.org'
+source 'http://rubygems.org'
 
 # TODO: Uncomment when submodules stuff is fixed.
 # git "git://github.com/rlivsey/will_paginate.git", :ref => "rails3"
@@ -65,7 +65,7 @@ gem "uuid"
 gem "mail_form", ">= 1.2.1"
 gem "sitemap_generator"
 
-gem "barista"
+gem "barista", ">= 0.1.5"
 
 group :development do
   gem "yard",      :require => nil

@@ -1,2 +1,3 @@
-Barista.root    = Rails.root.join("app", "coffeescripts")
-Barista.no_wrap = true
+Barista.configure do |c|
+  c.no_wrap!
+end
