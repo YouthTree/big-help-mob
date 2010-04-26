@@ -1,6 +1,6 @@
 module AttrAccessibleScoping
   
-  UnassignableAttribute = Class.new(StandardError)
+  UnassignableAttribute = Class.new(StandardError)  
   
   class << self
     
