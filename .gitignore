@@ -10,3 +10,4 @@ doc/app
 tmp/restart.txt
 tmp/*.sql
 public/stylesheets/*.css
+public/javascripts/bhm-coffee/
