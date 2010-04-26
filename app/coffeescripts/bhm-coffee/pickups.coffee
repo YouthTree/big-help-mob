@@ -107,8 +107,8 @@ BHM.withNS 'Pickups', (ns) ->
   normalMarkerImage:   (pu) -> markerImageWithPath pu, "marker"
   selectedMarkerImage: (pu) -> markerImageWithPath pu, "marker_green"
   
-  ns.addPickup: (args...) ->
-    pickup: new ns.Pickup args...
+  ns.addPickup: (id, name, address, lat, lng, at, comment) ->
+    pickup: new ns.Pickup id, name, address, lat, lng, at, comment
     pickups[pickup.id]: pickup
     addPickupToPlot pickup if map?
     pickup
@@ -173,7 +173,7 @@ BHM.withNS 'Pickups', (ns) ->
     selectedCallback pickup, marker if $.isFunction selectedCallback
   
   ns.automap: ->
-    collection: "#$ns.listingID .$ns.listingClass"
+    collection: $ "#$ns.listingID .$ns.listingClass"
     if collection.size() > 0
       ns.autoAddPickups collection
       map: ns.getMap()
