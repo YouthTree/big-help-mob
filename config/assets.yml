@@ -44,9 +44,6 @@ javascripts:
   ie6:
     - public/javascripts/vendor/DD_belatedPNG_0.0.8a.js
     - public/javascripts/bhm/ie6.js
-  bgcolor:
-    - public/javascripts/vendor/colorpicker.js
-    - public/javascripts/bhm/bg_colour_test.js
   postcode_mapper:
     - public/javascripts/vendor/markerclusterer.js
     - public/javascripts/bhm/admin/postcode_mapper.js
@@ -61,5 +58,3 @@ stylesheets:
   admin:
     - public/stylesheets/bhm-admin.css
     - public/jquery-ui/smoothness/jquery-ui-1.8.custom.css
-  bgcolor:
-    - public/stylesheets/colorpicker.css

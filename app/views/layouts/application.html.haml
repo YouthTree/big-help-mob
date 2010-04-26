@@ -8,9 +8,6 @@
     = include_javascripts(:base)
     /[if IE 6]
       = include_javascripts(:ie6)
-    - if params[:bgcolor] == "1"
-      = include_stylesheets(:bgcolor)
-      = include_javascripts(:bgcolor)
     = csrf_meta_tag
     %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
     = yield :extra_head

@@ -1,5 +1,2 @@
 %nav#admin
   = link_to "Go to the Admin Area &raquo;".html_safe, :admin_dashboard
-  - if params[:bgcolor] == "1"
-    %br/
-    = link_to "Change BG Colour &raquo;".html_safe, "#", :id => "bg-colour-picker"
