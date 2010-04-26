@@ -40,11 +40,11 @@ Typically, you can either use:
 To install them to a default _~/.bundle_ directory, but typically (as is supported by the _.gitignore_)
 I (@Sutto) use:
 
-    $ bundle install .bundle-cache
+    $ bundle install .bundle-cache --disable-shared-gems
 
 Which will install all dependencies to the .bundle-cache directory under rails root.
 
-For future reference, I've aliased bi to _bundle install .bundle-cache_ and be to _bundle exec_,
+For future reference, I've aliased bi to `bundle install .bundle-cache --disable-shared-gems` and be to `bundle exec`,
 making it simpler / less typing whenever you have to run these commands.
 
 Please note it's a good idea to run bundle install as above whenever you pull in order to

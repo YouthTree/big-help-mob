@@ -10,66 +10,63 @@ git "git://github.com/Sutto/validation_reflection.git"
 git "git://github.com/justinfrench/formtastic.git", :ref => "rails3"
 git "git://github.com/railsjedi/jammit.git"
 
+# Rails!
 gem "rails", "= 3.0.0.beta3"
 
 # Misc
-gem "haml", "= 3.0.0.beta.3"
-gem "mysql"
+gem "mysql",   ">= 2.8.1"
 gem "forgery", ">= 0.3.4"
 
 # mailing list
-gem "hominid"
+gem "hominid", ">= 2.1.1"
 
-# geo-awareness stuff and helpers to present addresses more cleanly
-gem "addresslogic"
-gem "geokit"
+# Geoawareness and mapping stuff.
+gem "addresslogic",    ">= 1.2.1"
+gem "geokit",          ">= 1.5.0"
+gem "bhm-google-maps", ">= 0.1.0"
 
-# display helpers
-gem "formtastic", "= 0.9.8"
-gem "validation_reflection"
+# Display Helpers
+gem "formtastic",            "= 0.9.8"
+gem "validation_reflection", ">= 0.3.6"
+gem "title_estuary",         ">= 1.2.0"
 
-# Sass Awesome Sauce
-gem "compass", ">= 0.10.0.rc1"
-gem "compass-960-plugin"
-gem "compass-colors"
-gem "fancy-buttons"
+# View / Rendering
+gem "haml", "= 3.0.0.beta.3"
+gem "compass",            ">= 0.10.0.rc3"
+gem "compass-960-plugin", ">= 0.9.13"
+gem "compass-colors",     ">= 0.3.1"
+gem "fancy-buttons",      ">= 0.5.1"
 
-# authentication
+# Authentication
 gem "rpx_now"
 
 # Mainly Admin Area Stuff.
 gem "inherited_resources", ">= 1.1.2"
 gem "responders",          ">= 0.6.0"
 gem "show_for",            ">= 0.2.1"
+gem "ruby-googlechart",    ">= 0.6.4", :require => "google_chart"
 
+# General Code Stuff
 gem "will_paginate",       ">= 3.0.pre"
-gem "state_machine"
-gem "title_estuary"
-gem "acts_as_list"
-gem "mail_form"
-gem "jammit"
+gem "state_machine",       ">= 0.9.0"
+gem "pseudocephalopod", ">= 0.2.1"
+gem "acts_as_list",        ">= 0.2.0"
 
-gem "ruby-googlechart", :require => "google_chart"
-gem "msales-carmen",    :require => ["carmen", "carmen/action_view_helpers"]
+# Helpers etc.
+gem "jammit",              ">= 0.5.0"
+gem "msales-carmen",       ">= 0.1.4", :require => ["carmen", "carmen/action_view_helpers"]
 
+# Misc. Libraries
 gem "exception_notifier", :require => nil
-
 gem "liquid"
 gem "fastercsv"
 gem "stringex"
 gem "uuid"
+gem "mail_form", ">= 1.2.1"
 gem "sitemap_generator"
 
-gem "pseudocephalopod", ">= 0.2.1"
-
-gem "bhm-google-maps", ">= 0.1.0"
-
-group :production do
-  gem "unicorn", :require => nil
-end
 
 group :development do
-  gem "mongrel",   :require => nil
   gem "yard",      :require => nil
   gem "bluecloth", :require => nil
   gem "rails3-generators"
@@ -79,7 +76,6 @@ group :test do
   git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil
   gem "shoulda",  ">= 3.0.pre", :require => nil
-  
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
