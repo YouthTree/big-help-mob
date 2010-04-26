@@ -62,6 +62,8 @@ gem "sitemap_generator"
 
 gem "pseudocephalopod", ">= 0.2.1"
 
+gem "bhm-google-maps", ">= 0.1.0"
+
 group :production do
   gem "unicorn", :require => nil
 end
