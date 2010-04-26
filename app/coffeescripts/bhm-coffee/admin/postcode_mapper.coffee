@@ -48,7 +48,7 @@ BHM.withNS 'Admin.PostcodeMapper', (ns) ->
   ns.getMap: ->
     return map if map?
     container: $ ns.mapSelector
-    container.addClass('dynamic-google-map').removeClass('static-google-map').empty()
+    BHM.Maps.makeDynamic container
     map: new google.maps.Map container.get(0), ns.mapOptions
   
   ns.addMarkers: ->

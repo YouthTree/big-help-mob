@@ -5,9 +5,9 @@ javascripts:
     - public/javascripts/vendor/jquery-1.4.2.js
     - public/javascripts/vendor/rails.js
     - public/javascripts/vendor/css_browser_selector.js
-    - public/javascripts/bhm/bhm.js
-    - public/javascripts/bhm/flash.js
-    - public/javascripts/bhm/debug.js
+    - public/javascripts/bhm-coffee/bhm.js
+    - public/javascripts/bhm-coffee/flash.js
+    - public/javascripts/bhm-coffee/debug.js
     - public/javascripts/vendor/jquery.tipsy.js
   clustered_map:
     - public/javascripts/vendor/markerclusterer.js
@@ -15,41 +15,44 @@ javascripts:
     - public/javascripts/vendor/jquery-1.4.2.js
     - public/javascripts/vendor/jquery-ui-1.8.js
     - public/javascripts/vendor/rails.js
-    - public/javascripts/bhm/bhm.js
-    - public/javascripts/bhm/flash.js
+    - public/javascripts/bhm-coffee/bhm.js
+    - public/javascripts/bhm-coffee/flash.js
   ckeditor:
-    - public/javascripts/bhm/ck_editor.js
+    - public/javascripts/bhm-coffee/ck_editor.js
     - public/ckeditor/ckeditor.js
     - public/ckeditor/adapters/jquery.js
   gmap:
     - public/javascripts/vendor/gmap.js
   authentication_with_rpx_now:
-    - public/javascripts/bhm/authentication.js
-    - public/javascripts/bhm/rpx_now.js
+    - public/javascripts/bhm-coffee/authentication.js
+    - public/javascripts/bhm-coffee/rpx_now.js
   pickups:
-    - public/javascripts/bhm/pickups.js
+    - public/javascripts/bhm-coffee/maps.js
+    - public/javascripts/bhm-coffee/pickups.js
   pickup_chooser:
-    - public/javascripts/bhm/pickups.js
-    - public/javascripts/bhm/pickup_chooser.js
+    - public/javascripts/bhm-coffee/maps.js
+    - public/javascripts/bhm-coffee/pickups.js
+    - public/javascripts/bhm-coffee/pickup_chooser.js
   admin_questions:
-    - public/javascripts/bhm/admin/questions.js
+    - public/javascripts/bhm-coffee/admin/questions.js
   question_editor:
-    - public/javascripts/bhm/admin/question_editor.js
+    - public/javascripts/bhm-coffee/admin/question_editor.js
   pickup_editor:
-    - public/javascripts/bhm/admin/pickup_editor.js
+    - public/javascripts/bhm-coffee/admin/pickup_editor.js
   dynamic_template_editor:
-    - public/javascripts/bhm/admin/dynamic_template_editor.js
+    - public/javascripts/bhm-coffee/admin/dynamic_template_editor.js
   ie6:
     - public/javascripts/vendor/DD_belatedPNG_0.0.8a.js
-    - public/javascripts/bhm/ie6.js
+    - public/javascripts/bhm-coffee/ie6.js
   postcode_mapper:
     - public/javascripts/vendor/markerclusterer.js
-    - public/javascripts/bhm/admin/postcode_mapper.js
+    - public/javascripts/bhm-coffee/maps.js
+    - public/javascripts/bhm-coffee/admin/postcode_mapper.js
   share_this:
-    - public/javascripts/bhm/share_this.js
+    - public/javascripts/bhm-coffee/share_this.js
   mission_dashboard:
     - public/javascripts/vendor/markerclusterer.js
-    - public/javascripts/bhm/admin/mission_dashboard.js
+    - public/javascripts/bhm-coffee/admin/mission_dashboard.js
 stylesheets:
   base:
     - public/stylesheets/bhm.css

@@ -1,8 +1,6 @@
-# If not already setup, make Eoraptor an empty object.
-BHM ?= {}
+NHC: {}
 
-# Now, use a nested closure with the namespace object and jquery.
-((ns, $) ->
+NHC.makeNamespace: (name, $) ->
 
   scopedClosure: (closure, scope) ->
     closure.call scope, scope if $.isFunction closure
@@ -10,21 +8,31 @@ BHM ?= {}
   # Base is the default mixin for namespaces.
   base:  {}
   
-  # Configurable options for require
-  ns.baseJSPath:   '/javascripts/';
-  ns.baseJSSuffix: ''
+  namespace: (name, parent) ->
+    @currentNamespaceKey: name
+    @parentNamespace:     parent
+    @children:            []
+    @parentNamespace.subNamespaceAdded(@) if @parentNamespace?
   
+  namespace.prototype: base
+    
   # Simplified method of setting up a namespace.
-  makeNS: (o, name, parent) ->
-    obj: $.extend o, base
-    obj.currentNamespaceKey: name
-    obj.parentNamespace:     parent
-    obj
+  makeNS: (name, parent) ->
+    new namespace name, parent
+  
+  ns: makeNS name
+  
+  # Configurable options for require
+  base.baseJSPath:   '/javascripts/'
+  base.baseJSSuffix: ''
+  
+  base.subNamespaceAdded: (ns) ->
+    @children.push ns
   
   # Converts a string to the associated underscored representation.
   # Moslty used for converting namespaces (e.g. Eoraptor.A.B) to a file
   # path ("eoraptor/a/b").
-  ns.underscoreString: (s) ->
+  base.underscoreString: (s) ->
     s.replace(/\./g, '/').replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2').replace(/([a-z\d])([A-Z])/g, '$1_$2').replace(/-/g, '_').toLowerCase()
   
   # Returns the nested name for this namespace.
@@ -45,7 +53,7 @@ BHM ?= {}
     parts: key.split "."
     currentNS: @
     for name in parts
-      currentNS[name] = makeNS({}, name, currentNS) if not currentNS[name]?
+      currentNS[name] = makeNS(name, currentNS) if not currentNS[name]?
       currentNS: currentNS[name]
     hadSetup: $.isFunction currentNS.setup
     scopedClosure closure, currentNS
@@ -74,8 +82,8 @@ BHM ?= {}
   # the namespace as an argument. Useful for dynamic requires.
   base.require: (name, callback) ->
     if not @isNSDefined(name)
-      path: ns.underscoreString("${@toNSName()}.$name")
-      url: "${ns.baseJSPath}${path}.js${ns.baseJSSuffix}"
+      path:   base.underscoreString "${@toNSName()}.$name"
+      url:    "${base.baseJSPath}${path}.js${base.baseJSSuffix}"
       script: $ "<script />", {type: "text/javascript", src: url}
       script.load -> callback @getNS(name) if $.isFunction callback
       script.appendTo $ "head"
@@ -103,6 +111,13 @@ BHM ?= {}
     
   base.debug: (args...) ->
     console.log "[Debug - ${@toNSName()}]", args...
+    
+  base.isRoot: ->
+    @parentNamespace?
+    
+  base.alias: (as, from) ->
+    return unless from?
+    
 
   # If set to false, the setup blocks in namespaces wont be
   # automatically called on document ready.
@@ -124,9 +139,16 @@ BHM ?= {}
   # Returns the value of the given meta key. 
   base.getMeta: (key) ->
     $("meta[name='$key']").attr("content")
-      
+    
+  base.getRootNS: ->
+    current: @
+    current: current.parentNamespace while current.parentNamespace?
+    current
+    
+  ns
+
+NHC.defineNamespace: (name) ->
+  window[name]: @makeNamespace name, jQuery
   
-  # Setup the default namespace, in this case eoraptor.
-  makeNS ns, 'BHM'
-  
-)(BHM, jQuery)
+
+NHC.defineNamespace 'BHM'

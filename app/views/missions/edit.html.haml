@@ -50,7 +50,7 @@
           %strong Pickup is from:
           %span
             - if @participation.pickup.present?
-              = @participation.pickup.pickup.to_s
+              = @participation.pickup.name
             - else
               Pickup address not yet chosen.
       = form.input :pickup_id, :collection => @mission.mission_pickups, :as => :pickups

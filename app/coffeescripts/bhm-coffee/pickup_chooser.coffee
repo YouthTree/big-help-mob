@@ -22,11 +22,11 @@ BHM.require 'Pickups', ->
         changingPickup: true
         pickups.selectPickup id, true
         changingPickup: false
-      pickups.onPickupSelect: (pu) ->
+      pickups.onPickupSelect (pu) ->
         $("$ns.addressStatusSelector $ns.addressStatusInner").text pu.title
         ns.fieldValue element, pu.id
       element.change()
     
     ns.setup: ->
-      $(addressStatusSelector).show()
+      $(ns.addressStatusSelector).show()
       ns.setupFieldWatchers()
