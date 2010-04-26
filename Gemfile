@@ -13,7 +13,7 @@ git "git://github.com/railsjedi/jammit.git"
 gem "rails", "= 3.0.0.beta3"
 
 # Misc
-gem "haml"
+gem "haml", "= 3.0.0.beta.3"
 gem "mysql"
 gem "forgery", ">= 0.3.4"
 
