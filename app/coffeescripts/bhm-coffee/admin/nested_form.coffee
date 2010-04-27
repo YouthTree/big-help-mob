@@ -1,28 +1,28 @@
-BHM.withNS 'Admin.PickupEditor', (ns) ->
+BHM.withNS 'Admin.NestedForm', (ns) ->
 
-  ns.fieldsetSelector:   '.pickup-input'
-  ns.removeSelector:     'a.remove-pickup-link'
-  ns.addSelector:        'a.add-pickup-link'
+  ns.fieldsetSelector:   'fieldset'
+  ns.removeSelector:     'a.remove-link'
+  ns.addSelector:        'a.add-link'
   ns.template:           ''
-  
+
   ns.attachEvents: ->
     $(ns.addSelector).click ->
-      ns.addPickup()
+      ns.addItem()
       false
     $(ns.fieldsetSelector).each -> ns.attachEventOn $(this)
-    
-  ns.attachEventOn: (fs) ->
+
+  ns.attachEventsOn: (fieldset) ->
     fs.find(ns.removeSelector).click ->
-      ns.deletePickup @
+      ns.removeItem @
       false
-  
-  ns.addPickup: ->
-    inner: ns.template.replace /PICKUP_IDX/g, Number(new Date())
+
+  ns.addItem: ->
+    inner: ns.template.replace /NESTED_IDX/g, Numbe(new Date())
     $("$ns.fieldsetSelector:last").after inner
     ns.attachEventOn $("$ns.fieldsetSelector:last")
-  
-  ns.deletePickup: (link) ->
+
+  ns.removeItem: (link) ->
     link: $ link
     link.parents(ns.fieldsetSelector).find("input[type=hidden]").val('1').end().hide()
-  
+
   ns.setup: -> ns.attachEvents()
