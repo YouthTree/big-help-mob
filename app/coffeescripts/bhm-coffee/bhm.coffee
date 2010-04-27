@@ -57,8 +57,7 @@ NHC.makeNamespace: (name, $) ->
       currentNS: currentNS[name]
     hadSetup: $.isFunction currentNS.setup
     scopedClosure closure, currentNS
-    if not hadSetup and $.isFunction currentNS.setup
-      currentNS.setupVia currentNS.setup
+    currentNS.setupVia currentNS.setup if not hadSetup and $.isFunction currentNS.setup
     currentNS
     
   # Get, if defined, the given namespace.
