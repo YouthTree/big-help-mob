@@ -6,6 +6,8 @@ javascripts:
     - public/javascripts/vendor/rails.js
     - public/javascripts/vendor/css_browser_selector.js
     - public/javascripts/bhm-coffee/bhm.js
+    - public/javascripts/bhm-coffee/mixins.js
+    - public/javascripts/bhm-coffee/mixins/**/*.js
     - public/javascripts/bhm-coffee/flash.js
     - public/javascripts/bhm-coffee/debug.js
     - public/javascripts/vendor/jquery.tipsy.js

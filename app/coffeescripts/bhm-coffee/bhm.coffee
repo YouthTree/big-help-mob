@@ -60,6 +60,9 @@ NHC.makeNamespace: (name, $) ->
     currentNS.setupVia currentNS.setup if not hadSetup and $.isFunction currentNS.setup
     currentNS
     
+  base.extendBase: (closure) ->
+    scopedClosure closure, base
+    
   # Get, if defined, the given namespace.
   base.getNS: (key) ->
     parts: key.split "."

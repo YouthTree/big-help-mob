@@ -1,5 +1,8 @@
 BHM.withNS 'Pickups', (ns) ->
 
+  ns.mixin 'Callbacks'
+  ns.defineCallback 'PickupSelect'
+
   # State
   map:        null
   bounds:     null
@@ -10,7 +13,6 @@ BHM.withNS 'Pickups', (ns) ->
   # Datastructures.
   pickups:   {} # Each pickup point.
   markers:   {} # Each marker point.
-  callbacks: [] # Callbacks for when pickups are selected.
 
   # Configuration
   
@@ -75,9 +77,6 @@ BHM.withNS 'Pickups', (ns) ->
     "http://www.google.com/intl/en_ALL/mapfiles/marker${suffix}.png"
   
   # Public API.
-  
-  ns.onPickupSelect: (callback) ->
-    callbacks.push callback if $.isFunction callback
     
   ns.selectPickup: (pickup, clearWindow) ->
     lastWindow.close() if clearWindow and lastWindow?
@@ -88,8 +87,7 @@ BHM.withNS 'Pickups', (ns) ->
     lastMarker.setIcon markerURL(false) if lastMarker?
     marker.setIcon markerURL(true)
     lastMarker: marker
-    for callback in callbacks
-      callback pickup
+    ns.invokePickupSelect pickup
     true
       
   
