@@ -1,5 +1,4 @@
 javascript_compressor: yui
-
 javascripts:
   base:
     - public/javascripts/vendor/jquery-1.4.2.js
