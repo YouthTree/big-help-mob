@@ -65,6 +65,7 @@ gem "uuid"
 gem "mail_form", ">= 1.2.1"
 gem "sitemap_generator"
 
+gem "newrelic_rpm", :require => nil
 
 group :development do
   gem "yard",      :require => nil
