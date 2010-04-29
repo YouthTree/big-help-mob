@@ -21,7 +21,7 @@ BHM.withNS 'Admin.QuestionEditor', (ns) ->
       else
         ns.hideMetadata fieldset
     ).change()
-    fieldsetfind(ns.removeSelector).click ->
+    fieldset.find(ns.removeSelector).click ->
       ns.deleteQuestion @
       false
   

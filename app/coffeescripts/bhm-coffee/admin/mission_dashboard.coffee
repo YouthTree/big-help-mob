@@ -2,7 +2,7 @@ BHM.withNS 'Admin.MissionDashboard', (ns) ->
 
   ns.tabsSelector:       '#general-participations'
   ns.showReportSelector: '#generate-report'
-  ns.reportSelector:     '#generate-misison-report .inner-report-generator'
+  ns.reportSelector:     '#generate-mission-report .inner-report-generator'
   ns.hideReportSelector: '#hide-report-generator-button'
   
   ns.setupTabs: -> $(ns.tabsSelector).tabs()
