@@ -1,4 +1,4 @@
-- has_jammit_js :ckeditor
+- has_jammit_js :ckeditor, :email_editor
 
 %h2.title Send a new email
 
@@ -10,7 +10,7 @@
     
     = form.input :scope_type, :collection => Email::SCOPE_TYPES, :as => :select, :include_blank => false
     
-  = form.inputs :name => "Filter Participations", :id => "participations_filter" do
+  = form.inputs :name => "Filter Participations", :id => "participations-filter" do
     = form.fields_for :filter, @email.filter do |ff|
     
       = ff.input :mission_id, :as => :select, :collection => Mission.for_select, :include_blank => true
@@ -26,6 +26,11 @@
     
     = form.input :html_content, :as => :text, :input_html => {:rows => 15}, :wrapper_html => {:class => 'ckeditor'}
 
+  - if @email.valid_other_than_confirmed?
+    
+    = form.inputs :name => "Confirm Email" do
+      = form.input :confirmed, :as => :boolean, :hint => "This email will be sent to #{pluralize @email.user_count, 'user'}"
+      
   = form.buttons do
     = form.commit_button "Send Email"
 

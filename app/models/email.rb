@@ -6,7 +6,7 @@ class Email
   
   SCOPE_TYPES = [["All Users", "users"], ["Filtered Participations", "participations"]]
   
-  ASSIGNABLE_ATTRIBUTES = [:subject, :html_content, :text_content, :scope_type, :filter]
+  ASSIGNABLE_ATTRIBUTES = [:subject, :html_content, :text_content, :scope_type, :filter, :confirmed]
   attr_accessor           *ASSIGNABLE_ATTRIBUTES
   define_attribute_methods ASSIGNABLE_ATTRIBUTES
   
@@ -14,6 +14,7 @@ class Email
   validates_inclusion_of :scope_type, :in => SCOPE_TYPES.map(&:last)
   validate               :has_atleast_one_content_type
   validate               :has_atleast_one_user
+  validate               :ensure_confirmed_is_checked
   
   def initialize(attributes = {})
     self.attributes = attributes
@@ -47,16 +48,20 @@ class Email
     false
   end
   
+  def confirmed=(value)
+    if value.blank?
+      @confirmed = nil
+    else
+      @confirmed = ActiveRecord::ConnectionAdapters::Column.value_to_boolean(value.to_s)
+    end
+  end
+  
+  def confirmed?
+    !!@confirmed
+  end
+  
   def send_email
-    Rails.logger.debug "==================="
-    Rails.logger.debug "Sending to #{user_scope.count} users"
-    Rails.logger.debug "Users: #{user_scope.all.inspect}"
-    Rails.logger.debug "Subject: #{subject}"
-    Rails.logger.debug "-- Text Contents --"
-    Rails.logger.debug text_content.to_s
-    Rails.logger.debug "-- HTML Contents --"
-    Rails.logger.debug html_content.to_s
-    Rails.logger.debug "==================="
+    Notifications.notice(self).deliver
   end
   
   def self.mapping_to_scope(name, filter)
@@ -75,6 +80,18 @@ class Email
     scope.select(:user_id).all.map(&:user_id).uniq
   end
   
+  def valid_other_than_confirmed?
+    errors.reject { |k, v| v.blank? }.map { |k, v| k } == [:confirmed]
+  end
+  
+  def user_count
+    user_scope.count
+  end
+  
+  def emails
+    user_scope.select(:email).map(&:email).uniq
+  end
+  
   protected
 
   def user_scope
@@ -90,6 +107,10 @@ class Email
   
   def has_atleast_one_user
     errors.add_to_base "There must be atleast one user" if user_scope.size < 1
+  end
+  
+  def ensure_confirmed_is_checked
+    errors.add :confirmed, "please confirm the email choice to continue" unless confirmed?
   end
   
 end

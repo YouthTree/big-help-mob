@@ -54,6 +54,8 @@ javascripts:
   mission_dashboard:
     - public/javascripts/vendor/markerclusterer.js
     - public/javascripts/bhm/admin/mission_dashboard.js
+  email_editor:
+    - public/javascripts/bhm/admin/email_editor.js
 stylesheets:
   base:
     - public/stylesheets/bhm.css

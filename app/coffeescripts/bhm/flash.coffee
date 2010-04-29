@@ -2,7 +2,7 @@ BHM.withNS 'Flash', (ns) ->
   
   ns.parentSelector: '#flash-messages'
   ns.insideSelector: 'p.flash'
-  ns.hideFlash:      5000
+  ns.hideTimeout:    5000
   
   ns.hideAllFlash: ->
     $("$ns.parentSelector $ns.insideSelector").each -> ns.hideFlash @
@@ -11,7 +11,7 @@ BHM.withNS 'Flash', (ns) ->
     $(e).slideUp -> $(@).remove()
     
   ns.setupTimers: ->
-    setTimeout ns.hideAllFlash, ns.hideTimeout
+    setTimeout((-> ns.hideAllFlash()), ns.hideTimeout)
     
   ns.attachClickEvents: ->
     $("$ns.parentSelector $ns.insideSelector").click ->
