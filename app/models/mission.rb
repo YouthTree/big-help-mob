@@ -4,6 +4,9 @@ class Mission < ActiveRecord::Base
   extend DynamicTemplate::Templateable
   extend DynamicBaseDrop::Droppable
   
+  Error        = Class.new(StandardError)
+  SignupClosed = Class.new(Error)
+  
   attr_accessible :organisation_id, :user_id, :description, :name
   
   scope :next,     where(:state => 'preparing').order('occurs_at ASC')
@@ -78,11 +81,13 @@ class Mission < ActiveRecord::Base
     if participation
       participation.mission = self
       if role_name.present? && participation.role_name != role_name
+        raise SignupClosed unless signup_open?(role_name)
         participation.role_name = role_name
         participation.save(false)
       end
       participation
     else
+      raise SignupClosed unless signup_open?(role_name)
       mission_participations.build.tap do |p|
         p.role_name = role_name
         p.user      = user
@@ -101,6 +106,12 @@ class Mission < ActiveRecord::Base
   
   def unstarted?
     %w(preparing approved).include?(self.state)
+  end
+  
+  def signup_open?(role)
+    role = role.to_s.underscore
+    method_key = "#{role}_signup_open"
+    respond_to?(method_key) && !!send(method_key)
   end
   
   def self.for_select

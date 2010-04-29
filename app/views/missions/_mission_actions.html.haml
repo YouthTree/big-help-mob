@@ -7,6 +7,8 @@
       to be able to attend.
     - else
       == If you want to edit your participation details, #{link_to 'click here', [:edit, @mission]}.
-  - else
+  - elsif @mission.signup_open?(:sidekick) || @mission.signup_open?(:captain)
     Want to take part in this mission? You can sign up to take part
     == #{link_to "as a Captain or Sidekick", [:join, @mission]}!
+  - else
+    Signup for this mission is currently closed.

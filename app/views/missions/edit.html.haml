@@ -1,16 +1,17 @@
 = semantic_form_for @participation, :url => @mission, :method => :put do |form|
   
-  %p.actions
-    - ar = @participation.alternate_role
-    You've chosen to sign up as a
-    == #{@participation.role_name.titleize},
-    = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
-    == to become a #{ar.titleize} or #{link_to 'click here', @mission} to return to the mission details.
-  
-    - if %w(created awaiting_approval).include?(@participation.state)
-      == If you can't remember what a #{@participation.role_name.humanize}
-      actually does or never read it properly in the first place (totally excusable, you're a character of action),
-      == get up to speed #{link_to 'here', [:join, @mission]}. We promise it will be a riveting read!
+  - if @participation.still_preparing? || @mission.signup_open?(ar)
+    %p.actions
+      - ar = @participation.alternate_role
+      - if @mission.signup_open?(ar)
+        You've chosen to sign up as a
+        == #{@participation.role_name.titleize},
+        = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
+        == to become a #{ar.titleize} or #{link_to 'click here', @mission} to return to the mission details.  
+      - if @participation.still_preparing?
+        == If you can't remember what a #{@participation.role_name.humanize}
+        actually does or never read it properly in the first place (totally excusable, you're a character of action),
+        == get up to speed #{link_to 'here', [:join, @mission]}. We promise it will be a riveting read!
 
   - if @requires_details
     .mission-join-invalid

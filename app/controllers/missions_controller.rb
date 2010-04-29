@@ -5,6 +5,10 @@ class MissionsController < ApplicationController
     redirect_to @mission, :alert => tf('mission.over')
   end
   
+  rescue_from Mission::SignupClosed do
+    redirect_to @mission, :alert => tf('mission.signup_closed')
+  end
+  
   before_filter :prepare_mission,        :except => :next
   before_filter :require_user_with_note, :only   => [:edit, :update]
   before_filter :require_valid_user,     :only   => [:edit, :update]

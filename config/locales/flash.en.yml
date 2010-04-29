@@ -30,6 +30,7 @@ en:
       thanks: "Thanks for contacting us - we'll be sure to get back to your shortly!"
     mission:
       over: "You can no longer edit your details for this mission - sorry!"
+      signup_closed: "You can no longer signup for that role - sorry!"
     signup:
       thanks: "Thanks for signing up!"
     account:
