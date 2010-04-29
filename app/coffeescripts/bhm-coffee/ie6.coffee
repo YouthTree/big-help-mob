@@ -12,6 +12,5 @@ BHM.withNS 'IE6', (ns) ->
   ]
   
   ns.setup: ->
-    return unless DD_belatedPNG?
-    $(ns.belatedPNGSelectors.join(", ")).each ->
-      DD_belatedPNG.fixPng @
+    if DD_belatedPNG?
+      $(ns.belatedPNGSelectors.join(", ")).each -> DD_belatedPNG.fixPng @
