@@ -102,6 +102,10 @@ class Mission < ActiveRecord::Base
   def unstarted?
     %w(preparing approved).include?(self.state)
   end
+  
+  def self.for_select
+    select('name, id').all.map { |m| [m.name, m.id] }
+  end
 
 end
 

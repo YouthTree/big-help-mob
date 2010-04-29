@@ -1,0 +1,35 @@
+- has_jammit_js :ckeditor
+
+%h2.title Send a new email
+
+= semantic_form_for @email, :url => :admin_emails do |form|
+
+  = form.inputs :name => "Email Details" do
+    
+    = form.input :subject
+    
+    = form.input :scope_type, :collection => Email::SCOPE_TYPES, :as => :select, :include_blank => false
+    
+  = form.inputs :name => "Filter Participations", :id => "participations_filter" do
+    = form.fields_for :filter, @email.filter do |ff|
+    
+      = ff.input :mission_id, :as => :select, :collection => Mission.for_select, :include_blank => true
+    
+      = ff.input :role, :as => :select, :collection => ParticipationReporter::ROLE_CHOICES, :include_blank => false
+      
+      = ff.input :states, :as => :select, :collection => ParticipationReporter::STATE_CHOICES, :multiple => true, :include_blank => false
+      
+  
+  = form.inputs :name => "Email Content" do
+  
+    = form.input :text_content, :as => :text, :input_html => {:rows => 15}
+    
+    = form.input :html_content, :as => :text, :input_html => {:rows => 15}, :wrapper_html => {:class => 'ckeditor'}
+
+  = form.buttons do
+    = form.commit_button "Send Email"
+
+- content_for :sidebar do
+ 
+  %h2 Menu
+  %ul.sidebar-menu= ml "Send a new Email", :new_admin_email

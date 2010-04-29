@@ -1,6 +1,7 @@
 Bighelpmob::Application.routes.draw do |map|
   
   namespace :admin do
+    resources :emails, :only => [:new, :create]
     resources :users do
       resources :mission_participations, :path => 'participations'
     end
