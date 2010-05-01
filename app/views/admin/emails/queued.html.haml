@@ -1,0 +1,7 @@
+%h2.title Email Queued
+
+%p Your email has been queued up and will be automatically sent out shortly.
+
+- content_for :sidebar do
+  %h2 Menu
+  %ul.sidebar-menu= ml "Send another Email", :new_admin_email

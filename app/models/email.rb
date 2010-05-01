@@ -5,6 +5,11 @@ class Email
   include ActiveModel::Serializers::JSON
   extend  ActiveModel::Naming
   
+  class BlankRenderer
+    def initialize(repl = ""); @repl = repl; end
+    def render(scope = {}); @repl; end
+  end
+  
   SCOPE_TYPES = [["All Users", "users"], ["Filtered Participations", "participations"]]
   
   ASSIGNABLE_ATTRIBUTES = [:subject, :html_content, :text_content, :scope_type, :filter, :confirmed]
@@ -19,10 +24,12 @@ class Email
   
   def initialize(attributes = {})
     self.attributes = attributes
+    @template_cache = {}
   end
   
   def attributes=(attributes)
     return unless attributes.is_a?(Hash)
+    @template_cache = {}
     attributes.symbolize_keys.each_pair do |k, v|
       send :"#{k}=", v if ASSIGNABLE_ATTRIBUTES.include? k.to_sym
     end
@@ -108,15 +115,32 @@ class Email
     allocate.from_json(json)
   end
   
-  def each_user_with_scope
-    return unless block_given?
-    user_scope.find_each do |user|
-      yield user, scope_for_user(user)
+  def each_user
+    user_scope.find_each { |u| yield u } if block_given?
+  end
+  
+  def example_rendered_email
+    @template_cache[:rendered] ||= begin
+      user = user_scope.first
+      rendered_email_for(user)
     end
   end
   
-  protected
-
+  def rendered_email_for(user)
+    scope = scope_for_user(user)
+    self.dup.tap do |e|
+      e.subject      = template_for_subject.render(scope)
+      e.text_content = template_for_text_content.render(scope)
+      e.html_content = template_for_html_content.render(scope)
+    end
+  end
+  
+  %w(subject html_content text_content).each do |name|
+    define_method :"template_for_#{name}" do
+      @template_cache[name] ||= template_for(send(name.to_sym))
+    end
+  end
+  
   def scope_for_user(user)
     scope = {'user' => user}
     if scope_type == 'participations'
@@ -125,6 +149,14 @@ class Email
       end
     end
     scope
+  end
+  
+  protected
+
+  def template_for(content)
+    content.blank? ? BlankRenderer.new : Liquid::Template.parse(content)
+  rescue Liquid::SyntaxError
+    BlankRenderer.new("ERROR IN TEMPLATE")
   end
 
   def user_scope

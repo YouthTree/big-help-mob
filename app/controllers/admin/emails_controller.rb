@@ -7,10 +7,13 @@ class Admin::EmailsController < AdminController
   def create
     @email = Email.new(params[:email])
     if @email.save
-      redirect_to :new_admin_email, :notice => "Email sent - thanks!"
+      redirect_to :queued_admin_emails
     else
       render :action => "new"
     end
+  end
+  
+  def queued
   end
   
 end

@@ -1,6 +1,6 @@
 class MissionPickupDrop < DynamicBaseDrop
   
-  accessible! :pickup, :comment, :comment?
+  accessible! :pickup, :comment?
   
   def address
     pickup.address.to_s

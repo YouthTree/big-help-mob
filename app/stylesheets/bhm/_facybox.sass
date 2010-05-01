@@ -1,0 +1,130 @@
+#facybox
+  position: absolute
+  top: 0
+  left: 0
+  margin: -20px 0 0 -20px
+  z-index: 100
+  text-align: left
+  padding: 18px
+  min-width: 40px
+  min-height: 40px
+  .n
+    background-image: url('/images/facybox/fancy_shadow_n.png')
+  .s
+    background-image: url('/images/facybox/fancy_shadow_s.png')
+  .w
+    background-image: url('/images/facybox/fancy_shadow_w.png')
+  .e
+    background-image: url('/images/facybox/fancy_shadow_e.png')
+  .nw
+    background-image: url('/images/facybox/fancy_shadow_nw.png')
+  .ne
+    background-image: url('/images/facybox/fancy_shadow_ne.png')
+  .sw
+    background-image: url('/images/facybox/fancy_shadow_sw.png')
+  .se
+    background-image: url('/images/facybox/fancy_shadow_se.png')
+  a
+    &.next
+      background-image: url('/images/facybox/fancy_right.png')
+    &.prev
+      background-image: url('/images/facybox/fancy_left.png')
+  .close
+    background-image: url('/images/facybox/fancy_closebox.png')
+  .loading
+    background-image: url('/images/facybox/loading.gif')
+  .w, .e, &.nw, .ne, .sw, .se
+    min-height: 18px
+    min-width: 13px
+  .n, .s
+    background-repeat: repeat-x
+    height: 18px
+  .w, .e
+    background-repeat: repeat-y
+  .nw, .ne, .sw, .se
+    background-repeat: no-repeat
+  a
+    &.next, &.prev
+      background-repeat: no-repeat
+  .closek #facybox .loading
+    background-repeat: no-repeat
+  a
+    &.next
+      background-position: 9999px 50%
+    &.prev
+      background-position: -9999px 50%
+      &:hover
+        background-position: 0 50%
+    &.next:hover
+      background-position: 100% 50%
+  .close
+    position: absolute
+    top: 5px
+    right: 0
+    display: block
+    width: 30px
+    height: 30px
+  .prev, .next
+    display: block
+    position: absolute
+    cursor: pointer
+  .navigation .counter
+    background: black
+    color: white
+    text-align: center
+    position: absolute
+    bottom: -33px
+    left: -10px
+    padding: 2px 0
+    font-size: 11px
+  .loading
+    margin: 0 auto
+    width: 22px
+    height: 22px
+    text-align: center
+  .popup
+    position: relative
+  table
+    border-collapse: collapse
+  td
+    border-bottom: 0
+    padding: 0
+  .body
+    padding: 10px
+    background: white
+    width: auto
+  .loading
+    text-align: center
+  .image
+    text-align: center
+    line-height: 0
+  img
+    border: 0
+    margin: 0
+  .footer
+    position: absolute
+    top: 28px
+    left: 23px
+    padding: 0
+    width: 90%
+    img
+      vertical-align: middle
+  .tl, .tr, .bl, .br
+    height: 10px
+    width: 10px
+    overflow: hidden
+    padding: 0
+
+#facybox_overlay
+  position: fixed
+  top: 0px
+  left: 0px
+  height: 100%
+  width: 100%
+
+.facybox_hide
+  z-index: -100
+
+.facybox_overlayBG
+  background-color: black
+  z-index: 99

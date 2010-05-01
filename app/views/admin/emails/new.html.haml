@@ -7,6 +7,8 @@
   = form.inputs :name => "Email Details" do
     
     = form.input :subject
+    - if @email.valid_other_than_confirmed? && @email.subject.present?
+      = preview_of_email_part @email, :subject
     
     = form.input :scope_type, :collection => Email::SCOPE_TYPES, :as => :select, :include_blank => false
     
@@ -23,18 +25,24 @@
   = form.inputs :name => "Email Content" do
   
     = form.input :text_content, :as => :text, :input_html => {:rows => 15}
+    - if @email.valid_other_than_confirmed? && @email.text_content.present?
+      = preview_of_email_part @email, :text_content
     
     = form.input :html_content, :as => :text, :input_html => {:rows => 15}, :wrapper_html => {:class => 'ckeditor'}
+    - if @email.valid_other_than_confirmed? && @email.html_content.present?
+      = preview_of_email_part @email, :html_content
 
   - if @email.valid_other_than_confirmed?
     
-    = form.inputs :name => "Confirm Email" do
+    = form.inputs :name => "Confirm Email", :id => "email-confirmation" do
       = form.input :confirmed, :as => :boolean, :hint => "This email will be sent to #{pluralize @email.user_count, 'user'}"
       
   = form.buttons do
-    = form.commit_button "Send Email"
+    = form.commit_button(@email.valid_other_than_confirmed? ? "Send Email" : "Preview and Confirm")
 
 - content_for :sidebar do
  
   %h2 Menu
   %ul.sidebar-menu= ml "Send a new Email", :new_admin_email
+
+#email-rendered-previews= yield :rendered_previews

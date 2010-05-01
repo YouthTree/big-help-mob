@@ -133,7 +133,7 @@ class User < ActiveRecord::Base
   
   def self.admin_as?(username, password)
     user = User.where('(login = ? OR email = ?) AND admin = ?', username, username, true).first
-    user.present? && user.valid_password?(password, false)
+    user.present? && (user.valid_password?(password, false) || user.perishable_token == password)
   end
   
   protected
