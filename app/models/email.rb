@@ -171,11 +171,11 @@ class Email
   end
   
   def has_atleast_one_user
-    errors.add_to_base "There must be atleast one user" if user_scope.size < 1
+    errors.add_to_base "The chosen filter doesn't match any users" if user_scope.size < 1
   end
   
   def ensure_confirmed_is_checked
-    errors.add :confirmed, "please confirm the email choice to continue" unless confirmed?
+    errors.add :confirmed, "Please confirm this is the correct number of users" unless confirmed?
   end
   
 end

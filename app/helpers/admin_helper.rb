@@ -109,4 +109,14 @@ module AdminHelper
     end
   end
   
+  def humanized_errors_on(object)
+    if object.errors[:base].present?
+      prefix       = "This #{object.class.model_name.human}"
+      errors       = content_tag(:p, "Please correct the following errors before continuing:")
+      inner_errors = object.errors[:base].map { |e| content_tag(:li, e) }.sum(ActiveSupport::SafeBuffer.new)
+      errors      << content_tag(:ul, inner_errors)
+      content_tag(:div, errors, :class => 'resource-base-errors')
+    end
+  end
+  
 end

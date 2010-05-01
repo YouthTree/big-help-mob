@@ -5,6 +5,8 @@
   Looking to edit the dynamic templates for this mission,
   == #{link_to 'click here', admin_mission_dynamic_templates_path(@mission)}.
 
+= humanized_errors_on resource
+
 = semantic_form_for resource, :url => resource_url, :method => :put do |form|
   = render :partial => 'form', :object => form
   = form.buttons do

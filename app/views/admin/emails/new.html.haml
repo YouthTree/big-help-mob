@@ -2,6 +2,8 @@
 
 %h2.title Send a new email
 
+= humanized_errors_on @email
+
 = semantic_form_for @email, :url => :admin_emails do |form|
 
   = form.inputs :name => "Email Details" do
