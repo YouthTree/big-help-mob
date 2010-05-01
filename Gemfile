@@ -31,7 +31,7 @@ gem "validation_reflection", ">= 0.3.6"
 gem "title_estuary",         ">= 1.2.0"
 
 # View / Rendering
-gem "haml", "= 3.0.0.beta.3"
+gem "haml",               ">= 3.0.0.rc.3"
 gem "compass",            ">= 0.10.0.rc3"
 gem "compass-960-plugin", ">= 0.9.13"
 gem "compass-colors",     ">= 0.3.1"
@@ -49,7 +49,7 @@ gem "ruby-googlechart",    ">= 0.6.4", :require => "google_chart"
 # General Code Stuff
 gem "will_paginate",       ">= 3.0.pre"
 gem "state_machine",       ">= 0.9.0"
-gem "pseudocephalopod", ">= 0.2.1"
+gem "pseudocephalopod",    ">= 0.2.1"
 gem "acts_as_list",        ">= 0.2.0"
 
 # Helpers etc.
