@@ -21,10 +21,17 @@ module Bighelpmob
     config.filter_parameters << :password
     config.filter_parameters << :password_confirmation
     
-    config.load_paths += [config.root.join("app", "drops").to_s, config.root.join("app", "observers").to_s]
+    %w(drops observers workers).each do |kind|
+      config.load_paths << config.root.join("app", kind).to_s
+    end
     
+    # request uuid marker makes it easy to debug requests
+    # primarily for simple log grepping.
     require Rails.root.join("lib/request_uuid_marker")
     config.middleware.insert_after 'Rails::Rack::Logger', RequestUUIDMarker
+    
+    require Rails.root.join("lib/resque_proxy")
+    config.middleware.insert_after 'Rack::Runtime', ResqueProxy
     
   end
 end

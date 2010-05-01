@@ -2,6 +2,7 @@ class Email
   include ActiveModel::Conversion
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
+  include ActiveModel::Serializers::JSON
   extend  ActiveModel::Naming
   
   SCOPE_TYPES = [["All Users", "users"], ["Filtered Participations", "participations"]]
@@ -27,6 +28,10 @@ class Email
     end
   end
   
+  def attributes
+    @attributes ||= ASSIGNABLE_ATTRIBUTES.inject({}) { |m, c| m[c.to_s] = 'nil'; m }
+  end
+  
   def filter
     @filter ||= OpenStruct.new
   end
@@ -35,7 +40,8 @@ class Email
     if value.blank? || !value.is_a?(Hash)
       @filter = OpenStruct.new
     else
-      @filter = OpenStruct.new(value)
+      value = value["table"] if value.keys == ["table"]
+      @filter = OpenStruct.new(value.stringify_keys)
       @filter.mission_id = @filter.mission_id.to_i if @filter.mission_id.present?
     end
   end
@@ -61,7 +67,13 @@ class Email
   end
   
   def send_email
-    Notifications.notice(self).deliver
+    Rails.logger.debug self.to_json
+    if [html_content, text_content, subject].any? { |c| c.include?("{{") }
+      IndividualUserMailer.queue_for!(self)
+    else
+      BulkUserMailer.queue_for!(self)
+    end
+    true
   end
   
   def self.mapping_to_scope(name, filter)
@@ -92,7 +104,28 @@ class Email
     user_scope.select(:email).map(&:email).uniq
   end
   
+  def self.from_json(json)
+    allocate.from_json(json)
+  end
+  
+  def each_user_with_scope
+    return unless block_given?
+    user_scope.find_each do |user|
+      yield user, scope_for_user(user)
+    end
+  end
+  
   protected
+
+  def scope_for_user(user)
+    scope = {'user' => user}
+    if scope_type == 'participations'
+      if filter.mission_id.present?
+        scope['participation'] = user.mission_participations.find_by_mission_id(filter.mission_id)
+      end
+    end
+    scope
+  end
 
   def user_scope
     self.class.mapping_to_scope(scope_type, filter)

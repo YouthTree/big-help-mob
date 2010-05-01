@@ -131,6 +131,11 @@ class User < ActiveRecord::Base
     age
   end
   
+  def self.admin_as?(username, password)
+    user = User.where('(login = ? OR email = ?) AND admin = ?', username, username, true).first
+    user.present? && user.valid_password?(password, false)
+  end
+  
   protected
   
   def normalize_friendly_id(text)

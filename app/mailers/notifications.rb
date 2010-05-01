@@ -20,8 +20,8 @@ class Notifications < ActionMailer::Base
     mail :to => user.email
   end
 
-  def notice(email)
-    mail :to => Settings.mailer.from.gsub("@", "+outgoing@"), :bcc => email.emails, :subject => email.subject do |r|
+  def notice(email, emails)
+    mail :to => Settings.mailer.from.gsub("@", "+outgoing@"), :bcc => emails, :subject => email.subject do |r|
       r.html { render :text => email.html_content } if email.html_content.present?
       r.text { render :text => email.text_content } if email.text_content.present?
     end
