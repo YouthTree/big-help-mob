@@ -22,10 +22,7 @@ class BaseUserMailer < Resque::JobWithStatus
   protected
   
   def send_mail!(email, users)
-    Rails.log.info ""
-    Rails.log.info "================================================="
-    Rails.log.info Notifications.notice(email, users).to_s
-    Rails.log.info "================================================="
+    Rails.logger.info Notifications.notice(email, users).deliver
   end
   
 end
