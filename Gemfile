@@ -69,8 +69,8 @@ gem "newrelic_rpm", :require => nil
 gem "barista", ">= 0.1.5"
 
 # Background workers...
-gem "resque"
-gem 'resque-status', :require => 'resque/status'
+# gem "resque"
+# gem 'resque-status', :require => 'resque/status'
 
 group :development do
   gem "yard",      :require => nil
