@@ -34,7 +34,6 @@ class Daemonizer
   def self.quit_existing!
     if PID_PATH.exist?
       pid = PID_PATH.read.to_i
-      puts "Killing existing process w/ pid #{pid}"
       if pid > 0
         puts "*** Killing existing queue with pid #{pid}"
         Process.kill("QUIT", pid) rescue nil

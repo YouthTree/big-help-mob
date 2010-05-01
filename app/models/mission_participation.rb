@@ -7,8 +7,9 @@ class MissionParticipation < ActiveRecord::Base
   belongs_to :pickup, :class_name => "MissionPickup"
   
   validates_presence_of :user, :mission
-  validates_presence_of :pickup, :if => :sidekick?
-  validates_associated  :answers, :user
+  validates_associated  :user
+  validates_presence_of :pickup,  :if     => :validate_pickup_presence?
+  validates_associated  :answers, :unless => :skip_extra_validation?
   
   before_validation :mark_user_participation
   
@@ -21,6 +22,15 @@ class MissionParticipation < ActiveRecord::Base
   accepts_nested_attributes_for :user
   
   serialize :raw_answers
+  
+  attr_accessor :skip_extra_validation
+  def skip_extra_validation?
+    !!skip_extra_validation
+  end
+  
+  def validate_pickup_presence?
+    sidekick? && !skip_extra_validation?
+  end
   
   def recently_joined?
     defined?(@recently_joined) && @recently_joined

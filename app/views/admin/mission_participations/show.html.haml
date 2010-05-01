@@ -15,6 +15,9 @@
   
   = r.attribute :role_name
   
+  = r.attribute :state do
+    = resource.state.to_s.humanize
+  
   = r.association :pickup do
     - pickup = resource.pickup
     - if pickup.present?
