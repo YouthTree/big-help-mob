@@ -103,7 +103,7 @@ namespace :deploy do
     bundle_exec!           "rake barista:brew"
     bundle_exec!           "jammit"
     execute_local_command! "rake db:migrate" if ENV['MIGRATE_ENV'] == "true"
-    execute_local_command! "nohup rake resque:work 'QUEUE=*' &"
+    bundle_exec!           "./script/resque QUEUE=*"
   end
   
   task :remote_after do
