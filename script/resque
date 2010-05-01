@@ -59,5 +59,6 @@ Daemonizer.quit_existing!
 
 puts "*** Starting worker #{worker}"
 Daemonizer.daemonize! do
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
   worker.work(ENV['INTERVAL'] || 5)
 end
