@@ -4,7 +4,6 @@ BHM.withNS 'IE6', (ns) ->
     "nav#header-menu"
     "#youthtree-project-logo a"
     "header h1 a"
-    "header"
     " button"
     ".join-as-button a"
     "a#auth-selector-link"

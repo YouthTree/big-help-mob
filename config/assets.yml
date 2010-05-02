@@ -24,7 +24,7 @@ javascripts:
     - public/ckeditor/ckeditor.js
     - public/ckeditor/adapters/jquery.js
   gmap:
-    - public/javascripts/vendor/gmap.js
+    - public/javascripts/vendor/bhm-google-maps/*.js
   authentication_with_rpx_now:
     - public/javascripts/bhm/authentication.js
     - public/javascripts/bhm/rpx_now.js

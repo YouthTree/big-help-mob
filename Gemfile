@@ -23,7 +23,7 @@ gem "hominid", ">= 2.1.1"
 # Geoawareness and mapping stuff.
 gem "addresslogic",    ">= 1.2.1"
 gem "geokit",          ">= 1.5.0"
-gem "bhm-google-maps", ">= 0.1.0"
+gem "bhm-google-maps", ">= 0.1.3"
 
 # Display Helpers
 gem "formtastic",            "= 0.9.8"
@@ -66,7 +66,9 @@ gem "mail_form", ">= 1.2.1"
 gem "sitemap_generator"
 
 gem "newrelic_rpm", :require => nil
-gem "barista", ">= 0.1.5"
+
+gem "barista",  ">= 0.2.1"
+gem "shuriken", ">= 0.1.1"
 
 # Background workers...
 gem "resque"

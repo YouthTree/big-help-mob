@@ -115,9 +115,10 @@ module Authlogic
           
           def save_cookie
             controller.cookies[cookie_key] = {
-              :value => "#{record.persistence_token}::#{record.send(record.class.primary_key)}",
-              :expires => remember_me_until,
-              :domain => controller.cookie_domain
+              :value     => "#{record.persistence_token}::#{record.send(record.class.primary_key)}",
+              :expires   => remember_me_until,
+              :domain    => controller.cookie_domain,
+              :http_only => true
             }
           end
           
