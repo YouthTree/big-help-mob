@@ -1,4 +1,4 @@
-BHM.withNS 'Coffee', (ns) ->
+BHM.withNS 'CKEditor', (ns) ->
 
   window.CKEDITOR_BASEPATH: '/ckeditor/'
   

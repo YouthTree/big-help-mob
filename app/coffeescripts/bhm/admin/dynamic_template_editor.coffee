@@ -7,10 +7,10 @@ BHM.withNS 'Admin.DynamicTemplateEditor', (ns) ->
     $(ns.contentTypeSelector).val() is "html"
   
   ns.showEditor: ->
-    BHM.CKEditor.makeEditor $(ns.editorSelector).addClass('ckeditor')
+    BHM.CKEditor.makeEditor $(ns.editorSelector)
     
   ns.hideEditor: ->
-    BHM.CKEditor.destroyEditor $(ns.editorSelector).removeClass('ckeditor')
+    BHM.CKEditor.destroyEditor $(ns.editorSelector)
   
   ns.toggleEditor: ->
     if ns.shouldShowEditor()
