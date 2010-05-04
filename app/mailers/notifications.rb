@@ -39,9 +39,11 @@ class Notifications < ActionMailer::Base
     mail :to => user.email do |r|
       dynamic_templates! r, mission_participation.mission, :text, :html,
                          "role-approved.#{mission_participation.role_name.dasherize}",
-                         :user => user, :mission_participation => mission_participation,
-                         :mission => mission_participation.mission, :role => mission_participation.role,
-                         :pickup => mission_participation.pickup
+                         :user          => user,
+                         :participation => mission_participation,
+                         :mission       => mission_participation.mission,
+                         :role          => mission_participation.role,
+                         :pickup        => mission_participation.pickup
     end
   end
   

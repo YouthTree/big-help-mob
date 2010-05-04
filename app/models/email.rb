@@ -145,7 +145,15 @@ class Email
     scope = {'user' => user}
     if scope_type == 'participations'
       if filter.mission_id.present?
-        scope['participation'] = user.mission_participations.find_by_mission_id(filter.mission_id)
+        participation = user.mission_participations.find_by_mission_id(filter.mission_id)
+        if participation.present?
+          scope.merge!({
+            'participation' => participation,
+            'mission'       => participation.mission,
+            'role'          => participation.role,
+            'pickup'        => participation.pickup
+          })
+        end
       end
     end
     scope
