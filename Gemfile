@@ -59,7 +59,7 @@ gem "msales-carmen",       ">= 0.1.4", :require => ["carmen", "carmen/action_vie
 # Misc. Libraries
 gem "exception_notifier", :require => nil
 gem "liquid"
-gem "fastercsv"
+gem "fastercsv" if RUBY_VERSION < '1.9'
 gem "stringex"
 gem "uuid"
 gem "mail_form", ">= 1.2.1"

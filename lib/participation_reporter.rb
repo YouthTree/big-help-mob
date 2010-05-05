@@ -1,5 +1,16 @@
 class ParticipationReporter
   
+  def self.csv_class
+    @csv_class ||= begin
+      if RUBY_VERSION < '1.9'
+        FasterCSV
+      else
+        require 'csv'
+        CSV
+      end
+    end
+  end
+  
   ROLE_CHOICES = [
     ["All Participations", ""],
     ["Captains only",      "captain"],
@@ -46,7 +57,7 @@ class ParticipationReporter
   end
   
   def to_csv
-    FasterCSV.generate do |csv|
+    self.class.csv_class.generate do |csv|
       csv << generate_header if show?(:headers)
       @collection.each { |r| csv << generate_row(r) }
     end
