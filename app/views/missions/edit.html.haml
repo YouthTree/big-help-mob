@@ -1,8 +1,8 @@
 = semantic_form_for @participation, :url => @mission, :method => :put do |form|
   
+  - ar = @participation.alternate_role
   - if @participation.still_preparing? || @mission.signup_open?(ar)
     %p.actions
-      - ar = @participation.alternate_role
       - if @mission.signup_open?(ar)
         You've chosen to sign up as a
         == #{@participation.role_name.titleize},
