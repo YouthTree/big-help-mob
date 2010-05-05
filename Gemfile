@@ -88,3 +88,7 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
 end
+
+group :staging do
+  gem 'thin'
+end
