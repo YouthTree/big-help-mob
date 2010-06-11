@@ -1,7 +1,5 @@
 class Question < ActiveRecord::Base
   
-  acts_as_list
-  
   validates_presence_of :question, :answer
   
   scope :visible,   where(:visible => true)

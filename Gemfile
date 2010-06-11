@@ -1,8 +1,6 @@
 source 'http://rubygems.org'
 
-# TODO: Uncomment when submodules stuff is fixed.
-# git "git://github.com/rlivsey/will_paginate.git", :ref => "rails3"
-git "git://github.com/nono/acts_as_list.git",     :ref => "rails3"
+git "git://github.com/mislav/will_paginate.git", :ref => "rails3"
 
 # General WIP Fixes.
 git "git://github.com/Sutto/exception_notification.git"
@@ -11,7 +9,7 @@ git "git://github.com/justinfrench/formtastic.git", :ref => "rails3"
 git "git://github.com/railsjedi/jammit.git"
 
 # Rails!
-gem "rails", "= 3.0.0.beta3"
+gem "rails", "= 3.0.0.beta4"
 
 # Misc
 gem "mysql",   ">= 2.8.1"
@@ -26,16 +24,10 @@ gem "geokit",          ">= 1.5.0"
 gem "bhm-google-maps", ">= 0.1.3"
 
 # Display Helpers
-gem "formtastic",            "= 0.9.8"
+gem "formtastic"
 gem "validation_reflection", ">= 0.3.6"
 gem "title_estuary",         ">= 1.2.0"
 
-# View / Rendering
-gem "haml",               ">= 3.0.0.rc.3"
-gem "compass",            ">= 0.10.0.rc3"
-gem "compass-960-plugin", ">= 0.9.13"
-gem "compass-colors",     ">= 0.3.1"
-gem "fancy-buttons",      ">= 0.5.1"
 
 # Authentication
 gem "rpx_now"
@@ -50,7 +42,6 @@ gem "ruby-googlechart",    ">= 0.6.4", :require => "google_chart"
 gem "will_paginate",       ">= 3.0.pre"
 gem "state_machine",       ">= 0.9.0"
 gem "pseudocephalopod",    ">= 0.2.1"
-gem "acts_as_list",        ">= 0.2.0"
 
 # Helpers etc.
 gem "jammit",              ">= 0.5.0"
@@ -67,12 +58,21 @@ gem "sitemap_generator"
 
 gem "newrelic_rpm", :require => nil
 
-gem "barista",  ">= 0.2.1"
-gem "shuriken", ">= 0.1.1"
+gem "barista",  ">= 0.3.0" 
+gem "shuriken", ">= 0.1.4"
 
 # Background workers...
 gem "resque"
 gem 'resque-status', :require => 'resque/status'
+
+# View / Rendering
+gem "haml",               ">= 3.0.0.rc.3"
+gem "compass",            ">= 0.10.0.rc3"
+gem "compass-960-plugin", ">= 0.9.13"
+gem "compass-colors",     ">= 0.3.1"
+gem "fancy-buttons",      ">= 0.5.1"
+
+gem "flickraw"
 
 group :development do
   gem "yard",      :require => nil
