@@ -12,6 +12,8 @@ end
 #  current_role_id   :integer(4)
 #  admin             :boolean(1)
 #  allergies         :text
+#  cached_slug       :string(255)
+#  comment           :text
 #  crypted_password  :string(255)
 #  current_login_ip  :string(255)
 #  date_of_birth     :date

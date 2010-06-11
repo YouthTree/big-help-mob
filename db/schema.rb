@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100429152515) do
+ActiveRecord::Schema.define(:version => 20100611093351) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(:version => 20100429152515) do
   add_index "dynamic_templates", ["key", "template_type"], :name => "index_dynamic_templates_on_key_and_template_type"
   add_index "dynamic_templates", ["key"], :name => "index_dynamic_templates_on_key"
   add_index "dynamic_templates", ["template_type"], :name => "index_dynamic_templates_on_template_type"
+
+  create_table "flickr_photos", :force => true do |t|
+    t.integer  "farm"
+    t.string   "title"
+    t.string   "isprimary"
+    t.string   "flickr_id"
+    t.string   "server"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mission_participations", :force => true do |t|
     t.integer  "user_id"
@@ -151,17 +162,6 @@ ActiveRecord::Schema.define(:version => 20100429152515) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "postcode_locations", :force => true do |t|
-    t.integer  "postcode"
-    t.string   "name"
-    t.decimal  "lat",        :precision => 15, :scale => 10
-    t.decimal  "lng",        :precision => 15, :scale => 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "postcode_locations", ["postcode"], :name => "index_postcode_locations_on_postcode"
 
   create_table "questions", :force => true do |t|
     t.boolean  "visible",                  :default => false, :null => false

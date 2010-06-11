@@ -201,6 +201,7 @@ end
 #  pickup_id   :integer(4)
 #  role_id     :integer(4)
 #  user_id     :integer(4)
+#  comment     :text
 #  raw_answers :text
 #  state       :string(255)
 #  created_at  :datetime
