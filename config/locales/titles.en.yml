@@ -18,6 +18,7 @@ en:
         edit: Your Participation Details
         update: Your Participation Details
         show: "{{mission}}"
+        index: "Past Missions"
       password_resets:
         new: "Request a Password Reset"
         edit: "Reset your Password"

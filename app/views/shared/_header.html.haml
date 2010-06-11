@@ -5,8 +5,12 @@
   %ul
     = ml "Home", :root
     = ml "About", :about
-    = ml "Next Mission", mission_path(:next)
-    = ml "Captains vs. Sidekicks", join_mission_path(:next)
+    - if Mission.has_next?
+      = ml "Next Mission", mission_path(:next)
+      = ml "Choose your Role", join_mission_path(:next)
+      = ml "Missions", missions_path
+    - else
+      = ml "Our Past Missions", missions_path
     - if logged_in?
       = ml "Your Account", user_path(:current)
       = ml "Sign out", :sign_out

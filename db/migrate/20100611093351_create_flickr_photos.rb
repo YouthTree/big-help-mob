@@ -7,7 +7,7 @@ class CreateFlickrPhotos < ActiveRecord::Migration
       t.string :flickr_id
       t.string :server
       t.string :secret
-
+      t.belongs_to :mission
       t.timestamps
     end
   end

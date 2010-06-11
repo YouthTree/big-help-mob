@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20100611093351) do
     t.string   "flickr_id"
     t.string   "server"
     t.string   "secret"
+    t.integer  "mission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

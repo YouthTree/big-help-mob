@@ -43,5 +43,5 @@
   
 - content_for :extra_head do
   :javascript
-    BHM.Admin.QuestionEditor.template = #{render_new_question_form(form).to_json};
-    BHM.Admin.PickupEditor.template   = #{render_new_pickup_form(form).to_json}
+    BHM.Admin.QuestionEditor.template = #{render_new_question_form(form).to_str.to_json};
+    BHM.Admin.PickupEditor.template   = #{render_new_pickup_form(form).to_str.to_json}

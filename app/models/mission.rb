@@ -9,8 +9,9 @@ class Mission < ActiveRecord::Base
   
   attr_accessible :organisation_id, :user_id, :description, :name
   
-  scope :next,     where(:state => 'preparing').order('occurs_at ASC')
-  scope :viewable, where(:state => ['preparing', 'approved', 'completed'])
+  scope :next,      where(:state => ['preparing', 'approved']).order('occurs_at ASC')
+  scope :viewable,  where(:state => ['preparing', 'approved', 'completed'])
+  scope :completed, where(:state => 'completed').order('occurs_at DESC')
   
   # Validations
   validates_presence_of :name, :occurs_at, :organisation, :address_title
@@ -32,6 +33,7 @@ class Mission < ActiveRecord::Base
   has_many :mission_participations, :dependent => :destroy
   has_many :users, :through => :mission_participations
   has_many :questions, :class_name => "MissionQuestion"
+  has_many :flickr_photos
   
   belongs_to :organisation
   belongs_to :user
@@ -64,7 +66,11 @@ class Mission < ActiveRecord::Base
       transition :approved => :completed
     end
   end
-  
+ 
+  def self.has_next?
+    self.next.exists?
+  end
+
   def state_events_for_select
     state_events.map do |se|
       name = ::I18n.t(:"#{self.class.model_name.underscore}.#{se}", :default => se.to_s.humanize, :scope => :"ui.state_events")
@@ -114,6 +120,10 @@ class Mission < ActiveRecord::Base
     respond_to?(method_key) && !!send(method_key)
   end
   
+  def import_photoset!(photoset_id)
+    flickr_photos.from_photoset!(photoset_id)
+  end
+
   def self.for_select
     select('name, id').all.map { |m| [m.name, m.id] }
   end

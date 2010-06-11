@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   # Site index
   def index
     hide_title!
+    @photos = FlickrPhoto.for_homepage
   end
   
   def_page :about

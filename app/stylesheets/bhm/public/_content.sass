@@ -96,19 +96,29 @@ dl.frequently-asked-questions
 #contact_form_nickname_input
   display: none
 
-#join-mission-intro
+#homepage-mission-link
   text-align: center
-  margin: -2em 0 5em
+  margin: 0 0 5em
   a
     +bhm-fixed-fb-structure(16px)
     +fancy-button-colors(#54996e)
     color: white !important
 
+#homepage-photos
+  margin: 0 auto 1.5em
+  text-align: center
+  
+  a img
+    +border-radius(1em)
+    +opacity(0.65)
+    margin: 0.2em
+  a:hover img
+    +opacity(1.0)
+
 .tipsy
   padding: 5px
   font-size: 10px
-  opacity: 0.8
-  filter: alpha(opacity = 80)
+  +opacity(0.8)
   background-repeat: no-repeat
   background-image: url(/images/tipsy.gif)
 
@@ -118,8 +128,7 @@ dl.frequently-asked-questions
   color: white
   max-width: 200px
   text-align: center
-  -moz-border-radius: 3px
-  -webkit-border-radius: 3px
+  +border-radius(3px)
 
 .tipsy-north
   background-position: top center

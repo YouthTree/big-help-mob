@@ -12,8 +12,10 @@
   %ul
     = ml "Home", :root
     = ml "About", :about
-    = ml "Next Mission", mission_path(:next)
-    = ml "Captains vs. Sidekicks", join_mission_path(:next)
+    - if Mission.has_next?
+      = ml "Next Mission", mission_path(:next)
+      = ml "Choose your Role", join_mission_path(:next)
+    = ml "Past Missions", missions_path
     = ml "Terms & Conditions", :terms_and_conditions
     = ml "Privacy Policy", :privacy_policy
     = ml "Contact Us", :contact_us

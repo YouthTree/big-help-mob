@@ -1,3 +1,14 @@
+- unless @photos.empty?
+  #homepage-photos
+    - @photos.each do |photo|
+      = link_to image_tag(photo.to_url(:s)), photo.mission, :title => "View '#{photo.mission.name}'"
+
 = content_section 'home.introduction', :class => 'column'
-#join-mission-intro= link_to 'Join our latest mission', mission_path(:next)
+
+#homepage-mission-link
+  - if Mission.has_next?
+    = link_to 'Join our latest mission', mission_path(:next)
+  - else
+    = link_to 'View our Past Missions', missions_path
+
 #intro-video= youtube_video 'qhMRqJnndQ8', :width => 460, :height => 345

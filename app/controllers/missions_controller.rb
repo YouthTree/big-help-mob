@@ -1,4 +1,5 @@
 class MissionsController < ApplicationController
+  
   MissionOver = Class.new(StandardError)
   
   rescue_from MissionOver do
@@ -9,7 +10,7 @@ class MissionsController < ApplicationController
     redirect_to @mission, :alert => tf('mission.signup_closed')
   end
   
-  before_filter :prepare_mission,        :except => :next
+  before_filter :prepare_mission,        :except => [:next, :index]
   before_filter :require_user_with_note, :only   => [:edit, :update]
   before_filter :require_valid_user,     :only   => [:edit, :update]
   before_filter :prepare_participation,  :only   => [:edit, :update]
@@ -37,6 +38,10 @@ class MissionsController < ApplicationController
       @requires_details = true
       render :action => "edit"
     end
+  end
+
+  def index
+    @missions = Mission.completed.all
   end
   
   protected
