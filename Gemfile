@@ -60,6 +60,7 @@ gem "newrelic_rpm", :require => nil
 
 gem "barista",  ">= 0.3.0" 
 gem "shuriken", ">= 0.1.4"
+gem "youthtree-js", ">= 0.1.1"
 
 # Background workers...
 gem "resque"

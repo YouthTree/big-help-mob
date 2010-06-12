@@ -6,6 +6,7 @@ javascripts:
     - public/javascripts/vendor/css_browser_selector.js
     - public/javascripts/vendor/facybox.js
     - public/javascripts/vendor/shuriken/**/*.js
+    - public/javascripts/vendor/youthtree/**/*.js
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js
     - public/javascripts/bhm/debug.js
