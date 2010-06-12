@@ -4,6 +4,7 @@ javascripts:
     - public/javascripts/vendor/jquery-1.4.2.js
     - public/javascripts/vendor/rails.js
     - public/javascripts/vendor/css_browser_selector.js
+    - public/javascripts/vendor/facybox.js
     - public/javascripts/vendor/shuriken/**/*.js
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js

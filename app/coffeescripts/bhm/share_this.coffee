@@ -11,7 +11,7 @@ BHM.withNS 'ShareThis', (ns) ->
       url:   ns.getURL()
     }
   
-  ns.attachEvents ->
+  ns.attachEvents: ->
     entry: ns.getEntry()
     $(ns.shareThisSelector).show().click(-> false).each(->
       destination: ns.data $(@), "share-this-target"

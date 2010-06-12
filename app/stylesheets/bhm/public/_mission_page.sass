@@ -58,3 +58,23 @@
       text-align: center
     p.hide-notice
       margin-bottom: 0
+
+  #mission-completed-map
+    div.gmap.dynamic-google-map
+      height: 300px
+      width: 850px
+      margin: 0 auto
+    #mission-location-address
+      text-align: center
+      padding: 0.75em
+      font-size: 1.1em
+      color: #333
+
+  #mission-photos
+    text-align: center
+    a img
+      margin: 0.5em
+      +opacity(0.6)
+      +border-radius(1em)
+    a:hover img
+      +opacity(1)
