@@ -1,7 +1,5 @@
 - unless @photos.empty?
-  #homepage-photos
-    - @photos.each do |photo|
-      = link_to image_tag(photo.to_url(:s)), photo.mission, :title => "View '#{photo.mission.name}'"
+  #homepage-photos= render_mission_photos @photos
 
 = content_section 'home.introduction', :class => 'column'
 

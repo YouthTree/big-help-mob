@@ -104,15 +104,20 @@ dl.frequently-asked-questions
     +fancy-button-colors(#54996e)
     color: white !important
 
+.mission-photos
+  margin: 0 auto 0.5em
+
 #homepage-photos
   margin: 0 auto 1.5em
+
+#homepage-photos, .mission-photos
   text-align: center
-  
+
   a img
     +border-radius(1em)
     +opacity(0.65)
     margin: 0.2em
-  a:hover img
+  a:hover img, a img.current
     +opacity(1.0)
 
 .tipsy
@@ -141,3 +146,10 @@ dl.frequently-asked-questions
 
 .tipsy-west
   background-position: left center
+
+#missions
+  .mission
+    .mission-description
+      text-align: center
+    .mission-name
+      font-size: 2em

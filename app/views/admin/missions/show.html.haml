@@ -8,7 +8,9 @@
     = link_to 'Click here to view', [:dashboard_admin, @mission]
   
   = r.attribute :name
-  
+
+  = r.attribute :short_description
+
   = r.attribute :description do
     .content-preview= resource.description_as_html
   

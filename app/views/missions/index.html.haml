@@ -1,7 +1,11 @@
 #missions
   - @missions.each do |mission|
     %div[mission]
-      %h4
+      %h4.mission-name
         %span.mission-date= mission.occurs_at.strftime "%d %B, %Y"
         \-
         = link_to mission.name, mission
+      .mission-photos= render_mission_photos mission.flickr_photos.for_archive
+      %p.mission-description
+        = mission.short_description
+        = link_to "View this mission &raquo;".html_safe, mission

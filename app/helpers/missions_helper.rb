@@ -36,5 +36,11 @@ module MissionsHelper
     inner = link_to('Join this mission', join_mission_path(mission), :class => 'join-mission-link')
     content_tag(:p, inner, :class => 'join-mission-container')
   end
+
+  def render_mission_photos(collection)
+    collection.map do |c|
+      link_to(image_tag(c.to_url(:s)), c.mission, :title => "View '#{c.mission.name}'")
+    end.join.html_safe
+  end
   
 end

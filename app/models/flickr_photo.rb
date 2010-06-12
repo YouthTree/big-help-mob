@@ -17,6 +17,10 @@ class FlickrPhoto < ActiveRecord::Base
     limit(count).order('RAND()').includes(:mission).all
   end
 
+  def self.for_archive(count = 10)
+    limit(count).includes(:mission).all
+  end
+
   def self.from_hash!(hash)
     create!({
       :farm      => hash["farm"],

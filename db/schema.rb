@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100611093351) do
+ActiveRecord::Schema.define(:version => 20100612035051) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20100611093351) do
     t.string   "address_title"
     t.boolean  "captain_signup_open",  :default => true
     t.boolean  "sidekick_signup_open", :default => true
+    t.text     "short_description"
   end
 
   add_index "missions", ["cached_slug"], :name => "index_missions_on_cached_slug"
