@@ -1,17 +1,17 @@
 class Content < ActiveRecord::Base
-  
+
   attr_accessible :content, :key, :title, :type
-  
+
   validates_presence_of :key
-  
+
   def self.[](key)
     where(:key => key.to_s).first
   end
-  
+
   def content_as_html
     content.to_s.html_safe
   end
-  
+
 end
 
 # == Schema Info

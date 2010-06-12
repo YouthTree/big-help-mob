@@ -1,0 +1,7 @@
+#missions
+  - @missions.each do |mission|
+    %div[mission]
+      %h4
+        %span.mission-date= mission.occurs_at.strftime "%d %B, %Y"
+        \-
+        = link_to mission.name, mission
