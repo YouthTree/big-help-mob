@@ -1,5 +1,10 @@
 %h2.title== Viewing #{current_resource_name}
 
 = show_for resource do |r|
-  - (resource_class.column_names - [:created_at, :updated_at]).each do |column|
-    = r.attribute column.to_sym
+  = r.attribute :flickr_id
+  = r.attribute :url do
+    = link_to resource.to_url, resource.to_url
+  = r.attribute :image do
+    = link_to image_tag(resource.to_url(:s)), resource.to_url
+
+- content_for :sidebar, render(:partial => 'sidebar')
