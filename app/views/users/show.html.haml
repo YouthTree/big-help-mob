@@ -14,15 +14,15 @@
         - @participations.each do |participation|
           %li{:class => cycle('odd-mission', 'even-mission')}
             - if participation.completed?
-              Took part in
+              %span.mission-participation Took part in
             - elsif participation.approved?
-              Signed up to take part in
-            = participation.role_name.humanize
+              %span.mission-participation Signed up to take part in
+            %span.mission-role{:class => participation.role_name}
+              = participation.role_name.humanize
             for
-            = participation.mission.name
+            %span.mission-name= participation.mission.name
             on
-            =l participation.mission.occurs_at, :format => :simple
-    
+            %span.mission-when=l participation.mission.occurs_at, :format => :simple
 
 - if can?(:edit, @user)
   %p.actions
