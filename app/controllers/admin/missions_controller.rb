@@ -1,5 +1,5 @@
 class Admin::MissionsController < Admin::BaseController
-  use_controller_ext :pseudocephalopod_resource
+  use_controller_exts :pseudocephalopod_resource
 
   def dashboard
     params[:state_filter] ||= "approved"
