@@ -1,13 +1,13 @@
 module AuthorizationHelpers
-  
+
   def self.included(klass)
     klass.class_eval do
       helper_method :can?
     end
   end
-  
+
   protected
-  
+
   def can?(action, object)
     logged_in? && current_user.can?(action, object)
   end
