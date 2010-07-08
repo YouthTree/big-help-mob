@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 git "git://github.com/mislav/will_paginate.git", :ref => "rails3"
-git "git://github.com/documentcloud/jammit.git"
+git "git://github.com/Sutto/jammit.git"
 
 # Rails!
 gem "rails", "= 3.0.0.beta4"
