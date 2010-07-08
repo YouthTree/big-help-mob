@@ -5,7 +5,7 @@ require 'rails/all'
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
 
-module Bighelpmob
+module BigHelpMob 
   class Application < Rails::Application
     # config.plugins                 = [ :exception_notification, :ssl_requirement, :all ]
     # config.time_zone               = 'Central Time (US & Canada)'

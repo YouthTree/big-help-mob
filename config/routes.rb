@@ -1,4 +1,4 @@
-Bighelpmob::Application.routes.draw do |map|
+BigHelpMob::Application.routes.draw do |map|
 
   # TODO: Uncomment when rails routing is broken.
   # scope :path => '/admin/resque', :name_prefix => :resque do
