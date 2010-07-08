@@ -160,7 +160,7 @@ namespace :deploy do
     Rake::Task["deploy:local_before"].invoke
     puts "Deploying app to #{staging? ? "staging" : "production"}"
     git_command     = "git reset --hard HEAD && git checkout . && git pull"
-    bundler_command = "bundle install .bundle-cache --disable-shared-gems"
+    bundler_command = "bundle install .bundle-cache --disable-shared-gems --without=development:test --relock"
     rake_command    = "bundle exec rake deploy:remote"
     rake_command << " MIGRATE_ENV=true" if %w(true 1).include?(ENV['MIGRATE_ENV'].to_s.downcase)
     rake_command << " RAILS_ENV=#{ENV['RAILS_ENV'] || "production"}"
