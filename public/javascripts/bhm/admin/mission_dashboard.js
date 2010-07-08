@@ -1,0 +1,26 @@
+BHM.withNS('Admin.MissionDashboard', function(ns) {
+  ns.tabsSelector = '#general-participations';
+  ns.showReportSelector = '#generate-report';
+  ns.reportSelector = '#generate-mission-report .inner-report-generator';
+  ns.hideReportSelector = '#hide-report-generator-button';
+  ns.setupTabs = function setupTabs() {
+    return $(ns.tabsSelector).tabs();
+  };
+  ns.setupReportGenerator = function setupReportGenerator() {
+    $(("" + ns.showReportSelector + " a")).click(function() {
+      $(ns.showReportSelector).slideUp();
+      $(ns.reportSelector).slideDown();
+      return false;
+    });
+    return $(ns.hideReportSelector).click(function() {
+      $(ns.showReportSelector).slideDown();
+      $(ns.reportSelector).slideUp();
+      return false;
+    });
+  };
+  ns.setup = function setup() {
+    ns.setupTabs();
+    return ns.setupReportGenerator();
+  };
+  return ns.setup;
+});

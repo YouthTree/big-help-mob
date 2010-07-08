@@ -11,9 +11,6 @@ tmp/restart.txt
 tmp/*.sql
 public/stylesheets/*.css
 config/newrelic.yml
-public/javascripts/bhm
-public/javascripts/vendor/bhm-google-maps
-public/javascripts/vendor/shuriken
 public/assets/
 .rvmrc
 .gemset
