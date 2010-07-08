@@ -1,22 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
-  include AuthlogicHelpers
-  include AuthorizationHelpers
+
   include TitleEstuary
-  include TitleEstuaryExt
   include ErrorPages
   include SslRequirement
-  include SslRequirementExt
-  
+
+  use_controller_exts :authlogic_helpers, :authorization_helpers,
+                      :title_estuary, :ssl_requirement, :translation
+
   protected
-  
-  def tf(key)
-    I18n.t(key.to_sym, :scope => :flash)
-  end
-  
+
   helper_method :on_error_page?
-  
+
   def on_error_page?
     false
   end

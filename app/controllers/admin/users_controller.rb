@@ -1,3 +1,3 @@
 class Admin::UsersController < Admin::BaseController
-  include PseudocephalopodControllerExt
+  use_controller_ext :pseudocephalopod_resource
 end
