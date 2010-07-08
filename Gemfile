@@ -41,7 +41,7 @@ gem "jammit",              ">= 0.5.0"
 gem "msales-carmen",       ">= 0.1.4", :require => ["carmen", "carmen/action_view_helpers"]
 
 # Miscellaneous
-gem "exception_notifier", :require => nil
+gem "rack-failtale", :require => nil
 gem "liquid"
 gem "fastercsv" if RUBY_VERSION < '1.9'
 gem "stringex"

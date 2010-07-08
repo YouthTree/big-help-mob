@@ -13,9 +13,8 @@ default:
 production:
   google_analytics:
     identifier: "UA-XXXXXXXX-X"
-  exception_notifier:
-    recipients:
-      - youremail@example.com
+  failtale:
+    api_key: "some-key"
   hominid:
     api_key: your-mailchimp-api-key
   mailer:
