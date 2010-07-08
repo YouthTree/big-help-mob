@@ -68,6 +68,8 @@ gem "compass-960-plugin", ">= 0.9.13"
 gem "compass-colors",     ">= 0.3.1"
 gem "fancy-buttons",      ">= 0.5.1"
 
+gem "youthtree-settings"
+
 group :development do
   gem "yard",      :require => nil
   gem "bluecloth", :require => nil
