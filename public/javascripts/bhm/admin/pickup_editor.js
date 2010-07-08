@@ -3,7 +3,7 @@ BHM.withNS('Admin.PickupEditor', function(ns) {
   ns.removeSelector = 'a.remove-pickup-link';
   ns.addSelector = 'a.add-pickup-link';
   ns.template = '';
-  ns.attachEvents = function attachEvents() {
+  ns.attachEvents = function() {
     $(ns.addSelector).click(function() {
       ns.addPickup();
       return false;
@@ -12,23 +12,23 @@ BHM.withNS('Admin.PickupEditor', function(ns) {
       return ns.attachEventOn($(this));
     });
   };
-  ns.attachEventOn = function attachEventOn(fs) {
+  ns.attachEventOn = function(fs) {
     return fs.find(ns.removeSelector).click(function() {
       ns.deletePickup(this);
       return false;
     });
   };
-  ns.addPickup = function addPickup() {
+  ns.addPickup = function() {
     var inner;
     inner = ns.template.replace(/PICKUP_IDX/g, Number(new Date()));
-    $(("" + ns.fieldsetSelector + ":last")).after(inner);
-    return ns.attachEventOn($(("" + ns.fieldsetSelector + ":last")));
+    $("" + ns.fieldsetSelector + ":last").after(inner);
+    return ns.attachEventOn($("" + ns.fieldsetSelector + ":last"));
   };
-  ns.deletePickup = function deletePickup(link) {
+  ns.deletePickup = function(link) {
     link = $(link);
     return link.parents(ns.fieldsetSelector).find("input[type=hidden]").val('1').end().hide();
   };
-  ns.setup = function setup() {
+  ns.setup = function() {
     return ns.attachEvents();
   };
   return ns.setup;

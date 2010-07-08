@@ -5,18 +5,18 @@ Shuriken.defineExtension(function(baseNS) {
     ns.mixins = {};
     root.mixins = {};
     root.withBase(function(base) {
-      base.mixin = function mixin(mixins) {
+      base.mixin = function(mixins) {
         return ns.mixin(this, mixins);
       };
       return base.mixin;
     });
-    defineMixin = function defineMixin(key, mixin) {
+    defineMixin = function(key, mixin) {
       this.mixins[key] = mixin;
       return this.mixins[key];
     };
     root.defineMixin = defineMixin;
     ns.define = defineMixin;
-    ns.lookupMixin = function lookupMixin(mixin) {
+    ns.lookupMixin = function(mixin) {
       var _a, _b, _c;
       if ((_a = typeof mixin) === "string") {
         if ((typeof (_b = ns.mixins[mixin]) !== "undefined" && _b !== null)) {
@@ -25,13 +25,12 @@ Shuriken.defineExtension(function(baseNS) {
           return root.mixins[mixin];
         } else {
           return {};
-          // unknown mixin, return a blank object.
         }
       } else {
         return mixin;
       }
     };
-    ns.invokeMixin = function invokeMixin(scope, mixin) {
+    ns.invokeMixin = function(scope, mixin) {
       var _a;
       if ((_a = typeof mixin) === "string") {
         return ns.invokeMixin(scope, ns.lookupMixin(mixin));
@@ -41,7 +40,7 @@ Shuriken.defineExtension(function(baseNS) {
         return $.extend(scope, mixin);
       }
     };
-    ns.mixin = function mixin(scope, mixins) {
+    ns.mixin = function(scope, mixins) {
       var _a, _b, _c, mixin;
       if (!($.isArray(mixins))) {
         mixins = [mixins];

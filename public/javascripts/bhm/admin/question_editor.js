@@ -6,7 +6,7 @@ BHM.withNS('Admin.QuestionEditor', function(ns) {
   ns.removeSelector = 'a.remove-question-link';
   ns.addSelector = 'a.add-question-link';
   ns.template = '';
-  ns.attachEvents = function attachEvents() {
+  ns.attachEvents = function() {
     $(ns.addSelector).click(function() {
       ns.addQuestion();
       return false;
@@ -15,7 +15,7 @@ BHM.withNS('Admin.QuestionEditor', function(ns) {
       return ns.attachEventOn($(this));
     });
   };
-  ns.attachEventOn = function attachEventOn(fieldset) {
+  ns.attachEventOn = function(fieldset) {
     fieldset.find("select").change(function() {
       if (ns.shouldShow(fieldset)) {
         return ns.showMetadata(fieldset);
@@ -28,26 +28,26 @@ BHM.withNS('Admin.QuestionEditor', function(ns) {
       return false;
     });
   };
-  ns.hideMetadata = function hideMetadata(c) {
+  ns.hideMetadata = function(c) {
     return c.find(ns.itemSelector).hide();
   };
-  ns.showMetadata = function showMetadata(c) {
+  ns.showMetadata = function(c) {
     return c.find(ns.itemSelector).show();
   };
-  ns.shouldShow = function shouldShow(c) {
+  ns.shouldShow = function(c) {
     return c.find(ns.individualSelector).val() === ns.showValue;
   };
-  ns.addQuestion = function addQuestion() {
+  ns.addQuestion = function() {
     var inner;
     inner = ns.template.replace(/QUESTION_IDX/g, Number(new Date()));
-    $(("" + ns.fieldsetSelector + ":last")).after(inner);
-    return ns.attachEventOn($(("" + ns.fieldsetSelector + ":last")));
+    $("" + ns.fieldsetSelector + ":last").after(inner);
+    return ns.attachEventOn($("" + ns.fieldsetSelector + ":last"));
   };
-  ns.deleteQuestion = function deleteQuestion(link) {
+  ns.deleteQuestion = function(link) {
     link = $(link);
     return link.parents(ns.fieldsetSelector).find('input[type=hidden]').val('1').end().hide();
   };
-  ns.setup = function setup() {
+  ns.setup = function() {
     return ns.attachEvents();
   };
   return ns.setup;

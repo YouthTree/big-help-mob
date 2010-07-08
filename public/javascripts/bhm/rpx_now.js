@@ -7,17 +7,16 @@ BHM.require('Authentication', function() {
       overlay: true,
       language_preference: 'en'
     };
-    conditionallySet = function conditionallySet(element, key, callback) {
+    conditionallySet = function(element, key, callback) {
       key = ("" + ns.dataPrefix + key);
       if (ns.hasData(element, key)) {
         return callback(ns.data(element, key));
       }
     };
-    ns.configuration = function configuration() {
+    ns.configuration = function() {
       var configuration, element;
       configuration = $.extend({}, ns.baseConfiguration);
       element = $(ns.rpxnowLinkSelector);
-      // Set each of the data attributes.
       conditionallySet(element, "token-url", function(v) {
         configuration.token_url = v;
         return configuration.token_url;
@@ -32,12 +31,12 @@ BHM.require('Authentication', function() {
       });
       return configuration;
     };
-    ns.configureRPXNow = function configureRPXNow() {
-      if ((typeof RPXNOW !== "undefined" && RPXNOW !== null)) {
+    ns.configureRPXNow = function() {
+      if (typeof RPXNOW !== "undefined" && RPXNOW !== null) {
         return $.extend(RPXNOW, ns.configuration());
       }
     };
-    ns.setup = function setup() {
+    ns.setup = function() {
       return ns.configureRPXNow();
     };
     return ns.setup;

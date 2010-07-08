@@ -2,18 +2,13 @@ BHM.withNS('Pickups', function(ns) {
   var bounds, lastMarker, lastWindow, map, markerURL, markers, pickups, selected;
   ns.mixin('Callbacks');
   ns.defineCallback('PickupSelect');
-  // State
   map = null;
   bounds = null;
   lastMarker = null;
   lastWindow = null;
   selected = null;
-  // Datastructures.
   pickups = {};
-  // Each pickup point.
   markers = {};
-  // Each marker point.
-  // Configuration
   ns.containerSelector = "#pickups-map";
   ns.listingSelector = "#pickups-listing";
   ns.entrySelector = ".pickup-entry";
@@ -22,8 +17,7 @@ BHM.withNS('Pickups', function(ns) {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false
   };
-  // Pickup Datastructure.
-  ns.Pickup = function Pickup(id, name, address, lat, lng, at, comment) {
+  ns.Pickup = function(id, name, address, lat, lng, at, comment) {
     this.id = id;
     this.name = name;
     this.address = address;
@@ -33,7 +27,7 @@ BHM.withNS('Pickups', function(ns) {
     this.comment = comment;
     return this;
   };
-  ns.Pickup.prototype.toString = function toString() {
+  ns.Pickup.prototype.toString = function() {
     var _a, string;
     string = ("" + this.name + " (" + this.address + ")");
     if ((typeof (_a = this.pickupAt) !== "undefined" && _a !== null)) {
@@ -41,11 +35,11 @@ BHM.withNS('Pickups', function(ns) {
     }
     return string;
   };
-  ns.Pickup.prototype.toLatLng = function toLatLng() {
+  ns.Pickup.prototype.toLatLng = function() {
     var _a;
     return this._ll = (typeof (_a = this._ll) !== "undefined" && _a !== null) ? this._ll : new google.maps.LatLng(this.lat, this.lng);
   };
-  ns.Pickup.prototype.toMarker = function toMarker(map) {
+  ns.Pickup.prototype.toMarker = function(map) {
     var options;
     options = {
       title: this.toString(),
@@ -54,10 +48,9 @@ BHM.withNS('Pickups', function(ns) {
     };
     return new google.maps.Marker(options);
   };
-  ns.Pickup.prototype.toInfoWindow = function toInfoWindow(map, marker) {
+  ns.Pickup.prototype.toInfoWindow = function(map, marker) {
     var _a, _b, info, inner;
     info = new google.maps.InfoWindow();
-    // Create inner.
     inner = $("<div />");
     inner.append($("<strong />").text(this.name));
     inner.append($("<br />"));
@@ -68,26 +61,25 @@ BHM.withNS('Pickups', function(ns) {
       inner.append($("<br />"));
       inner.append($("<span />", {
         'class': 'pickup-at'
-      }).text(("Pickup at " + this.pickupAt)));
+      }).text("Pickup at " + this.pickupAt));
     }
     if ((typeof (_b = this.comment) !== "undefined" && _b !== null)) {
       inner.append($("<br />"));
       inner.append($("<span />", {
         'class': 'pickup-comment'
       }).text(this.comment));
-      // Actually show it.
     }
     info.setContent(inner.get(0));
     info.open(map, marker);
     return info;
   };
-  markerURL = function markerURL(selected) {
+
+  markerURL = function(selected) {
     var suffix;
     suffix = selected ? "_green" : "";
     return "http://www.google.com/intl/en_ALL/mapfiles/marker" + (suffix) + ".png";
   };
-  // Public API.
-  ns.selectPickup = function selectPickup(pickup, clearWindow) {
+  ns.selectPickup = function(pickup, clearWindow) {
     var marker;
     if (clearWindow && (typeof lastWindow !== "undefined" && lastWindow !== null)) {
       lastWindow.close();
@@ -95,14 +87,14 @@ BHM.withNS('Pickups', function(ns) {
     if (typeof pickup === "number") {
       pickup = ns.getPickup(pickup);
     }
-    if (!((typeof pickup !== "undefined" && pickup !== null))) {
+    if (!(typeof pickup !== "undefined" && pickup !== null)) {
       return null;
     }
     marker = ns.getMarker(pickup.id);
-    if (!((typeof marker !== "undefined" && marker !== null))) {
+    if (!(typeof marker !== "undefined" && marker !== null)) {
       return null;
     }
-    if ((typeof lastMarker !== "undefined" && lastMarker !== null)) {
+    if (typeof lastMarker !== "undefined" && lastMarker !== null) {
       lastMarker.setIcon(markerURL(false));
     }
     marker.setIcon(markerURL(true));
@@ -110,22 +102,22 @@ BHM.withNS('Pickups', function(ns) {
     ns.invokePickupSelect(pickup);
     return true;
   };
-  ns.eachPickup = function eachPickup(callback) {
+  ns.eachPickup = function(callback) {
     return $.each(pickups, function() {
       return callback(this);
     });
   };
-  ns.getPickup = function getPickup(id) {
+  ns.getPickup = function(id) {
     return pickups[id];
   };
-  ns.getMarker = function getMarker(pickup) {
+  ns.getMarker = function(pickup) {
     var _a;
     if ((typeof (_a = pickup.id) !== "undefined" && _a !== null)) {
       pickup = pickup.id;
     }
     return markers[pickup];
   };
-  ns.getMap = function getMap() {
+  ns.getMap = function() {
     var container, options;
     if (!(typeof map !== "undefined" && map !== null)) {
       options = $.extend({}, ns.defaultMapOptions);
@@ -135,12 +127,12 @@ BHM.withNS('Pickups', function(ns) {
     }
     return map;
   };
-  ns.getBounds = function getBounds() {
+  ns.getBounds = function() {
     return bounds = (typeof bounds !== "undefined" && bounds !== null) ? bounds : new google.maps.LatLngBounds();
   };
-  ns.addAllPickups = function addAllPickups() {
+  ns.addAllPickups = function() {
     var container;
-    container = $(("" + ns.listingSelector + " " + ns.entrySelector));
+    container = $("" + ns.listingSelector + " " + ns.entrySelector);
     container.each(function() {
       var address, at, comment, element, id, lat, lng, name;
       element = $(this);
@@ -156,10 +148,10 @@ BHM.withNS('Pickups', function(ns) {
         return pickups[id];
       }
     });
-    selected = container.filter(("[data-" + ns.dataPrefix + "-selected]"));
+    selected = container.filter("[data-" + ns.dataPrefix + "-selected]");
     return selected;
   };
-  ns.plotPickups = function plotPickups() {
+  ns.plotPickups = function() {
     map = ns.getMap();
     bounds = ns.getBounds();
     ns.eachPickup(function(pickup) {
@@ -175,23 +167,22 @@ BHM.withNS('Pickups', function(ns) {
     });
     return ns.centreMap();
   };
-  ns.centreMap = function centreMap() {
+  ns.centreMap = function() {
     map = ns.getMap();
     bounds = ns.getBounds();
     map.setCenter(bounds.getCenter());
     map.panToBounds(bounds);
     return map.fitBounds(bounds);
   };
-  ns.plot = function plot() {
+  ns.plot = function() {
     ns.getMap();
     return ns.plotPickups();
   };
-  ns.autoplot = function autoplot() {
+  ns.autoplot = function() {
     ns.addAllPickups();
     return ns.plot();
   };
-  // Setup tools.
-  ns.setup = function setup() {
+  ns.setup = function() {
     return ns.autoplot();
   };
   return ns.setup;

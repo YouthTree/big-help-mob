@@ -1,11 +1,6 @@
-var __slice = Array.prototype.slice, __bind = function(func, obj, args) {
-    return function() {
-      return func.apply(obj || {}, args ? args.concat(__slice.call(arguments, 0)) : arguments);
-    };
-  };
 BHM.withNS('Signup', function(ns) {
   ns.originWrapperSelector = '#user_origin_input';
-  ns.replaceField = function replaceField() {
+  ns.replaceField = function() {
     var container, id, name, select;
     container = $(ns.originWrapperSelector);
     container.removeClass('select').addClass('string');
@@ -19,17 +14,22 @@ BHM.withNS('Signup', function(ns) {
       type: 'text'
     }));
   };
-  ns.shouldReplaceField = function shouldReplaceField() {
-    return $(("" + ns.originWrapperSelector + " select")).val().toLowerCase() === 'other';
+  ns.shouldReplaceField = function() {
+    return $("" + ns.originWrapperSelector + " select").val().toLowerCase() === 'other';
   };
-  ns.attachEvents = function attachEvents() {
-    return $(("" + ns.originWrapperSelector + " select")).change(__bind(function() {
+  ns.attachEvents = function() {
+    return $("" + ns.originWrapperSelector + " select").change((function(__this) {
+      var __func = function() {
         if (ns.shouldReplaceField()) {
           return ns.replaceField();
         }
-      }, this));
+      };
+      return (function() {
+        return __func.apply(__this, arguments);
+      });
+    })(this));
   };
-  ns.setup = function setup() {
+  ns.setup = function() {
     return ns.attachEvents();
   };
   return ns.setup;

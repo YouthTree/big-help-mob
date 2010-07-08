@@ -4,41 +4,41 @@ BHM.withNS('Admin.EmailEditor', function(ns) {
   ns.previewSectionSelector = 'a.preview-email-section';
   ns.confirmedSelector = '#email_confirmed';
   ns.confirmedFieldset = 'fieldset#email-confirmation';
-  ns.setButtonText = function setButtonText(text) {
+  ns.setButtonText = function(text) {
     return $("#email_submit").text(text);
   };
-  ns.hideConfirmation = function hideConfirmation() {
+  ns.hideConfirmation = function() {
     $(ns.confirmedSelector).removeAttr("check");
     $(ns.confirmedFieldset).hide();
     return ns.setButtonText("Preview and Confirm");
   };
-  ns.removePreviewFor = function removePreviewFor(field) {
-    $(("#preview-of-" + field)).hide();
+  ns.removePreviewFor = function(field) {
+    $("#preview-of-" + field).hide();
     return ns.hideConfirmation();
   };
-  ns.hideParticipationFilter = function hideParticipationFilter() {
+  ns.hideParticipationFilter = function() {
     return $(ns.participationSelector).hide();
   };
-  ns.showParticipationFilter = function showParticipationFilter() {
+  ns.showParticipationFilter = function() {
     return $(ns.participationSelector).show();
   };
-  ns.shouldShowParticipationFilter = function shouldShowParticipationFilter() {
+  ns.shouldShowParticipationFilter = function() {
     return $(ns.typeSelector).val() === "participations";
   };
-  ns.toggleParticipationFilter = function toggleParticipationFilter() {
+  ns.toggleParticipationFilter = function() {
     if (ns.shouldShowParticipationFilter()) {
       return ns.showParticipationFilter();
     } else {
       return ns.hideParticipationFilter();
     }
   };
-  ns.showPreviewFor = function showPreviewFor(scope) {
+  ns.showPreviewFor = function(scope) {
     scope = $(scope);
     return $.facybox({
       div: scope.attr("href")
     }, "email-section-preview");
   };
-  ns.bindEvents = function bindEvents() {
+  ns.bindEvents = function() {
     $(ns.typeSelector).change(function() {
       return ns.toggleParticipationFilter();
     }).change();
@@ -53,7 +53,7 @@ BHM.withNS('Admin.EmailEditor', function(ns) {
       return false;
     });
   };
-  ns.setup = function setup() {
+  ns.setup = function() {
     return ns.bindEvents();
   };
   return ns.setup;

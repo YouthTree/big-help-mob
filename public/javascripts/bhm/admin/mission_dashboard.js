@@ -3,11 +3,11 @@ BHM.withNS('Admin.MissionDashboard', function(ns) {
   ns.showReportSelector = '#generate-report';
   ns.reportSelector = '#generate-mission-report .inner-report-generator';
   ns.hideReportSelector = '#hide-report-generator-button';
-  ns.setupTabs = function setupTabs() {
+  ns.setupTabs = function() {
     return $(ns.tabsSelector).tabs();
   };
-  ns.setupReportGenerator = function setupReportGenerator() {
-    $(("" + ns.showReportSelector + " a")).click(function() {
+  ns.setupReportGenerator = function() {
+    $("" + ns.showReportSelector + " a").click(function() {
       $(ns.showReportSelector).slideUp();
       $(ns.reportSelector).slideDown();
       return false;
@@ -18,7 +18,7 @@ BHM.withNS('Admin.MissionDashboard', function(ns) {
       return false;
     });
   };
-  ns.setup = function setup() {
+  ns.setup = function() {
     ns.setupTabs();
     return ns.setupReportGenerator();
   };

@@ -5,25 +5,25 @@ BHM.withNS('Admin.Questions', function(ns) {
   ns.sortableSelector = 'ul';
   ns.linkSelector = '.reorder-questions-link';
   sortable = false;
-  ns.showReorderDialog = function showReorderDialog() {
+  ns.showReorderDialog = function() {
     ns.makeSortable();
     return $(ns.dialogSelector).dialog();
   };
-  ns.makeSortable = function makeSortable() {
+  ns.makeSortable = function() {
     if (sortable) {
       return null;
     }
-    $(("" + ns.dialogSelector + " " + ns.sortableSelector)).sortable();
+    $("" + ns.dialogSelector + " " + ns.sortableSelector).sortable();
     sortable = true;
     return sortable;
   };
-  ns.bindReorderButton = function bindReorderButton() {
+  ns.bindReorderButton = function() {
     return $(ns.linkSelector).click(function() {
       ns.showReorderDialog();
       return false;
     });
   };
-  ns.setup = function setup() {
+  ns.setup = function() {
     return ns.bindReorderButton();
   };
   return ns.setup;

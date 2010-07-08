@@ -4,15 +4,15 @@ BHM.withNS('Authentication', function(ns) {
   ns.authMethodSelector = '#auth-selector-link';
   ns.containerSelector = '#authentication-choices';
   ns.traditionalFormSelector = '#authentication-with-standard-account';
-  ns.showTraditional = function showTraditional() {
+  ns.showTraditional = function() {
     $(ns.traditionalFormSelector).slideDown();
     return $(ns.containerSelector).slideUp();
   };
-  ns.showSelector = function showSelector() {
+  ns.showSelector = function() {
     $(ns.containerSelector).slideDown();
     return $(ns.traditionalFormSelector).slideUp();
   };
-  ns.bindEvents = function bindEvents() {
+  ns.bindEvents = function() {
     $(ns.traditionalAuthenticationSelector).click(function() {
       ns.showTraditional();
       return false;
@@ -22,7 +22,7 @@ BHM.withNS('Authentication', function(ns) {
       return false;
     });
   };
-  ns.setup = function setup() {
+  ns.setup = function() {
     return ns.bindEvents();
   };
   return ns.setup;
