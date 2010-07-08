@@ -69,7 +69,7 @@ gem "compass-colors",     ">= 0.3.1"
 gem "fancy-buttons",      ">= 0.5.1"
 
 gem "youthtree-settings"
-gem "youthtree-controller-ext", :path => "/Users/sutto/Code/YouthTree/yt-controller-ext"
+gem "youthtree-controller-ext"
 
 group :development do
   gem "yard",      :require => nil
