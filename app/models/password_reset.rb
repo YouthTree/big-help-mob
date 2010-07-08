@@ -5,6 +5,10 @@ class PasswordReset
   
   attr_accessor :email, :password, :password_confirmation
   
+  def self.human_name
+    model_name.human
+  end
+
   def self.find(token)
     return if token.blank?
     user = User.find_using_perishable_token(token) 
