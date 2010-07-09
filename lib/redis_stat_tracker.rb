@@ -6,9 +6,9 @@ class RedisStatTracker
 
   def initialize(app, opts = {})
     @app         = app
-    @period      = opts.fetch(:period, 1.minute).to_i
+    @period      = opts.fetch(:period, 1.day).to_i
     @namespace   = opts.fetch(:namespace, "redis-stat-tracker")
-    @redis       = opts.fetch(:redis, Redis.new)
+    @redis       = opts.fetch(:redis, Redis.new) rescue nil
     self.current = self
   end
 
@@ -16,7 +16,7 @@ class RedisStatTracker
     env[STAT_TRACKER_KEY] = true
     @app.call(env)
     # Increase the number of hits for the current key.
-    if env[STAT_TRACKER_KEY] && !bot?(env)
+    if env[STAT_TRACKER_KEY] && !bot?(env) && @redis
       @redis.incr current_stat_key
     end
   end
@@ -26,22 +26,21 @@ class RedisStatTracker
   end
 
   def key_for_time(time)
-    current_period = (time.to_i / @period).round * period
+    current_period = (time.to_i / @period).round * @period
     "#{@namespace}:visits:#{current_period}"
   end
 
-  def keys_between(period_start = (@period * 14).ago, period_end = Time.now)
-    keys  = []
-    times = []
+  def visit_stats(n)
+    times, keys = [], []
+    (14 - 1).to_i.downto(0) do |i|
+      time = Time.now - (i * @period)
+      times << time
+      keys  << key_for_time(time)
+    end
     counts = ActiveSupport::OrderedHash.new
-    time  = period_start
-    while time <= period_end
-      keys << key_for_time(time)
-      time += @period
-    end
-    @redis.mget(*keys).each_with_index do |v, i|
-      counts[times[i]] = v.to_i
-    end
+    values = @redis ? @redis.mget(*keys) : []
+    times.each_with_index { |time, idx| counts[time] = values[idx].to_i }
+    counts
   end
 
   protected
