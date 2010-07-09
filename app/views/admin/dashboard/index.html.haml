@@ -5,6 +5,10 @@
   Drag link to your bookmark bar to make debugging easier:
   = link_to 'Show BHM Debug Info', 'javascript: BHM.Debug.showDebugInformation(); return false;'
 
+#site-visits.google-chart.statistic
+  %h3 Visits in the Last 2 Weeks (per 12 hours)
+  = image_tag site_visits_url, :title => "Visits in the Last 2 Weeks (per 12 hours)", :id => "site-visits-stats"
+
 #user-signups.google-chart.statistic
   %h3 User Signups By Date
   = image_tag user_stats_url, :title => "User signups by date", :id => 'user-signup-stats'

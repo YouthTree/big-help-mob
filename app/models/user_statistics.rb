@@ -1,7 +1,7 @@
 class UserStatistics
   
   UserLocation = Struct.new(:postcode, :lat, :lng, :count)
-  
+
   def self.signups_per_day(from = Date.today - 14, to = Date.today)
     from, to = from.to_date, to.to_date
     users = User.select("DATE(users.created_at) AS users_date, count(*) AS count_all").group("users_date")

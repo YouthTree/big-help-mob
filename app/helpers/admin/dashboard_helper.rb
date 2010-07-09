@@ -1,5 +1,18 @@
 module Admin::DashboardHelper
-  
+
+  def site_visits_url
+    data = @site_visits
+    GoogleChart.Bar do |c|
+      c.extend GchartExtensions
+      c.axes            = {:x => labels(data.keys.map{ |t| t.to_s(:short) }, 3), :y => (0..(data.values.max))}
+      c.data            = data.values
+      c.encoding        = :extended
+      c.color           = '48993C'
+      c.background_fill = 'F9F9F9'
+      c.size            = '680x200'
+    end
+  end
+
   def user_stats_url
     data = @user_stats
     GoogleChart.Line do |c|
