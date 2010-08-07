@@ -23,11 +23,7 @@ Shuriken.defineExtension(function(baseNS) {
     mixin.callbacksFor = function(name) {
       var existing;
       existing = mixin.callbacks[name];
-      if (typeof existing !== "undefined" && existing !== null) {
-        return existing;
-      } else {
-        return [];
-      }
+      return (typeof existing !== "undefined" && existing !== null) ? existing : [];
     };
     mixin.invokeCallbacks = function(name) {
       var _c, _d, _e, args, callback;

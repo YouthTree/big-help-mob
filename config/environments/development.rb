@@ -5,4 +5,5 @@ BigHelpMob::Application.configure do
   config.action_view.debug_rjs               = true
   config.action_controller.perform_caching   = false
   config.action_mailer.raise_delivery_errors = false
+  config.active_support.deprecation          = :log
 end

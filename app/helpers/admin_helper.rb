@@ -84,7 +84,7 @@ module AdminHelper
   # Generalized Sidebar Content
   
   def parent_sidebar_content
-    returning ActiveSupport::SafeBuffer.new do |content|
+    with_safe_buffer do |content|
       if respond_to?(:parent?) && parent?
         parent_name = current_parent_name
         content << ml("View #{parent_name}", parent_url)
@@ -94,14 +94,14 @@ module AdminHelper
   end
   
   def resources_sidebar_content(name = current_resource_name)
-    returning ActiveSupport::SafeBuffer.new do |content|
+    with_safe_buffer do |content|
       content << ml("All #{name.pluralize}", collection_url)
       content << ml("Add #{name}", new_resource_url)
     end
   end
   
   def resource_sidebar_content(name = current_resource_name)
-    returning ActiveSupport::SafeBuffer.new do |content|
+    with_safe_buffer do |content|
       content << ml("View #{name}", resource_url)
       content << ml("Edit #{name}", edit_resource_url)
       content << ml("Remove #{name}", resource_url, :method => :delete,
@@ -117,6 +117,10 @@ module AdminHelper
       errors      << content_tag(:ul, inner_errors)
       content_tag(:div, errors, :class => 'resource-base-errors')
     end
+  end
+  
+  def with_safe_buffer(&blk)
+    ActiveSupport::SafeBuffer.new.tap(&blk)
   end
   
 end

@@ -1,10 +1,7 @@
 source 'http://rubygems.org'
 
-git "git://github.com/mislav/will_paginate.git", :ref => "rails3"
-git "git://github.com/documentcloud/jammit.git"
-
 # Rails!
-gem "rails", "= 3.0.0.beta4"
+gem "rails", "= 3.0.0.rc"
 
 # Misc
 gem "mysql",   ">= 2.8.1"
@@ -19,7 +16,7 @@ gem "geokit",          ">= 1.5.0"
 gem "bhm-google-maps", ">= 0.1.3"
 
 # Display Helpers
-gem "formtastic",            ">= 1.0.0.beta"
+gem "formtastic",            ">= 1.0.0.beta", :git => "git://github.com/justinfrench/formtastic.git", :ref => "rails3"
 gem "validation_reflection", ">= 0.3.6"
 gem "title_estuary",         ">= 1.2.0"
 
@@ -32,7 +29,7 @@ gem "responders",          ">= 0.6.0"
 gem "show_for",            ">= 0.2.1"
 
 # General Code Stuff
-gem "will_paginate",       ">= 3.0.pre"
+gem "will_paginate",       ">= 3.0.pre2", :git => "git://github.com/mislav/will_paginate.git", :ref => "rails3"
 gem "state_machine",       ">= 0.9.0"
 gem "pseudocephalopod",    ">= 0.2.1"
 
@@ -51,6 +48,8 @@ gem "sitemap_generator"
 gem "flickraw"
 gem "newrelic_rpm", :require => nil
 gem "ruby-googlechart",    ">= 0.6.4", :require => "google_chart"
+
+gem "SystemTimer"
 
 # Javascript Stuff
 gem "barista",  ">= 0.4.2" 
@@ -78,14 +77,5 @@ group :development do
 end
 
 group :test do
-  git "git://github.com/adamhunter/shoulda.git", :ref => "rails3"
   gem "redgreen", :require => nil
-  gem "shoulda",  ">= 3.0.pre", :require => nil
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'cucumber-rails'
-end
-
-group :staging do
-  gem 'thin'
 end

@@ -21,9 +21,11 @@ module BigHelpMob
     config.filter_parameters << :password
     config.filter_parameters << :password_confirmation
 
+    config.autoload_paths = [config.root.join("lib").to_s]
     %w(drops observers workers).each do |kind|
-      config.load_paths << config.root.join("app", kind).to_s
+      config.autoload_paths << config.root.join("app", kind).to_s
     end
+    
 
     # request uuid marker makes it easy to debug requests
     # primarily for simple log grepping.

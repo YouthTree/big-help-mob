@@ -3,14 +3,14 @@ module EmbedHelper
   def youtube_video(video_id, opts = {})
     options = {:height => 360, :width => 480, :color1 => 'AAAAAA', :color2 => '999999'}.merge(opts)
     video_url = "http://www.youtube-nocookie.com/v/#{video_id}?hl=en_US&fs=1&rel=0&color1=0x#{options[:color1]}&color2=0x#{options[:color2]}"
-    inner = returning([]) do |i|
+    inner = ActiveSupport::SafeBuffer.new.tap do |i|
       i << tag(:param, :name => "movie", :value => video_url)
       i << tag(:param, :name => "allowFullScreen", :value => "true")
       i << tag(:param, :name => "allowscriptaccess", :value => "always")
       i << tag(:embed, :src => video_url, :height => options[:height], :width => options[:width], :allowfullscreen => "true",
         :type => "application/x-shockwave-flash", :allowscriptaccess => "always")
     end
-    content_tag(:object, inner.join.html_safe, :height => options[:height], :width => options[:width])
+    content_tag(:object, inner, :height => options[:height], :width => options[:width])
   end
   
   def has_share_this_js

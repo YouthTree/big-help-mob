@@ -22,9 +22,7 @@ YouthTree.withNS('Gallery', function(ns) {
     var href, index;
     href = element.href;
     index = this.urls.indexOf(href);
-    if (index >= 0) {
-      return this.showImages(this.urls.slice(index).concat(this.urls.slice(0, index)));
-    }
+    return index >= 0 ? this.showImages(this.urls.slice(index).concat(this.urls.slice(0, index))) : null;
   };
   InnerGallery.prototype.showImages = function(images) {
     return $.facybox({
