@@ -1,1 +1,0 @@
-Carmen.default_country = "AU"

@@ -1,11 +1,13 @@
 require 'ninesixty'
 require 'compass-colors'
 require 'fancy-buttons'
+#require 'bhm/admin/compass_framework'
 
 project_type    = :rails
-project_path    = Rails.root.to_s if defined?(Rails.root)
+project_path    = Compass::AppIntegration::Rails.root
+environment     = Compass::AppIntegration::Rails.env
 http_path       = "/"
 css_dir         = "public/stylesheets"
 sass_dir        = "app/stylesheets"
-environment     = Compass::AppIntegration::Rails.env
-relative_assets = true
+images_dir      = "public/images"
+javascripts_dir = "public/"
