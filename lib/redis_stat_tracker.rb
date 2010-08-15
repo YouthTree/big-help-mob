@@ -13,7 +13,10 @@ class RedisStatTracker
   def call(env)
     res = @app.call(env)
     # Increase the number of hits for the current key.
-    @redis.incr current_stat_key if @redis
+    begin
+      @redis.incr current_stat_key if @redis
+    rescue
+    end
     res
   end
 
@@ -34,7 +37,7 @@ class RedisStatTracker
       keys  << key
     end
     counts = ActiveSupport::OrderedHash.new
-    values = @redis ? @redis.mget(*keys) : []
+    values = (@redis ? @redis.mget(*keys) : []) rescue []
     times.each_with_index { |time, idx| counts[time] = values[idx].to_i }
     counts
   end
