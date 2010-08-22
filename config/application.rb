@@ -25,10 +25,7 @@ module BigHelpMob
     %w(drops observers workers).each do |kind|
       config.autoload_paths << config.root.join("app", kind).to_s
     end
-    
 
-    # request uuid marker makes it easy to debug requests
-    # primarily for simple log grepping.
     require Rails.root.join("lib/request_uuid_marker")
     config.middleware.insert_after 'Rails::Rack::Logger', RequestUUIDMarker
 

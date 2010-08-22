@@ -51,7 +51,7 @@ GEM
       activesupport (>= 3.0.0.beta)
     barista (0.5.0)
       open4
-    bhm-google-maps (0.1.3)
+    bhm-google-maps (0.2.1)
     bluecloth (2.0.7)
     builder (2.1.2)
     closure-compiler (0.3.2)
@@ -148,7 +148,7 @@ GEM
       json_pure
     ruby-googlechart (0.6.4)
     show_for (0.2.3)
-    shuriken (0.1.4)
+    shuriken (0.2.1)
     sinatra (1.0)
       rack (>= 1.0)
     sitemap_generator (1.0.1)
@@ -167,7 +167,7 @@ GEM
     yard (0.5.8)
     youthtree-controller-ext (0.1.0)
       activesupport (>= 3.0.0.beta4)
-    youthtree-js (0.1.1)
+    youthtree-js (0.2.0)
     youthtree-settings (0.1.1)
       activesupport (>= 3.0.0.beta4)
     yui-compressor (0.9.1)
@@ -179,7 +179,7 @@ DEPENDENCIES
   SystemTimer
   addresslogic (>= 1.2.1)
   barista (>= 0.4.2)
-  bhm-google-maps (>= 0.1.3)
+  bhm-google-maps (~> 0.2.0)
   bluecloth
   compass (>= 0.10.0.rc3)
   compass-960-plugin (>= 0.9.13)
@@ -212,7 +212,7 @@ DEPENDENCIES
   rpx_now
   ruby-googlechart (>= 0.6.4)
   show_for (>= 0.2.1)
-  shuriken (>= 0.1.4)
+  shuriken (~> 0.2.0)
   sitemap_generator
   state_machine (>= 0.9.0)
   stringex
@@ -222,5 +222,5 @@ DEPENDENCIES
   will_paginate (>= 3.0.pre2)!
   yard
   youthtree-controller-ext
-  youthtree-js (>= 0.1.1)
+  youthtree-js (~> 0.2.0)
   youthtree-settings

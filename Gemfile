@@ -15,7 +15,7 @@ gem 'hominid', '>= 2.1.1'
 # Geoawareness and mapping stuff.
 gem 'addresslogic',    '>= 1.2.1'
 gem 'geokit',          '>= 1.5.0'
-gem 'bhm-google-maps', '>= 0.1.3'
+gem 'bhm-google-maps', '~> 0.2.0'
 
 # Display Helpers
 gem 'formtastic',            '>= 1.0.0.beta', :git => 'git://github.com/justinfrench/formtastic.git', :ref => 'rails3'
@@ -55,8 +55,8 @@ gem 'SystemTimer'
 
 # Javascript Stuff
 gem 'barista',  '>= 0.4.2' 
-gem 'shuriken', '>= 0.1.4'
-gem 'youthtree-js', '>= 0.1.1'
+gem 'shuriken', '~> 0.2.0'
+gem 'youthtree-js', '~> 0.2.0'
 
 # Background workers
 gem 'resque'
