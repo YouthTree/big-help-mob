@@ -32,8 +32,5 @@ module BigHelpMob
     require Rails.root.join("lib/request_uuid_marker")
     config.middleware.insert_after 'Rails::Rack::Logger', RequestUUIDMarker
 
-    require Rails.root.join("lib/redis_stat_tracker")
-    config.middleware.use RedisStatTracker, :namespace => "bhm:stats:#{Rails.env}"
-
   end
 end
