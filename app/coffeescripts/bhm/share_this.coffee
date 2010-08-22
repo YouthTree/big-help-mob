@@ -2,13 +2,14 @@ BHM.withNS 'ShareThis', (ns) ->
 
   ns.shareThisSelector = 'a.share-this'
   
-  ns.getURL =   -> document.location.href
+  ns.getURL   = -> document.location.href
   ns.getTitle = -> document.title
   
   ns.getEntry = ->
-    SHARETHIS.addEntry
+    SHARETHIS.addEntry(
       title: ns.getTitle()
       url:   ns.getURL()
+    )
   
   ns.attachEvents = ->
     entry = ns.getEntry()
