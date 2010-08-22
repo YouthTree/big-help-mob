@@ -29,7 +29,6 @@ YouthTree.withNS('Gallery', function(ns) {
       images: images
     });
   };
-
   ns.galleries = {};
   ns.create = function(name, selector) {
     var gallery;
@@ -37,8 +36,7 @@ YouthTree.withNS('Gallery', function(ns) {
     ns.galleries[name] = gallery;
     return gallery;
   };
-  ns.get = function(name) {
+  return (ns.get = function(name) {
     return ns.galleries[name];
-  };
-  return ns.get;
+  });
 });

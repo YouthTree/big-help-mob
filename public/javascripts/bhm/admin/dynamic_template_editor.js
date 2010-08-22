@@ -11,19 +11,14 @@ BHM.withNS('Admin.DynamicTemplateEditor', function(ns) {
     return BHM.CKEditor.destroyEditor($(ns.editorSelector));
   };
   ns.toggleEditor = function() {
-    if (ns.shouldShowEditor()) {
-      return ns.showEditor();
-    } else {
-      return ns.hideEditor();
-    }
+    return ns.shouldShowEditor() ? ns.showEditor() : ns.hideEditor();
   };
   ns.attachEvents = function() {
     return $(ns.contentTypeSelector).change(function() {
       return ns.toggleEditor();
     }).change();
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.attachEvents();
-  };
-  return ns.setup;
+  });
 });

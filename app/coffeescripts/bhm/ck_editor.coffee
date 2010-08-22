@@ -1,13 +1,12 @@
 BHM.withNS 'CKEditor', (ns) ->
 
-  window.CKEDITOR_BASEPATH: '/ckeditor/'
+  window.CKEDITOR_BASEPATH = '/ckeditor/'
   
-  ns.editorSelector: '.ckeditor textarea'
-  ns.editorOptions: {
+  ns.editorSelector = '.ckeditor textarea'
+  ns.editorOptions =
     toolbar:      'bhm'
     width:        '71%'
     customConfig: false
-  }
   
   ns.toolbar_layout = [
     ['Source','-','Templates'], ['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker', 'Scayt'],
@@ -19,15 +18,15 @@ BHM.withNS 'CKEditor', (ns) ->
     ['Styles','Format','Font','FontSize'], ['TextColor','BGColor'], ['Maximize', 'ShowBlocks']
   ]
   
-  currentEditorOptions: ->
-    options: $.extend {}, ns.editorOptions
-    options.toolbar_bhm: ns.toolbar_layout
+  currentEditorOptions = ->
+    options             = $.extend {}, ns.editorOptions
+    options.toolbar_bhm = ns.toolbar_layout
     options
     
-  ns.makeEditor: (jq) ->
+  ns.makeEditor = (jq) ->
     jq.ckeditor currentEditorOptions()
     
-  ns.destroyEditor: (jq) ->
+  ns.destroyEditor = (jq) ->
     jq.ckeditorGet()?.destroy()
     
-  ns.setup: -> ns.makeEditor $(ns.editorSelector)
+  ns.setup = -> ns.makeEditor $(ns.editorSelector)

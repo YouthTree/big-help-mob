@@ -13,9 +13,8 @@ BHM.withNS('Admin.Questions', function(ns) {
     if (sortable) {
       return null;
     }
-    $("" + ns.dialogSelector + " " + ns.sortableSelector).sortable();
-    sortable = true;
-    return sortable;
+    $(("" + (ns.dialogSelector) + " " + (ns.sortableSelector))).sortable();
+    return (sortable = true);
   };
   ns.bindReorderButton = function() {
     return $(ns.linkSelector).click(function() {
@@ -23,8 +22,7 @@ BHM.withNS('Admin.Questions', function(ns) {
       return false;
     });
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.bindReorderButton();
-  };
-  return ns.setup;
+  });
 });

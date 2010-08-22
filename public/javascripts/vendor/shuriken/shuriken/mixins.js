@@ -5,14 +5,12 @@ Shuriken.defineExtension(function(baseNS) {
     ns.mixins = {};
     root.mixins = {};
     root.withBase(function(base) {
-      base.mixin = function(mixins) {
+      return (base.mixin = function(mixins) {
         return ns.mixin(this, mixins);
-      };
-      return base.mixin;
+      });
     });
     defineMixin = function(key, mixin) {
-      this.mixins[key] = mixin;
-      return this.mixins[key];
+      return (this.mixins[key] = mixin);
     };
     root.defineMixin = defineMixin;
     ns.define = defineMixin;
@@ -40,7 +38,7 @@ Shuriken.defineExtension(function(baseNS) {
         return $.extend(scope, mixin);
       }
     };
-    ns.mixin = function(scope, mixins) {
+    return (ns.mixin = function(scope, mixins) {
       var _a, _b, _c, mixin;
       if (!($.isArray(mixins))) {
         mixins = [mixins];
@@ -51,7 +49,6 @@ Shuriken.defineExtension(function(baseNS) {
         ns.invokeMixin(scope, ns.lookupMixin(mixin));
       }
       return true;
-    };
-    return ns.mixin;
+    });
   });
 });

@@ -21,8 +21,7 @@ BHM.withNS('CKEditor', function(ns) {
     var _a;
     return typeof (_a = (jq.ckeditorGet())) === "undefined" || _a == undefined ? undefined : _a.destroy();
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.makeEditor($(ns.editorSelector));
-  };
-  return ns.setup;
+  });
 });

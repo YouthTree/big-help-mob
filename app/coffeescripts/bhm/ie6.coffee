@@ -1,6 +1,6 @@
 BHM.withNS 'IE6', (ns) ->
   
-  ns.belatedPNGSelectors: [
+  ns.belatedPNGSelectors = [
     "nav#header-menu"
     "#youthtree-project-logo a"
     "header h1 a"
@@ -10,6 +10,6 @@ BHM.withNS 'IE6', (ns) ->
     "#authentication-choices dd.choice a"
   ]
   
-  ns.setup: ->
+  ns.setup = ->
     if DD_belatedPNG?
       $(ns.belatedPNGSelectors.join(", ")).each -> DD_belatedPNG.fixPng @

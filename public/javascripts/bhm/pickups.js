@@ -17,27 +17,26 @@ BHM.withNS('Pickups', function(ns) {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false
   };
-  ns.Pickup = function(id, name, address, lat, lng, at, comment) {
-    this.id = id;
-    this.name = name;
-    this.address = address;
-    this.lat = lat;
-    this.lng = lng;
+  ns.Pickup = function(_a, _b, _c, _d, _e, at, _f) {
+    this.comment = _f;
+    this.lng = _e;
+    this.lat = _d;
+    this.address = _c;
+    this.name = _b;
+    this.id = _a;
     this.pickupAt = at;
-    this.comment = comment;
     return this;
   };
   ns.Pickup.prototype.toString = function() {
     var _a, string;
-    string = ("" + this.name + " (" + this.address + ")");
+    string = ("" + (this.name) + " (" + (this.address) + ")");
     if ((typeof (_a = this.pickupAt) !== "undefined" && _a !== null)) {
-      string += (", pickup at " + this.pickupAt);
+      string += (", pickup at " + (this.pickupAt));
     }
     return string;
   };
   ns.Pickup.prototype.toLatLng = function() {
-    var _a;
-    return this._ll = (typeof (_a = this._ll) !== "undefined" && _a !== null) ? this._ll : new google.maps.LatLng(this.lat, this.lng);
+    return this._ll = (typeof this._ll !== "undefined" && this._ll !== null) ? this._ll : new google.maps.LatLng(this.lat, this.lng);
   };
   ns.Pickup.prototype.toMarker = function(map) {
     var options;
@@ -61,7 +60,7 @@ BHM.withNS('Pickups', function(ns) {
       inner.append($("<br />"));
       inner.append($("<span />", {
         'class': 'pickup-at'
-      }).text("Pickup at " + this.pickupAt));
+      }).text(("Pickup at " + (this.pickupAt))));
     }
     if ((typeof (_b = this.comment) !== "undefined" && _b !== null)) {
       inner.append($("<br />"));
@@ -73,7 +72,6 @@ BHM.withNS('Pickups', function(ns) {
     info.open(map, marker);
     return info;
   };
-
   markerURL = function(selected) {
     var suffix;
     suffix = selected ? "_green" : "";
@@ -87,14 +85,14 @@ BHM.withNS('Pickups', function(ns) {
     if (typeof pickup === "number") {
       pickup = ns.getPickup(pickup);
     }
-    if (!(typeof pickup !== "undefined" && pickup !== null)) {
+    if (!((typeof pickup !== "undefined" && pickup !== null))) {
       return null;
     }
     marker = ns.getMarker(pickup.id);
-    if (!(typeof marker !== "undefined" && marker !== null)) {
+    if (!((typeof marker !== "undefined" && marker !== null))) {
       return null;
     }
-    if (typeof lastMarker !== "undefined" && lastMarker !== null) {
+    if ((typeof lastMarker !== "undefined" && lastMarker !== null)) {
       lastMarker.setIcon(markerURL(false));
     }
     marker.setIcon(markerURL(true));
@@ -132,7 +130,7 @@ BHM.withNS('Pickups', function(ns) {
   };
   ns.addAllPickups = function() {
     var container;
-    container = $("" + ns.listingSelector + " " + ns.entrySelector);
+    container = $(("" + (ns.listingSelector) + " " + (ns.entrySelector)));
     container.each(function() {
       var address, at, comment, element, id, lat, lng, name;
       element = $(this);
@@ -144,12 +142,10 @@ BHM.withNS('Pickups', function(ns) {
         address = ns.data(element, "pickup-address");
         at = ns.data(element, "pickup-at");
         comment = ns.data(element, "pickup-comment");
-        pickups[id] = new ns.Pickup(id, name, address, lat, lng, at, comment);
-        return pickups[id];
+        return (pickups[id] = new ns.Pickup(id, name, address, lat, lng, at, comment));
       }
     });
-    selected = container.filter("[data-" + ns.dataPrefix + "-selected]");
-    return selected;
+    return (selected = container.filter(("[data-" + (ns.dataPrefix) + "-selected]")));
   };
   ns.plotPickups = function() {
     map = ns.getMap();
@@ -161,8 +157,7 @@ BHM.withNS('Pickups', function(ns) {
       bounds.extend(pickup.toLatLng());
       return BHM.Maps.on('click', marker, function() {
         ns.selectPickup(pickup, true);
-        lastWindow = pickup.toInfoWindow(map, marker);
-        return lastWindow;
+        return (lastWindow = pickup.toInfoWindow(map, marker));
       });
     });
     return ns.centreMap();
@@ -182,8 +177,7 @@ BHM.withNS('Pickups', function(ns) {
     ns.addAllPickups();
     return ns.plot();
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.autoplot();
-  };
-  return ns.setup;
+  });
 });

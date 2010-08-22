@@ -8,19 +8,18 @@ BHM.withNS('Debug', function(ns) {
       if (node.nodeName === "#comment") {
         data = node.data;
         match = data.match(/bhm-request-uuid:\s*(\S+)\s*/);
-        if (typeof match !== "undefined" && match !== null) {
+        if ((typeof match !== "undefined" && match !== null)) {
           return match[1];
         }
       }
     }
     return _a;
   };
-  ns.showDebugInformation = function() {
+  return (ns.showDebugInformation = function() {
     var uuid;
     uuid = ns.getCurrentUUID();
-    if (typeof uuid !== "undefined" && uuid !== null) {
-      return alert("Current Request UUID: " + uuid);
+    if ((typeof uuid !== "undefined" && uuid !== null)) {
+      return alert(("Current Request UUID: " + (uuid)));
     }
-  };
-  return ns.showDebugInformation;
+  });
 });

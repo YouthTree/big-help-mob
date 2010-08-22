@@ -1,41 +1,41 @@
 BHM.withNS 'Admin.EmailEditor', (ns) ->
   
-  ns.participationSelector:  '#participations-filter'
-  ns.typeSelector:           'select#email_scope_type'
-  ns.previewSectionSelector: 'a.preview-email-section'
-  ns.confirmedSelector:      '#email_confirmed'
-  ns.confirmedFieldset:      'fieldset#email-confirmation'
+  ns.participationSelector  = '#participations-filter'
+  ns.typeSelector           = 'select#email_scope_type'
+  ns.previewSectionSelector = 'a.preview-email-section'
+  ns.confirmedSelector      = '#email_confirmed'
+  ns.confirmedFieldset      = 'fieldset#email-confirmation'
   
-  ns.setButtonText: (text) ->
+  ns.setButtonText = (text) ->
     $("#email_submit").text text
   
-  ns.hideConfirmation: ->
+  ns.hideConfirmation = ->
     $(ns.confirmedSelector).removeAttr "check"
     $(ns.confirmedFieldset).hide()
     ns.setButtonText "Preview and Confirm"
     
-  ns.removePreviewFor: (field) ->
-    $("#preview-of-$field").hide()
+  ns.removePreviewFor = (field) ->
+    $("#preview-of-#{field}").hide()
     ns.hideConfirmation()
   
-  ns.hideParticipationFilter: -> $(ns.participationSelector).hide()
+  ns.hideParticipationFilter = -> $(ns.participationSelector).hide()
   
-  ns.showParticipationFilter: -> $(ns.participationSelector).show()
+  ns.showParticipationFilter = -> $(ns.participationSelector).show()
   
-  ns.shouldShowParticipationFilter: ->
+  ns.shouldShowParticipationFilter = ->
     $(ns.typeSelector).val() is "participations"
     
-  ns.toggleParticipationFilter: ->
+  ns.toggleParticipationFilter = ->
     if ns.shouldShowParticipationFilter()
       ns.showParticipationFilter()
     else
       ns.hideParticipationFilter()
       
-  ns.showPreviewFor: (scope) ->
-    scope: $ scope
+  ns.showPreviewFor = (scope) ->
+    scope = $ scope
     $.facybox {div: scope.attr("href")}, "email-section-preview"
   
-  ns.bindEvents: ->
+  ns.bindEvents = ->
     $(ns.typeSelector).change(-> ns.toggleParticipationFilter()).change()
     $("#email_subject").change -> ns.removePreviewFor "subject"
     $("#email_text_content").change -> ns.removePreviewFor "text-content"
@@ -43,5 +43,5 @@ BHM.withNS 'Admin.EmailEditor', (ns) ->
       ns.showPreviewFor @
       false
   
-  ns.setup: -> ns.bindEvents()
+  ns.setup = -> ns.bindEvents()
     

@@ -4,156 +4,147 @@ BHM.withNS 'Pickups', (ns) ->
   ns.defineCallback 'PickupSelect'
 
   # State
-  map:        null
-  bounds:     null
-  lastMarker: null
-  lastWindow: null
-  selected:   null
+  map        = null
+  bounds     = null
+  lastMarker = null
+  lastWindow = null
+  selected   = null
   
   # Datastructures.
-  pickups:   {} # Each pickup point.
-  markers:   {} # Each marker point.
+  pickups = {} # Each pickup point.
+  markers = {} # Each marker point.
 
   # Configuration
   
-  ns.containerSelector: "#pickups-map"
-  ns.listingSelector:   "#pickups-listing"
-  ns.entrySelector:     ".pickup-entry"
-  ns.defaultMapOptions: {
+  ns.containerSelector = "#pickups-map"
+  ns.listingSelector   = "#pickups-listing"
+  ns.entrySelector     = ".pickup-entry"
+  ns.defaultMapOptions =
     zoom:        10
     mapTypeId:   google.maps.MapTypeId.ROADMAP
     scrollwheel: false
-  };
 
   # Pickup Datastructure.
   
   class ns.Pickup
     
-    constructor: (id, name, address, lat, lng, at, comment) ->
-      @id:       id
-      @name:     name
-      @address:  address
-      @lat:      lat
-      @lng:      lng
-      @pickupAt: at
-      @comment:  comment
+    constructor: (@id, @name, @address, @lat, @lng, at, @comment) ->
+      @pickupAt = at
     
     toString: ->
-      string: "$@name ($@address)"
-      string+= ", pickup at $@pickupAt" if @pickupAt?
+      string = "#{@name} (#{@address})"
+      string += ", pickup at #{@pickupAt}" if @pickupAt?
       string
     
     toLatLng: ->
-      @_ll?= new google.maps.LatLng @lat, @lng
+      @_ll ?= new google.maps.LatLng @lat, @lng
     
     toMarker: (map) ->
-      options: {
+      options =
         title:    @toString()
         position: @toLatLng()
         map:      map
-      }
       new google.maps.Marker options
       
     toInfoWindow: (map, marker) ->      
-      info: new google.maps.InfoWindow()
+      info = new google.maps.InfoWindow()
       # Create inner.
-      inner: $ "<div />"
+      inner = $ "<div />"
       inner.append $("<strong />").text(@name)
       inner.append $("<br />")
-      inner.append $("<span />", {'class': 'address'}).text(@address)
+      inner.append $("<span />", 'class': 'address').text(@address)
       if @pickupAt?
         inner.append $("<br />")
-        inner.append $("<span />", {'class': 'pickup-at'}).text("Pickup at $@pickupAt")
+        inner.append $("<span />", 'class': 'pickup-at').text("Pickup at #{@pickupAt}")
       if @comment?
         inner.append $("<br />")
-        inner.append $("<span />", {'class': 'pickup-comment'}).text(@comment)
+        inner.append $("<span />", 'class': 'pickup-comment').text(@comment)
       # Actually show it.
       info.setContent inner.get(0)
       info.open map, marker
       info
   
-  markerURL: (selected) ->
-    suffix: if selected then "_green" else ""
-    "http://www.google.com/intl/en_ALL/mapfiles/marker${suffix}.png"
+  markerURL = (selected) ->
+    suffix = if selected then "_green" else ""
+    "http://www.google.com/intl/en_ALL/mapfiles/marker#{suffix}.png"
   
   # Public API.
     
-  ns.selectPickup: (pickup, clearWindow) ->
+  ns.selectPickup = (pickup, clearWindow) ->
     lastWindow.close() if clearWindow and lastWindow?
-    pickup: ns.getPickup pickup if typeof pickup is "number"
+    pickup = ns.getPickup pickup if typeof pickup is "number"
     return unless pickup?
-    marker: ns.getMarker pickup.id
+    marker = ns.getMarker pickup.id
     return unless marker?
     lastMarker.setIcon markerURL(false) if lastMarker?
     marker.setIcon markerURL(true)
-    lastMarker: marker
+    lastMarker = marker
     ns.invokePickupSelect pickup
     true
-      
   
-  ns.eachPickup: (callback) ->
+  ns.eachPickup = (callback) ->
     $.each pickups, -> callback @
     
-  ns.getPickup: (id) ->
+  ns.getPickup = (id) ->
     pickups[id]
     
-  ns.getMarker: (pickup) ->
-    pickup: pickup.id if pickup.id?
+  ns.getMarker = (pickup) ->
+    pickup = pickup.id if pickup.id?
     markers[pickup]
   
-  ns.getMap: ->
+  ns.getMap = ->
     if not map?
-      options: $.extend {}, ns.defaultMapOptions
-      container: $ ns.containerSelector
+      options   = $.extend {}, ns.defaultMapOptions
+      container = $ ns.containerSelector
       BHM.Maps.makeDynamic container
-      map: new google.maps.Map container.get(0), options
+      map = new google.maps.Map container.get(0), options
     map
     
-  ns.getBounds: ->
+  ns.getBounds = ->
     bounds?= new google.maps.LatLngBounds()
   
-  ns.addAllPickups: ->
-    container: $("$ns.listingSelector $ns.entrySelector")
+  ns.addAllPickups = ->
+    container = $("#{ns.listingSelector} #{ns.entrySelector}")
     container.each ->
-      element: $ this
+      element = $ this
       if ns.hasData element, "pickup-id"
-        id:      Number ns.data element, "pickup-id"
-        lat:     Number ns.data element, "pickup-latitude"
-        lng:     Number ns.data element, "pickup-longitude"
-        name:    ns.data element, "pickup-name"
-        address: ns.data element, "pickup-address"
-        at:      ns.data element, "pickup-at"
-        comment: ns.data element, "pickup-comment"
-        pickups[id]: new ns.Pickup id, name, address, lat, lng, at, comment
-    selected: container.filter "[data-$ns.dataPrefix-selected]"
+        id      = Number ns.data element, "pickup-id"
+        lat     = Number ns.data element, "pickup-latitude"
+        lng     = Number ns.data element, "pickup-longitude"
+        name    = ns.data element, "pickup-name"
+        address = ns.data element, "pickup-address"
+        at      = ns.data element, "pickup-at"
+        comment = ns.data element, "pickup-comment"
+        pickups[id] = new ns.Pickup id, name, address, lat, lng, at, comment
+    selected = container.filter "[data-#{ns.dataPrefix}-selected]"
   
-  ns.plotPickups: ->
-    map:    ns.getMap()
-    bounds: ns.getBounds()
+  ns.plotPickups = ->
+    map    = ns.getMap()
+    bounds = ns.getBounds()
     ns.eachPickup (pickup) ->
-      marker: pickup.toMarker map
-      markers[pickup.id]: marker
+      marker = pickup.toMarker map
+      markers[pickup.id] = marker
       bounds.extend pickup.toLatLng()
       BHM.Maps.on 'click', marker, ->
         ns.selectPickup pickup, true
-        lastWindow: pickup.toInfoWindow map, marker
+        lastWindow = pickup.toInfoWindow map, marker
     ns.centreMap()
     
-  ns.centreMap: ->
-    map:    ns.getMap()
-    bounds: ns.getBounds()
+  ns.centreMap = ->
+    map    = ns.getMap()
+    bounds = ns.getBounds()
     map.setCenter   bounds.getCenter()
     map.panToBounds bounds
     map.fitBounds   bounds
     
-  ns.plot: ->
+  ns.plot = ->
     ns.getMap()
     ns.plotPickups()
     
-  ns.autoplot: ->
+  ns.autoplot = ->
     ns.addAllPickups()
     ns.plot()
   
   # Setup tools.
     
-  ns.setup: -> ns.autoplot()
+  ns.setup = -> ns.autoplot()

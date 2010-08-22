@@ -7,14 +7,10 @@ BHM.require('Pickups', function() {
     ns.addressStatusInner = "span";
     ns.pickupChooserSelector = "input[name='mission_participation[pickup_id]']";
     ns.fieldValue = function(element, value) {
-      if (!(typeof element !== "undefined" && element !== null)) {
+      if (!((typeof element !== "undefined" && element !== null))) {
         element = $(ns.pickupChooserSelector);
       }
-      if (typeof value !== "undefined" && value !== null) {
-        return element.removeAttr("checked").filter("[value='" + value + "']").attr("checked", "checked");
-      } else {
-        return Number(element.filter(":checked").val());
-      }
+      return (typeof value !== "undefined" && value !== null) ? element.removeAttr("checked").filter(("[value='" + (value) + "']")).attr("checked", "checked") : Number(element.filter(":checked").val());
     };
     ns.setupFieldWatchers = function() {
       var element;
@@ -24,19 +20,17 @@ BHM.require('Pickups', function() {
         id = ns.fieldValue(element);
         changingPickup = true;
         pickups.selectPickup(id, true);
-        changingPickup = false;
-        return changingPickup;
+        return (changingPickup = false);
       });
       pickups.onPickupSelect(function(pu) {
-        $("" + ns.addressStatusSelector + " " + ns.addressStatusInner).text(pu.title);
+        $(("" + (ns.addressStatusSelector) + " " + (ns.addressStatusInner))).text(pu.title);
         return ns.fieldValue(element, pu.id);
       });
       return element.change();
     };
-    ns.setup = function() {
+    return (ns.setup = function() {
       $(ns.addressStatusSelector).show();
       return ns.setupFieldWatchers();
-    };
-    return ns.setup;
+    });
   });
 });

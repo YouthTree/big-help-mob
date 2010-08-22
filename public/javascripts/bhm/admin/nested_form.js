@@ -21,15 +21,14 @@ BHM.withNS('Admin.NestedForm', function(ns) {
   ns.addItem = function() {
     var inner;
     inner = ns.template.replace(/NESTED_IDX/g, Numbe(new Date()));
-    $("" + ns.fieldsetSelector + ":last").after(inner);
-    return ns.attachEventOn($("" + ns.fieldsetSelector + ":last"));
+    $(("" + (ns.fieldsetSelector) + ":last")).after(inner);
+    return ns.attachEventOn($(("" + (ns.fieldsetSelector) + ":last")));
   };
   ns.removeItem = function(link) {
     link = $(link);
     return link.parents(ns.fieldsetSelector).find("input[type=hidden]").val('1').end().hide();
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.attachEvents();
-  };
-  return ns.setup;
+  });
 });

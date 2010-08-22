@@ -7,7 +7,7 @@ BHM.withNS('Admin.MissionDashboard', function(ns) {
     return $(ns.tabsSelector).tabs();
   };
   ns.setupReportGenerator = function() {
-    $("" + ns.showReportSelector + " a").click(function() {
+    $(("" + (ns.showReportSelector) + " a")).click(function() {
       $(ns.showReportSelector).slideUp();
       $(ns.reportSelector).slideDown();
       return false;
@@ -18,9 +18,8 @@ BHM.withNS('Admin.MissionDashboard', function(ns) {
       return false;
     });
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     ns.setupTabs();
     return ns.setupReportGenerator();
-  };
-  return ns.setup;
+  });
 });

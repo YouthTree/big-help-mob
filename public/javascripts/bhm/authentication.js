@@ -22,8 +22,7 @@ BHM.withNS('Authentication', function(ns) {
       return false;
     });
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.bindEvents();
-  };
-  return ns.setup;
+  });
 });

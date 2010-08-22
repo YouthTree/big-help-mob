@@ -1,3 +1,6 @@
+var __bind = function(func, context) {
+    return function(){ return func.apply(context, arguments); };
+  };
 BHM.withNS('Signup', function(ns) {
   ns.originWrapperSelector = '#user_origin_input';
   ns.replaceField = function() {
@@ -15,22 +18,16 @@ BHM.withNS('Signup', function(ns) {
     }));
   };
   ns.shouldReplaceField = function() {
-    return $("" + ns.originWrapperSelector + " select").val().toLowerCase() === 'other';
+    return $(("" + (ns.originWrapperSelector) + " select")).val().toLowerCase() === 'other';
   };
   ns.attachEvents = function() {
-    return $("" + ns.originWrapperSelector + " select").change((function(__this) {
-      var __func = function() {
-        if (ns.shouldReplaceField()) {
-          return ns.replaceField();
-        }
-      };
-      return (function() {
-        return __func.apply(__this, arguments);
-      });
-    })(this));
+    return $(("" + (ns.originWrapperSelector) + " select")).change(__bind(function() {
+      if (ns.shouldReplaceField()) {
+        return ns.replaceField();
+      }
+    }, this));
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.attachEvents();
-  };
-  return ns.setup;
+  });
 });

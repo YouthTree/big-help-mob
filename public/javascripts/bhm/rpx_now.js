@@ -8,7 +8,7 @@ BHM.require('Authentication', function() {
       language_preference: 'en'
     };
     conditionallySet = function(element, key, callback) {
-      key = ("" + ns.dataPrefix + key);
+      key = ("" + (ns.dataPrefix) + (key));
       if (ns.hasData(element, key)) {
         return callback(ns.data(element, key));
       }
@@ -18,27 +18,23 @@ BHM.require('Authentication', function() {
       configuration = $.extend({}, ns.baseConfiguration);
       element = $(ns.rpxnowLinkSelector);
       conditionallySet(element, "token-url", function(v) {
-        configuration.token_url = v;
-        return configuration.token_url;
+        return (configuration.token_url = v);
       });
       conditionallySet(element, "realm", function(v) {
-        configuration.realm = v;
-        return configuration.realm;
+        return (configuration.realm = v);
       });
       conditionallySet(element, "flags", function(v) {
-        configuration.flags = v;
-        return configuration.flags;
+        return (configuration.flags = v);
       });
       return configuration;
     };
     ns.configureRPXNow = function() {
-      if (typeof RPXNOW !== "undefined" && RPXNOW !== null) {
+      if ((typeof RPXNOW !== "undefined" && RPXNOW !== null)) {
         return $.extend(RPXNOW, ns.configuration());
       }
     };
-    ns.setup = function() {
+    return (ns.setup = function() {
       return ns.configureRPXNow();
-    };
-    return ns.setup;
+    });
   });
 });

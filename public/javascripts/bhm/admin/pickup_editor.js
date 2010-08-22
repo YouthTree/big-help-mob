@@ -21,15 +21,14 @@ BHM.withNS('Admin.PickupEditor', function(ns) {
   ns.addPickup = function() {
     var inner;
     inner = ns.template.replace(/PICKUP_IDX/g, Number(new Date()));
-    $("" + ns.fieldsetSelector + ":last").after(inner);
-    return ns.attachEventOn($("" + ns.fieldsetSelector + ":last"));
+    $(("" + (ns.fieldsetSelector) + ":last")).after(inner);
+    return ns.attachEventOn($(("" + (ns.fieldsetSelector) + ":last")));
   };
   ns.deletePickup = function(link) {
     link = $(link);
     return link.parents(ns.fieldsetSelector).find("input[type=hidden]").val('1').end().hide();
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.attachEvents();
-  };
-  return ns.setup;
+  });
 });

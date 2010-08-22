@@ -17,11 +17,7 @@ BHM.withNS('Admin.QuestionEditor', function(ns) {
   };
   ns.attachEventOn = function(fieldset) {
     fieldset.find("select").change(function() {
-      if (ns.shouldShow(fieldset)) {
-        return ns.showMetadata(fieldset);
-      } else {
-        return ns.hideMetadata(fieldset);
-      }
+      return ns.shouldShow(fieldset) ? ns.showMetadata(fieldset) : ns.hideMetadata(fieldset);
     }).change();
     return fieldset.find(ns.removeSelector).click(function() {
       ns.deleteQuestion(this);
@@ -40,15 +36,14 @@ BHM.withNS('Admin.QuestionEditor', function(ns) {
   ns.addQuestion = function() {
     var inner;
     inner = ns.template.replace(/QUESTION_IDX/g, Number(new Date()));
-    $("" + ns.fieldsetSelector + ":last").after(inner);
-    return ns.attachEventOn($("" + ns.fieldsetSelector + ":last"));
+    $(("" + (ns.fieldsetSelector) + ":last")).after(inner);
+    return ns.attachEventOn($(("" + (ns.fieldsetSelector) + ":last")));
   };
   ns.deleteQuestion = function(link) {
     link = $(link);
     return link.parents(ns.fieldsetSelector).find('input[type=hidden]').val('1').end().hide();
   };
-  ns.setup = function() {
+  return (ns.setup = function() {
     return ns.attachEvents();
-  };
-  return ns.setup;
+  });
 });

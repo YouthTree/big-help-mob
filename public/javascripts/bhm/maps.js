@@ -4,8 +4,7 @@ BHM.withNS('Maps', function(ns) {
   ns.makeDynamic = function(element) {
     return $(element).removeClass(ns.staticClassName).addClass(ns.dynamicClassName).empty();
   };
-  ns.on = function(name, object, callback) {
+  return (ns.on = function(name, object, callback) {
     return google.maps.event.addListener(object, name, callback);
-  };
-  return ns.on;
+  });
 });
