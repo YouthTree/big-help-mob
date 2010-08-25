@@ -1,5 +1,5 @@
 development:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   reconnect: false
   database: bighelpmob_development
@@ -9,7 +9,7 @@ development:
   socket: /tmp/mysql.sock
 
 test: &TEST
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   reconnect: false
   database: bighelpmob_test
@@ -19,7 +19,7 @@ test: &TEST
   socket: /tmp/mysql.sock
 
 staging:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   reconnect: false
   host: localhost
@@ -29,7 +29,7 @@ staging:
   password: 
 
 production:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   reconnect: false
   database: bighelpmob_production

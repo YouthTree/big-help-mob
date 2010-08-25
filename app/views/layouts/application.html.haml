@@ -5,22 +5,20 @@
     = include_stylesheets(:base, :media => 'screen, projection')
     /[if IE]
       %script{:src => uri2ssl("html5shiv.googlecode.com/svn/trunk/html5.js")}
-    = include_javascripts(:base)
-    /[if IE 6]
-      = include_javascripts(:ie6)
     = csrf_meta_tag
     %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
-    = yield :extra_head
+    = extra_head_content
   %body
     = flash_messages :alert, :notice
     #container
       %header= render :partial => 'shared/header'
-      
       %article#content= yield
-    
       %footer= render :partial => 'shared/footer'
-      = yield :page_bottom
   
+    = include_javascripts(:base)
+    /[if IE 6]
+      = include_javascripts(:ie6)
+    = extra_footer_content
     - unless on_error_page?
-      = google_analytics
+      = analytics_code
       = uuid_marker_comment

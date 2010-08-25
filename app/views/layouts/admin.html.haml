@@ -9,9 +9,8 @@
     / Javascripts
     /[if IE]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    = include_javascripts(:admin)
     = csrf_meta_tag
-    = yield :extra_head
+    = extra_head_content
     
   %body
     #container
@@ -26,4 +25,7 @@
     
       %footer
         = render :partial => 'admin/shared/footer'
-        = yield :page_bottom
+      
+      = include_javascripts(:admin)
+      = extra_footer_content
+      

@@ -6,7 +6,7 @@
 - if logged_in?
   = render :partial => 'mission_actions'
   
-- content_for(:extra_head) do
+- extra_head_content do
   %meta{:name => "title", :content => @mission.name}
 
 - if logged_in? && flash[:recently_joined_mission]

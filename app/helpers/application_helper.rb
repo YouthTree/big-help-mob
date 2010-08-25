@@ -1,17 +1,5 @@
 module ApplicationHelper
   
-  def destroy_value(form)
-    form.object._destroy ? 1 : 0
-  end
-  
-  def uri2ssl(url)
-    "#{Settings.ssl_protocol}://#{url.to_s.gsub(/^\w+\:\/\//, "")}"
-  end
-  
-  def ssl_opts(opts = {})
-    opts.merge(:protocol => Settings.ssl_protocol)
-  end
-  
   def tu(name, options = {})
     scope = [:ui, options.delete(:scope)].compact.join(".").to_sym
     I18n.t(name, options.merge(:scope => scope))
@@ -44,20 +32,6 @@ module ApplicationHelper
     opts["data-pickup-name"]      = pickup.name
     opts["data-pickup-address"]   = pickup.address.to_s
     opts
-  end
-  
-  def copyright(year, now=Time.now)
-    if now.year == year
-      year.to_s
-    elsif year / 1000 == now.year / 1000 # same century
-      year.to_s + "&ndash;" + now.year.to_s[-2..3]
-    else
-      year.to_s + "&ndash;" + now.year.to_s
-    end
-  end
-  
-  def sponsor_link(name, url)
-    link_to image_tag("sponsors/#{name.underscore.gsub(/[\ \_]+/, "-")}-logo.jpg"), url, :title => name, :class => 'sponsor'
   end
   
   def render_address_fields(f, name = :address, options = {})
