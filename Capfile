@@ -12,5 +12,5 @@ namespace :resque do
   end
 end
 
-# after 'deploy:cold', 'resque:start'
-after 'deploy',      'resque:start'
+after 'deploy:cold', 'resque:run'
+after 'deploy',      'resque:run'
