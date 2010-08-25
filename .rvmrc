@@ -6,6 +6,6 @@ if [[ -s "./bhm.gems" ]]; then
   fi
 fi
 
-if command -v bundle >/dev/null; then
+if command -v bundle >/dev/null && ! grep -q BUNDLE_FROZEN .bundle/config 2>/dev/null ; then
   bundle install >/dev/null 2>&1
 fi
