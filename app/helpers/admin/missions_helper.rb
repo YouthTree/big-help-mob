@@ -34,5 +34,18 @@ module Admin::MissionsHelper
     content << select_tag(field_name, options_for_select(choices, default), options.merge(:id => field_id))
     content
   end
+  
+  def pretty_age_range(object, type)
+    max, min = object.send(:"maximum_#{type}_age"), object.send(:"minimum_#{type}_age")
+    if min.blank? && max.blank?
+      "May be any age."
+    elsif min.blank?
+      "Must be younger than #{max} years old."
+    elsif max.blank?
+      "Must be older than #{min} years old."
+    else
+      "Must be #{min} to #{max} years old."
+    end
+  end
 
 end

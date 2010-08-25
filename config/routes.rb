@@ -1,6 +1,6 @@
 BigHelpMob::Application.routes.draw do |map|
 
-  scope :path => '/admin/resque', :name_prefix => :resque do
+  scope :path => '/admin/resque', :as => :resque do
     server = Resque::Server.new
     root :to => server
     match '*', :to =>  server

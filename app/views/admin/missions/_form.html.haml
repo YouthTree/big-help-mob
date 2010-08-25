@@ -11,8 +11,6 @@
   
   = form.input :occurs_at, :hint => "When is the event?"
   
-  = form.input :user, :collection => User.for_select
-  
   = form.input :organisation
   
   = form.input :state_event, :as => :select, :collection => form.object.state_events_for_select

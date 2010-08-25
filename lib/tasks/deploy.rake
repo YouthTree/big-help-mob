@@ -83,7 +83,7 @@ namespace :deploy do
   desc "Clones the remote DB locally"
   task :import => :environment do
     cdc = current_db_config
-    if cdc.adapter != "mysql"
+    if cdc.adapter !~ /^mysql/
       puts "Can't import for anything other than mysql"
       exit!
     end

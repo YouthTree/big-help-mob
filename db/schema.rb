@@ -1,15 +1,16 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100612035051) do
+ActiveRecord::Schema.define(:version => 20100825185512) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -127,7 +128,6 @@ ActiveRecord::Schema.define(:version => 20100612035051) do
   create_table "missions", :force => true do |t|
     t.string   "name",                                   :null => false
     t.text     "description",                            :null => false
-    t.integer  "user_id"
     t.integer  "organisation_id"
     t.datetime "occurs_at",                              :null => false
     t.datetime "created_at"
@@ -147,7 +147,6 @@ ActiveRecord::Schema.define(:version => 20100612035051) do
   add_index "missions", ["cached_slug"], :name => "index_missions_on_cached_slug"
   add_index "missions", ["organisation_id"], :name => "index_missions_on_organisation_id"
   add_index "missions", ["state"], :name => "index_missions_on_state"
-  add_index "missions", ["user_id"], :name => "index_missions_on_user_id"
 
   create_table "organisations", :force => true do |t|
     t.string   "name"
@@ -164,6 +163,17 @@ ActiveRecord::Schema.define(:version => 20100612035051) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "postcode_locations", :force => true do |t|
+    t.integer  "postcode"
+    t.string   "name"
+    t.decimal  "lat",        :precision => 15, :scale => 10
+    t.decimal  "lng",        :precision => 15, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postcode_locations", ["postcode"], :name => "index_postcode_locations_on_postcode"
 
   create_table "questions", :force => true do |t|
     t.boolean  "visible",                  :default => false, :null => false

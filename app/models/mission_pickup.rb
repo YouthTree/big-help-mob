@@ -9,7 +9,7 @@ class MissionPickup < ActiveRecord::Base
   
   attr_accessible :pickup_id, :mission_id, :pickup_at, :comment
   
-  validates_presence_of :pickup_at, :pickup, :mission
+  validates_presence_of :pickup_at, :pickup
   
   def name
     pickup.name

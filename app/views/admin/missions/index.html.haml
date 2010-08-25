@@ -5,19 +5,15 @@
 %table
   %thead
     %tr
-      %th ID
       %th Name
       %th State
-      %th User
       %th Organization
       %th &nbsp;
   %tbody
     - collection.each do |r|
       %tr{:class => cycle('odd', 'even')}
-        %td= r.id
-        %td= r.name
+        %td= link_to r.name, [:admin, r]
         %td= r.state.to_s.humanize
-        %td=vwd r.user.try(:to_s)
         %td= link_to r.organisation, [:admin, r.organisation]
         %td.actions
           = individual_resource_links r do

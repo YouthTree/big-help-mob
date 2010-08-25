@@ -29,7 +29,7 @@ module AttrAccessibleScoping
     end
     
     def install!
-      ActiveRecord::Base.send(:include, ARMixin)
+      ActiveRecord::Base.extend(ARMixin)
     end
     
   end
@@ -53,9 +53,9 @@ module AttrAccessibleScoping
   module ARMixin
 
     def accessible_attributes
-      if _accessible_attributes.blank? || !_accessible_attributes.is_a?(BHM::Admin::AttrAccessibleScoping::Sanitizer)
+      if _accessible_attributes.blank? || !_accessible_attributes.is_a?(AttrAccessibleScoping::Sanitizer)
         existing = _accessible_attributes
-        self._accessible_attributes = BHM::Admin::AttrAccessibleScoping::Sanitizer.new.tap do |w|
+        self._accessible_attributes = AttrAccessibleScoping::Sanitizer.new.tap do |w|
           w.logger = self.logger if self.respond_to?(:logger)
         end
         self._accessible_attributes += existing if existing.present?

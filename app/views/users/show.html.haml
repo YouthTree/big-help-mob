@@ -16,10 +16,10 @@
             - if participation.completed?
               %span.mission-participation Took part in
             - elsif participation.approved?
-              %span.mission-participation Signed up to take part in
+              %span.mission-participation Signed up to take part as a
             %span.mission-role{:class => participation.role_name}
               = participation.role_name.humanize
-            for
+            in
             %span.mission-name= participation.mission.name
             on
             %span.mission-when=l participation.mission.occurs_at, :format => :simple

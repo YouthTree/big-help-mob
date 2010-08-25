@@ -1,8 +1,6 @@
 %h2.title== Viewing #{current_resource_name}
 
 = show_for resource do |r|
-
-  = r.attribute :id
   
   = r.attribute :dashboard do
     = link_to 'Click here to view', [:dashboard_admin, @mission]
@@ -19,15 +17,12 @@
   
   = r.association :organisation do
     = link_to resource.organisation, [:admin, resource.organisation]
-  
-  = r.association :user do
-    - if resource.user.blank?
-      = t :"show_for.blank"
-    - else
-      = link_to resource.user, [:admin, resource.user]
-      
-  - [:maximum_captain_age, :minimum_captain_age, :maximum_sidekick_age, :minimum_sidekick_age].each do |age|
-    = r.attribute age
+    
+  = r.attribute :captain_age do
+    = pretty_age_range resource, :captain
+    
+  = r.attribute :sidekick_age do
+    = pretty_age_range resource, :sidekick
   
   = r.association :participations do
     = link_to "View All Participations", admin_mission_mission_participations_path(resource)

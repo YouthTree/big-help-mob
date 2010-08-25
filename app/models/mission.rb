@@ -36,7 +36,6 @@ class Mission < ActiveRecord::Base
   has_many :flickr_photos
   
   belongs_to :organisation
-  belongs_to :user
   
   accepts_nested_attributes_for :questions,       :reject_if => reject_if_proc(%w(all 0)), :allow_destroy => true
   accepts_nested_attributes_for :mission_pickups, :reject_if => reject_if_proc, :allow_destroy => true
