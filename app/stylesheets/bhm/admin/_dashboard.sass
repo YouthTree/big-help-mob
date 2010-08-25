@@ -1,10 +1,30 @@
 .statistic
-  width: 100%
+  border: 0.1em solid #dddddd
+  background: #f9f9f9
+  text-align: center
+  +border-radius(1em)
+  padding: 0.5em
   margin: 0 auto 1em
+  h3
+    +sans-font-stack
+    font-weight: bold
+    margin: 0.5em 0
+  img
+    margin: 0.5em auto 1em
+
+.dashboard-chart
+  height: 300px
+  display: none
+  
+#origins-chart.dashboard-chart
+  height: 450px
 
 .google-chart img
   width: 680px
   height: 200px
+
+.hidden-container
+  display: none
 
 #user-locations-map
   width: 680px
@@ -13,6 +33,9 @@
   margin: 0 auto 1.5em
 
 #user-location-list
+  display: none
+
+#user-origins-list
   display: none
 
 #user-origins-list li

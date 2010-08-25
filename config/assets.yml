@@ -21,6 +21,11 @@ javascripts:
     - public/javascripts/vendor/shuriken/**/*.js
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js
+  dashboard:
+    - public/javascripts/vendor/highcharts.js
+    - public/javascripts/bhm/admin/charts.js
+    - public/javascripts/bhm/admin/analytics.js
+    - public/javascripts/bhm/admin/dashboard_stats.js
   ckeditor:
     - public/javascripts/bhm/ck_editor.js
     - public/ckeditor/ckeditor.js

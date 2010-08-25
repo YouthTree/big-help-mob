@@ -1,26 +1,48 @@
 - use_postcode_mapper
+- clicky_meta_tags
+- has_jammit_js :dashboard
 %h2.title Dashboard
 
 %p.action
   Drag link to your bookmark bar to make debugging easier:
   = link_to 'Show BHM Debug Info', 'javascript: BHM.Debug.showDebugInformation(); return false;'
 
--# #site-visits.google-chart.statistic
--#   %h3 Visits in the Last 2 Weeks (per 12 hours)
--#   = image_tag site_visits_url, :title => "Visits in the Last 2 Weeks (per 12 hours)", :id => "site-visits-stats"
+#visits-chart-container.statistic.hidden-container
+  %h3 Site Visitors Per Day
+  #visits-chart.dashboard-chart
 
-#user-signups.google-chart.statistic
+#user-signups.statistic
   %h3 User Signups By Date
-  = image_tag user_stats_url, :title => "User signups by date", :id => 'user-signup-stats'
-  
-#user-ages.google-chart.statistic
+    
+  #signups-chart.dashboard-chart
+    %dl
+      - @user_stats.each_pair do |age, count|
+        %dt= age
+        %dd= count
+
+#user-ages.statistic
   %h3 Users per Age
-  = image_tag user_ages_url, :title => "Users per age", :id => 'user-ages-stats'
-#user-origins.google-chart.statistic
+  %p
+    == There are #{pluralize @user_ages.count, 'user'} with ages from
+    == #{@user_ages.min_age} to #{@user_ages.max_age}. The mean user age
+    == is #{@user_ages.mean}.
+  #ages-chart.dashboard-chart
+    %dl
+      - @user_ages.data.each_pair do |age, value|
+        - if age > @user_ages.window_min && age < @user_ages.window_max
+          %dt= age
+          %dd= value
+
+#user-origins.statistic
   %h3 Users per Origin
-  = image_tag user_origins_url, :title => "Users per origin", :id => 'user-origins-stats'
+  #origins-chart.dashboard-chart
+    %dl
+      - @origin_counts.each_pair do |origin, count|
+        %dt= origin
+        %dd= count
   - unless @other_origins.blank?
-    %h4 Other Known Origins:
+    %h4
+      = link_to "Other Known Origins", "#", :class => 'other-known-origins-toggle'
     %ul#user-origins-list
       - @other_origins.each do |name, count|
         %li

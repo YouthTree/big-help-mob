@@ -1,5 +1,12 @@
 module Admin::DashboardHelper
 
+  def clicky_meta_tags
+    clicky = Settings.clicky
+    extra_head_content(meta_tag("clicky-site-id", clicky.site_id))   if clicky.site_id?
+    extra_head_content(meta_tag("clicky-site-key", clicky.site_key)) if clicky.site_key?
+    nil
+  end
+
   def site_visits_url
     data = @site_visits
     GoogleChart.Bar do |c|

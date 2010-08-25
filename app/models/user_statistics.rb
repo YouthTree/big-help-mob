@@ -1,8 +1,9 @@
 class UserStatistics
   
   UserLocation = Struct.new(:postcode, :lat, :lng, :count)
+  UserAgeData  = Struct.new(:data, :min_age, :max_age, :window_min, :window_max, :mean, :count)
 
-  def self.signups_per_day(from = Date.today - 14, to = Date.today)
+  def self.signups_per_day(from = Date.today - 6, to = Date.today)
     from, to = from.to_date, to.to_date
     users = User.select("DATE(users.created_at) AS users_date, count(*) AS count_all").group("users_date")
     users = users.having(["users_date > ? AND users_date < ?", from - 1, to + 1]).all
@@ -15,13 +16,22 @@ class UserStatistics
     results
   end
   
+  
   def self.count_per_age
     raw_counts = User.count :all, :group => "DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(date_of_birth, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(date_of_birth, '00-%m-%d'))"
     known_ages = raw_counts.keys.map { |k| k.to_i }.reject { |a| a <= 0 } # Cut out invalid dates.
-    min, max = known_ages.min, known_ages.max
-    ActiveSupport::OrderedHash.new(0).tap do |h|
-      min.upto(max) { |c| h[c] = raw_counts[c.to_s].to_i }
+    min, max = known_ages.min.to_i, known_ages.max.to_i
+    data = ActiveSupport::OrderedHash.new(0).tap do |h|
+      min.upto(max) { |c| h[c.to_i] = raw_counts[c.to_f].to_i }
     end
+    sum_of_ages = data.map { |k, v| k * v }.sum
+    num_of_ages = data.values.sum
+    mean_age    = sum_of_ages.to_f / num_of_ages
+    std_dev     = Math.sqrt(data.sum { |k, v| ((k - mean_age) ** 2) * v }.to_f / num_of_ages) * 4
+    offset      = [std_dev, 10].max
+    min_age     = (mean_age - offset).floor
+    max_age     = (mean_age + offset).ceil
+    UserAgeData.new(data, min, max, min_age, max_age, mean_age.round, num_of_ages)
   end
   
   def self.user_locations

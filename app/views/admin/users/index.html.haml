@@ -12,6 +12,7 @@
       %th ID
       %th Login
       %th Display Name
+      %th Age
       %th Admin?
       %th Default Role
       %th Last Used Site
@@ -22,6 +23,7 @@
         %td= r.id
         %td=vwd r.login
         %td=vwd r.display_name
+        %td= r.age
         %td= r.admin? ? "Yes" : "No"
         %td=vwd r.current_role.to_s
         %td=l r.last_request_at, :format => :long
