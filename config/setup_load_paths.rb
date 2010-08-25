@@ -11,10 +11,6 @@ if ENV['MY_RUBY_HOME'] && ENV['MY_RUBY_HOME'].include?('rvm')
   end
 end
 
-# Select the correct item for which you use below.
-# If you're not using bundler, remove it completely.
-
-# If we're using a Bundler 1.0 beta
-require 'rubygems'
 ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
+require 'rubygems'
 require 'bundler/setup'

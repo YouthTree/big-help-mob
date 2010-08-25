@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
 
 # Rails!
-gem 'rails', '= 3.0.0.rc'
-gem 'json_pure', '>= 1.4.5'
+gem 'rails', '= 3.0.0.rc2'
 gem 'json'
 
 # Misc
@@ -54,9 +53,9 @@ gem 'ruby-googlechart',    '>= 0.6.4', :require => 'google_chart'
 gem 'SystemTimer'
 
 # Javascript Stuff
-gem 'barista',  '>= 0.4.2' 
-gem 'shuriken', '~> 0.2.0'
-gem 'youthtree-js', '~> 0.2.0'
+gem 'barista',           '>= 0.5.0'
+gem 'shuriken',          '>= 0.2.0'
+gem 'youthtree-js',      '>= 0.2.0'
 
 # Background workers
 gem 'resque'
@@ -71,6 +70,12 @@ gem 'fancy-buttons',      '>= 0.5.1'
 
 gem 'youthtree-settings'
 gem 'youthtree-controller-ext'
+
+# Auth
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+gem 'authlogic_rpx', :git => 'git://github.com/tardate/authlogic_rpx.git'
+gem 'rpx_now'
+
 
 group :development do
   gem 'yard',      :require => nil

@@ -4,12 +4,13 @@ Welcome wayward travellers, to the installation guide for the Big Help Mob web a
 It's a fairly simple process to get started, but it assumes you're working on a machine
 with:
 
-- Ruby 1.8.7 or higher
-- Bundler 0.9 or higher
-- Mysql
-- Git
+- [Ruby Version Manager](http://rvm.beginrescueend.com/)
+- [Git](http://git-scm.org/)
+- MySQL
 
 ## Steps ##
+
+
 
 ### Step Number 1: Clone this repository. ###
 
