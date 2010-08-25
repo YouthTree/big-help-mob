@@ -1,0 +1,11 @@
+rvm use --create --install ree@bhm >/dev/null 2>&1
+
+if [[ -s "./bhm.gems" ]]; then
+  if ! rvm gemset import bhm.gems >/dev/null 2>&1; then
+    echo "ERROR: Unable to bootstrap the gems" >&2
+  fi
+fi
+
+if command -v bundle >/dev/null; then
+  bundle install >/dev/null 2>&1
+fi
