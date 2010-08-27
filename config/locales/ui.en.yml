@@ -1,8 +1,8 @@
 en:
   ui:
     confirm:
-      remove: "Are you sure you wish to remove this {{object_name}}? This can't be reversed."
-    empty_row: "There are currently no {{plural_object_name}}."
+      remove: "Are you sure you wish to remove this %{object_name}? This can't be reversed."
+    empty_row: "There are currently no %{plural_object_name}."
     authentication:
       internal: 'Big Help Mob Account'
       external: 'Facebook, Google, Live, Yahoo or Twitter Account'
@@ -26,7 +26,7 @@ en:
         phone: "Phone Number"
         role_name: "Role Name"
         state: "State"
-        answer: "Answer: {{name}}"
+        answer: "Answer: %{name}"
         first_name: "First Name"
         last_name: "Last Name"
         allergies: "Allergies"

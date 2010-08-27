@@ -131,7 +131,6 @@ BHM.withNS('Admin', function(ns) {
                 return this.point.name;
               },
               style: {
-                textColor: '#FFFFFF',
                 fontWeight: 'bold'
               }
             }

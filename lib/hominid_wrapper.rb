@@ -61,7 +61,7 @@ class HominidWrapper
     end
     
     def update_email!(from, to)
-      return false if hominid_instance.blank?
+      return false if hominid_instance.blank? || to =~ /\@example\.com$/i
       list_ids = subscriptions_for_email(from)
       Array(list_ids).each do |id|
         hominid_instance.update_member(id, from, :EMAIL => to)

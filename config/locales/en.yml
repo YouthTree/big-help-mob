@@ -24,8 +24,8 @@ en:
       messages:
         blank: "must be filled in to continue"
         invalid: "has errors that must be fixed before continuing"
-        too_few_words: "has too few words (has {{actual_count}} but needs a minimum of {{min_count}})"
-        too_many_words: "has too few words (has {{actual_count}} but can have a maximum of {{max_count}})"
+        too_few_words: "has too few words (has %{actual_count} but needs a minimum of %{min_count})"
+        too_many_words: "has too few words (has %{actual_count} but can have a maximum of %{max_count})"
         unknown_origin_choice: "is an invalid choice"
     models:
       mission_participation: Participation
@@ -37,11 +37,11 @@ en:
   actionmailer:
     notifications:
       signup:
-        subject: "Welcome to Big Help Mob, {{user_name}}"
+        subject: "Welcome to Big Help Mob, %{user_name}"
       joined_mission:
-        subject: "You've successfully joined {{mission_name}}"
+        subject: "You've successfully joined %{mission_name}"
       mission_role_approved:
-        subject: "You've successfully signed up for {{mission_name}} as a {{role_name}}"
+        subject: "You've successfully signed up for %{mission_name} as a %{role_name}"
       mission_signup_incomplete:
         subject: ""
       notice:

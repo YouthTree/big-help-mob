@@ -5,6 +5,10 @@ class MailingLists
   
   define_attribute_methods [:ids]
   
+  def self.subscription_manager
+    HominidWrapper
+  end
+  
   def self.i18n_scope
     :mailing_lists
   end
@@ -15,7 +19,7 @@ class MailingLists
   end
   
   def names
-    HominidWrapper.local_id_to_name_mapping(ids)
+    self.class.subscription_manager.local_id_to_name_mapping(ids)
   end
   
   def ids
@@ -64,7 +68,7 @@ class MailingLists
   
   def self.for_select
     @lists_for_select ||= begin
-      HominidWrapper.available_lists.map do |result|
+      self.class.subscription_manager.available_lists.map do |result|
         [result[:display_name], result[:id]]
       end
     end
@@ -85,16 +89,16 @@ class MailingLists
   end
   
   def read_stored_ids
-    HominidWrapper.subscriptions_for_user(@user) & HominidWrapper.available_lists.map { |l| l[:id] }
+    self.class.subscription_manager.subscriptions_for_user(@user) & self.class.subscription_manager.available_lists.map { |l| l[:id] }
   end
   
   def update_email_address!
     from, to = @user.email_was, @user.email
     return if from == true
     if to.blank?
-      read_stored_ids.each { |id| HominidWrapper.unsubscribe_user!(@user, id) }
+      read_stored_ids.each { |id| self.class.subscription_manager.unsubscribe_user!(@user, id) }
     elsif from.present?
-      HominidWrapper.update_email!(from, to)
+      self.class.subscription_manager.update_email!(from, to)
     end
   end
   
@@ -102,8 +106,8 @@ class MailingLists
     original_ids  = read_stored_ids
     new_ids = self.ids
     ids_to_remove, ids_to_add = (original_ids - new_ids), (new_ids - original_ids)
-    ids_to_remove.each { |id| HominidWrapper.unsubscribe_user!(@user, id) }
-    ids_to_add.each    { |id| HominidWrapper.subscribe_user!(@user, id) }
+    ids_to_remove.each { |id| self.class.subscription_manager.unsubscribe_user!(@user, id) }
+    ids_to_add.each    { |id| self.class.subscription_manager.subscribe_user!(@user, id) }
   end
   
 end

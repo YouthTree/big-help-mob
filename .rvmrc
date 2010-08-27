@@ -1,11 +1,7 @@
-rvm use --create --install ree@bhm >/dev/null 2>&1
+rvm use --create --install ree@bighelpmob >/dev/null 2>&1
 
-if [[ -s "./bhm.gems" ]]; then
-  if ! rvm gemset import bhm.gems >/dev/null 2>&1; then
+if [[ -s "./bighelpmob.gems" ]]; then
+  if ! rvm gemset import bighelpmob.gems >/dev/null 2>&1; then
     echo "ERROR: Unable to bootstrap the gems" >&2
   fi
-fi
-
-if command -v bundle >/dev/null && ! grep -q BUNDLE_FROZEN .bundle/config 2>/dev/null ; then
-  bundle install >/dev/null 2>&1
 fi
