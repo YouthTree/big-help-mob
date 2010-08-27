@@ -96,12 +96,9 @@ GEM
       compass (>= 0.10.0.rc3)
     compass-colors (0.3.1)
       compass (>= 0.8.7)
-    crack (0.1.8)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    failtale-reporter (0.2.3)
-      httparty
     fancy-buttons (0.5.5)
       compass (>= 0.10.0)
       haml (>= 3.0.2)
@@ -114,8 +111,8 @@ GEM
     has_scope (0.5.0)
     highline (1.6.1)
     hominid (2.1.7)
-    httparty (0.6.1)
-      crack (= 0.1.8)
+    hoptoad_notifier (2.3.5)
+      activesupport
     i18n (0.4.1)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
@@ -151,8 +148,6 @@ GEM
       activesupport (>= 3.0.0.beta2)
       uuid
     rack (1.2.1)
-    rack-failtale (0.1.1)
-      failtale-reporter (= 0.2.3)
     rack-mount (0.6.12)
       rack (>= 1.0.0)
     rack-test (0.5.4)
@@ -270,6 +265,7 @@ DEPENDENCIES
   geokit (>= 1.5.0)
   haml (>= 3.0.13)
   hominid (>= 2.1.1)
+  hoptoad_notifier
   inherited_resources
   jammit (>= 0.5.0)
   json
@@ -280,7 +276,6 @@ DEPENDENCIES
   mysql2
   newrelic_rpm
   pseudocephalopod (>= 0.2.1)
-  rack-failtale
   rails (= 3.0.0.rc2)
   rails3-generators
   remarkable (>= 4.0.0.alpah4)

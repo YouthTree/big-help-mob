@@ -33,7 +33,6 @@ gem 'jammit',              '>= 0.5.0'
 gem 'msales-carmen',       '>= 0.1.4', :require => ['carmen', 'carmen/action_view_helpers']
 
 # Miscellaneous
-gem 'rack-failtale', :require => nil
 gem 'liquid'
 gem 'fastercsv' if RUBY_VERSION < '1.9'
 gem 'uuid'
@@ -101,4 +100,8 @@ group :test do
   gem 'remarkable', '>= 4.0.0.alpah4', :require => 'remarkable/core'
   gem 'remarkable_activerecord', '>= 4.0.0.alpah4', :require => 'remarkable/active_record'
   gem 'rr'
+end
+
+group :staging, :production do
+  gem 'hoptoad_notifier'
 end
