@@ -206,7 +206,7 @@ GEM
     rspec-rails (2.0.0.beta.20)
       rspec (= 2.0.0.beta.20)
     ruby-googlechart (0.6.4)
-    rvm (1.0.0)
+    rvm (1.0.1)
     show_for (0.2.3)
     shuriken (0.2.1)
     sinatra (1.0)
@@ -225,7 +225,7 @@ GEM
     validation_reflection (1.0.0.rc.1)
     vegas (0.1.7)
       rack (>= 1.0.0)
-    youthtree-capistrano (0.0.5)
+    youthtree-capistrano (0.1.2)
       bundler (~> 1.0)
       capistrano
       rvm (~> 1.0)
@@ -298,7 +298,7 @@ DEPENDENCIES
   uuid
   validation_reflection (>= 1.0.0.rc.1)
   will_paginate (>= 3.0.pre2)!
-  youthtree-capistrano
+  youthtree-capistrano (>= 0.1.2)
   youthtree-controller-ext
   youthtree-helpers
   youthtree-js (>= 0.2.0)
