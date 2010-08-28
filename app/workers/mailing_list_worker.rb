@@ -9,7 +9,7 @@ class MailingListWorker
   
   def self.queue_for!(user)
     if user.mailing_list_ids.present?
-      Resque.enqueue user.id, user.mailing_list_ids
+      Resque.enqueue MailingListWorker, user.id, user.mailing_list_ids
     end
   end
   
