@@ -47,7 +47,7 @@ gem 'shuriken',          '>= 0.2.0'
 gem 'youthtree-js',      '>= 0.2.0'
 
 # Background workers
-gem 'resque'
+gem 'resque', '>= 1.10'
 gem 'resque-status', :require => 'resque/status'
 
 # View / Rendering

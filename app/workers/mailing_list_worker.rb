@@ -18,7 +18,7 @@ class MailingListWorker
   end
   
   def subscribe!
-    CampaignMonitorWrapper.update_subscriptions! user, @mailing_list_ids
+    CampaignMonitorWrapper.update_subscriptions_for_user! user, @mailing_list_ids
   rescue ActiveRecord::RecordNotFound
   end
   

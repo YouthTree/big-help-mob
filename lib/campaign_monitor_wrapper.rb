@@ -3,7 +3,11 @@ class CampaignMonitorWrapper
   @@config ||= nil
   
   class << self
-    
+      
+    def logger
+      Rails.logger
+    end
+  
     def for_select
       available_lists.map { |k, v| [v, k] }
     end
@@ -22,10 +26,15 @@ class CampaignMonitorWrapper
     
     def update_subscriptions!(user, lists)
       return false unless has_campaign_monitor?
-      cm_user = cm_user_for user
       lists = Array(lists.flatten).reject { |l| l.blank? } & available_list_ids
-      lists.each { |list| subscribe! cm_user, list }
+      logger.info "Preparing to subscript #{user.inspect} to #{lists.join(",")}"
+      lists.each { |list| subscribe! user, list }
       true
+    end
+    
+    def update_subscriptions_for_user!(user, lists)
+      return false unless has_campaign_monitor?
+      update_subscriptions! cm_user_for(user.email, u)
     end
     
     def subscribe!(user, list)
