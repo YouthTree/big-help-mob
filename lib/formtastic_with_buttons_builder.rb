@@ -6,7 +6,7 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
   
   # Generates a label, using a safe buffer and a few other things along those lines.
   def label(*args)
-    super(*args).gsub(/\?\s*\:\<\/label\>/, "?</label>").gsub(/\?\s*\:\s*\<abbr/, "? <abbr")
+    super(*args).gsub(/([\?\.\!])\s*\:\<\/label\>/, '\1</label>').gsub(/\?\s*\:\s*\<abbr/, "? <abbr")
   end
   
   def boolean_input(method, options)

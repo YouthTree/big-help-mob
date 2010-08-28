@@ -1,5 +1,135 @@
 $form-padding-inner: 20px
 
+form.formtastic
+  margin: 0
+  padding: 0
+  ul, ol, li, fieldset, legend, input, textarea, select, p
+    margin: 0
+    padding: 0
+  fieldset
+    border: 0
+  em, strong
+    font-style: normal
+    font-weight: normal
+  ol, ul
+    list-style: none
+  abbr, acronym
+    border: 0
+    font-variant: normal
+  input, textarea, select
+    font-family: inherit
+    font-size: inherit
+    font-weight: inherit
+  input, textarea, select
+    font-size: 100%
+  legend
+    color: black
+  legend.label label
+    width: 100%
+  fieldset
+    display: inline-block
+    &.buttons
+      padding-left: 28%
+    &.buttons li
+      float: left
+      padding-right: 0.5em
+    &:after
+      content: "."
+      display: block
+      height: 0
+      clear: both
+      visibility: hidden
+
+html form.formtastic fieldset
+  display: block
+
+* html form.formtastic fieldset
+  height: 1%
+
+form.formtastic fieldset ol li
+  margin-bottom: 1.5em
+  &:after
+    content: "."
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+
+html[xmlns] form.formtastic fieldset ol li
+  display: block
+
+* html form.formtastic fieldset ol li
+  height: 1%
+
+form.formtastic fieldset ol li
+  label
+    display: block
+  li label
+    line-height: 100%
+    padding-top: 0
+    width: auto
+    margin-right: 0
+    input
+      line-height: 100%
+      vertical-align: middle
+      margin-top: -0.1em
+  fieldset
+    position: relative
+    legend
+      position: absolute
+      display: block
+      span, &.label label
+        position: absolute
+    ol
+      margin: 0
+      padding: 0
+      li
+        padding: 0
+        border: 0
+  p
+    &.inline-hints
+      color: #666666
+      margin: 0.5em 0 0
+    &.inline-errors
+      color: #cc0000
+      margin: 0.5em 0 0
+  ul.errors
+    color: #cc0000
+    margin: 0.5em 0 0
+    list-style: square
+    li
+      padding: 0
+      border: none
+      display: list-item
+  &.string input, &.password input, &.numeric input, &.text textarea
+    width: 99%
+  &.hidden
+    display: none
+  &.boolean label
+    width: auto
+    input
+      margin: 0 0.5em 0 0.2em
+  &.radio fieldset ol, &.check_boxes fieldset ol
+    margin-bottom: -0.6em
+    li
+      margin: 0.1em 0 0.5em 0
+      label
+        float: none
+        width: 100%
+        input
+          margin-right: 0.2em
+  &.date fieldset ol li, &.time fieldset ol li, &.datetime fieldset ol li, &.dob fieldset ol li
+    float: left
+    width: auto
+    margin: 0 0.3em 0 0
+    label
+      display: none
+      input
+        display: inline
+        margin: 0
+        padding: 0
+
+
 #content
   form.formtastic
     margin: 0 5% 0
@@ -11,43 +141,44 @@ $form-padding-inner: 20px
     fieldset.inputs
       margin: 3em 0 4.5em
       padding: 0
-      background: $bhm-colour-fieldset-background
-      border: 1px solid $bhm-colour-fieldset-border
       position: relative
+      font-size: 1.1em
       legend span
+        padding-bottom: 1.5em
         font-size: 1.4em
         font-weight: bold
-        position: absolute
-        left: 0
         color: $bhm-colour-fieldset-legend
-        margin-top: -1.5em
         +bauhaus-font-stack
       ol
         margin: $form-padding-inner $form-padding-inner 0
         position: relative
       label
+        display: block
+        float: none
+        width: auto
         font-weight: bold
         color: $bhm-colour-form-label
         font-size: 1em
-        padding-top: 0
+        padding: 0 0 0.5em
+        clear: both
         abbr.required
           color: #992025
+          border-bottom: none
       p.inline-hints, p.inline-errors
-        margin: 0.5em 0 0 28%
+        margin: 0.5em 0 0
         font-size: 1em
         padding: 0
         line-height: 1.5em
       ol li ol
         margin: 0
-        padding: 0 0 0 28%
+        display: block
         li label
-          font-weight: normal
-          font-size: 0.9em
-          color: $bhm-colour-form-label-nested
+          display: none
         fieldset legend
           position: relative
           padding: 0
           margin: -0.3em 0 0 0
+          
     fieldset.buttons
       margin: -2em 0 2em
       padding: 0
@@ -59,13 +190,13 @@ $form-padding-inner: 20px
           float: none
           vertical-align: middle
         button
-          +fancy-button($bhm-colour-form-submit, 16px, 0)
-          +fix-fb-padding
+          border: none
+          +simple-css3-button($bhm-colour-form-submit, 16px)
         a#auth-selector-link
-          +fancy-button($bhm-colour-form-cancel, 16px, 0)
-          +fix-fb-padding
+          +simple-css3-button($bhm-colour-form-cancel, 16px)
         span.or
-          padding: 0 0.5em
-          color: #666666
+          padding: 0 1em
+          color: $bhm-colour-list-or
+          font-weight: bold
     span.cke_skin_kama
       margin-left: 28%

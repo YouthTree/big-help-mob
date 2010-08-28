@@ -3,3 +3,26 @@
   &:active
     padding: $x-padding $y-padding
     border-width: $fb-border-width
+
+// Tutorial from http://papermashup.com/pretty-css3-buttons/
+=simple-css3-button($color: #222, $font-size: 1em, $button-radius: 0.5em, $y-padding: 0.75em, $x-padding: 1em)
+  &, &:visited
+    font-size: $font-size
+    background: $color url(/images/simple-button-overlay.png) repeat-x
+    color: #FFF
+    text-decoration: none
+    line-height: 1em
+    +inline-block
+    padding: $y-padding $x-padding
+    +border-radius($button-radius)
+    +box-shadow(rgba(0, 0, 0, 0.6), 0, 1px, 3px)
+    -webkit-background-clip: padding-box
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5)
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5)
+    position: relative
+    cursor: pointer
+    font-weight: bold
+  
+  &:hover
+    background-color: darken($color, 5%)
+  

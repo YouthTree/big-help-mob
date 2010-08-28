@@ -6,19 +6,19 @@
 = semantic_form_for @user do |form|
   
   = form.inputs :name => "Your Account Details" do
-    = form.input :login, :hint => "You'll use this to login when you visit the site.", :required => (@user.new_record? || @user.using_password?)
-    = form.input :email, :hint => "We promise you can trust us with your email.", :required => true
+    = form.input :login, :hint => "You'll use this to login when you visit the site.", :required => (@user.new_record? || @user.using_password?), :label => "What login do you wish to use?"
+    = form.input :email, :hint => "We promise you can trust us with your email.", :required => true, :label => "What email can we reach you at?"
     - if @user.new_record? || @user.using_password?
-      = form.input :password, :required => @user.new_record?
-      = form.input :password_confirmation
+      = form.input :password, :required => @user.new_record?, :label => "What password do you wish to use?"
+      = form.input :password_confirmation, :label => "Please repeat your password."
     
   = form.inputs :name => "Tell us about yourself" do
     = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => Time.now.year
     = form.input :display_name, :hint => "If set, other members will see this instead of your login."
-    = form.input :first_name
-    = form.input :last_name
-    = form.input :postcode, :hint => "Your postcode is used to help us improve transport & planning."
-    = form.input :phone, :hint => "Only organizers will have access to your phone number for planning & safety reasons."
+    = form.input :first_name, :label => "What is your First Name?"
+    = form.input :last_name, :label => "What is your Last Name?"
+    = form.input :postcode, :label => "What postcode do you live in?", :hint => "Your postcode is used to help us improve transport & planning."
+    = form.input :phone, :hint => "If provided, your number will have access to your phone number for planning & safety reasons.", :label => "What is your phone number?"
     
     - if form.object.origin.blank? || form.object.origin_changed?
       = form.input :origin, :as => input_type_for_origin(form.object.origin), :collection => User::ORIGIN_CHOICES
