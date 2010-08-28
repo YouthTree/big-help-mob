@@ -1,5 +1,7 @@
 # Installing the Big Help Mob Application #
 
+## NOTE: These docs are out of date.
+
 Welcome wayward travellers, to the installation guide for the Big Help Mob web app.
 It's a fairly simple process to get started, but it assumes you're working on a machine
 with:

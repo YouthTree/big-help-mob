@@ -5,9 +5,6 @@ gem 'rails', '= 3.0.0.rc2'
 gem 'mysql2'
 gem 'json'
 
-# mailing list
-gem 'hominid', '>= 2.1.1'
-
 # Geoawareness and mapping stuff.
 gem 'addresslogic',    '>= 1.2.1'
 gem 'geokit',          '>= 1.5.0'
@@ -74,6 +71,8 @@ gem 'awesome_print'
 gem 'youthtree-capistrano', '>= 0.1.3', :require => nil
 
 gem 'unicorn', :require => nil
+
+gem 'campaigning'
 
 group :production, :staging do
   gem 'newrelic_rpm', :require => nil

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825185512) do
+ActiveRecord::Schema.define(:version => 20100828150827) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -245,11 +245,12 @@ ActiveRecord::Schema.define(:version => 20100825185512) do
     t.datetime "updated_at"
     t.integer  "current_role_id"
     t.string   "origin"
-    t.string   "perishable_token",                                  :default => "", :null => false
-    t.decimal  "postcode_lat",      :precision => 15, :scale => 10
-    t.decimal  "postcode_lng",      :precision => 15, :scale => 10
+    t.string   "perishable_token",                                                     :default => "",    :null => false
+    t.decimal  "postcode_lat",                         :precision => 15, :scale => 10
+    t.decimal  "postcode_lng",                         :precision => 15, :scale => 10
     t.string   "cached_slug"
     t.text     "comment"
+    t.boolean  "completed_mailing_list_subscriptions",                                 :default => false
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

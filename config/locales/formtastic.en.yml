@@ -12,7 +12,7 @@ en:
         question: "Question"
         visible: "Show this question to users"
       user:
-        mailing_list_ids: "Mailing Lists"
+        mailing_list_ids: "I wish to subscribe to"
         origin: "How did you hear about us?"
         password_confirmation: "Confirm Password"
       mission:

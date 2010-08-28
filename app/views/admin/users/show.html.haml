@@ -24,11 +24,6 @@
   
   = s.association :comment do
     = comment_as_html @user
-  
-  = s.attribute :mailing_list_names do
-    %ul
-      - @user.mailing_lists.names.each do |list_name|
-        %li= list_name
 
   = s.association :participations do
     = link_to "View All Participations", admin_user_mission_participations_path(resource)

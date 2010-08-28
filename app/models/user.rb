@@ -96,6 +96,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def full_name
+    [first_name, last_name].reject(&:blank?).join(" ")
+  end
+  
   def self.for_select
     all.map { |u| [u.to_s, u.id] }
   end
@@ -111,16 +115,16 @@ class User < ActiveRecord::Base
     end
   end
   
-  def mailing_lists
-    @mailing_lists ||= MailingLists.new(self)
-  end
-  
   def mailing_list_ids
-    mailing_lists.ids
+    @mailing_list_ids ||= []
   end
   
   def mailing_list_ids=(value)
-    mailing_lists.ids = value
+    if !completed_mailing_list_subscriptions?
+      @mailing_list_ids = Array(value).reject(&:blank?)
+    else
+      @mailing_list_ids = nil
+    end
   end
   
   def age(now = Time.now)
