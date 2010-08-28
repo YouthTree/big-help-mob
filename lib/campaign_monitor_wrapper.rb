@@ -34,7 +34,7 @@ class CampaignMonitorWrapper
     
     def update_subscriptions_for_user!(user, lists)
       return false unless has_campaign_monitor?
-      update_subscriptions! cm_user_for(user.email, u)
+      update_subscriptions! cm_user_for(user.email, user)
     end
     
     def subscribe!(user, list)
