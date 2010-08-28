@@ -1,4 +1,6 @@
 class MailingListWorker
+
+  def self.queue; 'mailing-lists'; end
   
   def initialize(user_id, mailing_list_ids)
     @user_id          = user_id
