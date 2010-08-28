@@ -112,7 +112,6 @@ GEM
     haml (3.0.17)
     has_scope (0.5.0)
     highline (1.6.1)
-    hominid (2.1.7)
     hoptoad_notifier (2.3.5)
       activesupport
     httpclient (2.1.5.2)
@@ -270,7 +269,6 @@ DEPENDENCIES
   formtastic (>= 1.0.0)!
   geokit (>= 1.5.0)
   haml (>= 3.0.13)
-  hominid (>= 2.1.1)
   hoptoad_notifier
   inherited_resources
   jammit (>= 0.5.0)
