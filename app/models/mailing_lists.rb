@@ -68,7 +68,7 @@ class MailingLists
   
   def self.for_select
     @lists_for_select ||= begin
-      self.class.subscription_manager.available_lists.map do |result|
+      subscription_manager.available_lists.map do |result|
         [result[:display_name], result[:id]]
       end
     end
