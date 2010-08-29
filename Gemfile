@@ -46,6 +46,8 @@ gem 'barista',           '>= 0.5.0'
 gem 'shuriken',          '>= 0.2.0'
 gem 'youthtree-js',      '>= 0.2.0'
 
+gem 'rfc-822'
+
 # Background workers
 gem 'resque', '>= 1.10'
 gem 'resque-status', :require => 'resque/status'

@@ -194,6 +194,7 @@ GEM
       redisk (>= 0.2.1)
       resque (>= 1.3.1)
       uuid (>= 2.0.2)
+    rfc-822 (0.2.3)
     rpx_now (0.6.23)
       json_pure
     rr (1.0.0)
@@ -287,6 +288,7 @@ DEPENDENCIES
   responders
   resque (>= 1.10)
   resque-status
+  rfc-822
   rpx_now
   rr
   rspec (>= 2.0.0.beta.20)
