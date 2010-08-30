@@ -30,7 +30,7 @@ BigHelpMob::Application.routes.draw do |map|
       end
     end
 
-    match '', :to => 'dashboard#index', :as => :dashboard
+    root :to => 'dashboard#index', :as => :dashboard
   end
 
   resources :user_session, :path => 'user-sessions'
