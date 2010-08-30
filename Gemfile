@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Rails!
-gem 'rails', '= 3.0.0.rc2'
+gem 'rails', '= 3.0.0'
 gem 'mysql2'
 gem 'json'
 
