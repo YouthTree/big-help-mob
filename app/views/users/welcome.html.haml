@@ -6,7 +6,10 @@
 
 %h3 Get Started
 %ul#getting-started
-  %li= link_to 'Find out about or join our next mission', mission_path(:next), :id => 'next-mission-item'
+  - if Mission.has_next?
+    %li= link_to 'Find out about / join our next mission', mission_path(:next), :id => 'next-mission-item'
+  - else
+    %li= link_to 'Find out about our past missions', missions_path, :id => 'next-mission-item'
   %li.or - or -
   %li= link_to 'View your profile', user_path(:current), :id => 'your-profile-item'
   %li.or - or -
