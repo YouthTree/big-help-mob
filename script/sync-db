@@ -1,0 +1,14 @@
+#!/usr/bin/env bash -e
+
+echo "####################################"
+echo "# Syncing from Production to Local #"
+echo "####################################"
+echo ""
+bundle exec cap production sync:down
+echo ""
+echo ""
+echo "####################################"
+echo "#  Syncing from Local to Staging   #"
+echo "####################################"
+echo ""
+bundle exec cap staging sync:up
