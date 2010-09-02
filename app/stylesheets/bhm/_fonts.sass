@@ -1,16 +1,10 @@
 @import compass/css3/font-face
 
-+font-face(unquote("Sniglet Regular"), font-files(unquote("/fonts/Sniglet.ttf"), truetype), unquote("/fonts/Sniglet.eot"), Sniglet)
-
-+font-face(unquote("Museo Sans"), font-files(unquote("/fonts/MuseoSans.woff"), woff, unquote("/fonts/MuseoSans.ttf"), truetype), unquote("/fonts/MuseoSans.eot"), MuseoSans-500)
-
-+font-face(unquote("Bauhaus Std Demi"), font-files(unquote("/fonts/BauhausStd-Demi.woff"), woff, unquote("/fonts/BauhausStd-Demi.ttf"), truetype), unquote("/fonts/BauhausStd-Demi.eot"), BauhausStd-Demi)
-
-=museo-sans-font-stack
-  font-family: "Museo Sans", "Helvetica Neue", "Helvetica", "Verdana", "Arial"
-
 =sans-font-stack
   font-family: "Helvetica Neue", "Helvetica", "Verdana", "Arial"
 
-=bauhaus-font-stack
-  font-family: "Bauhaus Std Demi", "Helvetica Neue", "Helvetica", "Verdana", "Arial"
+=auto-add-font($name, $embed_part)
+  $font-path: "/fonts/" + $embed_part
+  +font-face($name, font-files($font-path + ".woff", woff, $font-path + ".ttf", truetype, $font-path + ".svg", svg), $font-path + ".eot")
+  
+  
