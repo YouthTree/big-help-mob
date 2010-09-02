@@ -1,5 +1,9 @@
 source 'http://rubygems.org'
 
+def gh(user, repo)
+  "git://github.com/#{user}/#{repo}.git"
+end
+
 # Rails!
 gem 'rails', '= 3.0.0'
 gem 'mysql2'
@@ -11,7 +15,7 @@ gem 'geokit',          '>= 1.5.0'
 gem 'bhm-google-maps', '~> 0.2.0'
 
 # Display Helpers
-gem 'formtastic',            '>= 1.0.0', :git => 'git://github.com/justinfrench/formtastic.git', :branch => 'rails3'
+gem 'formtastic',            '>= 1.0.0', :git => gh('justinfrench', 'formtastic'), :branch => 'rails3'
 gem 'validation_reflection', '>= 1.0.0.rc.1'
 gem 'title_estuary',         '>= 1.2.0'
 
@@ -21,8 +25,8 @@ gem 'responders'
 gem 'show_for'
 
 # General Code Stuff
-gem 'will_paginate',    '>= 3.0.pre2', :git => 'git://github.com/mislav/will_paginate.git', :ref => 'rails3'
-gem 'state_machine',    '>= 0.9.0', :git => 'git://github.com/pluginaweek/state_machine.git'
+gem 'will_paginate',    '>= 3.0.pre2', :git => gh('mislav', 'will_paginate'), :ref => 'rails3'
+gem 'state_machine',    '>= 0.9.0', :git => gh('pluginaweek', 'state_machine')
 gem 'pseudocephalopod', '>= 0.2.1'
 
 # Helpers etc.
@@ -64,8 +68,8 @@ gem 'youthtree-helpers'
 gem 'youthtree-controller-ext'
 
 # Auth
-gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
-gem 'authlogic_rpx', :git => 'git://github.com/tardate/authlogic_rpx.git'
+gem 'authlogic',     :git => gh('kurbmedia', 'authlogic')
+gem 'authlogic_rpx', :git => gh('kuldarkrabbi', 'authlogic_rpx')
 gem 'rpx_now'
 
 gem 'awesome_print'

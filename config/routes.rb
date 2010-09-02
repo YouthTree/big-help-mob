@@ -1,4 +1,4 @@
-BigHelpMob::Application.routes.draw do |map|
+BigHelpMob::Application.routes.draw do
   
   mount Resque::Server.new, :at => "/admin/resque"
 
