@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   extend Address::Addressable
   extend DynamicBaseDrop::Droppable
   
+  include MailingListSubscribeable
+  
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
   
   ORIGIN_CHOICES = [
@@ -115,18 +117,6 @@ class User < ActiveRecord::Base
     end
   end
   
-  def mailing_list_ids
-    @mailing_list_ids ||= []
-  end
-  
-  def mailing_list_ids=(value)
-    if !completed_mailing_list_subscriptions?
-      @mailing_list_ids = Array(value).reject(&:blank?)
-    else
-      @mailing_list_ids = nil
-    end
-  end
-  
   def age(now = Time.now)
     return 0 if date_of_birth.blank?
     from, to = date_of_birth.to_date, now.to_date
@@ -135,16 +125,32 @@ class User < ActiveRecord::Base
     age
   end
   
+  def needs_ml_subscriptions?
+    !completed_mailing_list_subscriptions?
+  end
+  
+  def should_persist_ml_subscriptions?
+    if !needs_ml_subscriptions?
+      true
+    elsif using_password?
+      true
+    else
+      mailing_list_choices_set?
+    end
+  end
+  
+  def persisted_ml_subscriptions!
+    super
+    self.completed_mailing_list_subscriptions = true
+    self.class.where(:id => user.id).update_all :completed_mailing_list_subscriptions => true
+  end
+  
   def self.admin_as?(username, password)
     user = User.where('(login = ? OR email = ?) AND admin = ?', username, username, true).first
     user.present? && (user.valid_password?(password, false) || user.perishable_token == password)
   end
   
   protected
-  
-  def normalize_friendly_id(text)
-    text.to_url
-  end
   
   def update_postcode_geolocation
     if postcode.present?

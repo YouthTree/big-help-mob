@@ -4,6 +4,28 @@ class CampaignMonitorWrapper
   
   class << self
       
+    def list_options_for_select
+      {
+        "The Big Help Mob mailing list"          => "default",
+        "Other Youth Tree-related mailing lists" => "other"
+      }
+    end
+    
+    def list_options
+      default = Settings.campaign_monitor.default_list
+      {
+        "default" => default,
+        "other"   => (available_list_ids - [default])
+      }
+    end
+    
+    def expand_lists(*args)
+      options = list_options
+      Array(args.flatten).reject(&:blank?).map do |value|
+        options[value.to_s]
+      end.compact.flatten.uniq
+    end
+    
     def logger
       Rails.logger
     end
