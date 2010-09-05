@@ -29,7 +29,7 @@ BHM.require('Authentication', function() {
       return configuration;
     };
     ns.configureRPXNow = function() {
-      if ((typeof RPXNOW !== "undefined" && RPXNOW !== null)) {
+      if (typeof RPXNOW !== "undefined" && RPXNOW !== null) {
         return $.extend(RPXNOW, ns.configuration());
       }
     };

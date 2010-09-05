@@ -54,7 +54,7 @@ class CampaignMonitorWrapper
       true
     end
     
-    def update_subscriptions_for_user!(user, lists)
+    def update_for_subscriber!(user, lists)
       return false unless has_campaign_monitor?
       update_subscriptions! cm_user_for(user), lists
     end
@@ -65,10 +65,9 @@ class CampaignMonitorWrapper
       true
     end
     
-    def cm_user_for(user)
-      name = user.full_name
-      name = user.name if name.blank?
-      Campaigning::Subscriber.new(user.email, name)
+    def cm_user_for(subscriber)
+      subscriber = subscriber.to_subscriber_details if subscriber.respond_to?(:to_subscriber_details)
+      Campaigning::Subscriber.new(subscriber[:email], subscriber[:name])
     end
     
     def has_campaign_monitor?

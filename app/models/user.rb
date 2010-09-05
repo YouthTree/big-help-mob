@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   ]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
-                  :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_ids,
+                  :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_choices,
                   :captain_application_attributes, :origin, :date_of_birth
 
   has_many :mission_participations, :dependent => :destroy
@@ -129,14 +129,10 @@ class User < ActiveRecord::Base
     !completed_mailing_list_subscriptions?
   end
   
-  def should_persist_ml_subscriptions?
-    if !needs_ml_subscriptions?
-      true
-    elsif using_password?
-      true
-    else
-      mailing_list_choices_set?
-    end
+  def to_subscriber_details
+    subscriber_name = full_name
+    subscriber_name = name if subscriber_name.blank?
+    {:name => subscriber_name, :email => email}
   end
   
   def persisted_ml_subscriptions!

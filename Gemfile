@@ -27,7 +27,7 @@ gem 'show_for'
 # General Code Stuff
 gem 'will_paginate',    '>= 3.0.pre2', :git => gh('mislav', 'will_paginate'), :ref => 'rails3'
 gem 'state_machine',    '>= 0.9.0', :git => gh('pluginaweek', 'state_machine')
-gem 'pseudocephalopod', '>= 0.2.1'
+gem 'pseudocephalopod', '>= 0.2.5'
 
 # Helpers etc.
 gem 'jammit',              '>= 0.5.0'
@@ -87,11 +87,12 @@ end
 group :development do
   gem 'rails3-generators'
   gem 'annotate', :git => 'git://github.com/miyucy/annotate_models.git', :require => nil
+  gem 'ruby-debug', :require => nil
 end
 
 group :test, :development do
-  gem 'rspec',       '>= 2.0.0.beta.20'
-  gem 'rspec-rails', '>= 2.0.0.beta.20'
+  gem 'rspec',       '>= 2.0.0.beta.20', :require => nil
+  gem 'rspec-rails', '>= 2.0.0.beta.20', :require => nil
   gem 'machinist',   '>= 2.0.0.beta2', :require => nil
   gem 'forgery', :require => nil
 end

@@ -1,0 +1,22 @@
+- has_js 'bhm/signup'
+
+- if flash[:profile_notice].present?
+  %p#profile-notice= flash[:profile_notice]
+
+= semantic_form_for @user do |form|
+
+  = form.inputs :name => "Your Account Details" do
+    = form.input :email, :label => "Your Email Address"
+    = form.input :full_name, :as => :first_and_last_name, :label => "Your Name"
+    = form.input :password, :as => :confirmed_password, :input_html => {:placeholder => "Your Password"}, :confirmation => {:placeholder => "Confirm your Password"}, :label => "Your Password"
+  
+  = form.inputs :name => "Tell us about yourself" do
+    = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => Time.now.year, :label => "When were you born?", :required => false
+    = form.input :origin, :as => input_type_for_origin(form.object.origin), :collection => User::ORIGIN_CHOICES,  :required => false
+
+  - if @user.needs_ml_subscriptions?
+    = form.inputs :name => "Mailing List Subscriptions" do
+      = form.input :mailing_list_choices, :collection => User.available_mailing_list_choices, :as => :check_boxes
+    
+  = form.buttons do
+    = form.commit_button_with_cancel :cancel => {:url => :new_user, :text => "Change Account Type", :id => "auth-selector-link"}

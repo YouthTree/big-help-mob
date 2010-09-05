@@ -14,3 +14,11 @@ end
 ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
 require 'rubygems'
 require 'bundler/setup'
+
+debug_file = File.expand_path("../tmp/debug.txt", File.dirname(__FILE__))
+if File.exists?(debug_file)
+  require 'ruby-debug'
+  Debugger.wait_connection = true
+  Debugger.start_remote
+  File.delete debug_file
+end

@@ -23,9 +23,9 @@
     - if form.object.origin.blank? || form.object.origin_changed?
       = form.input :origin, :as => input_type_for_origin(form.object.origin), :collection => User::ORIGIN_CHOICES
 
-  - if @user.new_record?
+  - if @user.needs_ml_subscriptions?
     = form.inputs :name => "Mailing List Subscriptions" do
-      = form.input :mailing_list_ids, :collection => CampaignMonitorWrapper.for_select, :as => :check_boxes
+      = form.input :mailing_list_choices, :collection => User.available_mailing_list_choices, :as => :check_boxes
     
   = form.buttons do
     = form.commit_button_with_cancel(@user.new_record? ? {:cancel => {:url => :new_user, :text => "Change Account Type", :id => "auth-selector-link"}} : {})

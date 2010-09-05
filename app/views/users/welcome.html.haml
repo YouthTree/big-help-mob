@@ -6,6 +6,9 @@
 
 %h3 Get Started
 %ul#getting-started
+  - if !current_user.valid?
+    %li= link_to 'Complete your Profile', edit_user_path(:current), :id => 'edit-your-profile-item'
+    %li.or - or -
   - if Mission.has_next?
     %li= link_to 'Find out about / join our next mission', mission_path(:next), :id => 'next-mission-item'
   - else

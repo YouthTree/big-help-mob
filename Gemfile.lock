@@ -91,6 +91,7 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
     closure-compiler (0.3.2)
+    columnize (0.3.1)
     compass (0.10.5)
       haml (>= 3.0.4)
     compass-960-plugin (0.9.13)
@@ -123,6 +124,7 @@ GEM
       yui-compressor (>= 0.9.1)
     json (1.4.6)
     json_pure (1.4.6)
+    linecache (0.43)
     liquid (2.2.2)
     macaddr (1.0.0)
     machinist (2.0.0.beta2)
@@ -144,7 +146,7 @@ GEM
     newrelic_rpm (2.12.3)
     open4 (1.0.1)
     polyglot (0.3.1)
-    pseudocephalopod (0.2.4)
+    pseudocephalopod (0.2.5)
       activerecord (>= 3.0.0.beta2)
       activesupport (>= 3.0.0.beta2)
       uuid
@@ -207,6 +209,11 @@ GEM
     rspec-mocks (2.0.0.beta.20)
     rspec-rails (2.0.0.beta.20)
       rspec (= 2.0.0.beta.20)
+    ruby-debug (0.10.3)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.3.0)
+    ruby-debug-base (0.10.3)
+      linecache (>= 0.3)
     ruby-googlechart (0.6.4)
     rvm (1.0.1)
     show_for (0.2.3)
@@ -279,7 +286,7 @@ DEPENDENCIES
   msales-carmen (>= 0.1.4)
   mysql2
   newrelic_rpm
-  pseudocephalopod (>= 0.2.1)
+  pseudocephalopod (>= 0.2.5)
   rails (= 3.0.0)
   rails3-generators
   remarkable (>= 4.0.0.alpah4)
@@ -292,6 +299,7 @@ DEPENDENCIES
   rr
   rspec (>= 2.0.0.beta.20)
   rspec-rails (>= 2.0.0.beta.20)
+  ruby-debug
   ruby-googlechart (>= 0.6.4)
   show_for
   shuriken (>= 0.2.0)

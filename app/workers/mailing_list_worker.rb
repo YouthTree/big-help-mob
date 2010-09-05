@@ -7,10 +7,8 @@ class MailingListWorker
     @mailing_list_ids   = mailing_list_ids
   end
   
-  def self.queue_for!(user)
-    debugger
+  def self.queue_for!(subscriber)
     return if !subscriber.mailing_list_ids.present?
-    debugger
     details, list_ids = subscriber.to_subscriber_details, subscriber.mailing_list_ids
     Resque.enqueue self.class, details, list_ids
   end
@@ -20,7 +18,7 @@ class MailingListWorker
   end
   
   def subscribe!
-    CampaignMonitorWrapper.update_subscriptions_for_subscriber! subscriber_details, @mailing_list_ids
+    CampaignMonitorWrapper.update_for_subscriber! subscriber_details, @mailing_list_ids
   end
   
 end

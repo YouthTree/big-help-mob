@@ -63,6 +63,27 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
       )
   end
   
+  def first_and_last_name_input(method, options)
+    html_options = options.delete(:input_html) || {}
+    first_name_options = (options.delete(:first_name) || {}).reverse_merge! :placeholder => "First Name", :class => 'first-name first-field'
+    last_name_options = (options.delete(:last_name) || {}).reverse_merge! :placeholder => "Last Name", :class => 'last-name'
+    html_options = default_string_options(method, :string).merge(html_options)
+    text = label(:first_name, options_for_label(options))
+    text << text_field(:first_name, html_options.merge(first_name_options))
+    text << text_field(:last_name, html_options.merge(last_name_options))
+    text
+  end
+  
+  def confirmed_password_input(method, options)
+    html_options = options.delete(:input_html) || {}
+    confirmation_options = options.delete(:confirmation).reverse_merge(html_options)
+    html_options = default_string_options(method, :password).merge(html_options)
+    text = label(method, options_for_label(options))
+    text << password_field(method, html_options.merge(html_options).merge(:class => 'first-field'))
+    text << password_field(:"#{method}_confirmation", html_options.merge(confirmation_options))
+    text
+  end
+  
   def dob_input(*args)
     options = args.extract_options!
     options.merge!(:start_year => (Time.now.year - 100), :end_year => Time.now.year, :selected => nil)

@@ -59,7 +59,7 @@ module MailingListSubscribeable
     end
     
     def persist_ml_subscriptions!
-      MailingListWorker.queue_for! subscriber
+      MailingListWorker.queue_for! self
       persisted_ml_subscriptions!
     end
     
