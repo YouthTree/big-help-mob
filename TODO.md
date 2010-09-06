@@ -1,7 +1,6 @@
 # Current BHM Todo List
 
 * Field for volunteer involvement on users, "volunteered in the last year".
-* Simplify fields: Name, Email, Password, DOB, Origin
 * One line response for the captain application
 * Stats per mission page
 * Get clicky access details to the rest of the team
@@ -17,3 +16,4 @@
 * Options become "other mailing lists" (vs. individual choices)
 * Restrict admin user interface for users to notes, admin selection
 * Sitemap page
+* Simplify fields: Name, Email, Password, DOB, Origin
