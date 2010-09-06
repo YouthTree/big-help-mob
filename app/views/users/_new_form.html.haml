@@ -9,7 +9,7 @@
     = form.input :full_name, :as => :first_and_last_name, :label => "Your Name"
     = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => (Time.now.year - 10), :label => "When were you born?", :required => false, :include_blank => false
   
-  = form.inputs :name => "About Yourself" do
+  = form.inputs :name => "Your Account" do
     = form.input :email, :label => "Email", :input_html => {:placeholder => "Your Email Address"}
     = form.input :password, :as => :confirmed_password, :input_html => {:placeholder => "Your Password"}, :confirmation => {:placeholder => "Confirm Your Password"}
 
