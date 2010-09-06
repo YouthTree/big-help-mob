@@ -6,9 +6,11 @@ class ContactForm < MailForm::Base
   attribute :message,  :validate => true
   
   def headers
-    return :subject => ::I18n.t(:subject, :scope => [:actionmailer, :contact_form]),
-           :from    => "#{name} <#{email}>",
-           :to      => Settings.mailer.contact_email
+    origin = "#{name} <#{email}>"
+    return :subject  => ::I18n.t(:subject, :scope => [:actionmailer, :contact_form]),
+           :from     => origin,
+           :reply_to => origin,
+           :to       => Settings.mailer.contact_email
   end
   
   def persisted?

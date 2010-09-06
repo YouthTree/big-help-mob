@@ -10,7 +10,7 @@ class MailingListWorker
   def self.queue_for!(subscriber)
     return if !subscriber.mailing_list_ids.present?
     details, list_ids = subscriber.to_subscriber_details, subscriber.mailing_list_ids
-    Resque.enqueue self.class, details, list_ids
+    QueueManager.enqueue self, details, list_ids
   end
   
   def self.perform(subscriber_details, mailing_list_ids)
@@ -18,7 +18,7 @@ class MailingListWorker
   end
   
   def subscribe!
-    CampaignMonitorWrapper.update_for_subscriber! subscriber_details, @mailing_list_ids
+    CampaignMonitorWrapper.update_for_subscriber! @subscriber_details, @mailing_list_ids
   end
   
 end

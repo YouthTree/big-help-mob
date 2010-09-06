@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
   
   ORIGIN_CHOICES = [
+    "I'd rather not say",
     "Poster",
     "I got stamped",
     "Facebook",
@@ -40,6 +41,7 @@ class User < ActiveRecord::Base
 
   acts_as_authentic do |c|
     c.validate_email_field  true
+    c.validate_login_field  false
     c.account_merge_enabled true
     c.account_mapping_mode  :internal
   end
@@ -51,6 +53,7 @@ class User < ActiveRecord::Base
   validates_presence_of :phone,               :if => :editing_participation?
   validates_presence_of :captain_application, :if => :should_validate_captain_fields?
   validates_associated  :captain_application, :if => :should_validate_captain_fields?
+  validate              :ensure_name_is_filled_in
 
   scope :with_age, where('date_of_birth IS NOT NULL AND age > 0').select("*,  DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(date_of_birth, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(date_of_birth, '00-%m-%d')) AS age")
 
@@ -79,18 +82,30 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    display_name.present? ? display_name : login
+    if display_name.present?
+      display_name
+    elsif full_name.present?
+      full_name
+    else
+      login
+    end
   end
 
   alias name to_s
   
   def name_changed?
-    display_name_changed? || login_changed?
+    display_name_changed? || login_changed? || full_name_changed?
+  end
+  
+  def full_name_changed?
+    first_name_changed? || last_name_changed?
   end
   
   def name_was
     if display_name_changed?
       display_name_was
+    elsif first_name_changed?
+      [(first_name_was || first_name), (last_name_was || last_name)].join(" ")
     elsif display_name.blank? && login_changed?
       login_was
     else
@@ -138,12 +153,29 @@ class User < ActiveRecord::Base
   def persisted_ml_subscriptions!
     super
     self.completed_mailing_list_subscriptions = true
-    self.class.where(:id => user.id).update_all :completed_mailing_list_subscriptions => true
+    self.class.where(:id => id).update_all :completed_mailing_list_subscriptions => true
+  end
+  
+  def date_of_birth
+    value = super
+    value.present? ? value : default_date_of_birth
+  end
+  
+  def default_date_of_birth
+    new_record? ? Date.new(1990, 1, 1) : nil
   end
   
   def self.admin_as?(username, password)
     user = User.where('(login = ? OR email = ?) AND admin = ?', username, username, true).first
     user.present? && (user.valid_password?(password, false) || user.perishable_token == password)
+  end
+  
+  def ensure_name_is_filled_in
+    return if first_name.present? && last_name.present?
+    if new_record? || (using_password? && login.blank?)
+      errors.add :full_name, "first name must be filled in" if first_name.blank?
+      errors.add :full_name, "last name must be filled in" if last_name.blank?
+    end
   end
   
   protected
