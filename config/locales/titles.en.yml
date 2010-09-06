@@ -3,6 +3,7 @@ en:
     title:
       pages:
         index: "Welcome to Big Help Mob"
+        sitemap: "Big Help Mob Sitemap"
       user_sessions:
         new: Sign In
         create: Sign In

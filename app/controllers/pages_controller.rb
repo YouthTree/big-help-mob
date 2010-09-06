@@ -13,6 +13,10 @@ class PagesController < ApplicationController
   def_page :about
   def_page :privacy_policy
   def_page :terms_and_conditions
+  
+  
+  def sitemap
+  end
 
   protected
   

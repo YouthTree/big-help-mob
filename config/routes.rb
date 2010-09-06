@@ -59,7 +59,7 @@ BigHelpMob::Application.routes.draw do
   get 'contact-us',  :to => 'contacts#new', :as => :contact_us
   post 'contact-us', :to => 'contacts#create'
 
-  %w(about privacy_policy terms_and_conditions).each do |page|
+  %w(about privacy_policy terms_and_conditions sitemap).each do |page|
     get page.dasherize, :to => "pages##{page}", :as => page.to_sym
   end
 

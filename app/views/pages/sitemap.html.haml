@@ -1,0 +1,28 @@
+
+%ul#sitemap
+
+  %li
+    %span.section-name General Pages
+    %ul
+      %li= link_to "Home Page", root_path
+      %li= link_to "Sitemap", sitemap_path
+      - each_listing_page do |title, name|
+        %li= link_to title, url_for(name)
+  %li
+    %span.section-name Mission Pages
+    %ul
+      %li= link_to "Past Missions (Archive)", missions_path
+      %li= link_to "Next Mission Path", mission_path(:next)
+      - Mission.viewable.all.each do |mission|
+        %li= link_to mission.name, mission_path(mission)
+        %li= link_to "Join #{mission.name}", join_mission_path(mission)
+  %li
+    %span.section-name User Account Pages
+    %ul
+      %li= link_to "Your Account", user_path(:current)
+      %li= link_to "Sign In", sign_in_path
+      %li= link_to "Sign Up", new_user_path
+      %li= link_to "Sign Up (Traditional Only)", new_user_path(:traditional => true)
+      %li= link_to "Password Reset", new_password_reset_path
+      
+  
