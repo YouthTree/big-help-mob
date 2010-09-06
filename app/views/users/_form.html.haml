@@ -6,11 +6,9 @@
 = semantic_form_for @user do |form|
   
   = form.inputs :name => "Your Account Details" do
-    = form.input :login, :hint => "You'll use this to login when you visit the site.", :required => (@user.new_record? || @user.using_password?)
     = form.input :email, :hint => "We promise you can trust us with your email.", :required => true
-    - if @user.new_record? || @user.using_password?
-      = form.input :password, :required => @user.new_record?
-      = form.input :password_confirmation
+    - if @user.using_password?
+      = form.input :password, :as => :confirmed_password, :hint => "You only need to fill this in if you wish to change your password.", :input_html => {:placeholder => "Your New Password"}, :confirmation => {:placeholder => "Confirm Your New Password"}
     
   = form.inputs :name => "Tell us about yourself" do
     = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => Time.now.year

@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_participation
   
+  def self.find_by_email_or_login(login)
+    find_by_email(login) || find_by_login(login)
+  end
+  
   def editing_participation?
     current_participation.present?
   end

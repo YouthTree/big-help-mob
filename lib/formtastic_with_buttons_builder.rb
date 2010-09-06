@@ -76,7 +76,7 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
   
   def confirmed_password_input(method, options)
     html_options = options.delete(:input_html) || {}
-    confirmation_options = options.delete(:confirmation).reverse_merge(html_options)
+    confirmation_options = (options.delete(:confirmation) || {}).reverse_merge(html_options)
     html_options = default_string_options(method, :password).merge(html_options)
     text = label(method, options_for_label(options))
     text << password_field(method, html_options.merge(html_options).merge(:class => 'first-field'))

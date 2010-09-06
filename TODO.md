@@ -6,9 +6,9 @@
 * Stats per mission page
 * Get clicky access details to the rest of the team
 * Cancel button for mission attendance
-* Sitemap page
 * CMSy archive page
 * Flickr Gallery Widget (homepage)
+* Style Sitemap page
 
 ## Recently Completed
 
@@ -16,3 +16,4 @@
 * Set reply-to on contacts from the website
 * Options become "other mailing lists" (vs. individual choices)
 * Restrict admin user interface for users to notes, admin selection
+* Sitemap page

@@ -11,7 +11,7 @@
   
   = form.inputs :name => "About Yourself" do
     = form.input :email, :label => "Email", :input_html => {:placeholder => "Your Email Address"}
-    = form.input :password, :as => :confirmed_password, :input_html => {:placeholder => "Your Password"}, :confirmation => {:placeholder => "Confirm your Password"}
+    = form.input :password, :as => :confirmed_password, :input_html => {:placeholder => "Your Password"}, :confirmation => {:placeholder => "Confirm Your Password"}
 
   - if @user.needs_ml_subscriptions?
     = form.inputs :name => "And Finally Us" do
