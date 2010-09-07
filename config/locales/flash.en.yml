@@ -21,6 +21,7 @@ en:
       full_incomplete: "Hey there! Welcome back. Before you can continue, you just need to fill in a few details..."
     participation:
       joined: "You're all set to partake in this mission - thanks!"
+      cancelled: "Thanks for letting us know you can no longer make it!"
     password_resets:
       unable_to_reset: "I'm sorry, we were unable to send a password reset notice for the given email"
       reset_sent: "Please check your email for instructions on how to continue"

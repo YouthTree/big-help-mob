@@ -39,6 +39,12 @@ class MissionsController < ApplicationController
       render :action => "edit"
     end
   end
+  
+  def withdraw
+    check_mission_status!
+    @participation.destroy
+    redirect_to @mission, :notice => tf('participation.cancelled')
+  end
 
   def index
     @missions = Mission.completed.all

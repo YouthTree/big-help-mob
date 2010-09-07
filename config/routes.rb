@@ -53,7 +53,10 @@ BigHelpMob::Application.routes.draw do
   get 'missions/:id/edit/:as', :to => 'missions#edit', :as => :edit_mission_with_role
 
   resources :missions do
-    member { get :join }
+    member do
+      get    :join
+      delete :withdraw
+    end
   end
 
   get 'contact-us',  :to => 'contacts#new', :as => :contact_us

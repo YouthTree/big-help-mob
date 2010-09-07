@@ -7,6 +7,7 @@
       to be able to attend.
     - else
       == If you want to edit your participation details, #{link_to 'click here', [:edit, @mission]}.
+    == If you wish to withdraw, #{link_to "withdraw", withdraw_mission_path(@mission), :method => :delete}.
   - elsif @mission.signup_open?(:sidekick) || @mission.signup_open?(:captain)
     Want to take part in this mission? You can sign up to take part
     == #{link_to "as a Captain or Sidekick", [:join, @mission]}!
