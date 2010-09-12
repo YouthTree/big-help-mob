@@ -13,9 +13,10 @@ class CampaignMonitorWrapper
     
     def list_options
       default = Settings.campaign_monitor.default_list
+      default = nil if default.blank? # Doesn't have the setting key.
       {
         "default" => default,
-        "other"   => (available_list_ids - [default])
+        "other"   => (available_list_ids - [default]).compact
       }
     end
     
