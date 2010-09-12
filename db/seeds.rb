@@ -1,12 +1,13 @@
+require 'forgery'
 # Create a User.
 
 sync, $stdout.sync = $stdout.sync, true
 begin
-  AttrAccessibleScoping.disabled do
+  AttrAccessibleScoping.disable do
     puts "Making Admin User."
-    User.create! :login => "admin", :password => "monkey", :password_confirmation => "monkey", :email => "example@example.com", :admin => true
+    User.create :login => "admin", :password => "monkey", :password_confirmation => "monkey", :email => "example@example.com", :admin => true, :validate => false
   
-    print "Making Orgaisation: "
+    print "Making Organisations: "
     10.times do
       print "."
       Organisation.create! :name        => Forgery(:name).company_name,
@@ -32,10 +33,10 @@ begin
     Content.create! :key => "pages.privacy-policy", :title => "Our Privacy Policy", :content => ""
     Content.create! :key => "pages.terms-and-conditions", :title => "Terms and Conditions", :content => ""
     
-    DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "", :content_type => "html"
-    DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "", :content_type => "html"
-    DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "", :content_type => "text"
-    DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "", :content_type => "text"
+    DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "(blank)", :content_type => "html"
+    DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "(blank)", :content_type => "html"
+    DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "(blank)", :content_type => "text"
+    DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "(blank)", :content_type => "text"
     
   end
 ensure
