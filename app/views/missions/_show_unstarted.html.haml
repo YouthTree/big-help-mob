@@ -35,11 +35,11 @@
 
 #mission-description
   = @mission.description_as_html
-  = join_mission_link @mission
+  = join_or_leave_mission_link @mission
 
 = faq @mission_questions
 
-= join_mission_link @mission
+= join_or_leave_mission_link @mission
 
 %section#mission-maps.columns-container
   #mission-location-map.column
