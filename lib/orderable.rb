@@ -11,22 +11,29 @@ module Orderable
 
   module ClassMethods
     
+    def ordered
+      order("#{quoted_orderable_field} ASC")
+    end
+    
     def orderable_field_is(field = nil)
       self.orderable_field = field.to_sym
     end
     
     def update_order(id_array = nil)
       id_array = Array(id_array).flatten.reject(&:blank?).map(&:to_i).uniq
-      update_all orderable_sql_for_ids(orderable_field, id_array), ['id IN (?)', id_array]
+      update_all orderable_sql_for_ids(id_array), ['id IN (?)', id_array]
     end
 
-    def orderable_sql_for_ids(field, ids)
+    def quoted_orderable_field
+      "#{quoted_table_name}.#{connection.quote_column_name(orderable_field)}"
+    end
+
+    def orderable_sql_for_ids(ids)
       ids = ids.join(",")
-      field = "#{quoted_table_name}.#{connection.quote_column_name(field)}"
       if Orderable.adapter =~ /^mysql/
-        ["#{field} = FIND_IN_SET(id, ?)", ids]
+        ["#{quoted_orderable_field} = FIND_IN_SET(id, ?)", ids]
       elsif Orderable.adapter =~ /^postgres/
-        ["#{field} = STRPOS(?, ','||id||',')", ",#{ids},"]
+        ["#{quoted_orderable_field} = STRPOS(?, ','||id||',')", ",#{ids},"]
       end
     end
 

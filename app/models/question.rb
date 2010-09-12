@@ -7,7 +7,6 @@ class Question < ActiveRecord::Base
   
   scope :visible,   where(:visible => true)
   scope :invisible, where(:visible => false)
-  scope :ordered,   order('position ASC')
   
   attr_accessible :question, :answer, :visible, :position
   
