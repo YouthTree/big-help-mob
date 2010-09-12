@@ -7,10 +7,5 @@ config/settings.yml
 doc/app
 .yardoc
 .sass-cache
-tmp/restart.txt
-tmp/*.sql
 public/stylesheets/*.css
-config/newrelic.yml
 public/assets/
-.rvmrc
-.gemset

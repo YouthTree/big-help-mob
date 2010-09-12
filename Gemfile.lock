@@ -143,7 +143,6 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    newrelic_rpm (2.12.3)
     open4 (1.0.1)
     polyglot (0.3.1)
     pseudocephalopod (0.2.5)
@@ -285,7 +284,6 @@ DEPENDENCIES
   mail_form (>= 1.2.1)
   msales-carmen (>= 0.1.4)
   mysql2
-  newrelic_rpm
   pseudocephalopod (>= 0.2.5)
   rails (= 3.0.0)
   rails3-generators
