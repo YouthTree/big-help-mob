@@ -19,6 +19,8 @@ To install Big Help Mob itself, run the following:
 
 **Instructions go here**
 
+### Working on CoffeeScript / JavaScript?
+
 If coffeescript isn't installed and available, you **should not** edit javascript or
 coffeescript. To setup coffeescript, your simplest approach is:
 
