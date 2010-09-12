@@ -1,16 +1,16 @@
 GIT
   remote: git://github.com/justinfrench/formtastic.git
-  revision: eeba8d402721a3b3ae3c6e0d8f1b123fcae96b65
+  revision: 48f6ee8
   branch: rails3
   specs:
-    formtastic (1.1.0.beta)
+    formtastic (1.1.0)
       actionpack (>= 2.3.0)
       activesupport (>= 2.3.0)
       i18n (>= 0.4.0)
 
 GIT
   remote: git://github.com/kuldarkrabbi/authlogic_rpx.git
-  revision: ed6ed44ccb216bc83d574152fbf2110c57f09d3f
+  revision: 7e16974
   specs:
     authlogic_rpx (1.1.1)
       authlogic (>= 2.1.3)
@@ -18,27 +18,27 @@ GIT
 
 GIT
   remote: git://github.com/kurbmedia/authlogic.git
-  revision: 91db967824162cd909d7285c890098e060ce7eff
+  revision: 91db967
   specs:
     authlogic (2.1.6)
       activesupport
 
 GIT
   remote: git://github.com/mislav/will_paginate.git
-  revision: 36159385c8a5837fc63fe901ebe0a88205b5ce8d
+  revision: 3615938
   ref: rails3
   specs:
     will_paginate (3.0.pre2)
 
 GIT
   remote: git://github.com/miyucy/annotate_models.git
-  revision: ace84ab47a21a0fcbbed431051ea3a140a4f99f9
+  revision: ace84ab
   specs:
     annotate (2.4.0)
 
 GIT
   remote: git://github.com/pluginaweek/state_machine.git
-  revision: e625d2645a71fb5bc50ca61553b59b4890444508
+  revision: e625d26
   specs:
     state_machine (0.9.4)
 
@@ -46,7 +46,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     SystemTimer (1.2)
-    ZenTest (4.3.3)
+    ZenTest (4.4.0)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -112,7 +112,7 @@ GEM
     haml (3.0.18)
     has_scope (0.5.0)
     highline (1.6.1)
-    hoptoad_notifier (2.3.5)
+    hoptoad_notifier (2.3.6)
       activesupport
     httpclient (2.1.5.2)
     i18n (0.4.1)
@@ -128,14 +128,13 @@ GEM
     liquid (2.2.2)
     macaddr (1.0.0)
     machinist (2.0.0.beta2)
-    mail (2.2.5)
+    mail (2.2.6)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mail_form (1.3.0)
     mime-types (1.16)
     msales-carmen (0.1.4)
-    mysql2 (0.2.3)
     net-scp (1.0.3)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -143,7 +142,7 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    newrelic_rpm (2.12.3)
+    newrelic_rpm (2.13.1)
     open4 (1.0.1)
     polyglot (0.3.1)
     pseudocephalopod (0.2.5)
@@ -151,7 +150,7 @@ GEM
       activesupport (>= 3.0.0.beta2)
       uuid
     rack (1.2.1)
-    rack-mount (0.6.12)
+    rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -170,7 +169,7 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
-    redis (2.0.5)
+    redis (2.0.6)
     redis-namespace (0.8.0)
       redis (< 3.0.0)
     redisk (0.2.2)
@@ -215,7 +214,8 @@ GEM
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
     ruby-googlechart (0.6.4)
-    rvm (1.0.1)
+    ruby-pg (0.7.9.2008.01.28)
+    rvm (1.0.7)
     show_for (0.2.3)
     shuriken (0.2.1)
     sinatra (1.0)
@@ -284,7 +284,6 @@ DEPENDENCIES
   machinist (>= 2.0.0.beta2)
   mail_form (>= 1.2.1)
   msales-carmen (>= 0.1.4)
-  mysql2
   newrelic_rpm
   pseudocephalopod (>= 0.2.5)
   rails (= 3.0.0)
@@ -301,6 +300,7 @@ DEPENDENCIES
   rspec-rails (>= 2.0.0.beta.20)
   ruby-debug
   ruby-googlechart (>= 0.6.4)
+  ruby-pg
   show_for
   shuriken (>= 0.2.0)
   sitemap_generator
