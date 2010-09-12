@@ -46,8 +46,8 @@ describe Address do
     end
 
     it 'should return the country name' do
-      @address.country = 'Australia'
-      @address.country_name.should be_nil
+      @address.country = 'US'
+      @address.country_name.should == 'United States'
     end
   end
 
