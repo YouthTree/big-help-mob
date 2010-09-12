@@ -12,3 +12,6 @@ BHM.withBase(function(ns) {
     return (_a = $(element)).hasDataAttr.apply(_a, args);
   });
 });
+$(document).ready(function() {
+  return $("input[placeholder]").placeholder();
+});
