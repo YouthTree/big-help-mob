@@ -16,6 +16,15 @@ class UserStatistics
     results
   end
   
+  def self.count_per_volunteering_history
+    counts = User.where("volunteered_in_last_year IS NOT NULL").group("volunteered_in_last_year").count(:all).stringify_keys
+    items = [["Yes", "1"], [ "No", "0"]]
+    values = ActiveSupport::OrderedHash.new(0)
+    items.each do |k, v|
+      values[k] = counts[v].to_i
+    end
+    values
+  end
   
   def self.count_per_age
     raw_counts = User.count :all, :group => "DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(date_of_birth, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(date_of_birth, '00-%m-%d'))"
