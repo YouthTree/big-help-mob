@@ -12,13 +12,8 @@
   #visits-chart.dashboard-chart
 
 #user-signups.statistic
-  %h3 User Signups By Date
-    
-  #signups-chart.dashboard-chart
-    %dl
-      - @user_stats.each_pair do |age, count|
-        %dt= age
-        %dd= count
+  %h3 User Signups By Date    
+  #signups-chart.dashboard-chart= dl_for_stat @user_stats
 
 #user-ages.statistic
   %h3 Users per Age
@@ -49,6 +44,12 @@
           %span.origin-count= pluralize count, "user"
           from
           %span.origin-name= name
+
+
+#user-volunteering-history.statistic
+  %h3 Answers to "Have you volunteered in the last year"
+  #volunteering-chart.dashboard-chart= dl_for_stat @user_volunteering_history
+
 #user-locations.google-map.statistic
   %h3 User Locations
   #user-locations-map.static-google-map= static_map_of_addresses @user_locations, :width => 680, :height => 400
