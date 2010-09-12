@@ -1,22 +1,21 @@
 ---
 default:
-  cookie_verifier_secret: "30-plus-chars-of-random-stuff-awesome-ninja-skills-and-other-stuff"
+  secret_key: "30-plus-chars-of-random-stuff-awesome-ninja-skills-and-other-stuff"
+  session_key: "_bighelpmob_session"
   rpx:
-    api_key: your-rpx-now-api-key
-    realm: your-rpx-now-realm
-  hominid:
-    list_mapping:
-      list_id: "shown_list_name"
-  session:
-    key: "_bighelpmob_session"
-    secret: "some-long-and-random-string"
+    api_key: your-api-key
+    realm: your-rpx-subdomain
+  google:
+    geocoder: 'your-google-geocoder-key'
 production:
   google_analytics:
     identifier: "UA-XXXXXXXX-X"
-  failtale:
-    api_key: "some-key"
-  hominid:
-    api_key: your-mailchimp-api-key
+  campaign_monitor:
+    default_list: "list_id_from_below"
+    lists:
+      some_id_here: "Youth Tree General"
+      another_id_here: "TEDxPerth"
+      a_third_id_here: "Big Help Mob"
   mailer:
     contact_email: "team@bighelpmob.org"
     from: "noreply@bighelpmob.org"
@@ -32,7 +31,7 @@ production:
       password: yourpassword
 development:
   mailer:
-    contact_email: "bhm-test@bhm.dev"
+    contact_email: "your-email@your-email.com"
     from: "bhm-test@bhm.dev"
     host: "localhost:3000"
     delivery_method: sendmail

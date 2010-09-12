@@ -1,9 +1,7 @@
 BigHelpMob::Application.routes.draw do
-  
   mount Resque::Server.new, :at => "/admin/resque"
 
   namespace :admin do
-
     resources :emails, :only => [:new, :create] do
       collection do
         get :queued

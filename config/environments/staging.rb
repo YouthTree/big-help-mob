@@ -1,5 +1,4 @@
 BigHelpMob::Application.configure do
-  # Settings specified here will take precedence over those in config/environment.rb
   config.cache_classes                     = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -8,8 +7,6 @@ BigHelpMob::Application.configure do
   config.i18n.fallbacks                    = true
   config.active_support.deprecation        = :notify
   config.log_level                         = :debug
-
-  # Old, optional configuration
   # config.logger                              = SyslogLogger.new
   # config.cache_store                         = :mem_cache_store
   # config.action_controller.asset_host        = "http://assets.example.com"
