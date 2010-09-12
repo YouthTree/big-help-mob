@@ -5,6 +5,11 @@ require 'youthtree-capistrano'
 set :application,     "bighelpmob"
 set :repository_name, "big-help-mob"
 
+# Use git-flow based branches for deployment.
+set :branch do
+  stage == "production" ? "master" : "development"
+end
+
 namespace :resque do
   task :run do
     bundle_exec "./script/resque QUEUE=*"
