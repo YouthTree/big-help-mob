@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
     "Other organization",
     "Other"
   ]
+  
+  VOLUNTEERING_CHOICES = [
+    ["No, I haven't.", false],
+    ["Yes, I have.",   true]
+  ]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_choices,
