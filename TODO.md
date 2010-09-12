@@ -1,8 +1,9 @@
 # Current BHM Todo List
 
+* CMSy archive page
+
 * Stats per mission page
 * Get clicky access details to the rest of the team
-* CMSy archive page
 * Flickr Gallery Widget (homepage)
 * Ghost user button
 
