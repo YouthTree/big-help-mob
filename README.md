@@ -17,7 +17,45 @@ To get started with this application, we assume you have an environment set up w
 
 To install Big Help Mob itself, run the following:
 
-**Instructions go here**
+    git clone git@github.com:YouthTree/big-help-mob.git
+
+Or, if you're not on the youthtree team,
+
+    git clone git://github.com/YouthTree/big-help-mob.git
+
+Now, change into the directory.
+
+    cd big-help-mob
+
+Note that it will ask you if you wish to trust the rvmrc.
+Inspect it to make sure it's ok and then accept it. Doing so, will do the following:
+
+* Install ree if not present
+* Create a bighelpmob gemset
+* Setup bundler in the gemset
+
+Essentially, it bootstraps an environment ready for the next step.
+
+Now, you can run:
+
+    ./script/configure
+    
+Which will guide you through:
+
+* Installing all of the gem dependencies
+* Configuring `config/settings.yml`
+* Configuring `config/database.yml`
+
+Next, you'll want to load some data into your database. If you're on the team
+and have access to the server, run:
+
+    cap staging sync:down
+    
+Which will give you a cleaned version of the staging dataset. Otherwise, run:
+
+    rake db:setup
+    
+Which loads the schema and creates an initial user.
 
 ### Working on CoffeeScript / JavaScript?
 
