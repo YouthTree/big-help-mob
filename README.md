@@ -15,6 +15,9 @@ always use `master` whilst deploying to staging shall always use `development`.
 To get started with this application, we assume you have an environment set up with
 [rvm](http://rvm.beginrescueend.com/), mysql, [git](http://git-scm.org/).
 
+To install Big Help Mob itself, run the following:
+
+**Instructions go here**
 
 If coffeescript isn't installed and available, you **should not** edit javascript or
 coffeescript. To setup coffeescript, your simplest approach is:
