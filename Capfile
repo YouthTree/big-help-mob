@@ -7,7 +7,7 @@ set :repository_name, "big-help-mob"
 
 # Use git-flow based branches for deployment.
 set :branch do
-  stage == "production" ? "master" : "development"
+  stage == "production" ? "master" : "develop"
 end
 
 namespace :resque do

@@ -6,9 +6,9 @@ Big Help Mob is Youth Tree's latest project currently in development. The idea i
 
 This app serves as registration and event management for each Big Help Mob event. The app is written on Rails 3 and the "Youth Tree Stack" - a common set of technology (haml, sass + compass, coffeescript + barista and a few other things).
 
-The application uses [git flow](), with the `master` branch being used for the current stable
-and `development` being used for the next release. As such, deploying to production should
-always use `master` whilst deploying to staging shall always use `development`.
+The application uses [git-flow](http://github.com/nvie/gitflow), with the `master` branch being used for the current stable
+and `develop` being used for the next release. As such, deploying to production should
+always use `master` whilst deploying to staging shall always use `develop`.
 
 ## Getting Started
 
@@ -33,7 +33,7 @@ coffeescript. To setup coffeescript, your simplest approach is:
 On the Big Help Mob team? Deployment should be a simple matter of:
 
 1. `cap production deploy` - Deploy from `master` to the production server, http://bighelpmob.org/
-2. `cap deploy` - Deploy from `development` to the staging server, http://staging.bighelpmob.org/
+2. `cap deploy` - Deploy from `develop` to the staging server, http://staging.bighelpmob.org/
 
 For more access details, please contact the other members of the team.
 
