@@ -6,7 +6,7 @@ end
 
 # Rails!
 gem 'rails', '= 3.0.0'
-gem 'ruby-pg'
+gem 'pg'
 gem 'json'
 
 # Geoawareness and mapping stuff.
