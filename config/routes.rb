@@ -53,7 +53,7 @@ BigHelpMob::Application.routes.draw do
   resources :missions do
     member do
       get    :join
-      delete :withdraw
+      delete :leave
     end
   end
 
