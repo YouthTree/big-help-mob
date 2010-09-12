@@ -1,10 +1,10 @@
 # Current BHM Todo List
 
-* One line response for the captain application
 * Stats per mission page
 * Get clicky access details to the rest of the team
 * CMSy archive page
 * Flickr Gallery Widget (homepage)
+* Ghost user button
 
 ## Recently Completed
 
@@ -16,4 +16,4 @@
 * Style Sitemap page
 * Simplify fields: Name, Email, Password, DOB, Origin
 * Cancel button for mission attendance
-showUserVolunteering
+* One line response for the captain application
