@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_choices,
-                  :captain_application_attributes, :origin, :date_of_birth
+                  :captain_application_attributes, :origin, :date_of_birth, :volunteered_in_last_year
 
   has_many :mission_participations, :dependent => :destroy
   
