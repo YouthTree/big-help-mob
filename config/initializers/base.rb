@@ -22,9 +22,11 @@ if defined?(FlickRaw) && Settings.flickr_api?
   FlickRaw.shared_secret = Settings.flickr_api.secret
 end
 
-# Standard but unused rails features.
-
 # Rails.backtrace_cleaner.add_silencer { |line| line =~ /my_noisy_library/ }
 # Rails.backtrace_cleaner.remove_silencers!
 # Mime::Type.register_alias "text/html", :iphone
 Mime::Type.register 'application/pdf', :pdf
+
+CampaignMonitorWrapper.configure!
+
+require 'attr_accessible_scoping'
