@@ -10,6 +10,19 @@ The application uses [git flow](), with the `master` branch being used for the c
 and `development` being used for the next release. As such, deploying to production should
 always use `master` whilst deploying to staging shall always use `development`.
 
+## Getting Started
+
+To get started with this application, we assume you have an environment set up with
+[rvm](http://rvm.beginrescueend.com/), mysql, [git](http://git-scm.org/).
+
+
+If coffeescript isn't installed and available, you **should not** edit javascript or
+coffeescript. To setup coffeescript, your simplest approach is:
+
+1. Install [Node.js](http://nodejs.org/) (to /usr/local preferrably) - See http://nodejs.org/#download
+2. Install [NPM](http://github.com/isaacs/npm) - Run `sh < <(curl http://npmjs.org/install.sh)`
+3. Run `npm install coffee-script`
+
 ## Deploying
 
 On the Big Help Mob team? Deployment should be a simple matter of:
@@ -18,10 +31,6 @@ On the Big Help Mob team? Deployment should be a simple matter of:
 2. `cap deploy` - Deploy from `development` to the staging server, http://staging.bighelpmob.org/
 
 For more access details, please contact the other members of the team.
-
-## Getting Started
-
-TBD: Write these instructions
 
 ## Syncing the Database
 
