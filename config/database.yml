@@ -1,42 +1,31 @@
 development:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  reconnect: false
   database: bighelpmob_development
-  pool: 5
-  username: root
+  user: bighelpmob
   password:
-  socket: /tmp/mysql.sock
 
 test: &TEST
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  reconnect: false
   database: bighelpmob_test
-  pool: 5
-  username: root
+  user: bighelpmob
   password:
-  socket: /tmp/mysql.sock
 
 staging:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  reconnect: false
   host: localhost
   database: bighelpmob_staging
-  pool: 5
-  username: root
-  password: 
+  user: bighelpmob
+  password:
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  reconnect: false
   database: bighelpmob_production
-  pool: 5
-  username: root
-  password: 
-  socket: /tmp/mysql.sock
+  user: bighelpmob
+  password:
 
 cucumber:
   <<: *TEST
