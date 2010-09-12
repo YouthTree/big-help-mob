@@ -59,9 +59,9 @@ gem 'resque-status', :require => 'resque/status'
 # View / Rendering
 gem 'haml',               '>= 3.0.13'
 gem 'compass',            '>= 0.10.4'
-gem 'compass-960-plugin', '>= 0.9.13'
-gem 'compass-colors',     '>= 0.3.1'
-gem 'fancy-buttons',      '>= 0.5.4'
+gem 'compass-960-plugin', '>= 0.9.13', :require => nil
+gem 'compass-colors',     '>= 0.3.1', :require => nil
+gem 'fancy-buttons',      '>= 0.5.4', :require => nil
 
 gem 'youthtree-settings'
 gem 'youthtree-helpers'
