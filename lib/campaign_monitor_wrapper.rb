@@ -50,7 +50,7 @@ class CampaignMonitorWrapper
     def update_subscriptions!(user, lists)
       return false unless has_campaign_monitor?
       lists = Array(lists.flatten).reject { |l| l.blank? } & available_list_ids
-      logger.info "Preparing to subscript #{user.inspect} to #{lists.join(",")}"
+      logger.info "Preparing to subscribe #{user.inspect} to #{lists.join(",")}"
       lists.each { |list| subscribe! user, list }
       true
     end
