@@ -68,6 +68,7 @@ class CampaignMonitorWrapper
     
     def cm_user_for(subscriber)
       subscriber = subscriber.to_subscriber_details if subscriber.respond_to?(:to_subscriber_details)
+      subscriber = subscriber.symbolize_keys
       Campaigning::Subscriber.new(subscriber[:email], subscriber[:name])
     end
     

@@ -19,6 +19,8 @@ class MailingListWorker
   
   def subscribe!
     CampaignMonitorWrapper.update_for_subscriber! @subscriber_details, @mailing_list_ids
+  rescue RuntimeError => e
+    Rails.logger.error "Error manaing subscriptions for #{@subscriber_details.inspect} - #{e.message}"
   end
   
 end
