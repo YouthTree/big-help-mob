@@ -37,6 +37,8 @@ class Address < ActiveRecord::Base
     address_parts.join(joiner)
   end
   
+  ## Return a sanitized version of the country name using Carman
+  # @return [String] The country name
   def country_name
     return if country.blank?
     Carmen.country_name(country)
@@ -64,6 +66,8 @@ class Address < ActiveRecord::Base
     
   end
   
+  ## Is this address owned by a User?
+  # @return [Boolean] true if this address belongs to a User, false otherwise
   def for_user?
     addressable.present? && addressable.is_a?(User)
   end

@@ -51,4 +51,15 @@ describe Address do
     end
   end
 
+  context '.for_user?' do
+    it 'should return false if it has no addressable' do
+      @address.for_user?.should be_false
+    end
+
+    it 'should return true if it is owned by a User' do
+      @address.addressable = User.new
+      @address.for_user?.should be_true
+    end
+  end
+
 end
