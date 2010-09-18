@@ -104,7 +104,7 @@ class Answers
     q.required_by?(@participation.role_name)
   end
   
-  protected
+protected #####################################################################
   
   def question_to_param(question, suffix = "")
     :"question_#{question.id}#{suffix}"
