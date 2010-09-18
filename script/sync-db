@@ -11,4 +11,4 @@ echo "####################################"
 echo "#  Syncing from Local to Staging   #"
 echo "####################################"
 echo ""
-bundle exec cap staging sync:up
+bundle exec cap staging sync:up deploy:migrate

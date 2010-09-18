@@ -2,7 +2,7 @@ javascript_compressor: yui
 javascripts:
   base:
     - public/javascripts/vendor/jquery-1.4.2.js
-    - public/javascripts/vendor/jquery.html5-placeholder-shim.js
+    - public/javascripts/vendor/jquery.placeholder.js
     - public/javascripts/vendor/rails.js
     - public/javascripts/vendor/css_browser_selector.js
     - public/javascripts/vendor/facybox.js
@@ -16,6 +16,7 @@ javascripts:
     - public/javascripts/vendor/markerclusterer.js
   admin:
     - public/javascripts/vendor/jquery-1.4.2.js
+    - public/javascripts/vendor/jquery.placeholder.js
     - public/javascripts/vendor/jquery-ui-1.8.js
     - public/javascripts/vendor/rails.js
     - public/javascripts/vendor/facybox.js

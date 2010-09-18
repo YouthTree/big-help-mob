@@ -3,7 +3,7 @@ BHM.withNS('Admin.DashboardStats', function(ns) {
     var data, labels, values;
     labels = [];
     values = [];
-    data = $(("#" + (container_id) + " dl"));
+    data = $("#" + (container_id) + " dl");
     data.find("dt").each(function() {
       var current;
       current = $(this);
@@ -49,6 +49,17 @@ BHM.withNS('Admin.DashboardStats', function(ns) {
       });
     });
   };
+  ns.showUserVolunteering = function() {
+    return ns.withContainer('volunteering-chart', function(labels, values) {
+      return BHM.Admin.PieChart.create('volunteering-chart', function() {
+        this.setCategories(labels);
+        this.addSeries('Volunteered in the last year?', labels, $.map(values, Number));
+        return this.setDataToolTip(function() {
+          return "" + (this.y) + " people<br/>replied " + (this.point.name) + ".";
+        });
+      });
+    });
+  };
   ns.setupOtherOrigins = function() {
     return $(".other-known-origins-toggle").click(function() {
       $("#user-origins-list").toggle();
@@ -59,6 +70,7 @@ BHM.withNS('Admin.DashboardStats', function(ns) {
     ns.showUserSignups();
     ns.showUserAges();
     ns.showUserOrigins();
+    ns.showUserVolunteering();
     return ns.setupOtherOrigins();
   });
 });

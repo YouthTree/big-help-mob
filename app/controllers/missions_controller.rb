@@ -11,9 +11,9 @@ class MissionsController < ApplicationController
   end
   
   before_filter :prepare_mission,        :except => [:next, :index]
-  before_filter :require_user_with_note, :only   => [:edit, :update]
-  before_filter :require_valid_user,     :only   => [:edit, :update]
-  before_filter :prepare_participation,  :only   => [:edit, :update]
+  before_filter :require_user_with_note, :only   => [:edit, :update, :leave]
+  before_filter :require_valid_user,     :only   => [:edit, :update, :leave]
+  before_filter :prepare_participation,  :only   => [:edit, :update, :leave]
   
   def show
     @mission_questions = Question.for(:mission_page).all
@@ -40,7 +40,7 @@ class MissionsController < ApplicationController
     end
   end
   
-  def withdraw
+  def leave
     check_mission_status!
     @participation.destroy
     redirect_to @mission, :notice => tf('participation.cancelled')

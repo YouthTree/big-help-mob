@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100828150827) do
+ActiveRecord::Schema.define(:version => 20100912094149) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -240,6 +240,7 @@ ActiveRecord::Schema.define(:version => 20100828150827) do
     t.string   "cached_slug"
     t.text     "comment"
     t.boolean  "completed_mailing_list_subscriptions",                                 :default => false
+    t.boolean  "volunteered_in_last_year"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

@@ -11,17 +11,24 @@ class User < ActiveRecord::Base
     "I'd rather not say",
     "Poster",
     "I got stamped",
-    "Facebook",
+    "Facebook - My Friends",
+    "Facebook - Advert",
+    "Facebook - The Big Help Mob page",
     "Word of mouth",
     "Google search",
     "Youth Tree mailing list",
     "Other organization",
     "Other"
   ]
+  
+  VOLUNTEERING_CHOICES = [
+    ["No, I haven't.", false],
+    ["Yes, I have.",   true]
+  ]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_choices,
-                  :captain_application_attributes, :origin, :date_of_birth
+                  :captain_application_attributes, :origin, :date_of_birth, :volunteered_in_last_year
 
   has_many :mission_participations, :dependent => :destroy
   

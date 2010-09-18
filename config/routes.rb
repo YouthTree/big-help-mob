@@ -1,5 +1,5 @@
 BigHelpMob::Application.routes.draw do
-  mount Resque::Server.new, :at => "/admin/resque"
+  mount Resque::Server.new, :at => "/resque"
 
   namespace :admin do
     resources :emails, :only => [:new, :create] do
@@ -53,7 +53,7 @@ BigHelpMob::Application.routes.draw do
   resources :missions do
     member do
       get    :join
-      delete :withdraw
+      delete :leave
     end
   end
 

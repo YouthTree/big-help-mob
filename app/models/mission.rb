@@ -109,6 +109,10 @@ class Mission < ActiveRecord::Base
     %w(preparing approved).include?(self.state)
   end
   
+  def able_to_withdraw?(user)
+    participating?(user) && unstarted?
+  end
+  
   def signup_open?(role)
     role = role.to_s.underscore
     method_key = "#{role}_signup_open"

@@ -34,8 +34,18 @@ module MissionsHelper
   def join_mission_link(mission)
     return if mission.is_a?(Mission) && logged_in? && mission.participating?(current_user)
     inner = link_to('Join this mission', join_mission_path(mission), :class => 'join-mission-link')
-    content_tag(:p, inner, :class => 'join-mission-container')
+    content_tag(:p, inner, :class => 'mission-button-container')
   end
+  
+  def join_or_leave_mission_link(mission)
+    if logged_in? && mission.participating?(current_user)
+      inner = link_to('Leave this mission', leave_mission_path(mission), :class => 'leave-mission-link', :method => :delete)
+    else
+      inner = link_to('Join this mission', join_mission_path(mission), :class => 'join-mission-link')
+    end
+    content_tag(:p, inner, :class => 'mission-button-container')
+  end
+  
 
   def render_mission_photos(collection)
     collection.map do |c|

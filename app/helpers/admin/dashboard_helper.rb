@@ -24,4 +24,13 @@ module Admin::DashboardHelper
     end
   end
   
+  def dl_for_stat(statistic)
+    inner = ActiveSupport::SafeBuffer.new
+    statistic.each_pair do |k, v|
+      inner << content_tag(:dt, k)
+      inner << content_tag(:dd, v)
+    end
+    content_tag(:dl, inner)
+  end
+  
 end

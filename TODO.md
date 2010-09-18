@@ -1,13 +1,11 @@
 # Current BHM Todo List
 
-* Field for volunteer involvement on users, "volunteered in the last year".
-* One line response for the captain application
+* CMSy archive page
+
 * Stats per mission page
 * Get clicky access details to the rest of the team
-* Cancel button for mission attendance
-* CMSy archive page
 * Flickr Gallery Widget (homepage)
-* Style Sitemap page
+* Ghost user button
 
 ## Recently Completed
 
@@ -16,4 +14,7 @@
 * Options become "other mailing lists" (vs. individual choices)
 * Restrict admin user interface for users to notes, admin selection
 * Sitemap page
+* Style Sitemap page
 * Simplify fields: Name, Email, Password, DOB, Origin
+* Cancel button for mission attendance
+* One line response for the captain application
