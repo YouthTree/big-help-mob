@@ -136,7 +136,7 @@ GEM
     mime-types (1.16)
     msales-carmen (0.1.4)
     mysql2 (0.2.3)
-    net-scp (1.0.3)
+    net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
@@ -215,7 +215,7 @@ GEM
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
     ruby-googlechart (0.6.4)
-    rvm (1.0.1)
+    rvm (1.0.9)
     show_for (0.2.3)
     shuriken (0.2.1)
     sinatra (1.0)
@@ -236,10 +236,15 @@ GEM
     validation_reflection (1.0.0.rc.1)
     vegas (0.1.7)
       rack (>= 1.0.0)
-    youthtree-capistrano (0.2.0)
+    ydd (0.0.1)
+      activerecord (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      thor (~> 0.14)
+    youthtree-capistrano (0.2.1)
       bundler (~> 1.0)
       capistrano
       rvm (~> 1.0)
+      ydd
     youthtree-controller-ext (0.1.1)
       activesupport (>= 3.0.0.beta4)
     youthtree-helpers (0.1.4)
@@ -311,7 +316,7 @@ DEPENDENCIES
   uuid
   validation_reflection (>= 1.0.0.rc.1)
   will_paginate (>= 3.0.pre2)!
-  youthtree-capistrano (>= 0.2.0)
+  youthtree-capistrano (>= 0.2.1)
   youthtree-controller-ext
   youthtree-helpers
   youthtree-js (>= 0.2.0)
