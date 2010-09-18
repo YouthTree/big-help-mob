@@ -5,8 +5,8 @@ class UserStatistics
 
   def self.signups_per_day(from = Date.today - 6, to = Date.today)
     from, to = from.to_date, to.to_date
-    users = User.select("DATE(users.created_at) AS users_date, count(*) AS count_all").group("users_date")
-    users = users.having(["users_date > ? AND users_date < ?", from - 1, to + 1]).all
+    users = User.select("DATE(users.created_at) AS users_date, count(*) AS count_all").group("DATE(users.created_at)")
+    users = users.having(["DATE(users.created_at) > ? AND DATE(users.created_at) < ?", from - 1, to + 1]).all
     users = users.inject({}) { |a, c| a[c.users_date] = c.count_all.to_i; a }
     results = ActiveSupport::OrderedHash.new
     while from <= to
@@ -27,8 +27,9 @@ class UserStatistics
   end
   
   def self.count_per_age
-    raw_counts = User.count :all, :group => "DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(date_of_birth, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(date_of_birth, '00-%m-%d'))"
-    known_ages = raw_counts.keys.map { |k| k.to_i }.reject { |a| a <= 0 } # Cut out invalid dates.
+    relationship = User.where("date_of_birth IS NOT NULL")
+    raw_counts = relationship.count :all, :group => '(SELECT EXTRACT(year from AGE(date_of_birth)) AS "age")'
+    known_ages = raw_counts.keys.map { |k| k.to_i }.reject { |a| a < 1 } # Cut out invalid dates.
     min, max = known_ages.min.to_i, known_ages.max.to_i
     data = ActiveSupport::OrderedHash.new(0).tap do |h|
       min.upto(max) { |c| h[c.to_i] = raw_counts[c.to_f].to_i }

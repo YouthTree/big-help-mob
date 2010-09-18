@@ -15,7 +15,7 @@ gem 'geokit',          '>= 1.5.0'
 gem 'bhm-google-maps', '~> 0.2.0'
 
 # Display Helpers
-gem 'formtastic',            '>= 1.0.0', :git => gh('justinfrench', 'formtastic'), :branch => 'rails3'
+gem 'formtastic',            '>= 1.1.0'
 gem 'validation_reflection', '>= 1.0.0.rc.1'
 gem 'title_estuary',         '>= 1.2.0'
 

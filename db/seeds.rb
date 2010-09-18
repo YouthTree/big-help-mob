@@ -5,7 +5,8 @@ sync, $stdout.sync = $stdout.sync, true
 begin
   AttrAccessibleScoping.disable do
     puts "Making Admin User."
-    User.create :login => "admin", :password => "monkey", :password_confirmation => "monkey", :email => "example@example.com", :admin => true, :validate => false
+    user = User.new :login => "admin", :password => "monkey", :password_confirmation => "monkey", :email => "example@example.com", :admin => true
+    user.save :validate => false
   
     print "Making Organisations: "
     10.times do
