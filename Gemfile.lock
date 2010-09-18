@@ -240,7 +240,7 @@ GEM
       activerecord (~> 3.0.0)
       activesupport (~> 3.0.0)
       thor (~> 0.14)
-    youthtree-capistrano (0.2.1)
+    youthtree-capistrano (0.2.2)
       bundler (~> 1.0)
       capistrano
       rvm (~> 1.0)
@@ -316,7 +316,7 @@ DEPENDENCIES
   uuid
   validation_reflection (>= 1.0.0.rc.1)
   will_paginate (>= 3.0.pre2)!
-  youthtree-capistrano (>= 0.2.1)
+  youthtree-capistrano (>= 0.2.2)
   youthtree-controller-ext
   youthtree-helpers
   youthtree-js (>= 0.2.0)

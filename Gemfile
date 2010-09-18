@@ -74,7 +74,7 @@ gem 'rpx_now'
 
 gem 'awesome_print'
 
-gem 'youthtree-capistrano', '>= 0.2.1', :require => nil
+gem 'youthtree-capistrano', '>= 0.2.2', :require => nil
 
 gem 'unicorn', :require => nil
 
