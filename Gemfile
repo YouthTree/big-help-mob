@@ -89,8 +89,8 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec',       '>= 2.0.0.beta.20', :require => nil
-  gem 'rspec-rails', '>= 2.0.0.beta.20', :require => nil
+  gem 'rspec',       '>= 2.0.0.beta.22', :require => nil
+  gem 'rspec-rails', '>= 2.0.0.beta.22', :require => nil
   gem 'machinist',   '>= 2.0.0.beta2', :require => nil
   gem 'forgery', :require => nil
 end

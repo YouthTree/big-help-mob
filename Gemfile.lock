@@ -199,16 +199,18 @@ GEM
     rpx_now (0.6.23)
       json_pure
     rr (1.0.0)
-    rspec (2.0.0.beta.20)
-      rspec-core (= 2.0.0.beta.20)
-      rspec-expectations (= 2.0.0.beta.20)
-      rspec-mocks (= 2.0.0.beta.20)
-    rspec-core (2.0.0.beta.20)
-    rspec-expectations (2.0.0.beta.20)
+    rspec (2.0.0.beta.22)
+      rspec-core (= 2.0.0.beta.22)
+      rspec-expectations (= 2.0.0.beta.22)
+      rspec-mocks (= 2.0.0.beta.22)
+    rspec-core (2.0.0.beta.22)
+    rspec-expectations (2.0.0.beta.22)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.20)
-    rspec-rails (2.0.0.beta.20)
-      rspec (= 2.0.0.beta.20)
+    rspec-mocks (2.0.0.beta.22)
+      rspec-core (= 2.0.0.beta.22)
+      rspec-expectations (= 2.0.0.beta.22)
+    rspec-rails (2.0.0.beta.22)
+      rspec (= 2.0.0.beta.22)
     ruby-debug (0.10.3)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.3.0)
@@ -284,7 +286,6 @@ DEPENDENCIES
   machinist (>= 2.0.0.beta2)
   mail_form (>= 1.2.1)
   msales-carmen (>= 0.1.4)
-  newrelic_rpm
   pg
   pseudocephalopod (>= 0.2.5)
   rails (= 3.0.0)
@@ -298,8 +299,8 @@ DEPENDENCIES
   rfc-822
   rpx_now
   rr
-  rspec (>= 2.0.0.beta.20)
-  rspec-rails (>= 2.0.0.beta.20)
+  rspec (>= 2.0.0.beta.22)
+  rspec-rails (>= 2.0.0.beta.22)
   ruby-debug
   ruby-googlechart (>= 0.6.4)
   show_for
