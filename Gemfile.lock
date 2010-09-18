@@ -1,16 +1,6 @@
 GIT
-  remote: git://github.com/justinfrench/formtastic.git
-  revision: eeba8d402721a3b3ae3c6e0d8f1b123fcae96b65
-  branch: rails3
-  specs:
-    formtastic (1.1.0.beta)
-      actionpack (>= 2.3.0)
-      activesupport (>= 2.3.0)
-      i18n (>= 0.4.0)
-
-GIT
   remote: git://github.com/kuldarkrabbi/authlogic_rpx.git
-  revision: ed6ed44ccb216bc83d574152fbf2110c57f09d3f
+  revision: 7e16974
   specs:
     authlogic_rpx (1.1.1)
       authlogic (>= 2.1.3)
@@ -18,27 +8,27 @@ GIT
 
 GIT
   remote: git://github.com/kurbmedia/authlogic.git
-  revision: 91db967824162cd909d7285c890098e060ce7eff
+  revision: 91db967
   specs:
     authlogic (2.1.6)
       activesupport
 
 GIT
   remote: git://github.com/mislav/will_paginate.git
-  revision: 36159385c8a5837fc63fe901ebe0a88205b5ce8d
+  revision: 3615938
   ref: rails3
   specs:
     will_paginate (3.0.pre2)
 
 GIT
   remote: git://github.com/miyucy/annotate_models.git
-  revision: ace84ab47a21a0fcbbed431051ea3a140a4f99f9
+  revision: ace84ab
   specs:
     annotate (2.4.0)
 
 GIT
   remote: git://github.com/pluginaweek/state_machine.git
-  revision: e625d2645a71fb5bc50ca61553b59b4890444508
+  revision: e625d26
   specs:
     state_machine (0.9.4)
 
@@ -46,7 +36,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     SystemTimer (1.2)
-    ZenTest (4.3.3)
+    ZenTest (4.4.0)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -77,6 +67,9 @@ GEM
     addresslogic (1.2.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    autotest-fsevent (0.2.3)
+      sys-uname
+    autotest-growl (0.2.5)
     awesome_print (0.2.1)
     barista (0.5.0)
       open4
@@ -108,11 +101,15 @@ GEM
     flickraw (0.8.3)
       json (>= 1.1.1)
     forgery (0.3.4)
+    formtastic (1.1.0)
+      actionpack (>= 2.3.0)
+      activesupport (>= 2.3.0)
+      i18n (>= 0.4.0)
     geokit (1.5.0)
     haml (3.0.18)
     has_scope (0.5.0)
     highline (1.6.1)
-    hoptoad_notifier (2.3.5)
+    hoptoad_notifier (2.3.6)
       activesupport
     httpclient (2.1.5.2)
     i18n (0.4.1)
@@ -128,14 +125,13 @@ GEM
     liquid (2.2.2)
     macaddr (1.0.0)
     machinist (2.0.0.beta2)
-    mail (2.2.5)
+    mail (2.2.6)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mail_form (1.3.0)
     mime-types (1.16)
     msales-carmen (0.1.4)
-    mysql2 (0.2.3)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -144,13 +140,14 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     open4 (1.0.1)
+    pg (0.9.0)
     polyglot (0.3.1)
     pseudocephalopod (0.2.5)
       activerecord (>= 3.0.0.beta2)
       activesupport (>= 3.0.0.beta2)
       uuid
     rack (1.2.1)
-    rack-mount (0.6.12)
+    rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -169,7 +166,8 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
-    redis (2.0.5)
+    rcov (0.9.9)
+    redis (2.0.6)
     redis-namespace (0.8.0)
       redis (< 3.0.0)
     redisk (0.2.2)
@@ -199,16 +197,18 @@ GEM
     rpx_now (0.6.23)
       json_pure
     rr (1.0.0)
-    rspec (2.0.0.beta.20)
-      rspec-core (= 2.0.0.beta.20)
-      rspec-expectations (= 2.0.0.beta.20)
-      rspec-mocks (= 2.0.0.beta.20)
-    rspec-core (2.0.0.beta.20)
-    rspec-expectations (2.0.0.beta.20)
+    rspec (2.0.0.beta.22)
+      rspec-core (= 2.0.0.beta.22)
+      rspec-expectations (= 2.0.0.beta.22)
+      rspec-mocks (= 2.0.0.beta.22)
+    rspec-core (2.0.0.beta.22)
+    rspec-expectations (2.0.0.beta.22)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.20)
-    rspec-rails (2.0.0.beta.20)
-      rspec (= 2.0.0.beta.20)
+    rspec-mocks (2.0.0.beta.22)
+      rspec-core (= 2.0.0.beta.22)
+      rspec-expectations (= 2.0.0.beta.22)
+    rspec-rails (2.0.0.beta.22)
+      rspec (= 2.0.0.beta.22)
     ruby-debug (0.10.3)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.3.0)
@@ -224,6 +224,7 @@ GEM
     soap4r (1.5.8)
       httpclient (>= 2.1.1)
     stringex (1.1.0)
+    sys-uname (0.8.4)
     thor (0.14.0)
     title_estuary (1.2.0)
     treetop (1.4.8)
@@ -267,6 +268,8 @@ DEPENDENCIES
   annotate!
   authlogic!
   authlogic_rpx!
+  autotest-fsevent
+  autotest-growl
   awesome_print
   barista (>= 0.5.0)
   bhm-google-maps (~> 0.2.0)
@@ -278,7 +281,7 @@ DEPENDENCIES
   fastercsv
   flickraw
   forgery
-  formtastic (>= 1.0.0)!
+  formtastic (>= 1.1.0)
   geokit (>= 1.5.0)
   haml (>= 3.0.13)
   hoptoad_notifier
@@ -289,10 +292,11 @@ DEPENDENCIES
   machinist (>= 2.0.0.beta2)
   mail_form (>= 1.2.1)
   msales-carmen (>= 0.1.4)
-  mysql2
+  pg
   pseudocephalopod (>= 0.2.5)
   rails (= 3.0.0)
   rails3-generators
+  rcov
   remarkable (>= 4.0.0.alpah4)
   remarkable_activerecord (>= 4.0.0.alpah4)
   responders
@@ -302,8 +306,8 @@ DEPENDENCIES
   rfc-822
   rpx_now
   rr
-  rspec (>= 2.0.0.beta.20)
-  rspec-rails (>= 2.0.0.beta.20)
+  rspec (>= 2.0.0.beta.22)
+  rspec-rails (>= 2.0.0.beta.22)
   ruby-debug
   ruby-googlechart (>= 0.6.4)
   show_for

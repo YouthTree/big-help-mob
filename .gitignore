@@ -9,3 +9,4 @@ doc/app
 .sass-cache
 public/stylesheets/*.css
 public/assets/
+coverage/*

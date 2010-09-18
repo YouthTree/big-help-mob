@@ -1,3 +1,7 @@
+## Representation of a postal/physical address.
+#
+# Saves latitude and longitude for address using Geokit.
+#
 class Address < ActiveRecord::Base
   attr_accessible :street1, :street2, :city, :state, :postcode, :country
   
@@ -10,6 +14,9 @@ class Address < ActiveRecord::Base
   
   before_save :geocode
 
+  ## Obtain the latitude and longitude from the relevant geo provider
+  # @return [Array] Latitude and longitude
+  # TODO: This has no resilience, if geocode craps out how do we handle it?
   def geocode
     return unless changed?
     geo = Geokit::Geocoders::MultiGeocoder.geocode(self.to_s(", "))
@@ -17,14 +24,21 @@ class Address < ActiveRecord::Base
     return self.lat, self.lng
   end
   
+  ## Return latitude and longitude as array
+  # @return [Array] Latitude and longitude
   def to_lat_lng
     [self.lat, self.lng]
   end
   
+  ## Join all the address parts
+  # @param joiner [String] Delimiter to put between the parts
+  # @return [String] Addresses joined together
   def to_s(joiner = ", ")
     address_parts.join(joiner)
   end
   
+  ## Return a sanitized version of the country name using Carman
+  # @return [String] The country name
   def country_name
     return if country.blank?
     Carmen.country_name(country)
@@ -52,6 +66,8 @@ class Address < ActiveRecord::Base
     
   end
   
+  ## Is this address owned by a User?
+  # @return [Boolean] true if this address belongs to a User, false otherwise
   def for_user?
     addressable.present? && addressable.is_a?(User)
   end

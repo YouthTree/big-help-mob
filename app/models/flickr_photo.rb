@@ -14,7 +14,7 @@ class FlickrPhoto < ActiveRecord::Base
   belongs_to :mission
 
   def self.for_homepage(count = 30)
-    limit(count).order('RAND()').includes(:mission).all
+    limit(count).order('RANDOM()').includes(:mission).all
   end
 
   def self.for_archive(count = 10)

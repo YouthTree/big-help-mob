@@ -15,7 +15,7 @@ module BigHelpMob
     config.generators do |g|
       g.orm             :active_record
       g.template_engine :haml
-      g.test_framework  :test_unit, :fixture_replacement => :machinist
+      g.test_framework  :rspec, :fixture_replacement => :machinist
     end
 
     config.filter_parameters << :password

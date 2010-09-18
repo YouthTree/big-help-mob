@@ -6,7 +6,7 @@ end
 
 # Rails!
 gem 'rails', '= 3.0.0'
-gem 'mysql2'
+gem 'pg'
 gem 'json'
 
 # Geoawareness and mapping stuff.
@@ -15,7 +15,7 @@ gem 'geokit',          '>= 1.5.0'
 gem 'bhm-google-maps', '~> 0.2.0'
 
 # Display Helpers
-gem 'formtastic',            '>= 1.0.0', :git => gh('justinfrench', 'formtastic'), :branch => 'rails3'
+gem 'formtastic',            '>= 1.1.0'
 gem 'validation_reflection', '>= 1.0.0.rc.1'
 gem 'title_estuary',         '>= 1.2.0'
 
@@ -89,15 +89,16 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec',       '>= 2.0.0.beta.20', :require => nil
-  gem 'rspec-rails', '>= 2.0.0.beta.20', :require => nil
+  gem 'rspec',       '>= 2.0.0.beta.22'
+  gem 'rspec-rails', '>= 2.0.0.beta.22'
   gem 'machinist',   '>= 2.0.0.beta2', :require => nil
   gem 'forgery', :require => nil
+  gem 'rcov'
 end
 
 group :test do
   gem 'ZenTest'
-  if `uname`.strip =~ /darwin/
+  if `uname` =~ /darwin/i
     gem 'autotest-growl'
     gem 'autotest-fsevent'
   end
