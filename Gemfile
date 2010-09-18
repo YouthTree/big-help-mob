@@ -97,7 +97,7 @@ end
 
 group :test do
   gem 'ZenTest'
-  if `uname`.strip =~ /darwin/
+  if `uname` =~ /darwin/i
     gem 'autotest-growl'
     gem 'autotest-fsevent'
   end
