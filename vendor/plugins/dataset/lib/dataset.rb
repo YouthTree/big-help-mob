@@ -73,7 +73,6 @@ require 'dataset/record/model'
 #
 module Dataset
   def self.included(test_context) # :nodoc:
-    puts test_context.name.inspect
     if test_context.name =~ /World\Z/
       require 'dataset/extensions/cucumber'
     elsif test_context.name =~ /TestCase\Z/
