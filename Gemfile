@@ -93,6 +93,7 @@ group :test, :development do
   gem 'rspec-rails', '>= 2.0.0.beta.22', :require => nil
   gem 'machinist',   '>= 2.0.0.beta2', :require => nil
   gem 'forgery', :require => nil
+  gem 'rcov'
 end
 
 group :test do

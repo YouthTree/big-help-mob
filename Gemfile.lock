@@ -172,6 +172,7 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    rcov (0.9.9)
     redis (2.0.6)
     redis-namespace (0.8.0)
       redis (< 3.0.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   pseudocephalopod (>= 0.2.5)
   rails (= 3.0.0)
   rails3-generators
+  rcov
   remarkable (>= 4.0.0.alpah4)
   remarkable_activerecord (>= 4.0.0.alpah4)
   responders
