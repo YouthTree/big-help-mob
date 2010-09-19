@@ -91,14 +91,6 @@ class MissionsController < ApplicationController
     end
   end
   
-  def require_valid_user
-    if logged_in? && !current_user.valid?
-      store_location
-      redirect_to edit_user_path(:current), :alert => tf('profile.invalid')
-      return false
-    end
-  end
-  
   def logged_in_and_signed_up_to_mission?
     @mission.participating?(current_user) && !@mission.participation_for(current_user).still_preparing?
   end

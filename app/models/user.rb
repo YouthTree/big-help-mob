@@ -92,24 +92,23 @@ class User < ActiveRecord::Base
     u == self
   end
   
-  def to_s
+  def name
     if display_name?
       display_name
     elsif full_name.present?
       full_name
     elsif login?
       login
-    elsif email?
-      email
     else
-      super
+      "Unknown User"
     end
   end
 
-  alias name to_s
-  
   def name_changed?
-    display_name_changed? || login_changed? || full_name_changed?
+    return display_name_changed? if display_name?
+    return full_name_changed?    if full_name?
+    return login_changed?        if login?
+    return false
   end
   
   def full_name_changed?
@@ -131,6 +130,10 @@ class User < ActiveRecord::Base
   def full_name
     return nil unless first_name? || last_name?
     [first_name, last_name].reject(&:blank?).join(" ")
+  end
+  
+  def full_name?
+    full_name.present?
   end
   
   def self.for_select

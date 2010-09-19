@@ -17,4 +17,6 @@ RSpec.configure do |config|
   config.mock_with :rr
   config.fixture_path               = spec_dir.join("fixtures").to_s
   config.use_transactional_fixtures = true
+  # reset stuff before tests.
+  config.before(:each) { Machinist.reset_before_test }
 end

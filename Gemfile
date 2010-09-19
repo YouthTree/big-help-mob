@@ -27,7 +27,7 @@ gem 'show_for'
 # General Code Stuff
 gem 'will_paginate',    '>= 3.0.pre2', :git => gh('mislav', 'will_paginate'), :ref => 'rails3'
 gem 'state_machine',    '>= 0.9.0', :git => gh('pluginaweek', 'state_machine')
-gem 'pseudocephalopod', '>= 0.2.5'
+gem 'pseudocephalopod', '>= 0.3.1'
 
 # Helpers etc.
 gem 'jammit',              '>= 0.5.0'

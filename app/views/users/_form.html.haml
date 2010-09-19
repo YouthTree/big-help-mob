@@ -19,9 +19,10 @@
   
   - if @user.needs_ml_subscriptions? || @user.origin.blank?
     = form.inputs :name => "And Finally Us" do
-      - if @user.origin.present?
+      - if @user.origin.blank?
         = form.input :origin, :as => input_type_for_origin(form.object.origin), :collection => User::ORIGIN_CHOICES,:required => false, :include_blank => false
-      = form.input :mailing_list_choices, :collection => User.available_mailing_list_choices, :as => :check_boxes, :label => "Mailing Lists"
+      - if @user.needs_ml_subscriptions?
+        = form.input :mailing_list_choices, :collection => User.available_mailing_list_choices, :as => :check_boxes, :label => "Mailing Lists"
     
   = form.buttons do
     = form.commit_button "Update Your Details"

@@ -3,9 +3,10 @@ class UsersController < ApplicationController
   ssl_required :new,  :create, :edit, :update
   ssl_allowed  :show, :destroy
 
-  before_filter :require_user, :only => [:edit, :destroy, :update, :welcome]
-  before_filter :prepare_user, :except => [:new, :create, :index, :welcome]
-  before_filter :check_authz, :only => [:edit, :destroy, :update]
+  before_filter :require_user,       :only   => [:edit, :destroy, :update, :welcome]
+  before_filter :require_valid_user, :only   => :welcome
+  before_filter :prepare_user,       :except => [:new, :create, :index, :welcome]
+  before_filter :check_authz,        :only   => [:edit, :destroy, :update]
 
   def show
     @participations = @user.mission_participations.viewable_by(current_user).all
@@ -64,7 +65,7 @@ class UsersController < ApplicationController
   def prepare_user
     @user = params[:id] == "current" ? current_user : User.find_using_slug!(params[:id])
     return redirect_to :users, :alert => tf('account.unknown_user') unless @user.present?
-    add_title_variables! :user => @user.to_s
+    add_title_variables! :user => @user.name
   end
 
 end

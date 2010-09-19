@@ -142,7 +142,7 @@ GEM
     open4 (1.0.1)
     pg (0.9.0)
     polyglot (0.3.1)
-    pseudocephalopod (0.3.0)
+    pseudocephalopod (0.3.1)
       activerecord (~> 3.0.0)
       activesupport (~> 3.0.0)
       uuid
@@ -293,7 +293,7 @@ DEPENDENCIES
   mail_form (>= 1.2.1)
   msales-carmen (>= 0.1.4)
   pg
-  pseudocephalopod (>= 0.2.5)
+  pseudocephalopod (>= 0.3.1)
   rails (= 3.0.0)
   rails3-generators
   rcov

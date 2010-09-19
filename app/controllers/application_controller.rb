@@ -19,5 +19,13 @@ class ApplicationController < ActionController::Base
   def on_error_page?
     false
   end
+  
+  def require_valid_user
+    if logged_in? && !current_user.valid?
+      store_location
+      redirect_to edit_user_path(:current), :alert => tf('profile.invalid')
+      return false
+    end
+  end
 
 end

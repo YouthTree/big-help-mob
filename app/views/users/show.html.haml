@@ -28,3 +28,11 @@
   %p.actions
     = rpx_identifiers_to_s @user
     = link_to "(Edit Profile)", edit_user_path(params[:id])
+
+- if can?(:destroy, @user)
+
+  %p.actions
+    Want to permanently remove your account?
+    = link_to 'Click here', [@user], :method => :delete, :confirm => "Are you sure? This can't be reversed"
+    to do so.
+  
