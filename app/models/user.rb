@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   validates_associated  :captain_application, :if => :should_validate_captain_fields?
   validate              :ensure_name_is_filled_in
 
-  scope :with_age, where('date_of_birth IS NOT NULL AND age > 0').select("*,  DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(date_of_birth, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(date_of_birth, '00-%m-%d')) AS age")
+  scope :with_age, where('date_of_birth IS NOT NULL AND EXTRACT(year from AGE(date_of_birth)) > 0').select("*,  EXTRACT(year from AGE(date_of_birth)) AS age")
 
   attr_accessor :current_participation
   
@@ -93,12 +93,16 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    if display_name.present?
+    if display_name?
       display_name
     elsif full_name.present?
       full_name
-    else
+    elsif login?
       login
+    elsif email?
+      email
+    else
+      super
     end
   end
 
@@ -125,6 +129,7 @@ class User < ActiveRecord::Base
   end
   
   def full_name
+    return nil unless first_name? || last_name?
     [first_name, last_name].reject(&:blank?).join(" ")
   end
   
