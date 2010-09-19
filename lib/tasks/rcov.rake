@@ -1,3 +1,5 @@
+begin
+
 require 'rspec/rails'
 require 'rspec/core'
 require 'rspec/core/rake_task'
@@ -17,4 +19,7 @@ namespace :spec do
     t.pattern = "./spec/**/*_spec.rb"
     t.rcov_opts = '--rails --exclude /gems/,/Library/,/usr/,lib/tasks,.bundle,config,/lib/rspec/,/lib/rspec-'
   end
+end
+
+rescue LoadError
 end
