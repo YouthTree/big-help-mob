@@ -98,13 +98,14 @@ end
 
 group :test do
   gem 'ZenTest'
-  if `uname` =~ /darwin/i
-    gem 'autotest-growl'
-    gem 'autotest-fsevent'
-  end
   gem 'remarkable', '>= 4.0.0.alpah4', :require => 'remarkable/core'
   gem 'remarkable_activerecord', '>= 4.0.0.alpah4', :require => 'remarkable/active_record'
   gem 'rr'
+end
+
+group :test_mac do
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
 end
 
 group :staging, :production do

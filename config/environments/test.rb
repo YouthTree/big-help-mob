@@ -1,3 +1,5 @@
+Bundler.require :test_mac if `uname`.strip =~ /darwin/i
+
 BigHelpMob::Application.configure do
   config.cache_classes                              = true
   config.whiny_nils                                 = true
