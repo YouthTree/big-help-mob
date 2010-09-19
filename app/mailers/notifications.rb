@@ -1,6 +1,5 @@
 class Notifications < ActionMailer::Base
   include ActionMailerNicerI18nSubjects
-  include Resque::Mailer
   CORRECTED_ORDER = [:text, :html]
 
   def signup(user)
