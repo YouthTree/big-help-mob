@@ -18,10 +18,10 @@ BHM.withNS('Signup', function(ns) {
     }));
   };
   ns.shouldReplaceField = function() {
-    return $(("" + (ns.originWrapperSelector) + " select")).val().toLowerCase() === 'other';
+    return $("" + (ns.originWrapperSelector) + " select").val().toLowerCase() === 'other';
   };
   ns.attachEvents = function() {
-    return $(("" + (ns.originWrapperSelector) + " select")).change(__bind(function() {
+    return $("" + (ns.originWrapperSelector) + " select").change(__bind(function() {
       if (ns.shouldReplaceField()) {
         return ns.replaceField();
       }

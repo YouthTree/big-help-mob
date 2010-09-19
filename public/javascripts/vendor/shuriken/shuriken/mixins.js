@@ -15,26 +15,28 @@ Shuriken.defineExtension(function(baseNS) {
     root.defineMixin = defineMixin;
     ns.define = defineMixin;
     ns.lookupMixin = function(mixin) {
-      var _a, _b, _c;
-      if ((_a = typeof mixin) === "string") {
-        if ((typeof (_b = ns.mixins[mixin]) !== "undefined" && _b !== null)) {
+      var _a, _b;
+      switch (typeof mixin) {
+      case "string":
+        if (typeof (_a = ns.mixins[mixin]) !== "undefined" && _a !== null) {
           return ns.mixins[mixin];
-        } else if ((typeof (_c = root.mixins[mixin]) !== "undefined" && _c !== null)) {
+        } else if (typeof (_b = root.mixins[mixin]) !== "undefined" && _b !== null) {
           return root.mixins[mixin];
         } else {
           return {};
         }
-      } else {
+        break;
+      default:
         return mixin;
       }
     };
     ns.invokeMixin = function(scope, mixin) {
-      var _a;
-      if ((_a = typeof mixin) === "string") {
+      switch (typeof mixin) {
+      case "string":
         return ns.invokeMixin(scope, ns.lookupMixin(mixin));
-      } else if (_a === "function") {
+      case "function":
         return mixin.call(scope, scope);
-      } else if (_a === "object") {
+      case "object":
         return $.extend(scope, mixin);
       }
     };

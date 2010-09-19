@@ -3,7 +3,7 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
   };
 (function() {
   var Shuriken, base, makeNS, scopedClosure;
-  if ((typeof jQuery !== "undefined" && jQuery !== null)) {
+  if (typeof jQuery !== "undefined" && jQuery !== null) {
     (function($) {
       var stringToDataKey;
       stringToDataKey = function(key) {
@@ -16,13 +16,13 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
         return this.removeAttr(stringToDataKey(key));
       };
       $.fn.hasDataAttr = function(key) {
-        return this.is(("[" + (stringToDataKey(key)) + "]"));
+        return this.is("[" + (stringToDataKey(key)) + "]");
       };
       return ($.metaAttr = function(key) {
-        return $(("meta[name='" + (key) + "']")).attr("content");
+        return $("meta[name='" + (key) + "']").attr("content");
       });
     })(jQuery);
-  };
+  }
   Shuriken = {
     Base: {},
     Util: {},
@@ -48,7 +48,7 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
     children = __slice.call(arguments, 0);
     parts = children;
     current = this;
-    while ((typeof current !== "undefined" && current !== null)) {
+    while (typeof current !== "undefined" && current !== null) {
       parts.unshift(current.name);
       current = current.parent;
     }
@@ -61,7 +61,7 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
     _b = parts;
     for (_a = 0, _c = _b.length; _a < _c; _a++) {
       name = _b[_a];
-      if (!((typeof (_d = currentNS[name]) !== "undefined" && _d !== null))) {
+      if (!(typeof (_d = currentNS[name]) !== "undefined" && _d !== null)) {
         return null;
       }
       currentNS = currentNS[name];
@@ -71,7 +71,7 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
   base.getRootNS = function() {
     var _a, current;
     current = this;
-    while ((typeof (_a = current.parent) !== "undefined" && _a !== null)) {
+    while (typeof (_a = current.parent) !== "undefined" && _a !== null) {
       current = current.parent;
     }
     return current;
@@ -122,7 +122,7 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
   base.setupVia = function(f) {
     return $(document).ready(__bind(function() {
       var _a;
-      if ((typeof (_a = this.autosetup) !== "undefined" && _a !== null)) {
+      if (typeof (_a = this.autosetup) !== "undefined" && _a !== null) {
         return scopedClosure(f, this);
       }
     }, this));
@@ -130,10 +130,10 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
   base.require = function(key, callback) {
     var ns, path, script, url;
     ns = this.getNS(key);
-    if ((typeof ns !== "undefined" && ns !== null)) {
+    if (typeof ns !== "undefined" && ns !== null) {
       return scopedClosure(callback, ns);
     } else {
-      path = Shuriken.Util.underscoreize(("" + (this.toNSName()) + "." + (key)));
+      path = Shuriken.Util.underscoreize("" + (this.toNSName()) + "." + (key));
       url = ("" + (Shuriken.jsPathPrefix) + (path) + ".js" + (Shuriken.jsPathSuffix));
       script = $("<script />", {
         type: "text/javascript",
@@ -156,7 +156,7 @@ var __slice = Array.prototype.slice, __bind = function(func, context) {
       this.parent = parent;
       this.baseNS = sharedPrototype;
       this.children = [];
-      if ((typeof parent !== "undefined" && parent !== null)) {
+      if (typeof parent !== "undefined" && parent !== null) {
         parent.hasChildNamespace(this);
       }
       return this;

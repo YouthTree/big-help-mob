@@ -30,7 +30,7 @@ BHM.withNS('Pickups', function(ns) {
   ns.Pickup.prototype.toString = function() {
     var _a, string;
     string = ("" + (this.name) + " (" + (this.address) + ")");
-    if ((typeof (_a = this.pickupAt) !== "undefined" && _a !== null)) {
+    if (typeof (_a = this.pickupAt) !== "undefined" && _a !== null) {
       string += (", pickup at " + (this.pickupAt));
     }
     return string;
@@ -56,13 +56,13 @@ BHM.withNS('Pickups', function(ns) {
     inner.append($("<span />", {
       'class': 'address'
     }).text(this.address));
-    if ((typeof (_a = this.pickupAt) !== "undefined" && _a !== null)) {
+    if (typeof (_a = this.pickupAt) !== "undefined" && _a !== null) {
       inner.append($("<br />"));
       inner.append($("<span />", {
         'class': 'pickup-at'
-      }).text(("Pickup at " + (this.pickupAt))));
+      }).text("Pickup at " + (this.pickupAt)));
     }
-    if ((typeof (_b = this.comment) !== "undefined" && _b !== null)) {
+    if (typeof (_b = this.comment) !== "undefined" && _b !== null) {
       inner.append($("<br />"));
       inner.append($("<span />", {
         'class': 'pickup-comment'
@@ -85,14 +85,14 @@ BHM.withNS('Pickups', function(ns) {
     if (typeof pickup === "number") {
       pickup = ns.getPickup(pickup);
     }
-    if (!((typeof pickup !== "undefined" && pickup !== null))) {
+    if (!(typeof pickup !== "undefined" && pickup !== null)) {
       return null;
     }
     marker = ns.getMarker(pickup.id);
-    if (!((typeof marker !== "undefined" && marker !== null))) {
+    if (!(typeof marker !== "undefined" && marker !== null)) {
       return null;
     }
-    if ((typeof lastMarker !== "undefined" && lastMarker !== null)) {
+    if (typeof lastMarker !== "undefined" && lastMarker !== null) {
       lastMarker.setIcon(markerURL(false));
     }
     marker.setIcon(markerURL(true));
@@ -110,7 +110,7 @@ BHM.withNS('Pickups', function(ns) {
   };
   ns.getMarker = function(pickup) {
     var _a;
-    if ((typeof (_a = pickup.id) !== "undefined" && _a !== null)) {
+    if (typeof (_a = pickup.id) !== "undefined" && _a !== null) {
       pickup = pickup.id;
     }
     return markers[pickup];
@@ -130,7 +130,7 @@ BHM.withNS('Pickups', function(ns) {
   };
   ns.addAllPickups = function() {
     var container;
-    container = $(("" + (ns.listingSelector) + " " + (ns.entrySelector)));
+    container = $("" + (ns.listingSelector) + " " + (ns.entrySelector));
     container.each(function() {
       var address, at, comment, element, id, lat, lng, name;
       element = $(this);
@@ -145,7 +145,7 @@ BHM.withNS('Pickups', function(ns) {
         return (pickups[id] = new ns.Pickup(id, name, address, lat, lng, at, comment));
       }
     });
-    return (selected = container.filter(("[data-" + (ns.dataPrefix) + "-selected]")));
+    return (selected = container.filter("[data-" + (ns.dataPrefix) + "-selected]"));
   };
   ns.plotPickups = function() {
     map = ns.getMap();

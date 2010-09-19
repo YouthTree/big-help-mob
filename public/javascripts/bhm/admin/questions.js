@@ -13,7 +13,7 @@ BHM.withNS('Admin.Questions', function(ns) {
     if (sortable) {
       return null;
     }
-    $(("" + (ns.dialogSelector) + " " + (ns.sortableSelector))).sortable();
+    $("" + (ns.dialogSelector) + " " + (ns.sortableSelector)).sortable();
     return (sortable = true);
   };
   ns.bindReorderButton = function() {

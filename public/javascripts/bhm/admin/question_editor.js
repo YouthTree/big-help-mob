@@ -36,8 +36,8 @@ BHM.withNS('Admin.QuestionEditor', function(ns) {
   ns.addQuestion = function() {
     var inner;
     inner = ns.template.replace(/QUESTION_IDX/g, Number(new Date()));
-    $(("" + (ns.fieldsetSelector) + ":last")).after(inner);
-    return ns.attachEventOn($(("" + (ns.fieldsetSelector) + ":last")));
+    $("" + (ns.fieldsetSelector) + ":last").after(inner);
+    return ns.attachEventOn($("" + (ns.fieldsetSelector) + ":last"));
   };
   ns.deleteQuestion = function(link) {
     link = $(link);

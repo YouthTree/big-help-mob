@@ -34,7 +34,7 @@ BHM.withNS('Admin.PostcodeMapper', function(ns) {
     return postcodes.push(new ns.Postcode(postcode, lat, lng, count));
   };
   ns.autoAddPostcodes = function() {
-    return $(("" + (ns.listSelector) + " " + (ns.itemSelector))).each(function() {
+    return $("" + (ns.listSelector) + " " + (ns.itemSelector)).each(function() {
       var element;
       element = $(this);
       return ns.addPostcode(ns.data(element, "postcode"), Number(ns.data(element, "postcode-lat")), Number(ns.data(element, "postcode-lng")), Number(ns.data(element, "postcode-count")));
@@ -42,7 +42,7 @@ BHM.withNS('Admin.PostcodeMapper', function(ns) {
   };
   ns.getMap = function() {
     var container;
-    if ((typeof map !== "undefined" && map !== null)) {
+    if (typeof map !== "undefined" && map !== null) {
       return map;
     }
     container = $(ns.mapSelector);

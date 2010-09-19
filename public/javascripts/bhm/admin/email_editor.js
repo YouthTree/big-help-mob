@@ -13,7 +13,7 @@ BHM.withNS('Admin.EmailEditor', function(ns) {
     return ns.setButtonText("Preview and Confirm");
   };
   ns.removePreviewFor = function(field) {
-    $(("#preview-of-" + (field))).hide();
+    $("#preview-of-" + (field)).hide();
     return ns.hideConfirmation();
   };
   ns.hideParticipationFilter = function() {

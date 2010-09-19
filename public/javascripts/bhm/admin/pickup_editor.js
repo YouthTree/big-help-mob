@@ -21,8 +21,8 @@ BHM.withNS('Admin.PickupEditor', function(ns) {
   ns.addPickup = function() {
     var inner;
     inner = ns.template.replace(/PICKUP_IDX/g, Number(new Date()));
-    $(("" + (ns.fieldsetSelector) + ":last")).after(inner);
-    return ns.attachEventOn($(("" + (ns.fieldsetSelector) + ":last")));
+    $("" + (ns.fieldsetSelector) + ":last").after(inner);
+    return ns.attachEventOn($("" + (ns.fieldsetSelector) + ":last"));
   };
   ns.deletePickup = function(link) {
     link = $(link);

@@ -7,7 +7,7 @@ BHM.withNS('Admin.MissionDashboard', function(ns) {
     return $(ns.tabsSelector).tabs();
   };
   ns.setupReportGenerator = function() {
-    $(("" + (ns.showReportSelector) + " a")).click(function() {
+    $("" + (ns.showReportSelector) + " a").click(function() {
       $(ns.showReportSelector).slideUp();
       $(ns.reportSelector).slideDown();
       return false;

@@ -3,7 +3,7 @@ BHM.withNS('Flash', function(ns) {
   ns.insideSelector = 'p.flash';
   ns.hideTimeout = 5000;
   ns.hideAllFlash = function() {
-    return $(("" + (ns.parentSelector) + " " + (ns.insideSelector))).each(function() {
+    return $("" + (ns.parentSelector) + " " + (ns.insideSelector)).each(function() {
       return ns.hideFlash(this);
     });
   };
@@ -13,12 +13,12 @@ BHM.withNS('Flash', function(ns) {
     });
   };
   ns.setupTimers = function() {
-    return setTimeout((function() {
+    return setTimeout(function() {
       return ns.hideAllFlash();
-    }), ns.hideTimeout);
+    }, ns.hideTimeout);
   };
   ns.attachClickEvents = function() {
-    return $(("" + (ns.parentSelector) + " " + (ns.insideSelector))).click(function() {
+    return $("" + (ns.parentSelector) + " " + (ns.insideSelector)).click(function() {
       ns.hideFlash(this);
       return false;
     });

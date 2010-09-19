@@ -4,12 +4,12 @@ var __extends = function(child, parent) {
     child.prototype = new ctor();
     child.prototype.constructor = child;
     if (typeof parent.extended === "function") parent.extended(child);
-    child.__superClass__ = parent.prototype;
+    child.__super__ = parent.prototype;
   };
 BHM.withNS('Admin', function(ns) {
   ns.BaseChart = function(_a) {
     this.id = _a;
-    this.parent = $(("#" + (this.id))).parents('.statistic');
+    this.parent = $("#" + (this.id)).parents('.statistic');
     this.buildInitialOptions();
     return this;
   };
@@ -64,7 +64,7 @@ BHM.withNS('Admin', function(ns) {
   };
   ns.BaseChart.prototype.draw = function() {
     this.parent.removeClass('hidden-container');
-    $(("#" + (this.id))).empty().show();
+    $("#" + (this.id)).empty().show();
     return new Highcharts.Chart(this.options);
   };
   ns.withNS('LineChart', function(lineNS) {

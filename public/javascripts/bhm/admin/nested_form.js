@@ -21,8 +21,8 @@ BHM.withNS('Admin.NestedForm', function(ns) {
   ns.addItem = function() {
     var inner;
     inner = ns.template.replace(/NESTED_IDX/g, Numbe(new Date()));
-    $(("" + (ns.fieldsetSelector) + ":last")).after(inner);
-    return ns.attachEventOn($(("" + (ns.fieldsetSelector) + ":last")));
+    $("" + (ns.fieldsetSelector) + ":last").after(inner);
+    return ns.attachEventOn($("" + (ns.fieldsetSelector) + ":last"));
   };
   ns.removeItem = function(link) {
     link = $(link);

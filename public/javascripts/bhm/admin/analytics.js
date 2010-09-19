@@ -9,11 +9,11 @@ BHM.withNS('Admin.Analytics', function(ns) {
   ns.addSiteParams = function(params) {
     var site_id, site_key;
     site_id = $.metaAttr("clicky-site-id");
-    if ((typeof site_id !== "undefined" && site_id !== null)) {
+    if (typeof site_id !== "undefined" && site_id !== null) {
       params.site_id = site_id;
     }
     site_key = $.metaAttr("clicky-site-key");
-    if ((typeof site_key !== "undefined" && site_key !== null)) {
+    if (typeof site_key !== "undefined" && site_key !== null) {
       params.sitekey = site_key;
     }
     return params;
