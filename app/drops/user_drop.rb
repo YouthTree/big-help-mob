@@ -9,7 +9,7 @@ class UserDrop < DynamicBaseDrop
   end
   
   def name
-    user.to_s
+    user.name
   end
   
 end

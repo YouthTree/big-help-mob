@@ -13,7 +13,7 @@
   #mission-notice
     %h2 Huzzah! You've successfully joined this mission.
     %p
-      == Congratulations #{current_user} - you've successfully signed up to take
+      == Congratulations #{current_user.name} - you've successfully signed up to take
       == part in '#{@mission.name}' on #{l @mission.occurs_at, :format => :simple}.
     %p
       You should have received an email with information about the event and

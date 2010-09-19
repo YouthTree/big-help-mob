@@ -4,7 +4,7 @@ class Notifications < ActionMailer::Base
 
   def signup(user)
     @user = user
-    subject_vars :user_name => user.to_s
+    subject_vars :user_name => user.name
     mail         :to        => user.email
   end
 

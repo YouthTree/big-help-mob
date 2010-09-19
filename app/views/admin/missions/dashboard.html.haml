@@ -57,4 +57,4 @@
             - else
               %ul.participations
                 - participations.each do |participation|
-                  %li= link_to participation.user.to_s, [:admin, @mission, participation]
+                  %li= link_to participation.user.name, [:admin, @mission, participation]
