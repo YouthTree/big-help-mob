@@ -33,7 +33,8 @@ begin
     Content.create! :key => "pages.about", :title => "About Big Help Mob", :content => ""
     Content.create! :key => "pages.privacy-policy", :title => "Our Privacy Policy", :content => ""
     Content.create! :key => "pages.terms-and-conditions", :title => "Terms and Conditions", :content => ""
-    Content.create! :key => "pages.missions", :title => "Our Missions", :content => ""
+    Content.create! :key => "pages.missions.header", :title => "Our Missions", :content => ""
+    Content.create! :key => "pages.missions.footer", :title => "Our Missions", :content => ""
     
     DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "(blank)", :content_type => "html"
     DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "(blank)", :content_type => "html"

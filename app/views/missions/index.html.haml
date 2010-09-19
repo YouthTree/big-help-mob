@@ -1,4 +1,7 @@
 #missions
+  
+  = content_section 'pages.missions.header', :class => 'column'
+
   - @missions.each do |mission|
     %div[mission]
       %h4.mission-name
@@ -9,3 +12,5 @@
       %p.mission-description
         = mission.short_description
         = link_to "View this mission &raquo;".html_safe, mission
+
+  = content_section 'pages.missions.footer', :class => 'column'
