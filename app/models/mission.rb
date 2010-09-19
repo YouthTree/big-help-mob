@@ -49,6 +49,10 @@ class Mission < ActiveRecord::Base
     state :completed
     state :cancelled
     
+    event :mark_as_created do
+      transition :preparing => :created
+    end
+    
     event :prepare do
       transition :created => :preparing
     end

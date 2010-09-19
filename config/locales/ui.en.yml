@@ -14,6 +14,7 @@ en:
         approve: "Approve choices (once event is filled)"
         cancel: "Cancel event"
         complete: "Mark event as completed"
+        mark_as_created: "Revert to Created / Hide from users"
       mission_participation:
         await_approval: "Mark as awaiting approval"
         approve: "Approve Participation"
