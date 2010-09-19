@@ -237,7 +237,7 @@ GEM
     validation_reflection (1.0.0.rc.1)
     vegas (0.1.7)
       rack (>= 1.0.0)
-    ydd (0.0.2)
+    ydd (0.0.3)
       activerecord (~> 3.0.0)
       activesupport (~> 3.0.0)
       thor (~> 0.14)
