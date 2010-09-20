@@ -80,7 +80,7 @@ gem 'unicorn', :require => nil
 
 gem 'campaigning'
 
-gem 'resque_mailer'
+gem 'resque_action_mailer_backend'
 
 group :development do
   gem 'rails3-generators'

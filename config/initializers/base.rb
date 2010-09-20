@@ -29,6 +29,4 @@ Mime::Type.register 'application/pdf', :pdf
 
 CampaignMonitorWrapper.configure!
 
-Resque::Mailer.excluded_environments = [:test, :development]
-
 require 'attr_accessible_scoping'
