@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100912094149) do
+ActiveRecord::Schema.define(:version => 20100920081549) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -126,10 +126,10 @@ ActiveRecord::Schema.define(:version => 20100912094149) do
   add_index "mission_questions", ["mission_id"], :name => "index_mission_questions_on_mission_id"
 
   create_table "missions", :force => true do |t|
-    t.string   "name",                                   :null => false
-    t.text     "description",                            :null => false
+    t.string   "name",                                         :null => false
+    t.text     "description",                                  :null => false
     t.integer  "organisation_id"
-    t.datetime "occurs_at",                              :null => false
+    t.datetime "occurs_at",                                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state"
@@ -139,9 +139,11 @@ ActiveRecord::Schema.define(:version => 20100912094149) do
     t.integer  "minimum_captain_age"
     t.integer  "maximum_captain_age"
     t.string   "address_title"
-    t.boolean  "captain_signup_open",  :default => true
-    t.boolean  "sidekick_signup_open", :default => true
+    t.boolean  "captain_signup_open",        :default => true
+    t.boolean  "sidekick_signup_open",       :default => true
     t.text     "short_description"
+    t.text     "archived_short_description"
+    t.text     "archived_description"
   end
 
   add_index "missions", ["cached_slug"], :name => "index_missions_on_cached_slug"
@@ -163,6 +165,17 @@ ActiveRecord::Schema.define(:version => 20100912094149) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "postcode_locations", :force => true do |t|
+    t.integer  "postcode"
+    t.string   "name"
+    t.decimal  "lat",        :precision => 15, :scale => 10
+    t.decimal  "lng",        :precision => 15, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postcode_locations", ["postcode"], :name => "index_postcode_locations_on_postcode"
 
   create_table "questions", :force => true do |t|
     t.boolean  "visible",                  :default => false, :null => false

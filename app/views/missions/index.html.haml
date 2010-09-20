@@ -10,7 +10,7 @@
         = link_to mission.name, mission
       .mission-photos= render_mission_photos mission.flickr_photos.for_archive
       %p.mission-description
-        = mission.short_description
+        = mission.completed? ? mission.archived_short_description : mission.short_description
         = link_to "View this mission &raquo;".html_safe, mission
 
   = content_section 'pages.missions.footer', :class => 'column'

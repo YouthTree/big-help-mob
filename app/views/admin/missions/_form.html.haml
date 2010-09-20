@@ -4,10 +4,13 @@
   
   = form.input :name
   
-  = form.input :short_description, :input_html => {:rows => 3}
+  = form.input :short_description, :input_html => {:rows => 3}, :hint => "Shown whilst the missing is not completed."
+  
+  = form.input :archived_short_description, :input_html => {:rows => 3}, :hint => "Shown once the missing is completed."
 
   - has_ckeditor
-  = form.input :description, :input_html => {:rows => 5}, :wrapper_html => {:class => 'ckeditor'}
+  ~ form.input :description, :input_html => {:rows => 5}, :wrapper_html => {:class => 'ckeditor'}, :hint => "Shown whilst the missing is not completed."
+  ~ form.input :archived_description, :input_html => {:rows => 5}, :wrapper_html => {:class => 'ckeditor'}, :hint => "Shown once the missing is completed."
   
   = form.input :occurs_at, :hint => "When is the event?"
   

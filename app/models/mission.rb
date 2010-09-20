@@ -7,7 +7,7 @@ class Mission < ActiveRecord::Base
   Error        = Class.new(StandardError)
   SignupClosed = Class.new(Error)
   
-  attr_accessible :organisation_id, :user_id, :description, :name
+  attr_accessible :organisation_id, :user_id, :description, :name, :archived_description
   
   scope :next,      where(:state => ['preparing', 'approved']).order('occurs_at ASC')
   scope :viewable,  where(:state => ['preparing', 'approved', 'completed'])
@@ -107,6 +107,10 @@ class Mission < ActiveRecord::Base
   
   def description_as_html
     description.to_s.html_safe
+  end
+  
+  def archived_description_as_html
+    archived_description.to_s.html_safe
   end
   
   def unstarted?

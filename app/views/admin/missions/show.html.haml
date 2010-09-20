@@ -8,9 +8,14 @@
   = r.attribute :name
 
   = r.attribute :short_description
+  
+  = r.attribute :archived_short_description
 
   = r.attribute :description do
     .content-preview= resource.description_as_html
+    
+  = r.attribute :archived_description do
+    .content-preview= resource.archived_description_as_html
   
   = r.attribute :state do
     = resource.state.to_s.humanize
