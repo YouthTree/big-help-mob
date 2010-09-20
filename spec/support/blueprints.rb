@@ -8,4 +8,5 @@ User.blueprint do
   first_name            { Forgery(:name).first_name }
   last_name             { Forgery(:name).last_name }
   origin                { User::ORIGIN_CHOICES.shuffle.first }
+  date_of_birth         { 21.years.ago }
 end

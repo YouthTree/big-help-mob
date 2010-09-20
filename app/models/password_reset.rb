@@ -2,16 +2,18 @@
 class PasswordReset
   extend  ActiveModel::Naming
   include ActiveModel::Conversion
-  
+
   attr_accessor :email, :password, :password_confirmation
-  
+
+  attr_reader :user
+
   def self.human_name
     model_name.human
   end
 
   def self.find(token)
     return if token.blank?
-    user = User.find_using_perishable_token(token) 
+    user = User.find_using_perishable_token(token.to_s.strip) 
     return if user.blank?
     self.new({}, user, false)
   end
@@ -23,25 +25,20 @@ class PasswordReset
     @real_validation = false
     self.attributes  = params
   end
-  
+
   def create
     @real_validation = true
     return false if !valid?
-    @user.reset_perishable_token!
-    @user.notify! :password_reset
+    user.reset_perishable_token!
+    user.notify! :password_reset
     true
   end
-  
+
   def update(attributes = {})
     @real_validation = true
     return false if new_record?
     self.attributes = attributes if attributes.present?
-    if password.present? && @user.update_attributes(:password => password, :password_confirmation => password_confirmation)
-      @user.reset_perishable_token!
-      true
-    else
-      false
-    end
+    password.present? && user.update_password!(password, password_confirmation)
   end
   
   def save
@@ -49,7 +46,7 @@ class PasswordReset
   end
   
   def valid?
-    @user.present? && errors.empty?
+    user.present? && errors.empty?
   end
   
   def errors

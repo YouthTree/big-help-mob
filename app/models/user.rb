@@ -197,6 +197,18 @@ class User < ActiveRecord::Base
     end
   end
   
+  def update_password!(password, confirmation)
+    return false if password.blank? || confirmation.blank?
+    self.password              = password
+    self.password_confirmation = confirmation
+    valid?
+    if !(invalid = (errors[:password] + errors[:password_confirmation]).any?)
+      save :validate => false
+      reset_perishable_token!
+    end
+    !invalid
+  end
+  
   protected
   
   def update_postcode_geolocation
