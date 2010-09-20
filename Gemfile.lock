@@ -192,9 +192,6 @@ GEM
       redisk (>= 0.2.1)
       resque (>= 1.3.1)
       uuid (>= 2.0.2)
-    resque_action_mailer_backend (0.0.2)
-      actionmailer (>= 2.2.0)
-      resque (>= 1.8.0)
     rfc-822 (0.2.3)
     rpx_now (0.6.23)
       json_pure
@@ -304,7 +301,6 @@ DEPENDENCIES
   responders
   resque (>= 1.10)
   resque-status
-  resque_action_mailer_backend
   rfc-822
   rpx_now
   rr

@@ -80,8 +80,6 @@ gem 'unicorn', :require => nil
 
 gem 'campaigning'
 
-gem 'resque_action_mailer_backend'
-
 group :development do
   gem 'rails3-generators'
   gem 'annotate', :git => 'git://github.com/miyucy/annotate_models.git', :require => nil
