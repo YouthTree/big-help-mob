@@ -190,10 +190,13 @@ class User < ActiveRecord::Base
   end
   
   def ensure_name_is_filled_in
-    return if first_name.present? && last_name.present?
-    if new_record? || (using_password? && login.blank?)
-      errors.add :full_name, "first name must be filled in" if first_name.blank?
-      errors.add :full_name, "last name must be filled in" if last_name.blank?
+    if first_name.blank?
+      errors.add :full_name, "first name must be filled in"
+      errors.add :first_name, :blank
+    end
+    if last_name.blank?
+      errors.add :full_name, "last name must be filled in"
+      errors.add :last_name, :blank
     end
   end
   
