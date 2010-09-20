@@ -73,6 +73,10 @@ describe PasswordReset do
       @password_reset.update(:password => "newpass123", :password_confirmation => "newpass123").should == true
     end
     
+    it 'should not update the token on two different password' do
+      @password_reset.update(:password => "newpass123", :password_confirmation => "anotherpass123").should == false
+    end
+    
   end
   
 end

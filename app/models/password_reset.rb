@@ -2,73 +2,61 @@
 class PasswordReset
   extend  ActiveModel::Naming
   include ActiveModel::Conversion
+  include ActiveModel::Validations
 
   attr_accessor :email, :password, :password_confirmation
+  attr_reader   :user
 
-  attr_reader :user
-
-  def self.human_name
-    model_name.human
-  end
+  validates_presence_of :password, :password_confirmation, :if => :persisted?
+  validates_presence_of :email,                            :if => :new_record?
+  
+  validates_confirmation_of :password,                     :if => :persisted?
+  
 
   def self.find(token)
     return if token.blank?
     user = User.find_using_perishable_token(token.to_s.strip) 
     return if user.blank?
-    self.new({}, user, false)
+    self.new({}, user, true)
   end
   
-  def initialize(params = {}, user = nil, new_record = true)
+  def initialize(params = {}, user = nil, persisted = false)
     @user            = user
-    @new_record      = !!new_record
-    @errors          = ActiveModel::Errors.new(self)
-    @real_validation = false
+    @persisted       = persisted
     self.attributes  = params
   end
 
   def create
-    @real_validation = true
-    return false if !valid?
-    user.reset_perishable_token!
-    user.notify! :password_reset
-    true
+    valid?.tap do |value|
+      user.reset_perishable_token!
+      user.notify! :password_reset
+    end
   end
 
   def update(attributes = {})
-    @real_validation = true
     return false if new_record?
-    self.attributes = attributes if attributes.present?
-    password.present? && user.update_password!(password, password_confirmation)
+    self.attributes = attributes
+    valid?.tap { |v| user.update_password!(password) if v }
   end
   
   def save
-    create if new_record?
-  end
-  
-  def valid?
-    user.present? && errors.empty?
-  end
-  
-  def errors
-    return ActiveModel::Errors.new(self) unless @real_validation
-    new_record? ? create_errors_for_email : create_errors_for_update
+    new_record? && create
   end
   
   def attributes=(attributes)
-    real_attributes = (attributes || {}).symbolize_keys
-    [:password, :password_confirmation, :email].each do |v|
-      next if !real_attributes.has_key?(v)
+    attributes = (attributes || {}).symbolize_keys
+    (attributes.keys & [:password, :password_confirmation, :email]).each do |v|
       send(:"#{v}=", attributes[v].to_s)
     end
-    load_from_email if real_attributes.has_key?(:email)
+    load_from_email if attributes[:email].present? && new_record?
   end
   
   def new_record?
-    @new_record
+    !persisted?
   end
   
   def persisted?
-    !new_record?
+    @persisted
   end
   
   def id
@@ -78,18 +66,12 @@ class PasswordReset
   protected
   
   def load_from_email
-    @user = (email.blank? ? nil : User.find_by_email(email))
+    @user = email.blank? ? nil : find_user_by_email(email)
   end
   
-  def create_errors_for_email
-    @errors.clear
-    @errors
-  end
-  
-  def create_errors_for_update
-    errors = @user.errors.dup
-    errors.add :password, :blank if password.blank?
-    errors
+  def find_user_by_email(email)
+    users = User.where(:email => email).all
+    users.detect { |u| u.using_password? } || users.first
   end
   
 end

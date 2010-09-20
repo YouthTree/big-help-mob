@@ -197,16 +197,11 @@ class User < ActiveRecord::Base
     end
   end
   
-  def update_password!(password, confirmation)
-    return false if password.blank? || confirmation.blank?
+  def update_password!(password)
     self.password              = password
-    self.password_confirmation = confirmation
-    valid?
-    if !(invalid = (errors[:password] + errors[:password_confirmation]).any?)
-      save :validate => false
-      reset_perishable_token!
-    end
-    !invalid
+    self.password_confirmation = password
+    save :validate => false
+    reset_perishable_token!
   end
   
   protected

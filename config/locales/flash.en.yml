@@ -10,6 +10,7 @@ en:
         alert: '%{resource_name} could not be destroyed.'
     permissions:
       admin_denied: "I'm sorry dave, I can't let you do that"
+      logged_in: "I'm sorry, you can't visit that page whilst logged in"
     general:
       signed_in: "Successfully signed back in - welcome back to Big Help Mob."
       signed_out: "Successfully signed out"

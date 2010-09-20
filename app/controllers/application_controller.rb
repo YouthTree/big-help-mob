@@ -27,5 +27,12 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+  
+  def require_no_user
+    if logged_in?
+      flash[:alert] = tf('permissions.logged_in')
+      redirect_to user_path(:current)
+    end
+  end
 
 end

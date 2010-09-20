@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
   
   ssl_required :new,  :create, :edit, :update
   
+  before_filter :require_no_user
   before_filter :prepare_password_reset, :only => [:edit, :update]
   
   def new
@@ -22,8 +23,8 @@ class PasswordResetsController < ApplicationController
   end
   
   def update
-    if @password_reset.update(params[:password_reset])
-      redirect_to :sign_in, :notice => tf('password_resets.reset_complete')
+    if @password_reset.update params[:password_reset]
+      redirect_to user_path(:current), :notice => tf('password_resets.reset_complete')
     else
       render :action => "edit"
     end
