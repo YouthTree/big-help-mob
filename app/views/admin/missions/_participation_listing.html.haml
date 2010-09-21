@@ -12,7 +12,7 @@
     - participations.each do |r|
       %tr{:class => cycle('odd', 'even')}
         - if show_name
-          %td= link_to r.user, [:admin, r.user]
+          %td= link_to r.user.name, [:admin, r.user]
         - if show_role
           %td= vwd r.role_name.to_s.humanize
         - if show_state

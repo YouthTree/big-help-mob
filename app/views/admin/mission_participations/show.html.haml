@@ -8,7 +8,7 @@
       = link_to resource.mission, [:admin, resource.mission]
   - else 
     = r.association :mission do
-      = link_to resource.user, [:admin, resource.user]
+      = link_to resource.user.name, [:admin, resource.user]
   
   = r.attribute :comment do
     = comment_as_html resource

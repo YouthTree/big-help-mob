@@ -18,7 +18,7 @@
       %tr{:class => cycle('odd', 'even')}
         %td= r.id
         - if parent_class == Mission
-          %td= link_to r.user, [:admin, r.user]
+          %td= link_to r.user.name, [:admin, r.user]
         - else
           %td= link_to r.mission.name, [:admin, r.mission]
         %td= vwd r.role_name.to_s.humanize
