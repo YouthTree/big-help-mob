@@ -62,7 +62,6 @@ javascripts:
   share_this:
     - public/javascripts/bhm/share_this.js
   mission_dashboard:
-    - public/javascripts/vendor/markerclusterer.js
     - public/javascripts/bhm/admin/mission_dashboard.js
   email_editor:
     - public/javascripts/bhm/admin/email_editor.js
