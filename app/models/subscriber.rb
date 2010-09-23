@@ -6,9 +6,9 @@ class Subscriber
 
   attr_accessor :name, :email, :list_ids
     
-  validates_presence_of :email, :message => 'must be filled in to continue.'
+  validates_presence_of :email,    :message => 'must be filled in to continue.'
   validates_presence_of :list_ids, :message => 'you need to choose at least 1 list to subscribe to.'
-  validates_format_of :email, :with => RFC822::EMAIL, :message => 'is not a valid email address.'
+  validates_format_of   :email, :with => RFC822::EMAIL, :message => 'is not a valid email address.'
   
   def initialize(values = {})
     @persisted = false
@@ -24,7 +24,7 @@ class Subscriber
   end
   
   def save
-    if valid?
+    if valid? && !persisted?
       subscribe!
       persist!
     end
@@ -44,7 +44,7 @@ class Subscriber
   
   # Adds a job to subscribe the user.
   def subscribe!
-    
+    # TODO: Implement
   end
   
 end
