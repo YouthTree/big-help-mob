@@ -55,6 +55,10 @@ describe PasswordReset do
       @password_reset = PasswordReset.find(@user.perishable_token)
     end
     
+    it 'should return the users perishable token for id' do
+      @password_reset.id.should == @user.perishable_token
+    end
+    
     it 'should return false if the password is blank' do
       @password_reset.update(:password => "", :password_confirmation => "something").should == false
     end
@@ -75,6 +79,68 @@ describe PasswordReset do
     
     it 'should not update the token on two different password' do
       @password_reset.update(:password => "newpass123", :password_confirmation => "anotherpass123").should == false
+    end
+    
+  end
+  
+  describe 'sending the initial reset' do
+    
+    it 'should be invalid without an email set' do
+      password_reset = PasswordReset.new(:email => '')
+      password_reset.should_not be_valid
+      password_reset.errors[:email].should be_present
+      password_reset.email.should == ''
+    end
+    
+    it 'should be invalid with an incorrect user' do
+      User.where(:email => 'nonexistant@email.com').delete_all
+      password_reset = PasswordReset.new(:email => 'nonexistant@email.com')
+      password_reset.should_not be_valid
+      password_reset.errors[:user].should be_present
+      password_reset.user.should be_blank
+    end
+    
+    it 'should have the email set' do
+      password_reset = PasswordReset.new(:email => 'nonexistant@email.com')
+      password_reset.email.should == 'nonexistant@email.com'
+    end
+    
+    describe 'when valid' do
+      
+      before :each do
+        @user = User.make!
+        @password_reset = PasswordReset.new(:email => @user.email)
+      end
+      
+      
+      it 'should be valid' do
+        @password_reset.should be_valid
+      end
+
+      it 'should set the user' do
+        @password_reset.user.should == @user
+      end
+      
+      it 'should set the email' do
+        @password_reset.email.should == @user.email
+      end
+      
+      it 'should reset the persishable_token on save' do
+        mock(@password_reset).user.times(any_times) { @user }
+        mock(@user).reset_perishable_token!
+        @password_reset.save
+      end
+
+      it 'should notify the user on save' do
+        mock(@password_reset).user.times(any_times) { @user }
+        mock(@user).notify! :password_reset
+        @password_reset.save
+      end
+      
+    end
+    
+    describe 'when invalid' do
+      
     end
     
   end

@@ -8,7 +8,7 @@ class PasswordReset
   attr_reader   :user
 
   validates_presence_of :password, :password_confirmation, :if => :persisted?
-  validates_presence_of :email,                            :if => :new_record?
+  validates_presence_of :email, :user,                     :if => :new_record?
   
   validates_confirmation_of :password,                     :if => :persisted?
   
