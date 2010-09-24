@@ -70,6 +70,10 @@ class User < ActiveRecord::Base
     find_by_email(login) || find_by_login(login)
   end
   
+  def self.for_select
+    all.map { |u| [u.to_s, u.id] }
+  end
+  
   def editing_participation?
     current_participation.present?
   end
@@ -95,12 +99,24 @@ class User < ActiveRecord::Base
   def name
     if display_name?
       display_name
-    elsif full_name.present?
+    elsif full_name?
       full_name
     elsif login?
       login
     else
       "Unknown User"
+    end
+  end
+  
+  def name_was
+    if display_name_changed?
+      display_name_was
+    elsif full_name_changed?
+      [(first_name_was || first_name), (last_name_was || last_name)].join(" ")
+    elsif display_name.blank? && login_changed?
+      login_was
+    else
+      name
     end
   end
 
@@ -115,18 +131,6 @@ class User < ActiveRecord::Base
     first_name_changed? || last_name_changed?
   end
   
-  def name_was
-    if display_name_changed?
-      display_name_was
-    elsif first_name_changed?
-      [(first_name_was || first_name), (last_name_was || last_name)].join(" ")
-    elsif display_name.blank? && login_changed?
-      login_was
-    else
-      name
-    end
-  end
-  
   def full_name
     return nil unless first_name? || last_name?
     [first_name, last_name].reject(&:blank?).join(" ")
@@ -134,10 +138,6 @@ class User < ActiveRecord::Base
   
   def full_name?
     full_name.present?
-  end
-  
-  def self.for_select
-    all.map { |u| [u.to_s, u.id] }
   end
   
   def notify!(name, *args)
