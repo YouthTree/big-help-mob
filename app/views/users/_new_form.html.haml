@@ -14,7 +14,7 @@
     = form.input :password, :as => :confirmed_password, :input_html => {:placeholder => "Your Password"}, :confirmation => {:placeholder => "Confirm Your Password"}
 
   = form.inputs :name => "And Finally Us" do
-    = form.input :volunteered_in_last_year, :as => :select, :collection => User::VOLUNTEERING_CHOICES, :required => false, :label => "In the last year, have you volunteered at all?", :include_blank => false
+    = form.input :volunteering_history, :as => :select, :collection => User.volunteering_history_options_scope.for_select, :required => false, :label => "In the last year, have you volunteered at all?", :include_blank => false
     = form.input :origin, :as => input_type_for_origin(form.object.origin), :collection => User::ORIGIN_CHOICES,  :required => false, :include_blank => false
     - if @user.needs_ml_subscriptions?
     = form.input :mailing_list_choices, :collection => User.available_mailing_list_choices, :as => :check_boxes, :label => "Mailing Lists"

@@ -16,13 +16,9 @@ class UserStatistics
   end
   
   def self.count_per_volunteering_history
-    counts = User.where("volunteered_in_last_year IS NOT NULL").count(:all, :group => "volunteered_in_last_year")
-    items = [["Yes", true], [ "No", false]]
-    values = ActiveSupport::OrderedHash.new(0)
-    items.each do |k, v|
-      values[k] = counts[v].to_i
-    end
-    values
+    results = User.count_on_volunteering_history_by_value
+    results["Unknown"] = results.delete(nil) if results.has_key? nil
+    results    
   end
   
   def self.count_per_age

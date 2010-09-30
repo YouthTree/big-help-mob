@@ -23,10 +23,7 @@
   = s.association :current_role
   
   = s.attribute :previous_volunteer do
-    - if @user.volunteered_in_last_year.blank?
-      Not answered.
-    - else
-      = @user.volunteered_in_last_year? ? "Yes" : "No"
+    = @user.volunteering_history.try(:name)
   
   = s.association :comment do
     = comment_as_html @user
