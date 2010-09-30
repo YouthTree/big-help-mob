@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   extend DynamicBaseDrop::Droppable
   
   include MailingListSubscribeable
+  include CollatableOptionMixin
   
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
   
@@ -20,15 +21,10 @@ class User < ActiveRecord::Base
     "Other organization",
     "Other"
   ]
-  
-  VOLUNTEERING_CHOICES = [
-    ["No, I haven't.", false],
-    ["Yes, I have.",   true]
-  ]
 
   attr_accessible :login, :password, :password_confirmation, :email, :display_name, :first_name,
                   :last_name, :date_of_birth, :phone, :postcode, :allergies, :mailing_list_choices,
-                  :captain_application_attributes, :origin, :volunteered_in_last_year
+                  :captain_application_attributes, :origin, :volunteering_history, :volunteering_history_id
 
   has_many :mission_participations, :dependent => :destroy
   
@@ -57,12 +53,14 @@ class User < ActiveRecord::Base
   
   validates_presence_of :date_of_birth, :origin
 
-  validates_presence_of :phone,               :if => :editing_participation?
+  validates_presence_of :phone, :volunteering_history, :if => :editing_participation?
   validates_presence_of :captain_application, :if => :should_validate_captain_fields?
   validates_associated  :captain_application, :if => :should_validate_captain_fields?
   validate              :ensure_name_is_filled_in
 
   scope :with_age, where('date_of_birth IS NOT NULL AND EXTRACT(year from AGE(date_of_birth)) > 0').select("*,  EXTRACT(year from AGE(date_of_birth)) AS age")
+
+  has_collatable_option :volunteering_history, 'user.volunteering_history'
 
   attr_accessor :current_participation
   

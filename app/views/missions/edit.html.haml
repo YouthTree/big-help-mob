@@ -35,6 +35,7 @@
     = form.inputs :name => "Your General Profile" do
       = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."      
       = uf.input :phone, :required => true, :hint => "We respect your privacy - this number will only be shared with the Big Help Mob team on missions for planning / safety reasons."
+      = uf.input :volunteering_history, :required => true, :label => "What best describes your volunteering habits? (we mean ANY sort of volunteering)", :hint => "This helps us to better gauge the effect Big Help Mob has at getting new volunteers."
 
     - if @participation.captain?
       - uf.object.build_captain_application if uf.object.captain_application.blank?
