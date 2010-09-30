@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100920081549) do
+ActiveRecord::Schema.define(:version => 20100930132504) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(:version => 20100920081549) do
   end
 
   add_index "captain_applications", ["user_id"], :name => "index_captain_applications_on_user_id"
+
+  create_table "collatable_options", :force => true do |t|
+    t.string   "scope_key"
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contents", :force => true do |t|
     t.string   "title"
@@ -253,7 +261,7 @@ ActiveRecord::Schema.define(:version => 20100920081549) do
     t.string   "cached_slug"
     t.text     "comment"
     t.boolean  "completed_mailing_list_subscriptions",                                 :default => false
-    t.boolean  "volunteered_in_last_year"
+    t.integer  "volunteering_history_id"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
