@@ -10,3 +10,7 @@ doc/app
 public/stylesheets/*.css
 public/assets/
 coverage/*
+public/javascripts/bhm
+public/javascripts/vendor/bhm-google-maps
+public/javascripts/vendor/shuriken
+public/javascripts/vendor/youthtree
