@@ -1,3 +1,3 @@
 class Admin::UsersController < Admin::BaseController
-  use_controller_exts :pseudocephalopod_resource
+  use_controller_exts :slugged_resource
 end

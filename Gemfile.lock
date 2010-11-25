@@ -146,8 +146,6 @@ GEM
       net-ssh (>= 1.99.1)
     pg (0.9.0)
     polyglot (0.3.1)
-    pseudocephalopod (0.3.2)
-      slugged
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
@@ -255,7 +253,7 @@ GEM
       capistrano
       rvm (~> 1.0)
       ydd
-    youthtree-controller-ext (0.1.1)
+    youthtree-controller-ext (0.1.2)
       activesupport (>= 3.0.0.beta4)
     youthtree-helpers (0.1.4)
       actionpack (~> 3.0.0.rc)
@@ -302,7 +300,6 @@ DEPENDENCIES
   mail_form (>= 1.2.1)
   msales-carmen (>= 0.1.4)
   pg
-  pseudocephalopod (>= 0.3.1)
   rails (= 3.0.1)
   rails3-generators
   rcov
@@ -321,6 +318,7 @@ DEPENDENCIES
   show_for
   shuriken (>= 0.2.0)
   sitemap_generator
+  slugged (>= 0.3.1)
   state_machine (>= 0.9.0)!
   stringex
   therubyracer
@@ -331,7 +329,7 @@ DEPENDENCIES
   will_paginate (>= 3.0.pre2)!
   ydd (~> 0.0.6)
   youthtree-capistrano (>= 0.2.2)
-  youthtree-controller-ext
+  youthtree-controller-ext (>= 0.1.2)
   youthtree-helpers
   youthtree-js (>= 0.2.0)
   youthtree-settings

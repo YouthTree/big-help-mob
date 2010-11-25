@@ -27,7 +27,7 @@ gem 'show_for'
 # General Code Stuff
 gem 'will_paginate',    '>= 3.0.pre2', :git => gh('mislav', 'will_paginate'), :ref => 'rails3'
 gem 'state_machine',    '>= 0.9.0', :git => gh('pluginaweek', 'state_machine')
-gem 'pseudocephalopod', '>= 0.3.1'
+gem 'slugged',          '>= 0.3.1'
 
 # Helpers etc.
 gem 'jammit',              '>= 0.5.0'
@@ -46,7 +46,7 @@ gem 'ruby-googlechart',    '>= 0.6.4', :require => 'google_chart'
 gem 'SystemTimer'
 
 # Javascript Stuff
-gem 'therubyracer', :require => nil
+gem 'therubyracer',      :require => nil
 gem 'barista',           '>= 0.7.0.pre2'
 gem 'shuriken',          '>= 0.2.0'
 gem 'youthtree-js',      '>= 0.2.0'
@@ -66,7 +66,7 @@ gem 'fancy-buttons',      '>= 0.5.4', :require => nil
 
 gem 'youthtree-settings'
 gem 'youthtree-helpers'
-gem 'youthtree-controller-ext'
+gem 'youthtree-controller-ext', '>= 0.1.2'
 
 # Auth
 gem 'authlogic',     :git => gh('kurbmedia', 'authlogic')
