@@ -46,7 +46,8 @@ gem 'ruby-googlechart',    '>= 0.6.4', :require => 'google_chart'
 gem 'SystemTimer'
 
 # Javascript Stuff
-gem 'barista',           '>= 0.5.0'
+gem 'therubyracer', :require => nil
+gem 'barista',           '>= 0.5.0', :path => '/Users/sutto/Code/OSS/barista'
 gem 'shuriken',          '>= 0.2.0'
 gem 'youthtree-js',      '>= 0.2.0'
 

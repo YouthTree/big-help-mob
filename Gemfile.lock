@@ -32,6 +32,12 @@ GIT
   specs:
     state_machine (0.9.4)
 
+PATH
+  remote: /Users/sutto/Code/OSS/barista
+  specs:
+    barista (0.7.0.pre)
+      coffee-script (~> 2.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -71,8 +77,6 @@ GEM
       sys-uname
     autotest-growl (0.2.6)
     awesome_print (0.2.1)
-    barista (0.5.1)
-      open4
     bhm-google-maps (0.2.1)
     builder (2.1.2)
     campaigning (0.15.0)
@@ -84,6 +88,9 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
     closure-compiler (0.3.3)
+    coffee-script (2.1.1)
+      coffee-script-source
+    coffee-script-source (0.9.5)
     columnize (0.3.1)
     compass (0.10.6)
       haml (>= 3.0.4)
@@ -141,7 +148,6 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    open4 (1.0.1)
     pg (0.9.0)
     polyglot (0.3.1)
     pseudocephalopod (0.3.2)
@@ -229,6 +235,7 @@ GEM
       httpclient (>= 2.1.1)
     stringex (1.2.0)
     sys-uname (0.8.4)
+    therubyracer (0.7.5)
     thor (0.14.3)
     tilt (1.1)
     title_estuary (1.2.0)
@@ -277,7 +284,7 @@ DEPENDENCIES
   autotest-fsevent
   autotest-growl
   awesome_print
-  barista (>= 0.5.0)
+  barista (>= 0.5.0)!
   bhm-google-maps (~> 0.2.0)
   campaigning
   compass (>= 0.10.4)
@@ -320,6 +327,7 @@ DEPENDENCIES
   sitemap_generator
   state_machine (>= 0.9.0)!
   stringex
+  therubyracer
   title_estuary (>= 1.2.0)
   unicorn
   uuid
