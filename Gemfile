@@ -47,7 +47,7 @@ gem 'SystemTimer'
 
 # Javascript Stuff
 gem 'therubyracer', :require => nil
-gem 'barista',           '>= 0.5.0', :path => '/Users/sutto/Code/OSS/barista'
+gem 'barista',           '>= 0.7.0.pre2'
 gem 'shuriken',          '>= 0.2.0'
 gem 'youthtree-js',      '>= 0.2.0'
 
@@ -84,7 +84,7 @@ gem 'campaigning'
 
 group :development do
   gem 'rails3-generators'
-  gem 'annotate', :git => 'git://github.com/miyucy/annotate_models.git', :require => nil
+  gem 'annotate', :git => gh('miyucy', 'annotate_models'), :require => nil
   gem 'ruby-debug', :require => nil
 end
 

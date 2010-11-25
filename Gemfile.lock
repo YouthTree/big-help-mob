@@ -32,12 +32,6 @@ GIT
   specs:
     state_machine (0.9.4)
 
-PATH
-  remote: /Users/sutto/Code/OSS/barista
-  specs:
-    barista (0.7.0.pre)
-      coffee-script (~> 2.1.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -77,6 +71,8 @@ GEM
       sys-uname
     autotest-growl (0.2.6)
     awesome_print (0.2.1)
+    barista (0.7.0.pre2)
+      coffee-script (~> 2.1.1)
     bhm-google-maps (0.2.1)
     builder (2.1.2)
     campaigning (0.15.0)
@@ -284,7 +280,7 @@ DEPENDENCIES
   autotest-fsevent
   autotest-growl
   awesome_print
-  barista (>= 0.5.0)!
+  barista (>= 0.7.0.pre2)
   bhm-google-maps (~> 0.2.0)
   campaigning
   compass (>= 0.10.4)
