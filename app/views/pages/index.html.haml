@@ -8,7 +8,7 @@
 .homepage-mission-link
   - if Mission.has_next?
     = link_to 'Join our latest mission', mission_path(:next)
-    %span.or or
-    = show_subscription_button
   - else
     = link_to 'View our Past Missions', missions_path
+  %span.or or
+  = show_subscription_button
