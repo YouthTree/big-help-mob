@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     "Word of mouth",
     "Google search",
     "Youth Tree mailing list",
+    "I'm friends with one of the organisers",
     "Other organization",
     "Other"
   ]
