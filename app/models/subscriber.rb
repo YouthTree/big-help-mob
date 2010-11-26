@@ -3,12 +3,21 @@ class Subscriber
   extend ActiveModel::Naming  
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
+  include ActiveModel::Conversion
+  
+  def self.to_key
+    :subscriber
+  end
 
   attr_accessor :name, :email, :list_ids
     
-  validates_presence_of :email,    :message => 'must be filled in to continue.'
-  validates_presence_of :list_ids, :message => 'you need to choose at least 1 list to subscribe to.'
-  validates_format_of   :email, :with => RFC822::EMAIL, :message => 'is not a valid email address.'
+  validates_presence_of :email, :name, :message => 'must be filled in to continue'
+  validates_presence_of :list_ids, :message => 'must contain at least one valid mailing list choice'
+  validates_format_of   :email, :with => RFC822::EMAIL, :message => 'is not a valid email address', :allow_blank => true
+  
+  def self.list_options
+    CampaignMonitorWrapper.list_options_for_select
+  end
   
   def initialize(values = {})
     @persisted = false
@@ -35,16 +44,21 @@ class Subscriber
   end
   
   def list_ids=(value)
-    @list_ids = (Array(value).reject(&:blank?) & CampaignMonitorWrapper.available_list_ids)
+    @list_ids = (Array(value).reject(&:blank?) & self.class.list_options.values)
   end
   
   def persist!
     @persisted = true
   end
   
+  def to_subscriber_details
+    {:name => name, :email => email}
+  end
+  
   # Adds a job to subscribe the user.
   def subscribe!
-    # TODO: Implement
+    expanded_list_ids = CampaignMonitorWrapper.expand_lists(list_ids)
+    CampaignMonitorWrapper.update_for_subscriber! self, expanded_list_ids
   end
   
 end

@@ -57,6 +57,8 @@ BigHelpMob::Application.routes.draw do
     end
   end
 
+  resources :subscribers
+
   get 'contact-us',  :to => 'contacts#new', :as => :contact_us
   post 'contact-us', :to => 'contacts#create'
 

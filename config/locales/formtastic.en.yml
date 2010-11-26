@@ -7,6 +7,9 @@ en:
     submit: 'Submit'
     required: ": <abbr class='required' title='This field is required'>(required)</abbr>"
     optional: ":"
+    titles:
+      subscriber_details: 'Your Details'
+      subscription_details: 'Mailing Lists'
     labels:
       question:
         question: "Question"
@@ -30,3 +33,7 @@ en:
         mission: "Mission"
         user: "User"
         state_event: "Transition state to"
+      subscriber:
+        list_ids: 'Lists'
+        name: 'Name'
+        email: 'Email'

@@ -1,0 +1,14 @@
+- if request.xhr?
+  %h2 Subscribe to our Mailing Lists
+
+= semantic_form_for @subscriber do |f|
+  
+  = f.inputs :subscriber_details do
+    = f.input :name
+    = f.input :email
+    
+  = f.inputs :subscription_details do
+    = f.input :list_ids, :as => :check_boxes, :collection => CampaignMonitorWrapper.list_options_for_select
+    
+  = f.buttons do
+    = f.commit_button 'Subscribe'

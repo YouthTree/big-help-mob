@@ -109,6 +109,11 @@ GEM
       i18n (>= 0.4.0)
     geokit (1.5.0)
     haml (3.0.22)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     has_scope (0.5.0)
     highline (1.6.1)
     hoptoad_notifier (2.3.11)
@@ -291,6 +296,7 @@ DEPENDENCIES
   formtastic (>= 1.1.0)
   geokit (>= 1.5.0)
   haml (>= 3.0.13)
+  haml-rails
   hoptoad_notifier
   inherited_resources
   jammit (>= 0.5.0)
