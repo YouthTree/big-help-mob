@@ -1,10 +1,14 @@
+- has_js 'bhm/subscriber_button'
+  
 - unless @photos.empty?
   #homepage-photos= render_mission_photos @photos
 
 = content_section 'home.introduction', :class => 'column'
 
-#homepage-mission-link
+.homepage-mission-link
   - if Mission.has_next?
     = link_to 'Join our latest mission', mission_path(:next)
+    %span.or or
+    = show_subscription_button
   - else
     = link_to 'View our Past Missions', missions_path
