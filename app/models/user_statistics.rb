@@ -16,7 +16,7 @@ class UserStatistics
   end
   
   def self.count_per_volunteering_history
-    results = User.count_on_volunteering_history_by_value
+    results = User.count_on_volunteering_history_by_name
     results["Unknown"] = results.delete(nil) if results.has_key? nil
     results    
   end

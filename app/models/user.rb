@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   
   ORIGIN_CHOICES = [
     "I'd rather not say",
+    "I saw Big Help Mob in action",
+    "I'm friends with one of the organisers",
     "Poster",
     "I got stamped",
     "Facebook - My Friends",
@@ -18,7 +20,6 @@ class User < ActiveRecord::Base
     "Word of mouth",
     "Google search",
     "Youth Tree mailing list",
-    "I'm friends with one of the organisers",
     "Other organization",
     "Other"
   ]
