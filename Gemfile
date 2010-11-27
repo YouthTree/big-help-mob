@@ -5,7 +5,7 @@ def gh(user, repo)
 end
 
 # Rails!
-gem 'rails', '= 3.0.1'
+gem 'rails', '= 3.0.3'
 gem 'pg'
 gem 'json'
 
@@ -74,7 +74,7 @@ gem 'authlogic',     :git => gh('kurbmedia', 'authlogic')
 gem 'authlogic_rpx', :git => gh('kuldarkrabbi', 'authlogic_rpx')
 gem 'rpx_now'
 
-gem 'awesome_print'
+gem 'awesome_print', '0.2.1', :require => nil
 
 gem 'youthtree-capistrano', '>= 0.2.2', :require => nil
 gem 'ydd', "~> 0.0.6", :require => nil
