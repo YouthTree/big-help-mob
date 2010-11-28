@@ -135,10 +135,11 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
   end
   
   # Returns errors converted to a sentence, adding a full stop.
-  def error_sentence(errors)
-    error_text = errors.to_sentence.strip
+  def error_sentence(errors, options = {})
+    error_class = options[:error_class] || self.class.default_inline_error_class
+    error_text = errors.to_sentence.untaint.strip
     error_text << "." unless %w(? ! . :).include?(error_text[-1, 1])
-    template.content_tag(:p, error_text, :class => 'inline-errors')
+    template.content_tag(:p, Formtastic::Util.html_safe(error_text), :class => error_class)
   end
     
 end
