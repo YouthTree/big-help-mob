@@ -7,7 +7,7 @@ javascripts:
     - public/javascripts/vendor/css_browser_selector.js
     - public/javascripts/vendor/facybox.js
     - public/javascripts/vendor/shuriken/**/*.js
-    - public/javascripts/vendor/youthtree/**/*.js
+    - public/javascripts/vendor/youthtree/youth_tree.js
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js
     - public/javascripts/bhm/debug.js
@@ -63,6 +63,18 @@ javascripts:
     - public/javascripts/bhm/share_this.js
   mission_dashboard:
     - public/javascripts/bhm/admin/mission_dashboard.js
+  homepage:
+    - public/javascripts/bhm/subscriber_button.js
+  mission_page:
+    - public/javascripts/vendor/youthtree/youth_tree/gallery.js
+    - public/javascripts/vendor/youthtree/youth_tree/flickr.js
+    - public/javascripts/vendor/youthtree/youth_tree/flickr/gallery.js
+    - public/javascripts/bhm/mission.js
+  mission_archive:
+    - public/javascripts/vendor/youthtree/youth_tree/gallery.js
+    - public/javascripts/vendor/youthtree/youth_tree/flickr.js
+    - public/javascripts/vendor/youthtree/youth_tree/flickr/gallery.js
+    - public/javascripts/bhm/mission_archive.js
   email_editor:
     - public/javascripts/bhm/admin/email_editor.js
 stylesheets:

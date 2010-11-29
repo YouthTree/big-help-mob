@@ -6,6 +6,8 @@
     /[if IE]
       %script{:src => uri2ssl("html5shiv.googlecode.com/svn/trunk/html5.js")}
     = csrf_meta_tag
+    - if Settings.flickr_api.api_key?
+      %meta{:name => 'flickr-api-key', :content => Settings.flickr_api.api_key}/
     %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
     = extra_head_content
   %body

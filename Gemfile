@@ -49,7 +49,7 @@ gem 'SystemTimer'
 gem 'therubyracer',      :require => nil
 gem 'barista',           '>= 0.7.0.pre2'
 gem 'shuriken',          '>= 0.2.0'
-gem 'youthtree-js',      '>= 0.2.0'
+gem 'youthtree-js',      '>= 0.3.0'
 
 gem 'rfc-822'
 
@@ -90,8 +90,8 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec',       '>= 2.0.0.beta.22'
-  gem 'rspec-rails', '>= 2.0.0.beta.22'
+  gem 'rspec',       '~> 2.1'
+  gem 'rspec-rails', '~> 2.1'
   gem 'machinist',   '>= 2.0.0.beta2', :require => nil
   gem 'forgery', :require => nil
   gem 'rcov'
@@ -99,8 +99,8 @@ end
 
 group :test do
   gem 'ZenTest'
-  gem 'remarkable', '>= 4.0.0.alpah4', :require => 'remarkable/core'
-  gem 'remarkable_activerecord', '>= 4.0.0.alpah4', :require => 'remarkable/active_record'
+  gem 'remarkable',              '>= 4.0.0.alpha4', :require => 'remarkable/core'
+  gem 'remarkable_activerecord', '>= 4.0.0.alpha4', :require => 'remarkable/active_record'
   gem 'rr'
 end
 

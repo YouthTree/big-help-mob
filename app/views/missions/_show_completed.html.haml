@@ -1,6 +1,6 @@
 - use_gmaps_js
 - has_share_this_js
-- has_js 'bhm/mission'
+- has_jammit_js 'mission_page'
 
 - extra_head_content do
   %meta{:name => "title", :content => @mission.name}
@@ -25,9 +25,8 @@
 
 #mission-description= @mission.archived_description_as_html
 
-%h3 Super Hero Snapshots
 
-#mission-photos
-  - @mission.flickr_photos.each do |photo|
-    = link_to image_tag(photo.to_url(:s)), photo.to_url
-
+- if @mission.photoset_id?
+  %h3 Super Hero Snapshots
+  #mission-photos{"data-photoset-id" => @mission.photoset_id}
+    %p.loading Loading photos from Flickr...

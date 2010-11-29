@@ -262,7 +262,7 @@ GEM
       activesupport (~> 3.0.0.rc)
       youthtree-js
       youthtree-settings
-    youthtree-js (0.2.0)
+    youthtree-js (0.3.0)
     youthtree-settings (0.1.4)
       activesupport (>= 3.0.0.beta4)
     yui-compressor (0.9.1)
@@ -306,16 +306,16 @@ DEPENDENCIES
   rails (= 3.0.3)
   rails3-generators
   rcov
-  remarkable (>= 4.0.0.alpah4)
-  remarkable_activerecord (>= 4.0.0.alpah4)
+  remarkable (>= 4.0.0.alpha4)
+  remarkable_activerecord (>= 4.0.0.alpha4)
   responders
   resque (>= 1.10)
   resque-status
   rfc-822
   rpx_now
   rr
-  rspec (>= 2.0.0.beta.22)
-  rspec-rails (>= 2.0.0.beta.22)
+  rspec (~> 2.1)
+  rspec-rails (~> 2.1)
   ruby-debug
   ruby-googlechart (>= 0.6.4)
   show_for
@@ -334,5 +334,5 @@ DEPENDENCIES
   youthtree-capistrano (>= 0.2.2)
   youthtree-controller-ext (>= 0.1.2)
   youthtree-helpers
-  youthtree-js (>= 0.2.0)
+  youthtree-js (>= 0.3.0)
   youthtree-settings
