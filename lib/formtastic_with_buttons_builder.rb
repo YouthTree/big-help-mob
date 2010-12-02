@@ -141,5 +141,30 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     error_text << "." unless %w(? ! . :).include?(error_text[-1, 1])
     template.content_tag(:p, Formtastic::Util.html_safe(error_text), :class => error_class)
   end
+  
+  
+  def datetime_picker_input(method, options = {})
+    format = (options[:format] || Time::DATE_FORMATS[:default] || '%d %B %Y %I:%M %p')
+    string_input(method, datetime_picker_options(format, object.send(method)).merge(options))
+  end
+  
+  def date_picker_input(method, options = {})
+    format = (options[:format] || Time::DATE_FORMATS[:default] || '%d %B %Y')
+    string_input(method, date_picker_options(format, object.send(method)).merge(options))
+  end
+
+  protected
+
+  def datetime_picker_options(format, value = nil)
+    input_options   = {:class => 'ui-datetime-picker',:value => value.try(:strftime, format)}
+    wrapper_options = {:class => 'datetime'}
+    return :wrapper_html => wrapper_options, :input_html => input_options
+  end
+  
+  def date_picker_options(format, value = nil)
+    input_options   = {:class => 'ui-date-picker',:value => value.try(:strftime, format)}
+    wrapper_options = {:class => 'date'}
+    return :wrapper_html => wrapper_options, :input_html => input_options
+  end
     
 end
