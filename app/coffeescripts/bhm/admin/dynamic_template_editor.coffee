@@ -3,14 +3,16 @@ BHM.withNS 'Admin.DynamicTemplateEditor', (ns) ->
   ns.editorSelector      = '#dynamic_template_content'
   ns.contentTypeSelector = '#dynamic_template_content_type'
   
+  CKEditor = YouthTree.Forms.CKEditor
+  
   ns.shouldShowEditor = ->
     $(ns.contentTypeSelector).val() is "html"
   
   ns.showEditor = ->
-    BHM.CKEditor.makeEditor $(ns.editorSelector)
+    CKEditor.makeEditor $(ns.editorSelector)
     
   ns.hideEditor = ->
-    BHM.CKEditor.destroyEditor $(ns.editorSelector)
+    CKEditor.destroyEditor $(ns.editorSelector)
   
   ns.toggleEditor = ->
     if ns.shouldShowEditor()

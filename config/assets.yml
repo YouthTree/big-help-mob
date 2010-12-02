@@ -21,6 +21,9 @@ javascripts:
     - public/javascripts/vendor/rails.js
     - public/javascripts/vendor/facybox.js
     - public/javascripts/vendor/shuriken/**/*.js
+    - public/javascripts/vendor/youthtree/youth_tree.js
+    - public/javascripts/vendor/youthtree/youth_tree/forms/date_picker.js
+    - public/javascripts/vendor/youthtree/youth_tree/forms/value_cloner.js
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js
   dashboard:
@@ -29,7 +32,7 @@ javascripts:
     - public/javascripts/bhm/admin/analytics.js
     - public/javascripts/bhm/admin/dashboard_stats.js
   ckeditor:
-    - public/javascripts/bhm/ck_editor.js
+    - - public/javascripts/vendor/youthtree/youth_tree/forms/ck_editor.js
     - public/ckeditor/ckeditor.js
     - public/ckeditor/adapters/jquery.js
   gmap:
