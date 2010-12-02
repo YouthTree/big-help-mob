@@ -41,6 +41,11 @@ begin
     DynamicTemplate.create! :key => "notifications.role-approved.captain.default",  :content => "(blank)", :content_type => "text"
     DynamicTemplate.create! :key => "notifications.role-approved.sidekick.default", :content => "(blank)", :content_type => "text"
     
+    %w(user.volunteering_history user.gender).each do |seed_ns|
+      CollatableOptionSeeder.seed seed_ns
+    end
+    
+    
   end
 ensure
   $stdout.sync = sync

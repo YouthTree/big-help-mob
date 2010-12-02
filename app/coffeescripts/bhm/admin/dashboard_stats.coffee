@@ -39,7 +39,14 @@ BHM.withNS 'Admin.DashboardStats', (ns) ->
       BHM.Admin.PieChart.create 'volunteering-chart', ->
         @setCategories labels
         @addSeries     'Volunteered in the last year?', labels, $.map(values, Number)
-        @setDataToolTip -> "#{@y} people<br/>replied #{@point.name}."
+        @setDataToolTip -> "#{@y} people replied:<br/> \"#{@point.name}\"."
+        
+  ns.showUserGenders = ->
+    ns.withContainer 'genders-chart', (labels, values) ->
+      BHM.Admin.PieChart.create 'genders-chart', ->
+        @setCategories labels
+        @addSeries 'No. of People', labels, $.map(values, Number)
+        @setDataToolTip -> "#{@y} people<br/>identify as #{@point.name}."
       
   ns.setupOtherOrigins = ->
     $(".other-known-origins-toggle").click ->
@@ -51,4 +58,5 @@ BHM.withNS 'Admin.DashboardStats', (ns) ->
     ns.showUserAges()
     ns.showUserOrigins()
     ns.showUserVolunteering()
+    ns.showUserGenders()
     ns.setupOtherOrigins()

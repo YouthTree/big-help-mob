@@ -24,6 +24,9 @@
   
   = s.attribute :previous_volunteer do
     = @user.volunteering_history.try(:name)
+    
+  = s.attribute :gender do
+    = @user.gender.try(:name)
   
   = s.association :comment do
     = comment_as_html @user

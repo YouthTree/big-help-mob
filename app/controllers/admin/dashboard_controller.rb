@@ -6,6 +6,7 @@ class Admin::DashboardController < AdminController
     @user_locations                = UserStatistics.user_locations
     @origin_counts, @other_origins = UserStatistics.user_origins
     @user_volunteering_history     = UserStatistics.count_per_volunteering_history
+    @user_genders                  = UserStatistics.count_per_gender
   end
   
 end

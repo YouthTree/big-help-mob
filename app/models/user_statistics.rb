@@ -16,9 +16,11 @@ class UserStatistics
   end
   
   def self.count_per_volunteering_history
-    results = User.count_on_volunteering_history_by_name
-    results["Unknown"] = results.delete(nil) if results.has_key? nil
-    results    
+    except_nils! User.count_on_volunteering_history_by_name
+  end
+  
+  def self.count_per_gender
+    except_nils! User.count_on_gender_by_name
   end
   
   def self.count_per_age
@@ -66,6 +68,10 @@ class UserStatistics
       acc[k.to_date] = v
       acc
     end
+  end
+  
+  def self.except_nils!(c)
+    c.tap { |v| v.delete nil }
   end
   
 end

@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   
   accepts_nested_attributes_for :captain_application, :reject_if => reject_if_proc
   
-  validates_presence_of :date_of_birth, :origin
+  validates_presence_of :date_of_birth, :origin, :gender
 
   validates_presence_of :phone, :volunteering_history, :if => :editing_participation?
   validates_presence_of :captain_application, :if => :should_validate_captain_fields?
@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
   scope :with_age, where('date_of_birth IS NOT NULL AND EXTRACT(year from AGE(date_of_birth)) > 0').select("*,  EXTRACT(year from AGE(date_of_birth)) AS age")
 
   has_collatable_option :volunteering_history, 'user.volunteering_history'
+  has_collatable_option :gender,               'user.gender'
 
   attr_accessor :current_participation
   
