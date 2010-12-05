@@ -152,19 +152,68 @@ class FormtasticWithButtonsBuilder < Formtastic::SemanticFormBuilder
     format = (options[:format] || Time::DATE_FORMATS[:default] || '%d %B %Y')
     string_input(method, date_picker_options(format, object.send(method)).merge(options))
   end
+  
+  def date_range_picker_input(method, options = {})
+    format = (options[:format] || Time::DATE_FORMATS[:default] || '%d %B %Y')
+    gte_method, lte_method = :"#{method}_gte", :"#{method}_lte"
+    add_input_html_options!(options) { |ho| ho[:class] = [ho[:class], 'ui-date-picker'].join(' ').strip }
+    basic_field_range_helper(method, lte_method, gte_method, options) do |value|
+      value.try :strftime, format
+    end
+  end
+  
+  def datetime_range_picker_input(method, options = {})
+    format = (options[:format] || Time::DATE_FORMATS[:default] || '%d %B %Y %I:%M %p')
+    gte_method, lte_method = :"#{method}_gte", :"#{method}_lte"
+    add_input_html_options!(options) { |ho| ho[:class] = [ho[:class], 'ui-datetime-picker'].join(' ').strip }
+    basic_field_range_helper(method, lte_method, gte_method, options) do |value|
+      value.try :strftime, format
+    end
+  end
+
+  def placeholder_for(field, default = nil)
+    result = localized_string field, default, :placeholder
+    result.present? ? result : nil
+  end
 
   protected
 
+  def basic_field_range_helper(method, low_end, high_end, options, &blk)
+    html_options    = options.delete(:input_html) || {}
+    minimum_options = options.delete(:minimum_html) || {}
+    maximum_options = options.delete(:maximum_html) || {}
+    label_options   = options_for_label(options).merge(:for => generate_html_id(low_end, ''))
+    low_end_options = with_placeholder(low_end, html_options.merge(minimum_options).merge(:value => blk.call(object.try(low_end))))
+    high_end_options = with_placeholder(high_end, html_options.merge(maximum_options).merge(:value => blk.call(object.try(high_end))))
+    input = label(method, label_options)
+    input << @template.content_tag(:span, 'Between ')
+    input << text_field(low_end, low_end_options)
+    input << @template.content_tag(:span, ' and ')
+    input << text_field(high_end, high_end_options)
+    input
+  end
+  
+  def with_placeholder(method, options)
+    placeholder = placeholder_for(method, options.delete(:placeholder))
+    options[:placeholder] = placeholder if placeholder.present?
+    options
+  end
+
+  def add_input_html_options!(options, extra = {})
+    input_html = options.delete(:input_html) || {}
+    yield input_html if block_given?
+    options[:input_html] = input_html.merge(extra)
+    options
+  end
+
   def datetime_picker_options(format, value = nil)
     input_options   = {:class => 'ui-datetime-picker',:value => value.try(:strftime, format)}
-    wrapper_options = {:class => 'datetime'}
-    return :wrapper_html => wrapper_options, :input_html => input_options
+    return :input_html => input_options
   end
   
   def date_picker_options(format, value = nil)
     input_options   = {:class => 'ui-date-picker',:value => value.try(:strftime, format)}
-    wrapper_options = {:class => 'date'}
-    return :wrapper_html => wrapper_options, :input_html => input_options
+    return :input_html => input_options
   end
     
 end

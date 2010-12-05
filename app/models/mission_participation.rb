@@ -161,7 +161,7 @@ class MissionParticipation < ActiveRecord::Base
     role = role_name.to_s.strip
     return if role.blank? || mission.blank? || user.blank? || !%w(captain sidekick).include?(role)
     min_age, max_age = mission.send(:"minimum_#{role}_age"), mission.send(:"maximum_#{role}_age")
-    age = user.age
+    age = user.age || 0
     prefix = role.to_s.humanize.pluralize
     if min_age.present? && max_age.present?
       errors.add_to_base("#{prefix} must be #{min_age}-#{max_age} years old.") unless (min_age..max_age).include?(age)

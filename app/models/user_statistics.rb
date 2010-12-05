@@ -25,8 +25,8 @@ class UserStatistics
   
   def self.count_per_age
     relationship = User.where("date_of_birth IS NOT NULL")
-    raw_counts   = relationship.count :all, :group => '(SELECT EXTRACT(year from AGE(date_of_birth)) AS "age")'
-    known_ages   = raw_counts.keys.map { |k| k.to_i }.reject { |a| a < 1}.sort # Cut out invalid dates.
+    raw_counts   = relationship.count :all, :group => User::AGE_SQL
+    known_ages   = raw_counts.keys.map { |k| k.to_i }.reject { |a| a < 1 }.sort # Cut out invalid dates.
     min, max     = known_ages.min.to_i, known_ages.max.to_i
     data         = ActiveSupport::OrderedHash.new(0).tap do |h|
       min.upto(max) { |c| h[c.to_i] = raw_counts[c.to_s].to_i }

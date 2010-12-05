@@ -83,6 +83,8 @@ gem 'unicorn', :require => nil
 
 gem 'campaigning'
 
+gem 'meta_search'
+
 group :development do
   gem 'rails3-generators'
   gem 'annotate', :git => gh('miyucy', 'annotate_models'), :require => nil

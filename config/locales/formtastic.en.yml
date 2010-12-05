@@ -7,6 +7,10 @@ en:
     submit: 'Submit'
     required: ": <abbr class='required' title='This field is required'>(required)</abbr>"
     optional: ":"
+    placeholders:
+      "meta_search/searches/user":
+        last_request_at_lte: 'After / on this date'
+        last_request_at_gte: 'Before / on this date'
     titles:
       subscriber_details: 'Your Details'
       subscription_details: 'Mailing Lists'

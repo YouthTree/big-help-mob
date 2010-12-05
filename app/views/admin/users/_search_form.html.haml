@@ -1,0 +1,15 @@
+.filter-listing-results.toggleable
+  %h2
+    Filter your search results
+    = link_to '(show)', '#', :class => 'toggleable-link', 'data-toggleable-selector' => 'form'
+  = semantic_form_for @search, :url => admin_users_path, :method => :get do |form|
+  
+    = form.inputs do
+      = form.input :login_contains, :required => false
+      = form.input :display_name_contains, :required => false
+      = form.input :email_contains, :required => false
+      = form.input :last_request_at, :required => false, :as => :datetime_range_picker, :label => 'Last used the site'
+      = form.input :gender_id_in, :as => :select, :multiple => true, :collection => User.gender_options_scope.for_select, :include_blank => false
+  
+    = form.buttons do
+      = form.commit_button 'Filter Users'

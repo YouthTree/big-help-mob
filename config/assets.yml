@@ -27,6 +27,7 @@ javascripts:
     - public/javascripts/vendor/youthtree/youth_tree/forms/value_cloner.js
     - public/javascripts/bhm/bhm.js
     - public/javascripts/bhm/flash.js
+    - public/javascripts/bhm/toggleable.js
   dashboard:
     - public/javascripts/vendor/highcharts.js
     - public/javascripts/bhm/admin/charts.js

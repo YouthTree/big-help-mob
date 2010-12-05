@@ -14,6 +14,11 @@
         background: #555555
         +linear-gradient(color-stops(#555555, #777777), bottom)
         +sans-font-stack
+        a
+          text-decroation: none
+          +link-colors(white)
+          &.sort_link.asc, &.sort_link.desc
+            color: #DDD
     tbody
       tr.empty
         background: #eeeeee

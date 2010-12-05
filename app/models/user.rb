@@ -55,13 +55,18 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :captain_application, :reject_if => reject_if_proc
   
   validates_presence_of :date_of_birth, :origin, :gender
-
   validates_presence_of :phone, :volunteering_history, :if => :editing_participation?
   validates_presence_of :captain_application, :if => :should_validate_captain_fields?
   validates_associated  :captain_application, :if => :should_validate_captain_fields?
   validate              :ensure_name_is_filled_in
 
-  scope :with_age, where('date_of_birth IS NOT NULL AND EXTRACT(year from AGE(date_of_birth)) > 0').select("*,  EXTRACT(year from AGE(date_of_birth)) AS age")
+  AGE_SQL = '(CASE WHEN date_of_birth IS NULL THEN NULL ELSE EXTRACT(year from AGE(date_of_birth)) END)'
+
+  scope :with_virtual_age, select("*, #{AGE_SQL} AS age")
+  scope :with_age, where("date_of_birth IS NOT NULL AND #{AGE_SQL} > 0").with_virtual_age
+  
+  scope :sort_by_age_desc, with_virtual_age.order('age DESC')
+  scope :sort_by_age_asc,  with_virtual_age.order('age ASC')
 
   has_collatable_option :volunteering_history, 'user.volunteering_history'
   has_collatable_option :gender,               'user.gender'
@@ -153,9 +158,20 @@ class User < ActiveRecord::Base
     end
   end
   
-  def age(now = Time.now)
+  def age(use_calculated = true)
+    stored_value = read_attribute(:age)
+    if stored_value.present?
+      return stored_value.to_i
+    elsif use_calculated
+      calculated_age
+    else
+      nil
+    end
+  end
+  
+  def calculated_age
     return 0 if date_of_birth.blank?
-    from, to = date_of_birth.to_date, now.to_date
+    from, to = date_of_birth.to_date, Time.now.to_date
     age = to.year - from.year
     age -= 1 if (to.month < from.month) || (to.month == from.month && to.day < from.day)
     age
