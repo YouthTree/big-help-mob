@@ -36,10 +36,25 @@ Inspect it to make sure it's ok and then accept it. Doing so, will do the follow
 
 Essentially, it bootstraps an environment ready for the next step.
 
+Before you continue, we need to create a user for the application. To do
+this, log in to the postgres psql command line (on my system with hombrew, this was a matter
+of `psql template`), and run:
+
+    CREATE USER bighelpmob WITH PASSWORD 'bighelpmob';
+
+And either create the development databases manually:
+
+    CREATE DATABASE bighelpmob_development OWNER bighelpmob;
+    CREATE DATABASE bighelpmob_test OWNER bighelpmob;
+
+Or just simply give the user CREATEDB permissions:
+
+    ALTER USER bighelpmob CREATEDB;
+
 Now, you can run:
 
     ./script/configure
-    
+
 Which will guide you through:
 
 * Installing all of the gem dependencies

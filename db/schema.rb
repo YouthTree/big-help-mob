@@ -175,17 +175,6 @@ ActiveRecord::Schema.define(:version => 20101202150624) do
     t.datetime "updated_at"
   end
 
-  create_table "postcode_locations", :force => true do |t|
-    t.integer  "postcode"
-    t.string   "name"
-    t.decimal  "lat",        :precision => 15, :scale => 10
-    t.decimal  "lng",        :precision => 15, :scale => 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "postcode_locations", ["postcode"], :name => "index_postcode_locations_on_postcode"
-
   create_table "questions", :force => true do |t|
     t.boolean  "visible",                  :default => false, :null => false
     t.integer  "position"
