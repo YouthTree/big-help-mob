@@ -2,12 +2,12 @@ class User < ActiveRecord::Base
   extend RejectIfHelper
   extend Address::Addressable
   extend DynamicBaseDrop::Droppable
-  
+
   include MailingListSubscribeable
   include CollatableOptionMixin
-  
+
   INDEX_COLUMNS = [:id, :login, :display_name, :last_request_at]
-  
+
   ORIGIN_CHOICES = [
     "I'd rather not say",
     "I saw Big Help Mob in action",
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
                   :gender_id
 
   has_many :mission_participations, :dependent => :destroy
-  
+
   has_many :missions, :through => :mission_participations
   has_many :roles,    :through => :mission_participations
 
@@ -51,9 +51,9 @@ class User < ActiveRecord::Base
     c.account_merge_enabled true
     c.account_mapping_mode  :internal
   end
-  
+
   accepts_nested_attributes_for :captain_application, :reject_if => reject_if_proc
-  
+
   validates_presence_of :date_of_birth, :origin, :gender
   validates_presence_of :phone, :volunteering_history, :if => :editing_participation?
   validates_presence_of :captain_application, :if => :should_validate_captain_fields?
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
 
   scope :with_virtual_age, select("*, #{AGE_SQL} AS age")
   scope :with_age, where("date_of_birth IS NOT NULL AND #{AGE_SQL} > 0").with_virtual_age
-  
+
   scope :sort_by_age_desc, with_virtual_age.order('age DESC')
   scope :sort_by_age_asc,  with_virtual_age.order('age ASC')
 
@@ -72,19 +72,19 @@ class User < ActiveRecord::Base
   has_collatable_option :gender,               'user.gender'
 
   attr_accessor :current_participation
-  
+
   def self.find_by_email_or_login(login)
     find_by_email(login) || find_by_login(login)
   end
-  
+
   def self.for_select
     all.map { |u| [u.to_s, u.id] }
   end
-  
+
   def editing_participation?
     current_participation.present?
   end
-  
+
   def should_validate_captain_fields?
     editing_participation? && current_participation.captain?
   end
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
   def destroyable_by?(u)
     u == self
   end
-  
+
   def name
     if display_name?
       display_name
@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
       "Unknown User"
     end
   end
-  
+
   def name_was
     if display_name_changed?
       display_name_was
@@ -133,31 +133,31 @@ class User < ActiveRecord::Base
     return login_changed?        if login?
     return false
   end
-  
+
   def full_name_changed?
     first_name_changed? || last_name_changed?
   end
-  
+
   def full_name
     return nil unless first_name? || last_name?
     [first_name, last_name].reject(&:blank?).join(" ")
   end
-  
+
   def full_name?
     full_name.present?
   end
-  
+
   def notify!(name, *args)
     Notifications.send(name, self, *args).deliver if email.present?
   end
-  
+
   def self.update_all_postcode_locations
     find_each do |u|
       u.send(:update_postcode_geolocation)
       u.save(:validate => false)
     end
   end
-  
+
   def age(use_calculated = true)
     stored_value = read_attribute(:age)
     if stored_value.present?
@@ -168,7 +168,7 @@ class User < ActiveRecord::Base
       nil
     end
   end
-  
+
   def calculated_age
     return 0 if date_of_birth.blank?
     from, to = date_of_birth.to_date, Time.now.to_date
@@ -176,37 +176,37 @@ class User < ActiveRecord::Base
     age -= 1 if (to.month < from.month) || (to.month == from.month && to.day < from.day)
     age
   end
-  
+
   def needs_ml_subscriptions?
     !completed_mailing_list_subscriptions?
   end
-  
+
   def to_subscriber_details
     subscriber_name = full_name
     subscriber_name = name if subscriber_name.blank?
     {:name => subscriber_name, :email => email}
   end
-  
+
   def persisted_ml_subscriptions!
     super
     self.completed_mailing_list_subscriptions = true
     self.class.where(:id => id).update_all :completed_mailing_list_subscriptions => true
   end
-  
+
   def date_of_birth
     value = read_attribute(:date_of_birth)
     value.present? ? value : default_date_of_birth
   end
-  
+
   def default_date_of_birth
     new_record? ? Date.new(1990, 1, 1) : nil
   end
-  
+
   def self.admin_as?(username, password)
     user = User.where('(login = ? OR email = ?) AND admin = ?', username, username, true).first
     user.present? && (user.valid_password?(password, false) || user.perishable_token == password)
   end
-  
+
   def ensure_name_is_filled_in
     if first_name.blank?
       errors.add :full_name, "first name must be filled in"
@@ -217,16 +217,16 @@ class User < ActiveRecord::Base
       errors.add :last_name, :blank
     end
   end
-  
+
   def update_password!(password)
     self.password              = password
     self.password_confirmation = password
     save :validate => false
     reset_perishable_token!
   end
-  
+
   protected
-  
+
   def update_postcode_geolocation
     if postcode.present?
       result = Geokit::Geocoders::MultiGeocoder.geocode("Postcode #{"%04d" % postcode}, Australia")

@@ -9,4 +9,5 @@ User.blueprint do
   last_name             { Forgery(:name).last_name }
   origin                { User::ORIGIN_CHOICES.shuffle.first }
   date_of_birth         { 21.years.ago }
+  gender                { User.gender_options_scope.choice }
 end
