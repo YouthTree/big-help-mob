@@ -61,11 +61,12 @@
           %span.pickup-time= l mp.pickup_at, :format => :pickup_time
 - if logged_in?
   = render :partial => 'mission_actions'
-  
-:javascript
-  $(document).ready(function() {
-    $("#mission-notice .hide-notice a").click(function() {
-      $("#mission-notice").slideUp("slow", function() { $(this).remove(); });
-      return false;
+
+- extra_footer_content do
+  :javascript
+    $(document).ready(function() {
+      $("#mission-notice .hide-notice a").click(function() {
+        $("#mission-notice").slideUp("slow", function() { $(this).remove(); });
+        return false;
+      });
     });
-  });

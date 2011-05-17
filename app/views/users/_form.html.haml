@@ -10,7 +10,7 @@
     = form.input :display_name, :hint => "If set, other members will see this instead of your full name.", :label => "Your Display Name"
     = form.input :gender, :include_blank => true, :label => 'Your Gender'
     = form.input :postcode, :hint => "Your postcode is used to help us improve transport & planning.", :label => "Your Postcode"
-    = form.input :phone, :hint => "Only organizers will have access to your phone number for planning & safety reasons.", :label => "Your Phone Number"
+    = form.input :phone, :hint => "This number will only be used by Big Help Mob / Youth Tree for a couple of mission-related SMS and in the case of emergencies.", :label => "Your Phone Number"
     = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => (Time.now.year - 10), :label => "When were you born?", :required => false, :include_blank => false
     
   = form.inputs :name => "Your Account" do
