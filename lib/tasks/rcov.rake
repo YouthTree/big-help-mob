@@ -13,6 +13,8 @@ spec_prereq = Rails.configuration.generators.options[:rails][:orm] == :active_re
 task :noop do; end
 task :default => :spec
 
+Rake.application.instance_eval { @tasks.delete "spec:rcov" }
+
 namespace :spec do
   RSpec::Core::RakeTask.new(:rcov => spec_prereq) do |t|
     t.rcov = true
