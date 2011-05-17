@@ -11,7 +11,7 @@ test: &TEST
   adapter: postgresql
   encoding: utf8
   host: localhost
-  database: bighelpmob_development
+  database: bighelpmob_test
   min_messages: warning
   username: bighelpmob
   password: bighelpmob
