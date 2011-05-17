@@ -104,6 +104,7 @@ group :test do
   gem 'remarkable',              '>= 4.0.0.alpha4', :require => 'remarkable/core'
   gem 'remarkable_activerecord', '>= 4.0.0.alpha4', :require => 'remarkable/active_record'
   gem 'rr'
+  gem 'ci_reporter', '~> 1.6.3', :require => nil
 end
 
 group :test_mac do

@@ -82,6 +82,8 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
+    ci_reporter (1.6.4)
+      builder (>= 2.1.2)
     closure-compiler (0.3.3)
     coffee-script (2.1.1)
       coffee-script-source
@@ -291,6 +293,7 @@ DEPENDENCIES
   barista (>= 0.7.0.pre2)
   bhm-google-maps (~> 0.2.0)
   campaigning
+  ci_reporter (~> 1.6.3)
   compass (>= 0.10.4)
   compass-960-plugin (>= 0.9.13)
   compass-colors (>= 0.3.1)
