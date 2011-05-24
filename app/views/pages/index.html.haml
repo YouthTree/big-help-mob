@@ -1,8 +1,5 @@
 - has_jammit_js :homepage
   
-- unless @photos.empty?
-  #homepage-photos= render_mission_photos @photos
-
 = content_section 'home.introduction', :class => 'column'
 
 .homepage-mission-link
@@ -12,3 +9,7 @@
     = link_to 'View our Past Missions', missions_path
   %span.or or
   = show_subscription_button
+
+- unless @photos.empty?
+  #homepage-photos= render_mission_photos @photos
+

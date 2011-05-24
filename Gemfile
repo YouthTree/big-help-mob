@@ -5,7 +5,8 @@ def gh(user, repo)
 end
 
 # Rails!
-gem 'rails', '= 3.0.3'
+gem 'rake', '~> 0.8.0'
+gem 'rails', '= 3.0.7'
 gem 'pg'
 gem 'json'
 
@@ -26,7 +27,7 @@ gem 'show_for'
 
 # General Code Stuff
 gem 'will_paginate',    '>= 3.0.pre2', :git => gh('mislav', 'will_paginate'), :ref => 'rails3'
-gem 'state_machine',    '>= 0.9.0', :git => gh('pluginaweek', 'state_machine')
+gem 'state_machine',    '~> 1.0.0'
 gem 'slugged',          '>= 0.3.1'
 
 # Helpers etc.
@@ -70,8 +71,8 @@ gem 'youthtree-helpers'
 gem 'youthtree-controller-ext', '>= 0.1.2'
 
 # Auth
-gem 'authlogic',     :git => gh('kurbmedia', 'authlogic')
-gem 'authlogic_rpx', :git => gh('kuldarkrabbi', 'authlogic_rpx')
+gem 'authlogic',     '~> 2.1.6'
+gem 'authlogic_rpx', '~> 1.2.0'
 gem 'rpx_now'
 
 gem 'awesome_print', '0.2.1', :require => nil
