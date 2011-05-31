@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101202150624) do
+ActiveRecord::Schema.define(:version => 20110531090903) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -175,6 +175,17 @@ ActiveRecord::Schema.define(:version => 20101202150624) do
     t.datetime "updated_at"
   end
 
+  create_table "postcode_locations", :force => true do |t|
+    t.integer  "postcode"
+    t.string   "name"
+    t.decimal  "lat",        :precision => 15, :scale => 10
+    t.decimal  "lng",        :precision => 15, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postcode_locations", ["postcode"], :name => "index_postcode_locations_on_postcode"
+
   create_table "questions", :force => true do |t|
     t.boolean  "visible",                  :default => false, :null => false
     t.integer  "position"
@@ -220,6 +231,14 @@ ActiveRecord::Schema.define(:version => 20101202150624) do
   add_index "slugs", ["scope", "record_id"], :name => "index_slugs_on_scope_and_record_id"
   add_index "slugs", ["scope", "slug", "created_at"], :name => "index_slugs_on_scope_and_slug_and_created_at"
   add_index "slugs", ["scope", "slug"], :name => "index_slugs_on_scope_and_slug"
+
+  create_table "subscribers", :force => true do |t|
+    t.string   "name",                    :null => false
+    t.string   "email",                   :null => false
+    t.integer  "volunteering_history_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login"

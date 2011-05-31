@@ -11,9 +11,12 @@ class CampaignMonitorWrapper
       }
     end
 
+    def default_list_id
+      Settings.campaign_monitor.default_list.presence
+    end
+
     def list_options
-      default = Settings.campaign_monitor.default_list
-      default = nil if default.blank? # Doesn't have the setting key.
+      default = default_list_id
       {
         "default" => default,
         "other"   => (available_list_ids - [default]).compact
@@ -55,9 +58,12 @@ class CampaignMonitorWrapper
       true
     end
 
-    def update_for_subscriber!(user, lists)
+    def update_for_subscriber!(user, lists = :default)
       return false unless has_campaign_monitor?
-      update_subscriptions! cm_user_for(user), lists
+      user = cm_user_for(user)
+      lists = [default_list_id] if lists == :default
+      # Subscribe to the lists
+      update_subscriptions! user, lists
     end
 
     def subscribe!(user, list)

@@ -11,3 +11,8 @@ User.blueprint do
   date_of_birth         { 21.years.ago }
   gender                { User.gender_options_scope.choice }
 end
+
+Subscriber.blueprint do
+  name  { "Example User #{sn}" }
+  email { "example-#{sn}@example.com" }
+end
