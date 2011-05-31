@@ -6,8 +6,7 @@ class CampaignMonitorWrapper
 
     def list_options_for_select
       {
-        "Big Help Mob"                   => "default",
-        "Other Youth Tree-related lists" => "other"
+        "Subscribe me to the Big Help Mob mailing list" => "default"
       }
     end
 

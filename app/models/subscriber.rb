@@ -1,5 +1,6 @@
 class Subscriber < ActiveRecord::Base
   include CollatableOptionMixin
+  include MailingListSubscribeable
 
   validates_presence_of   :email, :name
   validates_format_of     :email, :message => 'is not a valid email address', :with => RFC822::EMAIL, :allow_blank => true
@@ -9,15 +10,17 @@ class Subscriber < ActiveRecord::Base
 
   attr_accessible :name, :email, :volunteering_history_id
 
-  after_create :subscribe!
+  before_create :prepare_subscribeable_settings
 
-  def to_subscriber_details
-    {:name => name, :email => email}
+  # Always return the default mailing list as the users choice.
+  def mailing_list_choices
+    %w(default)
   end
 
-  # Adds a job to subscribe the user. Note that this needs to be refactored.
-  def subscribe!
-    CampaignMonitorWrapper.update_for_subscriber! self
+  private
+
+  def prepare_subscribeable_settings
+    @mailing_list_choices_set = true
   end
 
 end

@@ -49,15 +49,30 @@ describe Subscriber do
 
     it 'should automatically subscribe on save' do
       subject.should_not be_persisted
-      mock(CampaignMonitorWrapper).update_for_subscriber!(subject)
+      mock(MailingListWorker).queue_for!(subject)
       subject.save
       subject.should be_persisted
+    end
+
+    it 'should not call it twice' do
+      subject.save
+      dont_allow(MailingListWorker).queue_for!.with_any_args
+      subject.name = 'A different name'
+      subject.save
+    end
+
+    it 'should not do it after finding the saved record' do
+      subject.save
+      returned = Subscriber.find(subject.id)
+      dont_allow(MailingListWorker).queue_for!.with_any_args
+      returned.name = 'A different name'
+      returned.save
     end
 
     it 'should not subscribe when the subscriber is invalid' do
       subject.should_not be_persisted
       subject.name = ''
-      dont_allow(CampaignMonitorWrapper).update_for_subscriber!(subject)
+      dont_allow(MailingListWorker).queue_for!.with_any_args
       subject.save
       subject.should_not be_persisted
     end
