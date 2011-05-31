@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/YouthTree/authlogic_rpx.git
+  revision: 6f47fa034bec3bfa87f91b37d8c5fb12c4b24f5a
+  specs:
+    authlogic_rpx (1.2.0)
+      authlogic (~> 3.0)
+      rpx_now (~> 0.6.23)
+
+GIT
   remote: git://github.com/mislav/will_paginate.git
   revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
   ref: rails3
@@ -49,11 +57,9 @@ GEM
     activesupport (3.0.7)
     addresslogic (1.2.1)
     arel (2.0.10)
-    authlogic (2.1.6)
-      activesupport
-    authlogic_rpx (1.2.0)
-      authlogic (= 2.1.6)
-      rpx_now (= 0.6.23)
+    authlogic (3.0.3)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
     autotest-fsevent (0.2.5)
       sys-uname
     autotest-growl (0.2.9)
@@ -295,8 +301,8 @@ DEPENDENCIES
   ZenTest
   addresslogic (>= 1.2.1)
   annotate!
-  authlogic (~> 2.1.6)
-  authlogic_rpx (~> 1.2.0)
+  authlogic (~> 3.0.0)
+  authlogic_rpx (~> 1.2.0)!
   autotest-fsevent
   autotest-growl
   awesome_print (= 0.2.1)

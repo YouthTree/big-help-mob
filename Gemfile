@@ -71,8 +71,8 @@ gem 'youthtree-helpers'
 gem 'youthtree-controller-ext', '>= 0.1.2'
 
 # Auth
-gem 'authlogic',     '~> 2.1.6'
-gem 'authlogic_rpx', '~> 1.2.0'
+gem 'authlogic',     '~> 3.0.0'
+gem 'authlogic_rpx', '~> 1.2.0', :git => 'git://github.com/YouthTree/authlogic_rpx.git'
 gem 'rpx_now'
 
 gem 'awesome_print', '0.2.1', :require => nil
