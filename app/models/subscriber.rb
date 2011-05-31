@@ -1,8 +1,13 @@
 class Subscriber < ActiveRecord::Base
+  include CollatableOptionMixin
 
   validates_presence_of   :email, :name
   validates_format_of     :email, :message => 'is not a valid email address', :with => RFC822::EMAIL, :allow_blank => true
   validates_uniqueness_of :email
+
+  has_collatable_option :volunteering_history, 'user.volunteering_history'
+
+  attr_accessible :name, :email, :volunteering_history_id
 
   after_create :subscribe!
 

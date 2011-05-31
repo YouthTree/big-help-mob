@@ -6,9 +6,11 @@ class CreateSubscribers < ActiveRecord::Migration
       t.integer :volunteering_history_id
       t.timestamps
     end
+    CollatableOptionSeeder.seed 'subscriber.volunteering_history'
   end
 
   def self.down
     drop_table :subscribers
+    CollatableOptionSeeder.unseed 'subscriber.volunteering_history'
   end
 end

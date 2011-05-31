@@ -19,5 +19,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   # reset stuff before tests.
   config.before(:each) { Machinist.reset_before_test }
-  config.before(:all)  { CollatableOptionSeeder.seed 'user.gender' }
+  config.before(:all) do
+    CollatableOptionSeeder.seed 'user.gender'
+    CollatableOptionSeeder.seed 'subscriber.volunteering_history'
+  end
 end
