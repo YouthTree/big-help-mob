@@ -98,6 +98,8 @@ group :test, :development do
   gem 'machinist',   '>= 2.0.0.beta2', :require => nil
   gem 'forgery', :require => nil
   gem 'rcov'
+  gem 'guard', :require => nil
+  gem 'guard-rspec', :require => nil
 end
 
 group :test do
@@ -115,4 +117,9 @@ end
 
 group :staging, :production do
   gem 'hoptoad_notifier'
+end
+
+group :test_mac do
+  gem 'rb-fsevent', :require => false
+  gem 'growl', :require => false
 end
