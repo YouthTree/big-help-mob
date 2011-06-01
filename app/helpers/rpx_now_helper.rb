@@ -1,5 +1,5 @@
 module RpxNowHelper
-  
+
   # Returns a short description of the rpx identifiers associated with a given user account,
   # namely for the user profile page so users can see how they logged in to the site.
   def rpx_identifiers_to_s(user)
@@ -14,8 +14,8 @@ module RpxNowHelper
         buffer << " stored for #{name}."
       end
     end
-  end  
-  
+  end
+
   # Returns an unobtrusive link (with html5 data attributes) that lets you bring up an RPXNow Dialog.
   def rpxnow_link(text, url, opts = {})
     has_rpxnow
@@ -31,7 +31,12 @@ module RpxNowHelper
     full_url = "http://#{rpx_opts[:realm]}.rpxnow.com/openid/v2/signin?token_url=#{Rack::Utils.escape(token_url)}"
     link_to text, full_url, options
   end
-  
+
+  def has_rpx_meta_tag
+    rpxnow = Settings.rpx
+    extra_head_content(meta_tag("rpx-app-id", rpxnow.app_id)) if rpxnow.app_id?
+  end
+
   # Automatically embeds the RPXNow Javascript once.
   def has_rpxnow
     return if defined?(@has_rpxnow) && @has_rpxnow
@@ -39,5 +44,9 @@ module RpxNowHelper
     has_js rpxnow_js
     @has_rpxnow = true
   end
-  
+
+  def share_link(text, share_message, share_content)
+    link_to text, '#', :class => 'rpx-share-button', 'data-share-content' => share_content, 'data-share-message' => share_message
+  end
+
 end
