@@ -47,8 +47,12 @@
 
 
 #user-volunteering-history.statistic
-  %h3 Answers to "Have you volunteered in the last year"
+  %h3 User answers to "Have you volunteered in the last year"
   #volunteering-chart.dashboard-chart= dl_for_stat @user_volunteering_history
+  
+#subscriber-volunteering-history.statistic
+  %h3 Mailing List answers to "Have you volunteered in the last year"
+  #subscriber-volunteering-chart.dashboard-chart= dl_for_stat @subscriber_volunteering_history
   
 #user-genders.statistic
   %h3 Users per Gender
