@@ -47,6 +47,7 @@ gem 'ruby-googlechart',    '>= 0.6.4', :require => 'google_chart'
 gem 'SystemTimer'
 
 # Javascript Stuff
+gem 'coffee-script',     '~> 2.1.0'
 gem 'therubyracer',      :require => nil
 gem 'barista',           '>= 0.7.0.pre2'
 gem 'shuriken',          '>= 0.2.0'
