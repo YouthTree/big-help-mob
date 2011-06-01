@@ -12,10 +12,10 @@ section#sidebar
       text-align: center
       color: #222222
       background: #dfdfdf
-      +linear-gradient(color-stops(#dddddd, #eeeeee), bottom)
+      +background-image(linear-gradient(bottom, #ddd, #eee))
       +border-radius(0.5em)
       &:hover, &:active
-        +linear-gradient(color-stops(#333333, #555555), bottom)
+        +background-image(linear-gradient(bottom, #333, #555))
         color: white
         border-color: #111111
   h2

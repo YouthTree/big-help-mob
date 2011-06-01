@@ -34,7 +34,7 @@ javascripts:
     - public/javascripts/bhm/admin/analytics.js
     - public/javascripts/bhm/admin/dashboard_stats.js
   ckeditor:
-    - - public/javascripts/vendor/youthtree/youth_tree/forms/ck_editor.js
+    - public/javascripts/vendor/youthtree/youth_tree/forms/ck_editor.js
     - public/ckeditor/ckeditor.js
     - public/ckeditor/adapters/jquery.js
   gmap:

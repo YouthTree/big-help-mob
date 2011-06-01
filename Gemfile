@@ -31,6 +31,7 @@ gem 'state_machine',    '~> 1.0.0'
 gem 'slugged',          '>= 0.3.1'
 
 # Helpers etc.
+gem 'uglifier'
 gem 'jammit',              '>= 0.5.0'
 gem 'msales-carmen',       '>= 0.1.4', :require => ['carmen', 'carmen/action_view_helpers']
 
@@ -62,7 +63,7 @@ gem 'resque-status', :require => 'resque/status'
 # View / Rendering
 gem 'haml',               '>= 3.0.13'
 gem 'haml-rails'
-gem 'compass',            '>= 0.10.4'
+gem 'compass',            '~> 0.11.0'
 gem 'compass-960-plugin', '>= 0.9.13', :require => nil
 gem 'compass-colors',     '>= 0.3.1', :require => nil
 gem 'fancy-buttons',      '>= 0.5.4', :require => nil
