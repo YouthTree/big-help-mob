@@ -86,6 +86,8 @@ gem 'campaigning'
 
 gem 'meta_search'
 
+gem "rails-erd"
+
 group :development do
   gem 'rails3-generators'
   gem 'annotate', :git => gh('miyucy', 'annotate_models'), :require => nil
