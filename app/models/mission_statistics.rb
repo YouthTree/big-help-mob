@@ -60,11 +60,11 @@ class MissionStatistics
   end
 
   def pending_participations
-    participations.select { |p| p.still_preparing? }
+    participations.select(&:still_preparing?)
   end
 
   def approved_participations
-    participations.select { |p| p.approved? }
+    participations.select(&:approved?)
   end
 
   def other_participations
@@ -72,11 +72,11 @@ class MissionStatistics
   end
 
   def sidekicks(collection = participations)
-    collection.select { |c| c.sidekick? }
+    collection.select(&:sidekick?)
   end
 
   def captains(collection = participations)
-    collection.select { |c| c.captain? }
+    collection.select(&:captain?)
   end
 
   def approved_sidekicks
@@ -85,6 +85,10 @@ class MissionStatistics
 
   def approved_captains
     captains approved_participations
+  end
+
+  def social_participations
+    participations.select(&:partaking_with_friends?)
   end
 
   def count(collection = :all, type = :all)
