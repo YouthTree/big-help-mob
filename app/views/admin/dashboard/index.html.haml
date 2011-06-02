@@ -33,8 +33,9 @@
   #origins-chart.dashboard-chart
     %dl
       - @origin_counts.each_pair do |origin, count|
-        %dt= origin
-        %dd= count
+        - if count > 0
+          %dt= origin
+          %dd= count
   - unless @other_origins.blank?
     %h4
       = link_to "Other Known Origins", "#", :class => 'other-known-origins-toggle'

@@ -42,11 +42,12 @@ BHM.withNS 'Admin.DashboardStats', (ns) ->
         @setDataToolTip -> "#{@y} people replied:<br/> \"#{@point.name}\"."
   
   ns.showSubscriberVolunteering = ->
-    ns.withContainer 'subscriber-volunteering-chart', (labels, values) ->
-      BHM.Admin.PieChart.create 'subscriber-volunteering-chart', ->
-        @setCategories labels
-        @addSeries     'Volunteered in the last year?', labels, $.map(values, Number)
-        @setDataToolTip -> "#{@y} subscribers replied:<br/> \"#{@point.name}\"."
+    if $("#subscriber-volunteering-chart").length > 0
+      ns.withContainer 'subscriber-volunteering-chart', (labels, values) ->
+        BHM.Admin.PieChart.create 'subscriber-volunteering-chart', ->
+          @setCategories labels
+          @addSeries     'Volunteered in the last year?', labels, $.map(values, Number)
+          @setDataToolTip -> "#{@y} subscribers replied:<br/> \"#{@point.name}\"."
         
   ns.showUserGenders = ->
     ns.withContainer 'genders-chart', (labels, values) ->

@@ -3,9 +3,24 @@ class UserStatistics
   UserLocation = Struct.new(:postcode, :lat, :lng, :count)
   UserAgeData  = Struct.new(:data, :min_age, :max_age, :window_min, :window_max, :mean, :count)
 
-  def self.signups_per_day(from = Date.today - 6, to = Date.today)
+  attr_reader :target
+
+  def initialize(target = User)
+    @target = target
+  end
+
+  def self.for_all_users
+    @for_all_users ||= self.new
+  end
+
+  class << self
+    delegate :signups_per_day, :count_per_volunteering_history, :count_per_volunteering_history_for_subscribers,
+             :count_per_gender, :count_per_age, :user_locations, :user_origins, :to => :for_all_users
+  end
+
+  def signups_per_day(from = Date.today - 6, to = Date.today)
     from, to = from.to_date, to.to_date
-    scope = User.where(["users.created_at > ? AND users.created_at < ?", from.beginning_of_day, to.beginning_of_day])
+    scope = target.where(["users.created_at > ? AND users.created_at < ?", from.beginning_of_day, to.beginning_of_day])
     counts = normalize_dates scope.count(:all, :group => "DATE(users.created_at)")
     results = ActiveSupport::OrderedHash.new
     while from <= to
@@ -15,20 +30,20 @@ class UserStatistics
     results
   end
 
-  def self.count_per_volunteering_history
-    except_nils! User.count_on_volunteering_history_by_name
+  def count_per_volunteering_history
+    except_nils! target.count_on_volunteering_history_by_name
   end
 
-  def self.count_per_volunteering_history_for_subscribers
+  def count_per_volunteering_history_for_subscribers
     except_nils! Subscriber.count_on_volunteering_history_by_name
   end
 
-  def self.count_per_gender
-    except_nils! User.count_on_gender_by_name
+  def count_per_gender
+    except_nils! target.count_on_gender_by_name
   end
 
-  def self.count_per_age
-    relationship = User.where("date_of_birth IS NOT NULL")
+  def count_per_age
+    relationship = target.where("date_of_birth IS NOT NULL")
     raw_counts   = relationship.count :all, :group => User::AGE_SQL
     known_ages   = raw_counts.keys.map { |k| k.to_i }.reject { |a| a < 1 }.sort # Cut out invalid dates.
     min, max     = known_ages.min.to_i, known_ages.max.to_i
@@ -45,16 +60,16 @@ class UserStatistics
     UserAgeData.new(data, min, max, min_age, max_age, mean_age.round, num_of_ages)
   end
 
-  def self.user_locations
-    scope  = User.where("postcode IS NOT NULL AND postcode_lat IS NOT NULL AND postcode_lng IS NOT NULL")
+  def user_locations
+    scope  = target.where("postcode IS NOT NULL AND postcode_lat IS NOT NULL AND postcode_lng IS NOT NULL")
     scope  = scope.select("COUNT(*) as count_all, postcode, postcode_lat, postcode_lng").group("postcode, postcode_lat, postcode_lng")
     scope.all.map do |result|
       UserLocation.new("%04d" % result.postcode, result.postcode_lat, result.postcode_lng, result.count_all.to_i)
     end.sort_by { |r| -r.count }
   end
 
-  def self.user_origins
-    counts = User.count :all, :group => "origin"
+  def user_origins
+    counts = target.count :all, :group => "origin"
     graph_stats = ActiveSupport::OrderedHash.new(0)
     blank_origins = counts.keys.select { |k| k.blank? }
     graph_stats["Unknown Origin"] = blank_origins.map { |v| counts.delete(v).to_i }.sum
@@ -67,14 +82,14 @@ class UserStatistics
 
   protected
 
-  def self.normalize_dates(collection)
+  def normalize_dates(collection)
     collection.inject({}) do |acc, (k, v)|
       acc[k.to_date] = v
       acc
     end
   end
 
-  def self.except_nils!(c)
+  def except_nils!(c)
     value = c.tap { |v| v.delete nil }
     if value.blank?
       return "Unknown" => 1

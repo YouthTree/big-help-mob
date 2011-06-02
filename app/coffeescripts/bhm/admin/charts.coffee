@@ -48,7 +48,7 @@ BHM.withNS 'Admin', (ns) ->
     draw: ->
       @parent.removeClass 'hidden-container'
       $("##{@id}").empty().show()
-      new Highcharts.Chart @options
+      @chart = new Highcharts.Chart @options
       
   ns.withNS 'LineChart', (lineNS) ->
   
