@@ -4,6 +4,8 @@
   
   = s.attribute :login
   
+  = s.attribute :admin
+  
   = s.attribute :display_name
   
   = s.attribute :first_name
@@ -33,6 +35,8 @@
 
   = s.association :participations do
     = link_to "View All Participations", admin_user_mission_participations_path(resource)
+    
+  = s.attribute :completed_mailing_list_subscriptions
 
 - if @user.captain_application.present?
   
