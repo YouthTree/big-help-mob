@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110531090903) do
+ActiveRecord::Schema.define(:version => 20110602135157) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -272,6 +272,7 @@ ActiveRecord::Schema.define(:version => 20110531090903) do
     t.boolean  "completed_mailing_list_subscriptions",                                 :default => false
     t.integer  "volunteering_history_id"
     t.integer  "gender_id"
+    t.boolean  "willing_to_talk"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

@@ -1,5 +1,5 @@
 = semantic_form_for @participation, :url => @mission, :method => :put do |form|
-  
+
   - ar = @participation.alternate_role
   - if @participation.still_preparing? || @mission.signup_open?(ar)
     %p.actions
@@ -7,7 +7,7 @@
         You've chosen to sign up as a
         == #{@participation.role_name.titleize},
         = link_to 'Click here', edit_mission_with_role_path(@mission, :as => ar)
-        == to become a #{ar.titleize} or #{link_to 'click here', @mission} to return to the mission details.  
+        == to become a #{ar.titleize} or #{link_to 'click here', @mission} to return to the mission details.
       - if @participation.still_preparing?
         == If you can't remember what a #{@participation.role_name.humanize}
         actually does or never read it properly in the first place (totally excusable, you're a character of action),
@@ -29,19 +29,20 @@
       = form.fields_for :answers, @participation.answers do |af|
         - af.object.each_viewable_question do |question, name|
           = af.input name, question.to_formtastic_options(@participation.answers)
-        
-  
+
+
   = form.fields_for :user do |uf|
     = form.inputs :name => "Your General Profile" do
-      = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."      
+      = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."
       = uf.input :phone, :required => true, :hint => "This number will only be used by Big Help Mob / Youth Tree for a couple of mission-related SMSes and in the case of emergencies."
+      = uf.input :willing_to_talk, :required => false, :hint => "<br />Would you be happy for us to call or email you so we can hear about how you found Big Help Mob?".html_safe, :label => "I would be happy for you to contact me."
       = uf.input :volunteering_history, :required => true, :label => "What best describes your volunteering habits? (we mean ANY sort of volunteering)", :hint => "This helps us to better gauge the effect Big Help Mob has at getting new volunteers."
 
     - if @participation.captain?
       - uf.object.build_captain_application if uf.object.captain_application.blank?
       = uf.fields_for :captain_application do |caf|
         = render :partial => 'captain_application_form', :locals => {:form => caf, :user => uf.object}
-  
+
   - if @participation.sidekick?
     = form.inputs :name => "Where do you wish to be picked up from?" do
       %li
@@ -56,8 +57,8 @@
             - else
               Pickup address not yet chosen.
       = form.input :pickup_id, :collection => @mission.mission_pickups, :as => :pickups
-    
-      
+
+
   = form.inputs :name => "Your Mailing Address" do
     %li
       %p.inline-hints.full-width
@@ -67,7 +68,7 @@
         == to #{@mission.name})
     = form.fields_for :user do |uf|
       = render_address_fields uf, :mailing_address
-  
+
   = form.buttons do
     - if form.object.still_preparing?
       = form.commit_button "Join this mission"

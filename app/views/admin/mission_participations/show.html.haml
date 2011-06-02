@@ -30,15 +30,11 @@
 = show_for resource.user do |r|
 
   = r.attribute :first_name
-
   = r.attribute :last_name
-
   = r.attribute :phone
-
   = r.attribute :email
-
   = r.attribute :allergies
-
+  = r.attribute :willing_to_talk
   = r.attribute :comment do
     = comment_as_html resource.user
 
