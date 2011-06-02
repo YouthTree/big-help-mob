@@ -1,9 +1,10 @@
 - use_gmaps_js
 - has_jammit_js :pickups
 - has_share_this_js
-- has_rpxnow
-- has_rpx_meta_tag
-- has_js 'bhm/mission', 'bhm/rpx_sharing'
+- has_js 'bhm/mission'
+
+- @og_type = :article
+- og_field :description, @mission.short_description
 
 - if logged_in?
   = render :partial => 'mission_actions'

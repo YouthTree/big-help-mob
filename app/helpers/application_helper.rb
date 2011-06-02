@@ -1,10 +1,18 @@
 module ApplicationHelper
-  
+
+  def og_tag(name, content)
+    tag(:meta, :property => "og:#{name}", :content => content.to_s)
+  end
+
+  def og_field(name, content)
+    extra_head_content og_tag(name, content)
+  end
+
   def tu(name, options = {})
     scope = [:ui, options.delete(:scope)].compact.join(".").to_sym
     I18n.t(name, options.merge(:scope => scope))
   end
-  
+
   def flash_messages(*names)
     names = names.select { |k| flash[k].present? }
     return if names.blank?
@@ -16,7 +24,7 @@ module ApplicationHelper
     end
     content_tag(:section, content.sum(ActiveSupport::SafeBuffer.new), :id => "flash-messages").html_safe
   end
-  
+
   def pickup_data_options(pickup, selected = false)
     opts = {"class" => "pickup-entry"}
     opts["data-pickup-id"] = pickup.id
@@ -33,7 +41,7 @@ module ApplicationHelper
     opts["data-pickup-address"]   = pickup.address.to_s
     opts
   end
-  
+
   def render_address_fields(f, name = :address, options = {})
     o = f.object
     o.send(:"build_#{name}") if o.send(name).blank?
@@ -43,16 +51,16 @@ module ApplicationHelper
       end
     end
   end
-  
+
   protected
-  
+
   def normalized_content_scope(key, scope = nil)
     (Array(scope) + key.to_s.split(".")).flatten.join(".")
   end
-  
+
   def options_with_class_merged(o, n)
     css_klass = [o[:class], n[:class]].join(" ").strip.squeeze(" ")
     o.merge(n).merge(:class => css_klass)
   end
-  
+
 end
