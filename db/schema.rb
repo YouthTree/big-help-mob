@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602135157) do
+ActiveRecord::Schema.define(:version => 20110602140255) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20110602135157) do
     t.integer  "pickup_id"
     t.text     "raw_answers"
     t.text     "comment"
+    t.boolean  "partaking_with_friends"
   end
 
   add_index "mission_participations", ["mission_id", "role_id"], :name => "index_mission_participations_on_mission_id_and_role_id"

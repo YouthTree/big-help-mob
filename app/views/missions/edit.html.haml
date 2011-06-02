@@ -36,7 +36,8 @@
       = uf.input :allergies, :input_html => {:rows => 5}, :label => "Are you allergic to anything and if so, what?", :hint => "Even Superman is allergic to Kryptonite - Letting us know your allergies helps us make sure missions run smoothly for everyone involved."
       = uf.input :phone, :required => true, :hint => "This number will only be used by Big Help Mob / Youth Tree for a couple of mission-related SMSes and in the case of emergencies."
       = uf.input :willing_to_talk, :required => false, :hint => "<br />Would you be happy for us to call or email you so we can hear about how you found Big Help Mob?".html_safe, :label => "I would be happy for you to contact me."
-      = uf.input :volunteering_history, :required => true, :label => "What best describes your volunteering habits? (we mean ANY sort of volunteering)", :hint => "This helps us to better gauge the effect Big Help Mob has at getting new volunteers."
+      = uf.input :volunteering_history, :required => true, :label => "What best describes your volunteering habits?", :hint => "This helps us to better gauge the effect Big Help Mob has at getting new volunteers. Please note we mean any type of volunteering."
+      = form.input :partaking_with_friends, :hint => "<br />Please note that your friend(s) will still have to sign up separately.".html_safe, :label => 'I intend to go to this Big Help Mob with at least one friend.'
 
     - if @participation.captain?
       - uf.object.build_captain_application if uf.object.captain_application.blank?

@@ -1,7 +1,7 @@
 class MissionParticipationDrop < DynamicBaseDrop
-  
-  accessible! :mission, :user, :role, :pickup, :approved?, :created?, :awaiting_approval?
-  
+
+  accessible! :mission, :user, :role, :pickup, :approved?, :created?, :awaiting_approval?, :partaking_with_friends?
+
   def answers
     values = []
     answers = mission_participation.answers
@@ -10,5 +10,5 @@ class MissionParticipationDrop < DynamicBaseDrop
     end
     values
   end
-  
+
 end
