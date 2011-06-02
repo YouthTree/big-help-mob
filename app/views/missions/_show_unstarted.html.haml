@@ -11,7 +11,7 @@
 - extra_head_content do
   %meta{:name => "title", :content => @mission.name}
 
-- if logged_in? # && flash[:recently_joined_mission]
+- if logged_in? && flash[:recently_joined_mission]
   #mission-notice
     %h2 Huzzah! You've successfully joined this mission.
     %p
@@ -21,7 +21,7 @@
       You should have received an email with information about the event and
       you can likely expect further contact about it in the near future. If you'd like to help recruit fellow
       heroes, why not share this missing with your friends on Facebook or Twitter?
-    %p#share-container= share_link 'Tell my friends', 'Tell My Friends', "I just joined #{@mission.name} - You should too!"
+    -# %p#share-container= share_link 'Tell my friends', 'Tell My Friends', "I just joined #{@mission.name} - You should too!"
     %p.hide-notice
       = link_to 'Click here to hide this message', @mission
 
