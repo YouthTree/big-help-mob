@@ -32,10 +32,10 @@
 
 %p.share-this-container
   %strong Share this mission on
-  == #{share_this_link 'facebook', :for => :facebook},
-  = share_this_link 'twitter', :for => :twitter
+  == #{share_this_link 'facebook', :for => :facebook, 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"},
+  = share_this_link 'twitter', :for => :twitter, 'data-share-this-title' => "Check out @BigHelpMob's upcoming mission '#{@mission.name}'"
   or
-  == #{share_this_link 'another site'}.
+  == #{share_this_link 'another site', 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"}.
 
 #mission-description
   = @mission.description_as_html
