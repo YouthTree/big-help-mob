@@ -10,23 +10,25 @@
 #visits-chart-container.statistic.hidden-container
   %h3 Site Visitors Per Day
   #visits-chart.dashboard-chart
+  - if Settings.clicky.site_id?
+    %p.analytic-summary
+      For more detailed traffic analytics, please visit the BHM
+      = link_to 'Clicky Account', "https://secure.getclicky.com/stats/?site_id=#{Settings.clicky.site_id}"
+      using the login details available from Leon or via our access list.
 
 #user-signups.statistic
-  %h3 User Signups By Date    
+  %h3 User Signups By Date
   #signups-chart.dashboard-chart= dl_for_stat @user_stats
 
 #user-ages.statistic
   %h3 Users per Age
-  %p
-    == There are #{pluralize @user_ages.count, 'user'} with ages from
-    == #{@user_ages.min_age} to #{@user_ages.max_age}. The mean user age
-    == is #{@user_ages.mean}.
   #ages-chart.dashboard-chart
     %dl
       - @user_ages.data.each_pair do |age, value|
         - if age > @user_ages.window_min && age < @user_ages.window_max
           %dt= age
           %dd= value
+  %p.analytic-summary There are #{pluralize @user_ages.count, 'user'} with ages from #{@user_ages.min_age} to #{@user_ages.max_age}. The mean user age is #{@user_ages.mean}.
 
 #user-origins.statistic
   %h3 Users per Origin
@@ -50,11 +52,11 @@
 #user-volunteering-history.statistic
   %h3 User answers to "Have you volunteered in the last year"
   #volunteering-chart.dashboard-chart= dl_for_stat @user_volunteering_history
-  
+
 #subscriber-volunteering-history.statistic
   %h3 Mailing List answers to "Have you volunteered in the last year"
   #subscriber-volunteering-chart.dashboard-chart= dl_for_stat @subscriber_volunteering_history
-  
+
 #user-genders.statistic
   %h3 Users per Gender
   #genders-chart.dashboard-chart= dl_for_stat @user_genders
@@ -65,9 +67,9 @@
   %ol#user-location-list
     - @user_locations.each do |location|
       %li{postcode_location_opts(location)}== Postcode #{location.postcode} has #{pluralize location.count, "members"}.
-  
 
-- content_for :sidebar do  
+
+- content_for :sidebar do
   %h2 Menu
   = sidebar_menu do
     = render :partial => 'admin/shared/sections'

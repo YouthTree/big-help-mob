@@ -1,6 +1,7 @@
 BHM.withNS 'Admin.DashboardStats', (ns) ->
   
   ns.withContainer = (container_id, callback) ->
+    return if $("##{container_id}").length < 1
     labels = []
     values = []
     data = $("##{container_id} dl")
@@ -42,12 +43,11 @@ BHM.withNS 'Admin.DashboardStats', (ns) ->
         @setDataToolTip -> "#{@y} people replied:<br/> \"#{@point.name}\"."
   
   ns.showSubscriberVolunteering = ->
-    if $("#subscriber-volunteering-chart").length > 0
-      ns.withContainer 'subscriber-volunteering-chart', (labels, values) ->
-        BHM.Admin.PieChart.create 'subscriber-volunteering-chart', ->
-          @setCategories labels
-          @addSeries     'Volunteered in the last year?', labels, $.map(values, Number)
-          @setDataToolTip -> "#{@y} subscribers replied:<br/> \"#{@point.name}\"."
+    ns.withContainer 'subscriber-volunteering-chart', (labels, values) ->
+      BHM.Admin.PieChart.create 'subscriber-volunteering-chart', ->
+        @setCategories labels
+        @addSeries     'Volunteered in the last year?', labels, $.map(values, Number)
+        @setDataToolTip -> "#{@y} subscribers replied:<br/> \"#{@point.name}\"."
         
   ns.showUserGenders = ->
     ns.withContainer 'genders-chart', (labels, values) ->
