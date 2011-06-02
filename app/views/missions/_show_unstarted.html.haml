@@ -22,7 +22,10 @@
       You should have received an email with information about the event and
       you can likely expect further contact about it in the near future. If you'd like to help recruit fellow
       heroes, why not share this missing with your friends on Facebook or Twitter?
-    -# %p#share-container= share_link 'Tell my friends', 'Tell My Friends', "I just joined #{@mission.name} - You should too!"
+    %p#share-container
+      = share_this_link 'Share on Twitter', :for => :twitter, 'data-share-this-title' => "I joined @BigHelpMob's upcoming mission '#{@mission.name}' and you should too!"
+      %span.or or
+      = share_this_link 'Share on Facebook', :for => :facebook
     %p.hide-notice
       = link_to 'Click here to hide this message', @mission
 

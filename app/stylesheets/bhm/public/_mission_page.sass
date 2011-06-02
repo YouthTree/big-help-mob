@@ -36,10 +36,6 @@
         font-weight: bold
 
 #content
-  a.rpx-share-button
-    +bhm-fixed-fb-structure
-    +fancy-button-colors($bhm-colour-join-background)
-    +link-colors($bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission)
 
   p.mission-button-container
     padding: 0
@@ -87,3 +83,17 @@
       +border-radius(1em)
     a:hover img, a.active img
       +opacity(1)
+
+#share-container
+  padding: 0.75em 0
+  text-align: center
+  a
+    +bhm-fixed-fb-structure
+    +fancy-button-colors($bhm-colour-join-background)
+    +link-colors($bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission)
+  span.or
+    color: #999
+    font-weight: bold
+    font-size: 80%
+    padding: 0 0.5em
+    
