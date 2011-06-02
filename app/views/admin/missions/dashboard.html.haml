@@ -63,6 +63,14 @@
 
     #mission-user-statistics
 
+      #filter-user-statistics
+        - form_tag dashboard_admin_mission_path(resource), :method => :get do
+          I want to see
+          = select_tag :state_filter, options_for_select(MissionStatistics::STATE_CHOICES, params[:state_filter])
+          participations from
+          = select_tag :role_filter, options_for_select(MissionStatistics::ROLE_CHOICES, params[:role_filter])
+          = submit_tag "Update Map and Statistics", :name => nil
+
       #user-signups.statistic
         %h3 User Signups By Date
         #signups-chart.dashboard-chart= dl_for_stat @user_stats

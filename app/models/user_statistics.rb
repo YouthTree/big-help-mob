@@ -50,8 +50,8 @@ class UserStatistics
     data         = ActiveSupport::OrderedHash.new(0).tap do |h|
       min.upto(max) { |c| h[c.to_i] = raw_counts[c.to_s].to_i }
     end
-    sum_of_ages = data.map { |k, v| k * v }.sum
-    num_of_ages = data.values.sum
+    sum_of_ages = data.map { |k, v| k * v }.sum(0)
+    num_of_ages = [data.values.sum(0), 1].max
     mean_age    = sum_of_ages.to_f / num_of_ages
     std_dev     = Math.sqrt(data.sum { |k, v| ((k - mean_age) ** 2) * v }.to_f / num_of_ages) * 4
     offset      = [std_dev, 10].max
