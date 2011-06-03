@@ -31,7 +31,6 @@ gem 'state_machine',    '~> 1.0.0'
 gem 'slugged',          '>= 0.3.1'
 
 # Helpers etc.
-gem 'uglifier'
 gem 'jammit',              '>= 0.5.0'
 gem 'msales-carmen',       '>= 0.1.4', :require => ['carmen', 'carmen/action_view_helpers']
 

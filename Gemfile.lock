@@ -265,9 +265,6 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.27)
-    uglifier (0.5.4)
-      execjs (>= 0.3.0)
-      multi_json (>= 1.0.2)
     unicorn (3.6.2)
       kgio (~> 2.3)
       rack
@@ -366,7 +363,6 @@ DEPENDENCIES
   stringex
   therubyracer
   title_estuary (>= 1.2.0)
-  uglifier
   unicorn
   uuid
   validation_reflection (>= 1.0.0.rc.1)
