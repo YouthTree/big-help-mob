@@ -22,7 +22,7 @@
       You should have received an email with information about the event and
       you can likely expect further contact about it in the near future. If you'd like to help recruit fellow
       heroes, why not share this missing with your friends on Facebook or Twitter?
-    %p#share-container
+    %p.share-container
       = share_this_link 'Share on Twitter', :for => :twitter, 'data-share-this-title' => "I joined @BigHelpMob's upcoming mission '#{@mission.name}' and you should too!"
       %span.or or
       = share_this_link 'Share on Facebook', :for => :facebook
@@ -36,10 +36,10 @@
 
 %p.share-this-container
   %strong Share this mission on
-  == #{share_this_link 'facebook', :for => :facebook, 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"},
+  #{share_this_link 'facebook', :for => :facebook, 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"},
   = share_this_link 'twitter', :for => :twitter, 'data-share-this-title' => "Check out @BigHelpMob's upcoming mission '#{@mission.name}'"
   or
-  == #{share_this_link 'another site', 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"}.
+  #{share_this_link 'another site', 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"}.
 
 #mission-description
   = @mission.description_as_html

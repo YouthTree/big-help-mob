@@ -6,19 +6,17 @@ class PagesController < ApplicationController
 
   # Site index
   def index
-    hide_title!
-    @photos = FlickrPhoto.for_homepage
   end
-  
+
   def_page :about
   def_page :privacy_policy
   def_page :terms_and_conditions
-  
+
   def sitemap
   end
 
   protected
-  
+
   def render_page!(key)
     @content = Content.find_by_key!(key.to_s)
     self.page_title = @content.title

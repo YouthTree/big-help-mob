@@ -84,16 +84,29 @@
     a:hover img, a.active img
       +opacity(1)
 
-#share-container
-  padding: 0.75em 0
-  text-align: center
-  a
-    +bhm-fixed-fb-structure
-    +fancy-button-colors($bhm-colour-join-background)
-    +link-colors($bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission)
-  span.or
-    color: #999
-    font-weight: bold
-    font-size: 80%
-    padding: 0 0.5em
+  .share-container
+    padding: 0.75em 0
+    text-align: center
+    a
+      +bhm-fixed-fb-structure
+      +fancy-button-colors($bhm-colour-join-background)
+      +link-colors($bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission, $bhm-colour-link-join-mission)
+    span.or
+      color: #999
+      font-weight: bold
+      font-size: 80%
+      padding: 0 0.5em
+
+  p.share-description
+    padding: 0
+    font-size: 1.2em
+    color: #444
+    text-align: center
+    margin-bottom: -0.33em
     
+  p.welcome-teaser
+    text-align: center
+    font-size: 1.5em
+    line-height: 1.5em
+    a
+      color: #0A58A1
