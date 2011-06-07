@@ -1,45 +1,43 @@
 %h2.title Viewing User
 
-= show_for @user do |s|
-  
+%h3 Account Details
+= show_for @user, :id => 'user-account-details'  do |s|
   = s.attribute :login
-  
   = s.attribute :display_name
-  
-  = s.attribute :first_name
-  
-  = s.attribute :last_name
-
-  = s.attribute :allergies
-  
-  = s.attribute :date_of_birth
-  
-  = s.attribute :email
-  
-  = s.attribute :phone
-  
-  = s.attribute :postcode
-  
+  = s.attribute :admin
   = s.association :current_role
-  
-  = s.attribute :previous_volunteer do
+
+%h3 Personal Details
+= show_for @user, :id => 'user-personal-details' do |s|
+  = s.attribute :first_name
+  = s.attribute :last_name
+  = s.attribute :date_of_birth
+  = s.attribute :gender do
+    = @user.gender.try(:name)
+  = s.attribute :allergies
+
+%h3 Contact Details
+= show_for @user, :id => 'user-contact-details' do |s|
+  = s.attribute :email
+  = s.attribute :phone
+  = s.attribute :willing_to_talk
+  = s.attribute :postcode
+
+%h3 Other Information
+= show_for @user, :id => 'user-other-details' do |s|
+  = s.attribute :volunteering_history do
     = @user.volunteering_history.try(:name)
-  
+  = s.attribute :origin
   = s.association :comment do
     = comment_as_html @user
-
   = s.association :participations do
     = link_to "View All Participations", admin_user_mission_participations_path(resource)
+  = s.attribute :completed_mailing_list_subscriptions
 
 - if @user.captain_application.present?
-  
+
   %h3 User's Captain Application
-
   = show_for @user.captain_application do |s|
-  
     = s.attribute :reason_why
-
     = s.attribute :offers
-
     = s.attribute :has_first_aid_cert
-    

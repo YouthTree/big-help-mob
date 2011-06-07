@@ -1,3 +1,5 @@
+- has_jammit_js :mission_archive
+
 #missions
   
   = content_section 'pages.missions.header', :class => 'column'
@@ -8,7 +10,8 @@
         %span.mission-date= mission.occurs_at.strftime "%d %B, %Y"
         \-
         = link_to mission.name, mission
-      .mission-photos= render_mission_photos mission.flickr_photos.for_archive
+      - if mission.photoset_id?
+        .mission-photos{"data-photoset-id" => mission.photoset_id}
       %p.mission-description
         = mission.completed? ? mission.archived_short_description : mission.short_description
         = link_to "View this mission &raquo;".html_safe, mission

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100930132504) do
+ActiveRecord::Schema.define(:version => 20110602140255) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20100930132504) do
     t.integer  "pickup_id"
     t.text     "raw_answers"
     t.text     "comment"
+    t.boolean  "partaking_with_friends"
   end
 
   add_index "mission_participations", ["mission_id", "role_id"], :name => "index_mission_participations_on_mission_id_and_role_id"
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20100930132504) do
     t.text     "short_description"
     t.text     "archived_short_description"
     t.text     "archived_description"
+    t.string   "photoset_id"
   end
 
   add_index "missions", ["cached_slug"], :name => "index_missions_on_cached_slug"
@@ -231,6 +233,14 @@ ActiveRecord::Schema.define(:version => 20100930132504) do
   add_index "slugs", ["scope", "slug", "created_at"], :name => "index_slugs_on_scope_and_slug_and_created_at"
   add_index "slugs", ["scope", "slug"], :name => "index_slugs_on_scope_and_slug"
 
+  create_table "subscribers", :force => true do |t|
+    t.string   "name",                    :null => false
+    t.string   "email",                   :null => false
+    t.integer  "volunteering_history_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "crypted_password"
@@ -262,6 +272,8 @@ ActiveRecord::Schema.define(:version => 20100930132504) do
     t.text     "comment"
     t.boolean  "completed_mailing_list_subscriptions",                                 :default => false
     t.integer  "volunteering_history_id"
+    t.integer  "gender_id"
+    t.boolean  "willing_to_talk"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

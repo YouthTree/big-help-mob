@@ -2,22 +2,22 @@
 
 = show_for resource do |r|
   = r.attribute :id
-  
+
   - if resource_class == Mission
     = r.association :user do
       = link_to resource.mission, [:admin, resource.mission]
-  - else 
+  - else
     = r.association :mission do
       = link_to resource.user.name, [:admin, resource.user]
-  
+
   = r.attribute :comment do
     = comment_as_html resource
-  
+
   = r.attribute :role_name
-  
+
   = r.attribute :state do
     = resource.state.to_s.humanize
-  
+
   = r.association :pickup do
     - pickup = resource.pickup
     - if pickup.present?
@@ -25,22 +25,23 @@
     - else
       %p Pickup unknown.
 
+  = r.attribute :partaking_with_friends
+
 %h3 User Information
 
 = show_for resource.user do |r|
 
   = r.attribute :first_name
-
   = r.attribute :last_name
-
   = r.attribute :phone
-
   = r.attribute :email
-  
   = r.attribute :allergies
-  
+  = r.attribute :willing_to_talk
   = r.attribute :comment do
     = comment_as_html resource.user
+
+  = r.attribute :full_information do
+    = link_to "Click here to view full profile", [:admin, resource.user]
 
 %h3 Survey Answers
 
@@ -48,13 +49,13 @@
   - resource.answers.each_viewable_question do |question, key|
     %dt.question= question.name
     %dd.answer=   resource.answers.read_attribute(key)
-    
+
 - if resource.captain? && resource.user.captain_application.present?
-  
+
   %h3 User's Captain Application
 
   = show_for resource.user.captain_application do |s|
-  
+
     = s.attribute :reason_why
 
     = s.attribute :offers

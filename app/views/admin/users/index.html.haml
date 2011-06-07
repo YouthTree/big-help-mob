@@ -6,27 +6,25 @@
 
 = will_paginate collection
 
+= render :partial => 'search_form'
+
 %table
   %thead
     %tr
-      %th ID
-      %th Login
-      %th Display Name
-      %th Age
-      %th Admin?
-      %th Default Role
-      %th Last Used Site
+      %th= sort_link @search, :login
+      %th= sort_link @search, :display_name
+      %th= sort_link @search, :age
+      %th= sort_link @search, :admin, 'Admin?'
+      %th= sort_link @search, :last_request_at, 'Last Used Site'
       %th &nbsp;
   %tbody
     - collection.each do |r|
       %tr{:class => cycle('odd', 'even')}
-        %td= r.id
-        %td=vwd r.login
-        %td=vwd r.display_name
-        %td= r.age
+        %td= r.login
+        %td= r.display_name
+        %td= r.age || "-"
         %td= r.admin? ? "Yes" : "No"
-        %td=vwd r.current_role.to_s
-        %td=l r.last_request_at, :format => :long
+        %td #{time_ago_in_words r.last_request_at} ago
         %td.actions= individual_resource_links r
     = empty_row_for_collection 6
         

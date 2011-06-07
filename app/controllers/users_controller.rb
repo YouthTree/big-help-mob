@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   before_filter :prepare_user,       :except => [:new, :create, :index, :welcome]
   before_filter :check_authz,        :only   => [:edit, :destroy, :update]
 
+  def index
+    redirect_to root_url
+  end
+
   def show
     @participations = @user.mission_participations.viewable_by(current_user).all
   end

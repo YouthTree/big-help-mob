@@ -10,4 +10,4 @@
       = select_tag :state_filter, options_for_select(MissionStatistics::STATE_CHOICES, params[:state_filter])
       participations from
       = select_tag :role_filter, options_for_select(MissionStatistics::ROLE_CHOICES, params[:role_filter])
-      = submit_tag "Update Map", :name => nil
+      = submit_tag "Update Map and Statistics", :name => nil

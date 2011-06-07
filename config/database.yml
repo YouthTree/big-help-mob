@@ -1,16 +1,20 @@
 development:
   adapter: postgresql
   encoding: utf8
+  host: localhost
+  min_messages: warning
   database: bighelpmob_development
-  user: bighelpmob
-  password:
+  username: bighelpmob
+  password: bighelpmob
 
 test: &TEST
   adapter: postgresql
   encoding: utf8
+  host: localhost
   database: bighelpmob_test
-  user: bighelpmob
-  password:
+  min_messages: warning
+  username: bighelpmob
+  password: bighelpmob
 
 staging:
   adapter: postgresql

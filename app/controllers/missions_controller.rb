@@ -1,34 +1,34 @@
 class MissionsController < ApplicationController
-  
+
   MissionOver = Class.new(StandardError)
-  
+
   rescue_from MissionOver do
     redirect_to @mission, :alert => tf('mission.over')
   end
-  
+
   rescue_from Mission::SignupClosed do
     redirect_to @mission, :alert => tf('mission.signup_closed')
   end
-  
+
   before_filter :prepare_mission,        :except => [:next, :index]
   before_filter :require_user_with_note, :only   => [:edit, :update, :leave]
   before_filter :require_valid_user,     :only   => [:edit, :update, :leave]
   before_filter :prepare_participation,  :only   => [:edit, :update, :leave]
-  
+
   def show
     @mission_questions = Question.for(:mission_page).all
   end
-  
+
   def join
     @captain_questions  = Question.for(:captain_section).all
     @sidekick_questions = Question.for(:sidekick_section).all
   end
-  
+
   def edit
     check_mission_status!
     return redirect_to([:join, @mission]) if @participation.role.blank?
   end
-  
+
   def update
     check_mission_status!
     if @participation.update_attributes(params[:mission_participation])
@@ -39,7 +39,7 @@ class MissionsController < ApplicationController
       render :action => "edit"
     end
   end
-  
+
   def leave
     check_mission_status!
     @participation.destroy
@@ -49,9 +49,9 @@ class MissionsController < ApplicationController
   def index
     @missions = Mission.completed.all
   end
-  
+
   protected
-  
+
   def prepare_mission
     return redirect_next_mission if params[:id] == "next" && request.get?
     @mission = Mission.viewable.optimize_viewable.find_using_slug!(params[:id])
@@ -61,11 +61,11 @@ class MissionsController < ApplicationController
     end
     add_title_variables! :mission => @mission.name
   end
-  
+
   def prepare_participation
     @participation = @mission.participation_for(current_user, params[:as])
   end
-  
+
   def redirect_next_mission
     mission = Mission.viewable.next.first
     raise ActiveRecord::RecordNotFound if mission.blank?
@@ -77,11 +77,11 @@ class MissionsController < ApplicationController
     end
     redirect_to url
   end
-  
+
   def check_mission_status!
     raise MissionOver unless @participation.still_preparing?(true) && @mission.unstarted?
   end
-  
+
   def require_user_with_note
     unless logged_in?
       store_location
@@ -90,9 +90,9 @@ class MissionsController < ApplicationController
       return false
     end
   end
-  
+
   def logged_in_and_signed_up_to_mission?
     @mission.participating?(current_user) && !@mission.participation_for(current_user).still_preparing?
   end
-  
+
 end

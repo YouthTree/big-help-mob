@@ -3,9 +3,12 @@
 - has_share_this_js
 - has_js 'bhm/mission'
 
+- @og_type = :article
+- og_field :description, @mission.short_description
+
 - if logged_in?
   = render :partial => 'mission_actions'
-  
+
 - extra_head_content do
   %meta{:name => "title", :content => @mission.name}
 
@@ -17,7 +20,12 @@
       == part in '#{@mission.name}' on #{l @mission.occurs_at, :format => :simple}.
     %p
       You should have received an email with information about the event and
-      you can likely expect further contact about it in the near future.
+      you can likely expect further contact about it in the near future. If you'd like to help recruit fellow
+      heroes, why not share this missing with your friends on Facebook or Twitter?
+    %p.share-container
+      = share_this_link 'Share on Twitter', :for => :twitter, 'data-share-this-title' => "I joined @BigHelpMob's upcoming mission '#{@mission.name}' and you should too!"
+      %span.or or
+      = share_this_link 'Share on Facebook', :for => :facebook
     %p.hide-notice
       = link_to 'Click here to hide this message', @mission
 
@@ -28,10 +36,10 @@
 
 %p.share-this-container
   %strong Share this mission on
-  == #{share_this_link 'facebook', :for => :facebook},
-  = share_this_link 'twitter', :for => :twitter
+  #{share_this_link 'facebook', :for => :facebook, 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"},
+  = share_this_link 'twitter', :for => :twitter, 'data-share-this-title' => "Check out @BigHelpMob's upcoming mission '#{@mission.name}'"
   or
-  == #{share_this_link 'another site'}.
+  #{share_this_link 'another site', 'data-share-this-title' => "Check out Big Help Mob's upcoming mission '#{@mission.name}'"}.
 
 #mission-description
   = @mission.description_as_html
@@ -61,11 +69,12 @@
           %span.pickup-time= l mp.pickup_at, :format => :pickup_time
 - if logged_in?
   = render :partial => 'mission_actions'
-  
-:javascript
-  $(document).ready(function() {
-    $("#mission-notice .hide-notice a").click(function() {
-      $("#mission-notice").slideUp("slow", function() { $(this).remove(); });
-      return false;
+
+- extra_footer_content do
+  :javascript
+    $(document).ready(function() {
+      $("#mission-notice .hide-notice a").click(function() {
+        $("#mission-notice").slideUp("slow", function() { $(this).remove(); });
+        return false;
+      });
     });
-  });

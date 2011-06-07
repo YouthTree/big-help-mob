@@ -4,12 +4,13 @@ require 'youthtree-capistrano'
 
 set :application,     "bighelpmob"
 set :repository_name, "big-help-mob"
+set :rvm_bin_path,    "/usr/local/bin"
 
 set :bundle_without, [:development, :test, :test_mac]
 
 # Use git-flow based branches for deployment.
 set :branch do
-  stage == "production" ? "master" : "develop"
+  stage == "production" ? "master" : "release/201105.01"
 end
 
 namespace :resque do

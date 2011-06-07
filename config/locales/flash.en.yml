@@ -41,3 +41,6 @@ en:
       destroyed: "Successfully closed account"
       different_user: "You aren't the specified user"
       unknown_user: "I'm sorry, I don't know that user"
+    subscriber:
+      created: 'You were successfully subscribed to the selected mailing lists.'
+      invalid: 'Your subscription could not be recored because: %{errors}.'

@@ -1,10 +1,23 @@
-- unless @photos.empty?
-  #homepage-photos= render_mission_photos @photos
+- has_jammit_js :homepage
+- has_share_this_js
+
+- if Mission.has_next?
+  %p.welcome-teaser= link_to 'Registration for our next mission is open - Join now to take part!', mission_path(:next)
+
+%p.share-description Like Big Help Mob? Why not tell your friends about us!
+
+%p.share-container
+  = share_this_link 'Share on Twitter', :for => :twitter
+  %span.or or
+  = share_this_link 'Share on Facebook', :for => :facebook
 
 = content_section 'home.introduction', :class => 'column'
 
-#homepage-mission-link
+.homepage-mission-link
   - if Mission.has_next?
     = link_to 'Join our latest mission', mission_path(:next)
   - else
     = link_to 'View our Past Missions', missions_path
+  %span.or or
+  = show_subscription_button
+

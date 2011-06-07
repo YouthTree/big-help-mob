@@ -48,7 +48,7 @@ BHM.withNS 'Admin', (ns) ->
     draw: ->
       @parent.removeClass 'hidden-container'
       $("##{@id}").empty().show()
-      new Highcharts.Chart @options
+      @chart = new Highcharts.Chart @options
       
   ns.withNS 'LineChart', (lineNS) ->
   
@@ -77,14 +77,16 @@ BHM.withNS 'Admin', (ns) ->
     class InnerChart extends BHM.Admin.BaseChart
       getChartType: -> 'pie'
       
+      emptyFormatter: ->
+        @options.plotOptions.pie.dataLabels.formatter = -> ''
+      
       buildInitialOptions: ->
         @options =
           chart:
             renderTo: @id
             defaultSeriesType: @getChartType()
             backgroundColor: @parent.css('background-color')
-            marginTop: 20
-            marginBottom: 75
+
           plotOptions:
             pie:
               dataLabels:

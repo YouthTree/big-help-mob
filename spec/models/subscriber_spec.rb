@@ -1,25 +1,31 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Subscriber do
-  
+
   describe 'when validating a subscriber' do
-    
+
     before :each do
-      @subscriber = Subscriber.new
+      @subscriber = Subscriber.make
     end
-    
+
+    it 'should be invalid with a blank name' do
+      @subscriber.name = ''
+      @subscriber.should_not be_valid
+      @subscriber.errors[:name].should be_present
+      @subscriber.name = 'Test Name'
+      @subscriber.should be_valid
+      @subscriber.errors[:name].should be_blank
+    end
+
     it 'should be invalid with a blank email' do
       @subscriber.email = ''
       @subscriber.should_not be_valid
       @subscriber.errors[:email].should be_present
+      @subscriber.email = 'test@example.com'
+      @subscriber.should be_valid
+      @subscriber.errors[:email].should be_blank
     end
-    
-    it 'should be invalid with a blank set of list ids' do
-      @subscriber.list_ids = nil
-      @subscriber.should_not be_valid
-      @subscriber.errors[:list_ids].should be_present
-    end
-    
+
     it 'should be invalid with bad email addresses' do
       @subscriber.email = 'blah'
       @subscriber.should_not be_valid
@@ -34,112 +40,43 @@ describe Subscriber do
       @subscriber.should_not be_valid
       @subscriber.errors[:email].should be_present
     end
-    
-    it 'should be invalid with non-present list ids' do
-      mock(CampaignMonitorWrapper).available_list_ids { ["a", "b", "c"] }
-      @subscriber.list_ids = ["d"]
-      @subscriber.should_not be_valid
-      @subscriber.errors[:list_ids].should be_present
-    end
-    
+
   end
-  
-  describe 'initialization' do
-    
-    before :each do
-      @subscriber = Subscriber.new
+
+  describe 'subscribing to a mailing list' do
+
+    subject { Subscriber.make }
+
+    it 'should automatically subscribe on save' do
+      subject.should_not be_persisted
+      mock(MailingListWorker).queue_for!(subject)
+      subject.save
+      subject.should be_persisted
     end
-    
-    it 'should default to a not being persisted' do
-      @subscriber.should_not be_persisted
+
+    it 'should not call it twice' do
+      subject.save
+      dont_allow(MailingListWorker).queue_for!.with_any_args
+      subject.name = 'A different name'
+      subject.save
     end
-    
-    it 'should clear out invalid list ids' do
-      mock(CampaignMonitorWrapper).available_list_ids { ["a", "b", "c"] }
-      @subscriber.list_ids = ["d"]
-      @subscriber.list_ids.should be_blank
+
+    it 'should not do it after finding the saved record' do
+      subject.save
+      returned = Subscriber.find(subject.id)
+      dont_allow(MailingListWorker).queue_for!.with_any_args
+      returned.name = 'A different name'
+      returned.save
     end
-    
-    it 'should include valid list ids' do
-      mock(CampaignMonitorWrapper).available_list_ids { ["a", "b", "c"] }
-      @subscriber.list_ids = ["b", "c"]
-      @subscriber.list_ids.should == ["b", "c"]
+
+    it 'should not subscribe when the subscriber is invalid' do
+      subject.should_not be_persisted
+      subject.name = ''
+      dont_allow(MailingListWorker).queue_for!.with_any_args
+      subject.save
+      subject.should_not be_persisted
     end
-    
-    it 'should let you initialize values from the a hash' do
-      mock(CampaignMonitorWrapper).available_list_ids { ["a", "b", "c"] }
-      @subscriber = Subscriber.new(:email => 'test@example.com', :list_ids => %w(a d), :name => 'Test User')
-      @subscriber.email.should == 'test@example.com'
-      @subscriber.list_ids.should == %w(a)
-      @subscriber.name.should == 'Test User'
-    end
-    
+
   end
-  
-  describe 'when invalid' do
-    
-    before :each do
-      @subscriber = Subscriber.new
-      stub(@subscriber).valid?     { false }
-      stub(@subscriber).persisted? { false }
-      stub(@subscriber).persist!
-      stub(@subscriber).subscribe!
-    end
-    
-    it 'should call subscribe!' do
-      dont_allow(@subscriber).subscribe!
-      @subscriber.save
-    end
-    
-    it 'should call persist!' do
-      dont_allow(@subscriber).persist!
-      @subscriber.save
-    end
-    
-  end
-  
-  describe 'when already persisted' do
-    
-    before :each do
-      @subscriber = Subscriber.new
-      stub(@subscriber).valid?     { true }
-      stub(@subscriber).persisted? { true }
-      stub(@subscriber).persist!
-      stub(@subscriber).subscribe!
-    end
-    
-    it 'should call subscribe!' do
-      dont_allow(@subscriber).subscribe!
-      @subscriber.save
-    end
-    
-    it 'should call persist!' do
-      dont_allow(@subscriber).persist!
-      @subscriber.save
-    end
-    
-  end
-  
-  describe 'when valid and not already persisted' do
-    
-    before :each do
-      @subscriber = Subscriber.new
-      stub(@subscriber).valid?     { true }
-      stub(@subscriber).persisted? { false }
-      stub(@subscriber).persist!
-      stub(@subscriber).subscribe!
-    end
-    
-    it 'should call subscribe!' do
-      mock(@subscriber).subscribe!
-      @subscriber.save
-    end
-    
-    it 'should call persist!' do
-      mock(@subscriber).persist!
-      @subscriber.save
-    end
-    
-  end
-  
+
 end

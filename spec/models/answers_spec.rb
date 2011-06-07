@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Answers do
   dataset :answers_dataset
@@ -32,7 +32,7 @@ describe Answers do
     it 'should allow assignment of attributes' do
       @answers.attributes = {:fred => 1, :wilma => 2}
     end
-    
+
     it 'should yield to a block for each question' do
       @answers.each_question do |question, params|
         question.should be_a(Question)

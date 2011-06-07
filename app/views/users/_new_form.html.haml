@@ -8,6 +8,7 @@
   = form.inputs :name => "About Yourself" do
     = form.input :full_name, :as => :first_and_last_name, :label => "Your Name"
     = form.input :date_of_birth, :start_year => (Time.now.year - 100), :end_year => (Time.now.year - 10), :label => "When were you born?", :required => false, :include_blank => false
+    = form.input :gender, :include_blank => false, :label => 'What gender do you<br />identify as?'.html_safe
   
   = form.inputs :name => "Your Account" do
     = form.input :email, :label => "Email", :input_html => {:placeholder => "Your Email Address"}
@@ -17,7 +18,7 @@
     = form.input :volunteering_history, :as => :select, :collection => User.volunteering_history_options_scope.for_select, :required => false, :label => "What best describes your volunteering habits? (we mean ANY sort of volunteering)", :include_blank => false
     = form.input :origin, :as => input_type_for_origin(form.object.origin), :collection => User::ORIGIN_CHOICES,  :required => false, :include_blank => false
     - if @user.needs_ml_subscriptions?
-    = form.input :mailing_list_choices, :collection => User.available_mailing_list_choices, :as => :check_boxes, :label => "Mailing Lists"
+      = form.input :mailing_list_choices, :collection => User.available_mailing_list_choices, :as => :check_boxes, :label => "Mailing Lists"
     
   = form.buttons do
     = form.commit_button "Create My Account"

@@ -1,5 +1,6 @@
 - use_postcode_mapper
 - has_jammit_js :mission_dashboard
+- has_jammit_js :dashboard
 %h2.title Mission Dashboard
 
 #mission-dashboard
@@ -9,28 +10,33 @@
     .mission-statistic
       %span.count= @statistics.count :approved, :captains
       %span.description Approved Captains
-    
+
     .mission-statistic
       %span.count= @statistics.count :approved, :sidekicks
       %span.description Approved Sidekicks
-    
+
     .mission-statistic
       %span.count= @statistics.count :pending
       %span.description Pending Participations
-    
+      
+    .mission-statistic
+      %span.count= @statistics.count :social
+      %span.description Going with Friends
+
     .mission-statistic
       %span.count= @statistics.count
       %span.description Total Participations
 
   = render :partial => 'postcode_map'
   = render :partial => 'report_form'
-  
+
   #general-participations
     %ul
       = ml "Approved Participations", "#approved-participations"
       = ml "Pending Participations",  "#pending-participations"
       = ml "Sidekick Pickups",        "#sidekick-pickups"
-    
+      = ml "User Statistics",         "#mission-user-statistics"
+
     #approved-participations.collection-columns
       .collection.left
         %h4 Captains
@@ -42,7 +48,7 @@
 
     #pending-participations.collection
       = participations_listing @statistics.pending_participations
-      
+
     #sidekick-pickups
       #pickups-map
       %ul#pickups
@@ -58,3 +64,57 @@
               %ul.participations
                 - participations.each do |participation|
                   %li= link_to participation.user.name, [:admin, @mission, participation]
+
+    #mission-user-statistics
+
+      #filter-user-statistics
+        - form_tag dashboard_admin_mission_path(resource), :method => :get do
+          I want to see
+          = select_tag :state_filter, options_for_select(MissionStatistics::STATE_CHOICES, params[:state_filter])
+          participations from
+          = select_tag :role_filter, options_for_select(MissionStatistics::ROLE_CHOICES, params[:role_filter])
+          = submit_tag "Update Map and Statistics", :name => nil
+
+      #user-signups.statistic
+        %h3 User Signups By Date
+        #signups-chart.dashboard-chart= dl_for_stat @user_stats
+
+      #user-ages.statistic
+        %h3 Users per Age
+        %p
+          == There are #{pluralize @user_ages.count, 'user'} with ages from
+          == #{@user_ages.min_age} to #{@user_ages.max_age}. The mean user age
+          == is #{@user_ages.mean}.
+        #ages-chart.dashboard-chart
+          %dl
+            - @user_ages.data.each_pair do |age, value|
+              - if age > @user_ages.window_min && age < @user_ages.window_max
+                %dt= age
+                %dd= value
+
+      #user-origins.statistic
+        %h3 Users per Origin
+        #origins-chart.dashboard-chart
+          %dl
+            - @origin_counts.each_pair do |origin, count|
+              - if count > 0
+                %dt= origin
+                %dd= count
+        - unless @other_origins.blank?
+          %h4
+            = link_to "Other Known Origins", "#", :class => 'other-known-origins-toggle'
+          %ul#user-origins-list
+            - @other_origins.each do |name, count|
+              %li
+                %span.origin-count= pluralize count, "user"
+                from
+                %span.origin-name= name
+
+
+      #user-volunteering-history.statistic
+        %h3 User answers to "Have you volunteered in the last year"
+        #volunteering-chart.dashboard-chart= dl_for_stat @user_volunteering_history
+
+      #user-genders.statistic
+        %h3 Users per Gender
+        #genders-chart.dashboard-chart= dl_for_stat @user_genders

@@ -12,8 +12,13 @@
         font-weight: bold
         color: white
         background: #555555
-        +linear-gradient(color-stops(#555555, #777777), bottom)
+        +background-image(linear-gradient(bottom, #555, #777))
         +sans-font-stack
+        a
+          text-decroation: none
+          +link-colors(white)
+          &.sort_link.asc, &.sort_link.desc
+            color: #DDD
     tbody
       tr.empty
         background: #eeeeee

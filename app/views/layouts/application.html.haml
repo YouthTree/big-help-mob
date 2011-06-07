@@ -6,7 +6,13 @@
     /[if IE]
       %script{:src => uri2ssl("html5shiv.googlecode.com/svn/trunk/html5.js")}
     = csrf_meta_tag
-    %link{:rel => "image_src", :href => "http://#{request.host}/images/thumb-preview.jpg"}
+    - if Settings.flickr_api.api_key?
+      %meta{:name => 'flickr-api-key', :content => Settings.flickr_api.api_key}/
+    = og_tag :title,     (@og_title || page_title)
+    = og_tag :type,      (@og_type || :website)
+    = og_tag :image,     "http://#{request.host}/images/thumb-preview.jpg"
+    = og_tag :url,       request.url
+    = og_tag :site_name, 'Big Help Mob'
     = extra_head_content
   %body
     = flash_messages :alert, :notice
@@ -14,7 +20,7 @@
       %header= render :partial => 'shared/header'
       %article#content= yield
       %footer= render :partial => 'shared/footer'
-  
+
     = include_javascripts(:base)
     /[if IE 6]
       = include_javascripts(:ie6)

@@ -2,7 +2,8 @@
   border-color: $border-colour
   background-color: $background-colour
   color: $text-colour
-  +linear-gradient(color-stops(lighten($background-colour, 10), darken($background-colour, 10)), top)
+  +background-image(linear-gradient(top, lighten($background-colour, 10), darken($background-colour, 10)))
+  
 
 #flash-messages
   margin: 0
