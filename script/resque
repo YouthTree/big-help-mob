@@ -16,7 +16,7 @@ class Daemonizer
   LOG_PATH = Rails.root.join("log", "resque.log")
 
   def self.change_log!
-    config                    = Rails.application.log
+    config                    = Rails.application.config
     logger                    = ActiveSupport::BufferedLogger.new(Rails.root.join("log", "resque.#{Rails.env}.log").to_s)
     logger.level              = ActiveSupport::BufferedLogger.const_get(config.log_level.to_s.upcase)
     logger.auto_flushing      = true

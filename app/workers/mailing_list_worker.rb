@@ -18,9 +18,23 @@ class MailingListWorker
   end
 
   def subscribe!
+    log_info "Performing #{self.class.name} with at #{Time.now} with:"
+    log_info "Subscriber details: #{subscriber_details.inspect}"
+    log_info "Mailing lists:      #{mailing_list_ids.inspect}"
     CampaignMonitorWrapper.update_for_subscriber! @subscriber_details, @mailing_list_ids
+    log_info "Subscription done."
   rescue RuntimeError => e
-    Rails.logger.error "Error managing subscriptions for #{@subscriber_details.inspect} - #{e.message}"
+    log_error "Error managing subscriptions for #{@subscriber_details.inspect} - #{e.message} (#{e.class.name})"
+  end
+
+
+
+  def log_info(text)
+    Rails.logger.info "Resque - #{self.class.name} - #{Time.now}: #{text.to_s}"
+  end
+
+  def log_error(text)
+    Rails.logger.error "Resque - #{self.class.name} - #{Time.now}: #{text.to_s}"
   end
 
 end
