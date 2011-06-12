@@ -11,10 +11,19 @@ require File.expand_path('../../config/environment',  __FILE__)
 require 'resque'
 
 class Daemonizer
-  
+
   PID_PATH = Rails.root.join("tmp", "pids", "resque.pid")
   LOG_PATH = Rails.root.join("log", "resque.log")
-  
+
+  def self.change_log!
+    config                    = Rails.application.log
+    logger                    = ActiveSupport::BufferedLogger.new(Rails.root.join("log", "resque.#{Rails.env}.log").to_s)
+    logger.level              = ActiveSupport::BufferedLogger.const_get(config.log_level.to_s.upcase)
+    logger.auto_flushing      = true
+    Rails.logger              = logger
+    ActiveRecord::Base.logger = logger
+  end
+
   def self.daemonize!(&blk)
     fork do
       Process.setsid
@@ -30,7 +39,7 @@ class Daemonizer
       blk.call if blk
     end
   end
-  
+
   def self.quit_existing!
     if PID_PATH.exist?
       pid = PID_PATH.read.to_i
@@ -40,7 +49,7 @@ class Daemonizer
       end
     end
   end
-  
+
 end
 
 worker = nil
@@ -59,6 +68,8 @@ Daemonizer.quit_existing!
 
 puts "*** Starting worker #{worker}"
 Daemonizer.daemonize! do
+  Daemonizer.change_log!
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
+  Rails.logger.info "=> Starting up resque worker: #{worker.to_s}"
   worker.work(ENV['INTERVAL'] || 5)
 end
