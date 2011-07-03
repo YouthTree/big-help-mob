@@ -57,6 +57,7 @@ gem 'rfc-822'
 # Background workers
 gem 'resque', '>= 1.10'
 gem 'resque-status', :require => 'resque/status'
+gem 'daemon-spawn', :require => nil
 
 # View / Rendering
 gem 'haml',               '>= 3.0.13'
