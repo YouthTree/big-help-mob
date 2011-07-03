@@ -1,75 +1,45 @@
 #!/usr/bin/env ruby
-# Process args like Rake
-ARGV.dup.each do |key|
-  if key =~ /(.*)=(.*)/
-    ENV[$1] = $2
-    ARGV.delete key
-  end
-end
 
+ENV['RAILS_ENV'] ||= 'development'
 require File.expand_path('../../config/environment',  __FILE__)
-require 'resque'
 
-class Daemonizer
+require 'daemon_spawn'
 
-  PID_PATH = Rails.root.join("tmp", "pids", "resque.pid")
-  LOG_PATH = Rails.root.join("log", "resque.log")
+class ResqueWorkerDaemon < DaemonSpawn::Base
 
-  def self.change_log!
+  def start(args)
+    redirect_log!
+    ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
+    @worker = Resque::Worker.new('*') # Specify which queues this worker will process
+    puts "Starting up resque worker: #{@worker.to_s}"
+    @worker.verbose = 1 # Logging - can also set vverbose for 'very verbose'
+    @worker.work
+  end
+
+  def stop
+    @worker.try(:shutdown)
+  end
+
+  def redirect_log!
     config                    = Rails.application.config
-    logger                    = ActiveSupport::BufferedLogger.new(Rails.root.join("log", "resque.#{Rails.env}.log").to_s)
+    logger                    = ActiveSupport::BufferedLogger.new(STDOUT)
     logger.level              = ActiveSupport::BufferedLogger.const_get(config.log_level.to_s.upcase)
     logger.auto_flushing      = true
     Rails.logger              = logger
     ActiveRecord::Base.logger = logger
   end
 
-  def self.daemonize!(&blk)
-    fork do
-      Process.setsid
-      exit if fork
-      FileUtils.mkdir_p(PID_PATH.dirname)
-      File.open(PID_PATH, "w+") { |f| f.write(Process.pid.to_s) }
-      Dir.chdir Rails.root.to_s
-      File.umask 0000
-      log = File.new(LOG_PATH, "a")
-      STDIN.reopen "/dev/null"
-      STDOUT.reopen log
-      STDERR.reopen STDOUT
-      blk.call if blk
-    end
-  end
-
-  def self.quit_existing!
-    if PID_PATH.exist?
-      pid = PID_PATH.read.to_i
-      if pid > 0
-        puts "*** Killing existing queue with pid #{pid}"
-        Process.kill("QUIT", pid) rescue nil
-      end
-    end
-  end
-
 end
 
-worker = nil
-queues = (ENV['QUEUES'] || ENV['QUEUE']).to_s.split(',')
 
-begin
-  worker                = Resque::Worker.new(*queues)
-  worker.verbose      = ENV['LOGGING'] || ENV['VERBOSE']
-  worker.very_verbose = ENV['VVERBOSE']
-rescue Resque::NoQueueError
-  STDERR.puts "set QUEUE env var, e.g. $ QUEUE=critical,high rake resque:work"
-  exit!
-end
+logs = Rails.root.join("log", "resque_workers.#{Rails.env}.log").to_s
+pids = Rails.root.join('tmp', 'pids', "resque_workers.#{Rails.env}.pid").to_s
 
-Daemonizer.quit_existing!
-
-puts "*** Starting worker #{worker}"
-Daemonizer.daemonize! do
-  Daemonizer.change_log!
-  ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
-  Rails.logger.info "=> Starting up resque worker: #{worker.to_s}"
-  worker.work(ENV['INTERVAL'] || 5)
-end
+ResqueWorkerDaemon.spawn!({
+  :processes   => 1,
+  :log_file    => logs,
+  :pid_file    => pids,
+  :sync_log    => true,
+  :working_dir => Rails.root,
+  :singleton   => true
+})
