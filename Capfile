@@ -11,7 +11,7 @@ set :rvm_bin_path,    "/usr/local/bin"
 set :bundle_without, [:development, :test, :test_mac]
 
 # Env-specific configuration.
-set(:using_monit) { state == "production" }
+set(:using_monit) { stage == "production" }
 set(:server_name) { stage == "production" ? "unicorn" : "passenger" }
 set(:branch)      { stage == "production" ? "master"  : "develop" }
 
@@ -19,17 +19,17 @@ namespace :resque do
 
   task :start do
     if using_monit
-      run "sudo monit start resque_workers_bhm"
+      run "sudo monit start resque_worker_bhm"
     else
-      bundle_exec "./script/resque_workers start"
+      bundle_exec "./script/resque start"
     end
   end
 
   task :restart do
     if using_monit
-      run "sudo monit restart resque_workers_bhm"
+      run "sudo monit restart resque_worker_bhm"
     else
-      bundle_exec "./script/resque_workers restart"
+      bundle_exec "./script/resque restart"
     end
   end
 
