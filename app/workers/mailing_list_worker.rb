@@ -19,8 +19,8 @@ class MailingListWorker
 
   def subscribe!
     log_info "Performing #{self.class.name} with at #{Time.now} with:"
-    log_info "Subscriber details: #{subscriber_details.inspect}"
-    log_info "Mailing lists:      #{mailing_list_ids.inspect}"
+    log_info "Subscriber details: #{@subscriber_details.inspect}"
+    log_info "Mailing lists:      #{@mailing_list_ids.inspect}"
     CampaignMonitorWrapper.update_for_subscriber! @subscriber_details, @mailing_list_ids
     log_info "Subscription done."
   rescue RuntimeError => e
