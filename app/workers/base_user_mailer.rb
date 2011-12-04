@@ -25,7 +25,7 @@ class BaseUserMailer < Resque::JobWithStatus
   end
 
   def send_mail!(email, users)
-    log_info "Sending email with subject '#{email.subject}' to #{users.size}"
+    log_info "Sending email with subject '#{email.subject}' to #{users.size} users"
     log_info "Destination users: #{Array.wrap(users).to_sentence}"
     Rails.logger.info Notifications.notice(email, users).deliver
     log_info "Email sent."

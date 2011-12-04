@@ -6,7 +6,8 @@ class IndividualUserMailer < BaseUserMailer
     offset        = 1
     at 0, total, "Preparing templates"
     email.each_user do |user|
-      send_mail! email.rendered_email_for(user), user.email
+      next if user.email.blank?
+      send_mail! email.rendered_email_for(user), [user.email]
       at offset, total, "Sending email to #{user.email}"
       offset += 1
     end

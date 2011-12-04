@@ -86,6 +86,7 @@ class Email
   def self.mapping_to_scope(name, filter)
     name  = name.to_s
     scope = User.unscoped
+    scope = scope.where('email IS NOT NULL')
     scope = scope.where('id IN (?)', build_id_list(filter)) if name == "participations"
     scope
   end
