@@ -18,7 +18,7 @@
       = ml "Sign up", new_user_url(ssl_opts)
       = ml "Sign in", sign_in_url(ssl_opts)
 
-#youthtree-project-logo= link_to "A Project of Youth Tree", "http://www.youthtree.org.au/"
+#useful-project-logo= link_to "A Project of Useful Inc.", "http://www.useful.org.au/"
 
 - if logged_in? && current_user.admin?
   = render :partial => 'shared/admin_nav'
