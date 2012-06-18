@@ -29,6 +29,7 @@ BigHelpMob::Application.routes.draw do
     end
 
     root :to => 'dashboard#index', :as => :dashboard
+    get 'report', :to => 'dashboard#report', :as => :system_report
   end
 
   resources :user_session, :path => 'user-sessions'

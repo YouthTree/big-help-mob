@@ -10,4 +10,11 @@ class Admin::DashboardController < AdminController
     @user_genders                    = UserStatistics.count_per_gender
   end
 
+  def report
+    @report = CsvReporter.generate
+    respond_to do |format|
+      format.zip
+    end
+  end
+
 end

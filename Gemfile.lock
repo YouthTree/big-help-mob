@@ -111,7 +111,6 @@ GEM
       i18n (~> 0.4)
     fssm (0.2.7)
     geokit (1.6.0)
-    growl (1.0.3)
     guard (0.3.4)
       thor (~> 0.14.6)
     guard-rspec (0.3.1)
@@ -191,7 +190,6 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rb-fsevent (0.4.0)
     rcov (0.9.9)
     redis (2.2.0)
     redis-namespace (1.0.3)
@@ -296,6 +294,7 @@ GEM
       activesupport (~> 3.0.1)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
+    zipstream (0.1.2)
 
 PLATFORMS
   ruby
@@ -324,7 +323,6 @@ DEPENDENCIES
   forgery
   formtastic (>= 1.1.0)
   geokit (>= 1.5.0)
-  growl
   guard
   guard-rspec
   haml (>= 3.0.13)
@@ -343,7 +341,6 @@ DEPENDENCIES
   rails-erd
   rails3-generators
   rake (~> 0.8.0)
-  rb-fsevent
   rcov
   remarkable (>= 4.0.0.alpha4)
   remarkable_activerecord (>= 4.0.0.alpha4)
@@ -375,3 +372,4 @@ DEPENDENCIES
   youthtree-helpers
   youthtree-js (>= 0.3.0)
   youthtree-settings
+  zipstream

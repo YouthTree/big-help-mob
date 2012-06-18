@@ -1,0 +1,3 @@
+@report.each_pair do |name, value|
+  zip.write name, value
+end

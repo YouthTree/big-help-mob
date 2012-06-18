@@ -43,6 +43,7 @@ gem 'mail_form', '>= 1.2.1'
 gem 'sitemap_generator'
 gem 'flickraw'
 gem 'ruby-googlechart',    '>= 0.6.4', :require => 'google_chart'
+gem 'zipstream'
 
 gem 'SystemTimer'
 
@@ -123,6 +124,6 @@ group :staging, :production do
 end
 
 group :test_mac do
-  gem 'rb-fsevent', :require => false
-  gem 'growl', :require => false
+  # gem 'rb-fsevent', :require => false
+  # gem 'growl', :require => false
 end
