@@ -1,11 +1,11 @@
 <p>Calling Sidekick {{user.name}}</p>
- 
+
 <p>Big Help Mob HQ congratulates you on accepting this mission. You are now essential to the success of '{{mission.name}}'.</p>
 
-<p>Your next instructions will be mailed to you (as in actual letterbox and postage stamp mail) by shortly. You must read and sign these documents before they self-destruct.</p>
+<p>Your next instructions will be emailed to you shortly. You must read these documents before they self-destruct.</p>
 
 <p>Thank you for using your powers for good.</p>
 
 <p>Over and out.</p>
 
-<p>Big Help Mob HQ</p>
+<p>Big Help Mob Mafia</p>
