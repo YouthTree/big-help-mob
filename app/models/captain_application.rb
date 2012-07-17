@@ -1,15 +1,15 @@
 class CaptainApplication < ActiveRecord::Base
   extend DynamicBaseDrop::Droppable
-  
+
   is_droppable
 
   attr_accessible :has_first_aid_cert, :offers, :reason_why
-  
+
   belongs_to :user
-  
-  validates_presence_of :user, :offers, :reason_why
+
+  validates_presence_of :user  #, :offers, :reason_why
   validates_inclusion_of :accepted, :has_first_aid_cert, :in => [true, false, nil]
-  
+
 end
 
 # == Schema Info
