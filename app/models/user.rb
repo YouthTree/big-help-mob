@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     "Facebook - The Big Help Mob page",
     "Word of mouth",
     "Google search",
-    "Youth Tree mailing list",
+    "Useful mailing list",
     "Other organization",
     "Other"
   ]
