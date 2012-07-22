@@ -1,16 +1,17 @@
-= form.inputs :name => "Captain Application" do
+- if false
+  = form.inputs :name => "Captain Application" do
 
-  - if user.errors.invalid?(:captain_application)
+    - if user.errors.invalid?(:captain_application)
+      %li
+        %p.inline-errors.full-width Please ensure you fill out your Captain application.
+
     %li
-      %p.inline-errors.full-width Please ensure you fill out your Captain application.
+      %p.inline-hints.full-width
+        Not sure exactly what we're asking about / why we're asking this questions?
+        == We suggest #{link_to 'rereading', [:join, @mission]} the role description.
 
-  %li
-    %p.inline-hints.full-width
-      Not sure exactly what we're asking about / why we're asking this questions?
-      == We suggest #{link_to 'rereading', [:join, @mission]} the role description.
+    = "" # form.input :reason_why, :as => :string
 
-  = "" # form.input :reason_why, :as => :string
+    = "" #form.input :offers, :as => :string
 
-  = "" #form.input :offers, :as => :string
-
-  = form.input :has_first_aid_cert, :hint => "If you have one, bring it to Super hero school. If you don't, don't panic - It's not a requirement.", :required => false
+    = form.input :has_first_aid_cert, :hint => "If you have one, bring it to Super hero school. If you don't, don't panic - It's not a requirement.", :required => false
